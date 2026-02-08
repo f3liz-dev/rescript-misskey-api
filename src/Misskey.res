@@ -124,6 +124,12 @@ let connect = (origin: string, ~token: option<string>=?, ~fetch: option<fetchFn>
   }
 }
 
+/// Create a wrapper client for use with the generated MisskeyIoWrapper.
+/// This bridges the high-level Misskey.t client to the generated wrapper's client type.
+let wrapperConnect = (client: t): MisskeyIoWrapper.client => {
+  MisskeyIoWrapper.connect(~baseUrl=client.origin, ~token=?client.token, ~fetch=client.fetchFn, ())
+}
+
 // ============================================================================
 // Generic Request
 // ============================================================================
@@ -721,3 +727,5 @@ let isAPIError = (error: JSON.t): option<apiError> => {
   | None => None
   }
 }
+
+let default = connect

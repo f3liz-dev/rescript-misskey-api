@@ -1,5 +1,7 @@
 # API Diff Report: base → kokonect-link
+
 ## Summary
+
 - **Total Changes**: 321
 - **Added Endpoints**: 80
 - **Removed Endpoints**: 28
@@ -11,10 +13,6 @@
 
 ### Added Endpoints
 
-- **GET /federation/remote-software (get___federation___remote-software)** [federation]
-  federation/remote-software
-- **GET /server-info (get___server-info)** [meta]
-  server-info
 - **POST /admin/avatar-decorations/copy (post___admin___avatar-decorations___copy)** [admin]
   admin/avatar-decorations/copy
 - **POST /admin/avatar-decorations/list-remote (post___admin___avatar-decorations___list-remote)** [admin]
@@ -103,6 +101,8 @@
   drive/files/attached-chat-messages
 - **POST /drive/files/move-bulk (post___drive___files___move-bulk)** [drive]
   drive/files/move-bulk
+- **GET /federation/remote-software (get___federation___remote-software)** [federation]
+  federation/remote-software
 - **POST /federation/remote-software (post___federation___remote-software)** [federation]
   federation/remote-software
 - **POST /flash/gen-token (post___flash___gen-token)** [flash]
@@ -141,6 +141,8 @@
   notes/show-partial-bulk
 - **POST /notes/update (post___notes___update)** [notes]
   notes/update
+- **GET /server-info (get___server-info)** [meta]
+  server-info
 - **POST /server-info (post___server-info)** [meta]
   server-info
 - **POST /users/groups/create (post___users___groups___create)** [groups]
@@ -172,11 +174,9 @@
 - **POST /verify-email (post___verify-email)** [account]
   verify-email
 
+
 ### Removed Endpoints
 
-- **GET /meta (get___meta)** [meta]
-- **GET /stats (get___stats)** [meta]
-- **GET /users/get-skeb-status (get___users___get-skeb-status)** [users]
 - **POST /admin/accounts/pending/list (post___admin___accounts___pending___list)** [admin]
 - **POST /admin/accounts/pending/revoke (post___admin___accounts___pending___revoke)** [admin]
 - **POST /admin/drive/delete-all-files-of-a-user (post___admin___drive___delete-all-files-of-a-user)** [admin]
@@ -197,203 +197,236 @@
 - **POST /announcement (post___announcement)** [meta]
 - **POST /channels/featured-games (post___channels___featured-games)** [channels]
 - **POST /i/purge-timeline-cache (post___i___purge-timeline-cache)** [account]
+- **GET /meta (get___meta)** [meta]
 - **POST /notes/scheduled/cancel (post___notes___scheduled___cancel)** [notes]
 - **POST /notes/scheduled/list (post___notes___scheduled___list)** [notes]
+- **GET /stats (get___stats)** [meta]
 - **POST /users/get-following-birthday-users (post___users___get-following-birthday-users)** [users]
 - **POST /users/get-security-info (post___users___get-security-info)** [users]
+- **GET /users/get-skeb-status (get___users___get-skeb-status)** [users]
 - **POST /users/get-skeb-status (post___users___get-skeb-status)** [users]
+
 
 ### Modified Endpoints
 
-- **GET /charts/federation** **⚠️ BREAKING**: Changed response
-- **GET /emoji** **⚠️ BREAKING**: Changed response
-- **GET /notes/reactions**: Changed request body
 - **POST /admin/abuse-report/notification-recipient/create** **⚠️ BREAKING**: Changed response
 - **POST /admin/abuse-report/notification-recipient/show** **⚠️ BREAKING**: Changed response
 - **POST /admin/abuse-report/notification-recipient/update** **⚠️ BREAKING**: Changed response
-- **POST /admin/abuse-user-reports**: Changed request body
+- **POST /admin/abuse-user-reports**: Changed body
 - **POST /admin/accounts/create** **⚠️ BREAKING**: Changed response
-- **POST /admin/accounts/delete**: Changed request body
+- **POST /admin/accounts/delete**: Changed body
 - **POST /admin/accounts/find-by-email** **⚠️ BREAKING**: Changed response
 - **POST /admin/ad/create** **⚠️ BREAKING**: Changed response
-- **POST /admin/ad/list**: Changed request body
-- **POST /admin/announcements/create** **⚠️ BREAKING**: Changed request body, response
-- **POST /admin/announcements/list**: Changed request body
-- **POST /admin/announcements/update**: Changed request body
-- **POST /admin/avatar-decorations/list**: Changed request body
-- **POST /admin/drive/files**: Changed request body
-- **POST /admin/drive/show-file** **⚠️ BREAKING**: Changed request body, response
-- **POST /admin/emoji/add** **⚠️ BREAKING**: Changed request body, response
-- **POST /admin/emoji/list**: Changed request body
-- **POST /admin/emoji/list-remote**: Changed request body
-- **POST /admin/emoji/update**: Changed request body
+- **POST /admin/ad/list**: Changed body
+- **POST /admin/announcements/create** **⚠️ BREAKING**: Changed body, response
+- **POST /admin/announcements/list**: Changed body
+- **POST /admin/announcements/update**: Changed body
+- **POST /admin/avatar-decorations/list**: Changed body
+- **POST /admin/drive/files**: Changed body
+- **POST /admin/drive/show-file** **⚠️ BREAKING**: Changed body, response
+- **POST /admin/emoji/add** **⚠️ BREAKING**: Changed body, response
+- **POST /admin/emoji/list**: Changed body
+- **POST /admin/emoji/list-remote**: Changed body
+- **POST /admin/emoji/update**: Changed body
 - **POST /admin/meta** **⚠️ BREAKING**: Changed response
-- **POST /admin/queue/clear**: Changed request body
-- **POST /admin/resolve-abuse-user-report**: Changed request body
-- **POST /admin/roles/assign**: Changed request body
-- **POST /admin/roles/create** **⚠️ BREAKING**: Changed request body, response
+- **POST /admin/queue/clear**: Changed body
+- **POST /admin/resolve-abuse-user-report**: Changed body
+- **POST /admin/roles/assign**: Changed body
+- **POST /admin/roles/create** **⚠️ BREAKING**: Changed body, response
 - **POST /admin/roles/show** **⚠️ BREAKING**: Changed response
-- **POST /admin/roles/update**: Changed request body
-- **POST /admin/roles/users**: Changed request body
-- **POST /admin/show-moderation-logs**: Changed request body
+- **POST /admin/roles/update**: Changed body
+- **POST /admin/roles/users**: Changed body
+- **POST /admin/show-moderation-logs**: Changed body
 - **POST /admin/show-user** **⚠️ BREAKING**: Changed response
 - **POST /admin/system-webhook/create** **⚠️ BREAKING**: Changed response
 - **POST /admin/system-webhook/show** **⚠️ BREAKING**: Changed response
-- **POST /admin/system-webhook/test**: Changed request body
+- **POST /admin/system-webhook/test**: Changed body
 - **POST /admin/system-webhook/update** **⚠️ BREAKING**: Changed response
-- **POST /admin/update-meta**: Changed request body
+- **POST /admin/update-meta**: Changed body
 - **POST /admin/update-proxy-account** **⚠️ BREAKING**: Changed response
-- **POST /announcements**: Changed request body
+- **POST /announcements**: Changed body
 - **POST /announcements/show** **⚠️ BREAKING**: Changed response
-- **POST /antennas/create** **⚠️ BREAKING**: Changed request body, response
+- **POST /antennas/create** **⚠️ BREAKING**: Changed body, response
 - **POST /antennas/show** **⚠️ BREAKING**: Changed response
-- **POST /antennas/update** **⚠️ BREAKING**: Changed request body, response
+- **POST /antennas/update** **⚠️ BREAKING**: Changed body, response
 - **POST /app/create** **⚠️ BREAKING**: Changed response
 - **POST /app/show** **⚠️ BREAKING**: Changed response
 - **POST /auth/session/show** **⚠️ BREAKING**: Changed response
 - **POST /auth/session/userkey** **⚠️ BREAKING**: Changed response
 - **POST /blocking/create** **⚠️ BREAKING**: Changed response
 - **POST /blocking/delete** **⚠️ BREAKING**: Changed response
-- **POST /blocking/list**: Changed request body
+- **POST /blocking/list**: Changed body
 - **POST /channels/create** **⚠️ BREAKING**: Changed response
-- **POST /channels/followed**: Changed request body
-- **POST /channels/owned**: Changed request body
-- **POST /channels/search**: Changed request body
+- **POST /channels/followed**: Changed body
+- **POST /channels/owned**: Changed body
+- **POST /channels/search**: Changed body
 - **POST /channels/show** **⚠️ BREAKING**: Changed response
-- **POST /channels/timeline**: Changed request body
+- **POST /channels/timeline**: Changed body
 - **POST /channels/update** **⚠️ BREAKING**: Changed response
+- **GET /charts/federation** **⚠️ BREAKING**: Changed response
 - **POST /charts/federation** **⚠️ BREAKING**: Changed response
 - **POST /clips/create** **⚠️ BREAKING**: Changed response
-- **POST /clips/list**: Changed request body
-- **POST /clips/notes**: Changed request body
+- **POST /clips/list**: Changed body
+- **POST /clips/notes**: Changed body
 - **POST /clips/show** **⚠️ BREAKING**: Changed response
 - **POST /clips/update** **⚠️ BREAKING**: Changed response
-- **POST /drive/files**: Changed request body
-- **POST /drive/files/attached-notes**: Changed request body
+- **POST /drive/files**: Changed body
+- **POST /drive/files/attached-notes**: Changed body
 - **POST /drive/files/create** **⚠️ BREAKING**: Changed response
-- **POST /drive/files/show** **⚠️ BREAKING**: Changed request body, response
+- **POST /drive/files/show** **⚠️ BREAKING**: Changed body, response
 - **POST /drive/files/update** **⚠️ BREAKING**: Changed response
-- **POST /drive/folders**: Changed request body
+- **POST /drive/folders**: Changed body
 - **POST /drive/folders/create** **⚠️ BREAKING**: Changed response
 - **POST /drive/folders/show** **⚠️ BREAKING**: Changed response
 - **POST /drive/folders/update** **⚠️ BREAKING**: Changed response
-- **POST /drive/stream**: Changed request body
+- **POST /drive/stream**: Changed body
+- **GET /emoji** **⚠️ BREAKING**: Changed response
 - **POST /emoji** **⚠️ BREAKING**: Changed response
-- **POST /federation/followers**: Changed request body
-- **POST /federation/following**: Changed request body
+- **POST /federation/followers**: Changed body
+- **POST /federation/following**: Changed body
 - **POST /federation/show-instance** **⚠️ BREAKING**: Changed response
-- **POST /federation/users**: Changed request body
+- **POST /federation/users**: Changed body
 - **POST /flash/create** **⚠️ BREAKING**: Changed response
-- **POST /flash/my**: Changed request body
-- **POST /flash/my-likes**: Changed request body
+- **POST /flash/my**: Changed body
+- **POST /flash/my-likes**: Changed body
 - **POST /flash/show** **⚠️ BREAKING**: Changed response
 - **POST /following/create** **⚠️ BREAKING**: Changed response
 - **POST /following/delete** **⚠️ BREAKING**: Changed response
 - **POST /following/invalidate** **⚠️ BREAKING**: Changed response
 - **POST /following/requests/cancel** **⚠️ BREAKING**: Changed response
-- **POST /following/requests/list**: Changed request body
-- **POST /following/requests/sent**: Changed request body
+- **POST /following/requests/list**: Changed body
+- **POST /following/requests/sent**: Changed body
 - **POST /following/update** **⚠️ BREAKING**: Changed response
-- **POST /gallery/posts**: Changed request body
+- **POST /gallery/posts**: Changed body
 - **POST /gallery/posts/create** **⚠️ BREAKING**: Changed response
 - **POST /gallery/posts/show** **⚠️ BREAKING**: Changed response
 - **POST /gallery/posts/update** **⚠️ BREAKING**: Changed response
 - **POST /hashtags/show** **⚠️ BREAKING**: Changed response
-- **POST /hashtags/users**: Changed request body
+- **POST /hashtags/users**: Changed body
 - **POST /i** **⚠️ BREAKING**: Changed response
-- **POST /i/claim-achievement**: Changed request body
-- **POST /i/favorites**: Changed request body
-- **POST /i/gallery/likes**: Changed request body
-- **POST /i/gallery/posts**: Changed request body
-- **POST /i/notifications**: Changed request body
-- **POST /i/notifications-grouped**: Changed request body
-- **POST /i/page-likes**: Changed request body
-- **POST /i/pages**: Changed request body
+- **POST /i/claim-achievement**: Changed body
+- **POST /i/favorites**: Changed body
+- **POST /i/gallery/likes**: Changed body
+- **POST /i/gallery/posts**: Changed body
+- **POST /i/notifications**: Changed body
+- **POST /i/notifications-grouped**: Changed body
+- **POST /i/page-likes**: Changed body
+- **POST /i/pages**: Changed body
 - **POST /i/pin** **⚠️ BREAKING**: Changed response
-- **POST /i/revoke-token**: Changed request body
-- **POST /i/signin-history**: Changed request body
+- **POST /i/revoke-token**: Changed body
+- **POST /i/signin-history**: Changed body
 - **POST /i/unpin** **⚠️ BREAKING**: Changed response
-- **POST /i/update** **⚠️ BREAKING**: Changed request body, response
+- **POST /i/update** **⚠️ BREAKING**: Changed body, response
 - **POST /i/update-email** **⚠️ BREAKING**: Changed response
 - **POST /i/webhooks/show** **⚠️ BREAKING**: Changed response
-- **POST /i/webhooks/test**: Changed request body
+- **POST /i/webhooks/test**: Changed body
 - **POST /invite/create** **⚠️ BREAKING**: Changed response
-- **POST /invite/list**: Changed request body
-- **POST /mute/list**: Changed request body
-- **POST /notes**: Changed request body
-- **POST /notes/children**: Changed request body
-- **POST /notes/create** **⚠️ BREAKING**: Changed request body, response
-- **POST /notes/global-timeline**: Changed request body
-- **POST /notes/hybrid-timeline**: Changed request body
-- **POST /notes/local-timeline**: Changed request body
-- **POST /notes/mentions**: Changed request body
-- **POST /notes/reactions**: Changed request body
-- **POST /notes/renotes**: Changed request body
-- **POST /notes/replies**: Changed request body
-- **POST /notes/search**: Changed request body
-- **POST /notes/search-by-tag**: Changed request body
+- **POST /invite/list**: Changed body
+- **POST /mute/list**: Changed body
+- **POST /notes**: Changed body
+- **POST /notes/children**: Changed body
+- **POST /notes/create** **⚠️ BREAKING**: Changed body, response
+- **POST /notes/global-timeline**: Changed body
+- **POST /notes/hybrid-timeline**: Changed body
+- **POST /notes/local-timeline**: Changed body
+- **POST /notes/mentions**: Changed body
+- **GET /notes/reactions**: Changed body
+- **POST /notes/reactions**: Changed body
+- **POST /notes/renotes**: Changed body
+- **POST /notes/replies**: Changed body
+- **POST /notes/search**: Changed body
+- **POST /notes/search-by-tag**: Changed body
 - **POST /notes/show** **⚠️ BREAKING**: Changed response
 - **POST /notes/state** **⚠️ BREAKING**: Changed response
-- **POST /notes/timeline**: Changed request body
-- **POST /notes/user-list-timeline**: Changed request body
+- **POST /notes/timeline**: Changed body
+- **POST /notes/user-list-timeline**: Changed body
 - **POST /notifications/create** **⚠️ BREAKING**: Changed response
-- **POST /pages/create** **⚠️ BREAKING**: Changed request body, response
-- **POST /pages/show** **⚠️ BREAKING**: Changed request body, response
-- **POST /pages/update**: Changed request body
-- **POST /renote-mute/list**: Changed request body
-- **POST /reversi/games**: Changed request body
+- **POST /pages/create** **⚠️ BREAKING**: Changed body, response
+- **POST /pages/show** **⚠️ BREAKING**: Changed body, response
+- **POST /pages/update**: Changed body
+- **POST /renote-mute/list**: Changed body
+- **POST /reversi/games**: Changed body
 - **POST /reversi/match** **⚠️ BREAKING**: Changed response
 - **POST /reversi/show-game** **⚠️ BREAKING**: Changed response
 - **POST /reversi/verify** **⚠️ BREAKING**: Changed response
-- **POST /roles/notes**: Changed request body
+- **POST /roles/notes**: Changed body
 - **POST /roles/show** **⚠️ BREAKING**: Changed response
-- **POST /roles/users**: Changed request body
-- **POST /users**: Changed request body
-- **POST /users/clips**: Changed request body
-- **POST /users/flashs**: Changed request body
-- **POST /users/followers**: Changed request body
-- **POST /users/following**: Changed request body
-- **POST /users/gallery/posts**: Changed request body
+- **POST /roles/users**: Changed body
+- **POST /users**: Changed body
+- **POST /users/clips**: Changed body
+- **POST /users/flashs**: Changed body
+- **POST /users/followers**: Changed body
+- **POST /users/following**: Changed body
+- **POST /users/gallery/posts**: Changed body
 - **POST /users/lists/create** **⚠️ BREAKING**: Changed response
 - **POST /users/lists/create-from-public** **⚠️ BREAKING**: Changed response
-- **POST /users/lists/get-memberships**: Changed request body
+- **POST /users/lists/get-memberships**: Changed body
 - **POST /users/lists/update** **⚠️ BREAKING**: Changed response
-- **POST /users/notes**: Changed request body
-- **POST /users/pages**: Changed request body
-- **POST /users/report-abuse**: Changed request body
-- **POST /users/search-by-username-and-host**: Changed request body
-- **POST /users/show**: Changed request body
-- **POST /v2/admin/emoji/list**: Changed request body
+- **POST /users/notes**: Changed body
+- **POST /users/pages**: Changed body
+- **POST /users/report-abuse**: Changed body
+- **POST /users/search-by-username-and-host**: Changed body
+- **POST /users/show**: Changed body
+- **POST /v2/admin/emoji/list**: Changed body
+
 
 ### Added Schemas
 
+- `UserGroup`
 - `Achievement`
 - `AchievementName`
-- `NoteHistory`
 - `NoteReactionWithNote`
-- `QueueJob`
 - `QueueMetrics`
-- `UserGroup`
+- `QueueJob`
 - `UserWebhook`
+- `NoteHistory`
+
 
 ### Removed Schemas
 
-- `AbuseUserReport`
-- `FlashLike`
-- `FollowRequest`
-- `GalleryLike`
-- `ModerationLog`
-- `PageLike`
-- `UserAccountMoveLog`
 - `UserListMembership`
+- `UserAccountMoveLog`
+- `FollowRequest`
+- `PageLike`
+- `GalleryLike`
+- `FlashLike`
+- `AbuseUserReport`
+- `ModerationLog`
+
 
 ### Modified Schemas
 
-- `AbuseReportNotificationRecipient` **⚠️ BREAKING**
+- `UserLite` **⚠️ BREAKING**
+- `UserDetailedNotMeOnly` **⚠️ BREAKING**
+- `MeDetailedOnly` **⚠️ BREAKING**
 - `Ad` **⚠️ BREAKING**
 - `Announcement` **⚠️ BREAKING**
-- `Antenna` **⚠️ BREAKING**
+- `Note` **⚠️ BREAKING**
+- `NoteDraft` **⚠️ BREAKING**
+- `NoteReaction` **⚠️ BREAKING**
+- `NoteFavorite` **⚠️ BREAKING**
+- `DriveFile` **⚠️ BREAKING**
+- `DriveFolder` **⚠️ BREAKING**
+- `Following` **⚠️ BREAKING**
+- `Muting` **⚠️ BREAKING**
+- `RenoteMuting` **⚠️ BREAKING**
 - `Blocking` **⚠️ BREAKING**
+- `InviteCode` **⚠️ BREAKING**
+- `Page` **⚠️ BREAKING**
+- `Antenna` **⚠️ BREAKING**
+- `Clip` **⚠️ BREAKING**
+- `FederationInstance` **⚠️ BREAKING**
+- `GalleryPost` **⚠️ BREAKING**
+- `EmojiSimple` **⚠️ BREAKING**
+- `EmojiDetailed` **⚠️ BREAKING**
+- `Flash` **⚠️ BREAKING**
+- `RoleCondFormulaValueNot` **⚠️ BREAKING**
+- `RolePolicies` **⚠️ BREAKING**
+- `ReversiGameLite` **⚠️ BREAKING**
+- `ReversiGameDetailed` **⚠️ BREAKING**
+- `MetaLite` **⚠️ BREAKING**
+- `MetaDetailedOnly` **⚠️ BREAKING**
+- `AbuseReportNotificationRecipient` **⚠️ BREAKING**
 - `ChatMessage` **⚠️ BREAKING**
 - `ChatMessageLite` **⚠️ BREAKING**
 - `ChatMessageLiteFor1on1` **⚠️ BREAKING**
@@ -401,31 +434,7 @@
 - `ChatRoom` **⚠️ BREAKING**
 - `ChatRoomInvitation` **⚠️ BREAKING**
 - `ChatRoomMembership` **⚠️ BREAKING**
-- `Clip` **⚠️ BREAKING**
-- `DriveFile` **⚠️ BREAKING**
-- `DriveFolder` **⚠️ BREAKING**
-- `EmojiDetailed` **⚠️ BREAKING**
-- `EmojiSimple` **⚠️ BREAKING**
-- `FederationInstance` **⚠️ BREAKING**
-- `Flash` **⚠️ BREAKING**
-- `Following` **⚠️ BREAKING**
-- `GalleryPost` **⚠️ BREAKING**
-- `InviteCode` **⚠️ BREAKING**
-- `MeDetailedOnly` **⚠️ BREAKING**
-- `MetaDetailedOnly` **⚠️ BREAKING**
-- `MetaLite` **⚠️ BREAKING**
-- `Muting` **⚠️ BREAKING**
-- `Note` **⚠️ BREAKING**
-- `NoteDraft` **⚠️ BREAKING**
-- `NoteFavorite` **⚠️ BREAKING**
-- `NoteReaction` **⚠️ BREAKING**
-- `Page` **⚠️ BREAKING**
-- `RenoteMuting` **⚠️ BREAKING**
-- `ReversiGameDetailed` **⚠️ BREAKING**
-- `ReversiGameLite` **⚠️ BREAKING**
-- `RoleCondFormulaValueNot` **⚠️ BREAKING**
-- `RolePolicies` **⚠️ BREAKING**
-- `UserDetailedNotMeOnly` **⚠️ BREAKING**
-- `UserLite` **⚠️ BREAKING**
+
+
 ---
-*Generated on 2026-02-06T04:37:38.221Z*
+*Generated on 2026-02-08T05:41:23.827Z*

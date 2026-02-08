@@ -1,6 +1,6 @@
 {
   "name": "@f3liz/rescript-misskey-api",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "ReScript bindings for Misskey API using OpenAPI code generation",
   "keywords": [
     "misskey",
@@ -12,13 +12,36 @@
   ],
   "author": "NyanRus",
   "license": "MIT",
+  "main": "lib/ts/Misskey.js",
+  "module": "lib/ts/Misskey.js",
+  "types": "lib/ts/Misskey.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/ts/Misskey.d.ts",
+      "import": "./lib/ts/Misskey.js",
+      "default": "./lib/ts/Misskey.js"
+    },
+    "./rescript": {
+      "rescript": "./src/Misskey.res",
+      "default": "./lib/es6/src/Misskey.mjs"
+    },
+    "./rescript/cherrypick": {
+      "rescript": "./src/Cherrypick.res",
+      "default": "./lib/es6/src/Cherrypick.mjs"
+    },
+    "./generated/*": {
+      "types": "./src/generated/*/wrapper/index.d.ts",
+      "import": "./src/generated/*/wrapper/index.mjs"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/f3liz-dev/rescript-misskey-api.git"
   },
   "scripts": {
-    "build": "rescript",
-    "clean": "rescript clean",
+    "build": "rescript && npm run build:ts",
+    "build:ts": "tsc",
+    "clean": "rescript clean && rm -rf lib/ts",
     "watch": "rescript build -w",
     "generate": "node scripts/generate-api.mjs",
     "test": "rescript",
@@ -28,13 +51,18 @@
     "sury": "11.0.0-alpha.4"
   },
   "devDependencies": {
-    "@f3liz/rescript-autogen-openapi": "^0.1.7",
-    "rescript": "^12.1.0"
+    "@f3liz/rescript-autogen-openapi": "^0.2.0",
+    "rescript": "^12.1.0",
+    "typescript": "^5.9.3"
   },
   "files": [
     "src/**/*.res",
     "src/**/*.resi",
+    "src/**/*.d.ts",
+    "src/**/*.mjs",
+    "src/index.ts",
     "lib/es6/src/**/*.mjs",
+    "lib/ts/**/*",
     "scripts/*.mjs",
     "rescript.json",
     "README.md",

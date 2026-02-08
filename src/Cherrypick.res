@@ -55,3 +55,5 @@ let isAPIError = Misskey.isAPIError
 let wrapperConnect = (client: t): KokonectLinkWrapper.client => {
   KokonectLinkWrapper.connect(~baseUrl=client.origin, ~token=?client.token, ~fetch=client.fetchFn, ())
 }
+
+let default = connect

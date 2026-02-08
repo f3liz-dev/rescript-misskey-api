@@ -12,9 +12,9 @@
 
 ## Summary
 
-The shared base contains 439 endpoints and 71 schemas that are common to both specifications.
+The shared base contains 439 endpoints and 71 schemas.
 
-kokonect-link adds 239 additional endpoints and 46 schemas on top of the shared base.
+kokonect-link adds 239 endpoints and 46 schemas.
 
 ---
-*Generated on 2026-02-06T04:37:38.230Z*
+*Generated on 2026-02-08T05:41:23.836Z*
