@@ -1,0 +1,43 @@
+{
+  "name": "@f3liz/rescript-misskey-api",
+  "version": "0.2.0",
+  "description": "ReScript bindings for Misskey API using OpenAPI code generation",
+  "keywords": [
+    "misskey",
+    "rescript",
+    "bindings",
+    "activitypub",
+    "fediverse",
+    "openapi"
+  ],
+  "author": "NyanRus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/f3liz-dev/rescript-misskey-api.git"
+  },
+  "scripts": {
+    "build": "rescript",
+    "clean": "rescript clean",
+    "watch": "rescript build -w",
+    "generate": "node scripts/generate-api.mjs",
+    "test": "rescript",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "sury": "11.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "@f3liz/rescript-autogen-openapi": "^0.1.7",
+    "rescript": "^12.1.0"
+  },
+  "files": [
+    "src/**/*.res",
+    "src/**/*.resi",
+    "lib/es6/src/**/*.mjs",
+    "scripts/*.mjs",
+    "rescript.json",
+    "README.md",
+    "LICENSE"
+  ]
+}
