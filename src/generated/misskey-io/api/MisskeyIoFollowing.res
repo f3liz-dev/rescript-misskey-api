@@ -176,17 +176,21 @@ let postFollowingRequestsListRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postFollowingRequestsListResponse = array<{
+type postFollowingRequestsListResponse_1 = {
   id: string,
   follower: MisskeyIoComponentSchemas.UserLite.t,
   followee: MisskeyIoComponentSchemas.UserLite.t,
-}>
+}
 
-let postFollowingRequestsListResponseSchema = S.array(S.object(s => {
+type postFollowingRequestsListResponse = array<postFollowingRequestsListResponse_1>
+
+let postFollowingRequestsListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     follower: s.field("follower", MisskeyIoComponentSchemas.UserLite.schema),
     followee: s.field("followee", MisskeyIoComponentSchemas.UserLite.schema),
-  }))
+  })
+
+let postFollowingRequestsListResponseSchema = S.array(postFollowingRequestsListResponse_1Schema)
 
 /**
  * following/requests/list
@@ -250,17 +254,21 @@ let postFollowingRequestsSentRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postFollowingRequestsSentResponse = array<{
+type postFollowingRequestsSentResponse_1 = {
   id: string,
   follower: MisskeyIoComponentSchemas.UserLite.t,
   followee: MisskeyIoComponentSchemas.UserLite.t,
-}>
+}
 
-let postFollowingRequestsSentResponseSchema = S.array(S.object(s => {
+type postFollowingRequestsSentResponse = array<postFollowingRequestsSentResponse_1>
+
+let postFollowingRequestsSentResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     follower: s.field("follower", MisskeyIoComponentSchemas.UserLite.schema),
     followee: s.field("followee", MisskeyIoComponentSchemas.UserLite.schema),
-  }))
+  })
+
+let postFollowingRequestsSentResponseSchema = S.array(postFollowingRequestsSentResponse_1Schema)
 
 /**
  * following/requests/sent

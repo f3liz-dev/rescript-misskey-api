@@ -112,17 +112,21 @@ let postHashtagsShow = (~body: postHashtagsShowRequest, ~fetch: (~url: string, ~
   })
 }
 
-type getHashtagsTrendResponse = array<{
+type getHashtagsTrendResponse_1 = {
   tag: string,
   chart: array<float>,
   usersCount: float,
-}>
+}
 
-let getHashtagsTrendResponseSchema = S.array(S.object(s => {
+type getHashtagsTrendResponse = array<getHashtagsTrendResponse_1>
+
+let getHashtagsTrendResponse_1Schema = S.object(s => {
     tag: s.field("tag", S.string),
     chart: s.field("chart", S.array(S.float)),
     usersCount: s.field("usersCount", S.float),
-  }))
+  })
+
+let getHashtagsTrendResponseSchema = S.array(getHashtagsTrendResponse_1Schema)
 
 /**
  * hashtags/trend
@@ -131,7 +135,7 @@ let getHashtagsTrendResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *No*
  */
-let getHashtagsTrend = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getHashtagsTrendResponse> => {
+let getHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getHashtagsTrendResponse> => {
 
   fetch(
     ~url="/hashtags/trend",
@@ -144,17 +148,21 @@ let getHashtagsTrend = (~body as _, ~fetch: (~url: string, ~method_: string, ~bo
   })
 }
 
-type postHashtagsTrendResponse = array<{
+type postHashtagsTrendResponse_1 = {
   tag: string,
   chart: array<float>,
   usersCount: float,
-}>
+}
 
-let postHashtagsTrendResponseSchema = S.array(S.object(s => {
+type postHashtagsTrendResponse = array<postHashtagsTrendResponse_1>
+
+let postHashtagsTrendResponse_1Schema = S.object(s => {
     tag: s.field("tag", S.string),
     chart: s.field("chart", S.array(S.float)),
     usersCount: s.field("usersCount", S.float),
-  }))
+  })
+
+let postHashtagsTrendResponseSchema = S.array(postHashtagsTrendResponse_1Schema)
 
 /**
  * hashtags/trend
@@ -163,7 +171,7 @@ let postHashtagsTrendResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postHashtagsTrend = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsTrendResponse> => {
+let postHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsTrendResponse> => {
 
   fetch(
     ~url="/hashtags/trend",

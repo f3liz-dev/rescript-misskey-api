@@ -7,13 +7,13 @@
 type getChartsActiveUsersRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsActiveUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type getChartsActiveUsersResponse = {
@@ -63,13 +63,13 @@ let getChartsActiveUsers = (~body: getChartsActiveUsersRequest, ~fetch: (~url: s
 type postChartsActiveUsersRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsActiveUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type postChartsActiveUsersResponse = {
@@ -119,13 +119,13 @@ let postChartsActiveUsers = (~body: postChartsActiveUsersRequest, ~fetch: (~url:
 type getChartsApRequestRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsApRequestRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type getChartsApRequestResponse = {
@@ -163,13 +163,13 @@ let getChartsApRequest = (~body: getChartsApRequestRequest, ~fetch: (~url: strin
 type postChartsApRequestRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsApRequestRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type postChartsApRequestResponse = {
@@ -207,43 +207,37 @@ let postChartsApRequest = (~body: postChartsApRequestRequest, ~fetch: (~url: str
 type getChartsDriveRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type getChartsDriveResponse = {
-  local: {
+type getChartsDriveResponse_1 = {
   incCount: array<float>,
   incSize: array<float>,
   decCount: array<float>,
   decSize: array<float>,
-},
-  remote: {
-  incCount: array<float>,
-  incSize: array<float>,
-  decCount: array<float>,
-  decSize: array<float>,
-},
 }
 
+type getChartsDriveResponse = {
+  local: getChartsDriveResponse_1,
+  remote: getChartsDriveResponse_1,
+}
+
+let getChartsDriveResponse_1Schema = S.object(s => {
+    incCount: s.field("incCount", S.array(S.float)),
+    incSize: s.field("incSize", S.array(S.float)),
+    decCount: s.field("decCount", S.array(S.float)),
+    decSize: s.field("decSize", S.array(S.float)),
+  })
+
 let getChartsDriveResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    incCount: s.field("incCount", S.array(S.float)),
-    incSize: s.field("incSize", S.array(S.float)),
-    decCount: s.field("decCount", S.array(S.float)),
-    decSize: s.field("decSize", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    incCount: s.field("incCount", S.array(S.float)),
-    incSize: s.field("incSize", S.array(S.float)),
-    decCount: s.field("decCount", S.array(S.float)),
-    decSize: s.field("decSize", S.array(S.float)),
-  })),
+    local: s.field("local", getChartsDriveResponse_1Schema),
+    remote: s.field("remote", getChartsDriveResponse_1Schema),
   })
 
 /**
@@ -269,43 +263,37 @@ let getChartsDrive = (~body: getChartsDriveRequest, ~fetch: (~url: string, ~meth
 type postChartsDriveRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type postChartsDriveResponse = {
-  local: {
+type postChartsDriveResponse_1 = {
   incCount: array<float>,
   incSize: array<float>,
   decCount: array<float>,
   decSize: array<float>,
-},
-  remote: {
-  incCount: array<float>,
-  incSize: array<float>,
-  decCount: array<float>,
-  decSize: array<float>,
-},
 }
 
+type postChartsDriveResponse = {
+  local: postChartsDriveResponse_1,
+  remote: postChartsDriveResponse_1,
+}
+
+let postChartsDriveResponse_1Schema = S.object(s => {
+    incCount: s.field("incCount", S.array(S.float)),
+    incSize: s.field("incSize", S.array(S.float)),
+    decCount: s.field("decCount", S.array(S.float)),
+    decSize: s.field("decSize", S.array(S.float)),
+  })
+
 let postChartsDriveResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    incCount: s.field("incCount", S.array(S.float)),
-    incSize: s.field("incSize", S.array(S.float)),
-    decCount: s.field("decCount", S.array(S.float)),
-    decSize: s.field("decSize", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    incCount: s.field("incCount", S.array(S.float)),
-    incSize: s.field("incSize", S.array(S.float)),
-    decCount: s.field("decCount", S.array(S.float)),
-    decSize: s.field("decSize", S.array(S.float)),
-  })),
+    local: s.field("local", postChartsDriveResponse_1Schema),
+    remote: s.field("remote", postChartsDriveResponse_1Schema),
   })
 
 /**
@@ -331,13 +319,13 @@ let postChartsDrive = (~body: postChartsDriveRequest, ~fetch: (~url: string, ~me
 type getChartsFederationRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type getChartsFederationResponse = {
@@ -385,13 +373,13 @@ let getChartsFederation = (~body: getChartsFederationRequest, ~fetch: (~url: str
 type postChartsFederationRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
 type postChartsFederationResponse = {
@@ -439,97 +427,101 @@ let postChartsFederation = (~body: postChartsFederationRequest, ~fetch: (~url: s
 type getChartsInstanceRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   host: string,
 }
 
 let getChartsInstanceRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     host: s.field("host", S.string),
   })
 
-type getChartsInstanceResponse = {
-  requests: {
-  failed: array<float>,
-  succeeded: array<float>,
-  received: array<float>,
-},
-  notes: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
+type getChartsInstanceResponse_5 = {
   normal: array<float>,
   reply: array<float>,
   renote: array<float>,
   withFile: array<float>,
-},
-},
-  users: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  following: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  drive: {
+}
+
+type getChartsInstanceResponse_4 = {
   totalFiles: array<float>,
   incFiles: array<float>,
   decFiles: array<float>,
   incUsage: array<float>,
   decUsage: array<float>,
-},
 }
 
-let getChartsInstanceResponseSchema = S.object(s => {
-    requests: s.field("requests", S.object(s => {
-    failed: s.field("failed", S.array(S.float)),
-    succeeded: s.field("succeeded", S.array(S.float)),
-    received: s.field("received", S.array(S.float)),
-  })),
-    notes: s.field("notes", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
+type getChartsInstanceResponse_3 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+}
+
+type getChartsInstanceResponse_2 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+  diffs: getChartsInstanceResponse_5,
+}
+
+type getChartsInstanceResponse_1 = {
+  failed: array<float>,
+  succeeded: array<float>,
+  received: array<float>,
+}
+
+type getChartsInstanceResponse = {
+  requests: getChartsInstanceResponse_1,
+  notes: getChartsInstanceResponse_2,
+  users: getChartsInstanceResponse_3,
+  following: getChartsInstanceResponse_3,
+  followers: getChartsInstanceResponse_3,
+  drive: getChartsInstanceResponse_4,
+}
+
+let getChartsInstanceResponse_5Schema = S.object(s => {
     normal: s.field("normal", S.array(S.float)),
     reply: s.field("reply", S.array(S.float)),
     renote: s.field("renote", S.array(S.float)),
     withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
-    users: s.field("users", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    following: s.field("following", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    drive: s.field("drive", S.object(s => {
+  })
+
+let getChartsInstanceResponse_4Schema = S.object(s => {
     totalFiles: s.field("totalFiles", S.array(S.float)),
     incFiles: s.field("incFiles", S.array(S.float)),
     decFiles: s.field("decFiles", S.array(S.float)),
     incUsage: s.field("incUsage", S.array(S.float)),
     decUsage: s.field("decUsage", S.array(S.float)),
-  })),
+  })
+
+let getChartsInstanceResponse_3Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
+let getChartsInstanceResponse_2Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+    diffs: s.field("diffs", getChartsInstanceResponse_5Schema),
+  })
+
+let getChartsInstanceResponse_1Schema = S.object(s => {
+    failed: s.field("failed", S.array(S.float)),
+    succeeded: s.field("succeeded", S.array(S.float)),
+    received: s.field("received", S.array(S.float)),
+  })
+
+let getChartsInstanceResponseSchema = S.object(s => {
+    requests: s.field("requests", getChartsInstanceResponse_1Schema),
+    notes: s.field("notes", getChartsInstanceResponse_2Schema),
+    users: s.field("users", getChartsInstanceResponse_3Schema),
+    following: s.field("following", getChartsInstanceResponse_3Schema),
+    followers: s.field("followers", getChartsInstanceResponse_3Schema),
+    drive: s.field("drive", getChartsInstanceResponse_4Schema),
   })
 
 /**
@@ -555,97 +547,101 @@ let getChartsInstance = (~body: getChartsInstanceRequest, ~fetch: (~url: string,
 type postChartsInstanceRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   host: string,
 }
 
 let postChartsInstanceRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     host: s.field("host", S.string),
   })
 
-type postChartsInstanceResponse = {
-  requests: {
-  failed: array<float>,
-  succeeded: array<float>,
-  received: array<float>,
-},
-  notes: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
+type postChartsInstanceResponse_5 = {
   normal: array<float>,
   reply: array<float>,
   renote: array<float>,
   withFile: array<float>,
-},
-},
-  users: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  following: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  drive: {
+}
+
+type postChartsInstanceResponse_4 = {
   totalFiles: array<float>,
   incFiles: array<float>,
   decFiles: array<float>,
   incUsage: array<float>,
   decUsage: array<float>,
-},
 }
 
-let postChartsInstanceResponseSchema = S.object(s => {
-    requests: s.field("requests", S.object(s => {
-    failed: s.field("failed", S.array(S.float)),
-    succeeded: s.field("succeeded", S.array(S.float)),
-    received: s.field("received", S.array(S.float)),
-  })),
-    notes: s.field("notes", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
+type postChartsInstanceResponse_3 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+}
+
+type postChartsInstanceResponse_2 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+  diffs: postChartsInstanceResponse_5,
+}
+
+type postChartsInstanceResponse_1 = {
+  failed: array<float>,
+  succeeded: array<float>,
+  received: array<float>,
+}
+
+type postChartsInstanceResponse = {
+  requests: postChartsInstanceResponse_1,
+  notes: postChartsInstanceResponse_2,
+  users: postChartsInstanceResponse_3,
+  following: postChartsInstanceResponse_3,
+  followers: postChartsInstanceResponse_3,
+  drive: postChartsInstanceResponse_4,
+}
+
+let postChartsInstanceResponse_5Schema = S.object(s => {
     normal: s.field("normal", S.array(S.float)),
     reply: s.field("reply", S.array(S.float)),
     renote: s.field("renote", S.array(S.float)),
     withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
-    users: s.field("users", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    following: s.field("following", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    drive: s.field("drive", S.object(s => {
+  })
+
+let postChartsInstanceResponse_4Schema = S.object(s => {
     totalFiles: s.field("totalFiles", S.array(S.float)),
     incFiles: s.field("incFiles", S.array(S.float)),
     decFiles: s.field("decFiles", S.array(S.float)),
     incUsage: s.field("incUsage", S.array(S.float)),
     decUsage: s.field("decUsage", S.array(S.float)),
-  })),
+  })
+
+let postChartsInstanceResponse_3Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
+let postChartsInstanceResponse_2Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+    diffs: s.field("diffs", postChartsInstanceResponse_5Schema),
+  })
+
+let postChartsInstanceResponse_1Schema = S.object(s => {
+    failed: s.field("failed", S.array(S.float)),
+    succeeded: s.field("succeeded", S.array(S.float)),
+    received: s.field("received", S.array(S.float)),
+  })
+
+let postChartsInstanceResponseSchema = S.object(s => {
+    requests: s.field("requests", postChartsInstanceResponse_1Schema),
+    notes: s.field("notes", postChartsInstanceResponse_2Schema),
+    users: s.field("users", postChartsInstanceResponse_3Schema),
+    following: s.field("following", postChartsInstanceResponse_3Schema),
+    followers: s.field("followers", postChartsInstanceResponse_3Schema),
+    drive: s.field("drive", postChartsInstanceResponse_4Schema),
   })
 
 /**
@@ -671,63 +667,51 @@ let postChartsInstance = (~body: postChartsInstanceRequest, ~fetch: (~url: strin
 type getChartsNotesRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type getChartsNotesResponse = {
-  local: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
+type getChartsNotesResponse_2 = {
   normal: array<float>,
   reply: array<float>,
   renote: array<float>,
   withFile: array<float>,
-},
-},
-  remote: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
-  normal: array<float>,
-  reply: array<float>,
-  renote: array<float>,
-  withFile: array<float>,
-},
-},
 }
 
+type getChartsNotesResponse_1 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+  diffs: getChartsNotesResponse_2,
+}
+
+type getChartsNotesResponse = {
+  local: getChartsNotesResponse_1,
+  remote: getChartsNotesResponse_1,
+}
+
+let getChartsNotesResponse_2Schema = S.object(s => {
+    normal: s.field("normal", S.array(S.float)),
+    reply: s.field("reply", S.array(S.float)),
+    renote: s.field("renote", S.array(S.float)),
+    withFile: s.field("withFile", S.array(S.float)),
+  })
+
+let getChartsNotesResponse_1Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+    diffs: s.field("diffs", getChartsNotesResponse_2Schema),
+  })
+
 let getChartsNotesResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
-    remote: s.field("remote", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
+    local: s.field("local", getChartsNotesResponse_1Schema),
+    remote: s.field("remote", getChartsNotesResponse_1Schema),
   })
 
 /**
@@ -753,63 +737,51 @@ let getChartsNotes = (~body: getChartsNotesRequest, ~fetch: (~url: string, ~meth
 type postChartsNotesRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type postChartsNotesResponse = {
-  local: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
+type postChartsNotesResponse_2 = {
   normal: array<float>,
   reply: array<float>,
   renote: array<float>,
   withFile: array<float>,
-},
-},
-  remote: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-  diffs: {
-  normal: array<float>,
-  reply: array<float>,
-  renote: array<float>,
-  withFile: array<float>,
-},
-},
 }
 
+type postChartsNotesResponse_1 = {
+  total: array<float>,
+  inc: array<float>,
+  dec: array<float>,
+  diffs: postChartsNotesResponse_2,
+}
+
+type postChartsNotesResponse = {
+  local: postChartsNotesResponse_1,
+  remote: postChartsNotesResponse_1,
+}
+
+let postChartsNotesResponse_2Schema = S.object(s => {
+    normal: s.field("normal", S.array(S.float)),
+    reply: s.field("reply", S.array(S.float)),
+    renote: s.field("renote", S.array(S.float)),
+    withFile: s.field("withFile", S.array(S.float)),
+  })
+
+let postChartsNotesResponse_1Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+    diffs: s.field("diffs", postChartsNotesResponse_2Schema),
+  })
+
 let postChartsNotesResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
-    remote: s.field("remote", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
-  })),
+    local: s.field("local", postChartsNotesResponse_1Schema),
+    remote: s.field("remote", postChartsNotesResponse_1Schema),
   })
 
 /**
@@ -835,14 +807,14 @@ let postChartsNotes = (~body: postChartsNotesRequest, ~fetch: (~url: string, ~me
 type getChartsUserDriveRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let getChartsUserDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
@@ -887,14 +859,14 @@ let getChartsUserDrive = (~body: getChartsUserDriveRequest, ~fetch: (~url: strin
 type postChartsUserDriveRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let postChartsUserDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
@@ -939,69 +911,47 @@ let postChartsUserDrive = (~body: postChartsUserDriveRequest, ~fetch: (~url: str
 type getChartsUserFollowingRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let getChartsUserFollowingRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type getChartsUserFollowingResponse = {
-  local: {
-  followings: {
+type getChartsUserFollowingResponse_2 = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-},
-  remote: {
-  followings: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-},
 }
 
+type getChartsUserFollowingResponse_1 = {
+  followings: getChartsUserFollowingResponse_2,
+  followers: getChartsUserFollowingResponse_2,
+}
+
+type getChartsUserFollowingResponse = {
+  local: getChartsUserFollowingResponse_1,
+  remote: getChartsUserFollowingResponse_1,
+}
+
+let getChartsUserFollowingResponse_2Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
+let getChartsUserFollowingResponse_1Schema = S.object(s => {
+    followings: s.field("followings", getChartsUserFollowingResponse_2Schema),
+    followers: s.field("followers", getChartsUserFollowingResponse_2Schema),
+  })
+
 let getChartsUserFollowingResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    followings: s.field("followings", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-  })),
-    remote: s.field("remote", S.object(s => {
-    followings: s.field("followings", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-  })),
+    local: s.field("local", getChartsUserFollowingResponse_1Schema),
+    remote: s.field("remote", getChartsUserFollowingResponse_1Schema),
   })
 
 /**
@@ -1027,69 +977,47 @@ let getChartsUserFollowing = (~body: getChartsUserFollowingRequest, ~fetch: (~ur
 type postChartsUserFollowingRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let postChartsUserFollowingRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type postChartsUserFollowingResponse = {
-  local: {
-  followings: {
+type postChartsUserFollowingResponse_2 = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-},
-  remote: {
-  followings: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-  followers: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
-},
 }
 
+type postChartsUserFollowingResponse_1 = {
+  followings: postChartsUserFollowingResponse_2,
+  followers: postChartsUserFollowingResponse_2,
+}
+
+type postChartsUserFollowingResponse = {
+  local: postChartsUserFollowingResponse_1,
+  remote: postChartsUserFollowingResponse_1,
+}
+
+let postChartsUserFollowingResponse_2Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
+let postChartsUserFollowingResponse_1Schema = S.object(s => {
+    followings: s.field("followings", postChartsUserFollowingResponse_2Schema),
+    followers: s.field("followers", postChartsUserFollowingResponse_2Schema),
+  })
+
 let postChartsUserFollowingResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    followings: s.field("followings", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-  })),
-    remote: s.field("remote", S.object(s => {
-    followings: s.field("followings", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    followers: s.field("followers", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-  })),
+    local: s.field("local", postChartsUserFollowingResponse_1Schema),
+    remote: s.field("remote", postChartsUserFollowingResponse_1Schema),
   })
 
 /**
@@ -1115,39 +1043,43 @@ let postChartsUserFollowing = (~body: postChartsUserFollowingRequest, ~fetch: (~
 type getChartsUserNotesRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let getChartsUserNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
+
+type getChartsUserNotesResponse_1 = {
+  normal: array<float>,
+  reply: array<float>,
+  renote: array<float>,
+  withFile: array<float>,
+}
 
 type getChartsUserNotesResponse = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-  diffs: {
-  normal: array<float>,
-  reply: array<float>,
-  renote: array<float>,
-  withFile: array<float>,
-},
+  diffs: getChartsUserNotesResponse_1,
 }
+
+let getChartsUserNotesResponse_1Schema = S.object(s => {
+    normal: s.field("normal", S.array(S.float)),
+    reply: s.field("reply", S.array(S.float)),
+    renote: s.field("renote", S.array(S.float)),
+    withFile: s.field("withFile", S.array(S.float)),
+  })
 
 let getChartsUserNotesResponseSchema = S.object(s => {
     total: s.field("total", S.array(S.float)),
     inc: s.field("inc", S.array(S.float)),
     dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
+    diffs: s.field("diffs", getChartsUserNotesResponse_1Schema),
   })
 
 /**
@@ -1173,39 +1105,43 @@ let getChartsUserNotes = (~body: getChartsUserNotesRequest, ~fetch: (~url: strin
 type postChartsUserNotesRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let postChartsUserNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
+
+type postChartsUserNotesResponse_1 = {
+  normal: array<float>,
+  reply: array<float>,
+  renote: array<float>,
+  withFile: array<float>,
+}
 
 type postChartsUserNotesResponse = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-  diffs: {
-  normal: array<float>,
-  reply: array<float>,
-  renote: array<float>,
-  withFile: array<float>,
-},
+  diffs: postChartsUserNotesResponse_1,
 }
+
+let postChartsUserNotesResponse_1Schema = S.object(s => {
+    normal: s.field("normal", S.array(S.float)),
+    reply: s.field("reply", S.array(S.float)),
+    renote: s.field("renote", S.array(S.float)),
+    withFile: s.field("withFile", S.array(S.float)),
+  })
 
 let postChartsUserNotesResponseSchema = S.object(s => {
     total: s.field("total", S.array(S.float)),
     inc: s.field("inc", S.array(S.float)),
     dec: s.field("dec", S.array(S.float)),
-    diffs: s.field("diffs", S.object(s => {
-    normal: s.field("normal", S.array(S.float)),
-    reply: s.field("reply", S.array(S.float)),
-    renote: s.field("renote", S.array(S.float)),
-    withFile: s.field("withFile", S.array(S.float)),
-  })),
+    diffs: s.field("diffs", postChartsUserNotesResponse_1Schema),
   })
 
 /**
@@ -1231,37 +1167,35 @@ let postChartsUserNotes = (~body: postChartsUserNotesRequest, ~fetch: (~url: str
 type getChartsUserPvRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let getChartsUserPvRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type getChartsUserPvResponse = {
-  upv: {
+type getChartsUserPvResponse_1 = {
   user: array<float>,
   visitor: array<float>,
-},
-  pv: {
-  user: array<float>,
-  visitor: array<float>,
-},
 }
 
+type getChartsUserPvResponse = {
+  upv: getChartsUserPvResponse_1,
+  pv: getChartsUserPvResponse_1,
+}
+
+let getChartsUserPvResponse_1Schema = S.object(s => {
+    user: s.field("user", S.array(S.float)),
+    visitor: s.field("visitor", S.array(S.float)),
+  })
+
 let getChartsUserPvResponseSchema = S.object(s => {
-    upv: s.field("upv", S.object(s => {
-    user: s.field("user", S.array(S.float)),
-    visitor: s.field("visitor", S.array(S.float)),
-  })),
-    pv: s.field("pv", S.object(s => {
-    user: s.field("user", S.array(S.float)),
-    visitor: s.field("visitor", S.array(S.float)),
-  })),
+    upv: s.field("upv", getChartsUserPvResponse_1Schema),
+    pv: s.field("pv", getChartsUserPvResponse_1Schema),
   })
 
 /**
@@ -1287,37 +1221,35 @@ let getChartsUserPv = (~body: getChartsUserPvRequest, ~fetch: (~url: string, ~me
 type postChartsUserPvRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let postChartsUserPvRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type postChartsUserPvResponse = {
-  upv: {
+type postChartsUserPvResponse_1 = {
   user: array<float>,
   visitor: array<float>,
-},
-  pv: {
-  user: array<float>,
-  visitor: array<float>,
-},
 }
 
+type postChartsUserPvResponse = {
+  upv: postChartsUserPvResponse_1,
+  pv: postChartsUserPvResponse_1,
+}
+
+let postChartsUserPvResponse_1Schema = S.object(s => {
+    user: s.field("user", S.array(S.float)),
+    visitor: s.field("visitor", S.array(S.float)),
+  })
+
 let postChartsUserPvResponseSchema = S.object(s => {
-    upv: s.field("upv", S.object(s => {
-    user: s.field("user", S.array(S.float)),
-    visitor: s.field("visitor", S.array(S.float)),
-  })),
-    pv: s.field("pv", S.object(s => {
-    user: s.field("user", S.array(S.float)),
-    visitor: s.field("visitor", S.array(S.float)),
-  })),
+    upv: s.field("upv", postChartsUserPvResponse_1Schema),
+    pv: s.field("pv", postChartsUserPvResponse_1Schema),
   })
 
 /**
@@ -1343,33 +1275,33 @@ let postChartsUserPv = (~body: postChartsUserPvRequest, ~fetch: (~url: string, ~
 type getChartsUserReactionsRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let getChartsUserReactionsRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type getChartsUserReactionsResponse = {
-  local: {
+type getChartsUserReactionsResponse_1 = {
   count: array<float>,
-},
-  remote: {
-  count: array<float>,
-},
 }
 
+type getChartsUserReactionsResponse = {
+  local: getChartsUserReactionsResponse_1,
+  remote: getChartsUserReactionsResponse_1,
+}
+
+let getChartsUserReactionsResponse_1Schema = S.object(s => {
+    count: s.field("count", S.array(S.float)),
+  })
+
 let getChartsUserReactionsResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    count: s.field("count", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    count: s.field("count", S.array(S.float)),
-  })),
+    local: s.field("local", getChartsUserReactionsResponse_1Schema),
+    remote: s.field("remote", getChartsUserReactionsResponse_1Schema),
   })
 
 /**
@@ -1395,33 +1327,33 @@ let getChartsUserReactions = (~body: getChartsUserReactionsRequest, ~fetch: (~ur
 type postChartsUserReactionsRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
   userId: string,
 }
 
 let postChartsUserReactionsRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     userId: s.field("userId", S.string),
   })
 
-type postChartsUserReactionsResponse = {
-  local: {
+type postChartsUserReactionsResponse_1 = {
   count: array<float>,
-},
-  remote: {
-  count: array<float>,
-},
 }
 
+type postChartsUserReactionsResponse = {
+  local: postChartsUserReactionsResponse_1,
+  remote: postChartsUserReactionsResponse_1,
+}
+
+let postChartsUserReactionsResponse_1Schema = S.object(s => {
+    count: s.field("count", S.array(S.float)),
+  })
+
 let postChartsUserReactionsResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    count: s.field("count", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    count: s.field("count", S.array(S.float)),
-  })),
+    local: s.field("local", postChartsUserReactionsResponse_1Schema),
+    remote: s.field("remote", postChartsUserReactionsResponse_1Schema),
   })
 
 /**
@@ -1447,39 +1379,35 @@ let postChartsUserReactions = (~body: postChartsUserReactionsRequest, ~fetch: (~
 type getChartsUsersRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let getChartsUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type getChartsUsersResponse = {
-  local: {
+type getChartsUsersResponse_1 = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-},
-  remote: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
 }
 
+type getChartsUsersResponse = {
+  local: getChartsUsersResponse_1,
+  remote: getChartsUsersResponse_1,
+}
+
+let getChartsUsersResponse_1Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
 let getChartsUsersResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
+    local: s.field("local", getChartsUsersResponse_1Schema),
+    remote: s.field("remote", getChartsUsersResponse_1Schema),
   })
 
 /**
@@ -1505,39 +1433,35 @@ let getChartsUsers = (~body: getChartsUsersRequest, ~fetch: (~url: string, ~meth
 type postChartsUsersRequest = {
   span: string,
   limit: option<int>,
-  offset: option<JSON.t>,
+  offset: option<int>,
 }
 
 let postChartsUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.json), None),
+    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type postChartsUsersResponse = {
-  local: {
+type postChartsUsersResponse_1 = {
   total: array<float>,
   inc: array<float>,
   dec: array<float>,
-},
-  remote: {
-  total: array<float>,
-  inc: array<float>,
-  dec: array<float>,
-},
 }
 
+type postChartsUsersResponse = {
+  local: postChartsUsersResponse_1,
+  remote: postChartsUsersResponse_1,
+}
+
+let postChartsUsersResponse_1Schema = S.object(s => {
+    total: s.field("total", S.array(S.float)),
+    inc: s.field("inc", S.array(S.float)),
+    dec: s.field("dec", S.array(S.float)),
+  })
+
 let postChartsUsersResponseSchema = S.object(s => {
-    local: s.field("local", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
-    remote: s.field("remote", S.object(s => {
-    total: s.field("total", S.array(S.float)),
-    inc: s.field("inc", S.array(S.float)),
-    dec: s.field("dec", S.array(S.float)),
-  })),
+    local: s.field("local", postChartsUsersResponse_1Schema),
+    remote: s.field("remote", postChartsUsersResponse_1Schema),
   })
 
 /**

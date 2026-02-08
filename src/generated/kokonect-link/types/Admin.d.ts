@@ -7,18 +7,18 @@ import * as ComponentSchemas from './ComponentSchemas';
 
 export interface PostAdminAbuseReportResolverCreateRequest {
   name: string;
-  targetUserPattern: unknown;
-  reporterPattern: unknown;
-  reportContentPattern: unknown;
+  targetUserPattern: string | null;
+  reporterPattern: string | null;
+  reportContentPattern: string | null;
   expiresAt: string;
   forward: boolean;
 }
 /** OK (with results) */
 export interface PostAdminAbuseReportResolverCreateResponse {
   name: string;
-  targetUserPattern: unknown;
-  reporterPattern: unknown;
-  reportContentPattern: unknown;
+  targetUserPattern: string | null;
+  reporterPattern: string | null;
+  reportContentPattern: string | null;
   expiresAt: string;
   forward: boolean;
 }
@@ -36,9 +36,9 @@ export interface PostAdminAbuseReportResolverListRequest {
 /** OK (with results) */
 export type PostAdminAbuseReportResolverListResponse = {
   name: string;
-  targetUserPattern: unknown;
-  reporterPattern: unknown;
-  reportContentPattern: unknown;
+  targetUserPattern: string | null;
+  reporterPattern: string | null;
+  reportContentPattern: string | null;
   expiresAt: string;
   forward: boolean;
 }[];
@@ -46,9 +46,9 @@ export type PostAdminAbuseReportResolverListResponse = {
 export interface PostAdminAbuseReportResolverUpdateRequest {
   resolverId: string;
   name?: string;
-  targetUserPattern?: unknown;
-  reporterPattern?: unknown;
-  reportContentPattern?: unknown;
+  targetUserPattern?: string | null;
+  reporterPattern?: string | null;
+  reportContentPattern?: string | null;
   expiresAt?: string;
   forward?: boolean;
 }
@@ -96,11 +96,11 @@ export interface PostAdminAbuseUserReportsRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  state?: unknown;
+  state?: string | null;
   reporterOrigin?: string;
   targetUserOrigin?: string;
   forwarded?: boolean;
-  category?: unknown;
+  category?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAbuseUserReportsResponse = {
@@ -109,21 +109,21 @@ export type PostAdminAbuseUserReportsResponse = {
   comment: string;
   resolved: boolean;
   forwarded: boolean;
-  resolvedAs: unknown;
+  resolvedAs: string | null;
   reporterId: string;
   targetUserId: string;
-  assigneeId: unknown;
+  assigneeId: string | null;
   reporter: ComponentSchemas.UserDetailed;
   targetUser: ComponentSchemas.UserDetailed;
-  assignee?: unknown;
+  assignee?: ComponentSchemas.UserDetailed | null;
   category: string;
-  moderationNote: unknown;
+  moderationNote: string | null;
 }[];
 
 export interface PostAdminAccountsCreateRequest {
   username: string;
   password: string;
-  setupPassword?: unknown;
+  setupPassword?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAccountsCreateResponse = ComponentSchemas.MeDetailed;
@@ -144,9 +144,9 @@ export interface PostAdminAccountsPendingListRequest {
   limit?: number;
   offset?: number;
   sort?: string;
-  username?: unknown;
-  email?: unknown;
-  code?: unknown;
+  username?: string | null;
+  email?: string | null;
+  code?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAccountsPendingListResponse = {
@@ -154,7 +154,7 @@ export type PostAdminAccountsPendingListResponse = {
   createdAt: string;
   code: string;
   username: string;
-  email?: unknown;
+  email?: string | null;
 }[];
 
 export interface PostAdminAccountsPendingRevokeRequest {
@@ -187,7 +187,7 @@ export interface PostAdminAdListRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  publishing?: unknown;
+  publishing?: boolean | null;
 }
 /** OK (with results) */
 export type PostAdminAdListResponse = ComponentSchemas.Ad[];
@@ -210,7 +210,7 @@ export type PostAdminAdUpdateResponse = void;
 export interface PostAdminAnnouncementsCreateRequest {
   title: string;
   text: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
   icon?: string;
   display?: string;
   forExistingUsers?: boolean;
@@ -219,16 +219,16 @@ export interface PostAdminAnnouncementsCreateRequest {
   closeDuration?: number;
   displayOrder?: number;
   silence?: boolean;
-  userId?: unknown;
+  userId?: string | null;
 }
 /** OK (with results) */
 export interface PostAdminAnnouncementsCreateResponse {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   title: string;
   text: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
   icon: string;
   display: string;
   forYou: boolean;
@@ -248,18 +248,18 @@ export type PostAdminAnnouncementsDeleteResponse = void;
 export interface PostAdminAnnouncementsListRequest {
   limit?: number;
   offset?: number;
-  userId?: unknown;
-  status?: unknown;
+  userId?: string | null;
+  status?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAnnouncementsListResponse = {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   text: string;
   isActive: boolean;
   title: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
   icon: string;
   display: string;
   forExistingUsers: boolean;
@@ -268,17 +268,17 @@ export type PostAdminAnnouncementsListResponse = {
   closeDuration: number;
   displayOrder: number;
   silence: boolean;
-  userId: unknown;
-  user: unknown;
+  userId: string | null;
+  user: ComponentSchemas.UserLite | null;
   reads: number;
-  lastReadAt: unknown;
+  lastReadAt: string | null;
 }[];
 
 export interface PostAdminAnnouncementsUpdateRequest {
   id: string;
   title?: string;
   text?: string;
-  imageUrl?: unknown;
+  imageUrl?: string | null;
   icon?: string;
   display?: string;
   forExistingUsers?: boolean;
@@ -301,7 +301,7 @@ export interface PostAdminAvatarDecorationsCreateRequest {
 export interface PostAdminAvatarDecorationsCreateResponse {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   name: string;
   description: string;
   url: string;
@@ -317,13 +317,13 @@ export interface PostAdminAvatarDecorationsListRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  userId?: unknown;
+  userId?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAvatarDecorationsListResponse = {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   name: string;
   description: string;
   url: string;
@@ -343,30 +343,30 @@ export type PostAdminAvatarDecorationsUpdateResponse = void;
 export interface PostAdminCaptchaCurrentResponse {
   provider: string;
   hcaptcha: {
-  siteKey: unknown;
-  secretKey: unknown;
+  siteKey: string | null;
+  secretKey: string | null;
 };
   mcaptcha: {
-  siteKey: unknown;
-  secretKey: unknown;
-  instanceUrl: unknown;
+  siteKey: string | null;
+  secretKey: string | null;
+  instanceUrl: string | null;
 };
   recaptcha: {
-  siteKey: unknown;
-  secretKey: unknown;
+  siteKey: string | null;
+  secretKey: string | null;
 };
   turnstile: {
-  siteKey: unknown;
-  secretKey: unknown;
+  siteKey: string | null;
+  secretKey: string | null;
 };
 }
 
 export interface PostAdminCaptchaSaveRequest {
   provider: string;
-  captchaResult?: unknown;
-  sitekey?: unknown;
-  secret?: unknown;
-  instanceUrl?: unknown;
+  captchaResult?: string | null;
+  sitekey?: string | null;
+  secret?: string | null;
+  instanceUrl?: string | null;
 }
 export type PostAdminCaptchaSaveResponse = void;
 
@@ -383,10 +383,10 @@ export interface PostAdminDriveFilesRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  userId?: unknown;
-  type?: unknown;
+  userId?: string | null;
+  type?: string | null;
   origin?: string;
-  hostname?: unknown;
+  hostname?: string | null;
 }
 /** OK (with results) */
 export type PostAdminDriveFilesResponse = ComponentSchemas.DriveFile[];
@@ -399,30 +399,30 @@ export interface PostAdminDriveShowFileRequest {
 export interface PostAdminDriveShowFileResponse {
   id: string;
   createdAt: string;
-  userId: unknown;
-  userHost: unknown;
+  userId: string | null;
+  userHost: string | null;
   md5: string;
   name: string;
   type: string;
   size: number;
-  comment: unknown;
-  blurhash: unknown;
+  comment: string | null;
+  blurhash: string | null;
   properties: {
   width?: number;
   height?: number;
   orientation?: number;
   avgColor?: string;
 };
-  storedInternal: unknown;
-  url: unknown;
-  thumbnailUrl: unknown;
-  webpublicUrl: unknown;
-  accessKey: unknown;
-  thumbnailAccessKey: unknown;
-  webpublicAccessKey: unknown;
-  uri: unknown;
-  src: unknown;
-  folderId: unknown;
+  storedInternal: boolean | null;
+  url: string | null;
+  thumbnailUrl: string | null;
+  webpublicUrl: string | null;
+  accessKey: string | null;
+  thumbnailAccessKey: string | null;
+  webpublicAccessKey: string | null;
+  uri: string | null;
+  src: string | null;
+  folderId: string | null;
   isSensitive: boolean;
   isLink: boolean;
 }
@@ -430,13 +430,13 @@ export interface PostAdminDriveShowFileResponse {
 export interface PostAdminEmojiAddRequest {
   name: string;
   fileId: string;
-  category?: unknown;
+  category?: string | null;
   aliases?: string[];
-  license?: unknown;
+  license?: string | null;
   isSensitive?: boolean;
   localOnly?: boolean;
-  requestedBy?: unknown;
-  memo?: unknown;
+  requestedBy?: string | null;
+  memo?: string | null;
   roleIdsThatCanBeUsedThisEmojiAsReaction?: string[];
   roleIdsThatCanNotBeUsedThisEmojiAsReaction?: string[];
 }
@@ -468,7 +468,7 @@ export interface PostAdminEmojiDeleteBulkRequest {
 export type PostAdminEmojiDeleteBulkResponse = void;
 
 export interface PostAdminEmojiListRequest {
-  query?: unknown;
+  query?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -478,14 +478,14 @@ export type PostAdminEmojiListResponse = {
   id: string;
   aliases: string[];
   name: string;
-  category: unknown;
-  host: unknown;
+  category: string | null;
+  host: string | null;
   url: string;
 }[];
 
 export interface PostAdminEmojiListRemoteRequest {
-  query?: unknown;
-  host?: unknown;
+  query?: string | null;
+  host?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -495,8 +495,8 @@ export type PostAdminEmojiListRemoteResponse = {
   id: string;
   aliases: string[];
   name: string;
-  category: unknown;
-  host: unknown;
+  category: string | null;
+  host: string | null;
   url: string;
 }[];
 
@@ -514,13 +514,13 @@ export type PostAdminEmojiSetAliasesBulkResponse = void;
 
 export interface PostAdminEmojiSetCategoryBulkRequest {
   ids: string[];
-  category?: unknown;
+  category?: string | null;
 }
 export type PostAdminEmojiSetCategoryBulkResponse = void;
 
 export interface PostAdminEmojiSetLicenseBulkRequest {
   ids: string[];
-  license?: unknown;
+  license?: string | null;
 }
 export type PostAdminEmojiSetLicenseBulkResponse = void;
 
@@ -528,13 +528,13 @@ export interface PostAdminEmojiUpdateRequest {
   id?: string;
   name?: string;
   fileId?: string;
-  category?: unknown;
+  category?: string | null;
   aliases?: string[];
-  license?: unknown;
+  license?: string | null;
   isSensitive?: boolean;
   localOnly?: boolean;
-  requestedBy?: unknown;
-  memo?: unknown;
+  requestedBy?: string | null;
+  memo?: string | null;
   roleIdsThatCanBeUsedThisEmojiAsReaction?: string[];
   roleIdsThatCanNotBeUsedThisEmojiAsReaction?: string[];
 }
@@ -574,7 +574,7 @@ export type PostAdminGetIndexStatsResponse = {
 }[];
 
 /** OK (with results) */
-export interface PostAdminGetTableStatsResponse Record<string, never>
+export type PostAdminGetTableStatsResponse = Record<string, never>;
 
 export interface PostAdminGetUserIpsRequest {
   userId: string;
@@ -587,14 +587,14 @@ export type PostAdminGetUserIpsResponse = {
 
 export interface PostAdminIndieAuthCreateRequest {
   id: string;
-  name?: unknown;
+  name?: string | null;
   redirectUris?: string[];
 }
 /** OK (with results) */
 export interface PostAdminIndieAuthCreateResponse {
   id: string;
   createdAt: string;
-  name: unknown;
+  name: string | null;
   redirectUris: string[];
 }
 
@@ -611,20 +611,20 @@ export interface PostAdminIndieAuthListRequest {
 export type PostAdminIndieAuthListResponse = {
   id: string;
   createdAt: string;
-  name: unknown;
+  name: string | null;
   redirectUris: string[];
 }[];
 
 export interface PostAdminIndieAuthUpdateRequest {
   id: string;
-  name?: unknown;
+  name?: string | null;
   redirectUris?: string[];
 }
 export type PostAdminIndieAuthUpdateResponse = void;
 
 export interface PostAdminInviteCreateRequest {
   count?: number;
-  expiresAt?: unknown;
+  expiresAt?: string | null;
 }
 /** OK (with results) */
 export type PostAdminInviteCreateResponse = ComponentSchemas.InviteCode[];
@@ -706,7 +706,7 @@ export interface PostAdminResetPasswordResponse {
 
 export interface PostAdminResolveAbuseUserReportRequest {
   reportId: string;
-  resolvedAs?: unknown;
+  resolvedAs?: string | null;
   forward?: boolean;
 }
 export type PostAdminResolveAbuseUserReportResponse = void;
@@ -715,15 +715,15 @@ export interface PostAdminRolesAssignRequest {
   roleId: string;
   userId: string;
   memo?: string;
-  expiresAt?: unknown;
+  expiresAt?: number | null;
 }
 export type PostAdminRolesAssignResponse = void;
 
 export interface PostAdminRolesCreateRequest {
   name: string;
   description: string;
-  color: unknown;
-  iconUrl: unknown;
+  color: string | null;
+  iconUrl: string | null;
   target: string;
   condFormula: Record<string, never>;
   isPublic: boolean;
@@ -731,7 +731,7 @@ export interface PostAdminRolesCreateRequest {
   isAdministrator: boolean;
   isExplorable?: boolean;
   asBadge: boolean;
-  badgeBehavior?: unknown;
+  badgeBehavior?: string | null;
   preserveAssignmentOnMoveAccount?: boolean;
   canEditMembersByModerator: boolean;
   displayOrder: number;
@@ -764,8 +764,8 @@ export interface PostAdminRolesUpdateRequest {
   roleId: string;
   name?: string;
   description?: string;
-  color?: unknown;
-  iconUrl?: unknown;
+  color?: string | null;
+  iconUrl?: string | null;
   target?: string;
   condFormula?: Record<string, never>;
   isPublic?: boolean;
@@ -773,7 +773,7 @@ export interface PostAdminRolesUpdateRequest {
   isAdministrator?: boolean;
   isExplorable?: boolean;
   asBadge?: boolean;
-  badgeBehavior?: unknown;
+  badgeBehavior?: string | null;
   preserveAssignmentOnMoveAccount?: boolean;
   canEditMembersByModerator?: boolean;
   displayOrder?: number;
@@ -789,11 +789,11 @@ export type PostAdminRolesUpdateDefaultPoliciesResponse = void;
 export interface PostAdminRolesUpdateInlinePoliciesRequest {
   userId: string;
   policies: {
-  id?: unknown;
+  id?: string | null;
   policy: string;
   operation?: string;
   value?: boolean | number | string | null;
-  memo?: unknown;
+  memo?: string | null;
 }[];
 }
 export type PostAdminRolesUpdateInlinePoliciesResponse = void;
@@ -809,8 +809,8 @@ export type PostAdminRolesUsersResponse = {
   id: string;
   createdAt: string;
   user: ComponentSchemas.UserDetailed;
-  memo: unknown;
-  expiresAt: unknown;
+  memo: string | null;
+  expiresAt: string | null;
 }[];
 
 export interface PostAdminSendEmailRequest {
@@ -824,8 +824,8 @@ export interface PostAdminShowModerationLogsRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  type?: unknown;
-  userId?: unknown;
+  type?: string | null;
+  userId?: string | null;
 }
 /** OK (with results) */
 export type PostAdminShowModerationLogsResponse = {
@@ -842,9 +842,9 @@ export interface PostAdminShowUserRequest {
 }
 /** OK (with results) */
 export interface PostAdminShowUserResponse {
-  email: unknown;
+  email: string | null;
   emailVerified: boolean;
-  followedMessage: unknown;
+  followedMessage: string | null;
   autoAcceptFollowed: boolean;
   noCrawle: boolean;
   preventAiLearning: boolean;
@@ -878,16 +878,16 @@ export interface PostAdminShowUserResponse {
   isDeleted: boolean;
   isSuspended: boolean;
   isHibernated: boolean;
-  lastActiveDate: unknown;
+  lastActiveDate: string | null;
   moderationNote: string;
   signins: ComponentSchemas.Signin[];
   policies: ComponentSchemas.RolePolicies;
   roles: ComponentSchemas.Role[];
   roleAssigns: {
   createdAt: string;
-  expiresAt: unknown;
+  expiresAt: string | null;
   roleId: string;
-  memo: unknown;
+  memo: string | null;
 }[];
   inlinePolicies: {
   id: string;
@@ -896,7 +896,7 @@ export interface PostAdminShowUserResponse {
   policy: string;
   operation: string;
   value: boolean | number | string | null;
-  memo: unknown;
+  memo: string | null;
 }[];
 }
 
@@ -904,10 +904,10 @@ export interface PostAdminShowUserAccountMoveLogsRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  movedFromId?: unknown;
-  movedToId?: unknown;
-  from?: unknown;
-  to?: unknown;
+  movedFromId?: string | null;
+  movedToId?: string | null;
+  from?: string | null;
+  to?: string | null;
 }
 /** OK (with results) */
 export type PostAdminShowUserAccountMoveLogsResponse = {
@@ -925,32 +925,32 @@ export interface PostAdminShowUsersRequest {
   sort?: string;
   state?: string;
   origin?: string;
-  username?: unknown;
-  hostname?: unknown;
+  username?: string | null;
+  hostname?: string | null;
 }
 /** OK (with results) */
 export type PostAdminShowUsersResponse = ComponentSchemas.UserDetailed[];
 
 export interface PostAdminSsoCreateRequest {
-  name?: unknown;
+  name?: string | null;
   type: string;
   issuer: string;
   audience?: string[];
   binding?: string;
   acsUrl: string;
   signatureAlgorithm: string;
-  cipherAlgorithm?: unknown;
+  cipherAlgorithm?: string | null;
   wantAuthnRequestsSigned?: boolean;
   wantAssertionsSigned?: boolean;
   wantEmailAddressNormalized?: boolean;
   useCertificate: boolean;
-  secret?: unknown;
+  secret?: string | null;
 }
 /** OK (with results) */
 export interface PostAdminSsoCreateResponse {
   id: string;
   createdAt: string;
-  name: unknown;
+  name: string | null;
   type: string;
   issuer: string;
   audience: string[];
@@ -958,7 +958,7 @@ export interface PostAdminSsoCreateResponse {
   acsUrl: string;
   publicKey: string;
   signatureAlgorithm: string;
-  cipherAlgorithm?: unknown;
+  cipherAlgorithm?: string | null;
   wantAuthnRequestsSigned: boolean;
   wantAssertionsSigned: boolean;
   wantEmailAddressNormalized: boolean;
@@ -977,7 +977,7 @@ export interface PostAdminSsoListRequest {
 export type PostAdminSsoListResponse = {
   id: string;
   createdAt: string;
-  name: unknown;
+  name: string | null;
   type: string;
   issuer: string;
   audience: string[];
@@ -986,7 +986,7 @@ export type PostAdminSsoListResponse = {
   useCertificate: boolean;
   publicKey: string;
   signatureAlgorithm: string;
-  cipherAlgorithm?: unknown;
+  cipherAlgorithm?: string | null;
   wantAuthnRequestsSigned: boolean;
   wantAssertionsSigned: boolean;
   wantEmailAddressNormalized: boolean;
@@ -994,18 +994,18 @@ export type PostAdminSsoListResponse = {
 
 export interface PostAdminSsoUpdateRequest {
   id: string;
-  name?: unknown;
+  name?: string | null;
   issuer?: string;
   audience?: string[];
   binding?: string;
   acsUrl?: string;
   signatureAlgorithm?: string;
-  cipherAlgorithm?: unknown;
+  cipherAlgorithm?: string | null;
   wantAuthnRequestsSigned?: boolean;
   wantAssertionsSigned?: boolean;
   wantEmailAddressNormalized?: boolean;
-  regenerateCertificate?: unknown;
-  secret?: unknown;
+  regenerateCertificate?: boolean | null;
+  secret?: string | null;
 }
 export type PostAdminSsoUpdateResponse = void;
 
@@ -1081,80 +1081,80 @@ export interface PostAdminUpdateAbuseUserReportRequest {
 export type PostAdminUpdateAbuseUserReportResponse = void;
 
 export interface PostAdminUpdateMetaRequest {
-  disableRegistration?: unknown;
-  pinnedUsers?: unknown;
-  hiddenTags?: unknown;
-  blockedHosts?: unknown;
-  sensitiveWords?: unknown;
-  blockedRemoteCustomEmojis?: unknown;
-  prohibitedWords?: unknown;
-  themeColor?: unknown;
-  mascotImageUrl?: unknown;
-  bannerUrl?: unknown;
-  serverErrorImageUrl?: unknown;
-  infoImageUrl?: unknown;
-  notFoundImageUrl?: unknown;
-  iconUrl?: unknown;
-  app192IconUrl?: unknown;
-  app512IconUrl?: unknown;
-  backgroundImageUrl?: unknown;
-  logoImageUrl?: unknown;
-  name?: unknown;
-  shortName?: unknown;
-  description?: unknown;
-  defaultLightTheme?: unknown;
-  defaultDarkTheme?: unknown;
+  disableRegistration?: boolean | null;
+  pinnedUsers?: unknown | null;
+  hiddenTags?: unknown | null;
+  blockedHosts?: unknown | null;
+  sensitiveWords?: unknown | null;
+  blockedRemoteCustomEmojis?: unknown | null;
+  prohibitedWords?: unknown | null;
+  themeColor?: string | null;
+  mascotImageUrl?: string | null;
+  bannerUrl?: string | null;
+  serverErrorImageUrl?: string | null;
+  infoImageUrl?: string | null;
+  notFoundImageUrl?: string | null;
+  iconUrl?: string | null;
+  app192IconUrl?: string | null;
+  app512IconUrl?: string | null;
+  backgroundImageUrl?: string | null;
+  logoImageUrl?: string | null;
+  name?: string | null;
+  shortName?: string | null;
+  description?: string | null;
+  defaultLightTheme?: string | null;
+  defaultDarkTheme?: string | null;
   cacheRemoteFiles?: boolean;
   cacheRemoteSensitiveFiles?: boolean;
   emailRequiredForSignup?: boolean;
   enableHcaptcha?: boolean;
-  hcaptchaSiteKey?: unknown;
-  hcaptchaSecretKey?: unknown;
+  hcaptchaSiteKey?: string | null;
+  hcaptchaSecretKey?: string | null;
   enableMcaptcha?: boolean;
-  mcaptchaSiteKey?: unknown;
-  mcaptchaInstanceUrl?: unknown;
-  mcaptchaSecretKey?: unknown;
+  mcaptchaSiteKey?: string | null;
+  mcaptchaInstanceUrl?: string | null;
+  mcaptchaSecretKey?: string | null;
   enableRecaptcha?: boolean;
-  recaptchaSiteKey?: unknown;
-  recaptchaSecretKey?: unknown;
+  recaptchaSiteKey?: string | null;
+  recaptchaSecretKey?: string | null;
   enableTurnstile?: boolean;
-  turnstileSiteKey?: unknown;
-  turnstileSecretKey?: unknown;
-  googleAnalyticsId?: unknown;
+  turnstileSiteKey?: string | null;
+  turnstileSecretKey?: string | null;
+  googleAnalyticsId?: string | null;
   sensitiveMediaDetection?: string;
   sensitiveMediaDetectionSensitivity?: string;
   setSensitiveFlagAutomatically?: boolean;
   enableSensitiveMediaDetectionForVideos?: boolean;
-  maintainerName?: unknown;
-  maintainerEmail?: unknown;
+  maintainerName?: string | null;
+  maintainerEmail?: string | null;
   langs?: string[];
   dimensions?: number;
-  deeplAuthKey?: unknown;
+  deeplAuthKey?: string | null;
   deeplIsPro?: boolean;
   enableEmail?: boolean;
-  email?: unknown;
+  email?: string | null;
   smtpSecure?: boolean;
-  smtpHost?: unknown;
-  smtpPort?: unknown;
-  smtpUser?: unknown;
-  smtpPass?: unknown;
+  smtpHost?: string | null;
+  smtpPort?: number | null;
+  smtpUser?: string | null;
+  smtpPass?: string | null;
   enableServiceWorker?: boolean;
-  swPublicKey?: unknown;
-  swPrivateKey?: unknown;
-  tosUrl?: unknown;
-  repositoryUrl?: unknown;
-  feedbackUrl?: unknown;
-  impressumUrl?: unknown;
-  privacyPolicyUrl?: unknown;
+  swPublicKey?: string | null;
+  swPrivateKey?: string | null;
+  tosUrl?: string | null;
+  repositoryUrl?: string | null;
+  feedbackUrl?: string | null;
+  impressumUrl?: string | null;
+  privacyPolicyUrl?: string | null;
   useObjectStorage?: boolean;
-  objectStorageBaseUrl?: unknown;
-  objectStorageBucket?: unknown;
-  objectStoragePrefix?: unknown;
-  objectStorageEndpoint?: unknown;
-  objectStorageRegion?: unknown;
-  objectStoragePort?: unknown;
-  objectStorageAccessKey?: unknown;
-  objectStorageSecretKey?: unknown;
+  objectStorageBaseUrl?: string | null;
+  objectStorageBucket?: string | null;
+  objectStoragePrefix?: string | null;
+  objectStorageEndpoint?: string | null;
+  objectStorageRegion?: string | null;
+  objectStoragePort?: number | null;
+  objectStorageAccessKey?: string | null;
+  objectStorageSecretKey?: string | null;
   objectStorageUseSSL?: boolean;
   objectStorageUseProxy?: boolean;
   objectStorageSetPublicRead?: boolean;
@@ -1162,10 +1162,10 @@ export interface PostAdminUpdateMetaRequest {
   enableIpLogging?: boolean;
   enableActiveEmailValidation?: boolean;
   enableVerifymailApi?: boolean;
-  verifymailAuthKey?: unknown;
+  verifymailAuthKey?: string | null;
   enableTruemailApi?: boolean;
-  truemailInstance?: unknown;
-  truemailAuthKey?: unknown;
+  truemailInstance?: string | null;
+  truemailAuthKey?: string | null;
   enableChartsForRemoteUser?: boolean;
   enableChartsForFederatedInstances?: boolean;
   enableServerMachineStats?: boolean;
@@ -1181,26 +1181,26 @@ export interface PostAdminUpdateMetaRequest {
   perUserHomeTimelineCacheMax?: number;
   perUserListTimelineCacheMax?: number;
   notesPerOneAd?: number;
-  silencedHosts?: unknown;
-  sensitiveMediaHosts?: unknown;
-  wellKnownWebsites?: unknown;
-  urlPreviewDenyList?: unknown;
-  featuredGameChannels?: unknown;
-  summalyProxy?: unknown;
+  silencedHosts?: unknown | null;
+  sensitiveMediaHosts?: unknown | null;
+  wellKnownWebsites?: unknown | null;
+  urlPreviewDenyList?: unknown | null;
+  featuredGameChannels?: unknown | null;
+  summalyProxy?: string | null;
   urlPreviewEnabled?: boolean;
   urlPreviewTimeout?: number;
   urlPreviewMaximumContentLength?: number;
   urlPreviewRequireContentLength?: boolean;
-  urlPreviewUserAgent?: unknown;
-  urlPreviewSummaryProxyUrl?: unknown;
-  prohibitedWordsForNameOfUser?: unknown;
+  urlPreviewUserAgent?: string | null;
+  urlPreviewSummaryProxyUrl?: string | null;
+  prohibitedWordsForNameOfUser?: unknown | null;
   federation?: string;
   federationHosts?: string[];
 }
 export type PostAdminUpdateMetaResponse = void;
 
 export interface PostAdminUpdateProxyAccountRequest {
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostAdminUpdateProxyAccountResponse = ComponentSchemas.UserDetailed;
@@ -1218,7 +1218,23 @@ export interface PostAdminUpdateUserNoteRequest {
 export type PostAdminUpdateUserNoteResponse = void;
 
 export interface PostV2adminEmojiListRequest {
-  query?: unknown;
+  query?: {
+  updatedAtFrom?: string;
+  updatedAtTo?: string;
+  name?: string;
+  host?: string;
+  uri?: string;
+  publicUrl?: string;
+  originalUrl?: string;
+  type?: string;
+  aliases?: string;
+  category?: string;
+  license?: string;
+  isSensitive?: boolean;
+  localOnly?: boolean;
+  hostType?: string;
+  roleIds?: string[];
+} | null;
   sinceId?: string;
   untilId?: string;
   limit?: number;
@@ -1266,7 +1282,7 @@ export interface PostAdminAbuseUserReportsRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  state?: unknown;
+  state?: string | null;
   reporterOrigin?: string;
   targetUserOrigin?: string;
 }
@@ -1278,19 +1294,19 @@ export type PostAdminAbuseUserReportsResponse = {
   resolved: boolean;
   reporterId: string;
   targetUserId: string;
-  assigneeId: unknown;
+  assigneeId: string | null;
   reporter: ComponentSchemas.UserDetailedNotMe;
   targetUser: ComponentSchemas.UserDetailedNotMe;
   assignee: ComponentSchemas.UserDetailedNotMe | null;
   forwarded: boolean;
-  resolvedAs: unknown;
+  resolvedAs: string | null;
   moderationNote: string;
 }[];
 
 export interface PostAdminAccountsCreateRequest {
   username: string;
   password: string;
-  setupPassword?: unknown;
+  setupPassword?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAccountsCreateResponse = ComponentSchemas.MeDetailed & {
@@ -1329,7 +1345,7 @@ export interface PostAdminAdListRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  publishing?: unknown;
+  publishing?: boolean | null;
 }
 /** OK (with results) */
 export type PostAdminAdListResponse = ComponentSchemas.Ad[];
@@ -1337,22 +1353,22 @@ export type PostAdminAdListResponse = ComponentSchemas.Ad[];
 export interface PostAdminAnnouncementsCreateRequest {
   title: string;
   text: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
   icon?: string;
   display?: string;
   forExistingUsers?: boolean;
   silence?: boolean;
   needConfirmationToRead?: boolean;
-  userId?: unknown;
+  userId?: string | null;
 }
 /** OK (with results) */
 export interface PostAdminAnnouncementsCreateResponse {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   title: string;
   text: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
 }
 
 export interface PostAdminAnnouncementsListRequest {
@@ -1361,24 +1377,24 @@ export interface PostAdminAnnouncementsListRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  userId?: unknown;
+  userId?: string | null;
   status?: string;
 }
 /** OK (with results) */
 export type PostAdminAnnouncementsListResponse = {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   text: string;
   title: string;
-  icon: unknown;
+  icon: string | null;
   display: string;
   isActive: boolean;
   forExistingUsers: boolean;
   silence: boolean;
   needConfirmationToRead: boolean;
-  userId: unknown;
-  imageUrl: unknown;
+  userId: string | null;
+  imageUrl: string | null;
   reads: number;
 }[];
 
@@ -1386,7 +1402,7 @@ export interface PostAdminAnnouncementsUpdateRequest {
   id: string;
   title?: string;
   text?: string;
-  imageUrl?: unknown;
+  imageUrl?: string | null;
   icon?: string;
   display?: string;
   forExistingUsers?: boolean;
@@ -1410,13 +1426,13 @@ export interface PostAdminAvatarDecorationsListRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  userId?: unknown;
+  userId?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAvatarDecorationsListResponse = {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   name: string;
   description: string;
   url: string;
@@ -1427,13 +1443,13 @@ export interface PostAdminAvatarDecorationsListRemoteRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  userId?: unknown;
+  userId?: string | null;
 }
 /** OK (with results) */
 export type PostAdminAvatarDecorationsListRemoteResponse = {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   name: string;
   description: string;
   url: string;
@@ -1456,10 +1472,10 @@ export interface PostAdminDriveFilesRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  userId?: unknown;
-  type?: unknown;
+  userId?: string | null;
+  type?: string | null;
   origin?: string;
-  hostname?: unknown;
+  hostname?: string | null;
 }
 /** OK (with results) */
 export type PostAdminDriveFilesResponse = ComponentSchemas.DriveFile[];
@@ -1473,44 +1489,44 @@ export type PostAdminDriveShowFileRequest = {
 export interface PostAdminDriveShowFileResponse {
   id: string;
   createdAt: string;
-  userId: unknown;
-  userHost: unknown;
+  userId: string | null;
+  userHost: string | null;
   md5: string;
   name: string;
   type: string;
   size: number;
-  comment: unknown;
-  blurhash: unknown;
+  comment: string | null;
+  blurhash: string | null;
   properties: {
   width?: number;
   height?: number;
   orientation?: number;
   avgColor?: string;
 };
-  storedInternal: unknown;
-  url: unknown;
-  thumbnailUrl: unknown;
-  webpublicUrl: unknown;
-  accessKey: unknown;
-  thumbnailAccessKey: unknown;
-  webpublicAccessKey: unknown;
-  uri: unknown;
-  src: unknown;
-  folderId: unknown;
+  storedInternal: boolean | null;
+  url: string | null;
+  thumbnailUrl: string | null;
+  webpublicUrl: string | null;
+  accessKey: string | null;
+  thumbnailAccessKey: string | null;
+  webpublicAccessKey: string | null;
+  uri: string | null;
+  src: string | null;
+  folderId: string | null;
   isSensitive: boolean;
   isLink: boolean;
   maybeSensitive: boolean;
   maybePorn: boolean;
-  requestIp: unknown;
-  requestHeaders: unknown;
+  requestIp: string | null;
+  requestHeaders: Record<string, never> | null;
 }
 
 export interface PostAdminEmojiAddRequest {
   name: string;
   fileId: string;
-  category?: unknown;
+  category?: string | null;
   aliases?: string[];
-  license?: unknown;
+  license?: string | null;
   isSensitive?: boolean;
   localOnly?: boolean;
   roleIdsThatCanBeUsedThisEmojiAsReaction?: string[];
@@ -1519,7 +1535,7 @@ export interface PostAdminEmojiAddRequest {
 export type PostAdminEmojiAddResponse = ComponentSchemas.EmojiDetailed;
 
 export interface PostAdminEmojiListRequest {
-  query?: unknown;
+  query?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -1531,14 +1547,14 @@ export type PostAdminEmojiListResponse = {
   id: string;
   aliases: string[];
   name: string;
-  category: unknown;
-  host: unknown;
+  category: string | null;
+  host: string | null;
   url: string;
 }[];
 
 export interface PostAdminEmojiListRemoteRequest {
-  query?: unknown;
-  host?: unknown;
+  query?: string | null;
+  host?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -1550,8 +1566,8 @@ export type PostAdminEmojiListRemoteResponse = {
   id: string;
   aliases: string[];
   name: string;
-  category: unknown;
-  host: unknown;
+  category: string | null;
+  host: string | null;
   url: string;
 }[];
 
@@ -1570,9 +1586,9 @@ export type PostAdminEmojiUpdateRequest = {
   name: string;
 } & {
   fileId?: string;
-  category?: unknown;
+  category?: string | null;
   aliases?: string[];
-  license?: unknown;
+  license?: string | null;
   isSensitive?: boolean;
   localOnly?: boolean;
   roleIdsThatCanBeUsedThisEmojiAsReaction?: string[];
@@ -1673,22 +1689,22 @@ export type PostAdminQueueShowJobLogsResponse = string[];
 
 export interface PostAdminResolveAbuseUserReportRequest {
   reportId: string;
-  resolvedAs?: unknown;
+  resolvedAs?: string | null;
 }
 export type PostAdminResolveAbuseUserReportResponse = void;
 
 export interface PostAdminRolesAssignRequest {
   roleId: string;
   userId: string;
-  expiresAt?: unknown;
+  expiresAt?: number | null;
 }
 export type PostAdminRolesAssignResponse = void;
 
 export interface PostAdminRolesCreateRequest {
   name: string;
   description: string;
-  color: unknown;
-  iconUrl: unknown;
+  color: string | null;
+  iconUrl: string | null;
   target: string;
   condFormula: Record<string, never>;
   isPublic: boolean;
@@ -1714,8 +1730,8 @@ export interface PostAdminRolesUpdateRequest {
   roleId: string;
   name?: string;
   description?: string;
-  color?: unknown;
-  iconUrl?: unknown;
+  color?: string | null;
+  iconUrl?: string | null;
   target?: string;
   condFormula?: Record<string, never>;
   isPublic?: boolean;
@@ -1743,7 +1759,7 @@ export type PostAdminRolesUsersResponse = {
   id: string;
   createdAt: string;
   user: ComponentSchemas.UserDetailed;
-  expiresAt: unknown;
+  expiresAt: string | null;
 }[];
 
 /** OK (with results) */
@@ -1774,9 +1790,9 @@ export interface PostAdminShowModerationLogsRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  type?: unknown;
-  userId?: unknown;
-  search?: unknown;
+  type?: string | null;
+  userId?: string | null;
+  search?: string | null;
 }
 /** OK (with results) */
 export type PostAdminShowModerationLogsResponse = {
@@ -1793,9 +1809,9 @@ export interface PostAdminShowUserRequest {
 }
 /** OK (with results) */
 export interface PostAdminShowUserResponse {
-  email: unknown;
+  email: string | null;
   emailVerified: boolean;
-  followedMessage: unknown;
+  followedMessage: string | null;
   autoAcceptFollowed: boolean;
   noCrawle: boolean;
   preventAiLearning: boolean;
@@ -1830,18 +1846,18 @@ export interface PostAdminShowUserResponse {
   isSilenced: boolean;
   isSuspended: boolean;
   isHibernated: boolean;
-  lastActiveDate: unknown;
+  lastActiveDate: string | null;
   moderationNote: string;
   signins: ComponentSchemas.Signin[];
   policies: ComponentSchemas.RolePolicies;
   roles: ComponentSchemas.Role[];
   roleAssigns: {
   createdAt: string;
-  expiresAt: unknown;
+  expiresAt: string | null;
   roleId: string;
 }[];
-  setFederationAvatarShape: unknown;
-  isSquareAvatars: unknown;
+  setFederationAvatarShape: boolean | null;
+  isSquareAvatars: boolean | null;
 }
 
 export interface PostAdminSystemWebhookCreateRequest {
@@ -1872,104 +1888,104 @@ export interface PostAdminSystemWebhookUpdateRequest {
 export type PostAdminSystemWebhookUpdateResponse = ComponentSchemas.SystemWebhook;
 
 export interface PostAdminUpdateMetaRequest {
-  disableRegistration?: unknown;
-  pinnedUsers?: unknown;
-  hiddenTags?: unknown;
-  blockedHosts?: unknown;
-  sensitiveWords?: unknown;
-  prohibitedWords?: unknown;
-  prohibitedWordsForNameOfUser?: unknown;
-  themeColor?: unknown;
-  mascotImageUrl?: unknown;
-  bannerUrl?: unknown;
-  serverErrorImageUrl?: unknown;
-  infoImageUrl?: unknown;
-  notFoundImageUrl?: unknown;
-  youBlockedImageUrl?: unknown;
-  iconUrl?: unknown;
-  app192IconUrl?: unknown;
-  app512IconUrl?: unknown;
-  backgroundImageUrl?: unknown;
-  logoImageUrl?: unknown;
-  name?: unknown;
-  shortName?: unknown;
-  description?: unknown;
-  defaultLightTheme?: unknown;
-  defaultDarkTheme?: unknown;
+  disableRegistration?: boolean | null;
+  pinnedUsers?: unknown | null;
+  hiddenTags?: unknown | null;
+  blockedHosts?: unknown | null;
+  sensitiveWords?: unknown | null;
+  prohibitedWords?: unknown | null;
+  prohibitedWordsForNameOfUser?: unknown | null;
+  themeColor?: string | null;
+  mascotImageUrl?: string | null;
+  bannerUrl?: string | null;
+  serverErrorImageUrl?: string | null;
+  infoImageUrl?: string | null;
+  notFoundImageUrl?: string | null;
+  youBlockedImageUrl?: string | null;
+  iconUrl?: string | null;
+  app192IconUrl?: string | null;
+  app512IconUrl?: string | null;
+  backgroundImageUrl?: string | null;
+  logoImageUrl?: string | null;
+  name?: string | null;
+  shortName?: string | null;
+  description?: string | null;
+  defaultLightTheme?: string | null;
+  defaultDarkTheme?: string | null;
   clientOptions?: Record<string, never>;
   cacheRemoteFiles?: boolean;
   cacheRemoteSensitiveFiles?: boolean;
   emailRequiredForSignup?: boolean;
   enableHcaptcha?: boolean;
-  hcaptchaSiteKey?: unknown;
-  hcaptchaSecretKey?: unknown;
+  hcaptchaSiteKey?: string | null;
+  hcaptchaSecretKey?: string | null;
   enableMcaptcha?: boolean;
-  mcaptchaSiteKey?: unknown;
-  mcaptchaInstanceUrl?: unknown;
-  mcaptchaSecretKey?: unknown;
+  mcaptchaSiteKey?: string | null;
+  mcaptchaInstanceUrl?: string | null;
+  mcaptchaSecretKey?: string | null;
   enableRecaptcha?: boolean;
-  recaptchaSiteKey?: unknown;
-  recaptchaSecretKey?: unknown;
+  recaptchaSiteKey?: string | null;
+  recaptchaSecretKey?: string | null;
   enableTurnstile?: boolean;
-  turnstileSiteKey?: unknown;
-  turnstileSecretKey?: unknown;
+  turnstileSiteKey?: string | null;
+  turnstileSecretKey?: string | null;
   enableTestcaptcha?: boolean;
-  googleAnalyticsMeasurementId?: unknown;
+  googleAnalyticsMeasurementId?: string | null;
   sensitiveMediaDetection?: string;
   sensitiveMediaDetectionSensitivity?: string;
   setSensitiveFlagAutomatically?: boolean;
   enableSensitiveMediaDetectionForVideos?: boolean;
-  maintainerName?: unknown;
-  maintainerEmail?: unknown;
+  maintainerName?: string | null;
+  maintainerEmail?: string | null;
   langs?: string[];
-  translatorType?: unknown;
-  deeplAuthKey?: unknown;
+  translatorType?: string | null;
+  deeplAuthKey?: string | null;
   deeplIsPro?: boolean;
-  ctav3SaKey?: unknown;
-  ctav3ProjectId?: unknown;
-  ctav3Location?: unknown;
-  ctav3Model?: unknown;
-  ctav3Glossary?: unknown;
-  libreTranslateEndPoint?: unknown;
-  libreTranslateApiKey?: unknown;
+  ctav3SaKey?: string | null;
+  ctav3ProjectId?: string | null;
+  ctav3Location?: string | null;
+  ctav3Model?: string | null;
+  ctav3Glossary?: string | null;
+  libreTranslateEndPoint?: string | null;
+  libreTranslateApiKey?: string | null;
   enableEmail?: boolean;
-  email?: unknown;
+  email?: string | null;
   smtpSecure?: boolean;
-  smtpHost?: unknown;
-  smtpPort?: unknown;
-  smtpUser?: unknown;
-  smtpPass?: unknown;
+  smtpHost?: string | null;
+  smtpPort?: number | null;
+  smtpUser?: string | null;
+  smtpPass?: string | null;
   enableServiceWorker?: boolean;
-  swPublicKey?: unknown;
-  swPrivateKey?: unknown;
-  tosUrl?: unknown;
-  repositoryUrl?: unknown;
-  feedbackUrl?: unknown;
-  impressumUrl?: unknown;
-  privacyPolicyUrl?: unknown;
-  inquiryUrl?: unknown;
+  swPublicKey?: string | null;
+  swPrivateKey?: string | null;
+  tosUrl?: string | null;
+  repositoryUrl?: string | null;
+  feedbackUrl?: string | null;
+  impressumUrl?: string | null;
+  privacyPolicyUrl?: string | null;
+  inquiryUrl?: string | null;
   useObjectStorage?: boolean;
-  objectStorageBaseUrl?: unknown;
-  objectStorageBucket?: unknown;
-  objectStoragePrefix?: unknown;
-  objectStorageEndpoint?: unknown;
-  objectStorageRegion?: unknown;
-  objectStoragePort?: unknown;
-  objectStorageAccessKey?: unknown;
-  objectStorageSecretKey?: unknown;
+  objectStorageBaseUrl?: string | null;
+  objectStorageBucket?: string | null;
+  objectStoragePrefix?: string | null;
+  objectStorageEndpoint?: string | null;
+  objectStorageRegion?: string | null;
+  objectStoragePort?: number | null;
+  objectStorageAccessKey?: string | null;
+  objectStorageSecretKey?: string | null;
   objectStorageUseSSL?: boolean;
   objectStorageUseProxy?: boolean;
   objectStorageSetPublicRead?: boolean;
   objectStorageS3ForcePathStyle?: boolean;
   useRemoteObjectStorage?: boolean;
-  remoteObjectStorageBaseUrl?: unknown;
-  remoteObjectStorageBucket?: unknown;
-  remoteObjectStoragePrefix?: unknown;
-  remoteObjectStorageEndpoint?: unknown;
-  remoteObjectStorageRegion?: unknown;
-  remoteObjectStoragePort?: unknown;
-  remoteObjectStorageAccessKey?: unknown;
-  remoteObjectStorageSecretKey?: unknown;
+  remoteObjectStorageBaseUrl?: string | null;
+  remoteObjectStorageBucket?: string | null;
+  remoteObjectStoragePrefix?: string | null;
+  remoteObjectStorageEndpoint?: string | null;
+  remoteObjectStorageRegion?: string | null;
+  remoteObjectStoragePort?: number | null;
+  remoteObjectStorageAccessKey?: string | null;
+  remoteObjectStorageSecretKey?: string | null;
   remoteObjectStorageUseSSL?: boolean;
   remoteObjectStorageUseProxy?: boolean;
   remoteObjectStorageSetPublicRead?: boolean;
@@ -1977,10 +1993,10 @@ export interface PostAdminUpdateMetaRequest {
   enableIpLogging?: boolean;
   enableActiveEmailValidation?: boolean;
   enableVerifymailApi?: boolean;
-  verifymailAuthKey?: unknown;
+  verifymailAuthKey?: string | null;
   enableTruemailApi?: boolean;
-  truemailInstance?: unknown;
-  truemailAuthKey?: unknown;
+  truemailInstance?: string | null;
+  truemailAuthKey?: string | null;
   enableChartsForRemoteUser?: boolean;
   enableChartsForFederatedInstances?: boolean;
   enableStatsForFederatedInstances?: boolean;
@@ -1998,16 +2014,16 @@ export interface PostAdminUpdateMetaRequest {
   perUserListTimelineCacheMax?: number;
   enableReactionsBuffering?: boolean;
   notesPerOneAd?: number;
-  silencedHosts?: unknown;
-  mediaSilencedHosts?: unknown;
-  summalyProxy?: unknown;
+  silencedHosts?: unknown | null;
+  mediaSilencedHosts?: unknown | null;
+  summalyProxy?: string | null;
   urlPreviewEnabled?: boolean;
   urlPreviewAllowRedirect?: boolean;
   urlPreviewTimeout?: number;
   urlPreviewMaximumContentLength?: number;
   urlPreviewRequireContentLength?: boolean;
-  urlPreviewUserAgent?: unknown;
-  urlPreviewSummaryProxyUrl?: unknown;
+  urlPreviewUserAgent?: string | null;
+  urlPreviewSummaryProxyUrl?: string | null;
   federation?: string;
   federationHosts?: string[];
   deliverSuspendedSoftware?: {
@@ -2024,28 +2040,44 @@ export interface PostAdminUpdateMetaRequest {
   remoteNotesCleaningMaxProcessingDurationInMinutes?: number;
   showRoleBadgesOfRemoteUsers?: boolean;
   doNotSendNotificationEmailsForAbuseReport?: boolean;
-  emailToReceiveAbuseReport?: unknown;
+  emailToReceiveAbuseReport?: string | null;
   enableReceivePrerelease?: boolean;
   skipVersion?: boolean;
-  skipCherryPickVersion?: unknown;
-  trustedLinkUrlPatterns?: unknown;
-  customSplashText?: unknown;
-  disableRegistrationWhenInactive?: unknown;
-  disablePublicNoteWhenInactive?: unknown;
+  skipCherryPickVersion?: string | null;
+  trustedLinkUrlPatterns?: unknown | null;
+  customSplashText?: unknown | null;
+  disableRegistrationWhenInactive?: boolean | null;
+  disablePublicNoteWhenInactive?: boolean | null;
   moderatorInactivityLimitDays?: number;
   bubbleInstances?: string[];
-  customRobotsTxt?: unknown;
+  customRobotsTxt?: string | null;
 }
 export type PostAdminUpdateMetaResponse = void;
 
 export interface PostAdminUpdateProxyAccountRequest {
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostAdminUpdateProxyAccountResponse = ComponentSchemas.UserDetailed;
 
 export interface PostV2adminEmojiListRequest {
-  query?: unknown;
+  query?: {
+  updatedAtFrom?: string;
+  updatedAtTo?: string;
+  name?: string;
+  host?: string;
+  uri?: string;
+  publicUrl?: string;
+  originalUrl?: string;
+  type?: string;
+  aliases?: string;
+  category?: string;
+  license?: string;
+  isSensitive?: boolean;
+  localOnly?: boolean;
+  hostType?: string;
+  roleIds?: string[];
+} | null;
   sinceId?: string;
   untilId?: string;
   sinceDate?: number;

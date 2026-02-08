@@ -96,15 +96,19 @@ let postRolesUsersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postRolesUsersResponse = array<{
+type postRolesUsersResponse_1 = {
   id: string,
   user: KokonectLinkComponentSchemas.UserDetailed.t,
-}>
+}
 
-let postRolesUsersResponseSchema = S.array(S.object(s => {
+type postRolesUsersResponse = array<postRolesUsersResponse_1>
+
+let postRolesUsersResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     user: s.field("user", KokonectLinkComponentSchemas.UserDetailed.schema),
-  }))
+  })
+
+let postRolesUsersResponseSchema = S.array(postRolesUsersResponse_1Schema)
 
 /**
  * roles/users

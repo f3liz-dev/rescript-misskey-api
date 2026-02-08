@@ -4,32 +4,34 @@
 
 
 
-module Error = {
-  type t = {
-  error: {
-  code: string,
-  message: string,
-  id: string,
-},
-}
-  let schema = S.object(s => {
-    error: s.field("error", S.object(s => {
-    code: s.field("code", S.string),
-    message: s.field("message", S.string),
-    id: s.field("id", S.string),
-  })),
-  })
-}
-
 module UserLite = {
-  type t = {
-  id: string,
-  name: JSON.t,
-  username: string,
-  host: JSON.t,
-  avatarUrl: string,
-  avatarBlurhash: JSON.t,
-  avatarDecorations: array<{
+  type userLite_3 = {
+  name: string,
+  iconUrl: option<string>,
+  displayOrder: float,
+}
+  let userLite_3Schema = S.object(s => {
+    name: s.field("name", S.string),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    displayOrder: s.field("displayOrder", S.float),
+  })
+  type userLite_2 = {
+  name: option<string>,
+  softwareName: option<string>,
+  softwareVersion: option<string>,
+  iconUrl: option<string>,
+  faviconUrl: option<string>,
+  themeColor: option<string>,
+}
+  let userLite_2Schema = S.object(s => {
+    name: s.field("name", S.nullableAsOption(S.string)),
+    softwareName: s.field("softwareName", S.nullableAsOption(S.string)),
+    softwareVersion: s.field("softwareVersion", S.nullableAsOption(S.string)),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    faviconUrl: s.field("faviconUrl", S.nullableAsOption(S.string)),
+    themeColor: s.field("themeColor", S.nullableAsOption(S.string)),
+  })
+  type userLite_1 = {
   id: string,
   angle: option<float>,
   flipH: option<bool>,
@@ -38,40 +40,8 @@ module UserLite = {
   scale: option<float>,
   opacity: option<float>,
   url: string,
-}>,
-  isLocked: bool,
-  isBot: option<bool>,
-  isCat: option<bool>,
-  isProxy: option<bool>,
-  requireSigninToViewContents: option<bool>,
-  makeNotesFollowersOnlyBefore: option<JSON.t>,
-  makeNotesHiddenBefore: option<JSON.t>,
-  instance: option<{
-  name: JSON.t,
-  softwareName: JSON.t,
-  softwareVersion: JSON.t,
-  iconUrl: JSON.t,
-  faviconUrl: JSON.t,
-  themeColor: JSON.t,
-}>,
-  emojis: JSON.t,
-  onlineStatus: string,
-  badgeRoles: option<array<{
-  name: string,
-  iconUrl: JSON.t,
-  displayOrder: float,
-}>>,
-  setFederationAvatarShape: option<JSON.t>,
-  isSquareAvatars: option<JSON.t>,
 }
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    name: s.field("name", S.json),
-    username: s.field("username", S.string),
-    host: s.field("host", S.json),
-    avatarUrl: s.field("avatarUrl", S.string),
-    avatarBlurhash: s.field("avatarBlurhash", S.json),
-    avatarDecorations: s.field("avatarDecorations", S.array(S.object(s => {
+  let userLite_1Schema = S.object(s => {
     id: s.field("id", S.string),
     angle: s.fieldOr("angle", S.nullableAsOption(S.float), None),
     flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
@@ -80,573 +50,502 @@ module UserLite = {
     scale: s.fieldOr("scale", S.nullableAsOption(S.float), None),
     opacity: s.fieldOr("opacity", S.nullableAsOption(S.float), None),
     url: s.field("url", S.string),
-  }))),
+  })
+  type t = {
+  id: string,
+  name: option<string>,
+  username: string,
+  host: option<string>,
+  avatarUrl: string,
+  avatarBlurhash: option<string>,
+  avatarDecorations: array<userLite_1>,
+  isLocked: bool,
+  isBot: option<bool>,
+  isCat: option<bool>,
+  isProxy: option<bool>,
+  requireSigninToViewContents: option<bool>,
+  makeNotesFollowersOnlyBefore: option<float>,
+  makeNotesHiddenBefore: option<float>,
+  instance: option<userLite_2>,
+  emojis: dict<JSON.t>,
+  onlineStatus: string,
+  badgeRoles: option<array<userLite_3>>,
+  setFederationAvatarShape: option<bool>,
+  isSquareAvatars: option<bool>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.nullableAsOption(S.string)),
+    username: s.field("username", S.string),
+    host: s.field("host", S.nullableAsOption(S.string)),
+    avatarUrl: s.field("avatarUrl", S.string),
+    avatarBlurhash: s.field("avatarBlurhash", S.nullableAsOption(S.string)),
+    avatarDecorations: s.field("avatarDecorations", S.array(userLite_1Schema)),
     isLocked: s.field("isLocked", S.bool),
     isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
     isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
     isProxy: s.fieldOr("isProxy", S.nullableAsOption(S.bool), None),
     requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.json), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.json), None),
-    instance: s.fieldOr("instance", S.nullableAsOption(S.object(s => {
-    name: s.field("name", S.json),
-    softwareName: s.field("softwareName", S.json),
-    softwareVersion: s.field("softwareVersion", S.json),
-    iconUrl: s.field("iconUrl", S.json),
-    faviconUrl: s.field("faviconUrl", S.json),
-    themeColor: s.field("themeColor", S.json),
-  })), None),
-    emojis: s.field("emojis", S.json),
+    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.float), None),
+    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.float), None),
+    instance: s.fieldOr("instance", S.nullableAsOption(userLite_2Schema), None),
+    emojis: s.field("emojis", S.dict(S.json)),
     onlineStatus: s.field("onlineStatus", S.string),
-    badgeRoles: s.fieldOr("badgeRoles", S.nullableAsOption(S.array(S.object(s => {
-    name: s.field("name", S.string),
-    iconUrl: s.field("iconUrl", S.json),
-    displayOrder: s.field("displayOrder", S.float),
-  }))), None),
-    setFederationAvatarShape: s.fieldOr("setFederationAvatarShape", S.nullableAsOption(S.json), None),
-    isSquareAvatars: s.fieldOr("isSquareAvatars", S.nullableAsOption(S.json), None),
+    badgeRoles: s.fieldOr("badgeRoles", S.nullableAsOption(S.array(userLite_3Schema)), None),
+    setFederationAvatarShape: s.fieldOr("setFederationAvatarShape", S.nullableAsOption(S.bool), None),
+    isSquareAvatars: s.fieldOr("isSquareAvatars", S.nullableAsOption(S.bool), None),
   })
-}
-
-module UserList = {
-  type t = {
-  id: string,
-  createdAt: string,
-  name: string,
-  userIds: option<array<string>>,
-  isPublic: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.string),
-    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
-    isPublic: s.field("isPublic", S.bool),
-  })
-}
-
-module UserGroup = {
-  type t = {
-  id: string,
-  createdAt: string,
-  name: string,
-  ownerId: string,
-  userIds: option<array<string>>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.string),
-    ownerId: s.field("ownerId", S.string),
-    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
-  })
-}
-
-module AchievementName = {
-  type t = string
-  let schema = S.string
-}
-
-module Ad = {
-  type t = {
-  id: string,
-  expiresAt: string,
-  startsAt: string,
-  place: string,
-  priority: string,
-  ratio: float,
-  url: string,
-  imageUrl: string,
-  memo: string,
-  dayOfWeek: int,
-  isSensitive: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    expiresAt: s.field("expiresAt", S.string),
-    startsAt: s.field("startsAt", S.string),
-    place: s.field("place", S.string),
-    priority: s.field("priority", S.string),
-    ratio: s.field("ratio", S.float),
-    url: s.field("url", S.string),
-    imageUrl: s.field("imageUrl", S.string),
-    memo: s.field("memo", S.string),
-    dayOfWeek: s.field("dayOfWeek", S.int),
-    isSensitive: s.field("isSensitive", S.bool),
-  })
-}
-
-module Announcement = {
-  type t = {
-  id: string,
-  createdAt: string,
-  updatedAt: JSON.t,
-  text: string,
-  title: string,
-  imageUrl: JSON.t,
-  icon: string,
-  display: string,
-  needConfirmationToRead: bool,
-  silence: bool,
-  forYou: bool,
-  isRead: option<bool>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
-    text: s.field("text", S.string),
-    title: s.field("title", S.string),
-    imageUrl: s.field("imageUrl", S.json),
-    icon: s.field("icon", S.string),
-    display: s.field("display", S.string),
-    needConfirmationToRead: s.field("needConfirmationToRead", S.bool),
-    silence: s.field("silence", S.bool),
-    forYou: s.field("forYou", S.bool),
-    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
-  })
-}
-
-module App = {
-  type t = {
-  id: string,
-  name: string,
-  callbackUrl: JSON.t,
-  permission: array<string>,
-  secret: option<string>,
-  isAuthorized: option<bool>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    name: s.field("name", S.string),
-    callbackUrl: s.field("callbackUrl", S.json),
-    permission: s.field("permission", S.array(S.string)),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-    isAuthorized: s.fieldOr("isAuthorized", S.nullableAsOption(S.bool), None),
-  })
-}
-
-module Notification = {
-  type t = JSON.t
-  let schema = S.json
 }
 
 module DriveFolder = {
-  type t = {
+  type rec t = {
   id: string,
   createdAt: string,
   name: string,
-  parentId: JSON.t,
+  parentId: option<string>,
   foldersCount: option<float>,
   filesCount: option<float>,
-  parent: option<option<DriveFolder.t>>,
+  parent: option<t>,
 }
-  let schema = S.object(s => {
+  let schema = S.recursive("DriveFolder", schema => S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     name: s.field("name", S.string),
-    parentId: s.field("parentId", S.json),
+    parentId: s.field("parentId", S.nullableAsOption(S.string)),
     foldersCount: s.fieldOr("foldersCount", S.nullableAsOption(S.float), None),
     filesCount: s.fieldOr("filesCount", S.nullableAsOption(S.float), None),
-    parent: s.fieldOr("parent", S.nullableAsOption(S.nullableAsOption(DriveFolder.schema)), None),
+    parent: s.fieldOr("parent", S.nullableAsOption(schema), None),
+  }))
+}
+
+module DriveFile = {
+  type driveFile_1 = {
+  width: option<float>,
+  height: option<float>,
+  orientation: option<float>,
+  avgColor: option<string>,
+}
+  let driveFile_1Schema = S.object(s => {
+    width: s.fieldOr("width", S.nullableAsOption(S.float), None),
+    height: s.fieldOr("height", S.nullableAsOption(S.float), None),
+    orientation: s.fieldOr("orientation", S.nullableAsOption(S.float), None),
+    avgColor: s.fieldOr("avgColor", S.nullableAsOption(S.string), None),
   })
-}
-
-module Hashtag = {
-  type t = {
-  tag: string,
-  mentionedUsersCount: float,
-  mentionedLocalUsersCount: float,
-  mentionedRemoteUsersCount: float,
-  attachedUsersCount: float,
-  attachedLocalUsersCount: float,
-  attachedRemoteUsersCount: float,
-}
-  let schema = S.object(s => {
-    tag: s.field("tag", S.string),
-    mentionedUsersCount: s.field("mentionedUsersCount", S.float),
-    mentionedLocalUsersCount: s.field("mentionedLocalUsersCount", S.float),
-    mentionedRemoteUsersCount: s.field("mentionedRemoteUsersCount", S.float),
-    attachedUsersCount: s.field("attachedUsersCount", S.float),
-    attachedLocalUsersCount: s.field("attachedLocalUsersCount", S.float),
-    attachedRemoteUsersCount: s.field("attachedRemoteUsersCount", S.float),
-  })
-}
-
-module PageBlock = {
-  type t = JSON.t
-  let schema = S.json
-}
-
-module QueueCount = {
-  type t = {
-  waiting: float,
-  active: float,
-  completed: float,
-  failed: float,
-  delayed: float,
-}
-  let schema = S.object(s => {
-    waiting: s.field("waiting", S.float),
-    active: s.field("active", S.float),
-    completed: s.field("completed", S.float),
-    failed: s.field("failed", S.float),
-    delayed: s.field("delayed", S.float),
-  })
-}
-
-module QueueMetrics = {
-  type t = {
-  meta: {
-  count: float,
-  @as("prevTS") prevTs: float,
-  prevCount: float,
-},
-  data: array<float>,
-  count: float,
-}
-  let schema = S.object(s => {
-    meta: s.field("meta", S.object(s => {
-    count: s.field("count", S.float),
-    prevTs: s.field("prevTS", S.float),
-    prevCount: s.field("prevCount", S.float),
-  })),
-    data: s.field("data", S.array(S.float)),
-    count: s.field("count", S.float),
-  })
-}
-
-module QueueJob = {
-  type t = {
-  id: string,
-  name: string,
-  data: JSON.t,
-  opts: JSON.t,
-  timestamp: float,
-  processedOn: option<float>,
-  processedBy: option<string>,
-  finishedOn: option<float>,
-  progress: JSON.t,
-  attempts: float,
-  delay: float,
-  failedReason: string,
-  stacktrace: array<string>,
-  returnValue: JSON.t,
-  isFailed: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    name: s.field("name", S.string),
-    data: s.field("data", S.json),
-    opts: s.field("opts", S.json),
-    timestamp: s.field("timestamp", S.float),
-    processedOn: s.fieldOr("processedOn", S.nullableAsOption(S.float), None),
-    processedBy: s.fieldOr("processedBy", S.nullableAsOption(S.string), None),
-    finishedOn: s.fieldOr("finishedOn", S.nullableAsOption(S.float), None),
-    progress: s.field("progress", S.json),
-    attempts: s.field("attempts", S.float),
-    delay: s.field("delay", S.float),
-    failedReason: s.field("failedReason", S.string),
-    stacktrace: s.field("stacktrace", S.array(S.string)),
-    returnValue: s.field("returnValue", S.json),
-    isFailed: s.field("isFailed", S.bool),
-  })
-}
-
-module Antenna = {
   type t = {
   id: string,
   createdAt: string,
   name: string,
-  keywords: array<array<string>>,
-  excludeKeywords: array<array<string>>,
-  src: string,
-  userListId: JSON.t,
-  userGroupId: JSON.t,
-  users: array<string>,
-  caseSensitive: bool,
-  localOnly: bool,
-  excludeBots: bool,
-  withReplies: bool,
-  withFile: bool,
-  isActive: bool,
-  hasUnreadNote: bool,
-  notify: bool,
-  excludeNotesInSensitiveChannel: bool,
+  @as("type") type_: string,
+  md5: string,
+  size: float,
+  isSensitive: bool,
+  blurhash: option<string>,
+  properties: driveFile_1,
+  url: string,
+  thumbnailUrl: option<string>,
+  comment: option<string>,
+  folderId: option<string>,
+  folder: option<DriveFolder.t>,
+  userId: option<string>,
+  user: option<UserLite.t>,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     name: s.field("name", S.string),
-    keywords: s.field("keywords", S.array(S.array(S.string))),
-    excludeKeywords: s.field("excludeKeywords", S.array(S.array(S.string))),
-    src: s.field("src", S.string),
-    userListId: s.field("userListId", S.json),
-    userGroupId: s.field("userGroupId", S.json),
-    users: s.field("users", S.array(S.string)),
-    caseSensitive: s.field("caseSensitive", S.bool),
-    localOnly: s.field("localOnly", S.bool),
-    excludeBots: s.field("excludeBots", S.bool),
-    withReplies: s.field("withReplies", S.bool),
-    withFile: s.field("withFile", S.bool),
-    isActive: s.field("isActive", S.bool),
-    hasUnreadNote: s.field("hasUnreadNote", S.bool),
-    notify: s.field("notify", S.bool),
-    excludeNotesInSensitiveChannel: s.field("excludeNotesInSensitiveChannel", S.bool),
-  })
-}
-
-module FederationInstance = {
-  type t = {
-  id: string,
-  firstRetrievedAt: string,
-  host: string,
-  usersCount: float,
-  notesCount: float,
-  followingCount: float,
-  followersCount: float,
-  isNotResponding: bool,
-  isSuspended: bool,
-  suspensionState: string,
-  isBlocked: bool,
-  softwareName: JSON.t,
-  softwareVersion: JSON.t,
-  openRegistrations: JSON.t,
-  name: JSON.t,
-  description: JSON.t,
-  maintainerName: JSON.t,
-  maintainerEmail: JSON.t,
-  isSilenced: bool,
-  isMediaSilenced: bool,
-  iconUrl: JSON.t,
-  faviconUrl: JSON.t,
-  themeColor: JSON.t,
-  infoUpdatedAt: JSON.t,
-  latestRequestReceivedAt: JSON.t,
-  moderationNote: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    firstRetrievedAt: s.field("firstRetrievedAt", S.string),
-    host: s.field("host", S.string),
-    usersCount: s.field("usersCount", S.float),
-    notesCount: s.field("notesCount", S.float),
-    followingCount: s.field("followingCount", S.float),
-    followersCount: s.field("followersCount", S.float),
-    isNotResponding: s.field("isNotResponding", S.bool),
-    isSuspended: s.field("isSuspended", S.bool),
-    suspensionState: s.field("suspensionState", S.string),
-    isBlocked: s.field("isBlocked", S.bool),
-    softwareName: s.field("softwareName", S.json),
-    softwareVersion: s.field("softwareVersion", S.json),
-    openRegistrations: s.field("openRegistrations", S.json),
-    name: s.field("name", S.json),
-    description: s.field("description", S.json),
-    maintainerName: s.field("maintainerName", S.json),
-    maintainerEmail: s.field("maintainerEmail", S.json),
-    isSilenced: s.field("isSilenced", S.bool),
-    isMediaSilenced: s.field("isMediaSilenced", S.bool),
-    iconUrl: s.field("iconUrl", S.json),
-    faviconUrl: s.field("faviconUrl", S.json),
-    themeColor: s.field("themeColor", S.json),
-    infoUpdatedAt: s.field("infoUpdatedAt", S.json),
-    latestRequestReceivedAt: s.field("latestRequestReceivedAt", S.json),
-    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.json), None),
-  })
-}
-
-module EmojiSimple = {
-  type t = {
-  aliases: array<string>,
-  name: string,
-  category: JSON.t,
-  url: string,
-  localOnly: option<bool>,
-  isSensitive: option<bool>,
-  roleIdsThatCanBeUsedThisEmojiAsReaction: option<array<string>>,
-}
-  let schema = S.object(s => {
-    aliases: s.field("aliases", S.array(S.string)),
-    name: s.field("name", S.string),
-    category: s.field("category", S.json),
-    url: s.field("url", S.string),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
-  })
-}
-
-module EmojiDetailed = {
-  type t = {
-  id: string,
-  aliases: array<string>,
-  name: string,
-  category: JSON.t,
-  host: JSON.t,
-  url: string,
-  license: JSON.t,
-  isSensitive: bool,
-  localOnly: bool,
-  roleIdsThatCanBeUsedThisEmojiAsReaction: array<string>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    aliases: s.field("aliases", S.array(S.string)),
-    name: s.field("name", S.string),
-    category: s.field("category", S.json),
-    host: s.field("host", S.json),
-    url: s.field("url", S.string),
-    license: s.field("license", S.json),
+    type_: s.field("type", S.string),
+    md5: s.field("md5", S.string),
+    size: s.field("size", S.float),
     isSensitive: s.field("isSensitive", S.bool),
-    localOnly: s.field("localOnly", S.bool),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.array(S.string)),
+    blurhash: s.field("blurhash", S.nullableAsOption(S.string)),
+    properties: s.field("properties", driveFile_1Schema),
+    url: s.field("url", S.string),
+    thumbnailUrl: s.field("thumbnailUrl", S.nullableAsOption(S.string)),
+    comment: s.field("comment", S.nullableAsOption(S.string)),
+    folderId: s.field("folderId", S.nullableAsOption(S.string)),
+    folder: s.fieldOr("folder", S.nullableAsOption(DriveFolder.schema), None),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
   })
 }
 
-module EmojiDetailedAdmin = {
+module NoteHistory = {
+  type noteHistory_2 = {
+  title: string,
+  start: string,
+  @as("end") end_: option<string>,
+  metadata: dict<JSON.t>,
+}
+  let noteHistory_2Schema = S.object(s => {
+    title: s.field("title", S.string),
+    start: s.field("start", S.string),
+    end_: s.field("end", S.nullableAsOption(S.string)),
+    metadata: s.field("metadata", S.dict(S.json)),
+  })
+  type noteHistory_1 = {
+  choices: array<string>,
+  multiple: bool,
+  expiresAt: option<string>,
+}
+  let noteHistory_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string)),
+    multiple: s.field("multiple", S.bool),
+    expiresAt: s.field("expiresAt", S.nullableAsOption(S.string)),
+  })
   type t = {
   id: string,
-  updatedAt: JSON.t,
-  name: string,
-  host: JSON.t,
-  publicUrl: string,
-  originalUrl: string,
-  uri: JSON.t,
-  @as("type") type_: JSON.t,
-  aliases: array<string>,
-  category: JSON.t,
-  license: JSON.t,
-  localOnly: bool,
-  isSensitive: bool,
-  roleIdsThatCanBeUsedThisEmojiAsReaction: array<{
-  id: string,
-  name: string,
-}>,
+  noteId: string,
+  createdAt: string,
+  updatedAt: string,
+  userId: string,
+  text: option<string>,
+  cw: option<string>,
+  poll: option<noteHistory_1>,
+  event: option<noteHistory_2>,
+  fileIds: option<array<string>>,
+  files: option<array<DriveFile.t>>,
+  visibility: string,
+  visibleUserIds: option<array<string>>,
+  emojis: option<dict<JSON.t>>,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
-    updatedAt: s.field("updatedAt", S.json),
-    name: s.field("name", S.string),
-    host: s.field("host", S.json),
-    publicUrl: s.field("publicUrl", S.string),
-    originalUrl: s.field("originalUrl", S.string),
-    uri: s.field("uri", S.json),
-    type_: s.field("type", S.json),
-    aliases: s.field("aliases", S.array(S.string)),
-    category: s.field("category", S.json),
-    license: s.field("license", S.json),
-    localOnly: s.field("localOnly", S.bool),
-    isSensitive: s.field("isSensitive", S.bool),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.array(S.object(s => {
-    id: s.field("id", S.string),
-    name: s.field("name", S.string),
-  }))),
+    noteId: s.field("noteId", S.string),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.string),
+    userId: s.field("userId", S.string),
+    text: s.field("text", S.nullableAsOption(S.string)),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(noteHistory_1Schema), None),
+    event: s.fieldOr("event", S.nullableAsOption(noteHistory_2Schema), None),
+    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
+    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
+    visibility: s.field("visibility", S.string),
+    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
   })
 }
 
-module Signin = {
+module ChatRoom = {
   type t = {
   id: string,
   createdAt: string,
-  ip: string,
-  headers: JSON.t,
-  success: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    ip: s.field("ip", S.string),
-    headers: s.field("headers", S.json),
-    success: s.field("success", S.bool),
-  })
-}
-
-module RoleCondFormulaValueIsLocalOrRemote = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-  })
-}
-
-module RoleCondFormulaValueUserSettingBooleanSchema = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-  })
-}
-
-module RoleCondFormulaValueAssignedRole = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-  roleId: string,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-    roleId: s.field("roleId", S.string),
-  })
-}
-
-module RoleCondFormulaValueCreated = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-  sec: float,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-    sec: s.field("sec", S.float),
-  })
-}
-
-module RoleCondFormulaFollowersOrFollowingOrNotes = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-  value: float,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-    value: s.field("value", S.float),
-  })
-}
-
-module RoleCondFormulaValue = {
-  type t = JSON.t
-  let schema = S.json
-}
-
-module RoleLite = {
-  type t = {
-  id: string,
+  ownerId: string,
+  owner: UserLite.t,
   name: string,
-  color: JSON.t,
-  iconUrl: JSON.t,
   description: string,
-  isModerator: bool,
-  isAdministrator: bool,
-  displayOrder: int,
+  isMuted: option<bool>,
+  invitationExists: option<bool>,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    ownerId: s.field("ownerId", S.string),
+    owner: s.field("owner", UserLite.schema),
     name: s.field("name", S.string),
-    color: s.field("color", S.json),
-    iconUrl: s.field("iconUrl", S.json),
     description: s.field("description", S.string),
-    isModerator: s.field("isModerator", S.bool),
-    isAdministrator: s.field("isAdministrator", S.bool),
-    displayOrder: s.field("displayOrder", S.int),
+    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
+    invitationExists: s.fieldOr("invitationExists", S.nullableAsOption(S.bool), None),
+  })
+}
+
+module ChatRoomMembership = {
+  type t = {
+  id: string,
+  createdAt: string,
+  userId: string,
+  user: option<UserLite.t>,
+  roomId: string,
+  room: option<ChatRoom.t>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    userId: s.field("userId", S.string),
+    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
+    roomId: s.field("roomId", S.string),
+    room: s.fieldOr("room", S.nullableAsOption(ChatRoom.schema), None),
+  })
+}
+
+module ChatRoomInvitation = {
+  type t = {
+  id: string,
+  createdAt: string,
+  userId: string,
+  user: UserLite.t,
+  roomId: string,
+  room: ChatRoom.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    roomId: s.field("roomId", S.string),
+    room: s.field("room", ChatRoom.schema),
+  })
+}
+
+module ChatMessageLiteForRoom = {
+  type chatMessageLiteForRoom_1 = {
+  reaction: string,
+  user: UserLite.t,
+}
+  let chatMessageLiteForRoom_1Schema = S.object(s => {
+    reaction: s.field("reaction", S.string),
+    user: s.field("user", UserLite.schema),
+  })
+  type t = {
+  id: string,
+  createdAt: string,
+  fromUserId: string,
+  fromUser: UserLite.t,
+  toRoomId: string,
+  text: option<string>,
+  fileId: option<string>,
+  file: option<DriveFile.t>,
+  reactions: array<chatMessageLiteForRoom_1>,
+  emojis: option<dict<JSON.t>>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    fromUserId: s.field("fromUserId", S.string),
+    fromUser: s.field("fromUser", UserLite.schema),
+    toRoomId: s.field("toRoomId", S.string),
+    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
+    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    reactions: s.field("reactions", S.array(chatMessageLiteForRoom_1Schema)),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+  })
+}
+
+module ChatMessageLiteFor1on1 = {
+  type chatMessageLiteFor1on1_1 = {
+  reaction: string,
+}
+  let chatMessageLiteFor1on1_1Schema = S.object(s => {
+    reaction: s.field("reaction", S.string),
+  })
+  type t = {
+  id: string,
+  createdAt: string,
+  fromUserId: string,
+  toUserId: string,
+  text: option<string>,
+  fileId: option<string>,
+  file: option<DriveFile.t>,
+  reactions: array<chatMessageLiteFor1on1_1>,
+  emojis: option<dict<JSON.t>>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    fromUserId: s.field("fromUserId", S.string),
+    toUserId: s.field("toUserId", S.string),
+    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
+    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    reactions: s.field("reactions", S.array(chatMessageLiteFor1on1_1Schema)),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+  })
+}
+
+module ChatMessageLite = {
+  type chatMessageLite_1 = {
+  reaction: string,
+  user: option<UserLite.t>,
+}
+  let chatMessageLite_1Schema = S.object(s => {
+    reaction: s.field("reaction", S.string),
+    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
+  })
+  type t = {
+  id: string,
+  createdAt: string,
+  fromUserId: string,
+  fromUser: option<UserLite.t>,
+  toUserId: option<string>,
+  toRoomId: option<string>,
+  text: option<string>,
+  fileId: option<string>,
+  file: option<DriveFile.t>,
+  reactions: array<chatMessageLite_1>,
+  emojis: option<dict<JSON.t>>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    fromUserId: s.field("fromUserId", S.string),
+    fromUser: s.fieldOr("fromUser", S.nullableAsOption(UserLite.schema), None),
+    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.string), None),
+    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.string), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
+    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    reactions: s.field("reactions", S.array(chatMessageLite_1Schema)),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+  })
+}
+
+module ChatMessage = {
+  type chatMessage_1 = {
+  reaction: string,
+  user: UserLite.t,
+}
+  let chatMessage_1Schema = S.object(s => {
+    reaction: s.field("reaction", S.string),
+    user: s.field("user", UserLite.schema),
+  })
+  type t = {
+  id: string,
+  createdAt: string,
+  fromUserId: string,
+  fromUser: UserLite.t,
+  toUserId: option<string>,
+  toUser: option<UserLite.t>,
+  toRoomId: option<string>,
+  toRoom: option<ChatRoom.t>,
+  text: option<string>,
+  fileId: option<string>,
+  file: option<DriveFile.t>,
+  isRead: option<bool>,
+  reactions: array<chatMessage_1>,
+  emojis: option<dict<JSON.t>>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    fromUserId: s.field("fromUserId", S.string),
+    fromUser: s.field("fromUser", UserLite.schema),
+    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.string), None),
+    toUser: s.fieldOr("toUser", S.nullableAsOption(UserLite.schema), None),
+    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.string), None),
+    toRoom: s.fieldOr("toRoom", S.nullableAsOption(ChatRoom.schema), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
+    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
+    reactions: s.field("reactions", S.array(chatMessage_1Schema)),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+  })
+}
+
+module SystemWebhook = {
+  type t = {
+  id: string,
+  isActive: bool,
+  updatedAt: string,
+  latestSentAt: option<string>,
+  latestStatus: option<float>,
+  name: string,
+  on: array<string>,
+  url: string,
+  secret: string,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    isActive: s.field("isActive", S.bool),
+    updatedAt: s.field("updatedAt", S.string),
+    latestSentAt: s.field("latestSentAt", S.nullableAsOption(S.string)),
+    latestStatus: s.field("latestStatus", S.nullableAsOption(S.float)),
+    name: s.field("name", S.string),
+    on: s.field("on", S.array(S.string)),
+    url: s.field("url", S.string),
+    secret: s.field("secret", S.string),
+  })
+}
+
+module AbuseReportNotificationRecipient = {
+  type t = {
+  id: string,
+  isActive: bool,
+  updatedAt: string,
+  name: string,
+  @as("method") method_: string,
+  userId: option<string>,
+  user: option<UserLite.t>,
+  systemWebhookId: option<string>,
+  systemWebhook: option<SystemWebhook.t>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    isActive: s.field("isActive", S.bool),
+    updatedAt: s.field("updatedAt", S.string),
+    name: s.field("name", S.string),
+    method_: s.field("method", S.string),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
+    systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
+    systemWebhook: s.fieldOr("systemWebhook", S.nullableAsOption(SystemWebhook.schema), None),
+  })
+}
+
+module UserWebhook = {
+  type t = {
+  id: string,
+  userId: string,
+  name: string,
+  on: array<string>,
+  url: string,
+  secret: string,
+  active: bool,
+  latestSentAt: option<string>,
+  latestStatus: option<int>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    userId: s.field("userId", S.string),
+    name: s.field("name", S.string),
+    on: s.field("on", S.array(S.string)),
+    url: s.field("url", S.string),
+    secret: s.field("secret", S.string),
+    active: s.field("active", S.bool),
+    latestSentAt: s.field("latestSentAt", S.nullableAsOption(S.string)),
+    latestStatus: s.field("latestStatus", S.nullableAsOption(S.int)),
+  })
+}
+
+module MetaDetailedOnly = {
+  type metaDetailedOnly_1 = {
+  registration: bool,
+  emailRequiredForSignup: bool,
+  localTimeline: bool,
+  globalTimeline: bool,
+  hcaptcha: bool,
+  turnstile: bool,
+  recaptcha: bool,
+  objectStorage: bool,
+  serviceWorker: bool,
+  miauth: option<bool>,
+}
+  let metaDetailedOnly_1Schema = S.object(s => {
+    registration: s.field("registration", S.bool),
+    emailRequiredForSignup: s.field("emailRequiredForSignup", S.bool),
+    localTimeline: s.field("localTimeline", S.bool),
+    globalTimeline: s.field("globalTimeline", S.bool),
+    hcaptcha: s.field("hcaptcha", S.bool),
+    turnstile: s.field("turnstile", S.bool),
+    recaptcha: s.field("recaptcha", S.bool),
+    objectStorage: s.field("objectStorage", S.bool),
+    serviceWorker: s.field("serviceWorker", S.bool),
+    miauth: s.fieldOr("miauth", S.nullableAsOption(S.bool), None),
+  })
+  type t = {
+  features: option<metaDetailedOnly_1>,
+  proxyAccountName: option<string>,
+  requireSetup: bool,
+  cacheRemoteFiles: bool,
+  cacheRemoteSensitiveFiles: bool,
+}
+  let schema = S.object(s => {
+    features: s.fieldOr("features", S.nullableAsOption(metaDetailedOnly_1Schema), None),
+    proxyAccountName: s.field("proxyAccountName", S.nullableAsOption(S.string)),
+    requireSetup: s.field("requireSetup", S.bool),
+    cacheRemoteFiles: s.field("cacheRemoteFiles", S.bool),
+    cacheRemoteSensitiveFiles: s.field("cacheRemoteSensitiveFiles", S.bool),
   })
 }
 
@@ -741,136 +640,446 @@ module RolePolicies = {
   })
 }
 
-module MetaDetailedOnly = {
+module MetaLite = {
+  type metaLite_3 = {
+  dsn: string,
+}
+  let metaLite_3Schema = S.object(s => {
+    dsn: s.field("dsn", S.string),
+  })
+  type metaLite_2 = {
+  options: metaLite_3,
+  vueIntegration: option<dict<JSON.t>>,
+  browserTracingIntegration: option<dict<JSON.t>>,
+  replayIntegration: option<dict<JSON.t>>,
+}
+  let metaLite_2Schema = S.object(s => {
+    options: s.field("options", metaLite_3Schema),
+    vueIntegration: s.fieldOr("vueIntegration", S.nullableAsOption(S.dict(S.json)), None),
+    browserTracingIntegration: s.fieldOr("browserTracingIntegration", S.nullableAsOption(S.dict(S.json)), None),
+    replayIntegration: s.fieldOr("replayIntegration", S.nullableAsOption(S.dict(S.json)), None),
+  })
+  type metaLite_1 = {
+  id: string,
+  url: string,
+  place: string,
+  ratio: float,
+  imageUrl: string,
+  dayOfWeek: int,
+  isSensitive: option<bool>,
+}
+  let metaLite_1Schema = S.object(s => {
+    id: s.field("id", S.string),
+    url: s.field("url", S.string),
+    place: s.field("place", S.string),
+    ratio: s.field("ratio", S.float),
+    imageUrl: s.field("imageUrl", S.string),
+    dayOfWeek: s.field("dayOfWeek", S.int),
+    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+  })
   type t = {
-  features: option<{
-  registration: bool,
+  maintainerName: option<string>,
+  maintainerEmail: option<string>,
+  version: string,
+  basedMisskeyVersion: string,
+  providesTarball: bool,
+  name: option<string>,
+  shortName: option<string>,
+  uri: string,
+  description: option<string>,
+  langs: array<string>,
+  tosUrl: option<string>,
+  repositoryUrl: option<string>,
+  feedbackUrl: option<string>,
+  defaultDarkTheme: option<string>,
+  defaultLightTheme: option<string>,
+  clientOptions: dict<JSON.t>,
+  disableRegistration: bool,
   emailRequiredForSignup: bool,
-  localTimeline: bool,
-  globalTimeline: bool,
-  hcaptcha: bool,
-  turnstile: bool,
-  recaptcha: bool,
-  objectStorage: bool,
-  serviceWorker: bool,
-  miauth: option<bool>,
-}>,
-  proxyAccountName: JSON.t,
-  requireSetup: bool,
-  cacheRemoteFiles: bool,
-  cacheRemoteSensitiveFiles: bool,
+  enableHcaptcha: bool,
+  hcaptchaSiteKey: option<string>,
+  enableMcaptcha: bool,
+  mcaptchaSiteKey: option<string>,
+  mcaptchaInstanceUrl: option<string>,
+  enableRecaptcha: bool,
+  recaptchaSiteKey: option<string>,
+  enableTurnstile: bool,
+  turnstileSiteKey: option<string>,
+  enableTestcaptcha: bool,
+  googleAnalyticsMeasurementId: option<string>,
+  swPublickey: option<string>,
+  mascotImageUrl: string,
+  bannerUrl: option<string>,
+  serverErrorImageUrl: option<string>,
+  infoImageUrl: option<string>,
+  notFoundImageUrl: option<string>,
+  youBlockedImageUrl: option<string>,
+  iconUrl: option<string>,
+  maxNoteTextLength: float,
+  ads: array<metaLite_1>,
+  trustedLinkUrlPatterns: array<string>,
+  notesPerOneAd: float,
+  enableEmail: bool,
+  enableServiceWorker: bool,
+  translatorAvailable: bool,
+  sentryForFrontend: option<metaLite_2>,
+  mediaProxy: string,
+  enableUrlPreview: bool,
+  backgroundImageUrl: option<string>,
+  impressumUrl: option<string>,
+  logoImageUrl: option<string>,
+  privacyPolicyUrl: option<string>,
+  inquiryUrl: option<string>,
+  serverRules: array<string>,
+  themeColor: option<string>,
+  policies: RolePolicies.t,
+  noteSearchableScope: string,
+  maxFileSize: float,
+  federation: string,
+  disableRegistrationWhenInactive: bool,
+  disablePublicNoteWhenInactive: bool,
+  moderatorInactivityLimitDays: float,
+  customRobotsTxt: option<string>,
 }
   let schema = S.object(s => {
-    features: s.fieldOr("features", S.nullableAsOption(S.object(s => {
-    registration: s.field("registration", S.bool),
+    maintainerName: s.field("maintainerName", S.nullableAsOption(S.string)),
+    maintainerEmail: s.field("maintainerEmail", S.nullableAsOption(S.string)),
+    version: s.field("version", S.string),
+    basedMisskeyVersion: s.field("basedMisskeyVersion", S.string),
+    providesTarball: s.field("providesTarball", S.bool),
+    name: s.field("name", S.nullableAsOption(S.string)),
+    shortName: s.field("shortName", S.nullableAsOption(S.string)),
+    uri: s.field("uri", S.string),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    langs: s.field("langs", S.array(S.string)),
+    tosUrl: s.field("tosUrl", S.nullableAsOption(S.string)),
+    repositoryUrl: s.field("repositoryUrl", S.nullableAsOption(S.string)),
+    feedbackUrl: s.field("feedbackUrl", S.nullableAsOption(S.string)),
+    defaultDarkTheme: s.field("defaultDarkTheme", S.nullableAsOption(S.string)),
+    defaultLightTheme: s.field("defaultLightTheme", S.nullableAsOption(S.string)),
+    clientOptions: s.field("clientOptions", S.dict(S.json)),
+    disableRegistration: s.field("disableRegistration", S.bool),
     emailRequiredForSignup: s.field("emailRequiredForSignup", S.bool),
-    localTimeline: s.field("localTimeline", S.bool),
-    globalTimeline: s.field("globalTimeline", S.bool),
-    hcaptcha: s.field("hcaptcha", S.bool),
-    turnstile: s.field("turnstile", S.bool),
-    recaptcha: s.field("recaptcha", S.bool),
-    objectStorage: s.field("objectStorage", S.bool),
-    serviceWorker: s.field("serviceWorker", S.bool),
-    miauth: s.fieldOr("miauth", S.nullableAsOption(S.bool), None),
-  })), None),
-    proxyAccountName: s.field("proxyAccountName", S.json),
-    requireSetup: s.field("requireSetup", S.bool),
-    cacheRemoteFiles: s.field("cacheRemoteFiles", S.bool),
-    cacheRemoteSensitiveFiles: s.field("cacheRemoteSensitiveFiles", S.bool),
+    enableHcaptcha: s.field("enableHcaptcha", S.bool),
+    hcaptchaSiteKey: s.field("hcaptchaSiteKey", S.nullableAsOption(S.string)),
+    enableMcaptcha: s.field("enableMcaptcha", S.bool),
+    mcaptchaSiteKey: s.field("mcaptchaSiteKey", S.nullableAsOption(S.string)),
+    mcaptchaInstanceUrl: s.field("mcaptchaInstanceUrl", S.nullableAsOption(S.string)),
+    enableRecaptcha: s.field("enableRecaptcha", S.bool),
+    recaptchaSiteKey: s.field("recaptchaSiteKey", S.nullableAsOption(S.string)),
+    enableTurnstile: s.field("enableTurnstile", S.bool),
+    turnstileSiteKey: s.field("turnstileSiteKey", S.nullableAsOption(S.string)),
+    enableTestcaptcha: s.field("enableTestcaptcha", S.bool),
+    googleAnalyticsMeasurementId: s.field("googleAnalyticsMeasurementId", S.nullableAsOption(S.string)),
+    swPublickey: s.field("swPublickey", S.nullableAsOption(S.string)),
+    mascotImageUrl: s.field("mascotImageUrl", S.string),
+    bannerUrl: s.field("bannerUrl", S.nullableAsOption(S.string)),
+    serverErrorImageUrl: s.field("serverErrorImageUrl", S.nullableAsOption(S.string)),
+    infoImageUrl: s.field("infoImageUrl", S.nullableAsOption(S.string)),
+    notFoundImageUrl: s.field("notFoundImageUrl", S.nullableAsOption(S.string)),
+    youBlockedImageUrl: s.field("youBlockedImageUrl", S.nullableAsOption(S.string)),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    maxNoteTextLength: s.field("maxNoteTextLength", S.float),
+    ads: s.field("ads", S.array(metaLite_1Schema)),
+    trustedLinkUrlPatterns: s.field("trustedLinkUrlPatterns", S.array(S.string)),
+    notesPerOneAd: s.field("notesPerOneAd", S.float),
+    enableEmail: s.field("enableEmail", S.bool),
+    enableServiceWorker: s.field("enableServiceWorker", S.bool),
+    translatorAvailable: s.field("translatorAvailable", S.bool),
+    sentryForFrontend: s.field("sentryForFrontend", S.nullableAsOption(metaLite_2Schema)),
+    mediaProxy: s.field("mediaProxy", S.string),
+    enableUrlPreview: s.field("enableUrlPreview", S.bool),
+    backgroundImageUrl: s.field("backgroundImageUrl", S.nullableAsOption(S.string)),
+    impressumUrl: s.field("impressumUrl", S.nullableAsOption(S.string)),
+    logoImageUrl: s.field("logoImageUrl", S.nullableAsOption(S.string)),
+    privacyPolicyUrl: s.field("privacyPolicyUrl", S.nullableAsOption(S.string)),
+    inquiryUrl: s.field("inquiryUrl", S.nullableAsOption(S.string)),
+    serverRules: s.field("serverRules", S.array(S.string)),
+    themeColor: s.field("themeColor", S.nullableAsOption(S.string)),
+    policies: s.field("policies", RolePolicies.schema),
+    noteSearchableScope: s.field("noteSearchableScope", S.string),
+    maxFileSize: s.field("maxFileSize", S.float),
+    federation: s.field("federation", S.string),
+    disableRegistrationWhenInactive: s.field("disableRegistrationWhenInactive", S.bool),
+    disablePublicNoteWhenInactive: s.field("disablePublicNoteWhenInactive", S.bool),
+    moderatorInactivityLimitDays: s.field("moderatorInactivityLimitDays", S.float),
+    customRobotsTxt: s.field("customRobotsTxt", S.nullableAsOption(S.string)),
   })
 }
 
-module UserWebhook = {
-  type t = {
-  id: string,
-  userId: string,
-  name: string,
-  on: array<string>,
-  url: string,
-  secret: string,
-  active: bool,
-  latestSentAt: JSON.t,
-  latestStatus: JSON.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    userId: s.field("userId", S.string),
-    name: s.field("name", S.string),
-    on: s.field("on", S.array(S.string)),
-    url: s.field("url", S.string),
-    secret: s.field("secret", S.string),
-    active: s.field("active", S.bool),
-    latestSentAt: s.field("latestSentAt", S.json),
-    latestStatus: s.field("latestStatus", S.json),
-  })
+module MetaDetailed = {
+  type t = MetaDetailedOnly.t
+  let schema = MetaDetailedOnly.schema
 }
 
-module SystemWebhook = {
-  type t = {
-  id: string,
-  isActive: bool,
-  updatedAt: string,
-  latestSentAt: JSON.t,
-  latestStatus: JSON.t,
-  name: string,
-  on: array<string>,
-  url: string,
-  secret: string,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    isActive: s.field("isActive", S.bool),
-    updatedAt: s.field("updatedAt", S.string),
-    latestSentAt: s.field("latestSentAt", S.json),
-    latestStatus: s.field("latestStatus", S.json),
-    name: s.field("name", S.string),
-    on: s.field("on", S.array(S.string)),
-    url: s.field("url", S.string),
-    secret: s.field("secret", S.string),
-  })
-}
-
-module NoteReaction = {
+module ReversiGameDetailed = {
   type t = {
   id: string,
   createdAt: string,
-  user: UserLite.t,
+  startedAt: option<string>,
+  endedAt: option<string>,
+  isStarted: bool,
+  isEnded: bool,
+  form1: option<dict<JSON.t>>,
+  form2: option<dict<JSON.t>>,
+  @as("user1Ready") user1ready: bool,
+  @as("user2Ready") user2ready: bool,
+  @as("user1Id") user1id: string,
+  @as("user2Id") user2id: string,
+  user1: UserLite.t,
+  user2: UserLite.t,
+  winnerId: option<string>,
+  winner: option<UserLite.t>,
+  surrenderedUserId: option<string>,
+  timeoutUserId: option<string>,
+  black: option<float>,
+  bw: string,
+  noIrregularRules: bool,
+  isLlotheo: bool,
+  canPutEverywhere: bool,
+  loopedBoard: bool,
+  timeLimitForEachTurn: float,
+  logs: array<array<float>>,
+  map: array<string>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    startedAt: s.field("startedAt", S.nullableAsOption(S.string)),
+    endedAt: s.field("endedAt", S.nullableAsOption(S.string)),
+    isStarted: s.field("isStarted", S.bool),
+    isEnded: s.field("isEnded", S.bool),
+    form1: s.field("form1", S.nullableAsOption(S.dict(S.json))),
+    form2: s.field("form2", S.nullableAsOption(S.dict(S.json))),
+    user1ready: s.field("user1Ready", S.bool),
+    user2ready: s.field("user2Ready", S.bool),
+    user1id: s.field("user1Id", S.string),
+    user2id: s.field("user2Id", S.string),
+    user1: s.field("user1", UserLite.schema),
+    user2: s.field("user2", UserLite.schema),
+    winnerId: s.field("winnerId", S.nullableAsOption(S.string)),
+    winner: s.field("winner", S.nullableAsOption(UserLite.schema)),
+    surrenderedUserId: s.field("surrenderedUserId", S.nullableAsOption(S.string)),
+    timeoutUserId: s.field("timeoutUserId", S.nullableAsOption(S.string)),
+    black: s.field("black", S.nullableAsOption(S.float)),
+    bw: s.field("bw", S.string),
+    noIrregularRules: s.field("noIrregularRules", S.bool),
+    isLlotheo: s.field("isLlotheo", S.bool),
+    canPutEverywhere: s.field("canPutEverywhere", S.bool),
+    loopedBoard: s.field("loopedBoard", S.bool),
+    timeLimitForEachTurn: s.field("timeLimitForEachTurn", S.float),
+    logs: s.field("logs", S.array(S.array(S.float))),
+    map: s.field("map", S.array(S.string)),
+  })
+}
+
+module ReversiGameLite = {
+  type t = {
+  id: string,
+  createdAt: string,
+  startedAt: option<string>,
+  endedAt: option<string>,
+  isStarted: bool,
+  isEnded: bool,
+  @as("user1Id") user1id: string,
+  @as("user2Id") user2id: string,
+  user1: UserLite.t,
+  user2: UserLite.t,
+  winnerId: option<string>,
+  winner: option<UserLite.t>,
+  surrenderedUserId: option<string>,
+  timeoutUserId: option<string>,
+  black: option<float>,
+  bw: string,
+  noIrregularRules: bool,
+  isLlotheo: bool,
+  canPutEverywhere: bool,
+  loopedBoard: bool,
+  timeLimitForEachTurn: float,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    startedAt: s.field("startedAt", S.nullableAsOption(S.string)),
+    endedAt: s.field("endedAt", S.nullableAsOption(S.string)),
+    isStarted: s.field("isStarted", S.bool),
+    isEnded: s.field("isEnded", S.bool),
+    user1id: s.field("user1Id", S.string),
+    user2id: s.field("user2Id", S.string),
+    user1: s.field("user1", UserLite.schema),
+    user2: s.field("user2", UserLite.schema),
+    winnerId: s.field("winnerId", S.nullableAsOption(S.string)),
+    winner: s.field("winner", S.nullableAsOption(UserLite.schema)),
+    surrenderedUserId: s.field("surrenderedUserId", S.nullableAsOption(S.string)),
+    timeoutUserId: s.field("timeoutUserId", S.nullableAsOption(S.string)),
+    black: s.field("black", S.nullableAsOption(S.float)),
+    bw: s.field("bw", S.string),
+    noIrregularRules: s.field("noIrregularRules", S.bool),
+    isLlotheo: s.field("isLlotheo", S.bool),
+    canPutEverywhere: s.field("canPutEverywhere", S.bool),
+    loopedBoard: s.field("loopedBoard", S.bool),
+    timeLimitForEachTurn: s.field("timeLimitForEachTurn", S.float),
+  })
+}
+
+module RoleCondFormulaValue = {
+  type t = dict<JSON.t>
+  let schema = S.dict(S.json)
+}
+
+module RoleLite = {
+  type t = {
+  id: string,
+  name: string,
+  color: option<string>,
+  iconUrl: option<string>,
+  description: string,
+  isModerator: bool,
+  isAdministrator: bool,
+  displayOrder: int,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    color: s.field("color", S.nullableAsOption(S.string)),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    description: s.field("description", S.string),
+    isModerator: s.field("isModerator", S.bool),
+    isAdministrator: s.field("isAdministrator", S.bool),
+    displayOrder: s.field("displayOrder", S.int),
+  })
+}
+
+module Role = {
+  type t = {
+  createdAt: string,
+  updatedAt: string,
+  target: string,
+  condFormula: RoleCondFormulaValue.t,
+  isPublic: bool,
+  isExplorable: bool,
+  asBadge: bool,
+  preserveAssignmentOnMoveAccount: bool,
+  canEditMembersByModerator: bool,
+  policies: dict<JSON.t>,
+  usersCount: int,
+}
+  let schema = S.object(s => {
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.string),
+    target: s.field("target", S.string),
+    condFormula: s.field("condFormula", RoleCondFormulaValue.schema),
+    isPublic: s.field("isPublic", S.bool),
+    isExplorable: s.field("isExplorable", S.bool),
+    asBadge: s.field("asBadge", S.bool),
+    preserveAssignmentOnMoveAccount: s.field("preserveAssignmentOnMoveAccount", S.bool),
+    canEditMembersByModerator: s.field("canEditMembersByModerator", S.bool),
+    policies: s.field("policies", S.dict(S.json)),
+    usersCount: s.field("usersCount", S.int),
+  })
+}
+
+module RoleCondFormulaFollowersOrFollowingOrNotes = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+  value: float,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+    value: s.field("value", S.float),
+  })
+}
+
+module RoleCondFormulaValueCreated = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+  sec: float,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+    sec: s.field("sec", S.float),
+  })
+}
+
+module RoleCondFormulaValueAssignedRole = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+  roleId: string,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+    roleId: s.field("roleId", S.string),
+  })
+}
+
+module RoleCondFormulaValueUserSettingBooleanSchema = {
+  type t = {
+  id: string,
   @as("type") type_: string,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    user: s.field("user", UserLite.schema),
     type_: s.field("type", S.string),
   })
 }
 
-module Clip = {
+module RoleCondFormulaValueIsLocalOrRemote = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+  })
+}
+
+module RoleCondFormulaValueNot = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+  value: RoleCondFormulaValue.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+    value: s.field("value", RoleCondFormulaValue.schema),
+  })
+}
+
+module RoleCondFormulaLogics = {
+  type t = {
+  id: string,
+  @as("type") type_: string,
+  values: array<RoleCondFormulaValue.t>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    type_: s.field("type", S.string),
+    values: s.field("values", S.array(RoleCondFormulaValue.schema)),
+  })
+}
+
+module Signin = {
   type t = {
   id: string,
   createdAt: string,
-  lastClippedAt: JSON.t,
-  userId: string,
-  user: UserLite.t,
-  name: string,
-  description: JSON.t,
-  isPublic: bool,
-  favoritedCount: float,
-  isFavorited: option<bool>,
-  notesCount: option<int>,
+  ip: string,
+  headers: dict<JSON.t>,
+  success: bool,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    lastClippedAt: s.field("lastClippedAt", S.json),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    name: s.field("name", S.string),
-    description: s.field("description", S.json),
-    isPublic: s.field("isPublic", S.bool),
-    favoritedCount: s.field("favoritedCount", S.float),
-    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
-    notesCount: s.fieldOr("notesCount", S.nullableAsOption(S.int), None),
+    ip: s.field("ip", S.string),
+    headers: s.field("headers", S.dict(S.json)),
+    success: s.field("success", S.bool),
   })
 }
 
@@ -903,27 +1112,1015 @@ module Flash = {
   })
 }
 
-module ChatRoom = {
+module EmojiDetailedAdmin = {
+  type emojiDetailedAdmin_1 = {
+  id: string,
+  name: string,
+}
+  let emojiDetailedAdmin_1Schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+  })
+  type t = {
+  id: string,
+  updatedAt: option<string>,
+  name: string,
+  host: option<string>,
+  publicUrl: string,
+  originalUrl: string,
+  uri: option<string>,
+  @as("type") type_: option<string>,
+  aliases: array<string>,
+  category: option<string>,
+  license: option<string>,
+  localOnly: bool,
+  isSensitive: bool,
+  roleIdsThatCanBeUsedThisEmojiAsReaction: array<emojiDetailedAdmin_1>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
+    name: s.field("name", S.string),
+    host: s.field("host", S.nullableAsOption(S.string)),
+    publicUrl: s.field("publicUrl", S.string),
+    originalUrl: s.field("originalUrl", S.string),
+    uri: s.field("uri", S.nullableAsOption(S.string)),
+    type_: s.field("type", S.nullableAsOption(S.string)),
+    aliases: s.field("aliases", S.array(S.string)),
+    category: s.field("category", S.nullableAsOption(S.string)),
+    license: s.field("license", S.nullableAsOption(S.string)),
+    localOnly: s.field("localOnly", S.bool),
+    isSensitive: s.field("isSensitive", S.bool),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.array(emojiDetailedAdmin_1Schema)),
+  })
+}
+
+module EmojiDetailed = {
+  type t = {
+  id: string,
+  aliases: array<string>,
+  name: string,
+  category: option<string>,
+  host: option<string>,
+  url: string,
+  license: option<string>,
+  isSensitive: bool,
+  localOnly: bool,
+  roleIdsThatCanBeUsedThisEmojiAsReaction: array<string>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    aliases: s.field("aliases", S.array(S.string)),
+    name: s.field("name", S.string),
+    category: s.field("category", S.nullableAsOption(S.string)),
+    host: s.field("host", S.nullableAsOption(S.string)),
+    url: s.field("url", S.string),
+    license: s.field("license", S.nullableAsOption(S.string)),
+    isSensitive: s.field("isSensitive", S.bool),
+    localOnly: s.field("localOnly", S.bool),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.array(S.string)),
+  })
+}
+
+module EmojiSimple = {
+  type t = {
+  aliases: array<string>,
+  name: string,
+  category: option<string>,
+  url: string,
+  localOnly: option<bool>,
+  isSensitive: option<bool>,
+  roleIdsThatCanBeUsedThisEmojiAsReaction: option<array<string>>,
+}
+  let schema = S.object(s => {
+    aliases: s.field("aliases", S.array(S.string)),
+    name: s.field("name", S.string),
+    category: s.field("category", S.nullableAsOption(S.string)),
+    url: s.field("url", S.string),
+    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
+    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
+  })
+}
+
+module GalleryPost = {
   type t = {
   id: string,
   createdAt: string,
-  ownerId: string,
-  owner: UserLite.t,
-  name: string,
-  description: string,
-  isMuted: option<bool>,
-  invitationExists: option<bool>,
+  updatedAt: string,
+  userId: string,
+  user: UserLite.t,
+  title: string,
+  description: option<string>,
+  fileIds: option<array<string>>,
+  files: option<array<DriveFile.t>>,
+  tags: option<array<string>>,
+  isSensitive: bool,
+  likedCount: float,
+  isLiked: option<bool>,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    ownerId: s.field("ownerId", S.string),
-    owner: s.field("owner", UserLite.schema),
-    name: s.field("name", S.string),
-    description: s.field("description", S.string),
-    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
-    invitationExists: s.fieldOr("invitationExists", S.nullableAsOption(S.bool), None),
+    updatedAt: s.field("updatedAt", S.string),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    title: s.field("title", S.string),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
+    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
+    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
+    isSensitive: s.field("isSensitive", S.bool),
+    likedCount: s.field("likedCount", S.float),
+    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
   })
+}
+
+module FederationInstance = {
+  type t = {
+  id: string,
+  firstRetrievedAt: string,
+  host: string,
+  usersCount: float,
+  notesCount: float,
+  followingCount: float,
+  followersCount: float,
+  isNotResponding: bool,
+  isSuspended: bool,
+  suspensionState: string,
+  isBlocked: bool,
+  softwareName: option<string>,
+  softwareVersion: option<string>,
+  openRegistrations: option<bool>,
+  name: option<string>,
+  description: option<string>,
+  maintainerName: option<string>,
+  maintainerEmail: option<string>,
+  isSilenced: bool,
+  isMediaSilenced: bool,
+  iconUrl: option<string>,
+  faviconUrl: option<string>,
+  themeColor: option<string>,
+  infoUpdatedAt: option<string>,
+  latestRequestReceivedAt: option<string>,
+  moderationNote: option<string>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    firstRetrievedAt: s.field("firstRetrievedAt", S.string),
+    host: s.field("host", S.string),
+    usersCount: s.field("usersCount", S.float),
+    notesCount: s.field("notesCount", S.float),
+    followingCount: s.field("followingCount", S.float),
+    followersCount: s.field("followersCount", S.float),
+    isNotResponding: s.field("isNotResponding", S.bool),
+    isSuspended: s.field("isSuspended", S.bool),
+    suspensionState: s.field("suspensionState", S.string),
+    isBlocked: s.field("isBlocked", S.bool),
+    softwareName: s.field("softwareName", S.nullableAsOption(S.string)),
+    softwareVersion: s.field("softwareVersion", S.nullableAsOption(S.string)),
+    openRegistrations: s.field("openRegistrations", S.nullableAsOption(S.bool)),
+    name: s.field("name", S.nullableAsOption(S.string)),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    maintainerName: s.field("maintainerName", S.nullableAsOption(S.string)),
+    maintainerEmail: s.field("maintainerEmail", S.nullableAsOption(S.string)),
+    isSilenced: s.field("isSilenced", S.bool),
+    isMediaSilenced: s.field("isMediaSilenced", S.bool),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    faviconUrl: s.field("faviconUrl", S.nullableAsOption(S.string)),
+    themeColor: s.field("themeColor", S.nullableAsOption(S.string)),
+    infoUpdatedAt: s.field("infoUpdatedAt", S.nullableAsOption(S.string)),
+    latestRequestReceivedAt: s.field("latestRequestReceivedAt", S.nullableAsOption(S.string)),
+    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.string), None),
+  })
+}
+
+module Clip = {
+  type t = {
+  id: string,
+  createdAt: string,
+  lastClippedAt: option<string>,
+  userId: string,
+  user: UserLite.t,
+  name: string,
+  description: option<string>,
+  isPublic: bool,
+  favoritedCount: float,
+  isFavorited: option<bool>,
+  notesCount: option<int>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    lastClippedAt: s.field("lastClippedAt", S.nullableAsOption(S.string)),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    name: s.field("name", S.string),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    isPublic: s.field("isPublic", S.bool),
+    favoritedCount: s.field("favoritedCount", S.float),
+    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
+    notesCount: s.fieldOr("notesCount", S.nullableAsOption(S.int), None),
+  })
+}
+
+module Antenna = {
+  type t = {
+  id: string,
+  createdAt: string,
+  name: string,
+  keywords: array<array<string>>,
+  excludeKeywords: array<array<string>>,
+  src: string,
+  userListId: option<string>,
+  userGroupId: option<string>,
+  users: array<string>,
+  caseSensitive: bool,
+  localOnly: bool,
+  excludeBots: bool,
+  withReplies: bool,
+  withFile: bool,
+  isActive: bool,
+  hasUnreadNote: bool,
+  notify: bool,
+  excludeNotesInSensitiveChannel: bool,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    name: s.field("name", S.string),
+    keywords: s.field("keywords", S.array(S.array(S.string))),
+    excludeKeywords: s.field("excludeKeywords", S.array(S.array(S.string))),
+    src: s.field("src", S.string),
+    userListId: s.field("userListId", S.nullableAsOption(S.string)),
+    userGroupId: s.field("userGroupId", S.nullableAsOption(S.string)),
+    users: s.field("users", S.array(S.string)),
+    caseSensitive: s.field("caseSensitive", S.bool),
+    localOnly: s.field("localOnly", S.bool),
+    excludeBots: s.field("excludeBots", S.bool),
+    withReplies: s.field("withReplies", S.bool),
+    withFile: s.field("withFile", S.bool),
+    isActive: s.field("isActive", S.bool),
+    hasUnreadNote: s.field("hasUnreadNote", S.bool),
+    notify: s.field("notify", S.bool),
+    excludeNotesInSensitiveChannel: s.field("excludeNotesInSensitiveChannel", S.bool),
+  })
+}
+
+module QueueJob = {
+  type t = {
+  id: string,
+  name: string,
+  data: dict<JSON.t>,
+  opts: dict<JSON.t>,
+  timestamp: float,
+  processedOn: option<float>,
+  processedBy: option<string>,
+  finishedOn: option<float>,
+  progress: dict<JSON.t>,
+  attempts: float,
+  delay: float,
+  failedReason: string,
+  stacktrace: array<string>,
+  returnValue: dict<JSON.t>,
+  isFailed: bool,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    data: s.field("data", S.dict(S.json)),
+    opts: s.field("opts", S.dict(S.json)),
+    timestamp: s.field("timestamp", S.float),
+    processedOn: s.fieldOr("processedOn", S.nullableAsOption(S.float), None),
+    processedBy: s.fieldOr("processedBy", S.nullableAsOption(S.string), None),
+    finishedOn: s.fieldOr("finishedOn", S.nullableAsOption(S.float), None),
+    progress: s.field("progress", S.dict(S.json)),
+    attempts: s.field("attempts", S.float),
+    delay: s.field("delay", S.float),
+    failedReason: s.field("failedReason", S.string),
+    stacktrace: s.field("stacktrace", S.array(S.string)),
+    returnValue: s.field("returnValue", S.dict(S.json)),
+    isFailed: s.field("isFailed", S.bool),
+  })
+}
+
+module QueueMetrics = {
+  type queueMetrics_1 = {
+  count: float,
+  @as("prevTS") prevTs: float,
+  prevCount: float,
+}
+  let queueMetrics_1Schema = S.object(s => {
+    count: s.field("count", S.float),
+    prevTs: s.field("prevTS", S.float),
+    prevCount: s.field("prevCount", S.float),
+  })
+  type t = {
+  meta: queueMetrics_1,
+  data: array<float>,
+  count: float,
+}
+  let schema = S.object(s => {
+    meta: s.field("meta", queueMetrics_1Schema),
+    data: s.field("data", S.array(S.float)),
+    count: s.field("count", S.float),
+  })
+}
+
+module QueueCount = {
+  type t = {
+  waiting: float,
+  active: float,
+  completed: float,
+  failed: float,
+  delayed: float,
+}
+  let schema = S.object(s => {
+    waiting: s.field("waiting", S.float),
+    active: s.field("active", S.float),
+    completed: s.field("completed", S.float),
+    failed: s.field("failed", S.float),
+    delayed: s.field("delayed", S.float),
+  })
+}
+
+module Note = {
+  type note_4 = {
+  isVoted: bool,
+  text: string,
+  votes: float,
+}
+  let note_4Schema = S.object(s => {
+    isVoted: s.field("isVoted", S.bool),
+    text: s.field("text", S.string),
+    votes: s.field("votes", S.float),
+  })
+  type note_3 = {
+  mode: string,
+  hosts: option<JSON.t>,
+}
+  let note_3Schema = S.object(s => {
+    mode: s.field("mode", S.string),
+    hosts: s.fieldOr("hosts", S.nullableAsOption(S.json), None),
+  })
+  type note_2 = {
+  id: string,
+  name: string,
+  color: string,
+  isSensitive: bool,
+  allowRenoteToExternal: bool,
+  userId: option<string>,
+}
+  let note_2Schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    color: s.field("color", S.string),
+    isSensitive: s.field("isSensitive", S.bool),
+    allowRenoteToExternal: s.field("allowRenoteToExternal", S.bool),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+  })
+  type note_1 = {
+  expiresAt: option<string>,
+  multiple: bool,
+  choices: array<note_4>,
+}
+  let note_1Schema = S.object(s => {
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.string), None),
+    multiple: s.field("multiple", S.bool),
+    choices: s.field("choices", S.array(note_4Schema)),
+  })
+  type rec t = {
+  id: string,
+  createdAt: string,
+  updatedAt: option<string>,
+  updatedAtHistory: option<JSON.t>,
+  deletedAt: option<string>,
+  text: option<string>,
+  cw: option<string>,
+  userId: string,
+  user: UserLite.t,
+  replyId: option<string>,
+  renoteId: option<string>,
+  reply: option<t>,
+  renote: option<t>,
+  disableRightClick: option<bool>,
+  isHidden: option<bool>,
+  visibility: string,
+  mentions: option<array<string>>,
+  visibleUserIds: option<array<string>>,
+  fileIds: option<array<string>>,
+  files: option<array<DriveFile.t>>,
+  tags: option<array<string>>,
+  poll: option<note_1>,
+  emojis: option<dict<JSON.t>>,
+  event: option<dict<JSON.t>>,
+  channelId: option<string>,
+  channel: option<note_2>,
+  localOnly: option<bool>,
+  reactionAcceptance: option<string>,
+  reactionEmojis: dict<JSON.t>,
+  reactions: dict<JSON.t>,
+  reactionCount: float,
+  renoteCount: float,
+  repliesCount: float,
+  uri: option<string>,
+  url: option<string>,
+  reactionAndUserPairCache: option<array<string>>,
+  clippedCount: option<float>,
+  hasPoll: option<bool>,
+  myReaction: option<string>,
+  deleteAt: option<string>,
+  deliveryTargets: option<note_3>,
+  hasDeliveryTargets: bool,
+}
+  let schema = S.recursive("Note", schema => S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.fieldOr("updatedAt", S.nullableAsOption(S.string), None),
+    updatedAtHistory: s.fieldOr("updatedAtHistory", S.nullableAsOption(S.json), None),
+    deletedAt: s.fieldOr("deletedAt", S.nullableAsOption(S.string), None),
+    text: s.field("text", S.nullableAsOption(S.string)),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
+    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(schema), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(schema), None),
+    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
+    isHidden: s.fieldOr("isHidden", S.nullableAsOption(S.bool), None),
+    visibility: s.field("visibility", S.string),
+    mentions: s.fieldOr("mentions", S.nullableAsOption(S.array(S.string)), None),
+    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
+    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
+    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
+    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(note_1Schema), None),
+    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    event: s.fieldOr("event", S.nullableAsOption(S.dict(S.json)), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    channel: s.fieldOr("channel", S.nullableAsOption(note_2Schema), None),
+    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
+    reactionAcceptance: s.field("reactionAcceptance", S.nullableAsOption(S.string)),
+    reactionEmojis: s.field("reactionEmojis", S.dict(S.json)),
+    reactions: s.field("reactions", S.dict(S.json)),
+    reactionCount: s.field("reactionCount", S.float),
+    renoteCount: s.field("renoteCount", S.float),
+    repliesCount: s.field("repliesCount", S.float),
+    uri: s.fieldOr("uri", S.nullableAsOption(S.string), None),
+    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
+    reactionAndUserPairCache: s.fieldOr("reactionAndUserPairCache", S.nullableAsOption(S.array(S.string)), None),
+    clippedCount: s.fieldOr("clippedCount", S.nullableAsOption(S.float), None),
+    hasPoll: s.fieldOr("hasPoll", S.nullableAsOption(S.bool), None),
+    myReaction: s.fieldOr("myReaction", S.nullableAsOption(S.string), None),
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.string), None),
+    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(note_3Schema), None),
+    hasDeliveryTargets: s.field("hasDeliveryTargets", S.bool),
+  }))
+}
+
+module Channel = {
+  type t = {
+  id: string,
+  createdAt: string,
+  lastNotedAt: option<string>,
+  name: string,
+  description: option<string>,
+  userId: option<string>,
+  bannerUrl: option<string>,
+  pinnedNoteIds: array<string>,
+  color: string,
+  isArchived: bool,
+  usersCount: float,
+  notesCount: float,
+  isSensitive: bool,
+  allowRenoteToExternal: bool,
+  isFollowing: option<bool>,
+  isFavorited: option<bool>,
+  pinnedNotes: option<array<Note.t>>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    lastNotedAt: s.field("lastNotedAt", S.nullableAsOption(S.string)),
+    name: s.field("name", S.string),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+    bannerUrl: s.field("bannerUrl", S.nullableAsOption(S.string)),
+    pinnedNoteIds: s.field("pinnedNoteIds", S.array(S.string)),
+    color: s.field("color", S.string),
+    isArchived: s.field("isArchived", S.bool),
+    usersCount: s.field("usersCount", S.float),
+    notesCount: s.field("notesCount", S.float),
+    isSensitive: s.field("isSensitive", S.bool),
+    allowRenoteToExternal: s.field("allowRenoteToExternal", S.bool),
+    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
+    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
+    pinnedNotes: s.fieldOr("pinnedNotes", S.nullableAsOption(S.array(Note.schema)), None),
+  })
+}
+
+module PageBlock = {
+  type t = dict<JSON.t>
+  let schema = S.dict(S.json)
+}
+
+module Page = {
+  type t = {
+  id: string,
+  createdAt: string,
+  updatedAt: string,
+  userId: string,
+  user: UserLite.t,
+  content: array<PageBlock.t>,
+  variables: array<dict<JSON.t>>,
+  title: string,
+  name: string,
+  summary: option<string>,
+  hideTitleWhenPinned: bool,
+  alignCenter: bool,
+  font: string,
+  script: string,
+  eyeCatchingImageId: option<string>,
+  eyeCatchingImage: option<DriveFile.t>,
+  attachedFiles: array<DriveFile.t>,
+  likedCount: float,
+  isLiked: option<bool>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.string),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    content: s.field("content", S.array(PageBlock.schema)),
+    variables: s.field("variables", S.array(S.dict(S.json))),
+    title: s.field("title", S.string),
+    name: s.field("name", S.string),
+    summary: s.field("summary", S.nullableAsOption(S.string)),
+    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.bool),
+    alignCenter: s.field("alignCenter", S.bool),
+    font: s.field("font", S.string),
+    script: s.field("script", S.string),
+    eyeCatchingImageId: s.field("eyeCatchingImageId", S.nullableAsOption(S.string)),
+    eyeCatchingImage: s.field("eyeCatchingImage", S.nullableAsOption(DriveFile.schema)),
+    attachedFiles: s.field("attachedFiles", S.array(DriveFile.schema)),
+    likedCount: s.field("likedCount", S.float),
+    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
+  })
+}
+
+module InviteCode = {
+  type t = {
+  id: string,
+  code: string,
+  expiresAt: option<string>,
+  createdAt: string,
+  createdBy: option<UserLite.t>,
+  usedBy: option<UserLite.t>,
+  usedAt: option<string>,
+  used: bool,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    code: s.field("code", S.string),
+    expiresAt: s.field("expiresAt", S.nullableAsOption(S.string)),
+    createdAt: s.field("createdAt", S.string),
+    createdBy: s.field("createdBy", S.nullableAsOption(UserLite.schema)),
+    usedBy: s.field("usedBy", S.nullableAsOption(UserLite.schema)),
+    usedAt: s.field("usedAt", S.nullableAsOption(S.string)),
+    used: s.field("used", S.bool),
+  })
+}
+
+module Hashtag = {
+  type t = {
+  tag: string,
+  mentionedUsersCount: float,
+  mentionedLocalUsersCount: float,
+  mentionedRemoteUsersCount: float,
+  attachedUsersCount: float,
+  attachedLocalUsersCount: float,
+  attachedRemoteUsersCount: float,
+}
+  let schema = S.object(s => {
+    tag: s.field("tag", S.string),
+    mentionedUsersCount: s.field("mentionedUsersCount", S.float),
+    mentionedLocalUsersCount: s.field("mentionedLocalUsersCount", S.float),
+    mentionedRemoteUsersCount: s.field("mentionedRemoteUsersCount", S.float),
+    attachedUsersCount: s.field("attachedUsersCount", S.float),
+    attachedLocalUsersCount: s.field("attachedLocalUsersCount", S.float),
+    attachedRemoteUsersCount: s.field("attachedRemoteUsersCount", S.float),
+  })
+}
+
+module UserDetailedNotMeOnly = {
+  type userDetailedNotMeOnly_1 = {
+  name: string,
+  value: string,
+}
+  let userDetailedNotMeOnly_1Schema = S.object(s => {
+    name: s.field("name", S.string),
+    value: s.field("value", S.string),
+  })
+  type t = {
+  url: option<string>,
+  uri: option<string>,
+  movedTo: option<string>,
+  alsoKnownAs: option<JSON.t>,
+  createdAt: string,
+  updatedAt: option<string>,
+  lastFetchedAt: option<string>,
+  bannerUrl: option<string>,
+  bannerBlurhash: option<string>,
+  isSilenced: bool,
+  isSuspended: bool,
+  description: option<string>,
+  location: option<string>,
+  birthday: option<string>,
+  lang: option<string>,
+  fields: array<userDetailedNotMeOnly_1>,
+  verifiedLinks: array<string>,
+  followersCount: float,
+  followingCount: float,
+  notesCount: float,
+  pinnedNoteIds: array<string>,
+  pinnedNotes: array<Note.t>,
+  pinnedPageId: option<string>,
+  pinnedPage: option<Page.t>,
+  publicReactions: bool,
+  followingVisibility: string,
+  followersVisibility: string,
+  chatScope: string,
+  canChat: bool,
+  roles: array<RoleLite.t>,
+  followedMessage: option<string>,
+  memo: option<string>,
+  moderationNote: option<string>,
+  twoFactorEnabled: option<bool>,
+  usePasswordLessLogin: option<bool>,
+  securityKeys: option<bool>,
+  isFollowing: option<bool>,
+  isFollowed: option<bool>,
+  hasPendingFollowRequestFromYou: option<bool>,
+  hasPendingFollowRequestToYou: option<bool>,
+  isBlocking: option<bool>,
+  isBlocked: option<bool>,
+  isMuted: option<bool>,
+  isRenoteMuted: option<bool>,
+  notify: option<string>,
+  withReplies: option<bool>,
+}
+  let schema = S.object(s => {
+    url: s.field("url", S.nullableAsOption(S.string)),
+    uri: s.field("uri", S.nullableAsOption(S.string)),
+    movedTo: s.field("movedTo", S.nullableAsOption(S.string)),
+    alsoKnownAs: s.field("alsoKnownAs", S.nullableAsOption(S.json)),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
+    lastFetchedAt: s.field("lastFetchedAt", S.nullableAsOption(S.string)),
+    bannerUrl: s.field("bannerUrl", S.nullableAsOption(S.string)),
+    bannerBlurhash: s.field("bannerBlurhash", S.nullableAsOption(S.string)),
+    isSilenced: s.field("isSilenced", S.bool),
+    isSuspended: s.field("isSuspended", S.bool),
+    description: s.field("description", S.nullableAsOption(S.string)),
+    location: s.field("location", S.nullableAsOption(S.string)),
+    birthday: s.field("birthday", S.nullableAsOption(S.string)),
+    lang: s.field("lang", S.nullableAsOption(S.string)),
+    fields: s.field("fields", S.array(userDetailedNotMeOnly_1Schema)),
+    verifiedLinks: s.field("verifiedLinks", S.array(S.string)),
+    followersCount: s.field("followersCount", S.float),
+    followingCount: s.field("followingCount", S.float),
+    notesCount: s.field("notesCount", S.float),
+    pinnedNoteIds: s.field("pinnedNoteIds", S.array(S.string)),
+    pinnedNotes: s.field("pinnedNotes", S.array(Note.schema)),
+    pinnedPageId: s.field("pinnedPageId", S.nullableAsOption(S.string)),
+    pinnedPage: s.field("pinnedPage", S.nullableAsOption(Page.schema)),
+    publicReactions: s.field("publicReactions", S.bool),
+    followingVisibility: s.field("followingVisibility", S.string),
+    followersVisibility: s.field("followersVisibility", S.string),
+    chatScope: s.field("chatScope", S.string),
+    canChat: s.field("canChat", S.bool),
+    roles: s.field("roles", S.array(RoleLite.schema)),
+    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string), None),
+    memo: s.field("memo", S.nullableAsOption(S.string)),
+    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.string), None),
+    twoFactorEnabled: s.fieldOr("twoFactorEnabled", S.nullableAsOption(S.bool), None),
+    usePasswordLessLogin: s.fieldOr("usePasswordLessLogin", S.nullableAsOption(S.bool), None),
+    securityKeys: s.fieldOr("securityKeys", S.nullableAsOption(S.bool), None),
+    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
+    isFollowed: s.fieldOr("isFollowed", S.nullableAsOption(S.bool), None),
+    hasPendingFollowRequestFromYou: s.fieldOr("hasPendingFollowRequestFromYou", S.nullableAsOption(S.bool), None),
+    hasPendingFollowRequestToYou: s.fieldOr("hasPendingFollowRequestToYou", S.nullableAsOption(S.bool), None),
+    isBlocking: s.fieldOr("isBlocking", S.nullableAsOption(S.bool), None),
+    isBlocked: s.fieldOr("isBlocked", S.nullableAsOption(S.bool), None),
+    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
+    isRenoteMuted: s.fieldOr("isRenoteMuted", S.nullableAsOption(S.bool), None),
+    notify: s.fieldOr("notify", S.nullableAsOption(S.string), None),
+    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+  })
+}
+
+module UserDetailedNotMe = {
+  type t = UserDetailedNotMeOnly.t
+  let schema = UserDetailedNotMeOnly.schema
+}
+
+module Blocking = {
+  type t = {
+  id: string,
+  createdAt: string,
+  blockeeId: string,
+  blockee: UserDetailedNotMe.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    blockeeId: s.field("blockeeId", S.string),
+    blockee: s.field("blockee", UserDetailedNotMe.schema),
+  })
+}
+
+module RenoteMuting = {
+  type t = {
+  id: string,
+  createdAt: string,
+  muteeId: string,
+  mutee: UserDetailedNotMe.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    muteeId: s.field("muteeId", S.string),
+    mutee: s.field("mutee", UserDetailedNotMe.schema),
+  })
+}
+
+module Muting = {
+  type t = {
+  id: string,
+  createdAt: string,
+  expiresAt: option<string>,
+  muteeId: string,
+  mutee: UserDetailedNotMe.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    expiresAt: s.field("expiresAt", S.nullableAsOption(S.string)),
+    muteeId: s.field("muteeId", S.string),
+    mutee: s.field("mutee", UserDetailedNotMe.schema),
+  })
+}
+
+module Following = {
+  type t = {
+  id: string,
+  createdAt: string,
+  followeeId: string,
+  followerId: string,
+  followee: option<UserDetailedNotMe.t>,
+  follower: option<UserDetailedNotMe.t>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    followeeId: s.field("followeeId", S.string),
+    followerId: s.field("followerId", S.string),
+    followee: s.fieldOr("followee", S.nullableAsOption(UserDetailedNotMe.schema), None),
+    follower: s.fieldOr("follower", S.nullableAsOption(UserDetailedNotMe.schema), None),
+  })
+}
+
+module Notification = {
+  type t = dict<JSON.t>
+  let schema = S.dict(S.json)
+}
+
+module NoteFavorite = {
+  type t = {
+  id: string,
+  createdAt: string,
+  note: Note.t,
+  noteId: string,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    note: s.field("note", Note.schema),
+    noteId: s.field("noteId", S.string),
+  })
+}
+
+module NoteReactionWithNote = {
+  type t = {
+  id: string,
+  createdAt: string,
+  user: UserLite.t,
+  @as("type") type_: string,
+  note: Note.t,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    user: s.field("user", UserLite.schema),
+    type_: s.field("type", S.string),
+    note: s.field("note", Note.schema),
+  })
+}
+
+module NoteReaction = {
+  type t = {
+  id: string,
+  createdAt: string,
+  user: UserLite.t,
+  @as("type") type_: string,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    user: s.field("user", UserLite.schema),
+    type_: s.field("type", S.string),
+  })
+}
+
+module NoteDraft = {
+  type noteDraft_3 = {
+  mode: string,
+  hosts: option<JSON.t>,
+}
+  let noteDraft_3Schema = S.object(s => {
+    mode: s.field("mode", S.string),
+    hosts: s.fieldOr("hosts", S.nullableAsOption(S.json), None),
+  })
+  type noteDraft_2 = {
+  id: string,
+  name: string,
+  color: string,
+  isSensitive: bool,
+  allowRenoteToExternal: bool,
+  userId: option<string>,
+}
+  let noteDraft_2Schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    color: s.field("color", S.string),
+    isSensitive: s.field("isSensitive", S.bool),
+    allowRenoteToExternal: s.field("allowRenoteToExternal", S.bool),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+  })
+  type noteDraft_1 = {
+  expiresAt: option<string>,
+  expiredAfter: option<float>,
+  multiple: bool,
+  choices: array<string>,
+}
+  let noteDraft_1Schema = S.object(s => {
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.string), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.float), None),
+    multiple: s.field("multiple", S.bool),
+    choices: s.field("choices", S.array(S.string)),
+  })
+  type t = {
+  id: string,
+  createdAt: string,
+  text: option<string>,
+  cw: option<string>,
+  userId: string,
+  user: UserLite.t,
+  replyId: option<string>,
+  renoteId: option<string>,
+  reply: option<Note.t>,
+  renote: option<Note.t>,
+  disableRightClick: option<bool>,
+  visibility: string,
+  visibleUserIds: array<string>,
+  fileIds: array<string>,
+  files: option<array<DriveFile.t>>,
+  hashtag: option<string>,
+  poll: option<noteDraft_1>,
+  event: option<dict<JSON.t>>,
+  channelId: option<string>,
+  channel: option<noteDraft_2>,
+  localOnly: bool,
+  reactionAcceptance: option<string>,
+  scheduledAt: option<float>,
+  isActuallyScheduled: bool,
+  deleteAt: option<string>,
+  deliveryTargets: option<noteDraft_3>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    text: s.field("text", S.nullableAsOption(S.string)),
+    cw: s.field("cw", S.nullableAsOption(S.string)),
+    userId: s.field("userId", S.string),
+    user: s.field("user", UserLite.schema),
+    replyId: s.field("replyId", S.nullableAsOption(S.string)),
+    renoteId: s.field("renoteId", S.nullableAsOption(S.string)),
+    reply: s.fieldOr("reply", S.nullableAsOption(Note.schema), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(Note.schema), None),
+    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
+    visibility: s.field("visibility", S.string),
+    visibleUserIds: s.field("visibleUserIds", S.array(S.string)),
+    fileIds: s.field("fileIds", S.array(S.string)),
+    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
+    hashtag: s.field("hashtag", S.nullableAsOption(S.string)),
+    poll: s.field("poll", S.nullableAsOption(noteDraft_1Schema)),
+    event: s.fieldOr("event", S.nullableAsOption(S.dict(S.json)), None),
+    channelId: s.field("channelId", S.nullableAsOption(S.string)),
+    channel: s.fieldOr("channel", S.nullableAsOption(noteDraft_2Schema), None),
+    localOnly: s.field("localOnly", S.bool),
+    reactionAcceptance: s.field("reactionAcceptance", S.nullableAsOption(S.string)),
+    scheduledAt: s.field("scheduledAt", S.nullableAsOption(S.float)),
+    isActuallyScheduled: s.field("isActuallyScheduled", S.bool),
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.string), None),
+    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(noteDraft_3Schema), None),
+  })
+}
+
+module App = {
+  type t = {
+  id: string,
+  name: string,
+  callbackUrl: option<string>,
+  permission: array<string>,
+  secret: option<string>,
+  isAuthorized: option<bool>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    callbackUrl: s.field("callbackUrl", S.nullableAsOption(S.string)),
+    permission: s.field("permission", S.array(S.string)),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+    isAuthorized: s.fieldOr("isAuthorized", S.nullableAsOption(S.bool), None),
+  })
+}
+
+module Announcement = {
+  type t = {
+  id: string,
+  createdAt: string,
+  updatedAt: option<string>,
+  text: string,
+  title: string,
+  imageUrl: option<string>,
+  icon: string,
+  display: string,
+  needConfirmationToRead: bool,
+  silence: bool,
+  forYou: bool,
+  isRead: option<bool>,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
+    text: s.field("text", S.string),
+    title: s.field("title", S.string),
+    imageUrl: s.field("imageUrl", S.nullableAsOption(S.string)),
+    icon: s.field("icon", S.string),
+    display: s.field("display", S.string),
+    needConfirmationToRead: s.field("needConfirmationToRead", S.bool),
+    silence: s.field("silence", S.bool),
+    forYou: s.field("forYou", S.bool),
+    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
+  })
+}
+
+module Ad = {
+  type t = {
+  id: string,
+  expiresAt: string,
+  startsAt: string,
+  place: string,
+  priority: string,
+  ratio: float,
+  url: string,
+  imageUrl: string,
+  memo: string,
+  dayOfWeek: int,
+  isSensitive: bool,
+}
+  let schema = S.object(s => {
+    id: s.field("id", S.string),
+    expiresAt: s.field("expiresAt", S.string),
+    startsAt: s.field("startsAt", S.string),
+    place: s.field("place", S.string),
+    priority: s.field("priority", S.string),
+    ratio: s.field("ratio", S.float),
+    url: s.field("url", S.string),
+    imageUrl: s.field("imageUrl", S.string),
+    memo: s.field("memo", S.string),
+    dayOfWeek: s.field("dayOfWeek", S.int),
+    isSensitive: s.field("isSensitive", S.bool),
+  })
+}
+
+module AchievementName = {
+  type t = string
+  let schema = S.string
 }
 
 module Achievement = {
@@ -937,325 +2134,95 @@ module Achievement = {
   })
 }
 
-module DriveFile = {
+module UserGroup = {
   type t = {
   id: string,
   createdAt: string,
   name: string,
-  @as("type") type_: string,
-  md5: string,
-  size: float,
-  isSensitive: bool,
-  blurhash: JSON.t,
-  properties: {
-  width: option<float>,
-  height: option<float>,
-  orientation: option<float>,
-  avgColor: option<string>,
-},
-  url: string,
-  thumbnailUrl: JSON.t,
-  comment: JSON.t,
-  folderId: JSON.t,
-  folder: option<option<DriveFolder.t>>,
-  userId: JSON.t,
-  user: option<option<UserLite.t>>,
+  ownerId: string,
+  userIds: option<array<string>>,
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     name: s.field("name", S.string),
-    type_: s.field("type", S.string),
-    md5: s.field("md5", S.string),
-    size: s.field("size", S.float),
-    isSensitive: s.field("isSensitive", S.bool),
-    blurhash: s.field("blurhash", S.json),
-    properties: s.field("properties", S.object(s => {
-    width: s.fieldOr("width", S.nullableAsOption(S.float), None),
-    height: s.fieldOr("height", S.nullableAsOption(S.float), None),
-    orientation: s.fieldOr("orientation", S.nullableAsOption(S.float), None),
-    avgColor: s.fieldOr("avgColor", S.nullableAsOption(S.string), None),
-  })),
-    url: s.field("url", S.string),
-    thumbnailUrl: s.field("thumbnailUrl", S.json),
-    comment: s.field("comment", S.json),
-    folderId: s.field("folderId", S.json),
-    folder: s.fieldOr("folder", S.nullableAsOption(S.nullableAsOption(DriveFolder.schema)), None),
-    userId: s.field("userId", S.json),
-    user: s.fieldOr("user", S.nullableAsOption(S.nullableAsOption(UserLite.schema)), None),
+    ownerId: s.field("ownerId", S.string),
+    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
   })
 }
 
-module RoleCondFormulaLogics = {
+module UserList = {
   type t = {
   id: string,
-  @as("type") type_: string,
-  values: array<RoleCondFormulaValue.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-    values: s.field("values", S.array(RoleCondFormulaValue.schema)),
-  })
-}
-
-module RoleCondFormulaValueNot = {
-  type t = {
-  id: string,
-  @as("type") type_: string,
-  value: RoleCondFormulaValue.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    type_: s.field("type", S.string),
-    value: s.field("value", RoleCondFormulaValue.schema),
-  })
-}
-
-module Role = {
-  type t = {
   createdAt: string,
-  updatedAt: string,
-  target: string,
-  condFormula: RoleCondFormulaValue.t,
+  name: string,
+  userIds: option<array<string>>,
   isPublic: bool,
-  isExplorable: bool,
-  asBadge: bool,
-  preserveAssignmentOnMoveAccount: bool,
-  canEditMembersByModerator: bool,
-  policies: JSON.t,
-  usersCount: int,
 }
   let schema = S.object(s => {
+    id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.string),
-    target: s.field("target", S.string),
-    condFormula: s.field("condFormula", RoleCondFormulaValue.schema),
-    isPublic: s.field("isPublic", S.bool),
-    isExplorable: s.field("isExplorable", S.bool),
-    asBadge: s.field("asBadge", S.bool),
-    preserveAssignmentOnMoveAccount: s.field("preserveAssignmentOnMoveAccount", S.bool),
-    canEditMembersByModerator: s.field("canEditMembersByModerator", S.bool),
-    policies: s.field("policies", S.json),
-    usersCount: s.field("usersCount", S.int),
-  })
-}
-
-module MetaLite = {
-  type t = {
-  maintainerName: JSON.t,
-  maintainerEmail: JSON.t,
-  version: string,
-  basedMisskeyVersion: string,
-  providesTarball: bool,
-  name: JSON.t,
-  shortName: JSON.t,
-  uri: string,
-  description: JSON.t,
-  langs: array<string>,
-  tosUrl: JSON.t,
-  repositoryUrl: JSON.t,
-  feedbackUrl: JSON.t,
-  defaultDarkTheme: JSON.t,
-  defaultLightTheme: JSON.t,
-  clientOptions: JSON.t,
-  disableRegistration: bool,
-  emailRequiredForSignup: bool,
-  enableHcaptcha: bool,
-  hcaptchaSiteKey: JSON.t,
-  enableMcaptcha: bool,
-  mcaptchaSiteKey: JSON.t,
-  mcaptchaInstanceUrl: JSON.t,
-  enableRecaptcha: bool,
-  recaptchaSiteKey: JSON.t,
-  enableTurnstile: bool,
-  turnstileSiteKey: JSON.t,
-  enableTestcaptcha: bool,
-  googleAnalyticsMeasurementId: JSON.t,
-  swPublickey: JSON.t,
-  mascotImageUrl: string,
-  bannerUrl: JSON.t,
-  serverErrorImageUrl: JSON.t,
-  infoImageUrl: JSON.t,
-  notFoundImageUrl: JSON.t,
-  youBlockedImageUrl: JSON.t,
-  iconUrl: JSON.t,
-  maxNoteTextLength: float,
-  ads: array<{
-  id: string,
-  url: string,
-  place: string,
-  ratio: float,
-  imageUrl: string,
-  dayOfWeek: int,
-  isSensitive: option<bool>,
-}>,
-  trustedLinkUrlPatterns: array<string>,
-  notesPerOneAd: float,
-  enableEmail: bool,
-  enableServiceWorker: bool,
-  translatorAvailable: bool,
-  sentryForFrontend: JSON.t,
-  mediaProxy: string,
-  enableUrlPreview: bool,
-  backgroundImageUrl: JSON.t,
-  impressumUrl: JSON.t,
-  logoImageUrl: JSON.t,
-  privacyPolicyUrl: JSON.t,
-  inquiryUrl: JSON.t,
-  serverRules: array<string>,
-  themeColor: JSON.t,
-  policies: RolePolicies.t,
-  noteSearchableScope: string,
-  maxFileSize: float,
-  federation: string,
-  disableRegistrationWhenInactive: bool,
-  disablePublicNoteWhenInactive: bool,
-  moderatorInactivityLimitDays: float,
-  customRobotsTxt: JSON.t,
-}
-  let schema = S.object(s => {
-    maintainerName: s.field("maintainerName", S.json),
-    maintainerEmail: s.field("maintainerEmail", S.json),
-    version: s.field("version", S.string),
-    basedMisskeyVersion: s.field("basedMisskeyVersion", S.string),
-    providesTarball: s.field("providesTarball", S.bool),
-    name: s.field("name", S.json),
-    shortName: s.field("shortName", S.json),
-    uri: s.field("uri", S.string),
-    description: s.field("description", S.json),
-    langs: s.field("langs", S.array(S.string)),
-    tosUrl: s.field("tosUrl", S.json),
-    repositoryUrl: s.field("repositoryUrl", S.json),
-    feedbackUrl: s.field("feedbackUrl", S.json),
-    defaultDarkTheme: s.field("defaultDarkTheme", S.json),
-    defaultLightTheme: s.field("defaultLightTheme", S.json),
-    clientOptions: s.field("clientOptions", S.json),
-    disableRegistration: s.field("disableRegistration", S.bool),
-    emailRequiredForSignup: s.field("emailRequiredForSignup", S.bool),
-    enableHcaptcha: s.field("enableHcaptcha", S.bool),
-    hcaptchaSiteKey: s.field("hcaptchaSiteKey", S.json),
-    enableMcaptcha: s.field("enableMcaptcha", S.bool),
-    mcaptchaSiteKey: s.field("mcaptchaSiteKey", S.json),
-    mcaptchaInstanceUrl: s.field("mcaptchaInstanceUrl", S.json),
-    enableRecaptcha: s.field("enableRecaptcha", S.bool),
-    recaptchaSiteKey: s.field("recaptchaSiteKey", S.json),
-    enableTurnstile: s.field("enableTurnstile", S.bool),
-    turnstileSiteKey: s.field("turnstileSiteKey", S.json),
-    enableTestcaptcha: s.field("enableTestcaptcha", S.bool),
-    googleAnalyticsMeasurementId: s.field("googleAnalyticsMeasurementId", S.json),
-    swPublickey: s.field("swPublickey", S.json),
-    mascotImageUrl: s.field("mascotImageUrl", S.string),
-    bannerUrl: s.field("bannerUrl", S.json),
-    serverErrorImageUrl: s.field("serverErrorImageUrl", S.json),
-    infoImageUrl: s.field("infoImageUrl", S.json),
-    notFoundImageUrl: s.field("notFoundImageUrl", S.json),
-    youBlockedImageUrl: s.field("youBlockedImageUrl", S.json),
-    iconUrl: s.field("iconUrl", S.json),
-    maxNoteTextLength: s.field("maxNoteTextLength", S.float),
-    ads: s.field("ads", S.array(S.object(s => {
-    id: s.field("id", S.string),
-    url: s.field("url", S.string),
-    place: s.field("place", S.string),
-    ratio: s.field("ratio", S.float),
-    imageUrl: s.field("imageUrl", S.string),
-    dayOfWeek: s.field("dayOfWeek", S.int),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-  }))),
-    trustedLinkUrlPatterns: s.field("trustedLinkUrlPatterns", S.array(S.string)),
-    notesPerOneAd: s.field("notesPerOneAd", S.float),
-    enableEmail: s.field("enableEmail", S.bool),
-    enableServiceWorker: s.field("enableServiceWorker", S.bool),
-    translatorAvailable: s.field("translatorAvailable", S.bool),
-    sentryForFrontend: s.field("sentryForFrontend", S.json),
-    mediaProxy: s.field("mediaProxy", S.string),
-    enableUrlPreview: s.field("enableUrlPreview", S.bool),
-    backgroundImageUrl: s.field("backgroundImageUrl", S.json),
-    impressumUrl: s.field("impressumUrl", S.json),
-    logoImageUrl: s.field("logoImageUrl", S.json),
-    privacyPolicyUrl: s.field("privacyPolicyUrl", S.json),
-    inquiryUrl: s.field("inquiryUrl", S.json),
-    serverRules: s.field("serverRules", S.array(S.string)),
-    themeColor: s.field("themeColor", S.json),
-    policies: s.field("policies", RolePolicies.schema),
-    noteSearchableScope: s.field("noteSearchableScope", S.string),
-    maxFileSize: s.field("maxFileSize", S.float),
-    federation: s.field("federation", S.string),
-    disableRegistrationWhenInactive: s.field("disableRegistrationWhenInactive", S.bool),
-    disablePublicNoteWhenInactive: s.field("disablePublicNoteWhenInactive", S.bool),
-    moderatorInactivityLimitDays: s.field("moderatorInactivityLimitDays", S.float),
-    customRobotsTxt: s.field("customRobotsTxt", S.json),
-  })
-}
-
-module AbuseReportNotificationRecipient = {
-  type t = {
-  id: string,
-  isActive: bool,
-  updatedAt: string,
-  name: string,
-  @as("method") method_: string,
-  userId: option<string>,
-  user: option<UserLite.t>,
-  systemWebhookId: option<string>,
-  systemWebhook: option<SystemWebhook.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    isActive: s.field("isActive", S.bool),
-    updatedAt: s.field("updatedAt", S.string),
     name: s.field("name", S.string),
-    method_: s.field("method", S.string),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
-    systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
-    systemWebhook: s.fieldOr("systemWebhook", S.nullableAsOption(SystemWebhook.schema), None),
-  })
-}
-
-module ChatRoomInvitation = {
-  type t = {
-  id: string,
-  createdAt: string,
-  userId: string,
-  user: UserLite.t,
-  roomId: string,
-  room: ChatRoom.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    roomId: s.field("roomId", S.string),
-    room: s.field("room", ChatRoom.schema),
-  })
-}
-
-module ChatRoomMembership = {
-  type t = {
-  id: string,
-  createdAt: string,
-  userId: string,
-  user: option<UserLite.t>,
-  roomId: string,
-  room: option<ChatRoom.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    userId: s.field("userId", S.string),
-    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
-    roomId: s.field("roomId", S.string),
-    room: s.fieldOr("room", S.nullableAsOption(ChatRoom.schema), None),
+    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
+    isPublic: s.field("isPublic", S.bool),
   })
 }
 
 module MeDetailedOnly = {
+  type meDetailedOnly_2 = {
+  id: string,
+  name: string,
+  lastUsed: string,
+}
+  let meDetailedOnly_2Schema = S.object(s => {
+    id: s.field("id", S.string),
+    name: s.field("name", S.string),
+    lastUsed: s.field("lastUsed", S.string),
+  })
+  type meDetailedOnly_1 = {
+  note: option<dict<JSON.t>>,
+  follow: option<dict<JSON.t>>,
+  mention: option<dict<JSON.t>>,
+  reply: option<dict<JSON.t>>,
+  renote: option<dict<JSON.t>>,
+  quote: option<dict<JSON.t>>,
+  reaction: option<dict<JSON.t>>,
+  pollEnded: option<dict<JSON.t>>,
+  scheduledNotePosted: option<dict<JSON.t>>,
+  scheduledNotePostFailed: option<dict<JSON.t>>,
+  receiveFollowRequest: option<dict<JSON.t>>,
+  followRequestAccepted: option<dict<JSON.t>>,
+  groupInvited: option<dict<JSON.t>>,
+  roleAssigned: option<dict<JSON.t>>,
+  chatRoomInvitationReceived: option<dict<JSON.t>>,
+  achievementEarned: option<dict<JSON.t>>,
+  app: option<dict<JSON.t>>,
+  test: option<dict<JSON.t>>,
+}
+  let meDetailedOnly_1Schema = S.object(s => {
+    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
+    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
+    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
+    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
+    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
+    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
+    scheduledNotePosted: s.fieldOr("scheduledNotePosted", S.nullableAsOption(S.dict(S.json)), None),
+    scheduledNotePostFailed: s.fieldOr("scheduledNotePostFailed", S.nullableAsOption(S.dict(S.json)), None),
+    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
+    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
+    groupInvited: s.fieldOr("groupInvited", S.nullableAsOption(S.dict(S.json)), None),
+    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
+    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
+    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
+    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
+    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+  })
   type t = {
-  avatarId: JSON.t,
-  bannerId: JSON.t,
-  followedMessage: JSON.t,
+  avatarId: option<string>,
+  bannerId: option<string>,
+  followedMessage: option<string>,
   isModerator: bool,
   isAdmin: bool,
   injectFeaturedNote: bool,
@@ -1283,26 +2250,7 @@ module MeDetailedOnly = {
   mutedWords: array<array<string>>,
   hardMutedWords: array<array<string>>,
   mutedInstances: array<string>,
-  notificationRecieveConfig: {
-  note: option<JSON.t>,
-  follow: option<JSON.t>,
-  mention: option<JSON.t>,
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
-  quote: option<JSON.t>,
-  reaction: option<JSON.t>,
-  pollEnded: option<JSON.t>,
-  scheduledNotePosted: option<JSON.t>,
-  scheduledNotePostFailed: option<JSON.t>,
-  receiveFollowRequest: option<JSON.t>,
-  followRequestAccepted: option<JSON.t>,
-  groupInvited: option<JSON.t>,
-  roleAssigned: option<JSON.t>,
-  chatRoomInvitationReceived: option<JSON.t>,
-  achievementEarned: option<JSON.t>,
-  app: option<JSON.t>,
-  test: option<JSON.t>,
-},
+  notificationRecieveConfig: meDetailedOnly_1,
   emailNotificationTypes: array<string>,
   achievements: array<Achievement.t>,
   loggedInDays: float,
@@ -1310,20 +2258,16 @@ module MeDetailedOnly = {
   twoFactorEnabled: bool,
   usePasswordLessLogin: bool,
   securityKeys: bool,
-  email: option<JSON.t>,
-  emailVerified: option<JSON.t>,
-  securityKeysList: option<array<{
-  id: string,
-  name: string,
-  lastUsed: string,
-}>>,
-  autoDeleteNotesAfterDays: JSON.t,
+  email: option<string>,
+  emailVerified: option<bool>,
+  securityKeysList: option<array<meDetailedOnly_2>>,
+  autoDeleteNotesAfterDays: option<float>,
   autoDeleteKeepFavorites: bool,
 }
   let schema = S.object(s => {
-    avatarId: s.field("avatarId", S.json),
-    bannerId: s.field("bannerId", S.json),
-    followedMessage: s.field("followedMessage", S.json),
+    avatarId: s.field("avatarId", S.nullableAsOption(S.string)),
+    bannerId: s.field("bannerId", S.nullableAsOption(S.string)),
+    followedMessage: s.field("followedMessage", S.nullableAsOption(S.string)),
     isModerator: s.field("isModerator", S.bool),
     isAdmin: s.field("isAdmin", S.bool),
     injectFeaturedNote: s.field("injectFeaturedNote", S.bool),
@@ -1351,26 +2295,7 @@ module MeDetailedOnly = {
     mutedWords: s.field("mutedWords", S.array(S.array(S.string))),
     hardMutedWords: s.field("hardMutedWords", S.array(S.array(S.string))),
     mutedInstances: s.field("mutedInstances", S.array(S.string)),
-    notificationRecieveConfig: s.field("notificationRecieveConfig", S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.json), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.json), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.json), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.json), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.json), None),
-    scheduledNotePosted: s.fieldOr("scheduledNotePosted", S.nullableAsOption(S.json), None),
-    scheduledNotePostFailed: s.fieldOr("scheduledNotePostFailed", S.nullableAsOption(S.json), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.json), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.json), None),
-    groupInvited: s.fieldOr("groupInvited", S.nullableAsOption(S.json), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.json), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.json), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.json), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.json), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.json), None),
-  })),
+    notificationRecieveConfig: s.field("notificationRecieveConfig", meDetailedOnly_1Schema),
     emailNotificationTypes: s.field("emailNotificationTypes", S.array(S.string)),
     achievements: s.field("achievements", S.array(Achievement.schema)),
     loggedInDays: s.field("loggedInDays", S.float),
@@ -1378,447 +2303,11 @@ module MeDetailedOnly = {
     twoFactorEnabled: s.field("twoFactorEnabled", S.bool),
     usePasswordLessLogin: s.field("usePasswordLessLogin", S.bool),
     securityKeys: s.field("securityKeys", S.bool),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
-    emailVerified: s.fieldOr("emailVerified", S.nullableAsOption(S.json), None),
-    securityKeysList: s.fieldOr("securityKeysList", S.nullableAsOption(S.array(S.object(s => {
-    id: s.field("id", S.string),
-    name: s.field("name", S.string),
-    lastUsed: s.field("lastUsed", S.string),
-  }))), None),
-    autoDeleteNotesAfterDays: s.field("autoDeleteNotesAfterDays", S.json),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    emailVerified: s.fieldOr("emailVerified", S.nullableAsOption(S.bool), None),
+    securityKeysList: s.fieldOr("securityKeysList", S.nullableAsOption(S.array(meDetailedOnly_2Schema)), None),
+    autoDeleteNotesAfterDays: s.field("autoDeleteNotesAfterDays", S.nullableAsOption(S.float)),
     autoDeleteKeepFavorites: s.field("autoDeleteKeepFavorites", S.bool),
-  })
-}
-
-module Note = {
-  type t = {
-  id: string,
-  createdAt: string,
-  updatedAt: option<JSON.t>,
-  updatedAtHistory: option<JSON.t>,
-  deletedAt: option<JSON.t>,
-  text: JSON.t,
-  cw: option<JSON.t>,
-  userId: string,
-  user: UserLite.t,
-  replyId: option<JSON.t>,
-  renoteId: option<JSON.t>,
-  reply: option<option<Note.t>>,
-  renote: option<option<Note.t>>,
-  disableRightClick: option<bool>,
-  isHidden: option<bool>,
-  visibility: string,
-  mentions: option<array<string>>,
-  visibleUserIds: option<array<string>>,
-  fileIds: option<array<string>>,
-  files: option<array<DriveFile.t>>,
-  tags: option<array<string>>,
-  poll: option<JSON.t>,
-  emojis: option<JSON.t>,
-  event: option<JSON.t>,
-  channelId: option<JSON.t>,
-  channel: option<JSON.t>,
-  localOnly: option<bool>,
-  reactionAcceptance: JSON.t,
-  reactionEmojis: JSON.t,
-  reactions: JSON.t,
-  reactionCount: float,
-  renoteCount: float,
-  repliesCount: float,
-  uri: option<string>,
-  url: option<string>,
-  reactionAndUserPairCache: option<array<string>>,
-  clippedCount: option<float>,
-  hasPoll: option<bool>,
-  myReaction: option<JSON.t>,
-  deleteAt: option<JSON.t>,
-  deliveryTargets: option<JSON.t>,
-  hasDeliveryTargets: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.fieldOr("updatedAt", S.nullableAsOption(S.json), None),
-    updatedAtHistory: s.fieldOr("updatedAtHistory", S.nullableAsOption(S.json), None),
-    deletedAt: s.fieldOr("deletedAt", S.nullableAsOption(S.json), None),
-    text: s.field("text", S.json),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.json), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.nullableAsOption(Note.schema)), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.nullableAsOption(Note.schema)), None),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    isHidden: s.fieldOr("isHidden", S.nullableAsOption(S.bool), None),
-    visibility: s.field("visibility", S.string),
-    mentions: s.fieldOr("mentions", S.nullableAsOption(S.array(S.string)), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
-    channel: s.fieldOr("channel", S.nullableAsOption(S.json), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.field("reactionAcceptance", S.json),
-    reactionEmojis: s.field("reactionEmojis", S.json),
-    reactions: s.field("reactions", S.json),
-    reactionCount: s.field("reactionCount", S.float),
-    renoteCount: s.field("renoteCount", S.float),
-    repliesCount: s.field("repliesCount", S.float),
-    uri: s.fieldOr("uri", S.nullableAsOption(S.string), None),
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    reactionAndUserPairCache: s.fieldOr("reactionAndUserPairCache", S.nullableAsOption(S.array(S.string)), None),
-    clippedCount: s.fieldOr("clippedCount", S.nullableAsOption(S.float), None),
-    hasPoll: s.fieldOr("hasPoll", S.nullableAsOption(S.bool), None),
-    myReaction: s.fieldOr("myReaction", S.nullableAsOption(S.json), None),
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.json), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(S.json), None),
-    hasDeliveryTargets: s.field("hasDeliveryTargets", S.bool),
-  })
-}
-
-module GalleryPost = {
-  type t = {
-  id: string,
-  createdAt: string,
-  updatedAt: string,
-  userId: string,
-  user: UserLite.t,
-  title: string,
-  description: JSON.t,
-  fileIds: option<array<string>>,
-  files: option<array<DriveFile.t>>,
-  tags: option<array<string>>,
-  isSensitive: bool,
-  likedCount: float,
-  isLiked: option<bool>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.string),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    title: s.field("title", S.string),
-    description: s.field("description", S.json),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
-    isSensitive: s.field("isSensitive", S.bool),
-    likedCount: s.field("likedCount", S.float),
-    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
-  })
-}
-
-module ChatMessageLiteFor1on1 = {
-  type t = {
-  id: string,
-  createdAt: string,
-  fromUserId: string,
-  toUserId: string,
-  text: option<JSON.t>,
-  fileId: option<JSON.t>,
-  file: option<option<DriveFile.t>>,
-  reactions: array<{
-  reaction: string,
-}>,
-  emojis: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    fromUserId: s.field("fromUserId", S.string),
-    toUserId: s.field("toUserId", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.json), None),
-    file: s.fieldOr("file", S.nullableAsOption(S.nullableAsOption(DriveFile.schema)), None),
-    reactions: s.field("reactions", S.array(S.object(s => {
-    reaction: s.field("reaction", S.string),
-  }))),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-  })
-}
-
-module NoteHistory = {
-  type t = {
-  id: string,
-  noteId: string,
-  createdAt: string,
-  updatedAt: string,
-  userId: string,
-  text: JSON.t,
-  cw: option<JSON.t>,
-  poll: option<JSON.t>,
-  event: option<JSON.t>,
-  fileIds: option<array<string>>,
-  files: option<array<DriveFile.t>>,
-  visibility: string,
-  visibleUserIds: option<array<string>>,
-  emojis: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    noteId: s.field("noteId", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.string),
-    userId: s.field("userId", S.string),
-    text: s.field("text", S.json),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    visibility: s.field("visibility", S.string),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-  })
-}
-
-module MetaDetailed = {
-  type t = MetaDetailedOnly.t
-  let schema = MetaDetailedOnly.schema
-}
-
-module NoteReactionWithNote = {
-  type t = {
-  id: string,
-  createdAt: string,
-  user: UserLite.t,
-  @as("type") type_: string,
-  note: Note.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    user: s.field("user", UserLite.schema),
-    type_: s.field("type", S.string),
-    note: s.field("note", Note.schema),
-  })
-}
-
-module NoteFavorite = {
-  type t = {
-  id: string,
-  createdAt: string,
-  note: Note.t,
-  noteId: string,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    note: s.field("note", Note.schema),
-    noteId: s.field("noteId", S.string),
-  })
-}
-
-module Channel = {
-  type t = {
-  id: string,
-  createdAt: string,
-  lastNotedAt: JSON.t,
-  name: string,
-  description: JSON.t,
-  userId: JSON.t,
-  bannerUrl: JSON.t,
-  pinnedNoteIds: array<string>,
-  color: string,
-  isArchived: bool,
-  usersCount: float,
-  notesCount: float,
-  isSensitive: bool,
-  allowRenoteToExternal: bool,
-  isFollowing: option<bool>,
-  isFavorited: option<bool>,
-  pinnedNotes: option<array<Note.t>>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    lastNotedAt: s.field("lastNotedAt", S.json),
-    name: s.field("name", S.string),
-    description: s.field("description", S.json),
-    userId: s.field("userId", S.json),
-    bannerUrl: s.field("bannerUrl", S.json),
-    pinnedNoteIds: s.field("pinnedNoteIds", S.array(S.string)),
-    color: s.field("color", S.string),
-    isArchived: s.field("isArchived", S.bool),
-    usersCount: s.field("usersCount", S.float),
-    notesCount: s.field("notesCount", S.float),
-    isSensitive: s.field("isSensitive", S.bool),
-    allowRenoteToExternal: s.field("allowRenoteToExternal", S.bool),
-    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
-    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
-    pinnedNotes: s.fieldOr("pinnedNotes", S.nullableAsOption(S.array(Note.schema)), None),
-  })
-}
-
-module Blocking = {
-  type t = {
-  id: string,
-  createdAt: string,
-  blockeeId: string,
-  blockee: UserDetailedNotMe.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    blockeeId: s.field("blockeeId", S.string),
-    blockee: s.field("blockee", UserDetailedNotMe.schema),
-  })
-}
-
-module ChatMessage = {
-  type t = {
-  id: string,
-  createdAt: string,
-  fromUserId: string,
-  fromUser: UserLite.t,
-  toUserId: option<JSON.t>,
-  toUser: option<option<UserLite.t>>,
-  toRoomId: option<JSON.t>,
-  toRoom: option<option<ChatRoom.t>>,
-  text: option<JSON.t>,
-  fileId: option<JSON.t>,
-  file: option<option<DriveFile.t>>,
-  isRead: option<bool>,
-  reactions: array<{
-  reaction: string,
-  user: UserLite.t,
-}>,
-  emojis: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    fromUserId: s.field("fromUserId", S.string),
-    fromUser: s.field("fromUser", UserLite.schema),
-    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.json), None),
-    toUser: s.fieldOr("toUser", S.nullableAsOption(S.nullableAsOption(UserLite.schema)), None),
-    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.json), None),
-    toRoom: s.fieldOr("toRoom", S.nullableAsOption(S.nullableAsOption(ChatRoom.schema)), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.json), None),
-    file: s.fieldOr("file", S.nullableAsOption(S.nullableAsOption(DriveFile.schema)), None),
-    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
-    reactions: s.field("reactions", S.array(S.object(s => {
-    reaction: s.field("reaction", S.string),
-    user: s.field("user", UserLite.schema),
-  }))),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-  })
-}
-
-module ChatMessageLite = {
-  type t = {
-  id: string,
-  createdAt: string,
-  fromUserId: string,
-  fromUser: option<UserLite.t>,
-  toUserId: option<JSON.t>,
-  toRoomId: option<JSON.t>,
-  text: option<JSON.t>,
-  fileId: option<JSON.t>,
-  file: option<option<DriveFile.t>>,
-  reactions: array<{
-  reaction: string,
-  user: option<option<UserLite.t>>,
-}>,
-  emojis: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    fromUserId: s.field("fromUserId", S.string),
-    fromUser: s.fieldOr("fromUser", S.nullableAsOption(UserLite.schema), None),
-    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.json), None),
-    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.json), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.json), None),
-    file: s.fieldOr("file", S.nullableAsOption(S.nullableAsOption(DriveFile.schema)), None),
-    reactions: s.field("reactions", S.array(S.object(s => {
-    reaction: s.field("reaction", S.string),
-    user: s.fieldOr("user", S.nullableAsOption(S.nullableAsOption(UserLite.schema)), None),
-  }))),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-  })
-}
-
-module ChatMessageLiteForRoom = {
-  type t = {
-  id: string,
-  createdAt: string,
-  fromUserId: string,
-  fromUser: UserLite.t,
-  toRoomId: string,
-  text: option<JSON.t>,
-  fileId: option<JSON.t>,
-  file: option<option<DriveFile.t>>,
-  reactions: array<{
-  reaction: string,
-  user: UserLite.t,
-}>,
-  emojis: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    fromUserId: s.field("fromUserId", S.string),
-    fromUser: s.field("fromUser", UserLite.schema),
-    toRoomId: s.field("toRoomId", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.json), None),
-    file: s.fieldOr("file", S.nullableAsOption(S.nullableAsOption(DriveFile.schema)), None),
-    reactions: s.field("reactions", S.array(S.object(s => {
-    reaction: s.field("reaction", S.string),
-    user: s.field("user", UserLite.schema),
-  }))),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.json), None),
-  })
-}
-
-module Following = {
-  type t = {
-  id: string,
-  createdAt: string,
-  followeeId: string,
-  followerId: string,
-  followee: option<UserDetailedNotMe.t>,
-  follower: option<UserDetailedNotMe.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    followeeId: s.field("followeeId", S.string),
-    followerId: s.field("followerId", S.string),
-    followee: s.fieldOr("followee", S.nullableAsOption(UserDetailedNotMe.schema), None),
-    follower: s.fieldOr("follower", S.nullableAsOption(UserDetailedNotMe.schema), None),
-  })
-}
-
-module InviteCode = {
-  type t = {
-  id: string,
-  code: string,
-  expiresAt: JSON.t,
-  createdAt: string,
-  createdBy: option<UserLite.t>,
-  usedBy: option<UserLite.t>,
-  usedAt: JSON.t,
-  used: bool,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    code: s.field("code", S.string),
-    expiresAt: s.field("expiresAt", S.json),
-    createdAt: s.field("createdAt", S.string),
-    createdBy: s.field("createdBy", S.nullableAsOption(UserLite.schema)),
-    usedBy: s.field("usedBy", S.nullableAsOption(UserLite.schema)),
-    usedAt: s.field("usedAt", S.json),
-    used: s.field("used", S.bool),
   })
 }
 
@@ -1827,374 +2316,31 @@ module MeDetailed = {
   let schema = MeDetailedOnly.schema
 }
 
-module Muting = {
-  type t = {
-  id: string,
-  createdAt: string,
-  expiresAt: JSON.t,
-  muteeId: string,
-  mutee: UserDetailedNotMe.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    expiresAt: s.field("expiresAt", S.json),
-    muteeId: s.field("muteeId", S.string),
-    mutee: s.field("mutee", UserDetailedNotMe.schema),
-  })
-}
-
-module NoteDraft = {
-  type t = {
-  id: string,
-  createdAt: string,
-  text: JSON.t,
-  cw: JSON.t,
-  userId: string,
-  user: UserLite.t,
-  replyId: JSON.t,
-  renoteId: JSON.t,
-  reply: option<option<Note.t>>,
-  renote: option<option<Note.t>>,
-  disableRightClick: option<bool>,
-  visibility: string,
-  visibleUserIds: array<string>,
-  fileIds: array<string>,
-  files: option<array<DriveFile.t>>,
-  hashtag: JSON.t,
-  poll: JSON.t,
-  event: option<JSON.t>,
-  channelId: JSON.t,
-  channel: option<JSON.t>,
-  localOnly: bool,
-  reactionAcceptance: JSON.t,
-  scheduledAt: JSON.t,
-  isActuallyScheduled: bool,
-  deleteAt: option<JSON.t>,
-  deliveryTargets: option<JSON.t>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    text: s.field("text", S.json),
-    cw: s.field("cw", S.json),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    replyId: s.field("replyId", S.json),
-    renoteId: s.field("renoteId", S.json),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.nullableAsOption(Note.schema)), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.nullableAsOption(Note.schema)), None),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    visibility: s.field("visibility", S.string),
-    visibleUserIds: s.field("visibleUserIds", S.array(S.string)),
-    fileIds: s.field("fileIds", S.array(S.string)),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    hashtag: s.field("hashtag", S.json),
-    poll: s.field("poll", S.json),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    channelId: s.field("channelId", S.json),
-    channel: s.fieldOr("channel", S.nullableAsOption(S.json), None),
-    localOnly: s.field("localOnly", S.bool),
-    reactionAcceptance: s.field("reactionAcceptance", S.json),
-    scheduledAt: s.field("scheduledAt", S.json),
-    isActuallyScheduled: s.field("isActuallyScheduled", S.bool),
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.json), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(S.json), None),
-  })
-}
-
-module Page = {
-  type t = {
-  id: string,
-  createdAt: string,
-  updatedAt: string,
-  userId: string,
-  user: UserLite.t,
-  content: array<PageBlock.t>,
-  variables: array<JSON.t>,
-  title: string,
-  name: string,
-  summary: JSON.t,
-  hideTitleWhenPinned: bool,
-  alignCenter: bool,
-  font: string,
-  script: string,
-  eyeCatchingImageId: JSON.t,
-  eyeCatchingImage: option<DriveFile.t>,
-  attachedFiles: array<DriveFile.t>,
-  likedCount: float,
-  isLiked: option<bool>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.string),
-    userId: s.field("userId", S.string),
-    user: s.field("user", UserLite.schema),
-    content: s.field("content", S.array(PageBlock.schema)),
-    variables: s.field("variables", S.array(S.json)),
-    title: s.field("title", S.string),
-    name: s.field("name", S.string),
-    summary: s.field("summary", S.json),
-    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.bool),
-    alignCenter: s.field("alignCenter", S.bool),
-    font: s.field("font", S.string),
-    script: s.field("script", S.string),
-    eyeCatchingImageId: s.field("eyeCatchingImageId", S.json),
-    eyeCatchingImage: s.field("eyeCatchingImage", S.nullableAsOption(DriveFile.schema)),
-    attachedFiles: s.field("attachedFiles", S.array(DriveFile.schema)),
-    likedCount: s.field("likedCount", S.float),
-    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
-  })
-}
-
-module RenoteMuting = {
-  type t = {
-  id: string,
-  createdAt: string,
-  muteeId: string,
-  mutee: UserDetailedNotMe.t,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    muteeId: s.field("muteeId", S.string),
-    mutee: s.field("mutee", UserDetailedNotMe.schema),
-  })
-}
-
-module ReversiGameDetailed = {
-  type t = {
-  id: string,
-  createdAt: string,
-  startedAt: JSON.t,
-  endedAt: JSON.t,
-  isStarted: bool,
-  isEnded: bool,
-  form1: JSON.t,
-  form2: JSON.t,
-  @as("user1Ready") user1ready: bool,
-  @as("user2Ready") user2ready: bool,
-  @as("user1Id") user1id: string,
-  @as("user2Id") user2id: string,
-  user1: UserLite.t,
-  user2: UserLite.t,
-  winnerId: JSON.t,
-  winner: option<UserLite.t>,
-  surrenderedUserId: JSON.t,
-  timeoutUserId: JSON.t,
-  black: JSON.t,
-  bw: string,
-  noIrregularRules: bool,
-  isLlotheo: bool,
-  canPutEverywhere: bool,
-  loopedBoard: bool,
-  timeLimitForEachTurn: float,
-  logs: array<array<float>>,
-  map: array<string>,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    startedAt: s.field("startedAt", S.json),
-    endedAt: s.field("endedAt", S.json),
-    isStarted: s.field("isStarted", S.bool),
-    isEnded: s.field("isEnded", S.bool),
-    form1: s.field("form1", S.json),
-    form2: s.field("form2", S.json),
-    user1ready: s.field("user1Ready", S.bool),
-    user2ready: s.field("user2Ready", S.bool),
-    user1id: s.field("user1Id", S.string),
-    user2id: s.field("user2Id", S.string),
-    user1: s.field("user1", UserLite.schema),
-    user2: s.field("user2", UserLite.schema),
-    winnerId: s.field("winnerId", S.json),
-    winner: s.field("winner", S.nullableAsOption(UserLite.schema)),
-    surrenderedUserId: s.field("surrenderedUserId", S.json),
-    timeoutUserId: s.field("timeoutUserId", S.json),
-    black: s.field("black", S.json),
-    bw: s.field("bw", S.string),
-    noIrregularRules: s.field("noIrregularRules", S.bool),
-    isLlotheo: s.field("isLlotheo", S.bool),
-    canPutEverywhere: s.field("canPutEverywhere", S.bool),
-    loopedBoard: s.field("loopedBoard", S.bool),
-    timeLimitForEachTurn: s.field("timeLimitForEachTurn", S.float),
-    logs: s.field("logs", S.array(S.array(S.float))),
-    map: s.field("map", S.array(S.string)),
-  })
-}
-
-module ReversiGameLite = {
-  type t = {
-  id: string,
-  createdAt: string,
-  startedAt: JSON.t,
-  endedAt: JSON.t,
-  isStarted: bool,
-  isEnded: bool,
-  @as("user1Id") user1id: string,
-  @as("user2Id") user2id: string,
-  user1: UserLite.t,
-  user2: UserLite.t,
-  winnerId: JSON.t,
-  winner: option<UserLite.t>,
-  surrenderedUserId: JSON.t,
-  timeoutUserId: JSON.t,
-  black: JSON.t,
-  bw: string,
-  noIrregularRules: bool,
-  isLlotheo: bool,
-  canPutEverywhere: bool,
-  loopedBoard: bool,
-  timeLimitForEachTurn: float,
-}
-  let schema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    startedAt: s.field("startedAt", S.json),
-    endedAt: s.field("endedAt", S.json),
-    isStarted: s.field("isStarted", S.bool),
-    isEnded: s.field("isEnded", S.bool),
-    user1id: s.field("user1Id", S.string),
-    user2id: s.field("user2Id", S.string),
-    user1: s.field("user1", UserLite.schema),
-    user2: s.field("user2", UserLite.schema),
-    winnerId: s.field("winnerId", S.json),
-    winner: s.field("winner", S.nullableAsOption(UserLite.schema)),
-    surrenderedUserId: s.field("surrenderedUserId", S.json),
-    timeoutUserId: s.field("timeoutUserId", S.json),
-    black: s.field("black", S.json),
-    bw: s.field("bw", S.string),
-    noIrregularRules: s.field("noIrregularRules", S.bool),
-    isLlotheo: s.field("isLlotheo", S.bool),
-    canPutEverywhere: s.field("canPutEverywhere", S.bool),
-    loopedBoard: s.field("loopedBoard", S.bool),
-    timeLimitForEachTurn: s.field("timeLimitForEachTurn", S.float),
-  })
+module UserDetailed = {
+  type t = MeDetailed.t
+  let schema = MeDetailed.schema
 }
 
 module User = {
-  type t = [
-  | UserLite(UserLite.t)
-  | UserDetailed(UserDetailed.t)
-]
-  let schema = S.union([UserLite.schema, UserDetailed.schema])
+  type t = UserDetailed.t
+  let schema = UserDetailed.schema
 }
 
-module UserDetailed = {
-  type t = [
-  | UserDetailedNotMe(UserDetailedNotMe.t)
-  | MeDetailed(MeDetailed.t)
-]
-  let schema = S.union([UserDetailedNotMe.schema, MeDetailed.schema])
+module Error = {
+  type error_1 = {
+  code: string,
+  message: string,
+  id: string,
 }
-
-module UserDetailedNotMe = {
-  type t = UserDetailedNotMeOnly.t
-  let schema = UserDetailedNotMeOnly.schema
-}
-
-module UserDetailedNotMeOnly = {
+  let error_1Schema = S.object(s => {
+    code: s.field("code", S.string),
+    message: s.field("message", S.string),
+    id: s.field("id", S.string),
+  })
   type t = {
-  url: JSON.t,
-  uri: JSON.t,
-  movedTo: JSON.t,
-  alsoKnownAs: JSON.t,
-  createdAt: string,
-  updatedAt: JSON.t,
-  lastFetchedAt: JSON.t,
-  bannerUrl: JSON.t,
-  bannerBlurhash: JSON.t,
-  isSilenced: bool,
-  isSuspended: bool,
-  description: JSON.t,
-  location: JSON.t,
-  birthday: JSON.t,
-  lang: JSON.t,
-  fields: array<{
-  name: string,
-  value: string,
-}>,
-  verifiedLinks: array<string>,
-  followersCount: float,
-  followingCount: float,
-  notesCount: float,
-  pinnedNoteIds: array<string>,
-  pinnedNotes: array<Note.t>,
-  pinnedPageId: JSON.t,
-  pinnedPage: option<Page.t>,
-  publicReactions: bool,
-  followingVisibility: string,
-  followersVisibility: string,
-  chatScope: string,
-  canChat: bool,
-  roles: array<RoleLite.t>,
-  followedMessage: option<JSON.t>,
-  memo: JSON.t,
-  moderationNote: option<string>,
-  twoFactorEnabled: option<bool>,
-  usePasswordLessLogin: option<bool>,
-  securityKeys: option<bool>,
-  isFollowing: option<bool>,
-  isFollowed: option<bool>,
-  hasPendingFollowRequestFromYou: option<bool>,
-  hasPendingFollowRequestToYou: option<bool>,
-  isBlocking: option<bool>,
-  isBlocked: option<bool>,
-  isMuted: option<bool>,
-  isRenoteMuted: option<bool>,
-  notify: option<string>,
-  withReplies: option<bool>,
+  error: error_1,
 }
   let schema = S.object(s => {
-    url: s.field("url", S.json),
-    uri: s.field("uri", S.json),
-    movedTo: s.field("movedTo", S.json),
-    alsoKnownAs: s.field("alsoKnownAs", S.json),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
-    lastFetchedAt: s.field("lastFetchedAt", S.json),
-    bannerUrl: s.field("bannerUrl", S.json),
-    bannerBlurhash: s.field("bannerBlurhash", S.json),
-    isSilenced: s.field("isSilenced", S.bool),
-    isSuspended: s.field("isSuspended", S.bool),
-    description: s.field("description", S.json),
-    location: s.field("location", S.json),
-    birthday: s.field("birthday", S.json),
-    lang: s.field("lang", S.json),
-    fields: s.field("fields", S.array(S.object(s => {
-    name: s.field("name", S.string),
-    value: s.field("value", S.string),
-  }))),
-    verifiedLinks: s.field("verifiedLinks", S.array(S.string)),
-    followersCount: s.field("followersCount", S.float),
-    followingCount: s.field("followingCount", S.float),
-    notesCount: s.field("notesCount", S.float),
-    pinnedNoteIds: s.field("pinnedNoteIds", S.array(S.string)),
-    pinnedNotes: s.field("pinnedNotes", S.array(Note.schema)),
-    pinnedPageId: s.field("pinnedPageId", S.json),
-    pinnedPage: s.field("pinnedPage", S.nullableAsOption(Page.schema)),
-    publicReactions: s.field("publicReactions", S.bool),
-    followingVisibility: s.field("followingVisibility", S.string),
-    followersVisibility: s.field("followersVisibility", S.string),
-    chatScope: s.field("chatScope", S.string),
-    canChat: s.field("canChat", S.bool),
-    roles: s.field("roles", S.array(RoleLite.schema)),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.json), None),
-    memo: s.field("memo", S.json),
-    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.string), None),
-    twoFactorEnabled: s.fieldOr("twoFactorEnabled", S.nullableAsOption(S.bool), None),
-    usePasswordLessLogin: s.fieldOr("usePasswordLessLogin", S.nullableAsOption(S.bool), None),
-    securityKeys: s.fieldOr("securityKeys", S.nullableAsOption(S.bool), None),
-    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
-    isFollowed: s.fieldOr("isFollowed", S.nullableAsOption(S.bool), None),
-    hasPendingFollowRequestFromYou: s.fieldOr("hasPendingFollowRequestFromYou", S.nullableAsOption(S.bool), None),
-    hasPendingFollowRequestToYou: s.fieldOr("hasPendingFollowRequestToYou", S.nullableAsOption(S.bool), None),
-    isBlocking: s.fieldOr("isBlocking", S.nullableAsOption(S.bool), None),
-    isBlocked: s.fieldOr("isBlocked", S.nullableAsOption(S.bool), None),
-    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
-    isRenoteMuted: s.fieldOr("isRenoteMuted", S.nullableAsOption(S.bool), None),
-    notify: s.fieldOr("notify", S.nullableAsOption(S.string), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    error: s.field("error", error_1Schema),
   })
 }

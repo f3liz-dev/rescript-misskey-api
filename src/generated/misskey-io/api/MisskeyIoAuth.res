@@ -154,18 +154,18 @@ let postAuthSessionUserkey = (~body: postAuthSessionUserkeyRequest, ~fetch: (~ur
 }
 
 type postMiauthGenTokenRequest = {
-  session: JSON.t,
-  name: option<JSON.t>,
-  description: option<JSON.t>,
-  iconUrl: option<JSON.t>,
+  session: option<string>,
+  name: option<string>,
+  description: option<string>,
+  iconUrl: option<string>,
   permission: array<string>,
 }
 
 let postMiauthGenTokenRequestSchema = S.object(s => {
-    session: s.field("session", S.json),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.json), None),
+    session: s.field("session", S.nullableAsOption(S.string)),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
+    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
     permission: s.field("permission", S.array(S.string)),
   })
 

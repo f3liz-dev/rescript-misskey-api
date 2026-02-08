@@ -6,20 +6,20 @@
 
 type postChannelsCreateRequest = {
   name: string,
-  description: option<JSON.t>,
-  bannerId: option<JSON.t>,
+  description: option<string>,
+  bannerId: option<string>,
   color: option<string>,
-  isSensitive: option<JSON.t>,
-  allowRenoteToExternal: option<JSON.t>,
+  isSensitive: option<bool>,
+  allowRenoteToExternal: option<bool>,
 }
 
 let postChannelsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(128)),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(2048)), None),
+    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
     color: s.fieldOr("color", S.nullableAsOption(S.string->S.min(1)->S.max(16)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.json), None),
-    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.json), None),
+    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.bool), None),
   })
 
 type postChannelsCreateResponse = MisskeyIoComponentSchemas.Channel.t
@@ -87,7 +87,7 @@ let postChannelsFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Chann
  *
  * **Credential required**: *No*
  */
-let postChannelsFeatured = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedResponse> => {
+let postChannelsFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedResponse> => {
 
   fetch(
     ~url="/channels/featured",
@@ -111,7 +111,7 @@ let postChannelsFeaturedGamesResponseSchema = S.array(MisskeyIoComponentSchemas.
  *
  * **Credential required**: *No*
  */
-let postChannelsFeaturedGames = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedGamesResponse> => {
+let postChannelsFeaturedGames = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedGamesResponse> => {
 
   fetch(
     ~url="/channels/featured-games",
@@ -201,7 +201,7 @@ let postChannelsMyFavoritesResponseSchema = S.array(MisskeyIoComponentSchemas.Ch
  *
  * **Credential required**: *Yes* / **Permission**: *read:channels*
  */
-let postChannelsMyFavorites = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsMyFavoritesResponse> => {
+let postChannelsMyFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsMyFavoritesResponse> => {
 
   fetch(
     ~url="/channels/my-favorites",
@@ -385,25 +385,25 @@ let postChannelsUnfollow = (~body: postChannelsUnfollowRequest, ~fetch: (~url: s
 type postChannelsUpdateRequest = {
   channelId: string,
   name: option<string>,
-  description: option<JSON.t>,
-  bannerId: option<JSON.t>,
-  isArchived: option<JSON.t>,
+  description: option<string>,
+  bannerId: option<string>,
+  isArchived: option<bool>,
   pinnedNoteIds: option<array<string>>,
   color: option<string>,
-  isSensitive: option<JSON.t>,
-  allowRenoteToExternal: option<JSON.t>,
+  isSensitive: option<bool>,
+  allowRenoteToExternal: option<bool>,
 }
 
 let postChannelsUpdateRequestSchema = S.object(s => {
     channelId: s.field("channelId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.json), None),
-    isArchived: s.fieldOr("isArchived", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(2048)), None),
+    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
+    isArchived: s.fieldOr("isArchived", S.nullableAsOption(S.bool), None),
     pinnedNoteIds: s.fieldOr("pinnedNoteIds", S.nullableAsOption(S.array(S.string)), None),
     color: s.fieldOr("color", S.nullableAsOption(S.string->S.min(1)->S.max(16)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.json), None),
-    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.json), None),
+    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.bool), None),
   })
 
 type postChannelsUpdateResponse = MisskeyIoComponentSchemas.Channel.t

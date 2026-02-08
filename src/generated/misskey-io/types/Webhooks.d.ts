@@ -30,8 +30,8 @@ export interface PostIwebhooksCreateResponse {
   url: string;
   secret: string;
   active: boolean;
-  latestSentAt: unknown;
-  latestStatus: unknown;
+  latestSentAt: string | null;
+  latestStatus: number | null;
 }
 
 export interface PostIwebhooksDeleteRequest {
@@ -48,8 +48,8 @@ export type PostIwebhooksListResponse = {
   url: string;
   secret: string;
   active: boolean;
-  latestSentAt: unknown;
-  latestStatus: unknown;
+  latestSentAt: string | null;
+  latestStatus: number | null;
 }[];
 
 export interface PostIwebhooksShowRequest {
@@ -64,8 +64,8 @@ export interface PostIwebhooksShowResponse {
   url: string;
   secret: string;
   active: boolean;
-  latestSentAt: unknown;
-  latestStatus: unknown;
+  latestSentAt: string | null;
+  latestStatus: number | null;
 }
 
 export interface PostIwebhooksTestRequest {
@@ -82,7 +82,7 @@ export interface PostIwebhooksUpdateRequest {
   webhookId: string;
   name?: string;
   url?: string;
-  secret?: unknown;
+  secret?: string | null;
   on?: string[];
   active?: boolean;
 }

@@ -169,7 +169,7 @@ let postUsersGroupsJoinedResponseSchema = S.array(KokonectLinkComponentSchemas.U
  *
  * **Credential required**: *Yes* / **Permission**: *read:user-groups*
  */
-let postUsersGroupsJoined = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsJoinedResponse> => {
+let postUsersGroupsJoined = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsJoinedResponse> => {
 
   fetch(
     ~url="/users/groups/joined",
@@ -223,7 +223,7 @@ let postUsersGroupsOwnedResponseSchema = S.array(KokonectLinkComponentSchemas.Us
  *
  * **Credential required**: *Yes* / **Permission**: *read:user-groups*
  */
-let postUsersGroupsOwned = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsOwnedResponse> => {
+let postUsersGroupsOwned = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsOwnedResponse> => {
 
   fetch(
     ~url="/users/groups/owned",

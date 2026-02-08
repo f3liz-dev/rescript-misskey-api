@@ -7,11 +7,11 @@
 type postPagesCreateRequest = {
   title: string,
   name: string,
-  summary: option<JSON.t>,
-  content: array<JSON.t>,
-  variables: array<JSON.t>,
+  summary: option<string>,
+  content: array<dict<JSON.t>>,
+  variables: array<dict<JSON.t>>,
   script: string,
-  eyeCatchingImageId: option<JSON.t>,
+  eyeCatchingImageId: option<string>,
   font: option<string>,
   alignCenter: option<bool>,
   hideTitleWhenPinned: option<bool>,
@@ -21,11 +21,11 @@ type postPagesCreateRequest = {
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
     name: s.field("name", S.string->S.min(1)->S.pattern(%re("/^[a-zA-Z0-9_-]+$/"))),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.json), None),
-    content: s.field("content", S.array(S.json)),
-    variables: s.field("variables", S.array(S.json)),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    content: s.field("content", S.array(S.dict(S.json))),
+    variables: s.field("variables", S.array(S.dict(S.json))),
     script: s.field("script", S.string),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.json), None),
+    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
     font: s.fieldOr("font", S.nullableAsOption(S.string), None),
     alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
     hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
@@ -97,7 +97,7 @@ let postPagesFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Page.sch
  *
  * **Credential required**: *No*
  */
-let postPagesFeatured = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesFeaturedResponse> => {
+let postPagesFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesFeaturedResponse> => {
 
   fetch(
     ~url="/pages/featured",
@@ -210,11 +210,11 @@ type postPagesUpdateRequest = {
   pageId: string,
   title: option<string>,
   name: option<string>,
-  summary: option<JSON.t>,
-  content: option<array<JSON.t>>,
-  variables: option<array<JSON.t>>,
+  summary: option<string>,
+  content: option<array<dict<JSON.t>>>,
+  variables: option<array<dict<JSON.t>>>,
   script: option<string>,
-  eyeCatchingImageId: option<JSON.t>,
+  eyeCatchingImageId: option<string>,
   font: option<string>,
   alignCenter: option<bool>,
   hideTitleWhenPinned: option<bool>,
@@ -225,11 +225,11 @@ let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(%re("/^[a-zA-Z0-9_-]+$/"))), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.json), None),
-    content: s.fieldOr("content", S.nullableAsOption(S.array(S.json)), None),
-    variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.json)), None),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    content: s.fieldOr("content", S.nullableAsOption(S.array(S.dict(S.json))), None),
+    variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.dict(S.json))), None),
     script: s.fieldOr("script", S.nullableAsOption(S.string), None),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.json), None),
+    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
     font: s.fieldOr("font", S.nullableAsOption(S.string), None),
     alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
     hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),

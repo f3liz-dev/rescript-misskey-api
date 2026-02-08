@@ -8,14 +8,14 @@ type postAppCreateRequest = {
   name: string,
   description: string,
   permission: array<string>,
-  callbackUrl: option<JSON.t>,
+  callbackUrl: option<string>,
 }
 
 let postAppCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string),
     description: s.field("description", S.string),
     permission: s.field("permission", S.array(S.string)),
-    callbackUrl: s.fieldOr("callbackUrl", S.nullableAsOption(S.json), None),
+    callbackUrl: s.fieldOr("callbackUrl", S.nullableAsOption(S.string), None),
   })
 
 type postAppCreateResponse = KokonectLinkComponentSchemas.App.t

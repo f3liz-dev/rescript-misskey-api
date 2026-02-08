@@ -147,8 +147,8 @@ export type PostIpinResponse = ComponentSchemas.MeDetailed;
 
 export interface PostIpurgeTimelineCacheRequest {
   type: string;
-  listId?: unknown;
-  antennaId?: unknown;
+  listId?: string | null;
+  antennaId?: string | null;
 }
 export type PostIpurgeTimelineCacheResponse = void;
 
@@ -164,25 +164,25 @@ export interface PostIunpinRequest {
 export type PostIunpinResponse = ComponentSchemas.MeDetailed;
 
 export interface PostIupdateRequest {
-  name?: unknown;
-  description?: unknown;
-  followedMessage?: unknown;
-  location?: unknown;
-  birthday?: unknown;
-  lang?: unknown;
-  postingLang?: unknown;
+  name?: string | null;
+  description?: string | null;
+  followedMessage?: string | null;
+  location?: string | null;
+  birthday?: string | null;
+  lang?: string | null;
+  postingLang?: string | null;
   viewingLangs?: string[];
   showMediaInAllLanguages?: boolean;
   showHashtagsInAllLanguages?: boolean;
-  avatarId?: unknown;
+  avatarId?: string | null;
   avatarDecorations?: {
   id: string;
-  angle?: unknown;
-  flipH?: unknown;
-  offsetX?: unknown;
-  offsetY?: unknown;
+  angle?: number | null;
+  flipH?: boolean | null;
+  offsetX?: number | null;
+  offsetY?: number | null;
 }[];
-  bannerId?: unknown;
+  bannerId?: string | null;
   fields?: {
   name: string;
   value: string;
@@ -196,8 +196,8 @@ export interface PostIupdateRequest {
   noCrawle?: boolean;
   preventAiLearning?: boolean;
   requireSigninToViewContents?: boolean;
-  makeNotesFollowersOnlyBefore?: unknown;
-  makeNotesHiddenBefore?: unknown;
+  makeNotesFollowersOnlyBefore?: number | null;
+  makeNotesHiddenBefore?: number | null;
   isBot?: boolean;
   isCat?: boolean;
   injectFeaturedNote?: boolean;
@@ -207,7 +207,7 @@ export interface PostIupdateRequest {
   followingVisibility?: string;
   followersVisibility?: string;
   chatScope?: string;
-  pinnedPageId?: unknown;
+  pinnedPageId?: string | null;
   mutedWords?: string[] | string[];
   mutedInstances?: string[];
   notificationRecieveConfig?: {
@@ -230,11 +230,11 @@ export interface PostIupdateRequest {
   emailNotificationTypes?: string[];
   alsoKnownAs?: string[];
   mutualLinkSections?: {
-  name?: unknown;
+  name?: string | null;
   mutualLinks: {
   url: string;
   fileId: string;
-  description?: unknown;
+  description?: string | null;
 }[];
 }[];
 }
@@ -243,7 +243,7 @@ export type PostIupdateResponse = ComponentSchemas.MeDetailed;
 
 export interface PostMuteCreateRequest {
   userId: string;
-  expiresAt?: unknown;
+  expiresAt?: number | null;
 }
 export type PostMuteCreateResponse = void;
 
@@ -294,7 +294,7 @@ export interface PostSwRegisterRequest {
 /** OK (with results) */
 export interface PostSwRegisterResponse {
   state?: string;
-  key: unknown;
+  key: string | null;
   userId: string;
   endpoint: string;
   sendReadMessage: boolean;
@@ -304,7 +304,11 @@ export interface PostSwShowRegistrationRequest {
   endpoint: string;
 }
 /** OK (with results) */
-export type PostSwShowRegistrationResponse = unknown;
+export type PostSwShowRegistrationResponse = {
+  userId: string;
+  endpoint: string;
+  sendReadMessage: boolean;
+} | null;
 
 export interface PostSwUnregisterRequest {
   endpoint: string;
@@ -324,7 +328,7 @@ export interface PostSwUpdateRegistrationResponse {
 
 export interface PostUsersUpdateMemoRequest {
   userId: string;
-  memo: unknown;
+  memo: string | null;
 }
 export type PostUsersUpdateMemoResponse = void;
 

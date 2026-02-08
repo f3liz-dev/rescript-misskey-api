@@ -89,38 +89,42 @@ let postFederationFollowing = (~body: postFederationFollowingRequest, ~fetch: (~
 }
 
 type getFederationRemoteSoftwareRequest = {
-  blocked: option<JSON.t>,
-  notResponding: option<JSON.t>,
-  suspended: option<JSON.t>,
-  silenced: option<JSON.t>,
-  federating: option<JSON.t>,
-  subscribing: option<JSON.t>,
-  publishing: option<JSON.t>,
-  quarantined: option<JSON.t>,
+  blocked: option<bool>,
+  notResponding: option<bool>,
+  suspended: option<bool>,
+  silenced: option<bool>,
+  federating: option<bool>,
+  subscribing: option<bool>,
+  publishing: option<bool>,
+  quarantined: option<bool>,
 }
 
 let getFederationRemoteSoftwareRequestSchema = S.object(s => {
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.json), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.json), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.json), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.json), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.json), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.json), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.json), None),
-    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.json), None),
+    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
+    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
+    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
+    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
+    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
+    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
+    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
+    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.bool), None),
   })
 
-type getFederationRemoteSoftwareResponse = array<{
+type getFederationRemoteSoftwareResponse_1 = {
   softwareName: string,
-  color: JSON.t,
+  color: option<string>,
   count: int,
-}>
+}
 
-let getFederationRemoteSoftwareResponseSchema = S.array(S.object(s => {
+type getFederationRemoteSoftwareResponse = array<getFederationRemoteSoftwareResponse_1>
+
+let getFederationRemoteSoftwareResponse_1Schema = S.object(s => {
     softwareName: s.field("softwareName", S.string),
-    color: s.field("color", S.json),
+    color: s.field("color", S.nullableAsOption(S.string)),
     count: s.field("count", S.int),
-  }))
+  })
+
+let getFederationRemoteSoftwareResponseSchema = S.array(getFederationRemoteSoftwareResponse_1Schema)
 
 /**
  * federation/remote-software
@@ -143,38 +147,42 @@ let getFederationRemoteSoftware = (~body: getFederationRemoteSoftwareRequest, ~f
 }
 
 type postFederationRemoteSoftwareRequest = {
-  blocked: option<JSON.t>,
-  notResponding: option<JSON.t>,
-  suspended: option<JSON.t>,
-  silenced: option<JSON.t>,
-  federating: option<JSON.t>,
-  subscribing: option<JSON.t>,
-  publishing: option<JSON.t>,
-  quarantined: option<JSON.t>,
+  blocked: option<bool>,
+  notResponding: option<bool>,
+  suspended: option<bool>,
+  silenced: option<bool>,
+  federating: option<bool>,
+  subscribing: option<bool>,
+  publishing: option<bool>,
+  quarantined: option<bool>,
 }
 
 let postFederationRemoteSoftwareRequestSchema = S.object(s => {
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.json), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.json), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.json), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.json), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.json), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.json), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.json), None),
-    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.json), None),
+    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
+    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
+    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
+    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
+    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
+    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
+    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
+    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.bool), None),
   })
 
-type postFederationRemoteSoftwareResponse = array<{
+type postFederationRemoteSoftwareResponse_1 = {
   softwareName: string,
-  color: JSON.t,
+  color: option<string>,
   count: int,
-}>
+}
 
-let postFederationRemoteSoftwareResponseSchema = S.array(S.object(s => {
+type postFederationRemoteSoftwareResponse = array<postFederationRemoteSoftwareResponse_1>
+
+let postFederationRemoteSoftwareResponse_1Schema = S.object(s => {
     softwareName: s.field("softwareName", S.string),
-    color: s.field("color", S.json),
+    color: s.field("color", S.nullableAsOption(S.string)),
     count: s.field("count", S.int),
-  }))
+  })
+
+let postFederationRemoteSoftwareResponseSchema = S.array(postFederationRemoteSoftwareResponse_1Schema)
 
 /**
  * federation/remote-software

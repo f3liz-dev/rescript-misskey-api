@@ -8,11 +8,11 @@ import * as ComponentSchemas from './ComponentSchemas';
 export interface PostPagesCreateRequest {
   title: string;
   name: string;
-  summary?: unknown;
+  summary?: string | null;
   content: Record<string, never>[];
   variables: Record<string, never>[];
   script: string;
-  eyeCatchingImageId?: unknown;
+  eyeCatchingImageId?: string | null;
   font?: string;
   alignCenter?: boolean;
   hideTitleWhenPinned?: boolean;
@@ -51,11 +51,11 @@ export interface PostPagesUpdateRequest {
   pageId: string;
   title?: string;
   name?: string;
-  summary?: unknown;
+  summary?: string | null;
   content?: Record<string, never>[];
   variables?: Record<string, never>[];
   script?: string;
-  eyeCatchingImageId?: unknown;
+  eyeCatchingImageId?: string | null;
   font?: string;
   alignCenter?: boolean;
   hideTitleWhenPinned?: boolean;

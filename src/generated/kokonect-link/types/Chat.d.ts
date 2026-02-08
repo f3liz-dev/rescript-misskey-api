@@ -13,7 +13,7 @@ export interface PostChatHistoryRequest {
 export type PostChatHistoryResponse = ComponentSchemas.ChatMessage[];
 
 export interface PostChatMessagesCreateToRoomRequest {
-  text?: unknown;
+  text?: string | null;
   fileId?: string;
   toRoomId: string;
 }
@@ -21,7 +21,7 @@ export interface PostChatMessagesCreateToRoomRequest {
 export type PostChatMessagesCreateToRoomResponse = ComponentSchemas.ChatMessageLiteForRoom;
 
 export interface PostChatMessagesCreateToUserRequest {
-  text?: unknown;
+  text?: string | null;
   fileId?: string;
   toUserId: string;
 }
@@ -53,8 +53,8 @@ export type PostChatMessagesRoomTimelineResponse = ComponentSchemas.ChatMessageL
 export interface PostChatMessagesSearchRequest {
   query: string;
   limit?: number;
-  userId?: unknown;
-  roomId?: unknown;
+  userId?: string | null;
+  roomId?: string | null;
 }
 /** OK (with results) */
 export type PostChatMessagesSearchResponse = ComponentSchemas.ChatMessage[];

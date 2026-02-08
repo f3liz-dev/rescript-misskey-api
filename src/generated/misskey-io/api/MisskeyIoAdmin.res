@@ -6,36 +6,36 @@
 
 type postAdminAbuseReportResolverCreateRequest = {
   name: string,
-  targetUserPattern: JSON.t,
-  reporterPattern: JSON.t,
-  reportContentPattern: JSON.t,
+  targetUserPattern: option<string>,
+  reporterPattern: option<string>,
+  reportContentPattern: option<string>,
   expiresAt: string,
   forward: bool,
 }
 
 let postAdminAbuseReportResolverCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)),
-    targetUserPattern: s.field("targetUserPattern", S.json),
-    reporterPattern: s.field("reporterPattern", S.json),
-    reportContentPattern: s.field("reportContentPattern", S.json),
+    targetUserPattern: s.field("targetUserPattern", S.nullableAsOption(S.string)),
+    reporterPattern: s.field("reporterPattern", S.nullableAsOption(S.string)),
+    reportContentPattern: s.field("reportContentPattern", S.nullableAsOption(S.string)),
     expiresAt: s.field("expiresAt", S.string),
     forward: s.field("forward", S.bool),
   })
 
 type postAdminAbuseReportResolverCreateResponse = {
   name: string,
-  targetUserPattern: JSON.t,
-  reporterPattern: JSON.t,
-  reportContentPattern: JSON.t,
+  targetUserPattern: option<string>,
+  reporterPattern: option<string>,
+  reportContentPattern: option<string>,
   expiresAt: string,
   forward: bool,
 }
 
 let postAdminAbuseReportResolverCreateResponseSchema = S.object(s => {
     name: s.field("name", S.string),
-    targetUserPattern: s.field("targetUserPattern", S.json),
-    reporterPattern: s.field("reporterPattern", S.json),
-    reportContentPattern: s.field("reportContentPattern", S.json),
+    targetUserPattern: s.field("targetUserPattern", S.nullableAsOption(S.string)),
+    reporterPattern: s.field("reporterPattern", S.nullableAsOption(S.string)),
+    reportContentPattern: s.field("reportContentPattern", S.nullableAsOption(S.string)),
     expiresAt: s.field("expiresAt", S.string),
     forward: s.field("forward", S.bool),
   })
@@ -102,23 +102,27 @@ let postAdminAbuseReportResolverListRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postAdminAbuseReportResolverListResponse = array<{
+type postAdminAbuseReportResolverListResponse_1 = {
   name: string,
-  targetUserPattern: JSON.t,
-  reporterPattern: JSON.t,
-  reportContentPattern: JSON.t,
+  targetUserPattern: option<string>,
+  reporterPattern: option<string>,
+  reportContentPattern: option<string>,
   expiresAt: string,
   forward: bool,
-}>
+}
 
-let postAdminAbuseReportResolverListResponseSchema = S.array(S.object(s => {
+type postAdminAbuseReportResolverListResponse = array<postAdminAbuseReportResolverListResponse_1>
+
+let postAdminAbuseReportResolverListResponse_1Schema = S.object(s => {
     name: s.field("name", S.string),
-    targetUserPattern: s.field("targetUserPattern", S.json),
-    reporterPattern: s.field("reporterPattern", S.json),
-    reportContentPattern: s.field("reportContentPattern", S.json),
+    targetUserPattern: s.field("targetUserPattern", S.nullableAsOption(S.string)),
+    reporterPattern: s.field("reporterPattern", S.nullableAsOption(S.string)),
+    reportContentPattern: s.field("reportContentPattern", S.nullableAsOption(S.string)),
     expiresAt: s.field("expiresAt", S.string),
     forward: s.field("forward", S.bool),
-  }))
+  })
+
+let postAdminAbuseReportResolverListResponseSchema = S.array(postAdminAbuseReportResolverListResponse_1Schema)
 
 /**
  * admin/abuse-report-resolver/list
@@ -143,9 +147,9 @@ let postAdminAbuseReportResolverList = (~body: postAdminAbuseReportResolverListR
 type postAdminAbuseReportResolverUpdateRequest = {
   resolverId: string,
   name: option<string>,
-  targetUserPattern: option<JSON.t>,
-  reporterPattern: option<JSON.t>,
-  reportContentPattern: option<JSON.t>,
+  targetUserPattern: option<string>,
+  reporterPattern: option<string>,
+  reportContentPattern: option<string>,
   expiresAt: option<string>,
   forward: option<bool>,
 }
@@ -153,9 +157,9 @@ type postAdminAbuseReportResolverUpdateRequest = {
 let postAdminAbuseReportResolverUpdateRequestSchema = S.object(s => {
     resolverId: s.field("resolverId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    targetUserPattern: s.fieldOr("targetUserPattern", S.nullableAsOption(S.json), None),
-    reporterPattern: s.fieldOr("reporterPattern", S.nullableAsOption(S.json), None),
-    reportContentPattern: s.fieldOr("reportContentPattern", S.nullableAsOption(S.json), None),
+    targetUserPattern: s.fieldOr("targetUserPattern", S.nullableAsOption(S.string), None),
+    reporterPattern: s.fieldOr("reporterPattern", S.nullableAsOption(S.string), None),
+    reportContentPattern: s.fieldOr("reportContentPattern", S.nullableAsOption(S.string), None),
     expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.string), None),
     forward: s.fieldOr("forward", S.nullableAsOption(S.bool), None),
   })
@@ -367,57 +371,61 @@ type postAdminAbuseUserReportsRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  state: option<JSON.t>,
+  state: option<string>,
   reporterOrigin: option<string>,
   targetUserOrigin: option<string>,
   forwarded: option<bool>,
-  category: option<JSON.t>,
+  category: option<string>,
 }
 
 let postAdminAbuseUserReportsRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    state: s.fieldOr("state", S.nullableAsOption(S.json), None),
+    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
     reporterOrigin: s.fieldOr("reporterOrigin", S.nullableAsOption(S.string), None),
     targetUserOrigin: s.fieldOr("targetUserOrigin", S.nullableAsOption(S.string), None),
     forwarded: s.fieldOr("forwarded", S.nullableAsOption(S.bool), None),
-    category: s.fieldOr("category", S.nullableAsOption(S.json), None),
+    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
   })
 
-type postAdminAbuseUserReportsResponse = array<{
+type postAdminAbuseUserReportsResponse_1 = {
   id: string,
   createdAt: string,
   comment: string,
   resolved: bool,
   forwarded: bool,
-  resolvedAs: JSON.t,
+  resolvedAs: option<string>,
   reporterId: string,
   targetUserId: string,
-  assigneeId: JSON.t,
+  assigneeId: option<string>,
   reporter: MisskeyIoComponentSchemas.UserDetailed.t,
   targetUser: MisskeyIoComponentSchemas.UserDetailed.t,
-  assignee: option<JSON.t>,
+  assignee: option<MisskeyIoComponentSchemas.UserDetailed.t>,
   category: string,
-  moderationNote: JSON.t,
-}>
+  moderationNote: option<string>,
+}
 
-let postAdminAbuseUserReportsResponseSchema = S.array(S.object(s => {
+type postAdminAbuseUserReportsResponse = array<postAdminAbuseUserReportsResponse_1>
+
+let postAdminAbuseUserReportsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     comment: s.field("comment", S.string),
     resolved: s.field("resolved", S.bool),
     forwarded: s.field("forwarded", S.bool),
-    resolvedAs: s.field("resolvedAs", S.json),
+    resolvedAs: s.field("resolvedAs", S.nullableAsOption(S.string)),
     reporterId: s.field("reporterId", S.string),
     targetUserId: s.field("targetUserId", S.string),
-    assigneeId: s.field("assigneeId", S.json),
+    assigneeId: s.field("assigneeId", S.nullableAsOption(S.string)),
     reporter: s.field("reporter", MisskeyIoComponentSchemas.UserDetailed.schema),
     targetUser: s.field("targetUser", MisskeyIoComponentSchemas.UserDetailed.schema),
-    assignee: s.fieldOr("assignee", S.nullableAsOption(S.json), None),
+    assignee: s.fieldOr("assignee", S.nullableAsOption(MisskeyIoComponentSchemas.UserDetailed.schema), None),
     category: s.field("category", S.string),
-    moderationNote: s.field("moderationNote", S.json),
-  }))
+    moderationNote: s.field("moderationNote", S.nullableAsOption(S.string)),
+  })
+
+let postAdminAbuseUserReportsResponseSchema = S.array(postAdminAbuseUserReportsResponse_1Schema)
 
 /**
  * admin/abuse-user-reports
@@ -442,13 +450,13 @@ let postAdminAbuseUserReports = (~body: postAdminAbuseUserReportsRequest, ~fetch
 type postAdminAccountsCreateRequest = {
   username: string,
   password: string,
-  setupPassword: option<JSON.t>,
+  setupPassword: option<string>,
 }
 
 let postAdminAccountsCreateRequestSchema = S.object(s => {
     username: s.field("username", S.string->S.pattern(%re("/^\\w{1,20}$/"))),
     password: s.field("password", S.string->S.min(1)),
-    setupPassword: s.fieldOr("setupPassword", S.nullableAsOption(S.json), None),
+    setupPassword: s.fieldOr("setupPassword", S.nullableAsOption(S.string), None),
   })
 
 type postAdminAccountsCreateResponse = MisskeyIoComponentSchemas.MeDetailed.t
@@ -543,35 +551,39 @@ type postAdminAccountsPendingListRequest = {
   limit: option<int>,
   offset: option<int>,
   sort: option<string>,
-  username: option<JSON.t>,
-  email: option<JSON.t>,
-  code: option<JSON.t>,
+  username: option<string>,
+  email: option<string>,
+  code: option<string>,
 }
 
 let postAdminAccountsPendingListRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.json), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
-    code: s.fieldOr("code", S.nullableAsOption(S.json), None),
+    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    code: s.fieldOr("code", S.nullableAsOption(S.string), None),
   })
 
-type postAdminAccountsPendingListResponse = array<{
+type postAdminAccountsPendingListResponse_1 = {
   id: string,
   createdAt: string,
   code: string,
   username: string,
-  email: option<JSON.t>,
-}>
+  email: option<string>,
+}
 
-let postAdminAccountsPendingListResponseSchema = S.array(S.object(s => {
+type postAdminAccountsPendingListResponse = array<postAdminAccountsPendingListResponse_1>
+
+let postAdminAccountsPendingListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     code: s.field("code", S.string),
     username: s.field("username", S.string),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
-  }))
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+  })
+
+let postAdminAccountsPendingListResponseSchema = S.array(postAdminAccountsPendingListResponse_1Schema)
 
 /**
  * admin/accounts/pending/list
@@ -709,14 +721,14 @@ type postAdminAdListRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  publishing: option<JSON.t>,
+  publishing: option<bool>,
 }
 
 let postAdminAdListRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.json), None),
+    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
   })
 
 type postAdminAdListResponse = array<MisskeyIoComponentSchemas.Ad.t>
@@ -796,7 +808,7 @@ let postAdminAdUpdate = (~body: postAdminAdUpdateRequest, ~fetch: (~url: string,
 type postAdminAnnouncementsCreateRequest = {
   title: string,
   text: string,
-  imageUrl: JSON.t,
+  imageUrl: option<string>,
   icon: option<string>,
   display: option<string>,
   forExistingUsers: option<bool>,
@@ -805,13 +817,13 @@ type postAdminAnnouncementsCreateRequest = {
   closeDuration: option<float>,
   displayOrder: option<float>,
   silence: option<bool>,
-  userId: option<JSON.t>,
+  userId: option<string>,
 }
 
 let postAdminAnnouncementsCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string->S.min(1)),
     text: s.field("text", S.string->S.min(1)),
-    imageUrl: s.field("imageUrl", S.json),
+    imageUrl: s.field("imageUrl", S.nullableAsOption(S.string->S.min(0))),
     icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
     display: s.fieldOr("display", S.nullableAsOption(S.string), None),
     forExistingUsers: s.fieldOr("forExistingUsers", S.nullableAsOption(S.bool), None),
@@ -820,16 +832,16 @@ let postAdminAnnouncementsCreateRequestSchema = S.object(s => {
     closeDuration: s.fieldOr("closeDuration", S.nullableAsOption(S.float), None),
     displayOrder: s.fieldOr("displayOrder", S.nullableAsOption(S.float), None),
     silence: s.fieldOr("silence", S.nullableAsOption(S.bool), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
   })
 
 type postAdminAnnouncementsCreateResponse = {
   id: string,
   createdAt: string,
-  updatedAt: JSON.t,
+  updatedAt: option<string>,
   title: string,
   text: string,
-  imageUrl: JSON.t,
+  imageUrl: option<string>,
   icon: string,
   display: string,
   forYou: bool,
@@ -844,10 +856,10 @@ type postAdminAnnouncementsCreateResponse = {
 let postAdminAnnouncementsCreateResponseSchema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
     title: s.field("title", S.string),
     text: s.field("text", S.string),
-    imageUrl: s.field("imageUrl", S.json),
+    imageUrl: s.field("imageUrl", S.nullableAsOption(S.string)),
     icon: s.field("icon", S.string),
     display: s.field("display", S.string),
     forYou: s.field("forYou", S.bool),
@@ -912,25 +924,25 @@ let postAdminAnnouncementsDelete = (~body: postAdminAnnouncementsDeleteRequest, 
 type postAdminAnnouncementsListRequest = {
   limit: option<int>,
   offset: option<int>,
-  userId: option<JSON.t>,
-  status: option<JSON.t>,
+  userId: option<string>,
+  status: option<string>,
 }
 
 let postAdminAnnouncementsListRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
-    status: s.fieldOr("status", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    status: s.fieldOr("status", S.nullableAsOption(S.string), None),
   })
 
-type postAdminAnnouncementsListResponse = array<{
+type postAdminAnnouncementsListResponse_1 = {
   id: string,
   createdAt: string,
-  updatedAt: JSON.t,
+  updatedAt: option<string>,
   text: string,
   isActive: bool,
   title: string,
-  imageUrl: JSON.t,
+  imageUrl: option<string>,
   icon: string,
   display: string,
   forExistingUsers: bool,
@@ -939,20 +951,22 @@ type postAdminAnnouncementsListResponse = array<{
   closeDuration: float,
   displayOrder: float,
   silence: bool,
-  userId: JSON.t,
-  user: JSON.t,
+  userId: option<string>,
+  user: option<MisskeyIoComponentSchemas.UserLite.t>,
   reads: float,
-  lastReadAt: JSON.t,
-}>
+  lastReadAt: option<string>,
+}
 
-let postAdminAnnouncementsListResponseSchema = S.array(S.object(s => {
+type postAdminAnnouncementsListResponse = array<postAdminAnnouncementsListResponse_1>
+
+let postAdminAnnouncementsListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
     text: s.field("text", S.string),
     isActive: s.field("isActive", S.bool),
     title: s.field("title", S.string),
-    imageUrl: s.field("imageUrl", S.json),
+    imageUrl: s.field("imageUrl", S.nullableAsOption(S.string)),
     icon: s.field("icon", S.string),
     display: s.field("display", S.string),
     forExistingUsers: s.field("forExistingUsers", S.bool),
@@ -961,11 +975,13 @@ let postAdminAnnouncementsListResponseSchema = S.array(S.object(s => {
     closeDuration: s.field("closeDuration", S.float),
     displayOrder: s.field("displayOrder", S.float),
     silence: s.field("silence", S.bool),
-    userId: s.field("userId", S.json),
-    user: s.field("user", S.json),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+    user: s.field("user", S.nullableAsOption(MisskeyIoComponentSchemas.UserLite.schema)),
     reads: s.field("reads", S.float),
-    lastReadAt: s.field("lastReadAt", S.json),
-  }))
+    lastReadAt: s.field("lastReadAt", S.nullableAsOption(S.string)),
+  })
+
+let postAdminAnnouncementsListResponseSchema = S.array(postAdminAnnouncementsListResponse_1Schema)
 
 /**
  * admin/announcements/list
@@ -991,7 +1007,7 @@ type postAdminAnnouncementsUpdateRequest = {
   id: string,
   title: option<string>,
   text: option<string>,
-  imageUrl: option<JSON.t>,
+  imageUrl: option<string>,
   icon: option<string>,
   display: option<string>,
   forExistingUsers: option<bool>,
@@ -1007,7 +1023,7 @@ let postAdminAnnouncementsUpdateRequestSchema = S.object(s => {
     id: s.field("id", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)), None),
     text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)), None),
-    imageUrl: s.fieldOr("imageUrl", S.nullableAsOption(S.json), None),
+    imageUrl: s.fieldOr("imageUrl", S.nullableAsOption(S.string->S.min(0)), None),
     icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
     display: s.fieldOr("display", S.nullableAsOption(S.string), None),
     forExistingUsers: s.fieldOr("forExistingUsers", S.nullableAsOption(S.bool), None),
@@ -1058,7 +1074,7 @@ let postAdminAvatarDecorationsCreateRequestSchema = S.object(s => {
 type postAdminAvatarDecorationsCreateResponse = {
   id: string,
   createdAt: string,
-  updatedAt: JSON.t,
+  updatedAt: option<string>,
   name: string,
   description: string,
   url: string,
@@ -1068,7 +1084,7 @@ type postAdminAvatarDecorationsCreateResponse = {
 let postAdminAvatarDecorationsCreateResponseSchema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
     name: s.field("name", S.string),
     description: s.field("description", S.string),
     url: s.field("url", S.string),
@@ -1129,35 +1145,39 @@ type postAdminAvatarDecorationsListRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  userId: option<JSON.t>,
+  userId: option<string>,
 }
 
 let postAdminAvatarDecorationsListRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
   })
 
-type postAdminAvatarDecorationsListResponse = array<{
+type postAdminAvatarDecorationsListResponse_1 = {
   id: string,
   createdAt: string,
-  updatedAt: JSON.t,
+  updatedAt: option<string>,
   name: string,
   description: string,
   url: string,
   roleIdsThatCanBeUsedThisDecoration: array<string>,
-}>
+}
 
-let postAdminAvatarDecorationsListResponseSchema = S.array(S.object(s => {
+type postAdminAvatarDecorationsListResponse = array<postAdminAvatarDecorationsListResponse_1>
+
+let postAdminAvatarDecorationsListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.json),
+    updatedAt: s.field("updatedAt", S.nullableAsOption(S.string)),
     name: s.field("name", S.string),
     description: s.field("description", S.string),
     url: s.field("url", S.string),
     roleIdsThatCanBeUsedThisDecoration: s.field("roleIdsThatCanBeUsedThisDecoration", S.array(S.string)),
-  }))
+  })
+
+let postAdminAvatarDecorationsListResponseSchema = S.array(postAdminAvatarDecorationsListResponse_1Schema)
 
 /**
  * admin/avatar-decorations/list
@@ -1217,46 +1237,42 @@ let postAdminAvatarDecorationsUpdate = (~body: postAdminAvatarDecorationsUpdateR
   })
 }
 
+type postAdminCaptchaCurrentResponse_2 = {
+  siteKey: option<string>,
+  secretKey: option<string>,
+  instanceUrl: option<string>,
+}
+
+type postAdminCaptchaCurrentResponse_1 = {
+  siteKey: option<string>,
+  secretKey: option<string>,
+}
+
 type postAdminCaptchaCurrentResponse = {
   provider: string,
-  hcaptcha: {
-  siteKey: JSON.t,
-  secretKey: JSON.t,
-},
-  mcaptcha: {
-  siteKey: JSON.t,
-  secretKey: JSON.t,
-  instanceUrl: JSON.t,
-},
-  recaptcha: {
-  siteKey: JSON.t,
-  secretKey: JSON.t,
-},
-  turnstile: {
-  siteKey: JSON.t,
-  secretKey: JSON.t,
-},
+  hcaptcha: postAdminCaptchaCurrentResponse_1,
+  mcaptcha: postAdminCaptchaCurrentResponse_2,
+  recaptcha: postAdminCaptchaCurrentResponse_1,
+  turnstile: postAdminCaptchaCurrentResponse_1,
 }
+
+let postAdminCaptchaCurrentResponse_2Schema = S.object(s => {
+    siteKey: s.field("siteKey", S.nullableAsOption(S.string)),
+    secretKey: s.field("secretKey", S.nullableAsOption(S.string)),
+    instanceUrl: s.field("instanceUrl", S.nullableAsOption(S.string)),
+  })
+
+let postAdminCaptchaCurrentResponse_1Schema = S.object(s => {
+    siteKey: s.field("siteKey", S.nullableAsOption(S.string)),
+    secretKey: s.field("secretKey", S.nullableAsOption(S.string)),
+  })
 
 let postAdminCaptchaCurrentResponseSchema = S.object(s => {
     provider: s.field("provider", S.string),
-    hcaptcha: s.field("hcaptcha", S.object(s => {
-    siteKey: s.field("siteKey", S.json),
-    secretKey: s.field("secretKey", S.json),
-  })),
-    mcaptcha: s.field("mcaptcha", S.object(s => {
-    siteKey: s.field("siteKey", S.json),
-    secretKey: s.field("secretKey", S.json),
-    instanceUrl: s.field("instanceUrl", S.json),
-  })),
-    recaptcha: s.field("recaptcha", S.object(s => {
-    siteKey: s.field("siteKey", S.json),
-    secretKey: s.field("secretKey", S.json),
-  })),
-    turnstile: s.field("turnstile", S.object(s => {
-    siteKey: s.field("siteKey", S.json),
-    secretKey: s.field("secretKey", S.json),
-  })),
+    hcaptcha: s.field("hcaptcha", postAdminCaptchaCurrentResponse_1Schema),
+    mcaptcha: s.field("mcaptcha", postAdminCaptchaCurrentResponse_2Schema),
+    recaptcha: s.field("recaptcha", postAdminCaptchaCurrentResponse_1Schema),
+    turnstile: s.field("turnstile", postAdminCaptchaCurrentResponse_1Schema),
   })
 
 /**
@@ -1266,7 +1282,7 @@ let postAdminCaptchaCurrentResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
  */
-let postAdminCaptchaCurrent = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminCaptchaCurrentResponse> => {
+let postAdminCaptchaCurrent = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminCaptchaCurrentResponse> => {
 
   fetch(
     ~url="/admin/captcha/current",
@@ -1281,18 +1297,18 @@ let postAdminCaptchaCurrent = (~body as _, ~fetch: (~url: string, ~method_: stri
 
 type postAdminCaptchaSaveRequest = {
   provider: string,
-  captchaResult: option<JSON.t>,
-  sitekey: option<JSON.t>,
-  secret: option<JSON.t>,
-  instanceUrl: option<JSON.t>,
+  captchaResult: option<string>,
+  sitekey: option<string>,
+  secret: option<string>,
+  instanceUrl: option<string>,
 }
 
 let postAdminCaptchaSaveRequestSchema = S.object(s => {
     provider: s.field("provider", S.string),
-    captchaResult: s.fieldOr("captchaResult", S.nullableAsOption(S.json), None),
-    sitekey: s.fieldOr("sitekey", S.nullableAsOption(S.json), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.json), None),
-    instanceUrl: s.fieldOr("instanceUrl", S.nullableAsOption(S.json), None),
+    captchaResult: s.fieldOr("captchaResult", S.nullableAsOption(S.string), None),
+    sitekey: s.fieldOr("sitekey", S.nullableAsOption(S.string), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+    instanceUrl: s.fieldOr("instanceUrl", S.nullableAsOption(S.string), None),
   })
 
 type postAdminCaptchaSaveResponse = unit
@@ -1326,7 +1342,7 @@ type postAdminDriveCleanRemoteFilesResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
  */
-let postAdminDriveCleanRemoteFiles = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanRemoteFilesResponse> => {
+let postAdminDriveCleanRemoteFiles = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanRemoteFilesResponse> => {
 
   fetch(
     ~url="/admin/drive/clean-remote-files",
@@ -1348,7 +1364,7 @@ type postAdminDriveCleanupResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
  */
-let postAdminDriveCleanup = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanupResponse> => {
+let postAdminDriveCleanup = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanupResponse> => {
 
   fetch(
     ~url="/admin/drive/cleanup",
@@ -1395,20 +1411,20 @@ type postAdminDriveFilesRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  userId: option<JSON.t>,
-  @as("type") type_: option<JSON.t>,
+  userId: option<string>,
+  @as("type") type_: option<string>,
   origin: option<string>,
-  hostname: option<JSON.t>,
+  hostname: option<string>,
 }
 
 let postAdminDriveFilesRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9\\/\\-*]+$/"))), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.json), None),
+    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
   })
 
 type postAdminDriveFilesResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
@@ -1445,64 +1461,68 @@ let postAdminDriveShowFileRequestSchema = S.object(s => {
     url: s.fieldOr("url", S.nullableAsOption(S.string), None),
   })
 
-type postAdminDriveShowFileResponse = {
-  id: string,
-  createdAt: string,
-  userId: JSON.t,
-  userHost: JSON.t,
-  md5: string,
-  name: string,
-  @as("type") type_: string,
-  size: float,
-  comment: JSON.t,
-  blurhash: JSON.t,
-  properties: {
+type postAdminDriveShowFileResponse_1 = {
   width: option<float>,
   height: option<float>,
   orientation: option<float>,
   avgColor: option<string>,
-},
-  storedInternal: JSON.t,
-  url: JSON.t,
-  thumbnailUrl: JSON.t,
-  webpublicUrl: JSON.t,
-  accessKey: JSON.t,
-  thumbnailAccessKey: JSON.t,
-  webpublicAccessKey: JSON.t,
-  uri: JSON.t,
-  src: JSON.t,
-  folderId: JSON.t,
+}
+
+type postAdminDriveShowFileResponse = {
+  id: string,
+  createdAt: string,
+  userId: option<string>,
+  userHost: option<string>,
+  md5: string,
+  name: string,
+  @as("type") type_: string,
+  size: float,
+  comment: option<string>,
+  blurhash: option<string>,
+  properties: postAdminDriveShowFileResponse_1,
+  storedInternal: option<bool>,
+  url: option<string>,
+  thumbnailUrl: option<string>,
+  webpublicUrl: option<string>,
+  accessKey: option<string>,
+  thumbnailAccessKey: option<string>,
+  webpublicAccessKey: option<string>,
+  uri: option<string>,
+  src: option<string>,
+  folderId: option<string>,
   isSensitive: bool,
   isLink: bool,
 }
 
-let postAdminDriveShowFileResponseSchema = S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    userId: s.field("userId", S.json),
-    userHost: s.field("userHost", S.json),
-    md5: s.field("md5", S.string),
-    name: s.field("name", S.string),
-    type_: s.field("type", S.string),
-    size: s.field("size", S.float),
-    comment: s.field("comment", S.json),
-    blurhash: s.field("blurhash", S.json),
-    properties: s.field("properties", S.object(s => {
+let postAdminDriveShowFileResponse_1Schema = S.object(s => {
     width: s.fieldOr("width", S.nullableAsOption(S.float), None),
     height: s.fieldOr("height", S.nullableAsOption(S.float), None),
     orientation: s.fieldOr("orientation", S.nullableAsOption(S.float), None),
     avgColor: s.fieldOr("avgColor", S.nullableAsOption(S.string), None),
-  })),
-    storedInternal: s.field("storedInternal", S.json),
-    url: s.field("url", S.json),
-    thumbnailUrl: s.field("thumbnailUrl", S.json),
-    webpublicUrl: s.field("webpublicUrl", S.json),
-    accessKey: s.field("accessKey", S.json),
-    thumbnailAccessKey: s.field("thumbnailAccessKey", S.json),
-    webpublicAccessKey: s.field("webpublicAccessKey", S.json),
-    uri: s.field("uri", S.json),
-    src: s.field("src", S.json),
-    folderId: s.field("folderId", S.json),
+  })
+
+let postAdminDriveShowFileResponseSchema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    userId: s.field("userId", S.nullableAsOption(S.string)),
+    userHost: s.field("userHost", S.nullableAsOption(S.string)),
+    md5: s.field("md5", S.string),
+    name: s.field("name", S.string),
+    type_: s.field("type", S.string),
+    size: s.field("size", S.float),
+    comment: s.field("comment", S.nullableAsOption(S.string)),
+    blurhash: s.field("blurhash", S.nullableAsOption(S.string)),
+    properties: s.field("properties", postAdminDriveShowFileResponse_1Schema),
+    storedInternal: s.field("storedInternal", S.nullableAsOption(S.bool)),
+    url: s.field("url", S.nullableAsOption(S.string)),
+    thumbnailUrl: s.field("thumbnailUrl", S.nullableAsOption(S.string)),
+    webpublicUrl: s.field("webpublicUrl", S.nullableAsOption(S.string)),
+    accessKey: s.field("accessKey", S.nullableAsOption(S.string)),
+    thumbnailAccessKey: s.field("thumbnailAccessKey", S.nullableAsOption(S.string)),
+    webpublicAccessKey: s.field("webpublicAccessKey", S.nullableAsOption(S.string)),
+    uri: s.field("uri", S.nullableAsOption(S.string)),
+    src: s.field("src", S.nullableAsOption(S.string)),
+    folderId: s.field("folderId", S.nullableAsOption(S.string)),
     isSensitive: s.field("isSensitive", S.bool),
     isLink: s.field("isLink", S.bool),
   })
@@ -1530,13 +1550,13 @@ let postAdminDriveShowFile = (~body: postAdminDriveShowFileRequest, ~fetch: (~ur
 type postAdminEmojiAddRequest = {
   name: string,
   fileId: string,
-  category: option<JSON.t>,
+  category: option<string>,
   aliases: option<array<string>>,
-  license: option<JSON.t>,
+  license: option<string>,
   isSensitive: option<bool>,
   localOnly: option<bool>,
-  requestedBy: option<JSON.t>,
-  memo: option<JSON.t>,
+  requestedBy: option<string>,
+  memo: option<string>,
   roleIdsThatCanBeUsedThisEmojiAsReaction: option<array<string>>,
   roleIdsThatCanNotBeUsedThisEmojiAsReaction: option<array<string>>,
 }
@@ -1544,13 +1564,13 @@ type postAdminEmojiAddRequest = {
 let postAdminEmojiAddRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/"))),
     fileId: s.field("fileId", S.string),
-    category: s.fieldOr("category", S.nullableAsOption(S.json), None),
+    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
     aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
-    license: s.fieldOr("license", S.nullableAsOption(S.json), None),
+    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    requestedBy: s.fieldOr("requestedBy", S.nullableAsOption(S.json), None),
-    memo: s.fieldOr("memo", S.nullableAsOption(S.json), None),
+    requestedBy: s.fieldOr("requestedBy", S.nullableAsOption(S.string), None),
+    memo: s.fieldOr("memo", S.nullableAsOption(S.string), None),
     roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
     roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
   })
@@ -1708,36 +1728,40 @@ let postAdminEmojiDeleteBulk = (~body: postAdminEmojiDeleteBulkRequest, ~fetch: 
 }
 
 type postAdminEmojiListRequest = {
-  query: option<JSON.t>,
+  query: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
 }
 
 let postAdminEmojiListRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.json), None),
+    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postAdminEmojiListResponse = array<{
+type postAdminEmojiListResponse_1 = {
   id: string,
   aliases: array<string>,
   name: string,
-  category: JSON.t,
-  host: JSON.t,
+  category: option<string>,
+  host: option<string>,
   url: string,
-}>
+}
 
-let postAdminEmojiListResponseSchema = S.array(S.object(s => {
+type postAdminEmojiListResponse = array<postAdminEmojiListResponse_1>
+
+let postAdminEmojiListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     aliases: s.field("aliases", S.array(S.string)),
     name: s.field("name", S.string),
-    category: s.field("category", S.json),
-    host: s.field("host", S.json),
+    category: s.field("category", S.nullableAsOption(S.string)),
+    host: s.field("host", S.nullableAsOption(S.string)),
     url: s.field("url", S.string),
-  }))
+  })
+
+let postAdminEmojiListResponseSchema = S.array(postAdminEmojiListResponse_1Schema)
 
 /**
  * admin/emoji/list
@@ -1760,38 +1784,42 @@ let postAdminEmojiList = (~body: postAdminEmojiListRequest, ~fetch: (~url: strin
 }
 
 type postAdminEmojiListRemoteRequest = {
-  query: option<JSON.t>,
-  host: option<JSON.t>,
+  query: option<string>,
+  host: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
 }
 
 let postAdminEmojiListRemoteRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.json), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
+    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postAdminEmojiListRemoteResponse = array<{
+type postAdminEmojiListRemoteResponse_1 = {
   id: string,
   aliases: array<string>,
   name: string,
-  category: JSON.t,
-  host: JSON.t,
+  category: option<string>,
+  host: option<string>,
   url: string,
-}>
+}
 
-let postAdminEmojiListRemoteResponseSchema = S.array(S.object(s => {
+type postAdminEmojiListRemoteResponse = array<postAdminEmojiListRemoteResponse_1>
+
+let postAdminEmojiListRemoteResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     aliases: s.field("aliases", S.array(S.string)),
     name: s.field("name", S.string),
-    category: s.field("category", S.json),
-    host: s.field("host", S.json),
+    category: s.field("category", S.nullableAsOption(S.string)),
+    host: s.field("host", S.nullableAsOption(S.string)),
     url: s.field("url", S.string),
-  }))
+  })
+
+let postAdminEmojiListRemoteResponseSchema = S.array(postAdminEmojiListRemoteResponse_1Schema)
 
 /**
  * admin/emoji/list-remote
@@ -1879,12 +1907,12 @@ let postAdminEmojiSetAliasesBulk = (~body: postAdminEmojiSetAliasesBulkRequest, 
 
 type postAdminEmojiSetCategoryBulkRequest = {
   ids: array<string>,
-  category: option<JSON.t>,
+  category: option<string>,
 }
 
 let postAdminEmojiSetCategoryBulkRequestSchema = S.object(s => {
     ids: s.field("ids", S.array(S.string)),
-    category: s.fieldOr("category", S.nullableAsOption(S.json), None),
+    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
   })
 
 type postAdminEmojiSetCategoryBulkResponse = unit
@@ -1911,12 +1939,12 @@ let postAdminEmojiSetCategoryBulk = (~body: postAdminEmojiSetCategoryBulkRequest
 
 type postAdminEmojiSetLicenseBulkRequest = {
   ids: array<string>,
-  license: option<JSON.t>,
+  license: option<string>,
 }
 
 let postAdminEmojiSetLicenseBulkRequestSchema = S.object(s => {
     ids: s.field("ids", S.array(S.string)),
-    license: s.fieldOr("license", S.nullableAsOption(S.json), None),
+    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
   })
 
 type postAdminEmojiSetLicenseBulkResponse = unit
@@ -1945,13 +1973,13 @@ type postAdminEmojiUpdateRequest = {
   id: option<string>,
   name: option<string>,
   fileId: option<string>,
-  category: option<JSON.t>,
+  category: option<string>,
   aliases: option<array<string>>,
-  license: option<JSON.t>,
+  license: option<string>,
   isSensitive: option<bool>,
   localOnly: option<bool>,
-  requestedBy: option<JSON.t>,
-  memo: option<JSON.t>,
+  requestedBy: option<string>,
+  memo: option<string>,
   roleIdsThatCanBeUsedThisEmojiAsReaction: option<array<string>>,
   roleIdsThatCanNotBeUsedThisEmojiAsReaction: option<array<string>>,
 }
@@ -1960,13 +1988,13 @@ let postAdminEmojiUpdateRequestSchema = S.object(s => {
     id: s.fieldOr("id", S.nullableAsOption(S.string), None),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/"))), None),
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    category: s.fieldOr("category", S.nullableAsOption(S.json), None),
+    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
     aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
-    license: s.fieldOr("license", S.nullableAsOption(S.json), None),
+    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    requestedBy: s.fieldOr("requestedBy", S.nullableAsOption(S.json), None),
-    memo: s.fieldOr("memo", S.nullableAsOption(S.json), None),
+    requestedBy: s.fieldOr("requestedBy", S.nullableAsOption(S.string), None),
+    memo: s.fieldOr("memo", S.nullableAsOption(S.string), None),
     roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
     roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
   })
@@ -2147,15 +2175,19 @@ let postAdminForwardAbuseUserReport = (~body: postAdminForwardAbuseUserReportReq
   })
 }
 
-type postAdminGetIndexStatsResponse = array<{
+type postAdminGetIndexStatsResponse_1 = {
   tablename: string,
   indexname: string,
-}>
+}
 
-let postAdminGetIndexStatsResponseSchema = S.array(S.object(s => {
+type postAdminGetIndexStatsResponse = array<postAdminGetIndexStatsResponse_1>
+
+let postAdminGetIndexStatsResponse_1Schema = S.object(s => {
     tablename: s.field("tablename", S.string),
     indexname: s.field("indexname", S.string),
-  }))
+  })
+
+let postAdminGetIndexStatsResponseSchema = S.array(postAdminGetIndexStatsResponse_1Schema)
 
 /**
  * admin/get-index-stats
@@ -2164,7 +2196,7 @@ let postAdminGetIndexStatsResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:index-stats*
  */
-let postAdminGetIndexStats = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetIndexStatsResponse> => {
+let postAdminGetIndexStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetIndexStatsResponse> => {
 
   fetch(
     ~url="/admin/get-index-stats",
@@ -2177,9 +2209,9 @@ let postAdminGetIndexStats = (~body as _, ~fetch: (~url: string, ~method_: strin
   })
 }
 
-type postAdminGetTableStatsResponse = JSON.t
+type postAdminGetTableStatsResponse = dict<JSON.t>
 
-let postAdminGetTableStatsResponseSchema = S.json
+let postAdminGetTableStatsResponseSchema = S.dict(S.json)
 
 /**
  * admin/get-table-stats
@@ -2188,7 +2220,7 @@ let postAdminGetTableStatsResponseSchema = S.json
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:table-stats*
  */
-let postAdminGetTableStats = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetTableStatsResponse> => {
+let postAdminGetTableStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetTableStatsResponse> => {
 
   fetch(
     ~url="/admin/get-table-stats",
@@ -2209,15 +2241,19 @@ let postAdminGetUserIpsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
   })
 
-type postAdminGetUserIpsResponse = array<{
+type postAdminGetUserIpsResponse_1 = {
   ip: string,
   createdAt: string,
-}>
+}
 
-let postAdminGetUserIpsResponseSchema = S.array(S.object(s => {
+type postAdminGetUserIpsResponse = array<postAdminGetUserIpsResponse_1>
+
+let postAdminGetUserIpsResponse_1Schema = S.object(s => {
     ip: s.field("ip", S.string),
     createdAt: s.field("createdAt", S.string),
-  }))
+  })
+
+let postAdminGetUserIpsResponseSchema = S.array(postAdminGetUserIpsResponse_1Schema)
 
 /**
  * admin/get-user-ips
@@ -2241,27 +2277,27 @@ let postAdminGetUserIps = (~body: postAdminGetUserIpsRequest, ~fetch: (~url: str
 
 type postAdminIndieAuthCreateRequest = {
   id: string,
-  name: option<JSON.t>,
+  name: option<string>,
   redirectUris: option<array<string>>,
 }
 
 let postAdminIndieAuthCreateRequestSchema = S.object(s => {
     id: s.field("id", S.string->S.min(1)),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     redirectUris: s.fieldOr("redirectUris", S.nullableAsOption(S.array(S.string)), None),
   })
 
 type postAdminIndieAuthCreateResponse = {
   id: string,
   createdAt: string,
-  name: JSON.t,
+  name: option<string>,
   redirectUris: array<string>,
 }
 
 let postAdminIndieAuthCreateResponseSchema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.json),
+    name: s.field("name", S.nullableAsOption(S.string)),
     redirectUris: s.field("redirectUris", S.array(S.string)),
   })
 
@@ -2325,19 +2361,23 @@ let postAdminIndieAuthListRequestSchema = S.object(s => {
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type postAdminIndieAuthListResponse = array<{
+type postAdminIndieAuthListResponse_1 = {
   id: string,
   createdAt: string,
-  name: JSON.t,
+  name: option<string>,
   redirectUris: array<string>,
-}>
+}
 
-let postAdminIndieAuthListResponseSchema = S.array(S.object(s => {
+type postAdminIndieAuthListResponse = array<postAdminIndieAuthListResponse_1>
+
+let postAdminIndieAuthListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.json),
+    name: s.field("name", S.nullableAsOption(S.string)),
     redirectUris: s.field("redirectUris", S.array(S.string)),
-  }))
+  })
+
+let postAdminIndieAuthListResponseSchema = S.array(postAdminIndieAuthListResponse_1Schema)
 
 /**
  * admin/indie-auth/list
@@ -2361,13 +2401,13 @@ let postAdminIndieAuthList = (~body: postAdminIndieAuthListRequest, ~fetch: (~ur
 
 type postAdminIndieAuthUpdateRequest = {
   id: string,
-  name: option<JSON.t>,
+  name: option<string>,
   redirectUris: option<array<string>>,
 }
 
 let postAdminIndieAuthUpdateRequestSchema = S.object(s => {
     id: s.field("id", S.string->S.min(1)),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     redirectUris: s.fieldOr("redirectUris", S.nullableAsOption(S.array(S.string)), None),
   })
 
@@ -2395,12 +2435,12 @@ let postAdminIndieAuthUpdate = (~body: postAdminIndieAuthUpdateRequest, ~fetch: 
 
 type postAdminInviteCreateRequest = {
   count: option<int>,
-  expiresAt: option<JSON.t>,
+  expiresAt: option<string>,
 }
 
 let postAdminInviteCreateRequestSchema = S.object(s => {
     count: s.fieldOr("count", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.json), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.string), None),
   })
 
 type postAdminInviteCreateResponse = array<MisskeyIoComponentSchemas.InviteCode.t>
@@ -2540,7 +2580,7 @@ let postAdminQueueDeliverDelayedResponseSchema = S.array(S.array(S.json))
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
  */
-let postAdminQueueDeliverDelayed = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueDeliverDelayedResponse> => {
+let postAdminQueueDeliverDelayed = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueDeliverDelayedResponse> => {
 
   fetch(
     ~url="/admin/queue/deliver-delayed",
@@ -2564,7 +2604,7 @@ let postAdminQueueInboxDelayedResponseSchema = S.array(S.array(S.json))
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
  */
-let postAdminQueueInboxDelayed = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueInboxDelayedResponse> => {
+let postAdminQueueInboxDelayed = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueInboxDelayedResponse> => {
 
   fetch(
     ~url="/admin/queue/inbox-delayed",
@@ -2628,7 +2668,7 @@ let postAdminQueueStatsResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
  */
-let postAdminQueueStats = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueStatsResponse> => {
+let postAdminQueueStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueStatsResponse> => {
 
   fetch(
     ~url="/admin/queue/stats",
@@ -2711,17 +2751,21 @@ let postAdminRelaysAdd = (~body: postAdminRelaysAddRequest, ~fetch: (~url: strin
   })
 }
 
-type postAdminRelaysListResponse = array<{
+type postAdminRelaysListResponse_1 = {
   id: string,
   inbox: string,
   status: string,
-}>
+}
 
-let postAdminRelaysListResponseSchema = S.array(S.object(s => {
+type postAdminRelaysListResponse = array<postAdminRelaysListResponse_1>
+
+let postAdminRelaysListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     inbox: s.field("inbox", S.string),
     status: s.field("status", S.string),
-  }))
+  })
+
+let postAdminRelaysListResponseSchema = S.array(postAdminRelaysListResponse_1Schema)
 
 /**
  * admin/relays/list
@@ -2730,7 +2774,7 @@ let postAdminRelaysListResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:relays*
  */
-let postAdminRelaysList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRelaysListResponse> => {
+let postAdminRelaysList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRelaysListResponse> => {
 
   fetch(
     ~url="/admin/relays/list",
@@ -2811,13 +2855,13 @@ let postAdminResetPassword = (~body: postAdminResetPasswordRequest, ~fetch: (~ur
 
 type postAdminResolveAbuseUserReportRequest = {
   reportId: string,
-  resolvedAs: option<JSON.t>,
+  resolvedAs: option<string>,
   forward: option<bool>,
 }
 
 let postAdminResolveAbuseUserReportRequestSchema = S.object(s => {
     reportId: s.field("reportId", S.string),
-    resolvedAs: s.fieldOr("resolvedAs", S.nullableAsOption(S.json), None),
+    resolvedAs: s.fieldOr("resolvedAs", S.nullableAsOption(S.string), None),
     forward: s.fieldOr("forward", S.nullableAsOption(S.bool), None),
   })
 
@@ -2847,14 +2891,14 @@ type postAdminRolesAssignRequest = {
   roleId: string,
   userId: string,
   memo: option<string>,
-  expiresAt: option<JSON.t>,
+  expiresAt: option<int>,
 }
 
 let postAdminRolesAssignRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
     userId: s.field("userId", S.string),
     memo: s.fieldOr("memo", S.nullableAsOption(S.string), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.json), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
   })
 
 type postAdminRolesAssignResponse = unit
@@ -2882,39 +2926,39 @@ let postAdminRolesAssign = (~body: postAdminRolesAssignRequest, ~fetch: (~url: s
 type postAdminRolesCreateRequest = {
   name: string,
   description: string,
-  color: JSON.t,
-  iconUrl: JSON.t,
+  color: option<string>,
+  iconUrl: option<string>,
   target: string,
-  condFormula: JSON.t,
+  condFormula: dict<JSON.t>,
   isPublic: bool,
   isModerator: bool,
   isAdministrator: bool,
   isExplorable: option<bool>,
   asBadge: bool,
-  badgeBehavior: option<JSON.t>,
+  badgeBehavior: option<string>,
   preserveAssignmentOnMoveAccount: option<bool>,
   canEditMembersByModerator: bool,
   displayOrder: float,
-  policies: JSON.t,
+  policies: dict<JSON.t>,
 }
 
 let postAdminRolesCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string),
     description: s.field("description", S.string),
-    color: s.field("color", S.json),
-    iconUrl: s.field("iconUrl", S.json),
+    color: s.field("color", S.nullableAsOption(S.string)),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
     target: s.field("target", S.string),
-    condFormula: s.field("condFormula", S.json),
+    condFormula: s.field("condFormula", S.dict(S.json)),
     isPublic: s.field("isPublic", S.bool),
     isModerator: s.field("isModerator", S.bool),
     isAdministrator: s.field("isAdministrator", S.bool),
     isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
     asBadge: s.field("asBadge", S.bool),
-    badgeBehavior: s.fieldOr("badgeBehavior", S.nullableAsOption(S.json), None),
+    badgeBehavior: s.fieldOr("badgeBehavior", S.nullableAsOption(S.string), None),
     preserveAssignmentOnMoveAccount: s.fieldOr("preserveAssignmentOnMoveAccount", S.nullableAsOption(S.bool), None),
     canEditMembersByModerator: s.field("canEditMembersByModerator", S.bool),
     displayOrder: s.field("displayOrder", S.float),
-    policies: s.field("policies", S.json),
+    policies: s.field("policies", S.dict(S.json)),
   })
 
 type postAdminRolesCreateResponse = MisskeyIoComponentSchemas.Role.t
@@ -2982,7 +3026,7 @@ let postAdminRolesListResponseSchema = S.array(MisskeyIoComponentSchemas.Role.sc
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:roles*
  */
-let postAdminRolesList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesListResponse> => {
+let postAdminRolesList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesListResponse> => {
 
   fetch(
     ~url="/admin/roles/list",
@@ -3063,40 +3107,40 @@ type postAdminRolesUpdateRequest = {
   roleId: string,
   name: option<string>,
   description: option<string>,
-  color: option<JSON.t>,
-  iconUrl: option<JSON.t>,
+  color: option<string>,
+  iconUrl: option<string>,
   target: option<string>,
-  condFormula: option<JSON.t>,
+  condFormula: option<dict<JSON.t>>,
   isPublic: option<bool>,
   isModerator: option<bool>,
   isAdministrator: option<bool>,
   isExplorable: option<bool>,
   asBadge: option<bool>,
-  badgeBehavior: option<JSON.t>,
+  badgeBehavior: option<string>,
   preserveAssignmentOnMoveAccount: option<bool>,
   canEditMembersByModerator: option<bool>,
   displayOrder: option<float>,
-  policies: option<JSON.t>,
+  policies: option<dict<JSON.t>>,
 }
 
 let postAdminRolesUpdateRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    color: s.fieldOr("color", S.nullableAsOption(S.json), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.json), None),
+    color: s.fieldOr("color", S.nullableAsOption(S.string), None),
+    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
     target: s.fieldOr("target", S.nullableAsOption(S.string), None),
-    condFormula: s.fieldOr("condFormula", S.nullableAsOption(S.json), None),
+    condFormula: s.fieldOr("condFormula", S.nullableAsOption(S.dict(S.json)), None),
     isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
     isModerator: s.fieldOr("isModerator", S.nullableAsOption(S.bool), None),
     isAdministrator: s.fieldOr("isAdministrator", S.nullableAsOption(S.bool), None),
     isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
     asBadge: s.fieldOr("asBadge", S.nullableAsOption(S.bool), None),
-    badgeBehavior: s.fieldOr("badgeBehavior", S.nullableAsOption(S.json), None),
+    badgeBehavior: s.fieldOr("badgeBehavior", S.nullableAsOption(S.string), None),
     preserveAssignmentOnMoveAccount: s.fieldOr("preserveAssignmentOnMoveAccount", S.nullableAsOption(S.bool), None),
     canEditMembersByModerator: s.fieldOr("canEditMembersByModerator", S.nullableAsOption(S.bool), None),
     displayOrder: s.fieldOr("displayOrder", S.nullableAsOption(S.float), None),
-    policies: s.fieldOr("policies", S.nullableAsOption(S.json), None),
+    policies: s.fieldOr("policies", S.nullableAsOption(S.dict(S.json)), None),
   })
 
 type postAdminRolesUpdateResponse = unit
@@ -3122,11 +3166,11 @@ let postAdminRolesUpdate = (~body: postAdminRolesUpdateRequest, ~fetch: (~url: s
 }
 
 type postAdminRolesUpdateDefaultPoliciesRequest = {
-  policies: JSON.t,
+  policies: dict<JSON.t>,
 }
 
 let postAdminRolesUpdateDefaultPoliciesRequestSchema = S.object(s => {
-    policies: s.field("policies", S.json),
+    policies: s.field("policies", S.dict(S.json)),
   })
 
 type postAdminRolesUpdateDefaultPoliciesResponse = unit
@@ -3151,30 +3195,34 @@ let postAdminRolesUpdateDefaultPolicies = (~body: postAdminRolesUpdateDefaultPol
   })
 }
 
-type postAdminRolesUpdateInlinePoliciesRequest = {
-  userId: string,
-  policies: array<{
-  id: option<JSON.t>,
+@unboxed type postAdminRolesUpdateInlinePoliciesRequest_2 = Bool(bool) | Float(float) | String(string)
+
+type postAdminRolesUpdateInlinePoliciesRequest_1 = {
+  id: option<string>,
   policy: string,
   operation: option<string>,
-  value: option<option<@unboxed [
-  | Bool(bool)
-  | Float(float)
-  | String(string)
-]>>,
-  memo: option<JSON.t>,
-}>,
+  value: option<postAdminRolesUpdateInlinePoliciesRequest_2>,
+  memo: option<string>,
 }
+
+type postAdminRolesUpdateInlinePoliciesRequest = {
+  userId: string,
+  policies: array<postAdminRolesUpdateInlinePoliciesRequest_1>,
+}
+
+let postAdminRolesUpdateInlinePoliciesRequest_2Schema = S.union([S.bool->S.shape(v => Bool(v)), S.float->S.shape(v => Float(v)), S.string->S.shape(v => String(v))])
+
+let postAdminRolesUpdateInlinePoliciesRequest_1Schema = S.object(s => {
+    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
+    policy: s.field("policy", S.string),
+    operation: s.fieldOr("operation", S.nullableAsOption(S.string), None),
+    value: s.fieldOr("value", S.nullableAsOption(S.union([S.bool->S.shape(v => Bool(v)), S.float->S.shape(v => Float(v)), S.string->S.shape(v => String(v))])), None),
+    memo: s.fieldOr("memo", S.nullableAsOption(S.string), None),
+  })
 
 let postAdminRolesUpdateInlinePoliciesRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    policies: s.field("policies", S.array(S.object(s => {
-    id: s.fieldOr("id", S.nullableAsOption(S.json), None),
-    policy: s.field("policy", S.string),
-    operation: s.fieldOr("operation", S.nullableAsOption(S.string), None),
-    value: s.fieldOr("value", S.nullableAsOption(S.nullableAsOption(S.union([S.bool, S.float, S.string]))), None),
-    memo: s.fieldOr("memo", S.nullableAsOption(S.json), None),
-  }))),
+    policies: s.field("policies", S.array(postAdminRolesUpdateInlinePoliciesRequest_1Schema)),
   })
 
 type postAdminRolesUpdateInlinePoliciesResponse = unit
@@ -3213,21 +3261,25 @@ let postAdminRolesUsersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postAdminRolesUsersResponse = array<{
+type postAdminRolesUsersResponse_1 = {
   id: string,
   createdAt: string,
   user: MisskeyIoComponentSchemas.UserDetailed.t,
-  memo: JSON.t,
-  expiresAt: JSON.t,
-}>
+  memo: option<string>,
+  expiresAt: option<string>,
+}
 
-let postAdminRolesUsersResponseSchema = S.array(S.object(s => {
+type postAdminRolesUsersResponse = array<postAdminRolesUsersResponse_1>
+
+let postAdminRolesUsersResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     user: s.field("user", MisskeyIoComponentSchemas.UserDetailed.schema),
-    memo: s.field("memo", S.json),
-    expiresAt: s.field("expiresAt", S.json),
-  }))
+    memo: s.field("memo", S.nullableAsOption(S.string)),
+    expiresAt: s.field("expiresAt", S.nullableAsOption(S.string)),
+  })
+
+let postAdminRolesUsersResponseSchema = S.array(postAdminRolesUsersResponse_1Schema)
 
 /**
  * admin/roles/users
@@ -3287,35 +3339,39 @@ type postAdminShowModerationLogsRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  @as("type") type_: option<JSON.t>,
-  userId: option<JSON.t>,
+  @as("type") type_: option<string>,
+  userId: option<string>,
 }
 
 let postAdminShowModerationLogsRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
   })
 
-type postAdminShowModerationLogsResponse = array<{
+type postAdminShowModerationLogsResponse_1 = {
   id: string,
   createdAt: string,
   @as("type") type_: string,
-  info: JSON.t,
+  info: dict<JSON.t>,
   userId: string,
   user: MisskeyIoComponentSchemas.UserDetailed.t,
-}>
+}
 
-let postAdminShowModerationLogsResponseSchema = S.array(S.object(s => {
+type postAdminShowModerationLogsResponse = array<postAdminShowModerationLogsResponse_1>
+
+let postAdminShowModerationLogsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     type_: s.field("type", S.string),
-    info: s.field("info", S.json),
+    info: s.field("info", S.dict(S.json)),
     userId: s.field("userId", S.string),
     user: s.field("user", MisskeyIoComponentSchemas.UserDetailed.schema),
-  }))
+  })
+
+let postAdminShowModerationLogsResponseSchema = S.array(postAdminShowModerationLogsResponse_1Schema)
 
 /**
  * admin/show-moderation-logs
@@ -3345,10 +3401,47 @@ let postAdminShowUserRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
   })
 
+@unboxed type postAdminShowUserResponse_4 = Bool(bool) | Float(float) | String(string)
+
+type postAdminShowUserResponse_3 = {
+  id: string,
+  createdAt: string,
+  updatedAt: string,
+  policy: string,
+  operation: string,
+  value: option<postAdminShowUserResponse_4>,
+  memo: option<string>,
+}
+
+type postAdminShowUserResponse_2 = {
+  createdAt: string,
+  expiresAt: option<string>,
+  roleId: string,
+  memo: option<string>,
+}
+
+type postAdminShowUserResponse_1 = {
+  note: option<dict<JSON.t>>,
+  follow: option<dict<JSON.t>>,
+  mention: option<dict<JSON.t>>,
+  reply: option<dict<JSON.t>>,
+  renote: option<dict<JSON.t>>,
+  quote: option<dict<JSON.t>>,
+  reaction: option<dict<JSON.t>>,
+  pollEnded: option<dict<JSON.t>>,
+  receiveFollowRequest: option<dict<JSON.t>>,
+  followRequestAccepted: option<dict<JSON.t>>,
+  roleAssigned: option<dict<JSON.t>>,
+  chatRoomInvitationReceived: option<dict<JSON.t>>,
+  achievementEarned: option<dict<JSON.t>>,
+  app: option<dict<JSON.t>>,
+  test: option<dict<JSON.t>>,
+}
+
 type postAdminShowUserResponse = {
-  email: JSON.t,
+  email: option<string>,
   emailVerified: bool,
-  followedMessage: JSON.t,
+  followedMessage: option<string>,
   autoAcceptFollowed: bool,
   noCrawle: bool,
   preventAiLearning: bool,
@@ -3359,59 +3452,63 @@ type postAdminShowUserResponse = {
   receiveAnnouncementEmail: bool,
   mutedWords: array<array<string>>,
   mutedInstances: array<string>,
-  notificationRecieveConfig: {
-  note: option<JSON.t>,
-  follow: option<JSON.t>,
-  mention: option<JSON.t>,
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
-  quote: option<JSON.t>,
-  reaction: option<JSON.t>,
-  pollEnded: option<JSON.t>,
-  receiveFollowRequest: option<JSON.t>,
-  followRequestAccepted: option<JSON.t>,
-  roleAssigned: option<JSON.t>,
-  chatRoomInvitationReceived: option<JSON.t>,
-  achievementEarned: option<JSON.t>,
-  app: option<JSON.t>,
-  test: option<JSON.t>,
-},
+  notificationRecieveConfig: postAdminShowUserResponse_1,
   isModerator: bool,
   isSilenced: bool,
   isLimited: bool,
   isDeleted: bool,
   isSuspended: bool,
   isHibernated: bool,
-  lastActiveDate: JSON.t,
+  lastActiveDate: option<string>,
   moderationNote: string,
   signins: array<MisskeyIoComponentSchemas.Signin.t>,
   policies: MisskeyIoComponentSchemas.RolePolicies.t,
   roles: array<MisskeyIoComponentSchemas.Role.t>,
-  roleAssigns: array<{
-  createdAt: string,
-  expiresAt: JSON.t,
-  roleId: string,
-  memo: JSON.t,
-}>,
-  inlinePolicies: array<{
-  id: string,
-  createdAt: string,
-  updatedAt: string,
-  policy: string,
-  operation: string,
-  value: option<@unboxed [
-  | Bool(bool)
-  | Float(float)
-  | String(string)
-]>,
-  memo: JSON.t,
-}>,
+  roleAssigns: array<postAdminShowUserResponse_2>,
+  inlinePolicies: array<postAdminShowUserResponse_3>,
 }
 
+let postAdminShowUserResponse_4Schema = S.union([S.bool->S.shape(v => Bool(v)), S.float->S.shape(v => Float(v)), S.string->S.shape(v => String(v))])
+
+let postAdminShowUserResponse_3Schema = S.object(s => {
+    id: s.field("id", S.string),
+    createdAt: s.field("createdAt", S.string),
+    updatedAt: s.field("updatedAt", S.string),
+    policy: s.field("policy", S.string),
+    operation: s.field("operation", S.string),
+    value: s.field("value", S.nullableAsOption(S.union([S.bool->S.shape(v => Bool(v)), S.float->S.shape(v => Float(v)), S.string->S.shape(v => String(v))]))),
+    memo: s.field("memo", S.nullableAsOption(S.string)),
+  })
+
+let postAdminShowUserResponse_2Schema = S.object(s => {
+    createdAt: s.field("createdAt", S.string),
+    expiresAt: s.field("expiresAt", S.nullableAsOption(S.string)),
+    roleId: s.field("roleId", S.string),
+    memo: s.field("memo", S.nullableAsOption(S.string)),
+  })
+
+let postAdminShowUserResponse_1Schema = S.object(s => {
+    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
+    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
+    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
+    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
+    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
+    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
+    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
+    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
+    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
+    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
+    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
+    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
+    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
 let postAdminShowUserResponseSchema = S.object(s => {
-    email: s.field("email", S.json),
+    email: s.field("email", S.nullableAsOption(S.string)),
     emailVerified: s.field("emailVerified", S.bool),
-    followedMessage: s.field("followedMessage", S.json),
+    followedMessage: s.field("followedMessage", S.nullableAsOption(S.string)),
     autoAcceptFollowed: s.field("autoAcceptFollowed", S.bool),
     noCrawle: s.field("noCrawle", S.bool),
     preventAiLearning: s.field("preventAiLearning", S.bool),
@@ -3422,49 +3519,20 @@ let postAdminShowUserResponseSchema = S.object(s => {
     receiveAnnouncementEmail: s.field("receiveAnnouncementEmail", S.bool),
     mutedWords: s.field("mutedWords", S.array(S.array(S.string))),
     mutedInstances: s.field("mutedInstances", S.array(S.string)),
-    notificationRecieveConfig: s.field("notificationRecieveConfig", S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.json), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.json), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.json), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.json), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.json), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.json), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.json), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.json), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.json), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.json), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.json), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.json), None),
-  })),
+    notificationRecieveConfig: s.field("notificationRecieveConfig", postAdminShowUserResponse_1Schema),
     isModerator: s.field("isModerator", S.bool),
     isSilenced: s.field("isSilenced", S.bool),
     isLimited: s.field("isLimited", S.bool),
     isDeleted: s.field("isDeleted", S.bool),
     isSuspended: s.field("isSuspended", S.bool),
     isHibernated: s.field("isHibernated", S.bool),
-    lastActiveDate: s.field("lastActiveDate", S.json),
+    lastActiveDate: s.field("lastActiveDate", S.nullableAsOption(S.string)),
     moderationNote: s.field("moderationNote", S.string),
     signins: s.field("signins", S.array(MisskeyIoComponentSchemas.Signin.schema)),
     policies: s.field("policies", MisskeyIoComponentSchemas.RolePolicies.schema),
     roles: s.field("roles", S.array(MisskeyIoComponentSchemas.Role.schema)),
-    roleAssigns: s.field("roleAssigns", S.array(S.object(s => {
-    createdAt: s.field("createdAt", S.string),
-    expiresAt: s.field("expiresAt", S.json),
-    roleId: s.field("roleId", S.string),
-    memo: s.field("memo", S.json),
-  }))),
-    inlinePolicies: s.field("inlinePolicies", S.array(S.object(s => {
-    id: s.field("id", S.string),
-    createdAt: s.field("createdAt", S.string),
-    updatedAt: s.field("updatedAt", S.string),
-    policy: s.field("policy", S.string),
-    operation: s.field("operation", S.string),
-    value: s.field("value", S.nullableAsOption(S.union([S.bool, S.float, S.string]))),
-    memo: s.field("memo", S.json),
-  }))),
+    roleAssigns: s.field("roleAssigns", S.array(postAdminShowUserResponse_2Schema)),
+    inlinePolicies: s.field("inlinePolicies", S.array(postAdminShowUserResponse_3Schema)),
   })
 
 /**
@@ -3491,39 +3559,43 @@ type postAdminShowUserAccountMoveLogsRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  movedFromId: option<JSON.t>,
-  movedToId: option<JSON.t>,
-  from: option<JSON.t>,
-  @as("to") to_: option<JSON.t>,
+  movedFromId: option<string>,
+  movedToId: option<string>,
+  from: option<string>,
+  @as("to") to_: option<string>,
 }
 
 let postAdminShowUserAccountMoveLogsRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    movedFromId: s.fieldOr("movedFromId", S.nullableAsOption(S.json), None),
-    movedToId: s.fieldOr("movedToId", S.nullableAsOption(S.json), None),
-    from: s.fieldOr("from", S.nullableAsOption(S.json), None),
-    to_: s.fieldOr("to", S.nullableAsOption(S.json), None),
+    movedFromId: s.fieldOr("movedFromId", S.nullableAsOption(S.string), None),
+    movedToId: s.fieldOr("movedToId", S.nullableAsOption(S.string), None),
+    from: s.fieldOr("from", S.nullableAsOption(S.string), None),
+    to_: s.fieldOr("to", S.nullableAsOption(S.string), None),
   })
 
-type postAdminShowUserAccountMoveLogsResponse = array<{
+type postAdminShowUserAccountMoveLogsResponse_1 = {
   id: string,
   createdAt: string,
   movedToId: string,
   movedTo: MisskeyIoComponentSchemas.UserDetailed.t,
   movedFromId: string,
   movedFrom: MisskeyIoComponentSchemas.UserDetailed.t,
-}>
+}
 
-let postAdminShowUserAccountMoveLogsResponseSchema = S.array(S.object(s => {
+type postAdminShowUserAccountMoveLogsResponse = array<postAdminShowUserAccountMoveLogsResponse_1>
+
+let postAdminShowUserAccountMoveLogsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     movedToId: s.field("movedToId", S.string),
     movedTo: s.field("movedTo", MisskeyIoComponentSchemas.UserDetailed.schema),
     movedFromId: s.field("movedFromId", S.string),
     movedFrom: s.field("movedFrom", MisskeyIoComponentSchemas.UserDetailed.schema),
-  }))
+  })
+
+let postAdminShowUserAccountMoveLogsResponseSchema = S.array(postAdminShowUserAccountMoveLogsResponse_1Schema)
 
 /**
  * admin/show-user-account-move-logs
@@ -3551,8 +3623,8 @@ type postAdminShowUsersRequest = {
   sort: option<string>,
   state: option<string>,
   origin: option<string>,
-  username: option<JSON.t>,
-  hostname: option<JSON.t>,
+  username: option<string>,
+  hostname: option<string>,
 }
 
 let postAdminShowUsersRequestSchema = S.object(s => {
@@ -3561,8 +3633,8 @@ let postAdminShowUsersRequestSchema = S.object(s => {
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
     state: s.fieldOr("state", S.nullableAsOption(S.string), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.json), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.json), None),
+    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
+    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
   })
 
 type postAdminShowUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
@@ -3590,41 +3662,41 @@ let postAdminShowUsers = (~body: postAdminShowUsersRequest, ~fetch: (~url: strin
 }
 
 type postAdminSsoCreateRequest = {
-  name: option<JSON.t>,
+  name: option<string>,
   @as("type") type_: string,
   issuer: string,
   audience: option<array<string>>,
   binding: option<string>,
   acsUrl: string,
   signatureAlgorithm: string,
-  cipherAlgorithm: option<JSON.t>,
+  cipherAlgorithm: option<string>,
   wantAuthnRequestsSigned: option<bool>,
   wantAssertionsSigned: option<bool>,
   wantEmailAddressNormalized: option<bool>,
   useCertificate: bool,
-  secret: option<JSON.t>,
+  secret: option<string>,
 }
 
 let postAdminSsoCreateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     type_: s.field("type", S.string),
     issuer: s.field("issuer", S.string),
     audience: s.fieldOr("audience", S.nullableAsOption(S.array(S.string)), None),
     binding: s.fieldOr("binding", S.nullableAsOption(S.string), None),
     acsUrl: s.field("acsUrl", S.string),
     signatureAlgorithm: s.field("signatureAlgorithm", S.string),
-    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.json), None),
+    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.string), None),
     wantAuthnRequestsSigned: s.fieldOr("wantAuthnRequestsSigned", S.nullableAsOption(S.bool), None),
     wantAssertionsSigned: s.fieldOr("wantAssertionsSigned", S.nullableAsOption(S.bool), None),
     wantEmailAddressNormalized: s.fieldOr("wantEmailAddressNormalized", S.nullableAsOption(S.bool), None),
     useCertificate: s.field("useCertificate", S.bool),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.json), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
   })
 
 type postAdminSsoCreateResponse = {
   id: string,
   createdAt: string,
-  name: JSON.t,
+  name: option<string>,
   @as("type") type_: string,
   issuer: string,
   audience: array<string>,
@@ -3632,7 +3704,7 @@ type postAdminSsoCreateResponse = {
   acsUrl: string,
   publicKey: string,
   signatureAlgorithm: string,
-  cipherAlgorithm: option<JSON.t>,
+  cipherAlgorithm: option<string>,
   wantAuthnRequestsSigned: bool,
   wantAssertionsSigned: bool,
   wantEmailAddressNormalized: bool,
@@ -3641,7 +3713,7 @@ type postAdminSsoCreateResponse = {
 let postAdminSsoCreateResponseSchema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.json),
+    name: s.field("name", S.nullableAsOption(S.string)),
     type_: s.field("type", S.string),
     issuer: s.field("issuer", S.string),
     audience: s.field("audience", S.array(S.string)),
@@ -3649,7 +3721,7 @@ let postAdminSsoCreateResponseSchema = S.object(s => {
     acsUrl: s.field("acsUrl", S.string),
     publicKey: s.field("publicKey", S.string),
     signatureAlgorithm: s.field("signatureAlgorithm", S.string),
-    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.json), None),
+    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.string), None),
     wantAuthnRequestsSigned: s.field("wantAuthnRequestsSigned", S.bool),
     wantAssertionsSigned: s.field("wantAssertionsSigned", S.bool),
     wantEmailAddressNormalized: s.field("wantEmailAddressNormalized", S.bool),
@@ -3715,10 +3787,10 @@ let postAdminSsoListRequestSchema = S.object(s => {
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
   })
 
-type postAdminSsoListResponse = array<{
+type postAdminSsoListResponse_1 = {
   id: string,
   createdAt: string,
-  name: JSON.t,
+  name: option<string>,
   @as("type") type_: string,
   issuer: string,
   audience: array<string>,
@@ -3727,16 +3799,18 @@ type postAdminSsoListResponse = array<{
   useCertificate: bool,
   publicKey: string,
   signatureAlgorithm: string,
-  cipherAlgorithm: option<JSON.t>,
+  cipherAlgorithm: option<string>,
   wantAuthnRequestsSigned: bool,
   wantAssertionsSigned: bool,
   wantEmailAddressNormalized: bool,
-}>
+}
 
-let postAdminSsoListResponseSchema = S.array(S.object(s => {
+type postAdminSsoListResponse = array<postAdminSsoListResponse_1>
+
+let postAdminSsoListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    name: s.field("name", S.json),
+    name: s.field("name", S.nullableAsOption(S.string)),
     type_: s.field("type", S.string),
     issuer: s.field("issuer", S.string),
     audience: s.field("audience", S.array(S.string)),
@@ -3745,11 +3819,13 @@ let postAdminSsoListResponseSchema = S.array(S.object(s => {
     useCertificate: s.field("useCertificate", S.bool),
     publicKey: s.field("publicKey", S.string),
     signatureAlgorithm: s.field("signatureAlgorithm", S.string),
-    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.json), None),
+    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.string), None),
     wantAuthnRequestsSigned: s.field("wantAuthnRequestsSigned", S.bool),
     wantAssertionsSigned: s.field("wantAssertionsSigned", S.bool),
     wantEmailAddressNormalized: s.field("wantEmailAddressNormalized", S.bool),
-  }))
+  })
+
+let postAdminSsoListResponseSchema = S.array(postAdminSsoListResponse_1Schema)
 
 /**
  * admin/sso/list
@@ -3773,34 +3849,34 @@ let postAdminSsoList = (~body: postAdminSsoListRequest, ~fetch: (~url: string, ~
 
 type postAdminSsoUpdateRequest = {
   id: string,
-  name: option<JSON.t>,
+  name: option<string>,
   issuer: option<string>,
   audience: option<array<string>>,
   binding: option<string>,
   acsUrl: option<string>,
   signatureAlgorithm: option<string>,
-  cipherAlgorithm: option<JSON.t>,
+  cipherAlgorithm: option<string>,
   wantAuthnRequestsSigned: option<bool>,
   wantAssertionsSigned: option<bool>,
   wantEmailAddressNormalized: option<bool>,
-  regenerateCertificate: option<JSON.t>,
-  secret: option<JSON.t>,
+  regenerateCertificate: option<bool>,
+  secret: option<string>,
 }
 
 let postAdminSsoUpdateRequestSchema = S.object(s => {
     id: s.field("id", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     issuer: s.fieldOr("issuer", S.nullableAsOption(S.string), None),
     audience: s.fieldOr("audience", S.nullableAsOption(S.array(S.string)), None),
     binding: s.fieldOr("binding", S.nullableAsOption(S.string), None),
     acsUrl: s.fieldOr("acsUrl", S.nullableAsOption(S.string), None),
     signatureAlgorithm: s.fieldOr("signatureAlgorithm", S.nullableAsOption(S.string), None),
-    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.json), None),
+    cipherAlgorithm: s.fieldOr("cipherAlgorithm", S.nullableAsOption(S.string), None),
     wantAuthnRequestsSigned: s.fieldOr("wantAuthnRequestsSigned", S.nullableAsOption(S.bool), None),
     wantAssertionsSigned: s.fieldOr("wantAssertionsSigned", S.nullableAsOption(S.bool), None),
     wantEmailAddressNormalized: s.fieldOr("wantEmailAddressNormalized", S.nullableAsOption(S.bool), None),
-    regenerateCertificate: s.fieldOr("regenerateCertificate", S.nullableAsOption(S.json), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.json), None),
+    regenerateCertificate: s.fieldOr("regenerateCertificate", S.nullableAsOption(S.bool), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
   })
 
 type postAdminSsoUpdateResponse = unit
@@ -4193,80 +4269,80 @@ let postAdminUpdateAbuseUserReport = (~body: postAdminUpdateAbuseUserReportReque
 }
 
 type postAdminUpdateMetaRequest = {
-  disableRegistration: option<JSON.t>,
+  disableRegistration: option<bool>,
   pinnedUsers: option<JSON.t>,
   hiddenTags: option<JSON.t>,
   blockedHosts: option<JSON.t>,
   sensitiveWords: option<JSON.t>,
   blockedRemoteCustomEmojis: option<JSON.t>,
   prohibitedWords: option<JSON.t>,
-  themeColor: option<JSON.t>,
-  mascotImageUrl: option<JSON.t>,
-  bannerUrl: option<JSON.t>,
-  serverErrorImageUrl: option<JSON.t>,
-  infoImageUrl: option<JSON.t>,
-  notFoundImageUrl: option<JSON.t>,
-  iconUrl: option<JSON.t>,
-  @as("app192IconUrl") app192iconUrl: option<JSON.t>,
-  @as("app512IconUrl") app512iconUrl: option<JSON.t>,
-  backgroundImageUrl: option<JSON.t>,
-  logoImageUrl: option<JSON.t>,
-  name: option<JSON.t>,
-  shortName: option<JSON.t>,
-  description: option<JSON.t>,
-  defaultLightTheme: option<JSON.t>,
-  defaultDarkTheme: option<JSON.t>,
+  themeColor: option<string>,
+  mascotImageUrl: option<string>,
+  bannerUrl: option<string>,
+  serverErrorImageUrl: option<string>,
+  infoImageUrl: option<string>,
+  notFoundImageUrl: option<string>,
+  iconUrl: option<string>,
+  @as("app192IconUrl") app192iconUrl: option<string>,
+  @as("app512IconUrl") app512iconUrl: option<string>,
+  backgroundImageUrl: option<string>,
+  logoImageUrl: option<string>,
+  name: option<string>,
+  shortName: option<string>,
+  description: option<string>,
+  defaultLightTheme: option<string>,
+  defaultDarkTheme: option<string>,
   cacheRemoteFiles: option<bool>,
   cacheRemoteSensitiveFiles: option<bool>,
   emailRequiredForSignup: option<bool>,
   enableHcaptcha: option<bool>,
-  hcaptchaSiteKey: option<JSON.t>,
-  hcaptchaSecretKey: option<JSON.t>,
+  hcaptchaSiteKey: option<string>,
+  hcaptchaSecretKey: option<string>,
   enableMcaptcha: option<bool>,
-  mcaptchaSiteKey: option<JSON.t>,
-  mcaptchaInstanceUrl: option<JSON.t>,
-  mcaptchaSecretKey: option<JSON.t>,
+  mcaptchaSiteKey: option<string>,
+  mcaptchaInstanceUrl: option<string>,
+  mcaptchaSecretKey: option<string>,
   enableRecaptcha: option<bool>,
-  recaptchaSiteKey: option<JSON.t>,
-  recaptchaSecretKey: option<JSON.t>,
+  recaptchaSiteKey: option<string>,
+  recaptchaSecretKey: option<string>,
   enableTurnstile: option<bool>,
-  turnstileSiteKey: option<JSON.t>,
-  turnstileSecretKey: option<JSON.t>,
-  googleAnalyticsId: option<JSON.t>,
+  turnstileSiteKey: option<string>,
+  turnstileSecretKey: option<string>,
+  googleAnalyticsId: option<string>,
   sensitiveMediaDetection: option<string>,
   sensitiveMediaDetectionSensitivity: option<string>,
   setSensitiveFlagAutomatically: option<bool>,
   enableSensitiveMediaDetectionForVideos: option<bool>,
-  maintainerName: option<JSON.t>,
-  maintainerEmail: option<JSON.t>,
+  maintainerName: option<string>,
+  maintainerEmail: option<string>,
   langs: option<array<string>>,
   dimensions: option<int>,
-  deeplAuthKey: option<JSON.t>,
+  deeplAuthKey: option<string>,
   deeplIsPro: option<bool>,
   enableEmail: option<bool>,
-  email: option<JSON.t>,
+  email: option<string>,
   smtpSecure: option<bool>,
-  smtpHost: option<JSON.t>,
-  smtpPort: option<JSON.t>,
-  smtpUser: option<JSON.t>,
-  smtpPass: option<JSON.t>,
+  smtpHost: option<string>,
+  smtpPort: option<int>,
+  smtpUser: option<string>,
+  smtpPass: option<string>,
   enableServiceWorker: option<bool>,
-  swPublicKey: option<JSON.t>,
-  swPrivateKey: option<JSON.t>,
-  tosUrl: option<JSON.t>,
-  repositoryUrl: option<JSON.t>,
-  feedbackUrl: option<JSON.t>,
-  impressumUrl: option<JSON.t>,
-  privacyPolicyUrl: option<JSON.t>,
+  swPublicKey: option<string>,
+  swPrivateKey: option<string>,
+  tosUrl: option<string>,
+  repositoryUrl: option<string>,
+  feedbackUrl: option<string>,
+  impressumUrl: option<string>,
+  privacyPolicyUrl: option<string>,
   useObjectStorage: option<bool>,
-  objectStorageBaseUrl: option<JSON.t>,
-  objectStorageBucket: option<JSON.t>,
-  objectStoragePrefix: option<JSON.t>,
-  objectStorageEndpoint: option<JSON.t>,
-  objectStorageRegion: option<JSON.t>,
-  objectStoragePort: option<JSON.t>,
-  objectStorageAccessKey: option<JSON.t>,
-  objectStorageSecretKey: option<JSON.t>,
+  objectStorageBaseUrl: option<string>,
+  objectStorageBucket: option<string>,
+  objectStoragePrefix: option<string>,
+  objectStorageEndpoint: option<string>,
+  objectStorageRegion: option<string>,
+  objectStoragePort: option<int>,
+  objectStorageAccessKey: option<string>,
+  objectStorageSecretKey: option<string>,
   @as("objectStorageUseSSL") objectStorageUseSsl: option<bool>,
   objectStorageUseProxy: option<bool>,
   objectStorageSetPublicRead: option<bool>,
@@ -4274,10 +4350,10 @@ type postAdminUpdateMetaRequest = {
   enableIpLogging: option<bool>,
   enableActiveEmailValidation: option<bool>,
   enableVerifymailApi: option<bool>,
-  verifymailAuthKey: option<JSON.t>,
+  verifymailAuthKey: option<string>,
   enableTruemailApi: option<bool>,
-  truemailInstance: option<JSON.t>,
-  truemailAuthKey: option<JSON.t>,
+  truemailInstance: option<string>,
+  truemailAuthKey: option<string>,
   enableChartsForRemoteUser: option<bool>,
   enableChartsForFederatedInstances: option<bool>,
   enableServerMachineStats: option<bool>,
@@ -4298,93 +4374,93 @@ type postAdminUpdateMetaRequest = {
   wellKnownWebsites: option<JSON.t>,
   urlPreviewDenyList: option<JSON.t>,
   featuredGameChannels: option<JSON.t>,
-  summalyProxy: option<JSON.t>,
+  summalyProxy: option<string>,
   urlPreviewEnabled: option<bool>,
   urlPreviewTimeout: option<int>,
   urlPreviewMaximumContentLength: option<int>,
   urlPreviewRequireContentLength: option<bool>,
-  urlPreviewUserAgent: option<JSON.t>,
-  urlPreviewSummaryProxyUrl: option<JSON.t>,
+  urlPreviewUserAgent: option<string>,
+  urlPreviewSummaryProxyUrl: option<string>,
   prohibitedWordsForNameOfUser: option<JSON.t>,
   federation: option<string>,
   federationHosts: option<array<string>>,
 }
 
 let postAdminUpdateMetaRequestSchema = S.object(s => {
-    disableRegistration: s.fieldOr("disableRegistration", S.nullableAsOption(S.json), None),
+    disableRegistration: s.fieldOr("disableRegistration", S.nullableAsOption(S.bool), None),
     pinnedUsers: s.fieldOr("pinnedUsers", S.nullableAsOption(S.json), None),
     hiddenTags: s.fieldOr("hiddenTags", S.nullableAsOption(S.json), None),
     blockedHosts: s.fieldOr("blockedHosts", S.nullableAsOption(S.json), None),
     sensitiveWords: s.fieldOr("sensitiveWords", S.nullableAsOption(S.json), None),
     blockedRemoteCustomEmojis: s.fieldOr("blockedRemoteCustomEmojis", S.nullableAsOption(S.json), None),
     prohibitedWords: s.fieldOr("prohibitedWords", S.nullableAsOption(S.json), None),
-    themeColor: s.fieldOr("themeColor", S.nullableAsOption(S.json), None),
-    mascotImageUrl: s.fieldOr("mascotImageUrl", S.nullableAsOption(S.json), None),
-    bannerUrl: s.fieldOr("bannerUrl", S.nullableAsOption(S.json), None),
-    serverErrorImageUrl: s.fieldOr("serverErrorImageUrl", S.nullableAsOption(S.json), None),
-    infoImageUrl: s.fieldOr("infoImageUrl", S.nullableAsOption(S.json), None),
-    notFoundImageUrl: s.fieldOr("notFoundImageUrl", S.nullableAsOption(S.json), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.json), None),
-    app192iconUrl: s.fieldOr("app192IconUrl", S.nullableAsOption(S.json), None),
-    app512iconUrl: s.fieldOr("app512IconUrl", S.nullableAsOption(S.json), None),
-    backgroundImageUrl: s.fieldOr("backgroundImageUrl", S.nullableAsOption(S.json), None),
-    logoImageUrl: s.fieldOr("logoImageUrl", S.nullableAsOption(S.json), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    shortName: s.fieldOr("shortName", S.nullableAsOption(S.json), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    defaultLightTheme: s.fieldOr("defaultLightTheme", S.nullableAsOption(S.json), None),
-    defaultDarkTheme: s.fieldOr("defaultDarkTheme", S.nullableAsOption(S.json), None),
+    themeColor: s.fieldOr("themeColor", S.nullableAsOption(S.string->S.pattern(%re("/^#[0-9a-fA-F]{6}$/"))), None),
+    mascotImageUrl: s.fieldOr("mascotImageUrl", S.nullableAsOption(S.string), None),
+    bannerUrl: s.fieldOr("bannerUrl", S.nullableAsOption(S.string), None),
+    serverErrorImageUrl: s.fieldOr("serverErrorImageUrl", S.nullableAsOption(S.string), None),
+    infoImageUrl: s.fieldOr("infoImageUrl", S.nullableAsOption(S.string), None),
+    notFoundImageUrl: s.fieldOr("notFoundImageUrl", S.nullableAsOption(S.string), None),
+    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
+    app192iconUrl: s.fieldOr("app192IconUrl", S.nullableAsOption(S.string), None),
+    app512iconUrl: s.fieldOr("app512IconUrl", S.nullableAsOption(S.string), None),
+    backgroundImageUrl: s.fieldOr("backgroundImageUrl", S.nullableAsOption(S.string), None),
+    logoImageUrl: s.fieldOr("logoImageUrl", S.nullableAsOption(S.string), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    shortName: s.fieldOr("shortName", S.nullableAsOption(S.string), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
+    defaultLightTheme: s.fieldOr("defaultLightTheme", S.nullableAsOption(S.string), None),
+    defaultDarkTheme: s.fieldOr("defaultDarkTheme", S.nullableAsOption(S.string), None),
     cacheRemoteFiles: s.fieldOr("cacheRemoteFiles", S.nullableAsOption(S.bool), None),
     cacheRemoteSensitiveFiles: s.fieldOr("cacheRemoteSensitiveFiles", S.nullableAsOption(S.bool), None),
     emailRequiredForSignup: s.fieldOr("emailRequiredForSignup", S.nullableAsOption(S.bool), None),
     enableHcaptcha: s.fieldOr("enableHcaptcha", S.nullableAsOption(S.bool), None),
-    hcaptchaSiteKey: s.fieldOr("hcaptchaSiteKey", S.nullableAsOption(S.json), None),
-    hcaptchaSecretKey: s.fieldOr("hcaptchaSecretKey", S.nullableAsOption(S.json), None),
+    hcaptchaSiteKey: s.fieldOr("hcaptchaSiteKey", S.nullableAsOption(S.string), None),
+    hcaptchaSecretKey: s.fieldOr("hcaptchaSecretKey", S.nullableAsOption(S.string), None),
     enableMcaptcha: s.fieldOr("enableMcaptcha", S.nullableAsOption(S.bool), None),
-    mcaptchaSiteKey: s.fieldOr("mcaptchaSiteKey", S.nullableAsOption(S.json), None),
-    mcaptchaInstanceUrl: s.fieldOr("mcaptchaInstanceUrl", S.nullableAsOption(S.json), None),
-    mcaptchaSecretKey: s.fieldOr("mcaptchaSecretKey", S.nullableAsOption(S.json), None),
+    mcaptchaSiteKey: s.fieldOr("mcaptchaSiteKey", S.nullableAsOption(S.string), None),
+    mcaptchaInstanceUrl: s.fieldOr("mcaptchaInstanceUrl", S.nullableAsOption(S.string), None),
+    mcaptchaSecretKey: s.fieldOr("mcaptchaSecretKey", S.nullableAsOption(S.string), None),
     enableRecaptcha: s.fieldOr("enableRecaptcha", S.nullableAsOption(S.bool), None),
-    recaptchaSiteKey: s.fieldOr("recaptchaSiteKey", S.nullableAsOption(S.json), None),
-    recaptchaSecretKey: s.fieldOr("recaptchaSecretKey", S.nullableAsOption(S.json), None),
+    recaptchaSiteKey: s.fieldOr("recaptchaSiteKey", S.nullableAsOption(S.string), None),
+    recaptchaSecretKey: s.fieldOr("recaptchaSecretKey", S.nullableAsOption(S.string), None),
     enableTurnstile: s.fieldOr("enableTurnstile", S.nullableAsOption(S.bool), None),
-    turnstileSiteKey: s.fieldOr("turnstileSiteKey", S.nullableAsOption(S.json), None),
-    turnstileSecretKey: s.fieldOr("turnstileSecretKey", S.nullableAsOption(S.json), None),
-    googleAnalyticsId: s.fieldOr("googleAnalyticsId", S.nullableAsOption(S.json), None),
+    turnstileSiteKey: s.fieldOr("turnstileSiteKey", S.nullableAsOption(S.string), None),
+    turnstileSecretKey: s.fieldOr("turnstileSecretKey", S.nullableAsOption(S.string), None),
+    googleAnalyticsId: s.fieldOr("googleAnalyticsId", S.nullableAsOption(S.string), None),
     sensitiveMediaDetection: s.fieldOr("sensitiveMediaDetection", S.nullableAsOption(S.string), None),
     sensitiveMediaDetectionSensitivity: s.fieldOr("sensitiveMediaDetectionSensitivity", S.nullableAsOption(S.string), None),
     setSensitiveFlagAutomatically: s.fieldOr("setSensitiveFlagAutomatically", S.nullableAsOption(S.bool), None),
     enableSensitiveMediaDetectionForVideos: s.fieldOr("enableSensitiveMediaDetectionForVideos", S.nullableAsOption(S.bool), None),
-    maintainerName: s.fieldOr("maintainerName", S.nullableAsOption(S.json), None),
-    maintainerEmail: s.fieldOr("maintainerEmail", S.nullableAsOption(S.json), None),
+    maintainerName: s.fieldOr("maintainerName", S.nullableAsOption(S.string), None),
+    maintainerEmail: s.fieldOr("maintainerEmail", S.nullableAsOption(S.string), None),
     langs: s.fieldOr("langs", S.nullableAsOption(S.array(S.string)), None),
     dimensions: s.fieldOr("dimensions", S.nullableAsOption(S.int->S.min(1)), None),
-    deeplAuthKey: s.fieldOr("deeplAuthKey", S.nullableAsOption(S.json), None),
+    deeplAuthKey: s.fieldOr("deeplAuthKey", S.nullableAsOption(S.string), None),
     deeplIsPro: s.fieldOr("deeplIsPro", S.nullableAsOption(S.bool), None),
     enableEmail: s.fieldOr("enableEmail", S.nullableAsOption(S.bool), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
     smtpSecure: s.fieldOr("smtpSecure", S.nullableAsOption(S.bool), None),
-    smtpHost: s.fieldOr("smtpHost", S.nullableAsOption(S.json), None),
-    smtpPort: s.fieldOr("smtpPort", S.nullableAsOption(S.json), None),
-    smtpUser: s.fieldOr("smtpUser", S.nullableAsOption(S.json), None),
-    smtpPass: s.fieldOr("smtpPass", S.nullableAsOption(S.json), None),
+    smtpHost: s.fieldOr("smtpHost", S.nullableAsOption(S.string), None),
+    smtpPort: s.fieldOr("smtpPort", S.nullableAsOption(S.int), None),
+    smtpUser: s.fieldOr("smtpUser", S.nullableAsOption(S.string), None),
+    smtpPass: s.fieldOr("smtpPass", S.nullableAsOption(S.string), None),
     enableServiceWorker: s.fieldOr("enableServiceWorker", S.nullableAsOption(S.bool), None),
-    swPublicKey: s.fieldOr("swPublicKey", S.nullableAsOption(S.json), None),
-    swPrivateKey: s.fieldOr("swPrivateKey", S.nullableAsOption(S.json), None),
-    tosUrl: s.fieldOr("tosUrl", S.nullableAsOption(S.json), None),
-    repositoryUrl: s.fieldOr("repositoryUrl", S.nullableAsOption(S.json), None),
-    feedbackUrl: s.fieldOr("feedbackUrl", S.nullableAsOption(S.json), None),
-    impressumUrl: s.fieldOr("impressumUrl", S.nullableAsOption(S.json), None),
-    privacyPolicyUrl: s.fieldOr("privacyPolicyUrl", S.nullableAsOption(S.json), None),
+    swPublicKey: s.fieldOr("swPublicKey", S.nullableAsOption(S.string), None),
+    swPrivateKey: s.fieldOr("swPrivateKey", S.nullableAsOption(S.string), None),
+    tosUrl: s.fieldOr("tosUrl", S.nullableAsOption(S.string), None),
+    repositoryUrl: s.fieldOr("repositoryUrl", S.nullableAsOption(S.string), None),
+    feedbackUrl: s.fieldOr("feedbackUrl", S.nullableAsOption(S.string), None),
+    impressumUrl: s.fieldOr("impressumUrl", S.nullableAsOption(S.string), None),
+    privacyPolicyUrl: s.fieldOr("privacyPolicyUrl", S.nullableAsOption(S.string), None),
     useObjectStorage: s.fieldOr("useObjectStorage", S.nullableAsOption(S.bool), None),
-    objectStorageBaseUrl: s.fieldOr("objectStorageBaseUrl", S.nullableAsOption(S.json), None),
-    objectStorageBucket: s.fieldOr("objectStorageBucket", S.nullableAsOption(S.json), None),
-    objectStoragePrefix: s.fieldOr("objectStoragePrefix", S.nullableAsOption(S.json), None),
-    objectStorageEndpoint: s.fieldOr("objectStorageEndpoint", S.nullableAsOption(S.json), None),
-    objectStorageRegion: s.fieldOr("objectStorageRegion", S.nullableAsOption(S.json), None),
-    objectStoragePort: s.fieldOr("objectStoragePort", S.nullableAsOption(S.json), None),
-    objectStorageAccessKey: s.fieldOr("objectStorageAccessKey", S.nullableAsOption(S.json), None),
-    objectStorageSecretKey: s.fieldOr("objectStorageSecretKey", S.nullableAsOption(S.json), None),
+    objectStorageBaseUrl: s.fieldOr("objectStorageBaseUrl", S.nullableAsOption(S.string), None),
+    objectStorageBucket: s.fieldOr("objectStorageBucket", S.nullableAsOption(S.string), None),
+    objectStoragePrefix: s.fieldOr("objectStoragePrefix", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9-._]*$/"))), None),
+    objectStorageEndpoint: s.fieldOr("objectStorageEndpoint", S.nullableAsOption(S.string), None),
+    objectStorageRegion: s.fieldOr("objectStorageRegion", S.nullableAsOption(S.string), None),
+    objectStoragePort: s.fieldOr("objectStoragePort", S.nullableAsOption(S.int), None),
+    objectStorageAccessKey: s.fieldOr("objectStorageAccessKey", S.nullableAsOption(S.string), None),
+    objectStorageSecretKey: s.fieldOr("objectStorageSecretKey", S.nullableAsOption(S.string), None),
     objectStorageUseSsl: s.fieldOr("objectStorageUseSSL", S.nullableAsOption(S.bool), None),
     objectStorageUseProxy: s.fieldOr("objectStorageUseProxy", S.nullableAsOption(S.bool), None),
     objectStorageSetPublicRead: s.fieldOr("objectStorageSetPublicRead", S.nullableAsOption(S.bool), None),
@@ -4392,10 +4468,10 @@ let postAdminUpdateMetaRequestSchema = S.object(s => {
     enableIpLogging: s.fieldOr("enableIpLogging", S.nullableAsOption(S.bool), None),
     enableActiveEmailValidation: s.fieldOr("enableActiveEmailValidation", S.nullableAsOption(S.bool), None),
     enableVerifymailApi: s.fieldOr("enableVerifymailApi", S.nullableAsOption(S.bool), None),
-    verifymailAuthKey: s.fieldOr("verifymailAuthKey", S.nullableAsOption(S.json), None),
+    verifymailAuthKey: s.fieldOr("verifymailAuthKey", S.nullableAsOption(S.string), None),
     enableTruemailApi: s.fieldOr("enableTruemailApi", S.nullableAsOption(S.bool), None),
-    truemailInstance: s.fieldOr("truemailInstance", S.nullableAsOption(S.json), None),
-    truemailAuthKey: s.fieldOr("truemailAuthKey", S.nullableAsOption(S.json), None),
+    truemailInstance: s.fieldOr("truemailInstance", S.nullableAsOption(S.string), None),
+    truemailAuthKey: s.fieldOr("truemailAuthKey", S.nullableAsOption(S.string), None),
     enableChartsForRemoteUser: s.fieldOr("enableChartsForRemoteUser", S.nullableAsOption(S.bool), None),
     enableChartsForFederatedInstances: s.fieldOr("enableChartsForFederatedInstances", S.nullableAsOption(S.bool), None),
     enableServerMachineStats: s.fieldOr("enableServerMachineStats", S.nullableAsOption(S.bool), None),
@@ -4416,13 +4492,13 @@ let postAdminUpdateMetaRequestSchema = S.object(s => {
     wellKnownWebsites: s.fieldOr("wellKnownWebsites", S.nullableAsOption(S.json), None),
     urlPreviewDenyList: s.fieldOr("urlPreviewDenyList", S.nullableAsOption(S.json), None),
     featuredGameChannels: s.fieldOr("featuredGameChannels", S.nullableAsOption(S.json), None),
-    summalyProxy: s.fieldOr("summalyProxy", S.nullableAsOption(S.json), None),
+    summalyProxy: s.fieldOr("summalyProxy", S.nullableAsOption(S.string), None),
     urlPreviewEnabled: s.fieldOr("urlPreviewEnabled", S.nullableAsOption(S.bool), None),
     urlPreviewTimeout: s.fieldOr("urlPreviewTimeout", S.nullableAsOption(S.int), None),
     urlPreviewMaximumContentLength: s.fieldOr("urlPreviewMaximumContentLength", S.nullableAsOption(S.int), None),
     urlPreviewRequireContentLength: s.fieldOr("urlPreviewRequireContentLength", S.nullableAsOption(S.bool), None),
-    urlPreviewUserAgent: s.fieldOr("urlPreviewUserAgent", S.nullableAsOption(S.json), None),
-    urlPreviewSummaryProxyUrl: s.fieldOr("urlPreviewSummaryProxyUrl", S.nullableAsOption(S.json), None),
+    urlPreviewUserAgent: s.fieldOr("urlPreviewUserAgent", S.nullableAsOption(S.string), None),
+    urlPreviewSummaryProxyUrl: s.fieldOr("urlPreviewSummaryProxyUrl", S.nullableAsOption(S.string), None),
     prohibitedWordsForNameOfUser: s.fieldOr("prohibitedWordsForNameOfUser", S.nullableAsOption(S.json), None),
     federation: s.fieldOr("federation", S.nullableAsOption(S.string), None),
     federationHosts: s.fieldOr("federationHosts", S.nullableAsOption(S.array(S.string)), None),
@@ -4451,11 +4527,11 @@ let postAdminUpdateMeta = (~body: postAdminUpdateMetaRequest, ~fetch: (~url: str
 }
 
 type postAdminUpdateProxyAccountRequest = {
-  description: option<JSON.t>,
+  description: option<string>,
 }
 
 let postAdminUpdateProxyAccountRequestSchema = S.object(s => {
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
   })
 
 type postAdminUpdateProxyAccountResponse = MisskeyIoComponentSchemas.UserDetailed.t
@@ -4546,8 +4622,26 @@ let postAdminUpdateUserNote = (~body: postAdminUpdateUserNoteRequest, ~fetch: (~
   })
 }
 
+type postV2AdminEmojiListRequest_1 = {
+  updatedAtFrom: option<string>,
+  updatedAtTo: option<string>,
+  name: option<string>,
+  host: option<string>,
+  uri: option<string>,
+  publicUrl: option<string>,
+  originalUrl: option<string>,
+  @as("type") type_: option<string>,
+  aliases: option<string>,
+  category: option<string>,
+  license: option<string>,
+  isSensitive: option<bool>,
+  localOnly: option<bool>,
+  hostType: option<string>,
+  roleIds: option<array<string>>,
+}
+
 type postV2AdminEmojiListRequest = {
-  query: option<JSON.t>,
+  query: option<postV2AdminEmojiListRequest_1>,
   sinceId: option<string>,
   untilId: option<string>,
   limit: option<int>,
@@ -4555,8 +4649,26 @@ type postV2AdminEmojiListRequest = {
   sortKeys: option<array<string>>,
 }
 
+let postV2AdminEmojiListRequest_1Schema = S.object(s => {
+    updatedAtFrom: s.fieldOr("updatedAtFrom", S.nullableAsOption(S.string), None),
+    updatedAtTo: s.fieldOr("updatedAtTo", S.nullableAsOption(S.string), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    uri: s.fieldOr("uri", S.nullableAsOption(S.string), None),
+    publicUrl: s.fieldOr("publicUrl", S.nullableAsOption(S.string), None),
+    originalUrl: s.fieldOr("originalUrl", S.nullableAsOption(S.string), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+    aliases: s.fieldOr("aliases", S.nullableAsOption(S.string), None),
+    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
+    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
+    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
+    hostType: s.fieldOr("hostType", S.nullableAsOption(S.string), None),
+    roleIds: s.fieldOr("roleIds", S.nullableAsOption(S.array(S.string)), None),
+  })
+
 let postV2AdminEmojiListRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.json), None),
+    query: s.fieldOr("query", S.nullableAsOption(postV2AdminEmojiListRequest_1Schema), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),

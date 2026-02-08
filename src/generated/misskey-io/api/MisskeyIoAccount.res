@@ -147,7 +147,7 @@ let postClipsMyFavoritesResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.
  *
  * **Credential required**: *Yes* / **Permission**: *read:clip-favorite*
  */
-let postClipsMyFavorites = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsMyFavoritesResponse> => {
+let postClipsMyFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsMyFavoritesResponse> => {
 
   fetch(
     ~url="/clips/my-favorites",
@@ -278,15 +278,19 @@ let postFlashMyLikesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postFlashMyLikesResponse = array<{
+type postFlashMyLikesResponse_1 = {
   id: string,
   flash: MisskeyIoComponentSchemas.Flash.t,
-}>
+}
 
-let postFlashMyLikesResponseSchema = S.array(S.object(s => {
+type postFlashMyLikesResponse = array<postFlashMyLikesResponse_1>
+
+let postFlashMyLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     flash: s.field("flash", MisskeyIoComponentSchemas.Flash.schema),
-  }))
+  })
+
+let postFlashMyLikesResponseSchema = S.array(postFlashMyLikesResponse_1Schema)
 
 /**
  * flash/my-likes
@@ -319,7 +323,7 @@ let postIResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postI = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
+let postI = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
 
   fetch(
     ~url="/i",
@@ -380,15 +384,19 @@ let postIGalleryLikesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postIGalleryLikesResponse = array<{
+type postIGalleryLikesResponse_1 = {
   id: string,
   post: MisskeyIoComponentSchemas.GalleryPost.t,
-}>
+}
 
-let postIGalleryLikesResponseSchema = S.array(S.object(s => {
+type postIGalleryLikesResponse = array<postIGalleryLikesResponse_1>
+
+let postIGalleryLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     post: s.field("post", MisskeyIoComponentSchemas.GalleryPost.schema),
-  }))
+  })
+
+let postIGalleryLikesResponseSchema = S.array(postIGalleryLikesResponse_1Schema)
 
 /**
  * i/gallery/likes
@@ -542,15 +550,19 @@ let postIPageLikesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postIPageLikesResponse = array<{
+type postIPageLikesResponse_1 = {
   id: string,
   page: MisskeyIoComponentSchemas.Page.t,
-}>
+}
 
-let postIPageLikesResponseSchema = S.array(S.object(s => {
+type postIPageLikesResponse = array<postIPageLikesResponse_1>
+
+let postIPageLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     page: s.field("page", MisskeyIoComponentSchemas.Page.schema),
-  }))
+  })
+
+let postIPageLikesResponseSchema = S.array(postIPageLikesResponse_1Schema)
 
 /**
  * i/page-likes
@@ -642,14 +654,14 @@ let postIPin = (~body: postIPinRequest, ~fetch: (~url: string, ~method_: string,
 
 type postIPurgeTimelineCacheRequest = {
   @as("type") type_: string,
-  listId: option<JSON.t>,
-  antennaId: option<JSON.t>,
+  listId: option<string>,
+  antennaId: option<string>,
 }
 
 let postIPurgeTimelineCacheRequestSchema = S.object(s => {
     type_: s.field("type", S.string),
-    listId: s.fieldOr("listId", S.nullableAsOption(S.json), None),
-    antennaId: s.fieldOr("antennaId", S.nullableAsOption(S.json), None),
+    listId: s.fieldOr("listId", S.nullableAsOption(S.string), None),
+    antennaId: s.fieldOr("antennaId", S.nullableAsOption(S.string), None),
   })
 
 type postIPurgeTimelineCacheResponse = unit
@@ -736,30 +748,63 @@ let postIUnpin = (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: str
   })
 }
 
+type postIUpdateRequest_5 = {
+  url: string,
+  fileId: string,
+  description: option<string>,
+}
+
+type postIUpdateRequest_4 = {
+  name: option<string>,
+  mutualLinks: array<postIUpdateRequest_5>,
+}
+
+type postIUpdateRequest_3 = {
+  note: option<dict<JSON.t>>,
+  follow: option<dict<JSON.t>>,
+  mention: option<dict<JSON.t>>,
+  reply: option<dict<JSON.t>>,
+  renote: option<dict<JSON.t>>,
+  quote: option<dict<JSON.t>>,
+  reaction: option<dict<JSON.t>>,
+  pollEnded: option<dict<JSON.t>>,
+  receiveFollowRequest: option<dict<JSON.t>>,
+  followRequestAccepted: option<dict<JSON.t>>,
+  roleAssigned: option<dict<JSON.t>>,
+  chatRoomInvitationReceived: option<dict<JSON.t>>,
+  achievementEarned: option<dict<JSON.t>>,
+  app: option<dict<JSON.t>>,
+  test: option<dict<JSON.t>>,
+}
+
+type postIUpdateRequest_2 = {
+  name: string,
+  value: string,
+}
+
+type postIUpdateRequest_1 = {
+  id: string,
+  angle: option<float>,
+  flipH: option<bool>,
+  offsetX: option<float>,
+  offsetY: option<float>,
+}
+
 type postIUpdateRequest = {
-  name: option<JSON.t>,
-  description: option<JSON.t>,
-  followedMessage: option<JSON.t>,
-  location: option<JSON.t>,
-  birthday: option<JSON.t>,
-  lang: option<JSON.t>,
-  postingLang: option<JSON.t>,
+  name: option<string>,
+  description: option<string>,
+  followedMessage: option<string>,
+  location: option<string>,
+  birthday: option<string>,
+  lang: option<string>,
+  postingLang: option<string>,
   viewingLangs: option<array<string>>,
   showMediaInAllLanguages: option<bool>,
   showHashtagsInAllLanguages: option<bool>,
-  avatarId: option<JSON.t>,
-  avatarDecorations: option<array<{
-  id: string,
-  angle: option<JSON.t>,
-  flipH: option<JSON.t>,
-  offsetX: option<JSON.t>,
-  offsetY: option<JSON.t>,
-}>>,
-  bannerId: option<JSON.t>,
-  fields: option<array<{
-  name: string,
-  value: string,
-}>>,
+  avatarId: option<string>,
+  avatarDecorations: option<array<postIUpdateRequest_1>>,
+  bannerId: option<string>,
+  fields: option<array<postIUpdateRequest_2>>,
   isLocked: option<bool>,
   isExplorable: option<bool>,
   hideOnlineStatus: option<bool>,
@@ -769,8 +814,8 @@ type postIUpdateRequest = {
   noCrawle: option<bool>,
   preventAiLearning: option<bool>,
   requireSigninToViewContents: option<bool>,
-  makeNotesFollowersOnlyBefore: option<JSON.t>,
-  makeNotesHiddenBefore: option<JSON.t>,
+  makeNotesFollowersOnlyBefore: option<int>,
+  makeNotesHiddenBefore: option<int>,
   isBot: option<bool>,
   isCat: option<bool>,
   injectFeaturedNote: option<bool>,
@@ -780,62 +825,72 @@ type postIUpdateRequest = {
   followingVisibility: option<string>,
   followersVisibility: option<string>,
   chatScope: option<string>,
-  pinnedPageId: option<JSON.t>,
+  pinnedPageId: option<string>,
   mutedWords: option<array<array<string>>>,
   mutedInstances: option<array<string>>,
-  notificationRecieveConfig: option<{
-  note: option<JSON.t>,
-  follow: option<JSON.t>,
-  mention: option<JSON.t>,
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
-  quote: option<JSON.t>,
-  reaction: option<JSON.t>,
-  pollEnded: option<JSON.t>,
-  receiveFollowRequest: option<JSON.t>,
-  followRequestAccepted: option<JSON.t>,
-  roleAssigned: option<JSON.t>,
-  chatRoomInvitationReceived: option<JSON.t>,
-  achievementEarned: option<JSON.t>,
-  app: option<JSON.t>,
-  test: option<JSON.t>,
-}>,
+  notificationRecieveConfig: option<postIUpdateRequest_3>,
   emailNotificationTypes: option<array<string>>,
   alsoKnownAs: option<array<string>>,
-  mutualLinkSections: option<array<{
-  name: option<JSON.t>,
-  mutualLinks: array<{
-  url: string,
-  fileId: string,
-  description: option<JSON.t>,
-}>,
-}>>,
+  mutualLinkSections: option<array<postIUpdateRequest_4>>,
 }
 
+let postIUpdateRequest_5Schema = S.object(s => {
+    url: s.field("url", S.string),
+    fileId: s.field("fileId", S.string),
+    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
+  })
+
+let postIUpdateRequest_4Schema = S.object(s => {
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    mutualLinks: s.field("mutualLinks", S.array(postIUpdateRequest_5Schema)),
+  })
+
+let postIUpdateRequest_3Schema = S.object(s => {
+    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
+    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
+    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
+    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
+    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
+    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
+    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
+    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
+    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
+    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
+    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
+    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
+    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postIUpdateRequest_2Schema = S.object(s => {
+    name: s.field("name", S.string),
+    value: s.field("value", S.string),
+  })
+
+let postIUpdateRequest_1Schema = S.object(s => {
+    id: s.field("id", S.string),
+    angle: s.fieldOr("angle", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
+    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+  })
+
 let postIUpdateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.json), None),
-    location: s.fieldOr("location", S.nullableAsOption(S.json), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.json), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.json), None),
-    postingLang: s.fieldOr("postingLang", S.nullableAsOption(S.json), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
+    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string->S.min(1)->S.max(256)), None),
+    location: s.fieldOr("location", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
+    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
+    postingLang: s.fieldOr("postingLang", S.nullableAsOption(S.string), None),
     viewingLangs: s.fieldOr("viewingLangs", S.nullableAsOption(S.array(S.string)), None),
     showMediaInAllLanguages: s.fieldOr("showMediaInAllLanguages", S.nullableAsOption(S.bool), None),
     showHashtagsInAllLanguages: s.fieldOr("showHashtagsInAllLanguages", S.nullableAsOption(S.bool), None),
-    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.json), None),
-    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(S.object(s => {
-    id: s.field("id", S.string),
-    angle: s.fieldOr("angle", S.nullableAsOption(S.json), None),
-    flipH: s.fieldOr("flipH", S.nullableAsOption(S.json), None),
-    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.json), None),
-    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.json), None),
-  }))), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.json), None),
-    fields: s.fieldOr("fields", S.nullableAsOption(S.array(S.object(s => {
-    name: s.field("name", S.string),
-    value: s.field("value", S.string),
-  }))), None),
+    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.string), None),
+    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(postIUpdateRequest_1Schema)), None),
+    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
+    fields: s.fieldOr("fields", S.nullableAsOption(S.array(postIUpdateRequest_2Schema)), None),
     isLocked: s.fieldOr("isLocked", S.nullableAsOption(S.bool), None),
     isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
     hideOnlineStatus: s.fieldOr("hideOnlineStatus", S.nullableAsOption(S.bool), None),
@@ -845,8 +900,8 @@ let postIUpdateRequestSchema = S.object(s => {
     noCrawle: s.fieldOr("noCrawle", S.nullableAsOption(S.bool), None),
     preventAiLearning: s.fieldOr("preventAiLearning", S.nullableAsOption(S.bool), None),
     requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.json), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.json), None),
+    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.int), None),
+    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.int), None),
     isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
     isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
     injectFeaturedNote: s.fieldOr("injectFeaturedNote", S.nullableAsOption(S.bool), None),
@@ -856,36 +911,13 @@ let postIUpdateRequestSchema = S.object(s => {
     followingVisibility: s.fieldOr("followingVisibility", S.nullableAsOption(S.string), None),
     followersVisibility: s.fieldOr("followersVisibility", S.nullableAsOption(S.string), None),
     chatScope: s.fieldOr("chatScope", S.nullableAsOption(S.string), None),
-    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.json), None),
+    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.string), None),
     mutedWords: s.fieldOr("mutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
     mutedInstances: s.fieldOr("mutedInstances", S.nullableAsOption(S.array(S.string)), None),
-    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.json), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.json), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.json), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.json), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.json), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.json), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.json), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.json), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.json), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.json), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.json), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.json), None),
-  })), None),
+    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(postIUpdateRequest_3Schema), None),
     emailNotificationTypes: s.fieldOr("emailNotificationTypes", S.nullableAsOption(S.array(S.string)), None),
     alsoKnownAs: s.fieldOr("alsoKnownAs", S.nullableAsOption(S.array(S.string)), None),
-    mutualLinkSections: s.fieldOr("mutualLinkSections", S.nullableAsOption(S.array(S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    mutualLinks: s.field("mutualLinks", S.array(S.object(s => {
-    url: s.field("url", S.string),
-    fileId: s.field("fileId", S.string),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-  }))),
-  }))), None),
+    mutualLinkSections: s.fieldOr("mutualLinkSections", S.nullableAsOption(S.array(postIUpdateRequest_4Schema)), None),
   })
 
 type postIUpdateResponse = MisskeyIoComponentSchemas.MeDetailed.t
@@ -914,12 +946,12 @@ let postIUpdate = (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: s
 
 type postMuteCreateRequest = {
   userId: string,
-  expiresAt: option<JSON.t>,
+  expiresAt: option<int>,
 }
 
 let postMuteCreateRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.json), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
   })
 
 type postMuteCreateResponse = unit
@@ -1156,7 +1188,7 @@ let postSwRegisterRequestSchema = S.object(s => {
 
 type postSwRegisterResponse = {
   state: option<string>,
-  key: JSON.t,
+  key: option<string>,
   userId: string,
   endpoint: string,
   sendReadMessage: bool,
@@ -1164,7 +1196,7 @@ type postSwRegisterResponse = {
 
 let postSwRegisterResponseSchema = S.object(s => {
     state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    key: s.field("key", S.json),
+    key: s.field("key", S.nullableAsOption(S.string)),
     userId: s.field("userId", S.string),
     endpoint: s.field("endpoint", S.string),
     sendReadMessage: s.field("sendReadMessage", S.bool),
@@ -1199,9 +1231,21 @@ let postSwShowRegistrationRequestSchema = S.object(s => {
     endpoint: s.field("endpoint", S.string),
   })
 
-type postSwShowRegistrationResponse = JSON.t
+type postSwShowRegistrationResponse_1 = {
+  userId: string,
+  endpoint: string,
+  sendReadMessage: bool,
+}
 
-let postSwShowRegistrationResponseSchema = S.json
+type postSwShowRegistrationResponse = option<postSwShowRegistrationResponse_1>
+
+let postSwShowRegistrationResponse_1Schema = S.object(s => {
+    userId: s.field("userId", S.string),
+    endpoint: s.field("endpoint", S.string),
+    sendReadMessage: s.field("sendReadMessage", S.bool),
+  })
+
+let postSwShowRegistrationResponseSchema = S.nullableAsOption(postSwShowRegistrationResponse_1Schema)
 
 /**
  * sw/show-registration
@@ -1299,12 +1343,12 @@ let postSwUpdateRegistration = (~body: postSwUpdateRegistrationRequest, ~fetch: 
 
 type postUsersUpdateMemoRequest = {
   userId: string,
-  memo: JSON.t,
+  memo: option<string>,
 }
 
 let postUsersUpdateMemoRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    memo: s.field("memo", S.json),
+    memo: s.field("memo", S.nullableAsOption(S.string)),
   })
 
 type postUsersUpdateMemoResponse = unit

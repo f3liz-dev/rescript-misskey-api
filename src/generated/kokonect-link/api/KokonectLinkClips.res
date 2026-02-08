@@ -7,13 +7,13 @@
 type postClipsCreateRequest = {
   name: string,
   isPublic: option<bool>,
-  description: option<JSON.t>,
+  description: option<string>,
 }
 
 let postClipsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
     isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
   })
 
 type postClipsCreateResponse = KokonectLinkComponentSchemas.Clip.t
@@ -116,14 +116,14 @@ type postClipsUpdateRequest = {
   clipId: string,
   name: option<string>,
   isPublic: option<bool>,
-  description: option<JSON.t>,
+  description: option<string>,
 }
 
 let postClipsUpdateRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
   })
 
 type postClipsUpdateResponse = KokonectLinkComponentSchemas.Clip.t

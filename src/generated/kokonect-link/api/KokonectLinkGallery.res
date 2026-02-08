@@ -46,14 +46,14 @@ let postGalleryPosts = (~body: postGalleryPostsRequest, ~fetch: (~url: string, ~
 
 type postGalleryPostsCreateRequest = {
   title: string,
-  description: option<JSON.t>,
+  description: option<string>,
   fileIds: array<string>,
   isSensitive: option<bool>,
 }
 
 let postGalleryPostsCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string->S.min(1)),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
     fileIds: s.field("fileIds", S.array(S.string)),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
   })
@@ -117,7 +117,7 @@ let postGalleryPostsShow = (~body: postGalleryPostsShowRequest, ~fetch: (~url: s
 type postGalleryPostsUpdateRequest = {
   postId: string,
   title: option<string>,
-  description: option<JSON.t>,
+  description: option<string>,
   fileIds: option<array<string>>,
   isSensitive: option<bool>,
 }
@@ -125,7 +125,7 @@ type postGalleryPostsUpdateRequest = {
 let postGalleryPostsUpdateRequestSchema = S.object(s => {
     postId: s.field("postId", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
   })

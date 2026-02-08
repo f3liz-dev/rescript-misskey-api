@@ -21,7 +21,7 @@ let postDriveResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:drive*
  */
-let postDrive = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveResponse> => {
+let postDrive = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveResponse> => {
 
   fetch(
     ~url="/drive",
@@ -38,18 +38,18 @@ type postDriveFilesRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  folderId: option<JSON.t>,
-  @as("type") type_: option<JSON.t>,
-  sort: option<JSON.t>,
+  folderId: option<string>,
+  @as("type") type_: option<string>,
+  sort: option<string>,
 }
 
 let postDriveFilesRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFilesResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
@@ -147,18 +147,18 @@ let postDriveFilesCheckExistence = (~body: postDriveFilesCheckExistenceRequest, 
 }
 
 type postDriveFilesCreateRequest = {
-  folderId: option<JSON.t>,
-  name: option<JSON.t>,
-  comment: option<JSON.t>,
+  folderId: option<string>,
+  name: option<string>,
+  comment: option<string>,
   isSensitive: option<bool>,
   force: option<bool>,
   file: string,
 }
 
 let postDriveFilesCreateRequestSchema = S.object(s => {
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
     force: s.fieldOr("force", S.nullableAsOption(S.bool), None),
     file: s.field("file", S.string),
@@ -220,12 +220,12 @@ let postDriveFilesDelete = (~body: postDriveFilesDeleteRequest, ~fetch: (~url: s
 
 type postDriveFilesFindRequest = {
   name: string,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
 }
 
 let postDriveFilesFindRequestSchema = S.object(s => {
     name: s.field("name", S.string),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFilesFindResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
@@ -320,18 +320,18 @@ let postDriveFilesShow = (~body: postDriveFilesShowRequest, ~fetch: (~url: strin
 
 type postDriveFilesUpdateRequest = {
   fileId: string,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
   name: option<string>,
   isSensitive: option<bool>,
-  comment: option<JSON.t>,
+  comment: option<string>,
 }
 
 let postDriveFilesUpdateRequestSchema = S.object(s => {
     fileId: s.field("fileId", S.string),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
     name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.json), None),
+    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
   })
 
 type postDriveFilesUpdateResponse = MisskeyIoComponentSchemas.DriveFile.t
@@ -360,19 +360,19 @@ let postDriveFilesUpdate = (~body: postDriveFilesUpdateRequest, ~fetch: (~url: s
 
 type postDriveFilesUploadFromUrlRequest = {
   url: string,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
   isSensitive: option<bool>,
-  comment: option<JSON.t>,
-  marker: option<JSON.t>,
+  comment: option<string>,
+  marker: option<string>,
   force: option<bool>,
 }
 
 let postDriveFilesUploadFromUrlRequestSchema = S.object(s => {
     url: s.field("url", S.string),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.json), None),
-    marker: s.fieldOr("marker", S.nullableAsOption(S.json), None),
+    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
+    marker: s.fieldOr("marker", S.nullableAsOption(S.string), None),
     force: s.fieldOr("force", S.nullableAsOption(S.bool), None),
   })
 
@@ -402,14 +402,14 @@ type postDriveFoldersRequest = {
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
 }
 
 let postDriveFoldersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersResponse = array<MisskeyIoComponentSchemas.DriveFolder.t>
@@ -438,12 +438,12 @@ let postDriveFolders = (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~
 
 type postDriveFoldersCreateRequest = {
   name: option<string>,
-  parentId: option<JSON.t>,
+  parentId: option<string>,
 }
 
 let postDriveFoldersCreateRequestSchema = S.object(s => {
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.json), None),
+    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersCreateResponse = MisskeyIoComponentSchemas.DriveFolder.t
@@ -502,12 +502,12 @@ let postDriveFoldersDelete = (~body: postDriveFoldersDeleteRequest, ~fetch: (~ur
 
 type postDriveFoldersFindRequest = {
   name: string,
-  parentId: option<JSON.t>,
+  parentId: option<string>,
 }
 
 let postDriveFoldersFindRequestSchema = S.object(s => {
     name: s.field("name", S.string),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.json), None),
+    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersFindResponse = array<MisskeyIoComponentSchemas.DriveFolder.t>
@@ -569,13 +569,13 @@ let postDriveFoldersShow = (~body: postDriveFoldersShowRequest, ~fetch: (~url: s
 type postDriveFoldersUpdateRequest = {
   folderId: string,
   name: option<string>,
-  parentId: option<JSON.t>,
+  parentId: option<string>,
 }
 
 let postDriveFoldersUpdateRequestSchema = S.object(s => {
     folderId: s.field("folderId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.json), None),
+    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersUpdateResponse = MisskeyIoComponentSchemas.DriveFolder.t

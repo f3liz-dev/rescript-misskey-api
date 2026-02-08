@@ -7,7 +7,7 @@
 type postAntennasCreateRequest = {
   name: string,
   src: string,
-  userListId: option<JSON.t>,
+  userListId: option<string>,
   keywords: array<array<string>>,
   excludeKeywords: array<array<string>>,
   users: array<string>,
@@ -22,7 +22,7 @@ type postAntennasCreateRequest = {
 let postAntennasCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
     src: s.field("src", S.string),
-    userListId: s.fieldOr("userListId", S.nullableAsOption(S.json), None),
+    userListId: s.fieldOr("userListId", S.nullableAsOption(S.string), None),
     keywords: s.field("keywords", S.array(S.array(S.string))),
     excludeKeywords: s.field("excludeKeywords", S.array(S.array(S.string))),
     users: s.field("users", S.array(S.string)),
@@ -99,7 +99,7 @@ let postAntennasListResponseSchema = S.array(MisskeyIoComponentSchemas.Antenna.s
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postAntennasList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasListResponse> => {
+let postAntennasList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasListResponse> => {
 
   fetch(
     ~url="/antennas/list",
@@ -190,7 +190,7 @@ type postAntennasUpdateRequest = {
   antennaId: string,
   name: option<string>,
   src: option<string>,
-  userListId: option<JSON.t>,
+  userListId: option<string>,
   keywords: option<array<array<string>>>,
   excludeKeywords: option<array<array<string>>>,
   users: option<array<string>>,
@@ -206,7 +206,7 @@ let postAntennasUpdateRequestSchema = S.object(s => {
     antennaId: s.field("antennaId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     src: s.fieldOr("src", S.nullableAsOption(S.string), None),
-    userListId: s.fieldOr("userListId", S.nullableAsOption(S.json), None),
+    userListId: s.fieldOr("userListId", S.nullableAsOption(S.string), None),
     keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.array(S.string))), None),
     excludeKeywords: s.fieldOr("excludeKeywords", S.nullableAsOption(S.array(S.array(S.string))), None),
     users: s.fieldOr("users", S.nullableAsOption(S.array(S.string)), None),

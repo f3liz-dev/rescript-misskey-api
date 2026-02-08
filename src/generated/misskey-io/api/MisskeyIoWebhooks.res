@@ -4,22 +4,26 @@
 
 
 
+type postAdminSystemWebhookTestRequest_1 = {
+  url: option<string>,
+  secret: option<string>,
+}
+
 type postAdminSystemWebhookTestRequest = {
   webhookId: string,
   @as("type") type_: string,
-  override: option<{
-  url: option<string>,
-  secret: option<string>,
-}>,
+  override: option<postAdminSystemWebhookTestRequest_1>,
 }
+
+let postAdminSystemWebhookTestRequest_1Schema = S.object(s => {
+    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+  })
 
 let postAdminSystemWebhookTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-  })), None),
+    override: s.fieldOr("override", S.nullableAsOption(postAdminSystemWebhookTestRequest_1Schema), None),
   })
 
 type postAdminSystemWebhookTestResponse = unit
@@ -67,8 +71,8 @@ type postIWebhooksCreateResponse = {
   url: string,
   secret: string,
   active: bool,
-  latestSentAt: JSON.t,
-  latestStatus: JSON.t,
+  latestSentAt: option<string>,
+  latestStatus: option<int>,
 }
 
 let postIWebhooksCreateResponseSchema = S.object(s => {
@@ -79,8 +83,8 @@ let postIWebhooksCreateResponseSchema = S.object(s => {
     url: s.field("url", S.string),
     secret: s.field("secret", S.string),
     active: s.field("active", S.bool),
-    latestSentAt: s.field("latestSentAt", S.json),
-    latestStatus: s.field("latestStatus", S.json),
+    latestSentAt: s.field("latestSentAt", S.nullableAsOption(S.string)),
+    latestStatus: s.field("latestStatus", S.nullableAsOption(S.int)),
   })
 
 /**
@@ -133,7 +137,7 @@ let postIWebhooksDelete = (~body: postIWebhooksDeleteRequest, ~fetch: (~url: str
   })
 }
 
-type postIWebhooksListResponse = array<{
+type postIWebhooksListResponse_1 = {
   id: string,
   userId: string,
   name: string,
@@ -141,11 +145,13 @@ type postIWebhooksListResponse = array<{
   url: string,
   secret: string,
   active: bool,
-  latestSentAt: JSON.t,
-  latestStatus: JSON.t,
-}>
+  latestSentAt: option<string>,
+  latestStatus: option<int>,
+}
 
-let postIWebhooksListResponseSchema = S.array(S.object(s => {
+type postIWebhooksListResponse = array<postIWebhooksListResponse_1>
+
+let postIWebhooksListResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     userId: s.field("userId", S.string),
     name: s.field("name", S.string),
@@ -153,9 +159,11 @@ let postIWebhooksListResponseSchema = S.array(S.object(s => {
     url: s.field("url", S.string),
     secret: s.field("secret", S.string),
     active: s.field("active", S.bool),
-    latestSentAt: s.field("latestSentAt", S.json),
-    latestStatus: s.field("latestStatus", S.json),
-  }))
+    latestSentAt: s.field("latestSentAt", S.nullableAsOption(S.string)),
+    latestStatus: s.field("latestStatus", S.nullableAsOption(S.int)),
+  })
+
+let postIWebhooksListResponseSchema = S.array(postIWebhooksListResponse_1Schema)
 
 /**
  * i/webhooks/list
@@ -164,7 +172,7 @@ let postIWebhooksListResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postIWebhooksList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksListResponse> => {
+let postIWebhooksList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksListResponse> => {
 
   fetch(
     ~url="/i/webhooks/list",
@@ -193,8 +201,8 @@ type postIWebhooksShowResponse = {
   url: string,
   secret: string,
   active: bool,
-  latestSentAt: JSON.t,
-  latestStatus: JSON.t,
+  latestSentAt: option<string>,
+  latestStatus: option<int>,
 }
 
 let postIWebhooksShowResponseSchema = S.object(s => {
@@ -205,8 +213,8 @@ let postIWebhooksShowResponseSchema = S.object(s => {
     url: s.field("url", S.string),
     secret: s.field("secret", S.string),
     active: s.field("active", S.bool),
-    latestSentAt: s.field("latestSentAt", S.json),
-    latestStatus: s.field("latestStatus", S.json),
+    latestSentAt: s.field("latestSentAt", S.nullableAsOption(S.string)),
+    latestStatus: s.field("latestStatus", S.nullableAsOption(S.int)),
   })
 
 /**
@@ -229,22 +237,26 @@ let postIWebhooksShow = (~body: postIWebhooksShowRequest, ~fetch: (~url: string,
   })
 }
 
+type postIWebhooksTestRequest_1 = {
+  url: option<string>,
+  secret: option<string>,
+}
+
 type postIWebhooksTestRequest = {
   webhookId: string,
   @as("type") type_: string,
-  override: option<{
-  url: option<string>,
-  secret: option<string>,
-}>,
+  override: option<postIWebhooksTestRequest_1>,
 }
+
+let postIWebhooksTestRequest_1Schema = S.object(s => {
+    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+  })
 
 let postIWebhooksTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-  })), None),
+    override: s.fieldOr("override", S.nullableAsOption(postIWebhooksTestRequest_1Schema), None),
   })
 
 type postIWebhooksTestResponse = unit
@@ -274,7 +286,7 @@ type postIWebhooksUpdateRequest = {
   webhookId: string,
   name: option<string>,
   url: option<string>,
-  secret: option<JSON.t>,
+  secret: option<string>,
   on: option<array<string>>,
   active: option<bool>,
 }
@@ -283,7 +295,7 @@ let postIWebhooksUpdateRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     url: s.fieldOr("url", S.nullableAsOption(S.string->S.min(1)->S.max(1024)), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.json), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string->S.max(1024)), None),
     on: s.fieldOr("on", S.nullableAsOption(S.array(S.string)), None),
     active: s.fieldOr("active", S.nullableAsOption(S.bool), None),
   })

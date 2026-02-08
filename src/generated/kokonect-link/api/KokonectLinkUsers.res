@@ -10,7 +10,7 @@ type postUsersRequest = {
   sort: option<string>,
   state: option<string>,
   origin: option<string>,
-  hostname: option<JSON.t>,
+  hostname: option<string>,
 }
 
 let postUsersRequestSchema = S.object(s => {
@@ -19,7 +19,7 @@ let postUsersRequestSchema = S.object(s => {
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
     state: s.fieldOr("state", S.nullableAsOption(S.string), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.json), None),
+    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
   })
 
 type postUsersResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>
@@ -176,7 +176,7 @@ type postUsersFollowingRequest = {
   sinceDate: option<int>,
   untilDate: option<int>,
   limit: option<int>,
-  birthday: option<JSON.t>,
+  birthday: option<string>,
 }
 
 let postUsersFollowingRequestSchema = S.object(s => {
@@ -185,7 +185,7 @@ let postUsersFollowingRequestSchema = S.object(s => {
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.json), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
   })
 
 type postUsersFollowingResponse = array<KokonectLinkComponentSchemas.Following.t>
@@ -417,11 +417,11 @@ let postUsersSearchByUsernameAndHost = (~body: postUsersSearchByUsernameAndHostR
 }
 
 type postUsersShowRequest = {
-  host: option<JSON.t>,
+  host: option<string>,
 }
 
 let postUsersShowRequestSchema = S.object(s => {
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
   })
 
 type postUsersShowResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>

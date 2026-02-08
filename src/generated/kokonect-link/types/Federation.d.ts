@@ -9,7 +9,7 @@ export interface PostApGetRequest {
   uri: string;
 }
 /** OK (with results) */
-export interface PostApGetResponse Record<string, never>
+export type PostApGetResponse = Record<string, never>;
 
 export interface PostApShowRequest {
   uri: string;
@@ -42,33 +42,33 @@ export interface PostFederationFollowingRequest {
 export type PostFederationFollowingResponse = ComponentSchemas.Following[];
 
 export interface GetFederationInstancesRequest {
-  host?: unknown;
-  blocked?: unknown;
-  notResponding?: unknown;
-  suspended?: unknown;
-  silenced?: unknown;
-  federating?: unknown;
-  subscribing?: unknown;
-  publishing?: unknown;
+  host?: string | null;
+  blocked?: boolean | null;
+  notResponding?: boolean | null;
+  suspended?: boolean | null;
+  silenced?: boolean | null;
+  federating?: boolean | null;
+  subscribing?: boolean | null;
+  publishing?: boolean | null;
   limit?: number;
   offset?: number;
-  sort?: unknown;
+  sort?: string | null;
 }
 /** OK (with results) */
 export type GetFederationInstancesResponse = ComponentSchemas.FederationInstance[];
 
 export interface PostFederationInstancesRequest {
-  host?: unknown;
-  blocked?: unknown;
-  notResponding?: unknown;
-  suspended?: unknown;
-  silenced?: unknown;
-  federating?: unknown;
-  subscribing?: unknown;
-  publishing?: unknown;
+  host?: string | null;
+  blocked?: boolean | null;
+  notResponding?: boolean | null;
+  suspended?: boolean | null;
+  silenced?: boolean | null;
+  federating?: boolean | null;
+  subscribing?: boolean | null;
+  publishing?: boolean | null;
   limit?: number;
   offset?: number;
-  sort?: unknown;
+  sort?: string | null;
 }
 /** OK (with results) */
 export type PostFederationInstancesResponse = ComponentSchemas.FederationInstance[];
@@ -77,7 +77,7 @@ export interface PostFederationShowInstanceRequest {
   host: string;
 }
 /** OK (with results) */
-export type PostFederationShowInstanceResponse = unknown;
+export type PostFederationShowInstanceResponse = ComponentSchemas.FederationInstance | null;
 
 export interface GetFederationStatsRequest {
   limit?: number;
@@ -138,36 +138,36 @@ export interface PostFederationFollowingRequest {
 export type PostFederationFollowingResponse = ComponentSchemas.Following[];
 
 export interface GetFederationRemoteSoftwareRequest {
-  blocked?: unknown;
-  notResponding?: unknown;
-  suspended?: unknown;
-  silenced?: unknown;
-  federating?: unknown;
-  subscribing?: unknown;
-  publishing?: unknown;
-  quarantined?: unknown;
+  blocked?: boolean | null;
+  notResponding?: boolean | null;
+  suspended?: boolean | null;
+  silenced?: boolean | null;
+  federating?: boolean | null;
+  subscribing?: boolean | null;
+  publishing?: boolean | null;
+  quarantined?: boolean | null;
 }
 /** OK (with results) */
 export type GetFederationRemoteSoftwareResponse = {
   softwareName: string;
-  color: unknown;
+  color: string | null;
   count: number;
 }[];
 
 export interface PostFederationRemoteSoftwareRequest {
-  blocked?: unknown;
-  notResponding?: unknown;
-  suspended?: unknown;
-  silenced?: unknown;
-  federating?: unknown;
-  subscribing?: unknown;
-  publishing?: unknown;
-  quarantined?: unknown;
+  blocked?: boolean | null;
+  notResponding?: boolean | null;
+  suspended?: boolean | null;
+  silenced?: boolean | null;
+  federating?: boolean | null;
+  subscribing?: boolean | null;
+  publishing?: boolean | null;
+  quarantined?: boolean | null;
 }
 /** OK (with results) */
 export type PostFederationRemoteSoftwareResponse = {
   softwareName: string;
-  color: unknown;
+  color: string | null;
   count: number;
 }[];
 

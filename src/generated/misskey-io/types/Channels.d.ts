@@ -7,11 +7,11 @@ import * as ComponentSchemas from './ComponentSchemas';
 
 export interface PostChannelsCreateRequest {
   name: string;
-  description?: unknown;
-  bannerId?: unknown;
+  description?: string | null;
+  bannerId?: string | null;
   color?: string;
-  isSensitive?: unknown;
-  allowRenoteToExternal?: unknown;
+  isSensitive?: boolean | null;
+  allowRenoteToExternal?: boolean | null;
 }
 /** OK (with results) */
 export type PostChannelsCreateResponse = ComponentSchemas.Channel;
@@ -80,13 +80,13 @@ export type PostChannelsUnfollowResponse = void;
 export interface PostChannelsUpdateRequest {
   channelId: string;
   name?: string;
-  description?: unknown;
-  bannerId?: unknown;
-  isArchived?: unknown;
+  description?: string | null;
+  bannerId?: string | null;
+  isArchived?: boolean | null;
   pinnedNoteIds?: string[];
   color?: string;
-  isSensitive?: unknown;
-  allowRenoteToExternal?: unknown;
+  isSensitive?: boolean | null;
+  allowRenoteToExternal?: boolean | null;
 }
 /** OK (with results) */
 export type PostChannelsUpdateResponse = ComponentSchemas.Channel;

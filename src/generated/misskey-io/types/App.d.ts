@@ -9,7 +9,7 @@ export interface PostAppCreateRequest {
   name: string;
   description: string;
   permission: string[];
-  callbackUrl?: unknown;
+  callbackUrl?: string | null;
 }
 /** OK (with results) */
 export type PostAppCreateResponse = ComponentSchemas.App;

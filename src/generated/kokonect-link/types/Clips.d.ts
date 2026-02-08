@@ -8,7 +8,7 @@ import * as ComponentSchemas from './ComponentSchemas';
 export interface PostClipsCreateRequest {
   name: string;
   isPublic?: boolean;
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostClipsCreateResponse = ComponentSchemas.Clip;
@@ -31,7 +31,7 @@ export interface PostClipsUpdateRequest {
   clipId: string;
   name?: string;
   isPublic?: boolean;
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostClipsUpdateResponse = ComponentSchemas.Clip;
@@ -45,7 +45,7 @@ export type PostNotesClipsResponse = ComponentSchemas.Clip[];
 export interface PostClipsCreateRequest {
   name: string;
   isPublic?: boolean;
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostClipsCreateResponse = ComponentSchemas.Clip;
@@ -70,7 +70,7 @@ export interface PostClipsUpdateRequest {
   clipId: string;
   name?: string;
   isPublic?: boolean;
-  description?: unknown;
+  description?: string | null;
 }
 /** OK (with results) */
 export type PostClipsUpdateResponse = ComponentSchemas.Clip;

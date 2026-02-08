@@ -15,7 +15,7 @@ let postRolesListResponseSchema = S.array(MisskeyIoComponentSchemas.Role.schema)
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postRolesList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesListResponse> => {
+let postRolesList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesListResponse> => {
 
   fetch(
     ~url="/roles/list",
@@ -35,7 +35,7 @@ type postRolesNotesRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postRolesNotesRequestSchema = S.object(s => {
@@ -45,7 +45,7 @@ let postRolesNotesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postRolesNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -118,15 +118,19 @@ let postRolesUsersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postRolesUsersResponse = array<{
+type postRolesUsersResponse_1 = {
   id: string,
   user: MisskeyIoComponentSchemas.UserDetailed.t,
-}>
+}
 
-let postRolesUsersResponseSchema = S.array(S.object(s => {
+type postRolesUsersResponse = array<postRolesUsersResponse_1>
+
+let postRolesUsersResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     user: s.field("user", MisskeyIoComponentSchemas.UserDetailed.schema),
-  }))
+  })
+
+let postRolesUsersResponseSchema = S.array(postRolesUsersResponse_1Schema)
 
 /**
  * roles/users

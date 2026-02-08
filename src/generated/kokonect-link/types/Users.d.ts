@@ -11,7 +11,7 @@ export interface PostEmailAddressAvailableRequest {
 /** OK (with results) */
 export interface PostEmailAddressAvailableResponse {
   available: boolean;
-  reason: unknown;
+  reason: string | null;
 }
 
 /** OK (with results) */
@@ -27,7 +27,7 @@ export interface PostImoveRequest {
   moveToAccount: string;
 }
 /** OK (with results) */
-export interface PostImoveResponse Record<string, never>
+export type PostImoveResponse = Record<string, never>;
 
 /** OK (with results) */
 export type PostPinnedUsersResponse = ComponentSchemas.UserDetailed[];
@@ -60,7 +60,7 @@ export interface PostUsersRequest {
   sort?: string;
   state?: string;
   origin?: string;
-  hostname?: unknown;
+  hostname?: string | null;
 }
 /** OK (with results) */
 export type PostUsersResponse = ComponentSchemas.UserDetailed[];
@@ -89,7 +89,7 @@ export interface PostUsersFollowersRequest {
   limit?: number;
   userId?: string;
   username?: string;
-  host?: unknown;
+  host?: string | null;
 }
 /** OK (with results) */
 export type PostUsersFollowersResponse = ComponentSchemas.Following[];
@@ -100,8 +100,8 @@ export interface PostUsersFollowingRequest {
   limit?: number;
   userId?: string;
   username?: string;
-  host?: unknown;
-  birthday?: unknown;
+  host?: string | null;
+  birthday?: string | null;
 }
 /** OK (with results) */
 export type PostUsersFollowingResponse = ComponentSchemas.Following[];
@@ -279,8 +279,8 @@ export type PostUsersSearchResponse = ComponentSchemas.User[];
 export interface PostUsersSearchByUsernameAndHostRequest {
   limit?: number;
   detail?: boolean;
-  username?: unknown;
-  host?: unknown;
+  username?: string | null;
+  host?: string | null;
 }
 /** OK (with results) */
 export type PostUsersSearchByUsernameAndHostResponse = ComponentSchemas.User[];
@@ -289,7 +289,7 @@ export interface PostUsersShowRequest {
   userId?: string;
   userIds?: string[];
   username?: string;
-  host?: unknown;
+  host?: string | null;
   detailed?: boolean;
 }
 /** OK (with results) */
@@ -328,7 +328,7 @@ export interface PostUsersRequest {
   sort?: string;
   state?: string;
   origin?: string;
-  hostname?: unknown;
+  hostname?: string | null;
 }
 /** OK (with results) */
 export type PostUsersResponse = ComponentSchemas.UserDetailed[];
@@ -359,7 +359,7 @@ export type PostUsersFollowersRequest = {
   userId: string;
 } | {
   username: string;
-  host: unknown;
+  host: string | null;
 } & {
   sinceId?: string;
   untilId?: string;
@@ -374,14 +374,14 @@ export type PostUsersFollowingRequest = {
   userId: string;
 } | {
   username: string;
-  host: unknown;
+  host: string | null;
 } & {
   sinceId?: string;
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
   limit?: number;
-  birthday?: unknown;
+  birthday?: string | null;
 };
 /** OK (with results) */
 export type PostUsersFollowingResponse = ComponentSchemas.Following[];
@@ -432,9 +432,9 @@ export interface PostUsersReportAbuseRequest {
 export type PostUsersReportAbuseResponse = void;
 
 export type PostUsersSearchByUsernameAndHostRequest = {
-  username: unknown;
+  username: string | null;
 } | {
-  host: unknown;
+  host: string | null;
 } & {
   limit?: number;
   detail?: boolean;
@@ -449,7 +449,7 @@ export type PostUsersShowRequest = {
 } | {
   username: string;
 } & {
-  host?: unknown;
+  host?: string | null;
 };
 /** OK (with results) */
 export type PostUsersShowResponse = ComponentSchemas.UserDetailed | ComponentSchemas.UserDetailed[];

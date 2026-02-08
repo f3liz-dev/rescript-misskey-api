@@ -7,13 +7,13 @@
 type postClipsCreateRequest = {
   name: string,
   isPublic: option<bool>,
-  description: option<JSON.t>,
+  description: option<string>,
 }
 
 let postClipsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
     isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
   })
 
 type postClipsCreateResponse = MisskeyIoComponentSchemas.Clip.t
@@ -81,7 +81,7 @@ let postClipsListResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.schema)
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postClipsList = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsListResponse> => {
+let postClipsList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsListResponse> => {
 
   fetch(
     ~url="/clips/list",
@@ -130,14 +130,14 @@ type postClipsUpdateRequest = {
   clipId: string,
   name: option<string>,
   isPublic: option<bool>,
-  description: option<JSON.t>,
+  description: option<string>,
 }
 
 let postClipsUpdateRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
   })
 
 type postClipsUpdateResponse = MisskeyIoComponentSchemas.Clip.t

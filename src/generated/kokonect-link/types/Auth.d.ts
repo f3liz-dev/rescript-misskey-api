@@ -40,10 +40,10 @@ export interface PostAuthSessionUserkeyResponse {
 }
 
 export interface PostMiauthGenTokenRequest {
-  session: unknown;
-  name?: unknown;
-  description?: unknown;
-  iconUrl?: unknown;
+  session: string | null;
+  name?: string | null;
+  description?: string | null;
+  iconUrl?: string | null;
   permission: string[];
 }
 /** OK (with results) */

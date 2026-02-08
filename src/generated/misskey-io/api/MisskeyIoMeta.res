@@ -9,24 +9,24 @@ type postAdminMetaResponse = {
   cacheRemoteSensitiveFiles: bool,
   emailRequiredForSignup: bool,
   enableHcaptcha: bool,
-  hcaptchaSiteKey: JSON.t,
+  hcaptchaSiteKey: option<string>,
   enableMcaptcha: bool,
-  mcaptchaSiteKey: JSON.t,
-  mcaptchaInstanceUrl: JSON.t,
+  mcaptchaSiteKey: option<string>,
+  mcaptchaInstanceUrl: option<string>,
   enableRecaptcha: bool,
-  recaptchaSiteKey: JSON.t,
+  recaptchaSiteKey: option<string>,
   enableTurnstile: bool,
-  turnstileSiteKey: JSON.t,
-  googleAnalyticsId: JSON.t,
-  swPublickey: JSON.t,
-  mascotImageUrl: JSON.t,
-  bannerUrl: JSON.t,
-  serverErrorImageUrl: JSON.t,
-  infoImageUrl: JSON.t,
-  notFoundImageUrl: JSON.t,
-  iconUrl: JSON.t,
-  @as("app192IconUrl") app192iconUrl: JSON.t,
-  @as("app512IconUrl") app512iconUrl: JSON.t,
+  turnstileSiteKey: option<string>,
+  googleAnalyticsId: option<string>,
+  swPublickey: option<string>,
+  mascotImageUrl: option<string>,
+  bannerUrl: option<string>,
+  serverErrorImageUrl: option<string>,
+  infoImageUrl: option<string>,
+  notFoundImageUrl: option<string>,
+  iconUrl: option<string>,
+  @as("app192IconUrl") app192iconUrl: option<string>,
+  @as("app512IconUrl") app512iconUrl: option<string>,
   enableEmail: bool,
   enableServiceWorker: bool,
   translatorAvailable: bool,
@@ -40,47 +40,47 @@ type postAdminMetaResponse = {
   prohibitedWords: array<string>,
   bannedEmailDomains: option<array<string>>,
   preservedUsernames: array<string>,
-  hcaptchaSecretKey: JSON.t,
-  mcaptchaSecretKey: JSON.t,
-  recaptchaSecretKey: JSON.t,
-  turnstileSecretKey: JSON.t,
+  hcaptchaSecretKey: option<string>,
+  mcaptchaSecretKey: option<string>,
+  recaptchaSecretKey: option<string>,
+  turnstileSecretKey: option<string>,
   sensitiveMediaDetection: string,
   sensitiveMediaDetectionSensitivity: string,
   setSensitiveFlagAutomatically: bool,
   enableSensitiveMediaDetectionForVideos: bool,
   proxyAccountId: string,
-  email: JSON.t,
+  email: option<string>,
   smtpSecure: bool,
-  smtpHost: JSON.t,
-  smtpPort: JSON.t,
-  smtpUser: JSON.t,
-  smtpPass: JSON.t,
-  swPrivateKey: JSON.t,
+  smtpHost: option<string>,
+  smtpPort: option<float>,
+  smtpUser: option<string>,
+  smtpPass: option<string>,
+  swPrivateKey: option<string>,
   useObjectStorage: bool,
-  objectStorageBaseUrl: JSON.t,
-  objectStorageBucket: JSON.t,
-  objectStoragePrefix: JSON.t,
-  objectStorageEndpoint: JSON.t,
-  objectStorageRegion: JSON.t,
-  objectStoragePort: JSON.t,
-  objectStorageAccessKey: JSON.t,
-  objectStorageSecretKey: JSON.t,
+  objectStorageBaseUrl: option<string>,
+  objectStorageBucket: option<string>,
+  objectStoragePrefix: option<string>,
+  objectStorageEndpoint: option<string>,
+  objectStorageRegion: option<string>,
+  objectStoragePort: option<float>,
+  objectStorageAccessKey: option<string>,
+  objectStorageSecretKey: option<string>,
   @as("objectStorageUseSSL") objectStorageUseSsl: bool,
   objectStorageUseProxy: bool,
   objectStorageSetPublicRead: bool,
   enableIpLogging: bool,
   enableActiveEmailValidation: bool,
   enableVerifymailApi: bool,
-  verifymailAuthKey: JSON.t,
+  verifymailAuthKey: option<string>,
   enableTruemailApi: bool,
-  truemailInstance: JSON.t,
-  truemailAuthKey: JSON.t,
+  truemailInstance: option<string>,
+  truemailAuthKey: option<string>,
   enableChartsForRemoteUser: bool,
   enableChartsForFederatedInstances: bool,
   enableServerMachineStats: bool,
   enableIdenticonGeneration: bool,
   manifestJsonOverride: string,
-  policies: JSON.t,
+  policies: dict<JSON.t>,
   enableFanoutTimeline: bool,
   enableFanoutTimelineDbFallback: bool,
   perLocalUserUserTimelineCacheMax: float,
@@ -91,37 +91,37 @@ type postAdminMetaResponse = {
   wellKnownWebsites: array<string>,
   urlPreviewDenyList: array<string>,
   featuredGameChannels: array<string>,
-  backgroundImageUrl: JSON.t,
-  deeplAuthKey: JSON.t,
+  backgroundImageUrl: option<string>,
+  deeplAuthKey: option<string>,
   deeplIsPro: bool,
-  defaultDarkTheme: JSON.t,
-  defaultLightTheme: JSON.t,
-  description: JSON.t,
+  defaultDarkTheme: option<string>,
+  defaultLightTheme: option<string>,
+  description: option<string>,
   dimensions: float,
   disableRegistration: bool,
-  impressumUrl: JSON.t,
-  maintainerEmail: JSON.t,
-  maintainerName: JSON.t,
-  name: JSON.t,
-  shortName: JSON.t,
+  impressumUrl: option<string>,
+  maintainerEmail: option<string>,
+  maintainerName: option<string>,
+  name: option<string>,
+  shortName: option<string>,
   @as("objectStorageS3ForcePathStyle") objectStorageS3forcePathStyle: bool,
-  privacyPolicyUrl: JSON.t,
-  repositoryUrl: JSON.t,
-  summalyProxy: JSON.t,
-  themeColor: JSON.t,
-  tosUrl: JSON.t,
+  privacyPolicyUrl: option<string>,
+  repositoryUrl: option<string>,
+  summalyProxy: option<string>,
+  themeColor: option<string>,
+  tosUrl: option<string>,
   uri: string,
   version: string,
   urlPreviewEnabled: bool,
   urlPreviewTimeout: float,
   urlPreviewMaximumContentLength: float,
   urlPreviewRequireContentLength: bool,
-  urlPreviewUserAgent: JSON.t,
-  urlPreviewSummaryProxyUrl: JSON.t,
+  urlPreviewUserAgent: option<string>,
+  urlPreviewSummaryProxyUrl: option<string>,
   federation: string,
   federationHosts: array<string>,
   prohibitedWordsForNameOfUser: array<string>,
-  inquiryUrl: JSON.t,
+  inquiryUrl: option<string>,
 }
 
 let postAdminMetaResponseSchema = S.object(s => {
@@ -129,24 +129,24 @@ let postAdminMetaResponseSchema = S.object(s => {
     cacheRemoteSensitiveFiles: s.field("cacheRemoteSensitiveFiles", S.bool),
     emailRequiredForSignup: s.field("emailRequiredForSignup", S.bool),
     enableHcaptcha: s.field("enableHcaptcha", S.bool),
-    hcaptchaSiteKey: s.field("hcaptchaSiteKey", S.json),
+    hcaptchaSiteKey: s.field("hcaptchaSiteKey", S.nullableAsOption(S.string)),
     enableMcaptcha: s.field("enableMcaptcha", S.bool),
-    mcaptchaSiteKey: s.field("mcaptchaSiteKey", S.json),
-    mcaptchaInstanceUrl: s.field("mcaptchaInstanceUrl", S.json),
+    mcaptchaSiteKey: s.field("mcaptchaSiteKey", S.nullableAsOption(S.string)),
+    mcaptchaInstanceUrl: s.field("mcaptchaInstanceUrl", S.nullableAsOption(S.string)),
     enableRecaptcha: s.field("enableRecaptcha", S.bool),
-    recaptchaSiteKey: s.field("recaptchaSiteKey", S.json),
+    recaptchaSiteKey: s.field("recaptchaSiteKey", S.nullableAsOption(S.string)),
     enableTurnstile: s.field("enableTurnstile", S.bool),
-    turnstileSiteKey: s.field("turnstileSiteKey", S.json),
-    googleAnalyticsId: s.field("googleAnalyticsId", S.json),
-    swPublickey: s.field("swPublickey", S.json),
-    mascotImageUrl: s.field("mascotImageUrl", S.json),
-    bannerUrl: s.field("bannerUrl", S.json),
-    serverErrorImageUrl: s.field("serverErrorImageUrl", S.json),
-    infoImageUrl: s.field("infoImageUrl", S.json),
-    notFoundImageUrl: s.field("notFoundImageUrl", S.json),
-    iconUrl: s.field("iconUrl", S.json),
-    app192iconUrl: s.field("app192IconUrl", S.json),
-    app512iconUrl: s.field("app512IconUrl", S.json),
+    turnstileSiteKey: s.field("turnstileSiteKey", S.nullableAsOption(S.string)),
+    googleAnalyticsId: s.field("googleAnalyticsId", S.nullableAsOption(S.string)),
+    swPublickey: s.field("swPublickey", S.nullableAsOption(S.string)),
+    mascotImageUrl: s.field("mascotImageUrl", S.nullableAsOption(S.string)),
+    bannerUrl: s.field("bannerUrl", S.nullableAsOption(S.string)),
+    serverErrorImageUrl: s.field("serverErrorImageUrl", S.nullableAsOption(S.string)),
+    infoImageUrl: s.field("infoImageUrl", S.nullableAsOption(S.string)),
+    notFoundImageUrl: s.field("notFoundImageUrl", S.nullableAsOption(S.string)),
+    iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
+    app192iconUrl: s.field("app192IconUrl", S.nullableAsOption(S.string)),
+    app512iconUrl: s.field("app512IconUrl", S.nullableAsOption(S.string)),
     enableEmail: s.field("enableEmail", S.bool),
     enableServiceWorker: s.field("enableServiceWorker", S.bool),
     translatorAvailable: s.field("translatorAvailable", S.bool),
@@ -160,47 +160,47 @@ let postAdminMetaResponseSchema = S.object(s => {
     prohibitedWords: s.field("prohibitedWords", S.array(S.string)),
     bannedEmailDomains: s.fieldOr("bannedEmailDomains", S.nullableAsOption(S.array(S.string)), None),
     preservedUsernames: s.field("preservedUsernames", S.array(S.string)),
-    hcaptchaSecretKey: s.field("hcaptchaSecretKey", S.json),
-    mcaptchaSecretKey: s.field("mcaptchaSecretKey", S.json),
-    recaptchaSecretKey: s.field("recaptchaSecretKey", S.json),
-    turnstileSecretKey: s.field("turnstileSecretKey", S.json),
+    hcaptchaSecretKey: s.field("hcaptchaSecretKey", S.nullableAsOption(S.string)),
+    mcaptchaSecretKey: s.field("mcaptchaSecretKey", S.nullableAsOption(S.string)),
+    recaptchaSecretKey: s.field("recaptchaSecretKey", S.nullableAsOption(S.string)),
+    turnstileSecretKey: s.field("turnstileSecretKey", S.nullableAsOption(S.string)),
     sensitiveMediaDetection: s.field("sensitiveMediaDetection", S.string),
     sensitiveMediaDetectionSensitivity: s.field("sensitiveMediaDetectionSensitivity", S.string),
     setSensitiveFlagAutomatically: s.field("setSensitiveFlagAutomatically", S.bool),
     enableSensitiveMediaDetectionForVideos: s.field("enableSensitiveMediaDetectionForVideos", S.bool),
     proxyAccountId: s.field("proxyAccountId", S.string),
-    email: s.field("email", S.json),
+    email: s.field("email", S.nullableAsOption(S.string)),
     smtpSecure: s.field("smtpSecure", S.bool),
-    smtpHost: s.field("smtpHost", S.json),
-    smtpPort: s.field("smtpPort", S.json),
-    smtpUser: s.field("smtpUser", S.json),
-    smtpPass: s.field("smtpPass", S.json),
-    swPrivateKey: s.field("swPrivateKey", S.json),
+    smtpHost: s.field("smtpHost", S.nullableAsOption(S.string)),
+    smtpPort: s.field("smtpPort", S.nullableAsOption(S.float)),
+    smtpUser: s.field("smtpUser", S.nullableAsOption(S.string)),
+    smtpPass: s.field("smtpPass", S.nullableAsOption(S.string)),
+    swPrivateKey: s.field("swPrivateKey", S.nullableAsOption(S.string)),
     useObjectStorage: s.field("useObjectStorage", S.bool),
-    objectStorageBaseUrl: s.field("objectStorageBaseUrl", S.json),
-    objectStorageBucket: s.field("objectStorageBucket", S.json),
-    objectStoragePrefix: s.field("objectStoragePrefix", S.json),
-    objectStorageEndpoint: s.field("objectStorageEndpoint", S.json),
-    objectStorageRegion: s.field("objectStorageRegion", S.json),
-    objectStoragePort: s.field("objectStoragePort", S.json),
-    objectStorageAccessKey: s.field("objectStorageAccessKey", S.json),
-    objectStorageSecretKey: s.field("objectStorageSecretKey", S.json),
+    objectStorageBaseUrl: s.field("objectStorageBaseUrl", S.nullableAsOption(S.string)),
+    objectStorageBucket: s.field("objectStorageBucket", S.nullableAsOption(S.string)),
+    objectStoragePrefix: s.field("objectStoragePrefix", S.nullableAsOption(S.string)),
+    objectStorageEndpoint: s.field("objectStorageEndpoint", S.nullableAsOption(S.string)),
+    objectStorageRegion: s.field("objectStorageRegion", S.nullableAsOption(S.string)),
+    objectStoragePort: s.field("objectStoragePort", S.nullableAsOption(S.float)),
+    objectStorageAccessKey: s.field("objectStorageAccessKey", S.nullableAsOption(S.string)),
+    objectStorageSecretKey: s.field("objectStorageSecretKey", S.nullableAsOption(S.string)),
     objectStorageUseSsl: s.field("objectStorageUseSSL", S.bool),
     objectStorageUseProxy: s.field("objectStorageUseProxy", S.bool),
     objectStorageSetPublicRead: s.field("objectStorageSetPublicRead", S.bool),
     enableIpLogging: s.field("enableIpLogging", S.bool),
     enableActiveEmailValidation: s.field("enableActiveEmailValidation", S.bool),
     enableVerifymailApi: s.field("enableVerifymailApi", S.bool),
-    verifymailAuthKey: s.field("verifymailAuthKey", S.json),
+    verifymailAuthKey: s.field("verifymailAuthKey", S.nullableAsOption(S.string)),
     enableTruemailApi: s.field("enableTruemailApi", S.bool),
-    truemailInstance: s.field("truemailInstance", S.json),
-    truemailAuthKey: s.field("truemailAuthKey", S.json),
+    truemailInstance: s.field("truemailInstance", S.nullableAsOption(S.string)),
+    truemailAuthKey: s.field("truemailAuthKey", S.nullableAsOption(S.string)),
     enableChartsForRemoteUser: s.field("enableChartsForRemoteUser", S.bool),
     enableChartsForFederatedInstances: s.field("enableChartsForFederatedInstances", S.bool),
     enableServerMachineStats: s.field("enableServerMachineStats", S.bool),
     enableIdenticonGeneration: s.field("enableIdenticonGeneration", S.bool),
     manifestJsonOverride: s.field("manifestJsonOverride", S.string),
-    policies: s.field("policies", S.json),
+    policies: s.field("policies", S.dict(S.json)),
     enableFanoutTimeline: s.field("enableFanoutTimeline", S.bool),
     enableFanoutTimelineDbFallback: s.field("enableFanoutTimelineDbFallback", S.bool),
     perLocalUserUserTimelineCacheMax: s.field("perLocalUserUserTimelineCacheMax", S.float),
@@ -211,37 +211,37 @@ let postAdminMetaResponseSchema = S.object(s => {
     wellKnownWebsites: s.field("wellKnownWebsites", S.array(S.string)),
     urlPreviewDenyList: s.field("urlPreviewDenyList", S.array(S.string)),
     featuredGameChannels: s.field("featuredGameChannels", S.array(S.string)),
-    backgroundImageUrl: s.field("backgroundImageUrl", S.json),
-    deeplAuthKey: s.field("deeplAuthKey", S.json),
+    backgroundImageUrl: s.field("backgroundImageUrl", S.nullableAsOption(S.string)),
+    deeplAuthKey: s.field("deeplAuthKey", S.nullableAsOption(S.string)),
     deeplIsPro: s.field("deeplIsPro", S.bool),
-    defaultDarkTheme: s.field("defaultDarkTheme", S.json),
-    defaultLightTheme: s.field("defaultLightTheme", S.json),
-    description: s.field("description", S.json),
+    defaultDarkTheme: s.field("defaultDarkTheme", S.nullableAsOption(S.string)),
+    defaultLightTheme: s.field("defaultLightTheme", S.nullableAsOption(S.string)),
+    description: s.field("description", S.nullableAsOption(S.string)),
     dimensions: s.field("dimensions", S.float->S.min(1)),
     disableRegistration: s.field("disableRegistration", S.bool),
-    impressumUrl: s.field("impressumUrl", S.json),
-    maintainerEmail: s.field("maintainerEmail", S.json),
-    maintainerName: s.field("maintainerName", S.json),
-    name: s.field("name", S.json),
-    shortName: s.field("shortName", S.json),
+    impressumUrl: s.field("impressumUrl", S.nullableAsOption(S.string)),
+    maintainerEmail: s.field("maintainerEmail", S.nullableAsOption(S.string)),
+    maintainerName: s.field("maintainerName", S.nullableAsOption(S.string)),
+    name: s.field("name", S.nullableAsOption(S.string)),
+    shortName: s.field("shortName", S.nullableAsOption(S.string)),
     objectStorageS3forcePathStyle: s.field("objectStorageS3ForcePathStyle", S.bool),
-    privacyPolicyUrl: s.field("privacyPolicyUrl", S.json),
-    repositoryUrl: s.field("repositoryUrl", S.json),
-    summalyProxy: s.field("summalyProxy", S.json),
-    themeColor: s.field("themeColor", S.json),
-    tosUrl: s.field("tosUrl", S.json),
+    privacyPolicyUrl: s.field("privacyPolicyUrl", S.nullableAsOption(S.string)),
+    repositoryUrl: s.field("repositoryUrl", S.nullableAsOption(S.string)),
+    summalyProxy: s.field("summalyProxy", S.nullableAsOption(S.string)),
+    themeColor: s.field("themeColor", S.nullableAsOption(S.string)),
+    tosUrl: s.field("tosUrl", S.nullableAsOption(S.string)),
     uri: s.field("uri", S.string),
     version: s.field("version", S.string),
     urlPreviewEnabled: s.field("urlPreviewEnabled", S.bool),
     urlPreviewTimeout: s.field("urlPreviewTimeout", S.float),
     urlPreviewMaximumContentLength: s.field("urlPreviewMaximumContentLength", S.float),
     urlPreviewRequireContentLength: s.field("urlPreviewRequireContentLength", S.bool),
-    urlPreviewUserAgent: s.field("urlPreviewUserAgent", S.json),
-    urlPreviewSummaryProxyUrl: s.field("urlPreviewSummaryProxyUrl", S.json),
+    urlPreviewUserAgent: s.field("urlPreviewUserAgent", S.nullableAsOption(S.string)),
+    urlPreviewSummaryProxyUrl: s.field("urlPreviewSummaryProxyUrl", S.nullableAsOption(S.string)),
     federation: s.field("federation", S.string),
     federationHosts: s.field("federationHosts", S.array(S.string)),
     prohibitedWordsForNameOfUser: s.field("prohibitedWordsForNameOfUser", S.array(S.string)),
-    inquiryUrl: s.field("inquiryUrl", S.json),
+    inquiryUrl: s.field("inquiryUrl", S.nullableAsOption(S.string)),
   })
 
 /**
@@ -251,7 +251,7 @@ let postAdminMetaResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
  */
-let postAdminMeta = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminMetaResponse> => {
+let postAdminMeta = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminMetaResponse> => {
 
   fetch(
     ~url="/admin/meta",
@@ -447,7 +447,7 @@ let getEmojisResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let getEmojis = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojisResponse> => {
+let getEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojisResponse> => {
 
   fetch(
     ~url="/emojis",
@@ -475,7 +475,7 @@ let postEmojisResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postEmojis = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojisResponse> => {
+let postEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojisResponse> => {
 
   fetch(
     ~url="/emojis",
@@ -496,9 +496,27 @@ let postEndpointRequestSchema = S.object(s => {
     endpoint: s.field("endpoint", S.string),
   })
 
-type postEndpointResponse = JSON.t
+type postEndpointResponse_2 = {
+  name: string,
+  @as("type") type_: string,
+}
 
-let postEndpointResponseSchema = S.json
+type postEndpointResponse_1 = {
+  params: array<postEndpointResponse_2>,
+}
+
+type postEndpointResponse = option<postEndpointResponse_1>
+
+let postEndpointResponse_2Schema = S.object(s => {
+    name: s.field("name", S.string),
+    type_: s.field("type", S.string),
+  })
+
+let postEndpointResponse_1Schema = S.object(s => {
+    params: s.field("params", S.array(postEndpointResponse_2Schema)),
+  })
+
+let postEndpointResponseSchema = S.nullableAsOption(postEndpointResponse_1Schema)
 
 /**
  * endpoint
@@ -531,7 +549,7 @@ let postEndpointsResponseSchema = S.array(S.string)
  *
  * **Credential required**: *No*
  */
-let postEndpoints = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEndpointsResponse> => {
+let postEndpoints = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEndpointsResponse> => {
 
   fetch(
     ~url="/endpoints",
@@ -593,22 +611,28 @@ let getFetchRssRequestSchema = S.object(s => {
     url: s.field("url", S.string),
   })
 
-type getFetchRssResponse = {
-  image: option<{
-  link: option<string>,
+type getFetchRssResponse_6 = {
+  name: option<string>,
+  email: option<string>,
+}
+
+type getFetchRssResponse_5 = {
   url: string,
-  title: option<string>,
-}>,
-  paginationLinks: option<{
-  self: option<string>,
-  first: option<string>,
-  next: option<string>,
-  last: option<string>,
-  prev: option<string>,
-}>,
-  link: option<string>,
-  title: option<string>,
-  items: array<{
+  length: option<float>,
+  @as("type") type_: option<string>,
+}
+
+type getFetchRssResponse_4 = {
+  image: option<string>,
+  owner: option<getFetchRssResponse_6>,
+  author: option<string>,
+  summary: option<string>,
+  explicit: option<string>,
+  categories: option<array<string>>,
+  keywords: option<array<string>>,
+}
+
+type getFetchRssResponse_3 = {
   link: option<string>,
   guid: option<string>,
   title: option<string>,
@@ -619,44 +643,56 @@ type getFetchRssResponse = {
   isoDate: option<string>,
   categories: option<array<string>>,
   contentSnippet: option<string>,
-  enclosure: option<{
-  url: string,
-  length: option<float>,
-  @as("type") type_: option<string>,
-}>,
-}>,
-  feedUrl: option<string>,
-  description: option<string>,
-  itunes: option<{
-  image: option<string>,
-  owner: option<{
-  name: option<string>,
-  email: option<string>,
-}>,
-  author: option<string>,
-  summary: option<string>,
-  explicit: option<string>,
-  categories: option<array<string>>,
-  keywords: option<array<string>>,
-}>,
+  enclosure: option<getFetchRssResponse_5>,
 }
 
-let getFetchRssResponseSchema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+type getFetchRssResponse_2 = {
+  self: option<string>,
+  first: option<string>,
+  next: option<string>,
+  last: option<string>,
+  prev: option<string>,
+}
+
+type getFetchRssResponse_1 = {
+  link: option<string>,
+  url: string,
+  title: option<string>,
+}
+
+type getFetchRssResponse = {
+  image: option<getFetchRssResponse_1>,
+  paginationLinks: option<getFetchRssResponse_2>,
+  link: option<string>,
+  title: option<string>,
+  items: array<getFetchRssResponse_3>,
+  feedUrl: option<string>,
+  description: option<string>,
+  itunes: option<getFetchRssResponse_4>,
+}
+
+let getFetchRssResponse_6Schema = S.object(s => {
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+  })
+
+let getFetchRssResponse_5Schema = S.object(s => {
     url: s.field("url", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-  })), None),
-    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(S.object(s => {
-    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
-    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
-    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
-    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
-    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
-  })), None),
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    items: s.field("items", S.array(S.object(s => {
+    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+  })
+
+let getFetchRssResponse_4Schema = S.object(s => {
+    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
+    owner: s.fieldOr("owner", S.nullableAsOption(getFetchRssResponse_6Schema), None),
+    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
+    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
+    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
+  })
+
+let getFetchRssResponse_3Schema = S.object(s => {
     link: s.fieldOr("link", S.nullableAsOption(S.string), None),
     guid: s.fieldOr("guid", S.nullableAsOption(S.string), None),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
@@ -667,26 +703,32 @@ let getFetchRssResponseSchema = S.object(s => {
     isoDate: s.fieldOr("isoDate", S.nullableAsOption(S.string), None),
     categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
     contentSnippet: s.fieldOr("contentSnippet", S.nullableAsOption(S.string), None),
-    enclosure: s.fieldOr("enclosure", S.nullableAsOption(S.object(s => {
+    enclosure: s.fieldOr("enclosure", S.nullableAsOption(getFetchRssResponse_5Schema), None),
+  })
+
+let getFetchRssResponse_2Schema = S.object(s => {
+    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
+    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
+    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
+    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
+    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
+  })
+
+let getFetchRssResponse_1Schema = S.object(s => {
+    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
     url: s.field("url", S.string),
-    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-  })), None),
-  }))),
+    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+  })
+
+let getFetchRssResponseSchema = S.object(s => {
+    image: s.fieldOr("image", S.nullableAsOption(getFetchRssResponse_1Schema), None),
+    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(getFetchRssResponse_2Schema), None),
+    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    items: s.field("items", S.array(getFetchRssResponse_3Schema)),
     feedUrl: s.fieldOr("feedUrl", S.nullableAsOption(S.string), None),
     description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    itunes: s.fieldOr("itunes", S.nullableAsOption(S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
-    owner: s.fieldOr("owner", S.nullableAsOption(S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-  })), None),
-    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
-  })), None),
+    itunes: s.fieldOr("itunes", S.nullableAsOption(getFetchRssResponse_4Schema), None),
   })
 
 /**
@@ -717,22 +759,28 @@ let postFetchRssRequestSchema = S.object(s => {
     url: s.field("url", S.string),
   })
 
-type postFetchRssResponse = {
-  image: option<{
-  link: option<string>,
+type postFetchRssResponse_6 = {
+  name: option<string>,
+  email: option<string>,
+}
+
+type postFetchRssResponse_5 = {
   url: string,
-  title: option<string>,
-}>,
-  paginationLinks: option<{
-  self: option<string>,
-  first: option<string>,
-  next: option<string>,
-  last: option<string>,
-  prev: option<string>,
-}>,
-  link: option<string>,
-  title: option<string>,
-  items: array<{
+  length: option<float>,
+  @as("type") type_: option<string>,
+}
+
+type postFetchRssResponse_4 = {
+  image: option<string>,
+  owner: option<postFetchRssResponse_6>,
+  author: option<string>,
+  summary: option<string>,
+  explicit: option<string>,
+  categories: option<array<string>>,
+  keywords: option<array<string>>,
+}
+
+type postFetchRssResponse_3 = {
   link: option<string>,
   guid: option<string>,
   title: option<string>,
@@ -743,44 +791,56 @@ type postFetchRssResponse = {
   isoDate: option<string>,
   categories: option<array<string>>,
   contentSnippet: option<string>,
-  enclosure: option<{
-  url: string,
-  length: option<float>,
-  @as("type") type_: option<string>,
-}>,
-}>,
-  feedUrl: option<string>,
-  description: option<string>,
-  itunes: option<{
-  image: option<string>,
-  owner: option<{
-  name: option<string>,
-  email: option<string>,
-}>,
-  author: option<string>,
-  summary: option<string>,
-  explicit: option<string>,
-  categories: option<array<string>>,
-  keywords: option<array<string>>,
-}>,
+  enclosure: option<postFetchRssResponse_5>,
 }
 
-let postFetchRssResponseSchema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+type postFetchRssResponse_2 = {
+  self: option<string>,
+  first: option<string>,
+  next: option<string>,
+  last: option<string>,
+  prev: option<string>,
+}
+
+type postFetchRssResponse_1 = {
+  link: option<string>,
+  url: string,
+  title: option<string>,
+}
+
+type postFetchRssResponse = {
+  image: option<postFetchRssResponse_1>,
+  paginationLinks: option<postFetchRssResponse_2>,
+  link: option<string>,
+  title: option<string>,
+  items: array<postFetchRssResponse_3>,
+  feedUrl: option<string>,
+  description: option<string>,
+  itunes: option<postFetchRssResponse_4>,
+}
+
+let postFetchRssResponse_6Schema = S.object(s => {
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+  })
+
+let postFetchRssResponse_5Schema = S.object(s => {
     url: s.field("url", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-  })), None),
-    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(S.object(s => {
-    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
-    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
-    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
-    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
-    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
-  })), None),
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    items: s.field("items", S.array(S.object(s => {
+    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+  })
+
+let postFetchRssResponse_4Schema = S.object(s => {
+    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
+    owner: s.fieldOr("owner", S.nullableAsOption(postFetchRssResponse_6Schema), None),
+    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
+    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
+    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
+  })
+
+let postFetchRssResponse_3Schema = S.object(s => {
     link: s.fieldOr("link", S.nullableAsOption(S.string), None),
     guid: s.fieldOr("guid", S.nullableAsOption(S.string), None),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
@@ -791,26 +851,32 @@ let postFetchRssResponseSchema = S.object(s => {
     isoDate: s.fieldOr("isoDate", S.nullableAsOption(S.string), None),
     categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
     contentSnippet: s.fieldOr("contentSnippet", S.nullableAsOption(S.string), None),
-    enclosure: s.fieldOr("enclosure", S.nullableAsOption(S.object(s => {
+    enclosure: s.fieldOr("enclosure", S.nullableAsOption(postFetchRssResponse_5Schema), None),
+  })
+
+let postFetchRssResponse_2Schema = S.object(s => {
+    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
+    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
+    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
+    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
+    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
+  })
+
+let postFetchRssResponse_1Schema = S.object(s => {
+    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
     url: s.field("url", S.string),
-    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-  })), None),
-  }))),
+    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+  })
+
+let postFetchRssResponseSchema = S.object(s => {
+    image: s.fieldOr("image", S.nullableAsOption(postFetchRssResponse_1Schema), None),
+    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(postFetchRssResponse_2Schema), None),
+    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    items: s.field("items", S.array(postFetchRssResponse_3Schema)),
     feedUrl: s.fieldOr("feedUrl", S.nullableAsOption(S.string), None),
     description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    itunes: s.fieldOr("itunes", S.nullableAsOption(S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
-    owner: s.fieldOr("owner", S.nullableAsOption(S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-  })), None),
-    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
-  })), None),
+    itunes: s.fieldOr("itunes", S.nullableAsOption(postFetchRssResponse_4Schema), None),
   })
 
 /**
@@ -848,7 +914,7 @@ let getGetOnlineUsersCountResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let getGetOnlineUsersCount = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getGetOnlineUsersCountResponse> => {
+let getGetOnlineUsersCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getGetOnlineUsersCountResponse> => {
 
   fetch(
     ~url="/get-online-users-count",
@@ -876,7 +942,7 @@ let postGetOnlineUsersCountResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postGetOnlineUsersCount = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetOnlineUsersCountResponse> => {
+let postGetOnlineUsersCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetOnlineUsersCountResponse> => {
 
   fetch(
     ~url="/get-online-users-count",
@@ -900,7 +966,7 @@ let postInviteCreateResponseSchema = MisskeyIoComponentSchemas.InviteCode.schema
  *
  * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
  */
-let postInviteCreate = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteCreateResponse> => {
+let postInviteCreate = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteCreateResponse> => {
 
   fetch(
     ~url="/invite/create",
@@ -944,11 +1010,11 @@ let postInviteDelete = (~body: postInviteDeleteRequest, ~fetch: (~url: string, ~
 }
 
 type postInviteLimitResponse = {
-  remaining: JSON.t,
+  remaining: option<int>,
 }
 
 let postInviteLimitResponseSchema = S.object(s => {
-    remaining: s.field("remaining", S.json),
+    remaining: s.field("remaining", S.nullableAsOption(S.int)),
   })
 
 /**
@@ -958,7 +1024,7 @@ let postInviteLimitResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
  */
-let postInviteLimit = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteLimitResponse> => {
+let postInviteLimit = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteLimitResponse> => {
 
   fetch(
     ~url="/invite/limit",
@@ -1015,9 +1081,9 @@ let getMetaRequestSchema = S.object(s => {
     detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
   })
 
-type getMetaResponse = JSON.t
+type getMetaResponse = dict<JSON.t>
 
-let getMetaResponseSchema = S.json
+let getMetaResponseSchema = S.dict(S.json)
 
 /**
  * meta
@@ -1047,9 +1113,9 @@ let postMetaRequestSchema = S.object(s => {
     detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
   })
 
-type postMetaResponse = JSON.t
+type postMetaResponse = dict<JSON.t>
 
-let postMetaResponseSchema = S.json
+let postMetaResponseSchema = S.dict(S.json)
 
 /**
  * meta
@@ -1086,7 +1152,7 @@ let postPingResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postPing = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPingResponse> => {
+let postPing = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPingResponse> => {
 
   fetch(
     ~url="/ping",
@@ -1126,7 +1192,7 @@ let getStatsResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let getStats = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getStatsResponse> => {
+let getStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getStatsResponse> => {
 
   fetch(
     ~url="/stats",
@@ -1166,7 +1232,7 @@ let postStatsResponseSchema = S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postStats = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postStatsResponse> => {
+let postStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postStatsResponse> => {
 
   fetch(
     ~url="/stats",

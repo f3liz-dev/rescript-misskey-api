@@ -14,12 +14,12 @@ let postEmailAddressAvailableRequestSchema = S.object(s => {
 
 type postEmailAddressAvailableResponse = {
   available: bool,
-  reason: JSON.t,
+  reason: option<string>,
 }
 
 let postEmailAddressAvailableResponseSchema = S.object(s => {
     available: s.field("available", S.bool),
-    reason: s.field("reason", S.json),
+    reason: s.field("reason", S.nullableAsOption(S.string)),
   })
 
 /**
@@ -42,21 +42,25 @@ let postEmailAddressAvailable = (~body: postEmailAddressAvailableRequest, ~fetch
   })
 }
 
-type postGetAvatarDecorationsResponse = array<{
+type postGetAvatarDecorationsResponse_1 = {
   id: string,
   name: string,
   description: string,
   url: string,
   roleIdsThatCanBeUsedThisDecoration: array<string>,
-}>
+}
 
-let postGetAvatarDecorationsResponseSchema = S.array(S.object(s => {
+type postGetAvatarDecorationsResponse = array<postGetAvatarDecorationsResponse_1>
+
+let postGetAvatarDecorationsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     name: s.field("name", S.string),
     description: s.field("description", S.string),
     url: s.field("url", S.string),
     roleIdsThatCanBeUsedThisDecoration: s.field("roleIdsThatCanBeUsedThisDecoration", S.array(S.string)),
-  }))
+  })
+
+let postGetAvatarDecorationsResponseSchema = S.array(postGetAvatarDecorationsResponse_1Schema)
 
 /**
  * get-avatar-decorations
@@ -65,7 +69,7 @@ let postGetAvatarDecorationsResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postGetAvatarDecorations = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetAvatarDecorationsResponse> => {
+let postGetAvatarDecorations = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetAvatarDecorationsResponse> => {
 
   fetch(
     ~url="/get-avatar-decorations",
@@ -86,9 +90,9 @@ let postIMoveRequestSchema = S.object(s => {
     moveToAccount: s.field("moveToAccount", S.string),
   })
 
-type postIMoveResponse = JSON.t
+type postIMoveResponse = dict<JSON.t>
 
-let postIMoveResponseSchema = S.json
+let postIMoveResponseSchema = S.dict(S.json)
 
 /**
  * i/move
@@ -122,7 +126,7 @@ let postPinnedUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetail
  *
  * **Credential required**: *No*
  */
-let postPinnedUsers = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPinnedUsersResponse> => {
+let postPinnedUsers = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPinnedUsersResponse> => {
 
   fetch(
     ~url="/pinned-users",
@@ -135,17 +139,21 @@ let postPinnedUsers = (~body as _, ~fetch: (~url: string, ~method_: string, ~bod
   })
 }
 
-type getRetentionResponse = array<{
+type getRetentionResponse_1 = {
   createdAt: string,
   users: float,
-  data: JSON.t,
-}>
+  data: dict<JSON.t>,
+}
 
-let getRetentionResponseSchema = S.array(S.object(s => {
+type getRetentionResponse = array<getRetentionResponse_1>
+
+let getRetentionResponse_1Schema = S.object(s => {
     createdAt: s.field("createdAt", S.string),
     users: s.field("users", S.float),
-    data: s.field("data", S.json),
-  }))
+    data: s.field("data", S.dict(S.json)),
+  })
+
+let getRetentionResponseSchema = S.array(getRetentionResponse_1Schema)
 
 /**
  * retention
@@ -154,7 +162,7 @@ let getRetentionResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *No*
  */
-let getRetention = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getRetentionResponse> => {
+let getRetention = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getRetentionResponse> => {
 
   fetch(
     ~url="/retention",
@@ -167,17 +175,21 @@ let getRetention = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: 
   })
 }
 
-type postRetentionResponse = array<{
+type postRetentionResponse_1 = {
   createdAt: string,
   users: float,
-  data: JSON.t,
-}>
+  data: dict<JSON.t>,
+}
 
-let postRetentionResponseSchema = S.array(S.object(s => {
+type postRetentionResponse = array<postRetentionResponse_1>
+
+let postRetentionResponse_1Schema = S.object(s => {
     createdAt: s.field("createdAt", S.string),
     users: s.field("users", S.float),
-    data: s.field("data", S.json),
-  }))
+    data: s.field("data", S.dict(S.json)),
+  })
+
+let postRetentionResponseSchema = S.array(postRetentionResponse_1Schema)
 
 /**
  * retention
@@ -186,7 +198,7 @@ let postRetentionResponseSchema = S.array(S.object(s => {
  *
  * **Credential required**: *No*
  */
-let postRetention = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRetentionResponse> => {
+let postRetention = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRetentionResponse> => {
 
   fetch(
     ~url="/retention",
@@ -241,7 +253,7 @@ type postUsersRequest = {
   sort: option<string>,
   state: option<string>,
   origin: option<string>,
-  hostname: option<JSON.t>,
+  hostname: option<string>,
 }
 
 let postUsersRequestSchema = S.object(s => {
@@ -250,7 +262,7 @@ let postUsersRequestSchema = S.object(s => {
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
     state: s.fieldOr("state", S.nullableAsOption(S.string), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.json), None),
+    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
   })
 
 type postUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
@@ -359,7 +371,7 @@ type postUsersFollowersRequest = {
   limit: option<int>,
   userId: option<string>,
   username: option<string>,
-  host: option<JSON.t>,
+  host: option<string>,
 }
 
 let postUsersFollowersRequestSchema = S.object(s => {
@@ -368,7 +380,7 @@ let postUsersFollowersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
   })
 
 type postUsersFollowersResponse = array<MisskeyIoComponentSchemas.Following.t>
@@ -401,8 +413,8 @@ type postUsersFollowingRequest = {
   limit: option<int>,
   userId: option<string>,
   username: option<string>,
-  host: option<JSON.t>,
-  birthday: option<JSON.t>,
+  host: option<string>,
+  birthday: option<string>,
 }
 
 let postUsersFollowingRequestSchema = S.object(s => {
@@ -411,8 +423,8 @@ let postUsersFollowingRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
   })
 
 type postUsersFollowingResponse = array<MisskeyIoComponentSchemas.Following.t>
@@ -477,49 +489,55 @@ let postUsersGalleryPosts = (~body: postUsersGalleryPostsRequest, ~fetch: (~url:
   })
 }
 
+type postUsersGetFollowingBirthdayUsersRequest_2 = {
+  month: int,
+  day: int,
+}
+
+type postUsersGetFollowingBirthdayUsersRequest_1 = {
+  month: option<int>,
+  day: option<int>,
+  begin: option<postUsersGetFollowingBirthdayUsersRequest_2>,
+  @as("end") end_: option<postUsersGetFollowingBirthdayUsersRequest_2>,
+}
+
 type postUsersGetFollowingBirthdayUsersRequest = {
   limit: option<int>,
   offset: option<int>,
-  birthday: {
-  month: option<int>,
-  day: option<int>,
-  begin: option<{
-  month: int,
-  day: int,
-}>,
-  @as("end") end_: option<{
-  month: int,
-  day: int,
-}>,
-},
+  birthday: postUsersGetFollowingBirthdayUsersRequest_1,
 }
+
+let postUsersGetFollowingBirthdayUsersRequest_2Schema = S.object(s => {
+    month: s.field("month", S.int->S.min(1)->S.max(12)),
+    day: s.field("day", S.int->S.min(1)->S.max(31)),
+  })
+
+let postUsersGetFollowingBirthdayUsersRequest_1Schema = S.object(s => {
+    month: s.fieldOr("month", S.nullableAsOption(S.int->S.min(1)->S.max(12)), None),
+    day: s.fieldOr("day", S.nullableAsOption(S.int->S.min(1)->S.max(31)), None),
+    begin: s.fieldOr("begin", S.nullableAsOption(postUsersGetFollowingBirthdayUsersRequest_2Schema), None),
+    end_: s.fieldOr("end", S.nullableAsOption(postUsersGetFollowingBirthdayUsersRequest_2Schema), None),
+  })
 
 let postUsersGetFollowingBirthdayUsersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    birthday: s.field("birthday", S.object(s => {
-    month: s.fieldOr("month", S.nullableAsOption(S.int->S.min(1)->S.max(12)), None),
-    day: s.fieldOr("day", S.nullableAsOption(S.int->S.min(1)->S.max(31)), None),
-    begin: s.fieldOr("begin", S.nullableAsOption(S.object(s => {
-    month: s.field("month", S.int->S.min(1)->S.max(12)),
-    day: s.field("day", S.int->S.min(1)->S.max(31)),
-  })), None),
-    end_: s.fieldOr("end", S.nullableAsOption(S.object(s => {
-    month: s.field("month", S.int->S.min(1)->S.max(12)),
-    day: s.field("day", S.int->S.min(1)->S.max(31)),
-  })), None),
-  })),
+    birthday: s.field("birthday", postUsersGetFollowingBirthdayUsersRequest_1Schema),
   })
 
-type postUsersGetFollowingBirthdayUsersResponse = array<{
+type postUsersGetFollowingBirthdayUsersResponse_1 = {
   birthday: string,
   user: MisskeyIoComponentSchemas.UserLite.t,
-}>
+}
 
-let postUsersGetFollowingBirthdayUsersResponseSchema = S.array(S.object(s => {
+type postUsersGetFollowingBirthdayUsersResponse = array<postUsersGetFollowingBirthdayUsersResponse_1>
+
+let postUsersGetFollowingBirthdayUsersResponse_1Schema = S.object(s => {
     birthday: s.field("birthday", S.string),
     user: s.field("user", MisskeyIoComponentSchemas.UserLite.schema),
-  }))
+  })
+
+let postUsersGetFollowingBirthdayUsersResponseSchema = S.array(postUsersGetFollowingBirthdayUsersResponse_1Schema)
 
 /**
  * users/get-following-birthday-users
@@ -551,15 +569,19 @@ let postUsersGetFrequentlyRepliedUsersRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
   })
 
-type postUsersGetFrequentlyRepliedUsersResponse = array<{
+type postUsersGetFrequentlyRepliedUsersResponse_1 = {
   user: MisskeyIoComponentSchemas.UserDetailed.t,
   weight: float,
-}>
+}
 
-let postUsersGetFrequentlyRepliedUsersResponseSchema = S.array(S.object(s => {
+type postUsersGetFrequentlyRepliedUsersResponse = array<postUsersGetFrequentlyRepliedUsersResponse_1>
+
+let postUsersGetFrequentlyRepliedUsersResponse_1Schema = S.object(s => {
     user: s.field("user", MisskeyIoComponentSchemas.UserDetailed.schema),
     weight: s.field("weight", S.float),
-  }))
+  })
+
+let postUsersGetFrequentlyRepliedUsersResponseSchema = S.array(postUsersGetFrequentlyRepliedUsersResponse_1Schema)
 
 /**
  * users/get-frequently-replied-users
@@ -631,17 +653,24 @@ let getUsersGetSkebStatusRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
   })
 
+type getUsersGetSkebStatusResponse_1 = {
+  amount: int,
+  genre: string,
+}
+
 type getUsersGetSkebStatusResponse = {
   screenName: string,
   isCreator: bool,
   isAcceptable: bool,
   creatorRequestCount: int,
   clientRequestCount: int,
-  skills: array<{
-  amount: int,
-  genre: string,
-}>,
+  skills: array<getUsersGetSkebStatusResponse_1>,
 }
+
+let getUsersGetSkebStatusResponse_1Schema = S.object(s => {
+    amount: s.field("amount", S.int),
+    genre: s.field("genre", S.string),
+  })
 
 let getUsersGetSkebStatusResponseSchema = S.object(s => {
     screenName: s.field("screenName", S.string),
@@ -649,10 +678,7 @@ let getUsersGetSkebStatusResponseSchema = S.object(s => {
     isAcceptable: s.field("isAcceptable", S.bool),
     creatorRequestCount: s.field("creatorRequestCount", S.int),
     clientRequestCount: s.field("clientRequestCount", S.int),
-    skills: s.field("skills", S.array(S.object(s => {
-    amount: s.field("amount", S.int),
-    genre: s.field("genre", S.string),
-  }))),
+    skills: s.field("skills", S.array(getUsersGetSkebStatusResponse_1Schema)),
   })
 
 /**
@@ -683,17 +709,24 @@ let postUsersGetSkebStatusRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
   })
 
+type postUsersGetSkebStatusResponse_1 = {
+  amount: int,
+  genre: string,
+}
+
 type postUsersGetSkebStatusResponse = {
   screenName: string,
   isCreator: bool,
   isAcceptable: bool,
   creatorRequestCount: int,
   clientRequestCount: int,
-  skills: array<{
-  amount: int,
-  genre: string,
-}>,
+  skills: array<postUsersGetSkebStatusResponse_1>,
 }
+
+let postUsersGetSkebStatusResponse_1Schema = S.object(s => {
+    amount: s.field("amount", S.int),
+    genre: s.field("genre", S.string),
+  })
 
 let postUsersGetSkebStatusResponseSchema = S.object(s => {
     screenName: s.field("screenName", S.string),
@@ -701,10 +734,7 @@ let postUsersGetSkebStatusResponseSchema = S.object(s => {
     isAcceptable: s.field("isAcceptable", S.bool),
     creatorRequestCount: s.field("creatorRequestCount", S.int),
     clientRequestCount: s.field("clientRequestCount", S.int),
-    skills: s.field("skills", S.array(S.object(s => {
-    amount: s.field("amount", S.int),
-    genre: s.field("genre", S.string),
-  }))),
+    skills: s.field("skills", S.array(postUsersGetSkebStatusResponse_1Schema)),
   })
 
 /**
@@ -901,8 +931,7 @@ let postUsersRelationRequestSchema = S.object(s => {
     userId: s.field("userId", S.array(S.string)),
   })
 
-type postUsersRelationResponse = [
-  | Object({
+type postUsersRelationResponse_1 = {
   id: string,
   isFollowing: bool,
   hasPendingFollowRequestFromYou: bool,
@@ -912,21 +941,11 @@ type postUsersRelationResponse = [
   isBlocked: bool,
   isMuted: bool,
   isRenoteMuted: bool,
-})
-  | Array(array<{
-  id: string,
-  isFollowing: bool,
-  hasPendingFollowRequestFromYou: bool,
-  hasPendingFollowRequestToYou: bool,
-  isFollowed: bool,
-  isBlocking: bool,
-  isBlocked: bool,
-  isMuted: bool,
-  isRenoteMuted: bool,
-}>)
-]
+}
 
-let postUsersRelationResponseSchema = S.union([S.object(s => {
+type postUsersRelationResponse = array<postUsersRelationResponse_1>
+
+let postUsersRelationResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     isFollowing: s.field("isFollowing", S.bool),
     hasPendingFollowRequestFromYou: s.field("hasPendingFollowRequestFromYou", S.bool),
@@ -936,17 +955,9 @@ let postUsersRelationResponseSchema = S.union([S.object(s => {
     isBlocked: s.field("isBlocked", S.bool),
     isMuted: s.field("isMuted", S.bool),
     isRenoteMuted: s.field("isRenoteMuted", S.bool),
-  }), S.array(S.object(s => {
-    id: s.field("id", S.string),
-    isFollowing: s.field("isFollowing", S.bool),
-    hasPendingFollowRequestFromYou: s.field("hasPendingFollowRequestFromYou", S.bool),
-    hasPendingFollowRequestToYou: s.field("hasPendingFollowRequestToYou", S.bool),
-    isFollowed: s.field("isFollowed", S.bool),
-    isBlocking: s.field("isBlocking", S.bool),
-    isBlocked: s.field("isBlocked", S.bool),
-    isMuted: s.field("isMuted", S.bool),
-    isRenoteMuted: s.field("isRenoteMuted", S.bool),
-  }))])
+  })
+
+let postUsersRelationResponseSchema = S.array(postUsersRelationResponse_1Schema)
 
 /**
  * users/relation
@@ -1045,15 +1056,15 @@ let postUsersSearch = (~body: postUsersSearchRequest, ~fetch: (~url: string, ~me
 type postUsersSearchByUsernameAndHostRequest = {
   limit: option<int>,
   detail: option<bool>,
-  username: option<JSON.t>,
-  host: option<JSON.t>,
+  username: option<string>,
+  host: option<string>,
 }
 
 let postUsersSearchByUsernameAndHostRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.json), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
+    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
   })
 
 type postUsersSearchByUsernameAndHostResponse = array<MisskeyIoComponentSchemas.User.t>
@@ -1084,7 +1095,7 @@ type postUsersShowRequest = {
   userId: option<string>,
   userIds: option<array<string>>,
   username: option<string>,
-  host: option<JSON.t>,
+  host: option<string>,
   detailed: option<bool>,
 }
 
@@ -1092,18 +1103,13 @@ let postUsersShowRequestSchema = S.object(s => {
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
     username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
     detailed: s.fieldOr("detailed", S.nullableAsOption(S.bool), None),
   })
 
-type postUsersShowResponse = [
-  | UserLite(MisskeyIoComponentSchemas.UserLite.t)
-  | UserDetailed(MisskeyIoComponentSchemas.UserDetailed.t)
-  | Array(array<MisskeyIoComponentSchemas.UserLite.t>)
-  | Array(array<MisskeyIoComponentSchemas.UserDetailed.t>)
-]
+type postUsersShowResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
 
-let postUsersShowResponseSchema = S.union([MisskeyIoComponentSchemas.UserLite.schema, MisskeyIoComponentSchemas.UserDetailed.schema, S.array(MisskeyIoComponentSchemas.UserLite.schema), S.array(MisskeyIoComponentSchemas.UserDetailed.schema)])
+let postUsersShowResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
  * users/show

@@ -13,7 +13,7 @@ export interface PostChannelsTimelineRequest {
   sinceDate?: number;
   untilDate?: number;
   allowPartial?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostChannelsTimelineResponse = ComponentSchemas.Note[];
@@ -51,22 +51,27 @@ export type PostNotesConversationResponse = ComponentSchemas.Note[];
 export interface PostNotesCreateRequest {
   visibility?: string;
   visibleUserIds?: string[];
-  cw?: unknown;
+  cw?: string | null;
   localOnly?: boolean;
-  dimension?: unknown;
-  reactionAcceptance?: unknown;
+  dimension?: number | null;
+  reactionAcceptance?: string | null;
   noExtractMentions?: boolean;
   noExtractHashtags?: boolean;
   noExtractEmojis?: boolean;
-  replyId?: unknown;
-  renoteId?: unknown;
-  channelId?: unknown;
-  lang?: unknown;
-  text?: unknown;
+  replyId?: string | null;
+  renoteId?: string | null;
+  channelId?: string | null;
+  lang?: string | null;
+  text?: string | null;
   fileIds?: string[];
   mediaIds?: string[];
-  poll?: unknown;
-  scheduledAt?: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  scheduledAt?: number | null;
   noCreatedNote?: boolean;
 }
 /** OK (with results) */
@@ -92,7 +97,7 @@ export type PostNotesFavoritesDeleteResponse = void;
 export interface GetNotesFeaturedRequest {
   limit?: number;
   untilId?: string;
-  channelId?: unknown;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type GetNotesFeaturedResponse = ComponentSchemas.Note[];
@@ -100,7 +105,7 @@ export type GetNotesFeaturedResponse = ComponentSchemas.Note[];
 export interface PostNotesFeaturedRequest {
   limit?: number;
   untilId?: string;
-  channelId?: unknown;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type PostNotesFeaturedResponse = ComponentSchemas.Note[];
@@ -113,7 +118,7 @@ export interface PostNotesGlobalTimelineRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesGlobalTimelineResponse = ComponentSchemas.Note[];
@@ -131,7 +136,7 @@ export interface PostNotesHybridTimelineRequest {
   withFiles?: boolean;
   withRenotes?: boolean;
   withReplies?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesHybridTimelineResponse = ComponentSchemas.Note[];
@@ -146,7 +151,7 @@ export interface PostNotesLocalTimelineRequest {
   allowPartial?: boolean;
   sinceDate?: number;
   untilDate?: number;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesLocalTimelineResponse = ComponentSchemas.Note[];
@@ -177,7 +182,7 @@ export type PostNotesPollsVoteResponse = void;
 
 export interface GetNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -187,7 +192,7 @@ export type GetNotesReactionsResponse = ComponentSchemas.NoteReaction[];
 
 export interface PostNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -232,18 +237,18 @@ export interface PostNotesSearchRequest {
   limit?: number;
   offset?: number;
   host?: string;
-  userId?: unknown;
-  channelId?: unknown;
+  userId?: string | null;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type PostNotesSearchResponse = ComponentSchemas.Note[];
 
 export interface PostNotesSearchByTagRequest {
-  local?: unknown;
-  reply?: unknown;
-  renote?: unknown;
+  local?: boolean | null;
+  reply?: boolean | null;
+  renote?: boolean | null;
   withFiles?: boolean;
-  poll?: unknown;
+  poll?: boolean | null;
   sinceId?: string;
   untilId?: string;
   limit?: number;
@@ -290,7 +295,7 @@ export interface PostNotesTimelineRequest {
   includeLocalRenotes?: boolean;
   withFiles?: boolean;
   withRenotes?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesTimelineResponse = ComponentSchemas.Note[];
@@ -404,23 +409,39 @@ export type PostNotesChildrenResponse = ComponentSchemas.Note[];
 export interface PostNotesCreateRequest {
   visibility?: string;
   visibleUserIds?: string[];
-  cw?: unknown;
+  cw?: string | null;
   localOnly?: boolean;
-  reactionAcceptance?: unknown;
+  reactionAcceptance?: string | null;
   disableRightClick?: boolean;
   noExtractMentions?: boolean;
   noExtractHashtags?: boolean;
   noExtractEmojis?: boolean;
-  replyId?: unknown;
-  renoteId?: unknown;
-  channelId?: unknown;
-  text?: unknown;
+  replyId?: string | null;
+  renoteId?: string | null;
+  channelId?: string | null;
+  text?: string | null;
   fileIds?: string[];
   mediaIds?: string[];
-  poll?: unknown;
-  event?: unknown;
-  scheduledDelete?: unknown;
-  deliveryTargets?: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  event?: {
+  title?: string;
+  start?: number;
+  end?: number | null;
+  metadata?: Record<string, never>;
+} | null;
+  scheduledDelete?: {
+  deleteAt?: number | null;
+  deleteAfter?: number | null;
+} | null;
+  deliveryTargets?: {
+  mode: string;
+  hosts: string[];
+} | null;
 }
 /** OK (with results) */
 export interface PostNotesCreateResponse {
@@ -433,22 +454,38 @@ export type PostNotesDraftsCountResponse = number;
 export interface PostNotesDraftsCreateRequest {
   visibility?: string;
   visibleUserIds?: string[];
-  cw?: unknown;
-  hashtag?: unknown;
+  cw?: string | null;
+  hashtag?: string | null;
   localOnly?: boolean;
-  reactionAcceptance?: unknown;
+  reactionAcceptance?: string | null;
   disableRightClick?: boolean;
-  replyId?: unknown;
-  renoteId?: unknown;
-  channelId?: unknown;
-  text?: unknown;
+  replyId?: string | null;
+  renoteId?: string | null;
+  channelId?: string | null;
+  text?: string | null;
   fileIds?: string[];
-  poll?: unknown;
-  event?: unknown;
-  scheduledAt?: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  event?: {
+  title?: string;
+  start?: number;
+  end?: number | null;
+  metadata?: Record<string, never>;
+} | null;
+  scheduledAt?: number | null;
   isActuallyScheduled?: boolean;
-  scheduledDelete?: unknown;
-  deliveryTargets?: unknown;
+  scheduledDelete?: {
+  deleteAt?: number | null;
+  deleteAfter?: number | null;
+} | null;
+  deliveryTargets?: {
+  mode: string;
+  hosts: string[];
+} | null;
 }
 /** OK (with results) */
 export interface PostNotesDraftsCreateResponse {
@@ -466,7 +503,7 @@ export interface PostNotesDraftsListRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  scheduled?: unknown;
+  scheduled?: boolean | null;
 }
 /** OK (with results) */
 export type PostNotesDraftsListResponse = ComponentSchemas.NoteDraft[];
@@ -475,22 +512,38 @@ export interface PostNotesDraftsUpdateRequest {
   draftId: string;
   visibility?: string;
   visibleUserIds?: string[];
-  cw?: unknown;
+  cw?: string | null;
   disableRightClick?: boolean;
-  hashtag?: unknown;
+  hashtag?: string | null;
   localOnly?: boolean;
-  reactionAcceptance?: unknown;
-  replyId?: unknown;
-  renoteId?: unknown;
-  channelId?: unknown;
-  text?: unknown;
+  reactionAcceptance?: string | null;
+  replyId?: string | null;
+  renoteId?: string | null;
+  channelId?: string | null;
+  text?: string | null;
   fileIds?: string[];
-  poll?: unknown;
-  scheduledAt?: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  scheduledAt?: number | null;
   isActuallyScheduled?: boolean;
-  event?: unknown;
-  scheduledDelete?: unknown;
-  deliveryTargets?: unknown;
+  event?: {
+  title?: string;
+  start?: number;
+  end?: number | null;
+  metadata?: Record<string, never>;
+} | null;
+  scheduledDelete?: {
+  deleteAt?: number | null;
+  deleteAfter?: number | null;
+} | null;
+  deliveryTargets?: {
+  mode: string;
+  hosts: string[];
+} | null;
 }
 /** OK (with results) */
 export interface PostNotesDraftsUpdateResponse {
@@ -498,17 +551,17 @@ export interface PostNotesDraftsUpdateResponse {
 }
 
 export interface PostNotesEventsSearchRequest {
-  query?: unknown;
+  query?: string | null;
   sinceId?: string;
   untilId?: string;
   limit?: number;
   origin?: string;
   offset?: number;
-  users?: unknown;
-  sinceDate?: unknown;
-  untilDate?: unknown;
-  filters?: unknown;
-  sortBy?: unknown;
+  users?: unknown | null;
+  sinceDate?: number | null;
+  untilDate?: number | null;
+  filters?: unknown | null;
+  sortBy?: string | null;
 }
 /** OK (with results) */
 export type PostNotesEventsSearchResponse = ComponentSchemas.Note[];
@@ -587,12 +640,12 @@ export interface PostNotesPollsTranslateRequest {
 /** OK (with results) */
 export interface PostNotesPollsTranslateResponse {
   sourceLang: string;
-  text?: unknown[];
+  text?: string | null[];
 }
 
 export interface GetNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -604,7 +657,7 @@ export type GetNotesReactionsResponse = ComponentSchemas.NoteReaction[];
 
 export interface PostNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -645,8 +698,8 @@ export interface PostNotesSearchRequest {
   limit?: number;
   offset?: number;
   host?: string;
-  userId?: unknown;
-  channelId?: unknown;
+  userId?: string | null;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type PostNotesSearchResponse = ComponentSchemas.Note[];
@@ -656,10 +709,10 @@ export type PostNotesSearchByTagRequest = {
 } | {
   query: string[][];
 } & {
-  reply?: unknown;
-  renote?: unknown;
+  reply?: boolean | null;
+  renote?: boolean | null;
   withFiles?: boolean;
-  poll?: unknown;
+  poll?: boolean | null;
   sinceId?: string;
   untilId?: string;
   sinceDate?: number;
@@ -717,11 +770,24 @@ export interface PostNotesUpdateRequest {
   text: string;
   fileIds?: string[];
   mediaIds?: string[];
-  poll?: unknown;
-  event?: unknown;
-  cw: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  event?: {
+  title?: string;
+  start?: number;
+  end?: number | null;
+  metadata?: Record<string, never>;
+} | null;
+  cw: string | null;
   disableRightClick?: boolean;
-  scheduledDelete?: unknown;
+  scheduledDelete?: {
+  deleteAt?: number | null;
+  deleteAfter?: number | null;
+} | null;
 }
 export type PostNotesUpdateResponse = void;
 

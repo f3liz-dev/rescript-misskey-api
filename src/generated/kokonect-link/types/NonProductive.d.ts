@@ -11,7 +11,7 @@ export interface PostTestRequest {
   required: boolean;
   string?: string;
   default?: string;
-  nullableDefault?: unknown;
+  nullableDefault?: string | null;
   id?: string;
 }
 /** OK (with results) */
@@ -20,7 +20,7 @@ export interface PostTestResponse {
   required: boolean;
   string?: string;
   default?: string;
-  nullableDefault?: unknown;
+  nullableDefault?: string | null;
 }
 
 export interface NonProductiveModule {

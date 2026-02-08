@@ -15,7 +15,7 @@ export interface PostRolesNotesRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostRolesNotesResponse = ComponentSchemas.Note[];

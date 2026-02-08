@@ -7,11 +7,11 @@
 type postPagesCreateRequest = {
   title: string,
   name: string,
-  summary: option<JSON.t>,
-  content: array<JSON.t>,
-  variables: array<JSON.t>,
+  summary: option<string>,
+  content: array<dict<JSON.t>>,
+  variables: array<dict<JSON.t>>,
   script: string,
-  eyeCatchingImageId: option<JSON.t>,
+  eyeCatchingImageId: option<string>,
   font: option<string>,
   alignCenter: option<bool>,
   hideTitleWhenPinned: option<bool>,
@@ -20,11 +20,11 @@ type postPagesCreateRequest = {
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
     name: s.field("name", S.string->S.min(1)->S.pattern(%re("/^[^\\s:\\/?#\\[\\]@!$&'()*+,;=\\\\%\\x00-\\x20]{1,256}$/"))),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.json), None),
-    content: s.field("content", S.array(S.json)),
-    variables: s.field("variables", S.array(S.json)),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    content: s.field("content", S.array(S.dict(S.json))),
+    variables: s.field("variables", S.array(S.dict(S.json))),
     script: s.field("script", S.string),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.json), None),
+    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
     font: s.fieldOr("font", S.nullableAsOption(S.string), None),
     alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
     hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
@@ -54,22 +54,19 @@ let postPagesCreate = (~body: postPagesCreateRequest, ~fetch: (~url: string, ~me
   })
 }
 
-type postPagesShowRequest = [
-  | Object({
-  pageId: string,
-})
-  | Object({
+type postPagesShowRequest_1 = {
   name: string,
   username: string,
-})
-]
+}
 
-let postPagesShowRequestSchema = S.union([S.object(s => {
-    pageId: s.field("pageId", S.string),
-  }), S.object(s => {
+type postPagesShowRequest = postPagesShowRequest_1
+
+let postPagesShowRequest_1Schema = S.object(s => {
     name: s.field("name", S.string),
     username: s.field("username", S.string),
-  })])
+  })
+
+let postPagesShowRequestSchema = postPagesShowRequest_1Schema
 
 type postPagesShowResponse = KokonectLinkComponentSchemas.Page.t
 
@@ -99,11 +96,11 @@ type postPagesUpdateRequest = {
   pageId: string,
   title: option<string>,
   name: option<string>,
-  summary: option<JSON.t>,
-  content: option<array<JSON.t>>,
-  variables: option<array<JSON.t>>,
+  summary: option<string>,
+  content: option<array<dict<JSON.t>>>,
+  variables: option<array<dict<JSON.t>>>,
   script: option<string>,
-  eyeCatchingImageId: option<JSON.t>,
+  eyeCatchingImageId: option<string>,
   font: option<string>,
   alignCenter: option<bool>,
   hideTitleWhenPinned: option<bool>,
@@ -113,11 +110,11 @@ let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(%re("/^[^\\s:\\/?#\\[\\]@!$&'()*+,;=\\\\%\\x00-\\x20]{1,256}$/"))), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.json), None),
-    content: s.fieldOr("content", S.nullableAsOption(S.array(S.json)), None),
-    variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.json)), None),
+    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    content: s.fieldOr("content", S.nullableAsOption(S.array(S.dict(S.json))), None),
+    variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.dict(S.json))), None),
     script: s.fieldOr("script", S.nullableAsOption(S.string), None),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.json), None),
+    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
     font: s.fieldOr("font", S.nullableAsOption(S.string), None),
     alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
     hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),

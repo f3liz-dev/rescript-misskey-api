@@ -7,8 +7,8 @@ import * as ComponentSchemas from './ComponentSchemas';
 
 export interface PostNotificationsCreateRequest {
   body: string;
-  header?: unknown;
-  icon?: unknown;
+  header?: string | null;
+  icon?: string | null;
 }
 export type PostNotificationsCreateResponse = void;
 

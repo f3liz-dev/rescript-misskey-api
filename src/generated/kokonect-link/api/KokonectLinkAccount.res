@@ -115,7 +115,7 @@ type postClipsNotesRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  search: option<JSON.t>,
+  search: option<string>,
 }
 
 let postClipsNotesRequestSchema = S.object(s => {
@@ -125,7 +125,7 @@ let postClipsNotesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    search: s.fieldOr("search", S.nullableAsOption(S.json), None),
+    search: s.fieldOr("search", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
   })
 
 type postClipsNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -198,7 +198,7 @@ type postFlashMyLikesRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  search: option<JSON.t>,
+  search: option<string>,
 }
 
 let postFlashMyLikesRequestSchema = S.object(s => {
@@ -207,18 +207,22 @@ let postFlashMyLikesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    search: s.fieldOr("search", S.nullableAsOption(S.json), None),
+    search: s.fieldOr("search", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
   })
 
-type postFlashMyLikesResponse = array<{
+type postFlashMyLikesResponse_1 = {
   id: string,
   flash: KokonectLinkComponentSchemas.Flash.t,
-}>
+}
 
-let postFlashMyLikesResponseSchema = S.array(S.object(s => {
+type postFlashMyLikesResponse = array<postFlashMyLikesResponse_1>
+
+let postFlashMyLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     flash: s.field("flash", KokonectLinkComponentSchemas.Flash.schema),
-  }))
+  })
+
+let postFlashMyLikesResponseSchema = S.array(postFlashMyLikesResponse_1Schema)
 
 /**
  * flash/my-likes
@@ -251,7 +255,7 @@ let postIResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postI = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
+let postI = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
 
   fetch(
     ~url="/i",
@@ -265,12 +269,12 @@ let postI = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<
 }
 
 type postIAutoDeleteSettingsResponse = {
-  autoDeleteNotesAfterDays: JSON.t,
+  autoDeleteNotesAfterDays: option<float>,
   autoDeleteKeepFavorites: bool,
 }
 
 let postIAutoDeleteSettingsResponseSchema = S.object(s => {
-    autoDeleteNotesAfterDays: s.field("autoDeleteNotesAfterDays", S.json),
+    autoDeleteNotesAfterDays: s.field("autoDeleteNotesAfterDays", S.nullableAsOption(S.float)),
     autoDeleteKeepFavorites: s.field("autoDeleteKeepFavorites", S.bool),
   })
 
@@ -281,7 +285,7 @@ let postIAutoDeleteSettingsResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postIAutoDeleteSettings = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAutoDeleteSettingsResponse> => {
+let postIAutoDeleteSettings = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAutoDeleteSettingsResponse> => {
 
   fetch(
     ~url="/i/auto-delete-settings",
@@ -334,20 +338,24 @@ let postIFavorites = (~body: postIFavoritesRequest, ~fetch: (~url: string, ~meth
   })
 }
 
-type postIFollowersServersResponse = {
-  servers: array<{
+type postIFollowersServersResponse_1 = {
   host: string,
-  name: JSON.t,
+  name: option<string>,
   followersCount: float,
-}>,
 }
 
-let postIFollowersServersResponseSchema = S.object(s => {
-    servers: s.field("servers", S.array(S.object(s => {
+type postIFollowersServersResponse = {
+  servers: array<postIFollowersServersResponse_1>,
+}
+
+let postIFollowersServersResponse_1Schema = S.object(s => {
     host: s.field("host", S.string),
-    name: s.field("name", S.json),
+    name: s.field("name", S.nullableAsOption(S.string)),
     followersCount: s.field("followersCount", S.float),
-  }))),
+  })
+
+let postIFollowersServersResponseSchema = S.object(s => {
+    servers: s.field("servers", S.array(postIFollowersServersResponse_1Schema)),
   })
 
 /**
@@ -357,7 +365,7 @@ let postIFollowersServersResponseSchema = S.object(s => {
  *
  * **Credential required**: *Yes* / **Permission**: *read:following*
  */
-let postIFollowersServers = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFollowersServersResponse> => {
+let postIFollowersServers = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFollowersServersResponse> => {
 
   fetch(
     ~url="/i/followers-servers",
@@ -386,15 +394,19 @@ let postIGalleryLikesRequestSchema = S.object(s => {
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
   })
 
-type postIGalleryLikesResponse = array<{
+type postIGalleryLikesResponse_1 = {
   id: string,
   post: KokonectLinkComponentSchemas.GalleryPost.t,
-}>
+}
 
-let postIGalleryLikesResponseSchema = S.array(S.object(s => {
+type postIGalleryLikesResponse = array<postIGalleryLikesResponse_1>
+
+let postIGalleryLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     post: s.field("post", KokonectLinkComponentSchemas.GalleryPost.schema),
-  }))
+  })
+
+let postIGalleryLikesResponseSchema = S.array(postIGalleryLikesResponse_1Schema)
 
 /**
  * i/gallery/likes
@@ -564,15 +576,19 @@ let postIPageLikesRequestSchema = S.object(s => {
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
   })
 
-type postIPageLikesResponse = array<{
+type postIPageLikesResponse_1 = {
   id: string,
   page: KokonectLinkComponentSchemas.Page.t,
-}>
+}
 
-let postIPageLikesResponseSchema = S.array(S.object(s => {
+type postIPageLikesResponse = array<postIPageLikesResponse_1>
+
+let postIPageLikesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     page: s.field("page", KokonectLinkComponentSchemas.Page.schema),
-  }))
+  })
+
+let postIPageLikesResponseSchema = S.array(postIPageLikesResponse_1Schema)
 
 /**
  * i/page-likes
@@ -698,28 +714,53 @@ let postIUnpin = (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: str
   })
 }
 
-type postIUpdateRequest = {
-  name: option<JSON.t>,
-  description: option<JSON.t>,
-  followedMessage: option<JSON.t>,
-  location: option<JSON.t>,
-  birthday: option<JSON.t>,
-  lang: option<JSON.t>,
-  avatarId: option<JSON.t>,
-  avatarDecorations: option<array<{
-  id: string,
-  angle: option<JSON.t>,
-  flipH: option<JSON.t>,
-  offsetX: option<JSON.t>,
-  offsetY: option<JSON.t>,
-  scale: option<JSON.t>,
-  opacity: option<JSON.t>,
-}>>,
-  bannerId: option<JSON.t>,
-  fields: option<array<{
+type postIUpdateRequest_3 = {
+  note: option<dict<JSON.t>>,
+  follow: option<dict<JSON.t>>,
+  mention: option<dict<JSON.t>>,
+  reply: option<dict<JSON.t>>,
+  renote: option<dict<JSON.t>>,
+  quote: option<dict<JSON.t>>,
+  reaction: option<dict<JSON.t>>,
+  pollEnded: option<dict<JSON.t>>,
+  scheduledNotePosted: option<dict<JSON.t>>,
+  scheduledNotePostFailed: option<dict<JSON.t>>,
+  receiveFollowRequest: option<dict<JSON.t>>,
+  followRequestAccepted: option<dict<JSON.t>>,
+  groupInvited: option<dict<JSON.t>>,
+  roleAssigned: option<dict<JSON.t>>,
+  chatRoomInvitationReceived: option<dict<JSON.t>>,
+  achievementEarned: option<dict<JSON.t>>,
+  app: option<dict<JSON.t>>,
+  test: option<dict<JSON.t>>,
+}
+
+type postIUpdateRequest_2 = {
   name: string,
   value: string,
-}>>,
+}
+
+type postIUpdateRequest_1 = {
+  id: string,
+  angle: option<float>,
+  flipH: option<bool>,
+  offsetX: option<float>,
+  offsetY: option<float>,
+  scale: option<float>,
+  opacity: option<float>,
+}
+
+type postIUpdateRequest = {
+  name: option<string>,
+  description: option<string>,
+  followedMessage: option<string>,
+  location: option<string>,
+  birthday: option<string>,
+  lang: option<string>,
+  avatarId: option<string>,
+  avatarDecorations: option<array<postIUpdateRequest_1>>,
+  bannerId: option<string>,
+  fields: option<array<postIUpdateRequest_2>>,
   isLocked: option<bool>,
   isExplorable: option<bool>,
   hideOnlineStatus: option<bool>,
@@ -729,8 +770,8 @@ type postIUpdateRequest = {
   noCrawle: option<bool>,
   preventAiLearning: option<bool>,
   requireSigninToViewContents: option<bool>,
-  makeNotesFollowersOnlyBefore: option<JSON.t>,
-  makeNotesHiddenBefore: option<JSON.t>,
+  makeNotesFollowersOnlyBefore: option<int>,
+  makeNotesHiddenBefore: option<int>,
   isBot: option<bool>,
   isCat: option<bool>,
   injectFeaturedNote: option<bool>,
@@ -740,58 +781,64 @@ type postIUpdateRequest = {
   followingVisibility: option<string>,
   followersVisibility: option<string>,
   chatScope: option<string>,
-  pinnedPageId: option<JSON.t>,
+  pinnedPageId: option<string>,
   mutedWords: option<array<array<string>>>,
   hardMutedWords: option<array<array<string>>>,
   mutedInstances: option<array<string>>,
-  notificationRecieveConfig: option<{
-  note: option<JSON.t>,
-  follow: option<JSON.t>,
-  mention: option<JSON.t>,
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
-  quote: option<JSON.t>,
-  reaction: option<JSON.t>,
-  pollEnded: option<JSON.t>,
-  scheduledNotePosted: option<JSON.t>,
-  scheduledNotePostFailed: option<JSON.t>,
-  receiveFollowRequest: option<JSON.t>,
-  followRequestAccepted: option<JSON.t>,
-  groupInvited: option<JSON.t>,
-  roleAssigned: option<JSON.t>,
-  chatRoomInvitationReceived: option<JSON.t>,
-  achievementEarned: option<JSON.t>,
-  app: option<JSON.t>,
-  test: option<JSON.t>,
-}>,
+  notificationRecieveConfig: option<postIUpdateRequest_3>,
   emailNotificationTypes: option<array<string>>,
   alsoKnownAs: option<array<string>>,
-  setFederationAvatarShape: option<JSON.t>,
-  isSquareAvatars: option<JSON.t>,
+  setFederationAvatarShape: option<bool>,
+  isSquareAvatars: option<bool>,
 }
 
-let postIUpdateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.json), None),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.json), None),
-    location: s.fieldOr("location", S.nullableAsOption(S.json), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.json), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.json), None),
-    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.json), None),
-    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(S.object(s => {
-    id: s.field("id", S.string),
-    angle: s.fieldOr("angle", S.nullableAsOption(S.json), None),
-    flipH: s.fieldOr("flipH", S.nullableAsOption(S.json), None),
-    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.json), None),
-    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.json), None),
-    scale: s.fieldOr("scale", S.nullableAsOption(S.json), None),
-    opacity: s.fieldOr("opacity", S.nullableAsOption(S.json), None),
-  }))), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.json), None),
-    fields: s.fieldOr("fields", S.nullableAsOption(S.array(S.object(s => {
+let postIUpdateRequest_3Schema = S.object(s => {
+    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
+    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
+    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
+    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
+    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
+    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
+    scheduledNotePosted: s.fieldOr("scheduledNotePosted", S.nullableAsOption(S.dict(S.json)), None),
+    scheduledNotePostFailed: s.fieldOr("scheduledNotePostFailed", S.nullableAsOption(S.dict(S.json)), None),
+    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
+    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
+    groupInvited: s.fieldOr("groupInvited", S.nullableAsOption(S.dict(S.json)), None),
+    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
+    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
+    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
+    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
+    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postIUpdateRequest_2Schema = S.object(s => {
     name: s.field("name", S.string),
     value: s.field("value", S.string),
-  }))), None),
+  })
+
+let postIUpdateRequest_1Schema = S.object(s => {
+    id: s.field("id", S.string),
+    angle: s.fieldOr("angle", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
+    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    scale: s.fieldOr("scale", S.nullableAsOption(S.float->S.min(0)->S.max(1)), None),
+    opacity: s.fieldOr("opacity", S.nullableAsOption(S.float->S.min(0)->S.max(1)), None),
+  })
+
+let postIUpdateRequestSchema = S.object(s => {
+    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
+    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
+    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string->S.min(1)->S.max(256)), None),
+    location: s.fieldOr("location", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
+    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
+    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.string), None),
+    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(postIUpdateRequest_1Schema)), None),
+    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
+    fields: s.fieldOr("fields", S.nullableAsOption(S.array(postIUpdateRequest_2Schema)), None),
     isLocked: s.fieldOr("isLocked", S.nullableAsOption(S.bool), None),
     isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
     hideOnlineStatus: s.fieldOr("hideOnlineStatus", S.nullableAsOption(S.bool), None),
@@ -801,8 +848,8 @@ let postIUpdateRequestSchema = S.object(s => {
     noCrawle: s.fieldOr("noCrawle", S.nullableAsOption(S.bool), None),
     preventAiLearning: s.fieldOr("preventAiLearning", S.nullableAsOption(S.bool), None),
     requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.json), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.json), None),
+    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.int), None),
+    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.int), None),
     isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
     isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
     injectFeaturedNote: s.fieldOr("injectFeaturedNote", S.nullableAsOption(S.bool), None),
@@ -812,34 +859,15 @@ let postIUpdateRequestSchema = S.object(s => {
     followingVisibility: s.fieldOr("followingVisibility", S.nullableAsOption(S.string), None),
     followersVisibility: s.fieldOr("followersVisibility", S.nullableAsOption(S.string), None),
     chatScope: s.fieldOr("chatScope", S.nullableAsOption(S.string), None),
-    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.json), None),
+    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.string), None),
     mutedWords: s.fieldOr("mutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
     hardMutedWords: s.fieldOr("hardMutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
     mutedInstances: s.fieldOr("mutedInstances", S.nullableAsOption(S.array(S.string)), None),
-    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.json), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.json), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.json), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.json), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.json), None),
-    scheduledNotePosted: s.fieldOr("scheduledNotePosted", S.nullableAsOption(S.json), None),
-    scheduledNotePostFailed: s.fieldOr("scheduledNotePostFailed", S.nullableAsOption(S.json), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.json), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.json), None),
-    groupInvited: s.fieldOr("groupInvited", S.nullableAsOption(S.json), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.json), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.json), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.json), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.json), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.json), None),
-  })), None),
+    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(postIUpdateRequest_3Schema), None),
     emailNotificationTypes: s.fieldOr("emailNotificationTypes", S.nullableAsOption(S.array(S.string)), None),
     alsoKnownAs: s.fieldOr("alsoKnownAs", S.nullableAsOption(S.array(S.string)), None),
-    setFederationAvatarShape: s.fieldOr("setFederationAvatarShape", S.nullableAsOption(S.json), None),
-    isSquareAvatars: s.fieldOr("isSquareAvatars", S.nullableAsOption(S.json), None),
+    setFederationAvatarShape: s.fieldOr("setFederationAvatarShape", S.nullableAsOption(S.bool), None),
+    isSquareAvatars: s.fieldOr("isSquareAvatars", S.nullableAsOption(S.bool), None),
   })
 
 type postIUpdateResponse = KokonectLinkComponentSchemas.MeDetailed.t
@@ -867,12 +895,12 @@ let postIUpdate = (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: s
 }
 
 type postIUpdateAutoDeleteSettingsRequest = {
-  autoDeleteNotesAfterDays: option<JSON.t>,
+  autoDeleteNotesAfterDays: option<float>,
   autoDeleteKeepFavorites: option<bool>,
 }
 
 let postIUpdateAutoDeleteSettingsRequestSchema = S.object(s => {
-    autoDeleteNotesAfterDays: s.fieldOr("autoDeleteNotesAfterDays", S.nullableAsOption(S.json), None),
+    autoDeleteNotesAfterDays: s.fieldOr("autoDeleteNotesAfterDays", S.nullableAsOption(S.float->S.min(1)->S.max(3650)), None),
     autoDeleteKeepFavorites: s.fieldOr("autoDeleteKeepFavorites", S.nullableAsOption(S.bool), None),
   })
 
@@ -910,15 +938,19 @@ let postIUserGroupInvitesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
   })
 
-type postIUserGroupInvitesResponse = array<{
+type postIUserGroupInvitesResponse_1 = {
   id: string,
   group: KokonectLinkComponentSchemas.UserGroup.t,
-}>
+}
 
-let postIUserGroupInvitesResponseSchema = S.array(S.object(s => {
+type postIUserGroupInvitesResponse = array<postIUserGroupInvitesResponse_1>
+
+let postIUserGroupInvitesResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     group: s.field("group", KokonectLinkComponentSchemas.UserGroup.schema),
-  }))
+  })
+
+let postIUserGroupInvitesResponseSchema = S.array(postIUserGroupInvitesResponse_1Schema)
 
 /**
  * i/user-group-invites

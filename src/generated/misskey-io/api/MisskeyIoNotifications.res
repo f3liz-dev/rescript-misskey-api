@@ -6,14 +6,14 @@
 
 type postNotificationsCreateRequest = {
   body: string,
-  header: option<JSON.t>,
-  icon: option<JSON.t>,
+  header: option<string>,
+  icon: option<string>,
 }
 
 let postNotificationsCreateRequestSchema = S.object(s => {
     body: s.field("body", S.string),
-    header: s.fieldOr("header", S.nullableAsOption(S.json), None),
-    icon: s.fieldOr("icon", S.nullableAsOption(S.json), None),
+    header: s.fieldOr("header", S.nullableAsOption(S.string), None),
+    icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
   })
 
 type postNotificationsCreateResponse = unit
@@ -47,7 +47,7 @@ type postNotificationsFlushResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:notifications*
  */
-let postNotificationsFlush = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsFlushResponse> => {
+let postNotificationsFlush = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsFlushResponse> => {
 
   fetch(
     ~url="/notifications/flush",
@@ -69,7 +69,7 @@ type postNotificationsMarkAllAsReadResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:notifications*
  */
-let postNotificationsMarkAllAsRead = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsMarkAllAsReadResponse> => {
+let postNotificationsMarkAllAsRead = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsMarkAllAsReadResponse> => {
 
   fetch(
     ~url="/notifications/mark-all-as-read",
@@ -91,7 +91,7 @@ type postNotificationsTestNotificationResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:notifications*
  */
-let postNotificationsTestNotification = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsTestNotificationResponse> => {
+let postNotificationsTestNotification = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsTestNotificationResponse> => {
 
   fetch(
     ~url="/notifications/test-notification",

@@ -11,24 +11,24 @@ export interface PostAdminMetaResponse {
   cacheRemoteSensitiveFiles: boolean;
   emailRequiredForSignup: boolean;
   enableHcaptcha: boolean;
-  hcaptchaSiteKey: unknown;
+  hcaptchaSiteKey: string | null;
   enableMcaptcha: boolean;
-  mcaptchaSiteKey: unknown;
-  mcaptchaInstanceUrl: unknown;
+  mcaptchaSiteKey: string | null;
+  mcaptchaInstanceUrl: string | null;
   enableRecaptcha: boolean;
-  recaptchaSiteKey: unknown;
+  recaptchaSiteKey: string | null;
   enableTurnstile: boolean;
-  turnstileSiteKey: unknown;
-  googleAnalyticsId: unknown;
-  swPublickey: unknown;
-  mascotImageUrl: unknown;
-  bannerUrl: unknown;
-  serverErrorImageUrl: unknown;
-  infoImageUrl: unknown;
-  notFoundImageUrl: unknown;
-  iconUrl: unknown;
-  app192IconUrl: unknown;
-  app512IconUrl: unknown;
+  turnstileSiteKey: string | null;
+  googleAnalyticsId: string | null;
+  swPublickey: string | null;
+  mascotImageUrl: string | null;
+  bannerUrl: string | null;
+  serverErrorImageUrl: string | null;
+  infoImageUrl: string | null;
+  notFoundImageUrl: string | null;
+  iconUrl: string | null;
+  app192IconUrl: string | null;
+  app512IconUrl: string | null;
   enableEmail: boolean;
   enableServiceWorker: boolean;
   translatorAvailable: boolean;
@@ -42,41 +42,41 @@ export interface PostAdminMetaResponse {
   prohibitedWords: string[];
   bannedEmailDomains?: string[];
   preservedUsernames: string[];
-  hcaptchaSecretKey: unknown;
-  mcaptchaSecretKey: unknown;
-  recaptchaSecretKey: unknown;
-  turnstileSecretKey: unknown;
+  hcaptchaSecretKey: string | null;
+  mcaptchaSecretKey: string | null;
+  recaptchaSecretKey: string | null;
+  turnstileSecretKey: string | null;
   sensitiveMediaDetection: string;
   sensitiveMediaDetectionSensitivity: string;
   setSensitiveFlagAutomatically: boolean;
   enableSensitiveMediaDetectionForVideos: boolean;
   proxyAccountId: string;
-  email: unknown;
+  email: string | null;
   smtpSecure: boolean;
-  smtpHost: unknown;
-  smtpPort: unknown;
-  smtpUser: unknown;
-  smtpPass: unknown;
-  swPrivateKey: unknown;
+  smtpHost: string | null;
+  smtpPort: number | null;
+  smtpUser: string | null;
+  smtpPass: string | null;
+  swPrivateKey: string | null;
   useObjectStorage: boolean;
-  objectStorageBaseUrl: unknown;
-  objectStorageBucket: unknown;
-  objectStoragePrefix: unknown;
-  objectStorageEndpoint: unknown;
-  objectStorageRegion: unknown;
-  objectStoragePort: unknown;
-  objectStorageAccessKey: unknown;
-  objectStorageSecretKey: unknown;
+  objectStorageBaseUrl: string | null;
+  objectStorageBucket: string | null;
+  objectStoragePrefix: string | null;
+  objectStorageEndpoint: string | null;
+  objectStorageRegion: string | null;
+  objectStoragePort: number | null;
+  objectStorageAccessKey: string | null;
+  objectStorageSecretKey: string | null;
   objectStorageUseSSL: boolean;
   objectStorageUseProxy: boolean;
   objectStorageSetPublicRead: boolean;
   enableIpLogging: boolean;
   enableActiveEmailValidation: boolean;
   enableVerifymailApi: boolean;
-  verifymailAuthKey: unknown;
+  verifymailAuthKey: string | null;
   enableTruemailApi: boolean;
-  truemailInstance: unknown;
-  truemailAuthKey: unknown;
+  truemailInstance: string | null;
+  truemailAuthKey: string | null;
   enableChartsForRemoteUser: boolean;
   enableChartsForFederatedInstances: boolean;
   enableServerMachineStats: boolean;
@@ -93,37 +93,37 @@ export interface PostAdminMetaResponse {
   wellKnownWebsites: string[];
   urlPreviewDenyList: string[];
   featuredGameChannels: string[];
-  backgroundImageUrl: unknown;
-  deeplAuthKey: unknown;
+  backgroundImageUrl: string | null;
+  deeplAuthKey: string | null;
   deeplIsPro: boolean;
-  defaultDarkTheme: unknown;
-  defaultLightTheme: unknown;
-  description: unknown;
+  defaultDarkTheme: string | null;
+  defaultLightTheme: string | null;
+  description: string | null;
   dimensions: number;
   disableRegistration: boolean;
-  impressumUrl: unknown;
-  maintainerEmail: unknown;
-  maintainerName: unknown;
-  name: unknown;
-  shortName: unknown;
+  impressumUrl: string | null;
+  maintainerEmail: string | null;
+  maintainerName: string | null;
+  name: string | null;
+  shortName: string | null;
   objectStorageS3ForcePathStyle: boolean;
-  privacyPolicyUrl: unknown;
-  repositoryUrl: unknown;
-  summalyProxy: unknown;
-  themeColor: unknown;
-  tosUrl: unknown;
+  privacyPolicyUrl: string | null;
+  repositoryUrl: string | null;
+  summalyProxy: string | null;
+  themeColor: string | null;
+  tosUrl: string | null;
   uri: string;
   version: string;
   urlPreviewEnabled: boolean;
   urlPreviewTimeout: number;
   urlPreviewMaximumContentLength: number;
   urlPreviewRequireContentLength: boolean;
-  urlPreviewUserAgent: unknown;
-  urlPreviewSummaryProxyUrl: unknown;
+  urlPreviewUserAgent: string | null;
+  urlPreviewSummaryProxyUrl: string | null;
   federation: string;
   federationHosts: string[];
   prohibitedWordsForNameOfUser: string[];
-  inquiryUrl: unknown;
+  inquiryUrl: string | null;
 }
 
 export interface PostAnnouncementRequest {
@@ -174,7 +174,12 @@ export interface PostEndpointRequest {
   endpoint: string;
 }
 /** OK (with results) */
-export type PostEndpointResponse = unknown;
+export type PostEndpointResponse = {
+  params: {
+  name: string;
+  type: string;
+}[];
+} | null;
 
 /** OK (with results) */
 export type PostEndpointsResponse = string[];
@@ -313,7 +318,7 @@ export type PostInviteDeleteResponse = void;
 
 /** OK (with results) */
 export interface PostInviteLimitResponse {
-  remaining: unknown;
+  remaining: number | null;
 }
 
 export interface PostInviteListRequest {
@@ -328,13 +333,13 @@ export interface GetMetaRequest {
   detail?: boolean;
 }
 /** OK (with results) */
-export interface GetMetaResponse Record<string, never>
+export type GetMetaResponse = Record<string, never>;
 
 export interface PostMetaRequest {
   detail?: boolean;
 }
 /** OK (with results) */
-export interface PostMetaResponse Record<string, never>
+export type PostMetaResponse = Record<string, never>;
 
 /** OK (with results) */
 export interface PostPingResponse {

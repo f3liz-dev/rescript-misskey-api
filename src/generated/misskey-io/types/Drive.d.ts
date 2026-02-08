@@ -15,9 +15,9 @@ export interface PostDriveFilesRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  folderId?: unknown;
-  type?: unknown;
-  sort?: unknown;
+  folderId?: string | null;
+  type?: string | null;
+  sort?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFilesResponse = ComponentSchemas.DriveFile[];
@@ -38,9 +38,9 @@ export interface PostDriveFilesCheckExistenceRequest {
 export type PostDriveFilesCheckExistenceResponse = boolean;
 
 export interface PostDriveFilesCreateRequest {
-  folderId?: unknown;
-  name?: unknown;
-  comment?: unknown;
+  folderId?: string | null;
+  name?: string | null;
+  comment?: string | null;
   isSensitive?: boolean;
   force?: boolean;
   file: string;
@@ -55,7 +55,7 @@ export type PostDriveFilesDeleteResponse = void;
 
 export interface PostDriveFilesFindRequest {
   name: string;
-  folderId?: unknown;
+  folderId?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFilesFindResponse = ComponentSchemas.DriveFile[];
@@ -75,20 +75,20 @@ export type PostDriveFilesShowResponse = ComponentSchemas.DriveFile;
 
 export interface PostDriveFilesUpdateRequest {
   fileId: string;
-  folderId?: unknown;
+  folderId?: string | null;
   name?: string;
   isSensitive?: boolean;
-  comment?: unknown;
+  comment?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFilesUpdateResponse = ComponentSchemas.DriveFile;
 
 export interface PostDriveFilesUploadFromUrlRequest {
   url: string;
-  folderId?: unknown;
+  folderId?: string | null;
   isSensitive?: boolean;
-  comment?: unknown;
-  marker?: unknown;
+  comment?: string | null;
+  marker?: string | null;
   force?: boolean;
 }
 export type PostDriveFilesUploadFromUrlResponse = void;
@@ -97,14 +97,14 @@ export interface PostDriveFoldersRequest {
   limit?: number;
   sinceId?: string;
   untilId?: string;
-  folderId?: unknown;
+  folderId?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFoldersResponse = ComponentSchemas.DriveFolder[];
 
 export interface PostDriveFoldersCreateRequest {
   name?: string;
-  parentId?: unknown;
+  parentId?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFoldersCreateResponse = ComponentSchemas.DriveFolder;
@@ -116,7 +116,7 @@ export type PostDriveFoldersDeleteResponse = void;
 
 export interface PostDriveFoldersFindRequest {
   name: string;
-  parentId?: unknown;
+  parentId?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFoldersFindResponse = ComponentSchemas.DriveFolder[];
@@ -130,7 +130,7 @@ export type PostDriveFoldersShowResponse = ComponentSchemas.DriveFolder;
 export interface PostDriveFoldersUpdateRequest {
   folderId: string;
   name?: string;
-  parentId?: unknown;
+  parentId?: string | null;
 }
 /** OK (with results) */
 export type PostDriveFoldersUpdateResponse = ComponentSchemas.DriveFolder;

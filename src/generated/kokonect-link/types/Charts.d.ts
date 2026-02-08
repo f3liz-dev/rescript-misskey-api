@@ -8,7 +8,7 @@ import * as ComponentSchemas from './ComponentSchemas';
 export interface GetChartsActiveUsersRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsActiveUsersResponse {
@@ -26,7 +26,7 @@ export interface GetChartsActiveUsersResponse {
 export interface PostChartsActiveUsersRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsActiveUsersResponse {
@@ -44,7 +44,7 @@ export interface PostChartsActiveUsersResponse {
 export interface GetChartsApRequestRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsApRequestResponse {
@@ -56,7 +56,7 @@ export interface GetChartsApRequestResponse {
 export interface PostChartsApRequestRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsApRequestResponse {
@@ -68,7 +68,7 @@ export interface PostChartsApRequestResponse {
 export interface GetChartsDriveRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsDriveResponse {
@@ -89,7 +89,7 @@ export interface GetChartsDriveResponse {
 export interface PostChartsDriveRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsDriveResponse {
@@ -110,7 +110,7 @@ export interface PostChartsDriveResponse {
 export interface GetChartsFederationRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsFederationResponse {
@@ -127,7 +127,7 @@ export interface GetChartsFederationResponse {
 export interface PostChartsFederationRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsFederationResponse {
@@ -144,7 +144,7 @@ export interface PostChartsFederationResponse {
 export interface GetChartsInstanceRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   host: string;
 }
 /** OK (with results) */
@@ -192,7 +192,7 @@ export interface GetChartsInstanceResponse {
 export interface PostChartsInstanceRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   host: string;
 }
 /** OK (with results) */
@@ -240,7 +240,7 @@ export interface PostChartsInstanceResponse {
 export interface GetChartsNotesRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsNotesResponse {
@@ -271,7 +271,7 @@ export interface GetChartsNotesResponse {
 export interface PostChartsNotesRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsNotesResponse {
@@ -302,7 +302,7 @@ export interface PostChartsNotesResponse {
 export interface GetChartsUserDriveRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -318,7 +318,7 @@ export interface GetChartsUserDriveResponse {
 export interface PostChartsUserDriveRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -334,7 +334,7 @@ export interface PostChartsUserDriveResponse {
 export interface GetChartsUserFollowingRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -368,7 +368,7 @@ export interface GetChartsUserFollowingResponse {
 export interface PostChartsUserFollowingRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -402,7 +402,7 @@ export interface PostChartsUserFollowingResponse {
 export interface GetChartsUserNotesRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -421,7 +421,7 @@ export interface GetChartsUserNotesResponse {
 export interface PostChartsUserNotesRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -440,7 +440,7 @@ export interface PostChartsUserNotesResponse {
 export interface GetChartsUserPvRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -458,7 +458,7 @@ export interface GetChartsUserPvResponse {
 export interface PostChartsUserPvRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -476,7 +476,7 @@ export interface PostChartsUserPvResponse {
 export interface GetChartsUserReactionsRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -492,7 +492,7 @@ export interface GetChartsUserReactionsResponse {
 export interface PostChartsUserReactionsRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
   userId: string;
 }
 /** OK (with results) */
@@ -508,7 +508,7 @@ export interface PostChartsUserReactionsResponse {
 export interface GetChartsUsersRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsUsersResponse {
@@ -527,7 +527,7 @@ export interface GetChartsUsersResponse {
 export interface PostChartsUsersRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsUsersResponse {
@@ -546,7 +546,7 @@ export interface PostChartsUsersResponse {
 export interface GetChartsFederationRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface GetChartsFederationResponse {
@@ -564,7 +564,7 @@ export interface GetChartsFederationResponse {
 export interface PostChartsFederationRequest {
   span: string;
   limit?: number;
-  offset?: unknown;
+  offset?: number | null;
 }
 /** OK (with results) */
 export interface PostChartsFederationResponse {

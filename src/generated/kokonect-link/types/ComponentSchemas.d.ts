@@ -12,11 +12,11 @@ export interface Error {
 
 export interface UserLite {
   id: string;
-  name: unknown;
+  name: string | null;
   username: string;
-  host: unknown;
-  avatarUrl: unknown;
-  avatarBlurhash: unknown;
+  host: string | null;
+  avatarUrl: string | null;
+  avatarBlurhash: string | null;
   avatarDecorations: {
   id: string;
   angle?: number;
@@ -28,44 +28,44 @@ export interface UserLite {
   isBot?: boolean;
   isCat?: boolean;
   requireSigninToViewContents?: boolean;
-  makeNotesFollowersOnlyBefore?: unknown;
-  makeNotesHiddenBefore?: unknown;
+  makeNotesFollowersOnlyBefore?: number | null;
+  makeNotesHiddenBefore?: number | null;
   instance?: {
-  name: unknown;
-  softwareName: unknown;
-  softwareVersion: unknown;
-  iconUrl: unknown;
-  faviconUrl: unknown;
-  themeColor: unknown;
+  name: string | null;
+  softwareName: string | null;
+  softwareVersion: string | null;
+  iconUrl: string | null;
+  faviconUrl: string | null;
+  themeColor: string | null;
 };
   emojis: Record<string, never>;
   onlineStatus: string;
   badgeRoles?: {
   name: string;
-  iconUrl: unknown;
+  iconUrl: string | null;
   displayOrder: number;
   behavior?: string;
 }[];
 }
 
 export interface UserDetailedNotMeOnly {
-  url: unknown;
-  uri: unknown;
-  movedTo: unknown;
-  alsoKnownAs: unknown;
+  url: string | null;
+  uri: string | null;
+  movedTo: string | null;
+  alsoKnownAs: unknown | null;
   createdAt: string;
-  updatedAt: unknown;
-  lastFetchedAt: unknown;
-  bannerUrl: unknown;
-  bannerBlurhash: unknown;
+  updatedAt: string | null;
+  lastFetchedAt: string | null;
+  bannerUrl: string | null;
+  bannerBlurhash: string | null;
   isLocked: boolean;
   isSilenced: boolean;
   isLimited: boolean;
   isSuspended: boolean;
-  description: unknown;
-  location: unknown;
-  birthday: unknown;
-  lang: unknown;
+  description: string | null;
+  location: string | null;
+  birthday: string | null;
+  lang: string | null;
   fields: {
   name: string;
   value: string;
@@ -76,27 +76,27 @@ export interface UserDetailedNotMeOnly {
   notesCount: number;
   pinnedNoteIds: string[];
   pinnedNotes: ComponentSchemas.Note[];
-  pinnedPageId: unknown;
-  pinnedPage: unknown;
+  pinnedPageId: string | null;
+  pinnedPage: ComponentSchemas.Page | null;
   publicReactions: boolean;
   followingVisibility: string;
   followersVisibility: string;
   chatScope: string;
   canChat: boolean;
   roles: ComponentSchemas.RoleLite[];
-  followedMessage?: unknown;
-  memo: unknown;
+  followedMessage?: string | null;
+  memo: string | null;
   moderationNote?: string;
   twoFactorEnabled?: boolean;
   usePasswordLessLogin?: boolean;
   securityKeys?: boolean;
   mutualLinkSections: {
-  name: unknown;
+  name: string | null;
   mutualLinks: {
   id: string;
   url: string;
   fileId: string;
-  description: unknown;
+  description: string | null;
   imgSrc: string;
 }[];
 }[];
@@ -113,11 +113,11 @@ export interface UserDetailedNotMeOnly {
 }
 
 export interface MeDetailedOnly {
-  avatarId: unknown;
-  bannerId: unknown;
-  followedMessage: unknown;
-  isModerator: unknown;
-  isAdmin: unknown;
+  avatarId: string | null;
+  bannerId: string | null;
+  followedMessage: string | null;
+  isModerator: boolean | null;
+  isAdmin: boolean | null;
   injectFeaturedNote: boolean;
   receiveAnnouncementEmail: boolean;
   alwaysMarkNsfw: boolean;
@@ -141,8 +141,8 @@ export interface MeDetailedOnly {
   hasPendingReceivedFollowRequest: boolean;
   unreadNotificationsCount: number;
   mutedWords: string[][];
-  mutedInstances: unknown;
-  postingLang: unknown;
+  mutedInstances: unknown | null;
+  postingLang: string | null;
   viewingLangs: string[];
   showMediaInAllLanguages: boolean;
   showHashtagsInAllLanguages: boolean;
@@ -173,8 +173,8 @@ export interface MeDetailedOnly {
   twoFactorEnabled: boolean;
   usePasswordLessLogin: boolean;
   securityKeys: boolean;
-  email?: unknown;
-  emailVerified?: unknown;
+  email?: string | null;
+  emailVerified?: boolean | null;
   securityKeysList?: {
   id: string;
   name: string;
@@ -224,7 +224,7 @@ export interface Ad {
   ratio: number;
   url: string;
   imageUrl: string;
-  imageBlurhash: unknown;
+  imageBlurhash: string | null;
   memo: string;
   dayOfWeek: number;
   isSensitive: boolean;
@@ -233,10 +233,10 @@ export interface Ad {
 export interface Announcement {
   id: string;
   createdAt: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   text: string;
   title: string;
-  imageUrl: unknown;
+  imageUrl: string | null;
   icon: string;
   display: string;
   needConfirmationToRead: boolean;
@@ -251,7 +251,7 @@ export interface Announcement {
 export interface App {
   id: string;
   name: string;
-  callbackUrl: unknown;
+  callbackUrl: string | null;
   permission: string[];
   secret?: string;
   isAuthorized?: boolean;
@@ -260,15 +260,15 @@ export interface App {
 export interface Note {
   id: string;
   createdAt: string;
-  deletedAt?: unknown;
-  text: unknown;
-  cw?: unknown;
+  deletedAt?: string | null;
+  text: string | null;
+  cw?: string | null;
   userId: string;
   user: ComponentSchemas.UserLite;
-  replyId?: unknown;
-  renoteId?: unknown;
-  reply?: unknown;
-  renote?: unknown;
+  replyId?: string | null;
+  renoteId?: string | null;
+  reply?: ComponentSchemas.Note | null;
+  renote?: ComponentSchemas.Note | null;
   isHidden?: boolean;
   visibility: string;
   mentions?: string[];
@@ -276,13 +276,28 @@ export interface Note {
   fileIds?: string[];
   files?: ComponentSchemas.DriveFile[];
   tags?: string[];
-  poll?: unknown;
+  poll?: {
+  expiresAt?: string | null;
+  multiple: boolean;
+  choices: {
+  isVoted: boolean;
+  text: string;
+  votes: number;
+}[];
+} | null;
   emojis?: Record<string, never>;
-  channelId?: unknown;
-  channel?: unknown;
+  channelId?: string | null;
+  channel?: {
+  id: string;
+  name: string;
+  color: string;
+  isSensitive: boolean;
+  allowRenoteToExternal: boolean;
+  userId: string | null;
+} | null;
   localOnly?: boolean;
-  dimension?: unknown;
-  reactionAcceptance: unknown;
+  dimension?: number | null;
+  reactionAcceptance: string | null;
   reactionEmojis: Record<string, never>;
   reactions: Record<string, never>;
   reactionCount: number;
@@ -292,27 +307,51 @@ export interface Note {
   url?: string;
   reactionAndUserPairCache?: string[];
   clippedCount?: number;
-  myReaction?: unknown;
+  myReaction?: string | null;
 }
 
 export interface NoteDraft {
   id: string;
   updatedAt: string;
-  scheduledAt: unknown;
+  scheduledAt: string | null;
   reason?: string;
-  channel?: unknown;
-  renote?: unknown;
-  reply?: unknown;
+  channel?: {
+  id: string;
+  name: string;
+} | null;
+  renote?: {
+  id: string;
+  text: string | null;
+  user: {
+  id: string;
+  username: string;
+  host: string | null;
+};
+} | null;
+  reply?: {
+  id: string;
+  text: string | null;
+  user: {
+  id: string;
+  username: string;
+  host: string | null;
+};
+} | null;
   data: {
-  text: unknown;
+  text: string | null;
   useCw: boolean;
-  cw: unknown;
+  cw: string | null;
   visibility: string;
   localOnly: boolean;
-  lang?: unknown;
-  dimension?: unknown;
+  lang?: string | null;
+  dimension?: number | null;
   files: ComponentSchemas.DriveFile[];
-  poll: unknown;
+  poll: {
+  choices: string[];
+  multiple: boolean;
+  expiresAt: number | null;
+  expiredAfter: number | null;
+} | null;
   visibleUserIds?: string[];
 };
 }
@@ -331,7 +370,7 @@ export interface NoteFavorite {
   noteId: string;
 }
 
-export interface Notification Record<string, never>
+export type Notification = Record<string, never>;
 
 export interface DriveFile {
   id: string;
@@ -341,8 +380,8 @@ export interface DriveFile {
   md5: string;
   size: number;
   isSensitive: boolean;
-  isSensitiveByModerator?: unknown;
-  blurhash: unknown;
+  isSensitiveByModerator?: boolean | null;
+  blurhash: string | null;
   properties: {
   width?: number;
   height?: number;
@@ -350,22 +389,22 @@ export interface DriveFile {
   avgColor?: string;
 };
   url: string;
-  thumbnailUrl: unknown;
-  comment: unknown;
-  folderId: unknown;
-  folder?: unknown;
-  userId: unknown;
-  user?: unknown;
+  thumbnailUrl: string | null;
+  comment: string | null;
+  folderId: string | null;
+  folder?: ComponentSchemas.DriveFolder | null;
+  userId: string | null;
+  user?: ComponentSchemas.UserLite | null;
 }
 
 export interface DriveFolder {
   id: string;
   createdAt: string;
   name: string;
-  parentId: unknown;
+  parentId: string | null;
   foldersCount?: number;
   filesCount?: number;
-  parent?: unknown;
+  parent?: ComponentSchemas.DriveFolder | null;
 }
 
 export interface Following {
@@ -386,7 +425,7 @@ export interface FollowRequest {
 export interface Muting {
   id: string;
   createdAt: string;
-  expiresAt: unknown;
+  expiresAt: string | null;
   muteeId: string;
   mutee: ComponentSchemas.UserDetailedNotMe;
 }
@@ -418,11 +457,11 @@ export interface Hashtag {
 export interface InviteCode {
   id: string;
   code: string;
-  expiresAt: unknown;
+  expiresAt: string | null;
   createdAt: string;
-  createdBy: unknown;
-  usedBy: unknown;
-  usedAt: unknown;
+  createdBy: ComponentSchemas.UserLite | null;
+  usedBy: ComponentSchemas.UserLite | null;
+  usedAt: string | null;
   used: boolean;
 }
 
@@ -436,20 +475,20 @@ export interface Page {
   variables: Record<string, never>[];
   title: string;
   name: string;
-  summary: unknown;
+  summary: string | null;
   hideTitleWhenPinned: boolean;
   alignCenter: boolean;
   font: string;
   script: string;
-  eyeCatchingImageId: unknown;
-  eyeCatchingImage: unknown;
+  eyeCatchingImageId: string | null;
+  eyeCatchingImage: ComponentSchemas.DriveFile | null;
   attachedFiles: ComponentSchemas.DriveFile[];
   likedCount: number;
   isLiked?: boolean;
   visibility: string;
 }
 
-export interface PageBlock Record<string, never>
+export type PageBlock = Record<string, never>;
 
 export interface PageLike {
   id: string;
@@ -459,11 +498,11 @@ export interface PageLike {
 export interface Channel {
   id: string;
   createdAt: string;
-  lastNotedAt: unknown;
+  lastNotedAt: string | null;
   name: string;
-  description: unknown;
-  userId: unknown;
-  bannerUrl: unknown;
+  description: string | null;
+  userId: string | null;
+  bannerUrl: string | null;
   pinnedNoteIds: string[];
   color: string;
   isArchived: boolean;
@@ -491,7 +530,7 @@ export interface Antenna {
   keywords: string[][];
   excludeKeywords: string[][];
   src: string;
-  userListId: unknown;
+  userListId: string | null;
   users: string[];
   caseSensitive: boolean;
   localOnly: boolean;
@@ -507,11 +546,11 @@ export interface Antenna {
 export interface Clip {
   id: string;
   createdAt: string;
-  lastClippedAt: unknown;
+  lastClippedAt: string | null;
   userId: string;
   user: ComponentSchemas.UserLite;
   name: string;
-  description: unknown;
+  description: string | null;
   isPublic: boolean;
   favoritedCount: number;
   isFavorited?: boolean;
@@ -530,21 +569,21 @@ export interface FederationInstance {
   isSuspended: boolean;
   suspensionState: string;
   isBlocked: boolean;
-  softwareName: unknown;
-  softwareVersion: unknown;
-  openRegistrations: unknown;
-  name: unknown;
-  description: unknown;
-  maintainerName: unknown;
-  maintainerEmail: unknown;
+  softwareName: string | null;
+  softwareVersion: string | null;
+  openRegistrations: boolean | null;
+  name: string | null;
+  description: string | null;
+  maintainerName: string | null;
+  maintainerEmail: string | null;
   isSilenced: boolean;
   isSensitiveMedia: boolean;
-  iconUrl: unknown;
-  faviconUrl: unknown;
-  themeColor: unknown;
-  infoUpdatedAt: unknown;
-  latestRequestReceivedAt: unknown;
-  moderationNote?: unknown;
+  iconUrl: string | null;
+  faviconUrl: string | null;
+  themeColor: string | null;
+  infoUpdatedAt: string | null;
+  latestRequestReceivedAt: string | null;
+  moderationNote?: string | null;
 }
 
 export interface GalleryPost {
@@ -554,7 +593,7 @@ export interface GalleryPost {
   userId: string;
   user: ComponentSchemas.UserLite;
   title: string;
-  description: unknown;
+  description: string | null;
   fileIds?: string[];
   files?: ComponentSchemas.DriveFile[];
   tags?: string[];
@@ -571,7 +610,7 @@ export interface GalleryLike {
 export interface EmojiSimple {
   aliases: string[];
   name: string;
-  category: unknown;
+  category: string | null;
   url: string;
   localOnly?: boolean;
   isSensitive?: boolean;
@@ -582,33 +621,33 @@ export interface EmojiSimple {
 export interface EmojiDetailed {
   id: string;
   createdAt?: string;
-  updatedAt?: unknown;
+  updatedAt?: string | null;
   aliases: string[];
   name: string;
-  category: unknown;
-  host: unknown;
+  category: string | null;
+  host: string | null;
   url: string;
-  license: unknown;
+  license: string | null;
   isSensitive: boolean;
   localOnly: boolean;
-  requestedBy?: unknown;
-  memo?: unknown;
+  requestedBy?: string | null;
+  memo?: string | null;
   roleIdsThatCanBeUsedThisEmojiAsReaction?: string[];
   roleIdsThatCanNotBeUsedThisEmojiAsReaction?: string[];
 }
 
 export interface EmojiDetailedAdmin {
   id: string;
-  updatedAt: unknown;
+  updatedAt: string | null;
   name: string;
-  host: unknown;
+  host: string | null;
   publicUrl: string;
   originalUrl: string;
-  uri: unknown;
-  type: unknown;
+  uri: string | null;
+  type: string | null;
   aliases: string[];
-  category: unknown;
-  license: unknown;
+  category: string | null;
+  license: string | null;
   localOnly: boolean;
   isSensitive: boolean;
   roleIdsThatCanBeUsedThisEmojiAsReaction: {
@@ -627,7 +666,7 @@ export interface Flash {
   summary: string;
   script: string;
   visibility: string;
-  likedCount: unknown;
+  likedCount: number | null;
   isLiked?: boolean;
 }
 
@@ -684,13 +723,13 @@ export interface RoleCondFormulaFollowersOrFollowingOrNotes {
   value: number;
 }
 
-export interface RoleCondFormulaValue Record<string, never>
+export type RoleCondFormulaValue = Record<string, never>;
 
 export interface RoleLite {
   id: string;
   name: string;
-  color: unknown;
-  iconUrl: unknown;
+  color: string | null;
+  iconUrl: string | null;
   description: string;
   isModerator: boolean;
   isAdministrator: boolean;
@@ -706,7 +745,7 @@ export type Role = ComponentSchemas.RoleLite & {
   isExplorable: boolean;
   asBadge: boolean;
   preserveAssignmentOnMoveAccount: boolean;
-  badgeBehavior: unknown;
+  badgeBehavior: string | null;
   canEditMembersByModerator: boolean;
   policies: Record<string, never>;
   usersCount: number;
@@ -767,19 +806,19 @@ export interface RolePolicies {
 export interface ReversiGameLite {
   id: string;
   createdAt: string;
-  startedAt: unknown;
-  endedAt: unknown;
+  startedAt: string | null;
+  endedAt: string | null;
   isStarted: boolean;
   isEnded: boolean;
   user1Id: string;
   user2Id: string;
   user1: ComponentSchemas.UserLite;
   user2: ComponentSchemas.UserLite;
-  winnerId: unknown;
-  winner: unknown;
-  surrenderedUserId: unknown;
-  timeoutUserId: unknown;
-  black: unknown;
+  winnerId: string | null;
+  winner: ComponentSchemas.UserLite | null;
+  surrenderedUserId: string | null;
+  timeoutUserId: string | null;
+  black: number | null;
   bw: string;
   noIrregularRules: boolean;
   isLlotheo: boolean;
@@ -791,23 +830,23 @@ export interface ReversiGameLite {
 export interface ReversiGameDetailed {
   id: string;
   createdAt: string;
-  startedAt: unknown;
-  endedAt: unknown;
+  startedAt: string | null;
+  endedAt: string | null;
   isStarted: boolean;
   isEnded: boolean;
-  form1: unknown;
-  form2: unknown;
+  form1: Record<string, never> | null;
+  form2: Record<string, never> | null;
   user1Ready: boolean;
   user2Ready: boolean;
   user1Id: string;
   user2Id: string;
   user1: ComponentSchemas.UserLite;
   user2: ComponentSchemas.UserLite;
-  winnerId: unknown;
-  winner: unknown;
-  surrenderedUserId: unknown;
-  timeoutUserId: unknown;
-  black: unknown;
+  winnerId: string | null;
+  winner: ComponentSchemas.UserLite | null;
+  surrenderedUserId: string | null;
+  timeoutUserId: string | null;
+  black: number | null;
   bw: string;
   noIrregularRules: boolean;
   isLlotheo: boolean;
@@ -819,40 +858,40 @@ export interface ReversiGameDetailed {
 }
 
 export interface MetaLite {
-  maintainerName: unknown;
-  maintainerEmail: unknown;
+  maintainerName: string | null;
+  maintainerEmail: string | null;
   version: string;
-  name: unknown;
-  shortName: unknown;
+  name: string | null;
+  shortName: string | null;
   uri: string;
-  description: unknown;
+  description: string | null;
   langs: string[];
   dimensions: number;
-  tosUrl: unknown;
-  repositoryUrl: unknown;
-  feedbackUrl: unknown;
-  defaultDarkTheme: unknown;
-  defaultLightTheme: unknown;
+  tosUrl: string | null;
+  repositoryUrl: string | null;
+  feedbackUrl: string | null;
+  defaultDarkTheme: string | null;
+  defaultLightTheme: string | null;
   disableRegistration: boolean;
   emailRequiredForSignup: boolean;
   enableHcaptcha: boolean;
-  hcaptchaSiteKey: unknown;
+  hcaptchaSiteKey: string | null;
   enableMcaptcha: boolean;
-  mcaptchaSiteKey: unknown;
-  mcaptchaInstanceUrl: unknown;
+  mcaptchaSiteKey: string | null;
+  mcaptchaInstanceUrl: string | null;
   enableRecaptcha: boolean;
-  recaptchaSiteKey: unknown;
+  recaptchaSiteKey: string | null;
   enableTurnstile: boolean;
-  turnstileSiteKey: unknown;
-  googleAnalyticsId: unknown;
+  turnstileSiteKey: string | null;
+  googleAnalyticsId: string | null;
   enableTestcaptcha: boolean;
-  swPublickey: unknown;
+  swPublickey: string | null;
   mascotImageUrl: string;
-  bannerUrl: unknown;
-  serverErrorImageUrl: unknown;
-  infoImageUrl: unknown;
-  notFoundImageUrl: unknown;
-  iconUrl: unknown;
+  bannerUrl: string | null;
+  serverErrorImageUrl: string | null;
+  infoImageUrl: string | null;
+  notFoundImageUrl: string | null;
+  iconUrl: string | null;
   maxNoteTextLength: number;
   ads: {
   id: string;
@@ -860,7 +899,7 @@ export interface MetaLite {
   place: string;
   ratio: number;
   imageUrl: string;
-  imageBlurhash: unknown;
+  imageBlurhash: string | null;
   dayOfWeek: number;
   isSensitive: boolean;
 }[];
@@ -869,17 +908,24 @@ export interface MetaLite {
   enableEmail: boolean;
   enableServiceWorker: boolean;
   translatorAvailable: boolean;
-  sentryForFrontend: unknown;
+  sentryForFrontend: {
+  options: {
+  dsn: string;
+};
+  vueIntegration?: Record<string, never> | null;
+  browserTracingIntegration?: Record<string, never> | null;
+  replayIntegration?: Record<string, never> | null;
+} | null;
   mediaProxy: string;
   enableUrlPreview: boolean;
   enableSkebStatus: boolean;
-  backgroundImageUrl: unknown;
-  impressumUrl: unknown;
-  logoImageUrl: unknown;
-  privacyPolicyUrl: unknown;
-  inquiryUrl: unknown;
+  backgroundImageUrl: string | null;
+  impressumUrl: string | null;
+  logoImageUrl: string | null;
+  privacyPolicyUrl: string | null;
+  inquiryUrl: string | null;
   serverRules: string[];
-  themeColor: unknown;
+  themeColor: string | null;
   policies: ComponentSchemas.RolePolicies;
   noteSearchableScope: string;
   maxFileSize: number;
@@ -903,7 +949,7 @@ export interface MetaDetailedOnly {
   serviceWorker: boolean;
   miauth?: boolean;
 };
-  proxyAccountName: unknown;
+  proxyAccountName: string | null;
   requireSetup: boolean;
   cacheRemoteFiles: boolean;
   cacheRemoteSensitiveFiles: boolean;
@@ -921,8 +967,8 @@ export interface AbuseUserReport {
   reporter: ComponentSchemas.UserDetailed;
   targetUserId: string;
   targetUser: ComponentSchemas.UserDetailed;
-  assigneeId: unknown;
-  assignee?: unknown;
+  assigneeId: string | null;
+  assignee?: ComponentSchemas.UserDetailed | null;
   forwarded: boolean;
   moderationNote: string;
 }
@@ -940,8 +986,8 @@ export interface SystemWebhook {
   id: string;
   isActive: boolean;
   updatedAt: string;
-  latestSentAt: unknown;
-  latestStatus: unknown;
+  latestSentAt: string | null;
+  latestStatus: number | null;
   name: string;
   on: string[];
   url: string;
@@ -965,13 +1011,13 @@ export interface ChatMessage {
   createdAt: string;
   fromUserId: string;
   fromUser: ComponentSchemas.UserLite;
-  toUserId?: unknown;
-  toUser?: unknown;
-  toRoomId?: unknown;
-  toRoom?: unknown;
-  text?: unknown;
-  fileId?: unknown;
-  file?: unknown;
+  toUserId?: string | null;
+  toUser?: ComponentSchemas.UserLite | null;
+  toRoomId?: string | null;
+  toRoom?: ComponentSchemas.ChatRoom | null;
+  text?: string | null;
+  fileId?: string | null;
+  file?: ComponentSchemas.DriveFile | null;
   isRead?: boolean;
   reactions: {
   reaction: string;
@@ -984,14 +1030,14 @@ export interface ChatMessageLite {
   createdAt: string;
   fromUserId: string;
   fromUser?: Record<string, never>;
-  toUserId?: unknown;
-  toRoomId?: unknown;
-  text?: unknown;
-  fileId?: unknown;
-  file?: unknown;
+  toUserId?: string | null;
+  toRoomId?: string | null;
+  text?: string | null;
+  fileId?: string | null;
+  file?: ComponentSchemas.DriveFile | null;
   reactions: {
   reaction: string;
-  user?: unknown;
+  user?: ComponentSchemas.UserLite | null;
 }[];
 }
 
@@ -1000,9 +1046,9 @@ export interface ChatMessageLiteFor1on1 {
   createdAt: string;
   fromUserId: string;
   toUserId: string;
-  text?: unknown;
-  fileId?: unknown;
-  file?: unknown;
+  text?: string | null;
+  fileId?: string | null;
+  file?: ComponentSchemas.DriveFile | null;
   reactions: {
   reaction: string;
 }[];
@@ -1014,9 +1060,9 @@ export interface ChatMessageLiteForRoom {
   fromUserId: string;
   fromUser: ComponentSchemas.UserLite;
   toRoomId: string;
-  text?: unknown;
-  fileId?: unknown;
-  file?: unknown;
+  text?: string | null;
+  fileId?: string | null;
+  file?: ComponentSchemas.DriveFile | null;
   reactions: {
   reaction: string;
   user: ComponentSchemas.UserLite;

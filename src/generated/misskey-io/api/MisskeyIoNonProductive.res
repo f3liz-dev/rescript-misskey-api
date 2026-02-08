@@ -13,7 +13,7 @@ type postResetDbResponse = unit
  *
  * **Credential required**: *No*
  */
-let postResetDb = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetDbResponse> => {
+let postResetDb = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetDbResponse> => {
 
   fetch(
     ~url="/reset-db",
@@ -30,7 +30,7 @@ type postTestRequest = {
   required: bool,
   string: option<string>,
   default: option<string>,
-  nullableDefault: option<JSON.t>,
+  nullableDefault: option<string>,
   id: option<string>,
 }
 
@@ -38,7 +38,7 @@ let postTestRequestSchema = S.object(s => {
     required: s.field("required", S.bool),
     string: s.fieldOr("string", S.nullableAsOption(S.string), None),
     default: s.fieldOr("default", S.nullableAsOption(S.string), None),
-    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.json), None),
+    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.string), None),
     id: s.fieldOr("id", S.nullableAsOption(S.string), None),
   })
 
@@ -47,7 +47,7 @@ type postTestResponse = {
   required: bool,
   string: option<string>,
   default: option<string>,
-  nullableDefault: option<JSON.t>,
+  nullableDefault: option<string>,
 }
 
 let postTestResponseSchema = S.object(s => {
@@ -55,7 +55,7 @@ let postTestResponseSchema = S.object(s => {
     required: s.field("required", S.bool),
     string: s.fieldOr("string", S.nullableAsOption(S.string), None),
     default: s.fieldOr("default", S.nullableAsOption(S.string), None),
-    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.json), None),
+    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.string), None),
   })
 
 /**

@@ -190,48 +190,96 @@ let postNotesChildren = (~body: postNotesChildrenRequest, ~fetch: (~url: string,
   })
 }
 
+type postNotesCreateRequest_4 = {
+  mode: string,
+  hosts: array<string>,
+}
+
+type postNotesCreateRequest_3 = {
+  deleteAt: option<int>,
+  deleteAfter: option<int>,
+}
+
+type postNotesCreateRequest_2 = {
+  title: option<string>,
+  start: option<int>,
+  @as("end") end_: option<int>,
+  metadata: option<dict<JSON.t>>,
+}
+
+type postNotesCreateRequest_1 = {
+  choices: array<string>,
+  multiple: option<bool>,
+  expiresAt: option<int>,
+  expiredAfter: option<int>,
+}
+
 type postNotesCreateRequest = {
   visibility: option<string>,
   visibleUserIds: option<array<string>>,
-  cw: option<JSON.t>,
+  cw: option<string>,
   localOnly: option<bool>,
-  reactionAcceptance: option<JSON.t>,
+  reactionAcceptance: option<string>,
   disableRightClick: option<bool>,
   noExtractMentions: option<bool>,
   noExtractHashtags: option<bool>,
   noExtractEmojis: option<bool>,
-  replyId: option<JSON.t>,
-  renoteId: option<JSON.t>,
-  channelId: option<JSON.t>,
-  text: option<JSON.t>,
+  replyId: option<string>,
+  renoteId: option<string>,
+  channelId: option<string>,
+  text: option<string>,
   fileIds: option<array<string>>,
   mediaIds: option<array<string>>,
-  poll: option<JSON.t>,
-  event: option<JSON.t>,
-  scheduledDelete: option<JSON.t>,
-  deliveryTargets: option<JSON.t>,
+  poll: option<postNotesCreateRequest_1>,
+  event: option<postNotesCreateRequest_2>,
+  scheduledDelete: option<postNotesCreateRequest_3>,
+  deliveryTargets: option<postNotesCreateRequest_4>,
 }
+
+let postNotesCreateRequest_4Schema = S.object(s => {
+    mode: s.field("mode", S.string),
+    hosts: s.field("hosts", S.array(S.string)),
+  })
+
+let postNotesCreateRequest_3Schema = S.object(s => {
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
+    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
+
+let postNotesCreateRequest_2Schema = S.object(s => {
+    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
+    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
+    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postNotesCreateRequest_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
+    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
 
 let postNotesCreateRequestSchema = S.object(s => {
     visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
     visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.json), None),
+    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
     disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
     noExtractMentions: s.fieldOr("noExtractMentions", S.nullableAsOption(S.bool), None),
     noExtractHashtags: s.fieldOr("noExtractHashtags", S.nullableAsOption(S.bool), None),
     noExtractEmojis: s.fieldOr("noExtractEmojis", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.json), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
+    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)->S.max(3000)), None),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
     mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(S.json), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(postNotesCreateRequest_1Schema), None),
+    event: s.fieldOr("event", S.nullableAsOption(postNotesCreateRequest_2Schema), None),
+    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesCreateRequest_3Schema), None),
+    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesCreateRequest_4Schema), None),
   })
 
 type postNotesCreateResponse = {
@@ -275,7 +323,7 @@ let postNotesDraftsCountResponseSchema = S.float
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postNotesDraftsCount = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCountResponse> => {
+let postNotesDraftsCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCountResponse> => {
 
   fetch(
     ~url="/notes/drafts/count",
@@ -288,46 +336,94 @@ let postNotesDraftsCount = (~body as _, ~fetch: (~url: string, ~method_: string,
   })
 }
 
+type postNotesDraftsCreateRequest_4 = {
+  mode: string,
+  hosts: array<string>,
+}
+
+type postNotesDraftsCreateRequest_3 = {
+  deleteAt: option<int>,
+  deleteAfter: option<int>,
+}
+
+type postNotesDraftsCreateRequest_2 = {
+  title: option<string>,
+  start: option<int>,
+  @as("end") end_: option<int>,
+  metadata: option<dict<JSON.t>>,
+}
+
+type postNotesDraftsCreateRequest_1 = {
+  choices: array<string>,
+  multiple: option<bool>,
+  expiresAt: option<int>,
+  expiredAfter: option<int>,
+}
+
 type postNotesDraftsCreateRequest = {
   visibility: option<string>,
   visibleUserIds: option<array<string>>,
-  cw: option<JSON.t>,
-  hashtag: option<JSON.t>,
+  cw: option<string>,
+  hashtag: option<string>,
   localOnly: option<bool>,
-  reactionAcceptance: option<JSON.t>,
+  reactionAcceptance: option<string>,
   disableRightClick: option<bool>,
-  replyId: option<JSON.t>,
-  renoteId: option<JSON.t>,
-  channelId: option<JSON.t>,
-  text: option<JSON.t>,
+  replyId: option<string>,
+  renoteId: option<string>,
+  channelId: option<string>,
+  text: option<string>,
   fileIds: option<array<string>>,
-  poll: option<JSON.t>,
-  event: option<JSON.t>,
-  scheduledAt: option<JSON.t>,
+  poll: option<postNotesDraftsCreateRequest_1>,
+  event: option<postNotesDraftsCreateRequest_2>,
+  scheduledAt: option<int>,
   isActuallyScheduled: option<bool>,
-  scheduledDelete: option<JSON.t>,
-  deliveryTargets: option<JSON.t>,
+  scheduledDelete: option<postNotesDraftsCreateRequest_3>,
+  deliveryTargets: option<postNotesDraftsCreateRequest_4>,
 }
+
+let postNotesDraftsCreateRequest_4Schema = S.object(s => {
+    mode: s.field("mode", S.string),
+    hosts: s.field("hosts", S.array(S.string)),
+  })
+
+let postNotesDraftsCreateRequest_3Schema = S.object(s => {
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
+    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
+
+let postNotesDraftsCreateRequest_2Schema = S.object(s => {
+    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
+    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
+    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postNotesDraftsCreateRequest_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
+    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
 
 let postNotesDraftsCreateRequestSchema = S.object(s => {
     visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
     visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
-    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.json), None),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
+    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.string->S.max(200)), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.json), None),
+    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
     disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.json), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
+    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(0)->S.max(3000)), None),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(postNotesDraftsCreateRequest_1Schema), None),
+    event: s.fieldOr("event", S.nullableAsOption(postNotesDraftsCreateRequest_2Schema), None),
+    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
     isActuallyScheduled: s.fieldOr("isActuallyScheduled", S.nullableAsOption(S.bool), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(S.json), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(S.json), None),
+    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesDraftsCreateRequest_3Schema), None),
+    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesDraftsCreateRequest_4Schema), None),
   })
 
 type postNotesDraftsCreateResponse = {
@@ -394,7 +490,7 @@ type postNotesDraftsListRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  scheduled: option<JSON.t>,
+  scheduled: option<bool>,
 }
 
 let postNotesDraftsListRequestSchema = S.object(s => {
@@ -403,7 +499,7 @@ let postNotesDraftsListRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    scheduled: s.fieldOr("scheduled", S.nullableAsOption(S.json), None),
+    scheduled: s.fieldOr("scheduled", S.nullableAsOption(S.bool), None),
   })
 
 type postNotesDraftsListResponse = array<KokonectLinkComponentSchemas.NoteDraft.t>
@@ -430,48 +526,96 @@ let postNotesDraftsList = (~body: postNotesDraftsListRequest, ~fetch: (~url: str
   })
 }
 
+type postNotesDraftsUpdateRequest_4 = {
+  mode: string,
+  hosts: array<string>,
+}
+
+type postNotesDraftsUpdateRequest_3 = {
+  deleteAt: option<int>,
+  deleteAfter: option<int>,
+}
+
+type postNotesDraftsUpdateRequest_2 = {
+  title: option<string>,
+  start: option<int>,
+  @as("end") end_: option<int>,
+  metadata: option<dict<JSON.t>>,
+}
+
+type postNotesDraftsUpdateRequest_1 = {
+  choices: array<string>,
+  multiple: option<bool>,
+  expiresAt: option<int>,
+  expiredAfter: option<int>,
+}
+
 type postNotesDraftsUpdateRequest = {
   draftId: string,
   visibility: option<string>,
   visibleUserIds: option<array<string>>,
-  cw: option<JSON.t>,
+  cw: option<string>,
   disableRightClick: option<bool>,
-  hashtag: option<JSON.t>,
+  hashtag: option<string>,
   localOnly: option<bool>,
-  reactionAcceptance: option<JSON.t>,
-  replyId: option<JSON.t>,
-  renoteId: option<JSON.t>,
-  channelId: option<JSON.t>,
-  text: option<JSON.t>,
+  reactionAcceptance: option<string>,
+  replyId: option<string>,
+  renoteId: option<string>,
+  channelId: option<string>,
+  text: option<string>,
   fileIds: option<array<string>>,
-  poll: option<JSON.t>,
-  scheduledAt: option<JSON.t>,
+  poll: option<postNotesDraftsUpdateRequest_1>,
+  scheduledAt: option<int>,
   isActuallyScheduled: option<bool>,
-  event: option<JSON.t>,
-  scheduledDelete: option<JSON.t>,
-  deliveryTargets: option<JSON.t>,
+  event: option<postNotesDraftsUpdateRequest_2>,
+  scheduledDelete: option<postNotesDraftsUpdateRequest_3>,
+  deliveryTargets: option<postNotesDraftsUpdateRequest_4>,
 }
+
+let postNotesDraftsUpdateRequest_4Schema = S.object(s => {
+    mode: s.field("mode", S.string),
+    hosts: s.field("hosts", S.array(S.string)),
+  })
+
+let postNotesDraftsUpdateRequest_3Schema = S.object(s => {
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
+    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
+
+let postNotesDraftsUpdateRequest_2Schema = S.object(s => {
+    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
+    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
+    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postNotesDraftsUpdateRequest_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
+    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
 
 let postNotesDraftsUpdateRequestSchema = S.object(s => {
     draftId: s.field("draftId", S.string),
     visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
     visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.json), None),
+    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.string->S.max(200)), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.json), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.json), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
+    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
+    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(0)->S.max(3000)), None),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(postNotesDraftsUpdateRequest_1Schema), None),
+    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
     isActuallyScheduled: s.fieldOr("isActuallyScheduled", S.nullableAsOption(S.bool), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(S.json), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(S.json), None),
+    event: s.fieldOr("event", S.nullableAsOption(postNotesDraftsUpdateRequest_2Schema), None),
+    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesDraftsUpdateRequest_3Schema), None),
+    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesDraftsUpdateRequest_4Schema), None),
   })
 
 type postNotesDraftsUpdateResponse = {
@@ -503,31 +647,31 @@ let postNotesDraftsUpdate = (~body: postNotesDraftsUpdateRequest, ~fetch: (~url:
 }
 
 type postNotesEventsSearchRequest = {
-  query: option<JSON.t>,
+  query: option<string>,
   sinceId: option<string>,
   untilId: option<string>,
   limit: option<int>,
   origin: option<string>,
   offset: option<int>,
   users: option<JSON.t>,
-  sinceDate: option<JSON.t>,
-  untilDate: option<JSON.t>,
+  sinceDate: option<int>,
+  untilDate: option<int>,
   filters: option<JSON.t>,
-  sortBy: option<JSON.t>,
+  sortBy: option<string>,
 }
 
 let postNotesEventsSearchRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.json), None),
+    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     users: s.fieldOr("users", S.nullableAsOption(S.json), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.json), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.json), None),
+    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
+    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
     filters: s.fieldOr("filters", S.nullableAsOption(S.json), None),
-    sortBy: s.fieldOr("sortBy", S.nullableAsOption(S.json), None),
+    sortBy: s.fieldOr("sortBy", S.nullableAsOption(S.string), None),
   })
 
 type postNotesEventsSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -800,12 +944,12 @@ let postNotesPollsTranslateRequestSchema = S.object(s => {
 
 type postNotesPollsTranslateResponse = {
   sourceLang: string,
-  text: option<array<JSON.t>>,
+  text: option<array<option<string>>>,
 }
 
 let postNotesPollsTranslateResponseSchema = S.object(s => {
     sourceLang: s.field("sourceLang", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.array(S.json)), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.array(S.nullableAsOption(S.string))), None),
   })
 
 /**
@@ -830,7 +974,7 @@ let postNotesPollsTranslate = (~body: postNotesPollsTranslateRequest, ~fetch: (~
 
 type getNotesReactionsRequest = {
   noteId: string,
-  @as("type") type_: option<JSON.t>,
+  @as("type") type_: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
@@ -840,7 +984,7 @@ type getNotesReactionsRequest = {
 
 let getNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
@@ -874,7 +1018,7 @@ let getNotesReactions = (~body: getNotesReactionsRequest, ~fetch: (~url: string,
 
 type postNotesReactionsRequest = {
   noteId: string,
-  @as("type") type_: option<JSON.t>,
+  @as("type") type_: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
@@ -884,7 +1028,7 @@ type postNotesReactionsRequest = {
 
 let postNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
@@ -1009,8 +1153,8 @@ type postNotesSearchRequest = {
   limit: option<int>,
   offset: option<int>,
   host: option<string>,
-  userId: option<JSON.t>,
-  channelId: option<JSON.t>,
+  userId: option<string>,
+  channelId: option<string>,
 }
 
 let postNotesSearchRequestSchema = S.object(s => {
@@ -1022,8 +1166,8 @@ let postNotesSearchRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
   })
 
 type postNotesSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1051,10 +1195,10 @@ let postNotesSearch = (~body: postNotesSearchRequest, ~fetch: (~url: string, ~me
 }
 
 type postNotesSearchByTagRequest = {
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
+  reply: option<bool>,
+  renote: option<bool>,
   withFiles: option<bool>,
-  poll: option<JSON.t>,
+  poll: option<bool>,
   sinceId: option<string>,
   untilId: option<string>,
   sinceDate: option<int>,
@@ -1063,10 +1207,10 @@ type postNotesSearchByTagRequest = {
 }
 
 let postNotesSearchByTagRequestSchema = S.object(s => {
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
     withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
@@ -1138,17 +1282,21 @@ let postNotesShowPartialBulkRequestSchema = S.object(s => {
     noteIds: s.field("noteIds", S.array(S.string)),
   })
 
-type postNotesShowPartialBulkResponse = array<{
+type postNotesShowPartialBulkResponse_1 = {
   id: string,
-  reactions: JSON.t,
-  reactionEmojis: JSON.t,
-}>
+  reactions: dict<JSON.t>,
+  reactionEmojis: dict<JSON.t>,
+}
 
-let postNotesShowPartialBulkResponseSchema = S.array(S.object(s => {
+type postNotesShowPartialBulkResponse = array<postNotesShowPartialBulkResponse_1>
+
+let postNotesShowPartialBulkResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
-    reactions: s.field("reactions", S.json),
-    reactionEmojis: s.field("reactionEmojis", S.json),
-  }))
+    reactions: s.field("reactions", S.dict(S.json)),
+    reactionEmojis: s.field("reactionEmojis", S.dict(S.json)),
+  })
+
+let postNotesShowPartialBulkResponseSchema = S.array(postNotesShowPartialBulkResponse_1Schema)
 
 /**
  * notes/show-partial-bulk
@@ -1264,28 +1412,66 @@ let postNotesTimeline = (~body: postNotesTimelineRequest, ~fetch: (~url: string,
   })
 }
 
+type postNotesUpdateRequest_3 = {
+  deleteAt: option<int>,
+  deleteAfter: option<int>,
+}
+
+type postNotesUpdateRequest_2 = {
+  title: option<string>,
+  start: option<int>,
+  @as("end") end_: option<int>,
+  metadata: option<dict<JSON.t>>,
+}
+
+type postNotesUpdateRequest_1 = {
+  choices: array<string>,
+  multiple: option<bool>,
+  expiresAt: option<int>,
+  expiredAfter: option<int>,
+}
+
 type postNotesUpdateRequest = {
   noteId: string,
   text: string,
   fileIds: option<array<string>>,
   mediaIds: option<array<string>>,
-  poll: option<JSON.t>,
-  event: option<JSON.t>,
-  cw: JSON.t,
+  poll: option<postNotesUpdateRequest_1>,
+  event: option<postNotesUpdateRequest_2>,
+  cw: option<string>,
   disableRightClick: option<bool>,
-  scheduledDelete: option<JSON.t>,
+  scheduledDelete: option<postNotesUpdateRequest_3>,
 }
+
+let postNotesUpdateRequest_3Schema = S.object(s => {
+    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
+    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
+
+let postNotesUpdateRequest_2Schema = S.object(s => {
+    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
+    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
+    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postNotesUpdateRequest_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
+    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
 
 let postNotesUpdateRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
     text: s.field("text", S.string->S.min(1)->S.max(3000)),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
     mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.json), None),
-    cw: s.field("cw", S.json),
+    poll: s.fieldOr("poll", S.nullableAsOption(postNotesUpdateRequest_1Schema), None),
+    event: s.fieldOr("event", S.nullableAsOption(postNotesUpdateRequest_2Schema), None),
+    cw: s.field("cw", S.nullableAsOption(S.string->S.max(100))),
     disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(S.json), None),
+    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesUpdateRequest_3Schema), None),
   })
 
 type postNotesUpdateResponse = unit

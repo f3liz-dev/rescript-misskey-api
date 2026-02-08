@@ -10,9 +10,9 @@ type postDriveFilesRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  folderId: option<JSON.t>,
-  @as("type") type_: option<JSON.t>,
-  sort: option<JSON.t>,
+  folderId: option<string>,
+  @as("type") type_: option<string>,
+  sort: option<string>,
 }
 
 let postDriveFilesRequestSchema = S.object(s => {
@@ -21,9 +21,9 @@ let postDriveFilesRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFilesResponse = array<KokonectLinkComponentSchemas.DriveFile.t>
@@ -135,18 +135,18 @@ let postDriveFilesAttachedNotes = (~body: postDriveFilesAttachedNotesRequest, ~f
 }
 
 type postDriveFilesCreateRequest = {
-  folderId: option<JSON.t>,
-  name: option<JSON.t>,
-  comment: option<JSON.t>,
+  folderId: option<string>,
+  name: option<string>,
+  comment: option<string>,
   isSensitive: option<bool>,
   force: option<bool>,
   file: string,
 }
 
 let postDriveFilesCreateRequestSchema = S.object(s => {
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.json), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
     force: s.fieldOr("force", S.nullableAsOption(S.bool), None),
     file: s.field("file", S.string),
@@ -178,12 +178,12 @@ let postDriveFilesCreate = (~body: postDriveFilesCreateRequest, ~fetch: (~url: s
 
 type postDriveFilesMoveBulkRequest = {
   fileIds: array<string>,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
 }
 
 let postDriveFilesMoveBulkRequestSchema = S.object(s => {
     fileIds: s.field("fileIds", S.array(S.string)),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFilesMoveBulkResponse = unit
@@ -208,20 +208,17 @@ let postDriveFilesMoveBulk = (~body: postDriveFilesMoveBulkRequest, ~fetch: (~ur
   })
 }
 
-type postDriveFilesShowRequest = [
-  | Object({
-  fileId: string,
-})
-  | Object({
+type postDriveFilesShowRequest_1 = {
   url: string,
-})
-]
+}
 
-let postDriveFilesShowRequestSchema = S.union([S.object(s => {
-    fileId: s.field("fileId", S.string),
-  }), S.object(s => {
+type postDriveFilesShowRequest = postDriveFilesShowRequest_1
+
+let postDriveFilesShowRequest_1Schema = S.object(s => {
     url: s.field("url", S.string),
-  })])
+  })
+
+let postDriveFilesShowRequestSchema = postDriveFilesShowRequest_1Schema
 
 type postDriveFilesShowResponse = KokonectLinkComponentSchemas.DriveFile.t
 
@@ -249,18 +246,18 @@ let postDriveFilesShow = (~body: postDriveFilesShowRequest, ~fetch: (~url: strin
 
 type postDriveFilesUpdateRequest = {
   fileId: string,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
   name: option<string>,
   isSensitive: option<bool>,
-  comment: option<JSON.t>,
+  comment: option<string>,
 }
 
 let postDriveFilesUpdateRequestSchema = S.object(s => {
     fileId: s.field("fileId", S.string),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
     name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.json), None),
+    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
   })
 
 type postDriveFilesUpdateResponse = KokonectLinkComponentSchemas.DriveFile.t
@@ -293,7 +290,7 @@ type postDriveFoldersRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  folderId: option<JSON.t>,
+  folderId: option<string>,
 }
 
 let postDriveFoldersRequestSchema = S.object(s => {
@@ -302,7 +299,7 @@ let postDriveFoldersRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.json), None),
+    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersResponse = array<KokonectLinkComponentSchemas.DriveFolder.t>
@@ -331,12 +328,12 @@ let postDriveFolders = (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~
 
 type postDriveFoldersCreateRequest = {
   name: option<string>,
-  parentId: option<JSON.t>,
+  parentId: option<string>,
 }
 
 let postDriveFoldersCreateRequestSchema = S.object(s => {
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.json), None),
+    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersCreateResponse = KokonectLinkComponentSchemas.DriveFolder.t
@@ -398,13 +395,13 @@ let postDriveFoldersShow = (~body: postDriveFoldersShowRequest, ~fetch: (~url: s
 type postDriveFoldersUpdateRequest = {
   folderId: string,
   name: option<string>,
-  parentId: option<JSON.t>,
+  parentId: option<string>,
 }
 
 let postDriveFoldersUpdateRequestSchema = S.object(s => {
     folderId: s.field("folderId", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.json), None),
+    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
   })
 
 type postDriveFoldersUpdateResponse = KokonectLinkComponentSchemas.DriveFolder.t

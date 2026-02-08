@@ -12,7 +12,7 @@ type postChannelsTimelineRequest = {
   sinceDate: option<int>,
   untilDate: option<int>,
   allowPartial: option<bool>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postChannelsTimelineRequestSchema = S.object(s => {
@@ -23,7 +23,7 @@ let postChannelsTimelineRequestSchema = S.object(s => {
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
     allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postChannelsTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -170,47 +170,61 @@ let postNotesConversation = (~body: postNotesConversationRequest, ~fetch: (~url:
   })
 }
 
+type postNotesCreateRequest_1 = {
+  choices: array<string>,
+  multiple: option<bool>,
+  expiresAt: option<int>,
+  expiredAfter: option<int>,
+}
+
 type postNotesCreateRequest = {
   visibility: option<string>,
   visibleUserIds: option<array<string>>,
-  cw: option<JSON.t>,
+  cw: option<string>,
   localOnly: option<bool>,
-  dimension: option<JSON.t>,
-  reactionAcceptance: option<JSON.t>,
+  dimension: option<int>,
+  reactionAcceptance: option<string>,
   noExtractMentions: option<bool>,
   noExtractHashtags: option<bool>,
   noExtractEmojis: option<bool>,
-  replyId: option<JSON.t>,
-  renoteId: option<JSON.t>,
-  channelId: option<JSON.t>,
-  lang: option<JSON.t>,
-  text: option<JSON.t>,
+  replyId: option<string>,
+  renoteId: option<string>,
+  channelId: option<string>,
+  lang: option<string>,
+  text: option<string>,
   fileIds: option<array<string>>,
   mediaIds: option<array<string>>,
-  poll: option<JSON.t>,
-  scheduledAt: option<JSON.t>,
+  poll: option<postNotesCreateRequest_1>,
+  scheduledAt: option<int>,
   noCreatedNote: option<bool>,
 }
+
+let postNotesCreateRequest_1Schema = S.object(s => {
+    choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
+    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+  })
 
 let postNotesCreateRequestSchema = S.object(s => {
     visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
     visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.json), None),
+    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
     noExtractMentions: s.fieldOr("noExtractMentions", S.nullableAsOption(S.bool), None),
     noExtractHashtags: s.fieldOr("noExtractHashtags", S.nullableAsOption(S.bool), None),
     noExtractEmojis: s.fieldOr("noExtractEmojis", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.json), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.json), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
+    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)->S.max(3000)), None),
     fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
     mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(postNotesCreateRequest_1Schema), None),
+    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
     noCreatedNote: s.fieldOr("noCreatedNote", S.nullableAsOption(S.bool), None),
   })
 
@@ -335,13 +349,13 @@ let postNotesFavoritesDelete = (~body: postNotesFavoritesDeleteRequest, ~fetch: 
 type getNotesFeaturedRequest = {
   limit: option<int>,
   untilId: option<string>,
-  channelId: option<JSON.t>,
+  channelId: option<string>,
 }
 
 let getNotesFeaturedRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
   })
 
 type getNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -371,13 +385,13 @@ let getNotesFeatured = (~body: getNotesFeaturedRequest, ~fetch: (~url: string, ~
 type postNotesFeaturedRequest = {
   limit: option<int>,
   untilId: option<string>,
-  channelId: option<JSON.t>,
+  channelId: option<string>,
 }
 
 let postNotesFeaturedRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
   })
 
 type postNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -412,7 +426,7 @@ type postNotesGlobalTimelineRequest = {
   untilId: option<string>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postNotesGlobalTimelineRequestSchema = S.object(s => {
@@ -423,7 +437,7 @@ let postNotesGlobalTimelineRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postNotesGlobalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -463,7 +477,7 @@ type postNotesHybridTimelineRequest = {
   withFiles: option<bool>,
   withRenotes: option<bool>,
   withReplies: option<bool>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postNotesHybridTimelineRequestSchema = S.object(s => {
@@ -479,7 +493,7 @@ let postNotesHybridTimelineRequestSchema = S.object(s => {
     withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
     withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
     withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postNotesHybridTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -516,7 +530,7 @@ type postNotesLocalTimelineRequest = {
   allowPartial: option<bool>,
   sinceDate: option<int>,
   untilDate: option<int>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postNotesLocalTimelineRequestSchema = S.object(s => {
@@ -529,7 +543,7 @@ let postNotesLocalTimelineRequestSchema = S.object(s => {
     allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postNotesLocalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -666,7 +680,7 @@ let postNotesPollsVote = (~body: postNotesPollsVoteRequest, ~fetch: (~url: strin
 
 type getNotesReactionsRequest = {
   noteId: string,
-  @as("type") type_: option<JSON.t>,
+  @as("type") type_: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
@@ -674,7 +688,7 @@ type getNotesReactionsRequest = {
 
 let getNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
@@ -706,7 +720,7 @@ let getNotesReactions = (~body: getNotesReactionsRequest, ~fetch: (~url: string,
 
 type postNotesReactionsRequest = {
   noteId: string,
-  @as("type") type_: option<JSON.t>,
+  @as("type") type_: option<string>,
   limit: option<int>,
   sinceId: option<string>,
   untilId: option<string>,
@@ -714,7 +728,7 @@ type postNotesReactionsRequest = {
 
 let postNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.json), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
@@ -891,8 +905,8 @@ type postNotesSearchRequest = {
   limit: option<int>,
   offset: option<int>,
   host: option<string>,
-  userId: option<JSON.t>,
-  channelId: option<JSON.t>,
+  userId: option<string>,
+  channelId: option<string>,
 }
 
 let postNotesSearchRequestSchema = S.object(s => {
@@ -902,8 +916,8 @@ let postNotesSearchRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
     host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
   })
 
 type postNotesSearchResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -931,11 +945,11 @@ let postNotesSearch = (~body: postNotesSearchRequest, ~fetch: (~url: string, ~me
 }
 
 type postNotesSearchByTagRequest = {
-  local: option<JSON.t>,
-  reply: option<JSON.t>,
-  renote: option<JSON.t>,
+  local: option<bool>,
+  reply: option<bool>,
+  renote: option<bool>,
   withFiles: option<bool>,
-  poll: option<JSON.t>,
+  poll: option<bool>,
   sinceId: option<string>,
   untilId: option<string>,
   limit: option<int>,
@@ -944,11 +958,11 @@ type postNotesSearchByTagRequest = {
 }
 
 let postNotesSearchByTagRequestSchema = S.object(s => {
-    local: s.fieldOr("local", S.nullableAsOption(S.json), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.json), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.json), None),
+    local: s.fieldOr("local", S.nullableAsOption(S.bool), None),
+    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
+    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
     withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.json), None),
+    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
@@ -1122,7 +1136,7 @@ type postNotesTimelineRequest = {
   includeLocalRenotes: option<bool>,
   withFiles: option<bool>,
   withRenotes: option<bool>,
-  dimension: option<JSON.t>,
+  dimension: option<int>,
 }
 
 let postNotesTimelineRequestSchema = S.object(s => {
@@ -1137,7 +1151,7 @@ let postNotesTimelineRequestSchema = S.object(s => {
     includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
     withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
     withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.json), None),
+    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
   })
 
 type postNotesTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>

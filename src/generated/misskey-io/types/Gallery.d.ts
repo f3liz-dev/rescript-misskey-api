@@ -25,7 +25,7 @@ export type PostGalleryPostsResponse = ComponentSchemas.GalleryPost[];
 
 export interface PostGalleryPostsCreateRequest {
   title: string;
-  description?: unknown;
+  description?: string | null;
   fileIds: string[];
   isSensitive?: boolean;
 }
@@ -56,7 +56,7 @@ export type PostGalleryPostsUnlikeResponse = void;
 export interface PostGalleryPostsUpdateRequest {
   postId: string;
   title?: string;
-  description?: unknown;
+  description?: string | null;
   fileIds?: string[];
   isSensitive?: boolean;
 }

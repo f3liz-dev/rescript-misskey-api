@@ -13,7 +13,7 @@ export interface PostChannelsTimelineRequest {
   sinceDate?: number;
   untilDate?: number;
   allowPartial?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostChannelsTimelineResponse = ComponentSchemas.Note[];
@@ -51,22 +51,27 @@ export type PostNotesConversationResponse = ComponentSchemas.Note[];
 export interface PostNotesCreateRequest {
   visibility?: string;
   visibleUserIds?: string[];
-  cw?: unknown;
+  cw?: string | null;
   localOnly?: boolean;
-  dimension?: unknown;
-  reactionAcceptance?: unknown;
+  dimension?: number | null;
+  reactionAcceptance?: string | null;
   noExtractMentions?: boolean;
   noExtractHashtags?: boolean;
   noExtractEmojis?: boolean;
-  replyId?: unknown;
-  renoteId?: unknown;
-  channelId?: unknown;
-  lang?: unknown;
-  text?: unknown;
+  replyId?: string | null;
+  renoteId?: string | null;
+  channelId?: string | null;
+  lang?: string | null;
+  text?: string | null;
   fileIds?: string[];
   mediaIds?: string[];
-  poll?: unknown;
-  scheduledAt?: unknown;
+  poll?: {
+  choices: string[];
+  multiple?: boolean;
+  expiresAt?: number | null;
+  expiredAfter?: number | null;
+} | null;
+  scheduledAt?: number | null;
   noCreatedNote?: boolean;
 }
 /** OK (with results) */
@@ -92,7 +97,7 @@ export type PostNotesFavoritesDeleteResponse = void;
 export interface GetNotesFeaturedRequest {
   limit?: number;
   untilId?: string;
-  channelId?: unknown;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type GetNotesFeaturedResponse = ComponentSchemas.Note[];
@@ -100,7 +105,7 @@ export type GetNotesFeaturedResponse = ComponentSchemas.Note[];
 export interface PostNotesFeaturedRequest {
   limit?: number;
   untilId?: string;
-  channelId?: unknown;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type PostNotesFeaturedResponse = ComponentSchemas.Note[];
@@ -113,7 +118,7 @@ export interface PostNotesGlobalTimelineRequest {
   untilId?: string;
   sinceDate?: number;
   untilDate?: number;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesGlobalTimelineResponse = ComponentSchemas.Note[];
@@ -131,7 +136,7 @@ export interface PostNotesHybridTimelineRequest {
   withFiles?: boolean;
   withRenotes?: boolean;
   withReplies?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesHybridTimelineResponse = ComponentSchemas.Note[];
@@ -146,7 +151,7 @@ export interface PostNotesLocalTimelineRequest {
   allowPartial?: boolean;
   sinceDate?: number;
   untilDate?: number;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesLocalTimelineResponse = ComponentSchemas.Note[];
@@ -177,7 +182,7 @@ export type PostNotesPollsVoteResponse = void;
 
 export interface GetNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -187,7 +192,7 @@ export type GetNotesReactionsResponse = ComponentSchemas.NoteReaction[];
 
 export interface PostNotesReactionsRequest {
   noteId: string;
-  type?: unknown;
+  type?: string | null;
   limit?: number;
   sinceId?: string;
   untilId?: string;
@@ -232,18 +237,18 @@ export interface PostNotesSearchRequest {
   limit?: number;
   offset?: number;
   host?: string;
-  userId?: unknown;
-  channelId?: unknown;
+  userId?: string | null;
+  channelId?: string | null;
 }
 /** OK (with results) */
 export type PostNotesSearchResponse = ComponentSchemas.Note[];
 
 export interface PostNotesSearchByTagRequest {
-  local?: unknown;
-  reply?: unknown;
-  renote?: unknown;
+  local?: boolean | null;
+  reply?: boolean | null;
+  renote?: boolean | null;
   withFiles?: boolean;
-  poll?: unknown;
+  poll?: boolean | null;
   sinceId?: string;
   untilId?: string;
   limit?: number;
@@ -290,7 +295,7 @@ export interface PostNotesTimelineRequest {
   includeLocalRenotes?: boolean;
   withFiles?: boolean;
   withRenotes?: boolean;
-  dimension?: unknown;
+  dimension?: number | null;
 }
 /** OK (with results) */
 export type PostNotesTimelineResponse = ComponentSchemas.Note[];

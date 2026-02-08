@@ -56,21 +56,25 @@ let postUsersListsGetMembershipsRequestSchema = S.object(s => {
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
   })
 
-type postUsersListsGetMembershipsResponse = array<{
+type postUsersListsGetMembershipsResponse_1 = {
   id: string,
   createdAt: string,
   userId: string,
   user: KokonectLinkComponentSchemas.UserLite.t,
   withReplies: bool,
-}>
+}
 
-let postUsersListsGetMembershipsResponseSchema = S.array(S.object(s => {
+type postUsersListsGetMembershipsResponse = array<postUsersListsGetMembershipsResponse_1>
+
+let postUsersListsGetMembershipsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     userId: s.field("userId", S.string),
     user: s.field("user", KokonectLinkComponentSchemas.UserLite.schema),
     withReplies: s.field("withReplies", S.bool),
-  }))
+  })
+
+let postUsersListsGetMembershipsResponseSchema = S.array(postUsersListsGetMembershipsResponse_1Schema)
 
 /**
  * users/lists/get-memberships

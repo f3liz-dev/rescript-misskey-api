@@ -8,7 +8,7 @@ import * as ComponentSchemas from './ComponentSchemas';
 export interface PostAntennasCreateRequest {
   name: string;
   src: string;
-  userListId?: unknown;
+  userListId?: string | null;
   keywords: string[][];
   excludeKeywords: string[][];
   users: string[];
@@ -51,7 +51,7 @@ export interface PostAntennasUpdateRequest {
   antennaId: string;
   name?: string;
   src?: string;
-  userListId?: unknown;
+  userListId?: string | null;
   keywords?: string[][];
   excludeKeywords?: string[][];
   users?: string[];
@@ -68,8 +68,8 @@ export type PostAntennasUpdateResponse = ComponentSchemas.Antenna;
 export interface PostAntennasCreateRequest {
   name: string;
   src: string;
-  userListId?: unknown;
-  userGroupId?: unknown;
+  userListId?: string | null;
+  userGroupId?: string | null;
   keywords: string[][];
   excludeKeywords: string[][];
   users: string[];
@@ -93,8 +93,8 @@ export interface PostAntennasUpdateRequest {
   antennaId: string;
   name?: string;
   src?: string;
-  userListId?: unknown;
-  userGroupId?: unknown;
+  userListId?: string | null;
+  userGroupId?: string | null;
   keywords?: string[][];
   excludeKeywords?: string[][];
   users?: string[];

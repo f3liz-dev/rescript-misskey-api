@@ -4,22 +4,26 @@
 
 
 
+type postAdminSystemWebhookTestRequest_1 = {
+  url: option<string>,
+  secret: option<string>,
+}
+
 type postAdminSystemWebhookTestRequest = {
   webhookId: string,
   @as("type") type_: string,
-  override: option<{
-  url: option<string>,
-  secret: option<string>,
-}>,
+  override: option<postAdminSystemWebhookTestRequest_1>,
 }
+
+let postAdminSystemWebhookTestRequest_1Schema = S.object(s => {
+    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+  })
 
 let postAdminSystemWebhookTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-  })), None),
+    override: s.fieldOr("override", S.nullableAsOption(postAdminSystemWebhookTestRequest_1Schema), None),
   })
 
 type postAdminSystemWebhookTestResponse = unit
@@ -77,22 +81,26 @@ let postIWebhooksShow = (~body: postIWebhooksShowRequest, ~fetch: (~url: string,
   })
 }
 
+type postIWebhooksTestRequest_1 = {
+  url: option<string>,
+  secret: option<string>,
+}
+
 type postIWebhooksTestRequest = {
   webhookId: string,
   @as("type") type_: string,
-  override: option<{
-  url: option<string>,
-  secret: option<string>,
-}>,
+  override: option<postIWebhooksTestRequest_1>,
 }
+
+let postIWebhooksTestRequest_1Schema = S.object(s => {
+    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
+    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+  })
 
 let postIWebhooksTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-  })), None),
+    override: s.fieldOr("override", S.nullableAsOption(postIWebhooksTestRequest_1Schema), None),
   })
 
 type postIWebhooksTestResponse = unit

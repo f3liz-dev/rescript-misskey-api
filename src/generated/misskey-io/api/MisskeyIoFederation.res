@@ -12,9 +12,9 @@ let postApGetRequestSchema = S.object(s => {
     uri: s.field("uri", S.string),
   })
 
-type postApGetResponse = JSON.t
+type postApGetResponse = dict<JSON.t>
 
-let postApGetResponseSchema = S.json
+let postApGetResponseSchema = S.dict(S.json)
 
 /**
  * ap/get
@@ -44,24 +44,19 @@ let postApShowRequestSchema = S.object(s => {
     uri: s.field("uri", S.string),
   })
 
-type postApShowResponse = [
-  | Object({
-  @as("type") type_: string,
-  @as("object") object_: MisskeyIoComponentSchemas.UserDetailedNotMe.t,
-})
-  | Object({
+type postApShowResponse_1 = {
   @as("type") type_: string,
   @as("object") object_: MisskeyIoComponentSchemas.Note.t,
-})
-]
+}
 
-let postApShowResponseSchema = S.union([S.object(s => {
-    type_: s.field("type", S.string),
-    object_: s.field("object", MisskeyIoComponentSchemas.UserDetailedNotMe.schema),
-  }), S.object(s => {
+type postApShowResponse = postApShowResponse_1
+
+let postApShowResponse_1Schema = S.object(s => {
     type_: s.field("type", S.string),
     object_: s.field("object", MisskeyIoComponentSchemas.Note.schema),
-  })])
+  })
+
+let postApShowResponseSchema = postApShowResponse_1Schema
 
 /**
  * ap/show
@@ -160,31 +155,31 @@ let postFederationFollowing = (~body: postFederationFollowingRequest, ~fetch: (~
 }
 
 type getFederationInstancesRequest = {
-  host: option<JSON.t>,
-  blocked: option<JSON.t>,
-  notResponding: option<JSON.t>,
-  suspended: option<JSON.t>,
-  silenced: option<JSON.t>,
-  federating: option<JSON.t>,
-  subscribing: option<JSON.t>,
-  publishing: option<JSON.t>,
+  host: option<string>,
+  blocked: option<bool>,
+  notResponding: option<bool>,
+  suspended: option<bool>,
+  silenced: option<bool>,
+  federating: option<bool>,
+  subscribing: option<bool>,
+  publishing: option<bool>,
   limit: option<int>,
   offset: option<int>,
-  sort: option<JSON.t>,
+  sort: option<string>,
 }
 
 let getFederationInstancesRequestSchema = S.object(s => {
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.json), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.json), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.json), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.json), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.json), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.json), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
+    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
+    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
+    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
+    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
+    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
+    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(30)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.json), None),
+    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
 type getFederationInstancesResponse = array<MisskeyIoComponentSchemas.FederationInstance.t>
@@ -212,31 +207,31 @@ let getFederationInstances = (~body: getFederationInstancesRequest, ~fetch: (~ur
 }
 
 type postFederationInstancesRequest = {
-  host: option<JSON.t>,
-  blocked: option<JSON.t>,
-  notResponding: option<JSON.t>,
-  suspended: option<JSON.t>,
-  silenced: option<JSON.t>,
-  federating: option<JSON.t>,
-  subscribing: option<JSON.t>,
-  publishing: option<JSON.t>,
+  host: option<string>,
+  blocked: option<bool>,
+  notResponding: option<bool>,
+  suspended: option<bool>,
+  silenced: option<bool>,
+  federating: option<bool>,
+  subscribing: option<bool>,
+  publishing: option<bool>,
   limit: option<int>,
   offset: option<int>,
-  sort: option<JSON.t>,
+  sort: option<string>,
 }
 
 let postFederationInstancesRequestSchema = S.object(s => {
-    host: s.fieldOr("host", S.nullableAsOption(S.json), None),
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.json), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.json), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.json), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.json), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.json), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.json), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.json), None),
+    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
+    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
+    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
+    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
+    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
+    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
+    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(30)), None),
     offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.json), None),
+    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
 type postFederationInstancesResponse = array<MisskeyIoComponentSchemas.FederationInstance.t>
@@ -271,9 +266,9 @@ let postFederationShowInstanceRequestSchema = S.object(s => {
     host: s.field("host", S.string),
   })
 
-type postFederationShowInstanceResponse = JSON.t
+type postFederationShowInstanceResponse = option<MisskeyIoComponentSchemas.FederationInstance.t>
 
-let postFederationShowInstanceResponseSchema = S.json
+let postFederationShowInstanceResponseSchema = S.nullableAsOption(MisskeyIoComponentSchemas.FederationInstance.schema)
 
 /**
  * federation/show-instance

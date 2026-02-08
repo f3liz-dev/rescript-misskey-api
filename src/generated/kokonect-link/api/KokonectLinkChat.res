@@ -39,13 +39,13 @@ let postChatHistory = (~body: postChatHistoryRequest, ~fetch: (~url: string, ~me
 }
 
 type postChatMessagesCreateToRoomRequest = {
-  text: option<JSON.t>,
+  text: option<string>,
   fileId: option<string>,
   toRoomId: string,
 }
 
 let postChatMessagesCreateToRoomRequestSchema = S.object(s => {
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.max(2000)), None),
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     toRoomId: s.field("toRoomId", S.string),
   })
@@ -75,13 +75,13 @@ let postChatMessagesCreateToRoom = (~body: postChatMessagesCreateToRoomRequest, 
 }
 
 type postChatMessagesCreateToUserRequest = {
-  text: option<JSON.t>,
+  text: option<string>,
   fileId: option<string>,
   toUserId: string,
 }
 
 let postChatMessagesCreateToUserRequestSchema = S.object(s => {
-    text: s.fieldOr("text", S.nullableAsOption(S.json), None),
+    text: s.fieldOr("text", S.nullableAsOption(S.string->S.max(2000)), None),
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     toUserId: s.field("toUserId", S.string),
   })
@@ -217,15 +217,15 @@ let postChatMessagesRoomTimeline = (~body: postChatMessagesRoomTimelineRequest, 
 type postChatMessagesSearchRequest = {
   query: string,
   limit: option<int>,
-  userId: option<JSON.t>,
-  roomId: option<JSON.t>,
+  userId: option<string>,
+  roomId: option<string>,
 }
 
 let postChatMessagesSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string->S.min(1)->S.max(256)),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
-    roomId: s.fieldOr("roomId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    roomId: s.fieldOr("roomId", S.nullableAsOption(S.string), None),
   })
 
 type postChatMessagesSearchResponse = array<KokonectLinkComponentSchemas.ChatMessage.t>
@@ -367,7 +367,7 @@ type postChatReadAllResponse = unit
  *
  * **Credential required**: *Yes* / **Permission**: *write:chat*
  */
-let postChatReadAll = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatReadAllResponse> => {
+let postChatReadAll = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatReadAllResponse> => {
 
   fetch(
     ~url="/chat/read-all",

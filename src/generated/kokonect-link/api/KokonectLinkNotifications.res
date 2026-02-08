@@ -6,14 +6,14 @@
 
 type postNotificationsCreateRequest = {
   body: string,
-  header: option<JSON.t>,
-  icon: option<JSON.t>,
+  header: option<string>,
+  icon: option<string>,
 }
 
 let postNotificationsCreateRequestSchema = S.object(s => {
     body: s.field("body", S.string),
-    header: s.fieldOr("header", S.nullableAsOption(S.json), None),
-    icon: s.fieldOr("icon", S.nullableAsOption(S.json), None),
+    header: s.fieldOr("header", S.nullableAsOption(S.string), None),
+    icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
   })
 
 type postNotificationsCreateResponse = unit

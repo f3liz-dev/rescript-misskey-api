@@ -43,17 +43,21 @@ let getBubbleGameRankingRequestSchema = S.object(s => {
     gameMode: s.field("gameMode", S.string),
   })
 
-type getBubbleGameRankingResponse = array<{
+type getBubbleGameRankingResponse_1 = {
   id: string,
   score: int,
-  user: option<JSON.t>,
-}>
+  user: option<dict<JSON.t>>,
+}
 
-let getBubbleGameRankingResponseSchema = S.array(S.object(s => {
+type getBubbleGameRankingResponse = array<getBubbleGameRankingResponse_1>
+
+let getBubbleGameRankingResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     score: s.field("score", S.int),
-    user: s.fieldOr("user", S.nullableAsOption(S.json), None),
-  }))
+    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let getBubbleGameRankingResponseSchema = S.array(getBubbleGameRankingResponse_1Schema)
 
 /**
  * bubble-game/ranking
@@ -83,17 +87,21 @@ let postBubbleGameRankingRequestSchema = S.object(s => {
     gameMode: s.field("gameMode", S.string),
   })
 
-type postBubbleGameRankingResponse = array<{
+type postBubbleGameRankingResponse_1 = {
   id: string,
   score: int,
-  user: option<JSON.t>,
-}>
+  user: option<dict<JSON.t>>,
+}
 
-let postBubbleGameRankingResponseSchema = S.array(S.object(s => {
+type postBubbleGameRankingResponse = array<postBubbleGameRankingResponse_1>
+
+let postBubbleGameRankingResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     score: s.field("score", S.int),
-    user: s.fieldOr("user", S.nullableAsOption(S.json), None),
-  }))
+    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+  })
+
+let postBubbleGameRankingResponseSchema = S.array(postBubbleGameRankingResponse_1Schema)
 
 /**
  * bubble-game/ranking
@@ -163,7 +171,7 @@ type postExportCustomEmojisResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postExportCustomEmojis = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postExportCustomEmojisResponse> => {
+let postExportCustomEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postExportCustomEmojisResponse> => {
 
   fetch(
     ~url="/export-custom-emojis",
@@ -215,16 +223,16 @@ let postI2faDone = (~body: postI2faDoneRequest, ~fetch: (~url: string, ~method_:
 
 type postI2faKeyDoneRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
   name: string,
-  credential: JSON.t,
+  credential: dict<JSON.t>,
 }
 
 let postI2faKeyDoneRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
     name: s.field("name", S.string->S.min(1)->S.max(30)),
-    credential: s.field("credential", S.json),
+    credential: s.field("credential", S.dict(S.json)),
   })
 
 type postI2faKeyDoneResponse = {
@@ -291,12 +299,12 @@ let postI2faPasswordLess = (~body: postI2faPasswordLessRequest, ~fetch: (~url: s
 
 type postI2faRegisterRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postI2faRegisterRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postI2faRegisterResponse = {
@@ -338,54 +346,90 @@ let postI2faRegister = (~body: postI2faRegisterRequest, ~fetch: (~url: string, ~
 
 type postI2faRegisterKeyRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postI2faRegisterKeyRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
-type postI2faRegisterKeyResponse = {
-  rp: {
-  id: option<string>,
-},
-  user: {
+type postI2faRegisterKeyResponse_5 = {
+  appid: option<string>,
+  credProps: option<bool>,
+  hmacCreateSecret: option<bool>,
+}
+
+type postI2faRegisterKeyResponse_4 = {
+  authenticatorAttachment: string,
+  requireResidentKey: bool,
+  userVerification: string,
+}
+
+type postI2faRegisterKeyResponse_3 = {
+  @as("type") type_: string,
+  alg: float,
+}
+
+type postI2faRegisterKeyResponse_2 = {
   id: string,
   name: string,
   displayName: string,
-},
-  challenge: string,
-  pubKeyCredParams: array<{
-  @as("type") type_: string,
-  alg: float,
-}>,
-  timeout: JSON.t,
-  excludeCredentials: JSON.t,
-  authenticatorSelection: JSON.t,
-  attestation: JSON.t,
-  extensions: JSON.t,
 }
 
-let postI2faRegisterKeyResponseSchema = S.object(s => {
-    rp: s.field("rp", S.object(s => {
-    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
-  })),
-    user: s.field("user", S.object(s => {
+type postI2faRegisterKeyResponse_1 = {
+  id: option<string>,
+}
+
+type postI2faRegisterKeyResponse = {
+  rp: postI2faRegisterKeyResponse_1,
+  user: postI2faRegisterKeyResponse_2,
+  challenge: string,
+  pubKeyCredParams: array<postI2faRegisterKeyResponse_3>,
+  timeout: option<float>,
+  excludeCredentials: option<JSON.t>,
+  authenticatorSelection: option<postI2faRegisterKeyResponse_4>,
+  attestation: option<string>,
+  extensions: option<postI2faRegisterKeyResponse_5>,
+}
+
+let postI2faRegisterKeyResponse_5Schema = S.object(s => {
+    appid: s.field("appid", S.nullableAsOption(S.string)),
+    credProps: s.field("credProps", S.nullableAsOption(S.bool)),
+    hmacCreateSecret: s.field("hmacCreateSecret", S.nullableAsOption(S.bool)),
+  })
+
+let postI2faRegisterKeyResponse_4Schema = S.object(s => {
+    authenticatorAttachment: s.field("authenticatorAttachment", S.string),
+    requireResidentKey: s.field("requireResidentKey", S.bool),
+    userVerification: s.field("userVerification", S.string),
+  })
+
+let postI2faRegisterKeyResponse_3Schema = S.object(s => {
+    type_: s.field("type", S.string),
+    alg: s.field("alg", S.float),
+  })
+
+let postI2faRegisterKeyResponse_2Schema = S.object(s => {
     id: s.field("id", S.string),
     name: s.field("name", S.string),
     displayName: s.field("displayName", S.string),
-  })),
+  })
+
+let postI2faRegisterKeyResponse_1Schema = S.object(s => {
+    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
+  })
+
+let postI2faRegisterKeyResponseSchema = S.object(s => {
+    rp: s.field("rp", postI2faRegisterKeyResponse_1Schema),
+    user: s.field("user", postI2faRegisterKeyResponse_2Schema),
     challenge: s.field("challenge", S.string),
-    pubKeyCredParams: s.field("pubKeyCredParams", S.array(S.object(s => {
-    type_: s.field("type", S.string),
-    alg: s.field("alg", S.float),
-  }))),
-    timeout: s.field("timeout", S.json),
-    excludeCredentials: s.field("excludeCredentials", S.json),
-    authenticatorSelection: s.field("authenticatorSelection", S.json),
-    attestation: s.field("attestation", S.json),
-    extensions: s.field("extensions", S.json),
+    pubKeyCredParams: s.field("pubKeyCredParams", S.array(postI2faRegisterKeyResponse_3Schema)),
+    timeout: s.field("timeout", S.nullableAsOption(S.float)),
+    excludeCredentials: s.field("excludeCredentials", S.nullableAsOption(S.json)),
+    authenticatorSelection: s.field("authenticatorSelection", S.nullableAsOption(postI2faRegisterKeyResponse_4Schema)),
+    attestation: s.field("attestation", S.nullableAsOption(S.string)),
+    extensions: s.field("extensions", S.nullableAsOption(postI2faRegisterKeyResponse_5Schema)),
   })
 
 /**
@@ -411,13 +455,13 @@ let postI2faRegisterKey = (~body: postI2faRegisterKeyRequest, ~fetch: (~url: str
 
 type postI2faRemoveKeyRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
   credentialId: string,
 }
 
 let postI2faRemoveKeyRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
     credentialId: s.field("credentialId", S.string),
   })
 
@@ -446,12 +490,12 @@ let postI2faRemoveKey = (~body: postI2faRemoveKeyRequest, ~fetch: (~url: string,
 
 type postI2faUnregisterRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postI2faUnregisterRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postI2faUnregisterResponse = unit
@@ -518,21 +562,25 @@ let postIAppsRequestSchema = S.object(s => {
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
-type postIAppsResponse = array<{
+type postIAppsResponse_1 = {
   id: string,
   name: option<string>,
   createdAt: string,
   lastUsedAt: option<string>,
   permission: array<string>,
-}>
+}
 
-let postIAppsResponseSchema = S.array(S.object(s => {
+type postIAppsResponse = array<postIAppsResponse_1>
+
+let postIAppsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     name: s.fieldOr("name", S.nullableAsOption(S.string), None),
     createdAt: s.field("createdAt", S.string),
     lastUsedAt: s.fieldOr("lastUsedAt", S.nullableAsOption(S.string), None),
     permission: s.field("permission", S.array(S.string)),
-  }))
+  })
+
+let postIAppsResponseSchema = S.array(postIAppsResponse_1Schema)
 
 /**
  * i/apps
@@ -567,21 +615,25 @@ let postIAuthorizedAppsRequestSchema = S.object(s => {
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
-type postIAuthorizedAppsResponse = array<{
+type postIAuthorizedAppsResponse_1 = {
   id: string,
   name: string,
-  callbackUrl: JSON.t,
+  callbackUrl: option<string>,
   permission: array<string>,
   isAuthorized: option<bool>,
-}>
+}
 
-let postIAuthorizedAppsResponseSchema = S.array(S.object(s => {
+type postIAuthorizedAppsResponse = array<postIAuthorizedAppsResponse_1>
+
+let postIAuthorizedAppsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     name: s.field("name", S.string),
-    callbackUrl: s.field("callbackUrl", S.json),
+    callbackUrl: s.field("callbackUrl", S.nullableAsOption(S.string)),
     permission: s.field("permission", S.array(S.string)),
     isAuthorized: s.fieldOr("isAuthorized", S.nullableAsOption(S.bool), None),
-  }))
+  })
+
+let postIAuthorizedAppsResponseSchema = S.array(postIAuthorizedAppsResponse_1Schema)
 
 /**
  * i/authorized-apps
@@ -607,13 +659,13 @@ let postIAuthorizedApps = (~body: postIAuthorizedAppsRequest, ~fetch: (~url: str
 type postIChangePasswordRequest = {
   currentPassword: string,
   newPassword: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postIChangePasswordRequestSchema = S.object(s => {
     currentPassword: s.field("currentPassword", S.string),
     newPassword: s.field("newPassword", S.string->S.min(1)),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postIChangePasswordResponse = unit
@@ -671,12 +723,12 @@ let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url:
 
 type postIDeleteAccountRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postIDeleteAccountRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postIDeleteAccountResponse = unit
@@ -712,7 +764,7 @@ type postIExportAntennasResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportAntennas = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportAntennasResponse> => {
+let postIExportAntennas = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportAntennasResponse> => {
 
   fetch(
     ~url="/i/export-antennas",
@@ -735,7 +787,7 @@ type postIExportBlockingResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportBlocking = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportBlockingResponse> => {
+let postIExportBlocking = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportBlockingResponse> => {
 
   fetch(
     ~url="/i/export-blocking",
@@ -758,7 +810,7 @@ type postIExportClipsResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportClips = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportClipsResponse> => {
+let postIExportClips = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportClipsResponse> => {
 
   fetch(
     ~url="/i/export-clips",
@@ -781,7 +833,7 @@ type postIExportFavoritesResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportFavorites = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFavoritesResponse> => {
+let postIExportFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFavoritesResponse> => {
 
   fetch(
     ~url="/i/export-favorites",
@@ -837,7 +889,7 @@ type postIExportMuteResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportMute = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportMuteResponse> => {
+let postIExportMute = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportMuteResponse> => {
 
   fetch(
     ~url="/i/export-mute",
@@ -860,7 +912,7 @@ type postIExportNotesResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportNotes = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportNotesResponse> => {
+let postIExportNotes = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportNotesResponse> => {
 
   fetch(
     ~url="/i/export-notes",
@@ -883,7 +935,7 @@ type postIExportUserListsResponse = unit
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIExportUserLists = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportUserListsResponse> => {
+let postIExportUserLists = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportUserListsResponse> => {
 
   fetch(
     ~url="/i/export-user-lists",
@@ -1087,18 +1139,18 @@ let postIRegenerateToken = (~body: postIRegenerateTokenRequest, ~fetch: (~url: s
 type postIRegistryGetRequest = {
   key: string,
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryGetRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
-type postIRegistryGetResponse = JSON.t
+type postIRegistryGetResponse = dict<JSON.t>
 
-let postIRegistryGetResponseSchema = S.json
+let postIRegistryGetResponseSchema = S.dict(S.json)
 
 /**
  * i/registry/get
@@ -1122,17 +1174,17 @@ let postIRegistryGet = (~body: postIRegistryGetRequest, ~fetch: (~url: string, ~
 
 type postIRegistryGetAllRequest = {
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryGetAllRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
-type postIRegistryGetAllResponse = JSON.t
+type postIRegistryGetAllResponse = dict<JSON.t>
 
-let postIRegistryGetAllResponseSchema = S.json
+let postIRegistryGetAllResponseSchema = S.dict(S.json)
 
 /**
  * i/registry/get-all
@@ -1157,13 +1209,13 @@ let postIRegistryGetAll = (~body: postIRegistryGetAllRequest, ~fetch: (~url: str
 type postIRegistryGetDetailRequest = {
   key: string,
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryGetDetailRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
 type postIRegistryGetDetailResponse = {
@@ -1198,12 +1250,12 @@ let postIRegistryGetDetail = (~body: postIRegistryGetDetailRequest, ~fetch: (~ur
 
 type postIRegistryKeysRequest = {
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryKeysRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
 type postIRegistryKeysResponse = array<string>
@@ -1232,17 +1284,17 @@ let postIRegistryKeys = (~body: postIRegistryKeysRequest, ~fetch: (~url: string,
 
 type postIRegistryKeysWithTypeRequest = {
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryKeysWithTypeRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
-type postIRegistryKeysWithTypeResponse = JSON.t
+type postIRegistryKeysWithTypeResponse = dict<JSON.t>
 
-let postIRegistryKeysWithTypeResponseSchema = S.json
+let postIRegistryKeysWithTypeResponseSchema = S.dict(S.json)
 
 /**
  * i/registry/keys-with-type
@@ -1267,13 +1319,13 @@ let postIRegistryKeysWithType = (~body: postIRegistryKeysWithTypeRequest, ~fetch
 type postIRegistryRemoveRequest = {
   key: string,
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistryRemoveRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
 type postIRegistryRemoveResponse = unit
@@ -1298,15 +1350,19 @@ let postIRegistryRemove = (~body: postIRegistryRemoveRequest, ~fetch: (~url: str
   })
 }
 
-type postIRegistryScopesWithDomainResponse = array<{
+type postIRegistryScopesWithDomainResponse_1 = {
   scopes: array<array<string>>,
-  domain: JSON.t,
-}>
+  domain: option<string>,
+}
 
-let postIRegistryScopesWithDomainResponseSchema = S.array(S.object(s => {
+type postIRegistryScopesWithDomainResponse = array<postIRegistryScopesWithDomainResponse_1>
+
+let postIRegistryScopesWithDomainResponse_1Schema = S.object(s => {
     scopes: s.field("scopes", S.array(S.array(S.string))),
-    domain: s.field("domain", S.json),
-  }))
+    domain: s.field("domain", S.nullableAsOption(S.string)),
+  })
+
+let postIRegistryScopesWithDomainResponseSchema = S.array(postIRegistryScopesWithDomainResponse_1Schema)
 
 /**
  * i/registry/scopes-with-domain
@@ -1316,7 +1372,7 @@ let postIRegistryScopesWithDomainResponseSchema = S.array(S.object(s => {
  * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
  * **Credential required**: *Yes*
  */
-let postIRegistryScopesWithDomain = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryScopesWithDomainResponse> => {
+let postIRegistryScopesWithDomain = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryScopesWithDomainResponse> => {
 
   fetch(
     ~url="/i/registry/scopes-with-domain",
@@ -1333,14 +1389,14 @@ type postIRegistrySetRequest = {
   key: string,
   value: JSON.t,
   scope: array<string>,
-  domain: option<JSON.t>,
+  domain: option<string>,
 }
 
 let postIRegistrySetRequestSchema = S.object(s => {
     key: s.field("key", S.string->S.min(1)),
     value: s.field("value", S.json),
     scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.json), None),
+    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
 type postIRegistrySetResponse = unit
@@ -1367,12 +1423,12 @@ let postIRegistrySet = (~body: postIRegistrySetRequest, ~fetch: (~url: string, ~
 
 type postIRevokeTokenRequest = {
   tokenId: option<string>,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postIRevokeTokenRequestSchema = S.object(s => {
     tokenId: s.fieldOr("tokenId", S.nullableAsOption(S.string), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postIRevokeTokenResponse = unit
@@ -1437,14 +1493,14 @@ let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: strin
 
 type postIUpdateEmailRequest = {
   password: string,
-  email: option<JSON.t>,
-  token: option<JSON.t>,
+  email: option<string>,
+  token: option<string>,
 }
 
 let postIUpdateEmailRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postIUpdateEmailResponse = MisskeyIoComponentSchemas.MeDetailed.t
@@ -1508,11 +1564,11 @@ let postPagePush = (~body: postPagePushRequest, ~fetch: (~url: string, ~method_:
 }
 
 type postReversiCancelMatchRequest = {
-  userId: option<JSON.t>,
+  userId: option<string>,
 }
 
 let postReversiCancelMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
   })
 
 type postReversiCancelMatchResponse = unit
@@ -1586,7 +1642,7 @@ let postReversiInvitationsResponseSchema = S.array(MisskeyIoComponentSchemas.Use
  *
  * **Credential required**: *Yes* / **Permission**: *read:account*
  */
-let postReversiInvitations = (~body as _, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiInvitationsResponse> => {
+let postReversiInvitations = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiInvitationsResponse> => {
 
   fetch(
     ~url="/reversi/invitations",
@@ -1600,20 +1656,20 @@ let postReversiInvitations = (~body as _, ~fetch: (~url: string, ~method_: strin
 }
 
 type postReversiMatchRequest = {
-  userId: option<JSON.t>,
+  userId: option<string>,
   noIrregularRules: option<bool>,
   multiple: option<bool>,
 }
 
 let postReversiMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     noIrregularRules: s.fieldOr("noIrregularRules", S.nullableAsOption(S.bool), None),
     multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
   })
 
-type postReversiMatchResponse = JSON.t
+type postReversiMatchResponse = dict<JSON.t>
 
-let postReversiMatchResponseSchema = S.json
+let postReversiMatchResponseSchema = S.dict(S.json)
 
 /**
  * reversi/match
@@ -1709,12 +1765,12 @@ let postReversiVerifyRequestSchema = S.object(s => {
 
 type postReversiVerifyResponse = {
   desynced: bool,
-  game: option<JSON.t>,
+  game: option<MisskeyIoComponentSchemas.ReversiGameDetailed.t>,
 }
 
 let postReversiVerifyResponseSchema = S.object(s => {
     desynced: s.field("desynced", S.bool),
-    game: s.fieldOr("game", S.nullableAsOption(S.json), None),
+    game: s.fieldOr("game", S.nullableAsOption(MisskeyIoComponentSchemas.ReversiGameDetailed.schema), None),
   })
 
 /**
@@ -1745,15 +1801,19 @@ let postUsersAchievementsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
   })
 
-type postUsersAchievementsResponse = array<{
+type postUsersAchievementsResponse_1 = {
   name: string,
   unlockedAt: float,
-}>
+}
 
-let postUsersAchievementsResponseSchema = S.array(S.object(s => {
+type postUsersAchievementsResponse = array<postUsersAchievementsResponse_1>
+
+let postUsersAchievementsResponse_1Schema = S.object(s => {
     name: s.field("name", S.string),
     unlockedAt: s.field("unlockedAt", S.float),
-  }))
+  })
+
+let postUsersAchievementsResponseSchema = S.array(postUsersAchievementsResponse_1Schema)
 
 /**
  * users/achievements

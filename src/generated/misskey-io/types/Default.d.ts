@@ -51,7 +51,7 @@ export interface PostI2faDoneResponse {
 
 export interface PostI2faKeyDoneRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
   name: string;
   credential: Record<string, never>;
 }
@@ -68,7 +68,7 @@ export type PostI2faPasswordLessResponse = void;
 
 export interface PostI2faRegisterRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
 }
 /** OK (with results) */
 export interface PostI2faRegisterResponse {
@@ -81,7 +81,7 @@ export interface PostI2faRegisterResponse {
 
 export interface PostI2faRegisterKeyRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
 }
 /** OK (with results) */
 export interface PostI2faRegisterKeyResponse {
@@ -98,23 +98,31 @@ export interface PostI2faRegisterKeyResponse {
   type: string;
   alg: number;
 }[];
-  timeout: unknown;
-  excludeCredentials: unknown;
-  authenticatorSelection: unknown;
-  attestation: unknown;
-  extensions: unknown;
+  timeout: number | null;
+  excludeCredentials: unknown | null;
+  authenticatorSelection: {
+  authenticatorAttachment: string;
+  requireResidentKey: boolean;
+  userVerification: string;
+} | null;
+  attestation: string | null;
+  extensions: {
+  appid: string | null;
+  credProps: boolean | null;
+  hmacCreateSecret: boolean | null;
+} | null;
 }
 
 export interface PostI2faRemoveKeyRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
   credentialId: string;
 }
 export type PostI2faRemoveKeyResponse = void;
 
 export interface PostI2faUnregisterRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
 }
 export type PostI2faUnregisterResponse = void;
 
@@ -145,7 +153,7 @@ export interface PostIauthorizedAppsRequest {
 export type PostIauthorizedAppsResponse = {
   id: string;
   name: string;
-  callbackUrl: unknown;
+  callbackUrl: string | null;
   permission: string[];
   isAuthorized?: boolean;
 }[];
@@ -153,7 +161,7 @@ export type PostIauthorizedAppsResponse = {
 export interface PostIchangePasswordRequest {
   currentPassword: string;
   newPassword: string;
-  token?: unknown;
+  token?: string | null;
 }
 export type PostIchangePasswordResponse = void;
 
@@ -164,7 +172,7 @@ export type PostIclaimAchievementResponse = void;
 
 export interface PostIdeleteAccountRequest {
   password: string;
-  token?: unknown;
+  token?: string | null;
 }
 export type PostIdeleteAccountResponse = void;
 
@@ -222,22 +230,22 @@ export type PostIregenerateTokenResponse = void;
 export interface PostIregistryGetRequest {
   key: string;
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 /** OK (with results) */
-export interface PostIregistryGetResponse Record<string, never>
+export type PostIregistryGetResponse = Record<string, never>;
 
 export interface PostIregistryGetAllRequest {
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 /** OK (with results) */
-export interface PostIregistryGetAllResponse Record<string, never>
+export type PostIregistryGetAllResponse = Record<string, never>;
 
 export interface PostIregistryGetDetailRequest {
   key: string;
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 /** OK (with results) */
 export interface PostIregistryGetDetailResponse {
@@ -247,42 +255,42 @@ export interface PostIregistryGetDetailResponse {
 
 export interface PostIregistryKeysRequest {
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 /** OK (with results) */
 export type PostIregistryKeysResponse = string[];
 
 export interface PostIregistryKeysWithTypeRequest {
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 /** OK (with results) */
-export interface PostIregistryKeysWithTypeResponse Record<string, never>
+export type PostIregistryKeysWithTypeResponse = Record<string, never>;
 
 export interface PostIregistryRemoveRequest {
   key: string;
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 export type PostIregistryRemoveResponse = void;
 
 /** OK (with results) */
 export type PostIregistryScopesWithDomainResponse = {
   scopes: string[][];
-  domain: unknown;
+  domain: string | null;
 }[];
 
 export interface PostIregistrySetRequest {
   key: string;
   value: unknown;
   scope: string[];
-  domain?: unknown;
+  domain?: string | null;
 }
 export type PostIregistrySetResponse = void;
 
 export interface PostIrevokeTokenRequest {
   tokenId?: string;
-  token?: unknown;
+  token?: string | null;
 }
 export type PostIrevokeTokenResponse = void;
 
@@ -296,8 +304,8 @@ export type PostIsigninHistoryResponse = ComponentSchemas.Signin[];
 
 export interface PostIupdateEmailRequest {
   password: string;
-  email?: unknown;
-  token?: unknown;
+  email?: string | null;
+  token?: string | null;
 }
 /** OK (with results) */
 export type PostIupdateEmailResponse = ComponentSchemas.MeDetailed;
@@ -310,7 +318,7 @@ export interface PostPagePushRequest {
 export type PostPagePushResponse = void;
 
 export interface PostReversiCancelMatchRequest {
-  userId?: unknown;
+  userId?: string | null;
 }
 export type PostReversiCancelMatchResponse = void;
 
@@ -327,12 +335,12 @@ export type PostReversiGamesResponse = ComponentSchemas.ReversiGameLite[];
 export type PostReversiInvitationsResponse = ComponentSchemas.UserLite[];
 
 export interface PostReversiMatchRequest {
-  userId?: unknown;
+  userId?: string | null;
   noIrregularRules?: boolean;
   multiple?: boolean;
 }
 /** OK (with results) */
-export interface PostReversiMatchResponse Record<string, never>
+export type PostReversiMatchResponse = Record<string, never>;
 
 export interface PostReversiShowGameRequest {
   gameId: string;
@@ -352,7 +360,7 @@ export interface PostReversiVerifyRequest {
 /** OK (with results) */
 export interface PostReversiVerifyResponse {
   desynced: boolean;
-  game?: unknown;
+  game?: ComponentSchemas.ReversiGameDetailed | null;
 }
 
 export interface PostUsersAchievementsRequest {

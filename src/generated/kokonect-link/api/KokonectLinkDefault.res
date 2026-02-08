@@ -34,20 +34,17 @@ let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url:
   })
 }
 
-type postIRevokeTokenRequest = [
-  | Object({
-  tokenId: string,
-})
-  | Object({
-  token: JSON.t,
-})
-]
+type postIRevokeTokenRequest_1 = {
+  token: option<string>,
+}
 
-let postIRevokeTokenRequestSchema = S.union([S.object(s => {
-    tokenId: s.field("tokenId", S.string),
-  }), S.object(s => {
-    token: s.field("token", S.json),
-  })])
+type postIRevokeTokenRequest = postIRevokeTokenRequest_1
+
+let postIRevokeTokenRequest_1Schema = S.object(s => {
+    token: s.field("token", S.nullableAsOption(S.string)),
+  })
+
+let postIRevokeTokenRequestSchema = postIRevokeTokenRequest_1Schema
 
 type postIRevokeTokenResponse = unit
 
@@ -115,12 +112,12 @@ let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: strin
 
 type postITruncateAccountRequest = {
   password: string,
-  token: option<JSON.t>,
+  token: option<string>,
 }
 
 let postITruncateAccountRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postITruncateAccountResponse = unit
@@ -148,14 +145,14 @@ let postITruncateAccount = (~body: postITruncateAccountRequest, ~fetch: (~url: s
 
 type postIUpdateEmailRequest = {
   password: string,
-  email: option<JSON.t>,
-  token: option<JSON.t>,
+  email: option<string>,
+  token: option<string>,
 }
 
 let postIUpdateEmailRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    email: s.fieldOr("email", S.nullableAsOption(S.json), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.json), None),
+    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
   })
 
 type postIUpdateEmailResponse = KokonectLinkComponentSchemas.MeDetailed.t
@@ -226,13 +223,13 @@ let postReversiGames = (~body: postReversiGamesRequest, ~fetch: (~url: string, ~
 }
 
 type postReversiMatchRequest = {
-  userId: option<JSON.t>,
+  userId: option<string>,
   noIrregularRules: option<bool>,
   multiple: option<bool>,
 }
 
 let postReversiMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.json), None),
+    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     noIrregularRules: s.fieldOr("noIrregularRules", S.nullableAsOption(S.bool), None),
     multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
   })
@@ -305,12 +302,12 @@ let postReversiVerifyRequestSchema = S.object(s => {
 
 type postReversiVerifyResponse = {
   desynced: bool,
-  game: option<option<KokonectLinkComponentSchemas.ReversiGameDetailed.t>>,
+  game: option<KokonectLinkComponentSchemas.ReversiGameDetailed.t>,
 }
 
 let postReversiVerifyResponseSchema = S.object(s => {
     desynced: s.field("desynced", S.bool),
-    game: s.fieldOr("game", S.nullableAsOption(S.nullableAsOption(KokonectLinkComponentSchemas.ReversiGameDetailed.schema)), None),
+    game: s.fieldOr("game", S.nullableAsOption(KokonectLinkComponentSchemas.ReversiGameDetailed.schema), None),
   })
 
 /**
