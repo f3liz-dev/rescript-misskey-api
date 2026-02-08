@@ -1,33 +1,32 @@
 # @f3liz/rescript-misskey-api
 
-**Pure ReScript** Misskey API client with a **clean, intuitive API**.
+Type-safe Misskey API bindings for ReScript and TypeScript, generated from OpenAPI specs.
 
-> **Status**: ✅ Complete native ReScript implementation • Zero dependencies • Type-safe • **Supports Misskey & Cherrypick**
+Supports Misskey and Cherrypick instances. All endpoints are fully typed.
 
-## Why @f3liz/rescript-misskey-api?
+## Usage
 
-✨ **Discoverable**: Just type and let autocompletion guide you  
-🎯 **Simple**: Common operations are 1-2 lines  
-🔒 **Type-safe**: Full ReScript type checking  
-⚡ **Fast**: Native WebSocket implementation  
-🧩 **Complete**: Access 100% of the API via generated bindings  
-
-## Quick Start
+### ReScript
 
 ```rescript
-// Connect to Misskey
 let client = Misskey.connect("https://misskey.io", ~token="your-token")
 
 // Post a note
 await client->Misskey.Notes.create("Hello, Misskey!", ())
 
-// Stream timeline
-let sub = client->Misskey.Stream.timeline(#home, note => {
-  Console.log2("New note!", note)
-})
+// Read timeline
+let notes = await client->Misskey.Notes.timeline(#home, ~limit=20, ())
+```
 
-// Cleanup
-sub.dispose()
+### TypeScript
+
+```typescript
+import Misskey from '@f3liz/rescript-misskey-api';
+
+const client = new Misskey('https://misskey.io', 'your-token');
+
+await client.notes.create("Hello from TypeScript!");
+const notes = await client.notes.timeline('home', { limit: 20 });
 ```
 
 ## Installation
@@ -36,169 +35,60 @@ sub.dispose()
 npm install @f3liz/rescript-misskey-api
 ```
 
-Add to your `rescript.json`:
+If you are using ReScript, add to your `rescript.json`:
 
 ```json
 {
-  "bs-dependencies": ["@f3liz/rescript-misskey-api"]
+  "dependencies": ["@f3liz/rescript-misskey-api"]
 }
 ```
 
 ## Architecture
 
-This library provides a **Dual-Layer Architecture**:
+Two layers:
 
-1.  **High-Level Convenience API** (`Misskey`, `Cherrypick`):
-    *   Hand-crafted, simplified wrappers for common tasks (Notes, Streaming, Auth).
-    *   Recommended for most use cases.
-    *   Hides complexity (e.g., token injection, JSON handling).
+1. **High-level API** (`Misskey`, `Cherrypick`): Simplified wrappers for common operations (notes, timeline, streaming).
 
-2.  **Full Generated API** (`MisskeyIoWrapper`, `KokonectLinkWrapper`):
-    *   Auto-generated from OpenAPI specs.
-    *   Provides **100% coverage** of every endpoint.
-    *   Strictly typed request/response objects.
+2. **Generated API** (`MisskeyIoWrapper`, `KokonectLinkWrapper`): Complete bindings for all 400+ endpoints, auto-generated from OpenAPI specs.
 
-### File Structure
+## Advanced Usage
 
-```
-src/
-├── Misskey.res              # High-level Misskey wrapper
-├── Cherrypick.res           # High-level Cherrypick wrapper (fork support)
-└── generated/
-    ├── misskey-io/          # Full generated bindings for Misskey.io
-    └── kokonect-link/       # Full generated bindings for Cherrypick (Kokonect)
+### Full Generated API (ReScript)
+
+Access any endpoint not covered by the high-level wrapper:
+
+```rescript
+let wrapperClient = Misskey.connect("...")->Misskey.wrapperConnect
+
+open MisskeyIoWrapper
+let result = await Admin.postAdminShowUser({userId: "..."}, ~client=wrapperClient)
 ```
 
-## TypeScript Support
+### Cherrypick
 
-This library includes a **high-level TypeScript wrapper** and full generated definitions.
-
-### 1. High-Level API (Recommended)
-
-The `Misskey` class provides a simple, "down-to-earth" API similar to the ReScript version.
-
-```typescript
-import Misskey from '@f3liz/rescript-misskey-api';
-
-// 1. Initialize
-const misskey = new Misskey('https://misskey.io', 'your-token');
-// Or using static connect:
-// const misskey = Misskey.connect('https://misskey.io', 'your-token');
-
-// 2. Simple operations
-async function main() {
-  // Create a note
-  await misskey.notes.create("Hello from TypeScript!");
-  
-  // Create with options
-  await misskey.notes.create("Private post", { 
-    visibility: 'followers' 
-  });
-  
-  // Read timeline
-  const result = await misskey.notes.timeline('home', { limit: 10 });
-  console.log(result);
-}
+```rescript
+let client = Cherrypick.connect("https://kokonect.link", ~token="...")
+await client->Cherrypick.Notes.create("Hello Cherrypick!", ())
 ```
 
-### 2. Full Generated API (Advanced)
-
-For access to all 400+ endpoints, use the generated client directly.
+### Full Generated API (TypeScript)
 
 ```typescript
 import { MisskeyClient, Notes } from '@f3liz/rescript-misskey-api';
 
-// Initialize generated client
 const client = new MisskeyClient('https://misskey.io', 'your-token');
-
-// Use raw endpoint
-await Notes.postNotesCreate(client, {
-  text: 'Raw API call',
-  visibility: 'public'
-});
+await Notes.postNotesCreate(client, { text: 'Hello', visibility: 'public' });
 ```
 
-### For Cherrypick (Kokonect)
+## Regenerating Bindings
 
-```typescript
-import { MisskeyClient, Chat } from '@f3liz/rescript-misskey-api/src/generated/kokonect-link/wrapper';
-
-const client = new MisskeyClient('https://kokonect.link', 'your-token');
-// ... use Chat or other Kokonect-specific APIs
-```
-
-## Examples
-
-### 1. Standard Usage (High-Level)
-
-Use the `Misskey` module for standard interactions:
-
-```rescript
-// Post with options
-await client->Misskey.Notes.create(
-  "Private post",
-  ~visibility=#followers,
-  ~cw="Content warning",
-  ()
-)
-
-// Read timeline
-let result = await client->Misskey.Notes.timeline(#local, ~limit=20, ())
-
-// Stream notifications
-client->Misskey.Stream.notifications(notif => {
-  Console.log2("Notification!", notif)
-})
-```
-
-### 2. Cherrypick / Fork Usage
-
-Use the `Cherrypick` module for [Cherrypick](https://github.com/kokonect-link/cherrypick) instances. It shares the same high-level API as `Misskey`.
-
-```rescript
-let client = Cherrypick.connect("https://kokonect.link", ~token="...")
-
-await client->Cherrypick.Notes.create("Hello Cherrypick!", ())
-```
-
-### 3. Advanced / Full API Access
-
-If you need an endpoint not covered by the high-level wrapper, drop down to the generated wrapper.
-
-**For Misskey:**
-
-```rescript
-// Bridge to the generated client
-let wrapperClient = Misskey.connect("...")->Misskey.wrapperConnect
-
-// Use ANY endpoint (fully typed)
-open MisskeyIoWrapper
-let _ = await Admin.postAdminShowUser(
-  {userId: "..."} /* Typed request object */, 
-  ~client=wrapperClient
-)
-```
-
-**For Cherrypick (Fork-specific features):**
-
-```rescript
-// Bridge to the generated client
-let wrapperClient = Cherrypick.connect("...")->Cherrypick.wrapperConnect
-
-// Use a Cherrypick-specific endpoint
-open KokonectLinkWrapper
-let _ = await Chat.postChatRoomCreate(..., ~client=wrapperClient)
-```
-
-## Developing & Regenerating
-
-To regenerate the bindings from the latest OpenAPI specs:
+To update bindings from the latest OpenAPI specs:
 
 ```bash
 npm run generate
 ```
 
-This script fetches specs from `misskey.io` and `kokonect.link` and updates the `src/generated/` directories.
+Fetches specs from `misskey.io` and `kokonect.link` and regenerates `src/generated/`.
 
 ## License
 
