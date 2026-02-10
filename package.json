@@ -42,7 +42,7 @@
     "sury": "11.0.0-alpha.4"
   },
   "devDependencies": {
-    "@f3liz/rescript-autogen-openapi": "^0.5.4",
+    "@f3liz/rescript-autogen-openapi": "^0.6.0",
     "rescript": "^12.1.0",
     "typescript": "^5.9.3"
   },
