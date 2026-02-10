@@ -22,7 +22,7 @@ let postDriveFilesRequestSchema = S.object(s => {
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
     folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
@@ -443,7 +443,7 @@ let postDriveStreamRequestSchema = S.object(s => {
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
   })
 
 type postDriveStreamResponse = array<KokonectLinkComponentSchemas.DriveFile.t>

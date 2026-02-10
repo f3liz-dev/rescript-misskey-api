@@ -48,7 +48,7 @@ let postDriveFilesRequestSchema = S.object(s => {
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
     sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
   })
 
@@ -613,7 +613,7 @@ let postDriveStreamRequestSchema = S.object(s => {
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z\\/\\-*]+$/"))), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
   })
 
 type postDriveStreamResponse = array<MisskeyIoComponentSchemas.DriveFile.t>

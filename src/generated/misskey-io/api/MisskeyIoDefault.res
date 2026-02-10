@@ -1144,7 +1144,7 @@ type postIRegistryGetRequest = {
 
 let postIRegistryGetRequestSchema = S.object(s => {
     key: s.field("key", S.string),
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1178,7 +1178,7 @@ type postIRegistryGetAllRequest = {
 }
 
 let postIRegistryGetAllRequestSchema = S.object(s => {
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1214,7 +1214,7 @@ type postIRegistryGetDetailRequest = {
 
 let postIRegistryGetDetailRequestSchema = S.object(s => {
     key: s.field("key", S.string),
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1254,7 +1254,7 @@ type postIRegistryKeysRequest = {
 }
 
 let postIRegistryKeysRequestSchema = S.object(s => {
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1288,7 +1288,7 @@ type postIRegistryKeysWithTypeRequest = {
 }
 
 let postIRegistryKeysWithTypeRequestSchema = S.object(s => {
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1324,7 +1324,7 @@ type postIRegistryRemoveRequest = {
 
 let postIRegistryRemoveRequestSchema = S.object(s => {
     key: s.field("key", S.string),
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 
@@ -1395,7 +1395,7 @@ type postIRegistrySetRequest = {
 let postIRegistrySetRequestSchema = S.object(s => {
     key: s.field("key", S.string->S.min(1)),
     value: s.field("value", S.json),
-    scope: s.field("scope", S.array(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/")))),
+    scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
     domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
   })
 

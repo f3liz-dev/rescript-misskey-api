@@ -19,7 +19,7 @@ type postPagesCreateRequest = {
 
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
-    name: s.field("name", S.string->S.min(1)->S.pattern(%re("/^[^\\s:\\/?#\\[\\]@!$&'()*+,;=\\\\%\\x00-\\x20]{1,256}$/"))),
+    name: s.field("name", S.string->S.min(1)->S.pattern(/^[^\s:\/?#\[\]@!$&'()*+,;=\\%\x00-\x20]{1,256}$/)),
     summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
     content: s.field("content", S.array(S.dict(S.json))),
     variables: s.field("variables", S.array(S.dict(S.json))),
@@ -109,7 +109,7 @@ type postPagesUpdateRequest = {
 let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(%re("/^[^\\s:\\/?#\\[\\]@!$&'()*+,;=\\\\%\\x00-\\x20]{1,256}$/"))), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(/^[^\s:\/?#\[\]@!$&'()*+,;=\\%\x00-\x20]{1,256}$/)), None),
     summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
     content: s.fieldOr("content", S.nullableAsOption(S.array(S.dict(S.json))), None),
     variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.dict(S.json))), None),

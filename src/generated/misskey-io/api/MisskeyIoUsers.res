@@ -216,7 +216,7 @@ type postUsernameAvailableRequest = {
 }
 
 let postUsernameAvailableRequestSchema = S.object(s => {
-    username: s.field("username", S.string->S.pattern(%re("/^\\w{1,20}$/"))),
+    username: s.field("username", S.string->S.pattern(/^\w{1,20}$/)),
   })
 
 type postUsernameAvailableResponse = {
@@ -424,7 +424,7 @@ let postUsersFollowingRequestSchema = S.object(s => {
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
     username: s.fieldOr("username", S.nullableAsOption(S.string), None),
     host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
   })
 
 type postUsersFollowingResponse = array<MisskeyIoComponentSchemas.Following.t>

@@ -881,7 +881,7 @@ let postIUpdateRequestSchema = S.object(s => {
     description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
     followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string->S.min(1)->S.max(256)), None),
     location: s.fieldOr("location", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
     lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
     postingLang: s.fieldOr("postingLang", S.nullableAsOption(S.string), None),
     viewingLangs: s.fieldOr("viewingLangs", S.nullableAsOption(S.array(S.string)), None),

@@ -20,7 +20,7 @@ type postPagesCreateRequest = {
 
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
-    name: s.field("name", S.string->S.min(1)->S.pattern(%re("/^[a-zA-Z0-9_-]+$/"))),
+    name: s.field("name", S.string->S.min(1)->S.pattern(/^[a-zA-Z0-9_-]+$/)),
     summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
     content: s.field("content", S.array(S.dict(S.json))),
     variables: s.field("variables", S.array(S.dict(S.json))),
@@ -224,7 +224,7 @@ type postPagesUpdateRequest = {
 let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
     title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(%re("/^[a-zA-Z0-9_-]+$/"))), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(/^[a-zA-Z0-9_-]+$/)), None),
     summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
     content: s.fieldOr("content", S.nullableAsOption(S.array(S.dict(S.json))), None),
     variables: s.fieldOr("variables", S.nullableAsOption(S.array(S.dict(S.json))), None),

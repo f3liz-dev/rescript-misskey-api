@@ -454,7 +454,7 @@ type postAdminAccountsCreateRequest = {
 }
 
 let postAdminAccountsCreateRequestSchema = S.object(s => {
-    username: s.field("username", S.string->S.pattern(%re("/^\\w{1,20}$/"))),
+    username: s.field("username", S.string->S.pattern(/^\w{1,20}$/)),
     password: s.field("password", S.string->S.min(1)),
     setupPassword: s.fieldOr("setupPassword", S.nullableAsOption(S.string), None),
   })
@@ -1422,7 +1422,7 @@ let postAdminDriveFilesRequestSchema = S.object(s => {
     sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
     untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9\\/\\-*]+$/"))), None),
+    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9\/\*-]+$/)), None),
     origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
     hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
   })
@@ -1562,7 +1562,7 @@ type postAdminEmojiAddRequest = {
 }
 
 let postAdminEmojiAddRequestSchema = S.object(s => {
-    name: s.field("name", S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/"))),
+    name: s.field("name", S.string->S.pattern(/^[a-zA-Z0-9_]+$/)),
     fileId: s.field("fileId", S.string),
     category: s.fieldOr("category", S.nullableAsOption(S.string), None),
     aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
@@ -1986,7 +1986,7 @@ type postAdminEmojiUpdateRequest = {
 
 let postAdminEmojiUpdateRequestSchema = S.object(s => {
     id: s.fieldOr("id", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9_]+$/"))), None),
+    name: s.fieldOr("name", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9_]+$/)), None),
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     category: s.fieldOr("category", S.nullableAsOption(S.string), None),
     aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
@@ -4394,7 +4394,7 @@ let postAdminUpdateMetaRequestSchema = S.object(s => {
     sensitiveWords: s.fieldOr("sensitiveWords", S.nullableAsOption(S.json), None),
     blockedRemoteCustomEmojis: s.fieldOr("blockedRemoteCustomEmojis", S.nullableAsOption(S.json), None),
     prohibitedWords: s.fieldOr("prohibitedWords", S.nullableAsOption(S.json), None),
-    themeColor: s.fieldOr("themeColor", S.nullableAsOption(S.string->S.pattern(%re("/^#[0-9a-fA-F]{6}$/"))), None),
+    themeColor: s.fieldOr("themeColor", S.nullableAsOption(S.string->S.pattern(/^#[0-9a-fA-F]{6}$/)), None),
     mascotImageUrl: s.fieldOr("mascotImageUrl", S.nullableAsOption(S.string), None),
     bannerUrl: s.fieldOr("bannerUrl", S.nullableAsOption(S.string), None),
     serverErrorImageUrl: s.fieldOr("serverErrorImageUrl", S.nullableAsOption(S.string), None),
@@ -4455,7 +4455,7 @@ let postAdminUpdateMetaRequestSchema = S.object(s => {
     useObjectStorage: s.fieldOr("useObjectStorage", S.nullableAsOption(S.bool), None),
     objectStorageBaseUrl: s.fieldOr("objectStorageBaseUrl", S.nullableAsOption(S.string), None),
     objectStorageBucket: s.fieldOr("objectStorageBucket", S.nullableAsOption(S.string), None),
-    objectStoragePrefix: s.fieldOr("objectStoragePrefix", S.nullableAsOption(S.string->S.pattern(%re("/^[a-zA-Z0-9-._]*$/"))), None),
+    objectStoragePrefix: s.fieldOr("objectStoragePrefix", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9._-]*$/)), None),
     objectStorageEndpoint: s.fieldOr("objectStorageEndpoint", S.nullableAsOption(S.string), None),
     objectStorageRegion: s.fieldOr("objectStorageRegion", S.nullableAsOption(S.string), None),
     objectStoragePort: s.fieldOr("objectStoragePort", S.nullableAsOption(S.int), None),

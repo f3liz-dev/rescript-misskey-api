@@ -185,7 +185,7 @@ let postUsersFollowingRequestSchema = S.object(s => {
     sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
     untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
     limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(%re("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/"))), None),
+    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
   })
 
 type postUsersFollowingResponse = array<KokonectLinkComponentSchemas.Following.t>
