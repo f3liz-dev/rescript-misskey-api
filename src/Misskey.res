@@ -22,6 +22,9 @@
 // Fetch Bindings
 // ============================================================================
 
+// Enable JSON schema for Sury
+S.enableJson()
+
 module FetchBindings = {
   type response
 
@@ -92,7 +95,9 @@ let defaultFetch = (~origin: string, ~token: option<string>) => {
       if FetchBindings.ok(response) {
         response->FetchBindings.json
       } else {
-        let msg = `API error: ${FetchBindings.status(response)->Int.toString} ${FetchBindings.statusText(response)}`
+        let msg = `API error: ${FetchBindings.status(
+            response,
+          )->Int.toString} ${FetchBindings.statusText(response)}`
         Promise.reject(JsExn(JsError.make(msg)->Obj.magic))
       }
     })
@@ -260,7 +265,9 @@ module Notes = {
     untilId->Option.forEach(v => params->Dict.set("untilId", v->JSON.Encode.string))
 
     extraParams->Option.forEach(extra => {
-      extra->Dict.toArray->Array.forEach(((key, value)) => {
+      extra
+      ->Dict.toArray
+      ->Array.forEach(((key, value)) => {
         params->Dict.set(key, value)
       })
     })
@@ -407,8 +414,7 @@ module Emojis = {
 
   /// Get list of custom emojis from instance.
   let list = (client: t): promise<result<array<customEmoji>, string>> => {
-    request(client, "emojis", ())
-    ->Promise.then(result => {
+    request(client, "emojis", ())->Promise.then(result => {
       switch result {
       | Ok(json) =>
         switch json->JSON.Decode.object {
@@ -432,8 +438,7 @@ module Emojis = {
 module CustomTimelines = {
   /// Fetch user's antennas.
   let antennas = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "antennas/list", ())
-    ->Promise.then(result => {
+    request(client, "antennas/list", ())->Promise.then(result => {
       switch result {
       | Ok(json) =>
         switch json->JSON.Decode.array {
@@ -447,8 +452,7 @@ module CustomTimelines = {
 
   /// Fetch user's lists.
   let lists = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "users/lists/list", ())
-    ->Promise.then(result => {
+    request(client, "users/lists/list", ())->Promise.then(result => {
       switch result {
       | Ok(json) =>
         switch json->JSON.Decode.array {
@@ -462,8 +466,7 @@ module CustomTimelines = {
 
   /// Fetch user's followed channels.
   let channels = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "channels/followed", ())
-    ->Promise.then(result => {
+    request(client, "channels/followed", ())->Promise.then(result => {
       switch result {
       | Ok(json) =>
         switch json->JSON.Decode.array {
@@ -639,13 +642,14 @@ module MiAuth = {
       let headers = Dict.make()
       headers->Dict.set("Content-Type", "application/json")
 
-      let response = await FetchBindings.fetch(
-        url,
-        {method: "POST", headers, body: Some("{}")},
-      )
+      let response = await FetchBindings.fetch(url, {method: "POST", headers, body: Some("{}")})
 
       if !FetchBindings.ok(response) {
-        Error(`HTTP error: ${FetchBindings.status(response)->Int.toString} ${FetchBindings.statusText(response)}`)
+        Error(
+          `HTTP error: ${FetchBindings.status(response)->Int.toString} ${FetchBindings.statusText(
+              response,
+            )}`,
+        )
       } else {
         let json = await response->FetchBindings.json
         switch json->JSON.Decode.object {

@@ -1,6 +1,7 @@
 // Misskey.ts - High-level TypeScript wrapper for Misskey API
 import { MisskeyClient, Notes as NotesApi, Reactions as ReactionsApi, Antennas as AntennasApi } from './generated/misskey-io/wrapper/index';
-
+import * as S from "sury"
+S.enableJson();
 // Re-export generated client for advanced usage
 export { MisskeyClient };
 export * from './generated/misskey-io/wrapper/index';

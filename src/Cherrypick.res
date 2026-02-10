@@ -15,6 +15,9 @@
 // Cherrypick shares the same API conventions as Misskey, so all
 // the high-level APIs (Notes, Stream, Emojis, etc.) work identically.
 
+// Enable JSON schema for Sury
+S.enableJson()
+
 // Use the same types
 type t = Misskey.t
 type fetchFn = Misskey.fetchFn
@@ -53,7 +56,12 @@ let isAPIError = Misskey.isAPIError
 /// Create a wrapper client for use with the generated KokonectLinkWrapper.
 /// This bridges the high-level Cherrypick.t client to the generated wrapper's client type.
 let wrapperConnect = (client: t): KokonectLinkWrapper.client => {
-  KokonectLinkWrapper.connect(~baseUrl=client.origin, ~token=?client.token, ~fetch=client.fetchFn, ())
+  KokonectLinkWrapper.connect(
+    ~baseUrl=client.origin,
+    ~token=?client.token,
+    ~fetch=client.fetchFn,
+    (),
+  )
 }
 
 let default = connect
