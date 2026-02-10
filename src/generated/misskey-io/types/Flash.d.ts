@@ -43,39 +43,44 @@ export interface PostFlashUpdateRequest {
 export type PostFlashUpdateResponse = void;
 
 export interface FlashModule {
-/**
+  /**
    * flash/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:flash*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:flash*
    */
   postFlashCreate(client: MisskeyClient, request: PostFlashCreateRequest): Promise<PostFlashCreateResponse>;
-/**
+  /**
    * flash/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFlashFeatured(client: MisskeyClient, request: PostFlashFeaturedRequest): Promise<PostFlashFeaturedResponse>;
-/**
+  /**
    * flash/like
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:flash-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:flash-likes*
    */
   postFlashLike(client: MisskeyClient, request: PostFlashLikeRequest): Promise<PostFlashLikeResponse>;
-/**
+  /**
    * flash/unlike
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:flash-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:flash-likes*
    */
   postFlashUnlike(client: MisskeyClient, request: PostFlashUnlikeRequest): Promise<PostFlashUnlikeResponse>;
-/**
+  /**
    * flash/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:flash*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:flash*
    */
   postFlashUpdate(client: MisskeyClient, request: PostFlashUpdateRequest): Promise<PostFlashUpdateResponse>;
 }

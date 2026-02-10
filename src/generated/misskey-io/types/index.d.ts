@@ -30,7 +30,6 @@ import { ResetPasswordModule } from './ResetPassword';
 import { NonProductiveModule } from './NonProductive';
 import { RoleModule } from './Role';
 import { ListsModule } from './Lists';
-
 export class MisskeyClient {
   constructor(baseUrl: string, token?: string);
   readonly baseUrl: string;

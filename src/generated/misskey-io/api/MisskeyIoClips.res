@@ -22,12 +22,12 @@ type postClipsCreateResponse = MisskeyIoComponentSchemas.Clip.t
 let postClipsCreateResponseSchema = MisskeyIoComponentSchemas.Clip.schema
 
 /**
- * clips/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsCreate = (~body: postClipsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsCreateRequestSchema)
   fetch(
@@ -52,12 +52,12 @@ let postClipsDeleteRequestSchema = S.object(s => {
 type postClipsDeleteResponse = unit
 
 /**
- * clips/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsDelete = (~body: postClipsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsDeleteRequestSchema)
   fetch(
@@ -76,12 +76,12 @@ type postClipsListResponse = array<MisskeyIoComponentSchemas.Clip.t>
 let postClipsListResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.schema)
 
 /**
- * clips/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+clips/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postClipsList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsListResponse> => {
 
   fetch(
@@ -108,12 +108,12 @@ type postClipsShowResponse = MisskeyIoComponentSchemas.Clip.t
 let postClipsShowResponseSchema = MisskeyIoComponentSchemas.Clip.schema
 
 /**
- * clips/show
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+clips/show
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postClipsShow = (~body: postClipsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsShowRequestSchema)
   fetch(
@@ -146,12 +146,12 @@ type postClipsUpdateResponse = MisskeyIoComponentSchemas.Clip.t
 let postClipsUpdateResponseSchema = MisskeyIoComponentSchemas.Clip.schema
 
 /**
- * clips/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsUpdate = (~body: postClipsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsUpdateRequestSchema)
   fetch(
@@ -178,12 +178,12 @@ type postNotesClipsResponse = array<MisskeyIoComponentSchemas.Clip.t>
 let postNotesClipsResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.schema)
 
 /**
- * notes/clips
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/clips
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesClips = (~body: postNotesClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesClipsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesClipsRequestSchema)
   fetch(

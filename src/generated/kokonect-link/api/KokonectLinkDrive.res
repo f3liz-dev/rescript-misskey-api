@@ -32,12 +32,12 @@ type postDriveFilesResponse = array<KokonectLinkComponentSchemas.DriveFile.t>
 let postDriveFilesResponseSchema = S.array(KokonectLinkComponentSchemas.DriveFile.schema)
 
 /**
- * drive/files
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFiles = (~body: postDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesRequestSchema)
   fetch(
@@ -74,12 +74,12 @@ type postDriveFilesAttachedChatMessagesResponse = array<KokonectLinkComponentSch
 let postDriveFilesAttachedChatMessagesResponseSchema = S.array(KokonectLinkComponentSchemas.ChatMessage.schema)
 
 /**
- * drive/files/attached-chat-messages
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/attached-chat-messages
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesAttachedChatMessages = (~body: postDriveFilesAttachedChatMessagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesAttachedChatMessagesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesAttachedChatMessagesRequestSchema)
   fetch(
@@ -116,12 +116,12 @@ type postDriveFilesAttachedNotesResponse = array<KokonectLinkComponentSchemas.No
 let postDriveFilesAttachedNotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * drive/files/attached-notes
- *
- * Find the notes to which the given file is attached.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/attached-notes
+
+Find the notes to which the given file is attached.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesAttachedNotes = (~body: postDriveFilesAttachedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesAttachedNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesAttachedNotesRequestSchema)
   fetch(
@@ -158,12 +158,12 @@ type postDriveFilesCreateResponse = KokonectLinkComponentSchemas.DriveFile.t
 let postDriveFilesCreateResponseSchema = KokonectLinkComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/create
- *
- * Upload a new drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/create
+
+Upload a new drive file.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesCreate = (~body: postDriveFilesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesCreateRequestSchema)
   fetch(
@@ -190,12 +190,12 @@ let postDriveFilesMoveBulkRequestSchema = S.object(s => {
 type postDriveFilesMoveBulkResponse = unit
 
 /**
- * drive/files/move-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/move-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesMoveBulk = (~body: postDriveFilesMoveBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesMoveBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesMoveBulkRequestSchema)
   fetch(
@@ -226,12 +226,12 @@ type postDriveFilesShowResponse = KokonectLinkComponentSchemas.DriveFile.t
 let postDriveFilesShowResponseSchema = KokonectLinkComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/show
- *
- * Show the properties of a drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/show
+
+Show the properties of a drive file.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesShow = (~body: postDriveFilesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesShowRequestSchema)
   fetch(
@@ -266,12 +266,12 @@ type postDriveFilesUpdateResponse = KokonectLinkComponentSchemas.DriveFile.t
 let postDriveFilesUpdateResponseSchema = KokonectLinkComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/update
- *
- * Update the properties of a drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/update
+
+Update the properties of a drive file.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesUpdate = (~body: postDriveFilesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesUpdateRequestSchema)
   fetch(
@@ -308,12 +308,12 @@ type postDriveFoldersResponse = array<KokonectLinkComponentSchemas.DriveFolder.t
 let postDriveFoldersResponseSchema = S.array(KokonectLinkComponentSchemas.DriveFolder.schema)
 
 /**
- * drive/folders
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/folders
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFolders = (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersRequestSchema)
   fetch(
@@ -342,12 +342,12 @@ type postDriveFoldersCreateResponse = KokonectLinkComponentSchemas.DriveFolder.t
 let postDriveFoldersCreateResponseSchema = KokonectLinkComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/folders/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFoldersCreate = (~body: postDriveFoldersCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersCreateRequestSchema)
   fetch(
@@ -374,12 +374,12 @@ type postDriveFoldersShowResponse = KokonectLinkComponentSchemas.DriveFolder.t
 let postDriveFoldersShowResponseSchema = KokonectLinkComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/folders/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFoldersShow = (~body: postDriveFoldersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersShowRequestSchema)
   fetch(
@@ -410,12 +410,12 @@ type postDriveFoldersUpdateResponse = KokonectLinkComponentSchemas.DriveFolder.t
 let postDriveFoldersUpdateResponseSchema = KokonectLinkComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/folders/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFoldersUpdate = (~body: postDriveFoldersUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersUpdateRequestSchema)
   fetch(
@@ -452,12 +452,12 @@ type postDriveStreamResponse = array<KokonectLinkComponentSchemas.DriveFile.t>
 let postDriveStreamResponseSchema = S.array(KokonectLinkComponentSchemas.DriveFile.schema)
 
 /**
- * drive/stream
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/stream
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveStream = (~body: postDriveStreamRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveStreamResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveStreamRequestSchema)
   fetch(

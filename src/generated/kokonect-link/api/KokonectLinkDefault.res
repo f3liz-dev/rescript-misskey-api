@@ -16,12 +16,12 @@ let postIClaimAchievementRequestSchema = S.object(s => {
 type postIClaimAchievementResponse = unit
 
 /**
- * i/claim-achievement
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/claim-achievement
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIClaimAchievementResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIClaimAchievementRequestSchema)
   fetch(
@@ -50,13 +50,13 @@ let postIRevokeTokenRequestSchema = postIRevokeTokenRequest_1Schema
 type postIRevokeTokenResponse = unit
 
 /**
- * i/revoke-token
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/revoke-token
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIRevokeToken = (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRevokeTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRevokeTokenRequestSchema)
   fetch(
@@ -91,13 +91,13 @@ type postISigninHistoryResponse = array<KokonectLinkComponentSchemas.Signin.t>
 let postISigninHistoryResponseSchema = S.array(KokonectLinkComponentSchemas.Signin.schema)
 
 /**
- * i/signin-history
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/signin-history
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postISigninHistoryResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postISigninHistoryRequestSchema)
   fetch(
@@ -124,13 +124,13 @@ let postITruncateAccountRequestSchema = S.object(s => {
 type postITruncateAccountResponse = unit
 
 /**
- * i/truncate-account
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/truncate-account
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postITruncateAccount = (~body: postITruncateAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postITruncateAccountResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postITruncateAccountRequestSchema)
   fetch(
@@ -161,13 +161,13 @@ type postIUpdateEmailResponse = KokonectLinkComponentSchemas.MeDetailed.t
 let postIUpdateEmailResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
 
 /**
- * i/update-email
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/update-email
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIUpdateEmail = (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateEmailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateEmailRequestSchema)
   fetch(
@@ -204,12 +204,12 @@ type postReversiGamesResponse = array<KokonectLinkComponentSchemas.ReversiGameLi
 let postReversiGamesResponseSchema = S.array(KokonectLinkComponentSchemas.ReversiGameLite.schema)
 
 /**
- * reversi/games
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/games
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiGames = (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiGamesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiGamesRequestSchema)
   fetch(
@@ -240,12 +240,12 @@ type postReversiMatchResponse = KokonectLinkComponentSchemas.ReversiGameDetailed
 let postReversiMatchResponseSchema = KokonectLinkComponentSchemas.ReversiGameDetailed.schema
 
 /**
- * reversi/match
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+reversi/match
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postReversiMatch = (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiMatchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiMatchRequestSchema)
   fetch(
@@ -272,12 +272,12 @@ type postReversiShowGameResponse = KokonectLinkComponentSchemas.ReversiGameDetai
 let postReversiShowGameResponseSchema = KokonectLinkComponentSchemas.ReversiGameDetailed.schema
 
 /**
- * reversi/show-game
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/show-game
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiShowGame = (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiShowGameResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiShowGameRequestSchema)
   fetch(
@@ -312,12 +312,12 @@ let postReversiVerifyResponseSchema = S.object(s => {
   })
 
 /**
- * reversi/verify
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/verify
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiVerify = (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiVerifyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiVerifyRequestSchema)
   fetch(
@@ -346,12 +346,12 @@ type postUsersListsCreateFromPublicResponse = KokonectLinkComponentSchemas.UserL
 let postUsersListsCreateFromPublicResponseSchema = KokonectLinkComponentSchemas.UserList.schema
 
 /**
- * users/lists/create-from-public
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/create-from-public
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsCreateFromPublic = (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateFromPublicResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateFromPublicRequestSchema)
   fetch(

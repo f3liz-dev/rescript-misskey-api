@@ -201,193 +201,220 @@ export interface PostChatRoomsUpdateRequest {
 export type PostChatRoomsUpdateResponse = ComponentSchemas.ChatRoom;
 
 export interface ChatModule {
-/**
+  /**
    * chat/history
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatHistory(client: MisskeyClient, request: PostChatHistoryRequest): Promise<PostChatHistoryResponse>;
-/**
+  /**
    * chat/messages/create-to-room
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatMessagesCreateToRoom(client: MisskeyClient, request: PostChatMessagesCreateToRoomRequest): Promise<PostChatMessagesCreateToRoomResponse>;
-/**
+  /**
    * chat/messages/create-to-user
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatMessagesCreateToUser(client: MisskeyClient, request: PostChatMessagesCreateToUserRequest): Promise<PostChatMessagesCreateToUserResponse>;
-/**
+  /**
    * chat/messages/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatMessagesDelete(client: MisskeyClient, request: PostChatMessagesDeleteRequest): Promise<PostChatMessagesDeleteResponse>;
-/**
+  /**
    * chat/messages/react
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatMessagesReact(client: MisskeyClient, request: PostChatMessagesReactRequest): Promise<PostChatMessagesReactResponse>;
-/**
+  /**
    * chat/messages/room-timeline
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatMessagesRoomTimeline(client: MisskeyClient, request: PostChatMessagesRoomTimelineRequest): Promise<PostChatMessagesRoomTimelineResponse>;
-/**
+  /**
    * chat/messages/search
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatMessagesSearch(client: MisskeyClient, request: PostChatMessagesSearchRequest): Promise<PostChatMessagesSearchResponse>;
-/**
+  /**
    * chat/messages/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatMessagesShow(client: MisskeyClient, request: PostChatMessagesShowRequest): Promise<PostChatMessagesShowResponse>;
-/**
+  /**
    * chat/messages/unreact
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatMessagesUnreact(client: MisskeyClient, request: PostChatMessagesUnreactRequest): Promise<PostChatMessagesUnreactResponse>;
-/**
+  /**
    * chat/messages/user-timeline
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatMessagesUserTimeline(client: MisskeyClient, request: PostChatMessagesUserTimelineRequest): Promise<PostChatMessagesUserTimelineResponse>;
-/**
+  /**
    * chat/read-all
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatReadAll(client: MisskeyClient): Promise<PostChatReadAllResponse>;
-/**
+  /**
    * chat/rooms/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsCreate(client: MisskeyClient, request: PostChatRoomsCreateRequest): Promise<PostChatRoomsCreateResponse>;
-/**
+  /**
    * chat/rooms/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsDelete(client: MisskeyClient, request: PostChatRoomsDeleteRequest): Promise<PostChatRoomsDeleteResponse>;
-/**
+  /**
    * chat/rooms/invitations/cancel
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsInvitationsCancel(client: MisskeyClient, request: PostChatRoomsInvitationsCancelRequest): Promise<PostChatRoomsInvitationsCancelResponse>;
-/**
+  /**
    * chat/rooms/invitations/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsInvitationsCreate(client: MisskeyClient, request: PostChatRoomsInvitationsCreateRequest): Promise<PostChatRoomsInvitationsCreateResponse>;
-/**
+  /**
    * chat/rooms/invitations/ignore
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsInvitationsIgnore(client: MisskeyClient, request: PostChatRoomsInvitationsIgnoreRequest): Promise<PostChatRoomsInvitationsIgnoreResponse>;
-/**
+  /**
    * chat/rooms/invitations/inbox
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatRoomsInvitationsInbox(client: MisskeyClient, request: PostChatRoomsInvitationsInboxRequest): Promise<PostChatRoomsInvitationsInboxResponse>;
-/**
+  /**
    * chat/rooms/invitations/outbox
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatRoomsInvitationsOutbox(client: MisskeyClient, request: PostChatRoomsInvitationsOutboxRequest): Promise<PostChatRoomsInvitationsOutboxResponse>;
-/**
+  /**
    * chat/rooms/invitations/reject
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsInvitationsReject(client: MisskeyClient, request: PostChatRoomsInvitationsRejectRequest): Promise<PostChatRoomsInvitationsRejectResponse>;
-/**
+  /**
    * chat/rooms/join
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsJoin(client: MisskeyClient, request: PostChatRoomsJoinRequest): Promise<PostChatRoomsJoinResponse>;
-/**
+  /**
    * chat/rooms/joining
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatRoomsJoining(client: MisskeyClient, request: PostChatRoomsJoiningRequest): Promise<PostChatRoomsJoiningResponse>;
-/**
+  /**
    * chat/rooms/leave
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsLeave(client: MisskeyClient, request: PostChatRoomsLeaveRequest): Promise<PostChatRoomsLeaveResponse>;
-/**
+  /**
    * chat/rooms/members
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsMembers(client: MisskeyClient, request: PostChatRoomsMembersRequest): Promise<PostChatRoomsMembersResponse>;
-/**
+  /**
    * chat/rooms/mute
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsMute(client: MisskeyClient, request: PostChatRoomsMuteRequest): Promise<PostChatRoomsMuteResponse>;
-/**
+  /**
    * chat/rooms/owned
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatRoomsOwned(client: MisskeyClient, request: PostChatRoomsOwnedRequest): Promise<PostChatRoomsOwnedResponse>;
-/**
+  /**
    * chat/rooms/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:chat*
    */
   postChatRoomsShow(client: MisskeyClient, request: PostChatRoomsShowRequest): Promise<PostChatRoomsShowResponse>;
-/**
+  /**
    * chat/rooms/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:chat*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:chat*
    */
   postChatRoomsUpdate(client: MisskeyClient, request: PostChatRoomsUpdateRequest): Promise<PostChatRoomsUpdateResponse>;
 }

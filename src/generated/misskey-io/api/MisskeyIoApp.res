@@ -24,12 +24,12 @@ type postAppCreateResponse = MisskeyIoComponentSchemas.App.t
 let postAppCreateResponseSchema = MisskeyIoComponentSchemas.App.schema
 
 /**
- * app/create
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+app/create
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAppCreate = (~body: postAppCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAppCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAppCreateRequestSchema)
   fetch(
@@ -56,12 +56,12 @@ type postAppShowResponse = MisskeyIoComponentSchemas.App.t
 let postAppShowResponseSchema = MisskeyIoComponentSchemas.App.schema
 
 /**
- * app/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+app/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAppShow = (~body: postAppShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAppShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAppShowRequestSchema)
   fetch(

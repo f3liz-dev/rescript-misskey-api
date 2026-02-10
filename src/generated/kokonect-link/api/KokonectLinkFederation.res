@@ -28,12 +28,12 @@ type postFederationFollowersResponse = array<KokonectLinkComponentSchemas.Follow
 let postFederationFollowersResponseSchema = S.array(KokonectLinkComponentSchemas.Following.schema)
 
 /**
- * federation/followers
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/followers
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationFollowers = (~body: postFederationFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowersRequestSchema)
   fetch(
@@ -70,12 +70,12 @@ type postFederationFollowingResponse = array<KokonectLinkComponentSchemas.Follow
 let postFederationFollowingResponseSchema = S.array(KokonectLinkComponentSchemas.Following.schema)
 
 /**
- * federation/following
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/following
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationFollowing = (~body: postFederationFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowingRequestSchema)
   fetch(
@@ -128,12 +128,12 @@ let getFederationRemoteSoftwareResponse_1Schema = S.object(s => {
 let getFederationRemoteSoftwareResponseSchema = S.array(getFederationRemoteSoftwareResponse_1Schema)
 
 /**
- * federation/remote-software
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/remote-software
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getFederationRemoteSoftware = (~body: getFederationRemoteSoftwareRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFederationRemoteSoftwareResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFederationRemoteSoftwareRequestSchema)
   fetch(
@@ -186,12 +186,12 @@ let postFederationRemoteSoftwareResponse_1Schema = S.object(s => {
 let postFederationRemoteSoftwareResponseSchema = S.array(postFederationRemoteSoftwareResponse_1Schema)
 
 /**
- * federation/remote-software
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/remote-software
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationRemoteSoftware = (~body: postFederationRemoteSoftwareRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationRemoteSoftwareResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationRemoteSoftwareRequestSchema)
   fetch(
@@ -218,12 +218,12 @@ type postFederationShowInstanceResponse = option<KokonectLinkComponentSchemas.Fe
 let postFederationShowInstanceResponseSchema = S.nullableAsOption(KokonectLinkComponentSchemas.FederationInstance.schema)
 
 /**
- * federation/show-instance
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/show-instance
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationShowInstance = (~body: postFederationShowInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationShowInstanceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationShowInstanceRequestSchema)
   fetch(
@@ -260,12 +260,12 @@ type postFederationUsersResponse = array<KokonectLinkComponentSchemas.UserDetail
 let postFederationUsersResponseSchema = S.array(KokonectLinkComponentSchemas.UserDetailedNotMe.schema)
 
 /**
- * federation/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationUsers = (~body: postFederationUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationUsersRequestSchema)
   fetch(

@@ -24,18 +24,20 @@ export interface PostTestResponse {
 }
 
 export interface NonProductiveModule {
-/**
+  /**
    * reset-db
+   *
    * Only available when running with <code>NODE_ENV=testing</code>. Reset the database and flush Redis.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postResetDb(client: MisskeyClient): Promise<PostResetDbResponse>;
-/**
+  /**
    * test
+   *
    * Endpoint for testing input validation.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postTest(client: MisskeyClient, request: PostTestRequest): Promise<PostTestResponse>;
 }

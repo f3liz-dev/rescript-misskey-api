@@ -38,12 +38,12 @@ type postPagesCreateResponse = MisskeyIoComponentSchemas.Page.t
 let postPagesCreateResponseSchema = MisskeyIoComponentSchemas.Page.schema
 
 /**
- * pages/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:pages*
- */
+pages/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:pages*
+*/
 let postPagesCreate = (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesCreateRequestSchema)
   fetch(
@@ -68,12 +68,12 @@ let postPagesDeleteRequestSchema = S.object(s => {
 type postPagesDeleteResponse = unit
 
 /**
- * pages/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:pages*
- */
+pages/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:pages*
+*/
 let postPagesDelete = (~body: postPagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesDeleteRequestSchema)
   fetch(
@@ -92,12 +92,12 @@ type postPagesFeaturedResponse = array<MisskeyIoComponentSchemas.Page.t>
 let postPagesFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Page.schema)
 
 /**
- * pages/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+pages/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postPagesFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesFeaturedResponse> => {
 
   fetch(
@@ -122,12 +122,12 @@ let postPagesLikeRequestSchema = S.object(s => {
 type postPagesLikeResponse = unit
 
 /**
- * pages/like
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:page-likes*
- */
+pages/like
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:page-likes*
+*/
 let postPagesLike = (~body: postPagesLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesLikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesLikeRequestSchema)
   fetch(
@@ -158,12 +158,12 @@ type postPagesShowResponse = MisskeyIoComponentSchemas.Page.t
 let postPagesShowResponseSchema = MisskeyIoComponentSchemas.Page.schema
 
 /**
- * pages/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+pages/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postPagesShow = (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesShowRequestSchema)
   fetch(
@@ -188,12 +188,12 @@ let postPagesUnlikeRequestSchema = S.object(s => {
 type postPagesUnlikeResponse = unit
 
 /**
- * pages/unlike
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:page-likes*
- */
+pages/unlike
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:page-likes*
+*/
 let postPagesUnlike = (~body: postPagesUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUnlikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUnlikeRequestSchema)
   fetch(
@@ -240,12 +240,12 @@ let postPagesUpdateRequestSchema = S.object(s => {
 type postPagesUpdateResponse = unit
 
 /**
- * pages/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:pages*
- */
+pages/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:pages*
+*/
 let postPagesUpdate = (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUpdateRequestSchema)
   fetch(

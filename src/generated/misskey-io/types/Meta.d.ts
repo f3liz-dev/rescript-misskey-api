@@ -369,173 +369,197 @@ export interface PostStatsResponse {
 }
 
 export interface MetaModule {
-/**
+  /**
    * admin/meta
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:meta*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
    */
   postAdminMeta(client: MisskeyClient): Promise<PostAdminMetaResponse>;
-/**
+  /**
    * announcement
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAnnouncement(client: MisskeyClient, request: PostAnnouncementRequest): Promise<PostAnnouncementResponse>;
-/**
+  /**
    * announcements
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAnnouncements(client: MisskeyClient, request: PostAnnouncementsRequest): Promise<PostAnnouncementsResponse>;
-/**
+  /**
    * announcements/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAnnouncementsShow(client: MisskeyClient, request: PostAnnouncementsShowRequest): Promise<PostAnnouncementsShowResponse>;
-/**
+  /**
    * emoji
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getEmoji(client: MisskeyClient, request: GetEmojiRequest): Promise<GetEmojiResponse>;
-/**
+  /**
    * emoji
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postEmoji(client: MisskeyClient, request: PostEmojiRequest): Promise<PostEmojiResponse>;
-/**
+  /**
    * emojis
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getEmojis(client: MisskeyClient): Promise<GetEmojisResponse>;
-/**
+  /**
    * emojis
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postEmojis(client: MisskeyClient): Promise<PostEmojisResponse>;
-/**
+  /**
    * endpoint
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postEndpoint(client: MisskeyClient, request: PostEndpointRequest): Promise<PostEndpointResponse>;
-/**
+  /**
    * endpoints
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postEndpoints(client: MisskeyClient): Promise<PostEndpointsResponse>;
-/**
+  /**
    * fetch-external-resources
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postFetchExternalResources(client: MisskeyClient, request: PostFetchExternalResourcesRequest): Promise<PostFetchExternalResourcesResponse>;
-/**
+  /**
    * fetch-rss
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getFetchRss(client: MisskeyClient, request: GetFetchRssRequest): Promise<GetFetchRssResponse>;
-/**
+  /**
    * fetch-rss
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFetchRss(client: MisskeyClient, request: PostFetchRssRequest): Promise<PostFetchRssResponse>;
-/**
+  /**
    * get-online-users-count
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getGetOnlineUsersCount(client: MisskeyClient): Promise<GetGetOnlineUsersCountResponse>;
-/**
+  /**
    * get-online-users-count
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGetOnlineUsersCount(client: MisskeyClient): Promise<PostGetOnlineUsersCountResponse>;
-/**
+  /**
    * invite/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
    */
   postInviteCreate(client: MisskeyClient): Promise<PostInviteCreateResponse>;
-/**
+  /**
    * invite/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
    */
   postInviteDelete(client: MisskeyClient, request: PostInviteDeleteRequest): Promise<PostInviteDeleteResponse>;
-/**
+  /**
    * invite/limit
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
    */
   postInviteLimit(client: MisskeyClient): Promise<PostInviteLimitResponse>;
-/**
+  /**
    * invite/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
    */
   postInviteList(client: MisskeyClient, request: PostInviteListRequest): Promise<PostInviteListResponse>;
-/**
+  /**
    * meta
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getMeta(client: MisskeyClient, request: GetMetaRequest): Promise<GetMetaResponse>;
-/**
+  /**
    * meta
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postMeta(client: MisskeyClient, request: PostMetaRequest): Promise<PostMetaResponse>;
-/**
+  /**
    * ping
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postPing(client: MisskeyClient): Promise<PostPingResponse>;
-/**
+  /**
    * stats
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getStats(client: MisskeyClient): Promise<GetStatsResponse>;
-/**
+  /**
    * stats
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postStats(client: MisskeyClient): Promise<PostStatsResponse>;
 }

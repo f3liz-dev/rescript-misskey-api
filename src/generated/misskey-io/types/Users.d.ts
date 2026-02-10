@@ -323,201 +323,229 @@ export interface PostUsersStatsResponse {
 }
 
 export interface UsersModule {
-/**
+  /**
    * email-address/available
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postEmailAddressAvailable(client: MisskeyClient, request: PostEmailAddressAvailableRequest): Promise<PostEmailAddressAvailableResponse>;
-/**
+  /**
    * get-avatar-decorations
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGetAvatarDecorations(client: MisskeyClient): Promise<PostGetAvatarDecorationsResponse>;
-/**
+  /**
    * i/move
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIMove(client: MisskeyClient, request: PostImoveRequest): Promise<PostImoveResponse>;
-/**
+  /**
    * pinned-users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postPinnedUsers(client: MisskeyClient): Promise<PostPinnedUsersResponse>;
-/**
+  /**
    * retention
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getRetention(client: MisskeyClient): Promise<GetRetentionResponse>;
-/**
+  /**
    * retention
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postRetention(client: MisskeyClient): Promise<PostRetentionResponse>;
-/**
+  /**
    * username/available
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsernameAvailable(client: MisskeyClient, request: PostUsernameAvailableRequest): Promise<PostUsernameAvailableResponse>;
-/**
+  /**
    * users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsers(client: MisskeyClient, request: PostUsersRequest): Promise<PostUsersResponse>;
-/**
+  /**
    * users/clips
+   *
    * Show all clips this user owns.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersClips(client: MisskeyClient, request: PostUsersClipsRequest): Promise<PostUsersClipsResponse>;
-/**
+  /**
    * users/flashs
+   *
    * Show all flashs this user created.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersFlashs(client: MisskeyClient, request: PostUsersFlashsRequest): Promise<PostUsersFlashsResponse>;
-/**
+  /**
    * users/followers
+   *
    * Show everyone that follows this user.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersFollowers(client: MisskeyClient, request: PostUsersFollowersRequest): Promise<PostUsersFollowersResponse>;
-/**
+  /**
    * users/following
+   *
    * Show everyone that this user is following.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersFollowing(client: MisskeyClient, request: PostUsersFollowingRequest): Promise<PostUsersFollowingResponse>;
-/**
+  /**
    * users/gallery/posts
+   *
    * Show all gallery posts by the given user.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersGalleryPosts(client: MisskeyClient, request: PostUsersGalleryPostsRequest): Promise<PostUsersGalleryPostsResponse>;
-/**
+  /**
    * users/get-following-birthday-users
+   *
    * Find users who have a birthday on the specified range.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postUsersGetFollowingBirthdayUsers(client: MisskeyClient, request: PostUsersGetFollowingBirthdayUsersRequest): Promise<PostUsersGetFollowingBirthdayUsersResponse>;
-/**
+  /**
    * users/get-frequently-replied-users
+   *
    * Get a list of other users that the specified user frequently replies to.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersGetFrequentlyRepliedUsers(client: MisskeyClient, request: PostUsersGetFrequentlyRepliedUsersRequest): Promise<PostUsersGetFrequentlyRepliedUsersResponse>;
-/**
+  /**
    * users/get-security-info
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersGetSecurityInfo(client: MisskeyClient, request: PostUsersGetSecurityInfoRequest): Promise<PostUsersGetSecurityInfoResponse>;
-/**
+  /**
    * users/get-skeb-status
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getUsersGetSkebStatus(client: MisskeyClient, request: GetUsersGetSkebStatusRequest): Promise<GetUsersGetSkebStatusResponse>;
-/**
+  /**
    * users/get-skeb-status
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersGetSkebStatus(client: MisskeyClient, request: PostUsersGetSkebStatusRequest): Promise<PostUsersGetSkebStatusResponse>;
-/**
+  /**
    * users/notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersNotes(client: MisskeyClient, request: PostUsersNotesRequest): Promise<PostUsersNotesResponse>;
-/**
+  /**
    * users/pages
+   *
    * Show all pages this user created.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersPages(client: MisskeyClient, request: PostUsersPagesRequest): Promise<PostUsersPagesResponse>;
-/**
+  /**
    * users/reactions
+   *
    * Show all reactions this user made.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersReactions(client: MisskeyClient, request: PostUsersReactionsRequest): Promise<PostUsersReactionsResponse>;
-/**
+  /**
    * users/recommendation
+   *
    * Show users that the authenticated user might be interested to follow.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postUsersRecommendation(client: MisskeyClient, request: PostUsersRecommendationRequest): Promise<PostUsersRecommendationResponse>;
-/**
+  /**
    * users/relation
+   *
    * Show the different kinds of relations between the authenticated user and the specified user(s).
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postUsersRelation(client: MisskeyClient, request: PostUsersRelationRequest): Promise<PostUsersRelationResponse>;
-/**
+  /**
    * users/report-abuse
+   *
    * File a report.
-
-**Credential required**: *Yes* / **Permission**: *write:report-abuse*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:report-abuse*
    */
   postUsersReportAbuse(client: MisskeyClient, request: PostUsersReportAbuseRequest): Promise<PostUsersReportAbuseResponse>;
-/**
+  /**
    * users/search
+   *
    * Search for users.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersSearch(client: MisskeyClient, request: PostUsersSearchRequest): Promise<PostUsersSearchResponse>;
-/**
+  /**
    * users/search-by-username-and-host
+   *
    * Search for a user by username and/or host.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersSearchByUsernameAndHost(client: MisskeyClient, request: PostUsersSearchByUsernameAndHostRequest): Promise<PostUsersSearchByUsernameAndHostResponse>;
-/**
+  /**
    * users/show
+   *
    * Show the properties of a user.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersShow(client: MisskeyClient, request: PostUsersShowRequest): Promise<PostUsersShowResponse>;
-/**
+  /**
    * users/stats
+   *
    * Show statistics about a user.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersStats(client: MisskeyClient, request: PostUsersStatsRequest): Promise<PostUsersStatsResponse>;
 }

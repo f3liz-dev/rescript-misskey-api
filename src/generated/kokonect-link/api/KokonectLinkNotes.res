@@ -30,12 +30,12 @@ type postChannelsTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postChannelsTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * channels/timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsTimeline = (~body: postChannelsTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsTimelineRequestSchema)
   fetch(
@@ -82,12 +82,12 @@ type postNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotes = (~body: postNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRequestSchema)
   fetch(
@@ -130,12 +130,12 @@ type postNotesBubbleTimelineResponse = array<KokonectLinkComponentSchemas.Note.t
 let postNotesBubbleTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/bubble-timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/bubble-timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesBubbleTimeline = (~body: postNotesBubbleTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesBubbleTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesBubbleTimelineRequestSchema)
   fetch(
@@ -172,12 +172,12 @@ type postNotesChildrenResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesChildrenResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/children
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/children
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesChildren = (~body: postNotesChildrenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesChildrenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesChildrenRequestSchema)
   fetch(
@@ -292,12 +292,12 @@ let postNotesCreateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesCreate = (~body: postNotesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesCreateRequestSchema)
   fetch(
@@ -318,12 +318,12 @@ type postNotesDraftsCountResponse = float
 let postNotesDraftsCountResponseSchema = S.float
 
 /**
- * notes/drafts/count
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/drafts/count
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesDraftsCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCountResponse> => {
 
   fetch(
@@ -436,12 +436,12 @@ let postNotesDraftsCreateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/drafts/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+notes/drafts/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postNotesDraftsCreate = (~body: postNotesDraftsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsCreateRequestSchema)
   fetch(
@@ -466,12 +466,12 @@ let postNotesDraftsDeleteRequestSchema = S.object(s => {
 type postNotesDraftsDeleteResponse = unit
 
 /**
- * notes/drafts/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+notes/drafts/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postNotesDraftsDelete = (~body: postNotesDraftsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsDeleteRequestSchema)
   fetch(
@@ -508,12 +508,12 @@ type postNotesDraftsListResponse = array<KokonectLinkComponentSchemas.NoteDraft.
 let postNotesDraftsListResponseSchema = S.array(KokonectLinkComponentSchemas.NoteDraft.schema)
 
 /**
- * notes/drafts/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/drafts/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesDraftsList = (~body: postNotesDraftsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsListRequestSchema)
   fetch(
@@ -628,12 +628,12 @@ let postNotesDraftsUpdateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/drafts/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+notes/drafts/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postNotesDraftsUpdate = (~body: postNotesDraftsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsUpdateRequestSchema)
   fetch(
@@ -680,12 +680,12 @@ type postNotesEventsSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesEventsSearchResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/events/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/events/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesEventsSearch = (~body: postNotesEventsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesEventsSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesEventsSearchRequestSchema)
   fetch(
@@ -726,12 +726,12 @@ type postNotesGlobalTimelineResponse = array<KokonectLinkComponentSchemas.Note.t
 let postNotesGlobalTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/global-timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/global-timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesGlobalTimeline = (~body: postNotesGlobalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesGlobalTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesGlobalTimelineRequestSchema)
   fetch(
@@ -764,12 +764,12 @@ type postNotesHistoryResponse = array<KokonectLinkComponentSchemas.NoteHistory.t
 let postNotesHistoryResponseSchema = S.array(KokonectLinkComponentSchemas.NoteHistory.schema)
 
 /**
- * notes/history
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/history
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesHistory = (~body: postNotesHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesHistoryResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesHistoryRequestSchema)
   fetch(
@@ -820,12 +820,12 @@ type postNotesHybridTimelineResponse = array<KokonectLinkComponentSchemas.Note.t
 let postNotesHybridTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/hybrid-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/hybrid-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesHybridTimeline = (~body: postNotesHybridTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesHybridTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesHybridTimelineRequestSchema)
   fetch(
@@ -870,12 +870,12 @@ type postNotesLocalTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesLocalTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/local-timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/local-timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesLocalTimeline = (~body: postNotesLocalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesLocalTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesLocalTimelineRequestSchema)
   fetch(
@@ -914,12 +914,12 @@ type postNotesMentionsResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesMentionsResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/mentions
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/mentions
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesMentions = (~body: postNotesMentionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesMentionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesMentionsRequestSchema)
   fetch(
@@ -954,12 +954,12 @@ let postNotesPollsTranslateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/polls/translate
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/polls/translate
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesPollsTranslate = (~body: postNotesPollsTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesPollsTranslateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesPollsTranslateRequestSchema)
   fetch(
@@ -998,12 +998,12 @@ type getNotesReactionsResponse = array<KokonectLinkComponentSchemas.NoteReaction
 let getNotesReactionsResponseSchema = S.array(KokonectLinkComponentSchemas.NoteReaction.schema)
 
 /**
- * notes/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getNotesReactions = (~body: getNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getNotesReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getNotesReactionsRequestSchema)
   fetch(
@@ -1042,12 +1042,12 @@ type postNotesReactionsResponse = array<KokonectLinkComponentSchemas.NoteReactio
 let postNotesReactionsResponseSchema = S.array(KokonectLinkComponentSchemas.NoteReaction.schema)
 
 /**
- * notes/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesReactions = (~body: postNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsRequestSchema)
   fetch(
@@ -1084,12 +1084,12 @@ type postNotesRenotesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesRenotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/renotes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/renotes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesRenotes = (~body: postNotesRenotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRenotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRenotesRequestSchema)
   fetch(
@@ -1126,12 +1126,12 @@ type postNotesRepliesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesRepliesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/replies
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/replies
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesReplies = (~body: postNotesRepliesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRepliesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRepliesRequestSchema)
   fetch(
@@ -1176,12 +1176,12 @@ type postNotesSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesSearchResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesSearch = (~body: postNotesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchRequestSchema)
   fetch(
@@ -1224,12 +1224,12 @@ type postNotesSearchByTagResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesSearchByTagResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/search-by-tag
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/search-by-tag
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesSearchByTag = (~body: postNotesSearchByTagRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchByTagResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchByTagRequestSchema)
   fetch(
@@ -1256,12 +1256,12 @@ type postNotesShowResponse = KokonectLinkComponentSchemas.Note.t
 let postNotesShowResponseSchema = KokonectLinkComponentSchemas.Note.schema
 
 /**
- * notes/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesShow = (~body: postNotesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesShowRequestSchema)
   fetch(
@@ -1300,12 +1300,12 @@ let postNotesShowPartialBulkResponse_1Schema = S.object(s => {
 let postNotesShowPartialBulkResponseSchema = S.array(postNotesShowPartialBulkResponse_1Schema)
 
 /**
- * notes/show-partial-bulk
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/show-partial-bulk
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesShowPartialBulk = (~body: postNotesShowPartialBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesShowPartialBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesShowPartialBulkRequestSchema)
   fetch(
@@ -1340,12 +1340,12 @@ let postNotesStateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/state
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/state
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesState = (~body: postNotesStateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesStateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesStateRequestSchema)
   fetch(
@@ -1394,12 +1394,12 @@ type postNotesTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postNotesTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesTimeline = (~body: postNotesTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesTimelineRequestSchema)
   fetch(
@@ -1478,12 +1478,12 @@ let postNotesUpdateRequestSchema = S.object(s => {
 type postNotesUpdateResponse = unit
 
 /**
- * notes/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesUpdate = (~body: postNotesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUpdateRequestSchema)
   fetch(
@@ -1534,12 +1534,12 @@ type postNotesUserListTimelineResponse = array<KokonectLinkComponentSchemas.Note
 let postNotesUserListTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * notes/user-list-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/user-list-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesUserListTimeline = (~body: postNotesUserListTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUserListTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUserListTimelineRequestSchema)
   fetch(

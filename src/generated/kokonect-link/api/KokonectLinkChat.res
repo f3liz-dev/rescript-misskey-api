@@ -20,12 +20,12 @@ type postChatHistoryResponse = array<KokonectLinkComponentSchemas.ChatMessage.t>
 let postChatHistoryResponseSchema = S.array(KokonectLinkComponentSchemas.ChatMessage.schema)
 
 /**
- * chat/history
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/history
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatHistory = (~body: postChatHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatHistoryResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatHistoryRequestSchema)
   fetch(
@@ -56,12 +56,12 @@ type postChatMessagesCreateToRoomResponse = KokonectLinkComponentSchemas.ChatMes
 let postChatMessagesCreateToRoomResponseSchema = KokonectLinkComponentSchemas.ChatMessageLiteForRoom.schema
 
 /**
- * chat/messages/create-to-room
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/messages/create-to-room
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatMessagesCreateToRoom = (~body: postChatMessagesCreateToRoomRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesCreateToRoomResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesCreateToRoomRequestSchema)
   fetch(
@@ -92,12 +92,12 @@ type postChatMessagesCreateToUserResponse = KokonectLinkComponentSchemas.ChatMes
 let postChatMessagesCreateToUserResponseSchema = KokonectLinkComponentSchemas.ChatMessageLiteFor1on1.schema
 
 /**
- * chat/messages/create-to-user
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/messages/create-to-user
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatMessagesCreateToUser = (~body: postChatMessagesCreateToUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesCreateToUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesCreateToUserRequestSchema)
   fetch(
@@ -122,12 +122,12 @@ let postChatMessagesDeleteRequestSchema = S.object(s => {
 type postChatMessagesDeleteResponse = unit
 
 /**
- * chat/messages/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/messages/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatMessagesDelete = (~body: postChatMessagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesDeleteRequestSchema)
   fetch(
@@ -154,12 +154,12 @@ let postChatMessagesReactRequestSchema = S.object(s => {
 type postChatMessagesReactResponse = unit
 
 /**
- * chat/messages/react
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/messages/react
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatMessagesReact = (~body: postChatMessagesReactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesReactResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesReactRequestSchema)
   fetch(
@@ -196,12 +196,12 @@ type postChatMessagesRoomTimelineResponse = array<KokonectLinkComponentSchemas.C
 let postChatMessagesRoomTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.ChatMessageLiteForRoom.schema)
 
 /**
- * chat/messages/room-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/messages/room-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatMessagesRoomTimeline = (~body: postChatMessagesRoomTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesRoomTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesRoomTimelineRequestSchema)
   fetch(
@@ -234,12 +234,12 @@ type postChatMessagesSearchResponse = array<KokonectLinkComponentSchemas.ChatMes
 let postChatMessagesSearchResponseSchema = S.array(KokonectLinkComponentSchemas.ChatMessage.schema)
 
 /**
- * chat/messages/search
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/messages/search
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatMessagesSearch = (~body: postChatMessagesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesSearchRequestSchema)
   fetch(
@@ -266,12 +266,12 @@ type postChatMessagesShowResponse = KokonectLinkComponentSchemas.ChatMessage.t
 let postChatMessagesShowResponseSchema = KokonectLinkComponentSchemas.ChatMessage.schema
 
 /**
- * chat/messages/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/messages/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatMessagesShow = (~body: postChatMessagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesShowRequestSchema)
   fetch(
@@ -298,12 +298,12 @@ let postChatMessagesUnreactRequestSchema = S.object(s => {
 type postChatMessagesUnreactResponse = unit
 
 /**
- * chat/messages/unreact
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/messages/unreact
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatMessagesUnreact = (~body: postChatMessagesUnreactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesUnreactResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesUnreactRequestSchema)
   fetch(
@@ -340,12 +340,12 @@ type postChatMessagesUserTimelineResponse = array<KokonectLinkComponentSchemas.C
 let postChatMessagesUserTimelineResponseSchema = S.array(KokonectLinkComponentSchemas.ChatMessageLiteFor1on1.schema)
 
 /**
- * chat/messages/user-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/messages/user-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatMessagesUserTimeline = (~body: postChatMessagesUserTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesUserTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesUserTimelineRequestSchema)
   fetch(
@@ -362,12 +362,12 @@ let postChatMessagesUserTimeline = (~body: postChatMessagesUserTimelineRequest, 
 type postChatReadAllResponse = unit
 
 /**
- * chat/read-all
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/read-all
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatReadAll = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatReadAllResponse> => {
 
   fetch(
@@ -396,12 +396,12 @@ type postChatRoomsCreateResponse = KokonectLinkComponentSchemas.ChatRoom.t
 let postChatRoomsCreateResponseSchema = KokonectLinkComponentSchemas.ChatRoom.schema
 
 /**
- * chat/rooms/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsCreate = (~body: postChatRoomsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsCreateRequestSchema)
   fetch(
@@ -426,12 +426,12 @@ let postChatRoomsDeleteRequestSchema = S.object(s => {
 type postChatRoomsDeleteResponse = unit
 
 /**
- * chat/rooms/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsDelete = (~body: postChatRoomsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsDeleteRequestSchema)
   fetch(
@@ -456,12 +456,12 @@ let postChatRoomsInvitationsCancelRequestSchema = S.object(s => {
 type postChatRoomsInvitationsCancelResponse = unit
 
 /**
- * chat/rooms/invitations/cancel
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/invitations/cancel
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsInvitationsCancel = (~body: postChatRoomsInvitationsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsCancelResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsCancelRequestSchema)
   fetch(
@@ -490,12 +490,12 @@ type postChatRoomsInvitationsCreateResponse = KokonectLinkComponentSchemas.ChatR
 let postChatRoomsInvitationsCreateResponseSchema = KokonectLinkComponentSchemas.ChatRoomInvitation.schema
 
 /**
- * chat/rooms/invitations/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/invitations/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsInvitationsCreate = (~body: postChatRoomsInvitationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsCreateRequestSchema)
   fetch(
@@ -520,12 +520,12 @@ let postChatRoomsInvitationsIgnoreRequestSchema = S.object(s => {
 type postChatRoomsInvitationsIgnoreResponse = unit
 
 /**
- * chat/rooms/invitations/ignore
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/invitations/ignore
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsInvitationsIgnore = (~body: postChatRoomsInvitationsIgnoreRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsIgnoreResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsIgnoreRequestSchema)
   fetch(
@@ -560,12 +560,12 @@ type postChatRoomsInvitationsInboxResponse = array<KokonectLinkComponentSchemas.
 let postChatRoomsInvitationsInboxResponseSchema = S.array(KokonectLinkComponentSchemas.ChatRoomInvitation.schema)
 
 /**
- * chat/rooms/invitations/inbox
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/rooms/invitations/inbox
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatRoomsInvitationsInbox = (~body: postChatRoomsInvitationsInboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsInboxResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsInboxRequestSchema)
   fetch(
@@ -602,12 +602,12 @@ type postChatRoomsInvitationsOutboxResponse = array<KokonectLinkComponentSchemas
 let postChatRoomsInvitationsOutboxResponseSchema = S.array(KokonectLinkComponentSchemas.ChatRoomInvitation.schema)
 
 /**
- * chat/rooms/invitations/outbox
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/rooms/invitations/outbox
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatRoomsInvitationsOutbox = (~body: postChatRoomsInvitationsOutboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsOutboxResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsOutboxRequestSchema)
   fetch(
@@ -632,12 +632,12 @@ let postChatRoomsInvitationsRejectRequestSchema = S.object(s => {
 type postChatRoomsInvitationsRejectResponse = unit
 
 /**
- * chat/rooms/invitations/reject
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/invitations/reject
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsInvitationsReject = (~body: postChatRoomsInvitationsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsRejectResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsRejectRequestSchema)
   fetch(
@@ -662,12 +662,12 @@ let postChatRoomsJoinRequestSchema = S.object(s => {
 type postChatRoomsJoinResponse = unit
 
 /**
- * chat/rooms/join
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/join
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsJoin = (~body: postChatRoomsJoinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsJoinResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsJoinRequestSchema)
   fetch(
@@ -702,12 +702,12 @@ type postChatRoomsJoiningResponse = array<KokonectLinkComponentSchemas.ChatRoomM
 let postChatRoomsJoiningResponseSchema = S.array(KokonectLinkComponentSchemas.ChatRoomMembership.schema)
 
 /**
- * chat/rooms/joining
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/rooms/joining
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatRoomsJoining = (~body: postChatRoomsJoiningRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsJoiningResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsJoiningRequestSchema)
   fetch(
@@ -732,12 +732,12 @@ let postChatRoomsLeaveRequestSchema = S.object(s => {
 type postChatRoomsLeaveResponse = unit
 
 /**
- * chat/rooms/leave
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/leave
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsLeave = (~body: postChatRoomsLeaveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsLeaveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsLeaveRequestSchema)
   fetch(
@@ -774,12 +774,12 @@ type postChatRoomsMembersResponse = array<KokonectLinkComponentSchemas.ChatRoomM
 let postChatRoomsMembersResponseSchema = S.array(KokonectLinkComponentSchemas.ChatRoomMembership.schema)
 
 /**
- * chat/rooms/members
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/members
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsMembers = (~body: postChatRoomsMembersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsMembersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsMembersRequestSchema)
   fetch(
@@ -806,12 +806,12 @@ let postChatRoomsMuteRequestSchema = S.object(s => {
 type postChatRoomsMuteResponse = unit
 
 /**
- * chat/rooms/mute
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/mute
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsMute = (~body: postChatRoomsMuteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsMuteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsMuteRequestSchema)
   fetch(
@@ -846,12 +846,12 @@ type postChatRoomsOwnedResponse = array<KokonectLinkComponentSchemas.ChatRoom.t>
 let postChatRoomsOwnedResponseSchema = S.array(KokonectLinkComponentSchemas.ChatRoom.schema)
 
 /**
- * chat/rooms/owned
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/rooms/owned
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatRoomsOwned = (~body: postChatRoomsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsOwnedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsOwnedRequestSchema)
   fetch(
@@ -878,12 +878,12 @@ type postChatRoomsShowResponse = KokonectLinkComponentSchemas.ChatRoom.t
 let postChatRoomsShowResponseSchema = KokonectLinkComponentSchemas.ChatRoom.schema
 
 /**
- * chat/rooms/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:chat*
- */
+chat/rooms/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:chat*
+*/
 let postChatRoomsShow = (~body: postChatRoomsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsShowRequestSchema)
   fetch(
@@ -914,12 +914,12 @@ type postChatRoomsUpdateResponse = KokonectLinkComponentSchemas.ChatRoom.t
 let postChatRoomsUpdateResponseSchema = KokonectLinkComponentSchemas.ChatRoom.schema
 
 /**
- * chat/rooms/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:chat*
- */
+chat/rooms/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:chat*
+*/
 let postChatRoomsUpdate = (~body: postChatRoomsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsUpdateRequestSchema)
   fetch(

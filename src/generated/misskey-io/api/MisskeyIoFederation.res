@@ -18,12 +18,12 @@ type postApGetResponse = dict<JSON.t>
 let postApGetResponseSchema = S.dict(S.json)
 
 /**
- * ap/get
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:federation*
- */
+ap/get
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:federation*
+*/
 let postApGet = (~body: postApGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postApGetResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postApGetRequestSchema)
   fetch(
@@ -60,12 +60,12 @@ let postApShowResponse_1Schema = S.object(s => {
 let postApShowResponseSchema = postApShowResponse_1Schema
 
 /**
- * ap/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+ap/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postApShow = (~body: postApShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postApShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postApShowRequestSchema)
   fetch(
@@ -98,12 +98,12 @@ type postFederationFollowersResponse = array<MisskeyIoComponentSchemas.Following
 let postFederationFollowersResponseSchema = S.array(MisskeyIoComponentSchemas.Following.schema)
 
 /**
- * federation/followers
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/followers
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationFollowers = (~body: postFederationFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowersRequestSchema)
   fetch(
@@ -136,12 +136,12 @@ type postFederationFollowingResponse = array<MisskeyIoComponentSchemas.Following
 let postFederationFollowingResponseSchema = S.array(MisskeyIoComponentSchemas.Following.schema)
 
 /**
- * federation/following
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/following
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationFollowing = (~body: postFederationFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowingRequestSchema)
   fetch(
@@ -188,12 +188,12 @@ type getFederationInstancesResponse = array<MisskeyIoComponentSchemas.Federation
 let getFederationInstancesResponseSchema = S.array(MisskeyIoComponentSchemas.FederationInstance.schema)
 
 /**
- * federation/instances
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/instances
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getFederationInstances = (~body: getFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFederationInstancesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFederationInstancesRequestSchema)
   fetch(
@@ -240,12 +240,12 @@ type postFederationInstancesResponse = array<MisskeyIoComponentSchemas.Federatio
 let postFederationInstancesResponseSchema = S.array(MisskeyIoComponentSchemas.FederationInstance.schema)
 
 /**
- * federation/instances
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/instances
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationInstances = (~body: postFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationInstancesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationInstancesRequestSchema)
   fetch(
@@ -272,12 +272,12 @@ type postFederationShowInstanceResponse = option<MisskeyIoComponentSchemas.Feder
 let postFederationShowInstanceResponseSchema = S.nullableAsOption(MisskeyIoComponentSchemas.FederationInstance.schema)
 
 /**
- * federation/show-instance
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/show-instance
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationShowInstance = (~body: postFederationShowInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationShowInstanceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationShowInstanceRequestSchema)
   fetch(
@@ -314,12 +314,12 @@ let getFederationStatsResponseSchema = S.object(s => {
   })
 
 /**
- * federation/stats
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/stats
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getFederationStats = (~body: getFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFederationStatsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFederationStatsRequestSchema)
   fetch(
@@ -356,12 +356,12 @@ let postFederationStatsResponseSchema = S.object(s => {
   })
 
 /**
- * federation/stats
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/stats
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationStats = (~body: postFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationStatsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationStatsRequestSchema)
   fetch(
@@ -386,12 +386,12 @@ let postFederationUpdateRemoteUserRequestSchema = S.object(s => {
 type postFederationUpdateRemoteUserResponse = unit
 
 /**
- * federation/update-remote-user
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/update-remote-user
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationUpdateRemoteUser = (~body: postFederationUpdateRemoteUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationUpdateRemoteUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationUpdateRemoteUserRequestSchema)
   fetch(
@@ -424,12 +424,12 @@ type postFederationUsersResponse = array<MisskeyIoComponentSchemas.UserDetailedN
 let postFederationUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailedNotMe.schema)
 
 /**
- * federation/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+federation/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFederationUsers = (~body: postFederationUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationUsersRequestSchema)
   fetch(

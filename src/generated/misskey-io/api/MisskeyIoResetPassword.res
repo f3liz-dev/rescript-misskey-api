@@ -18,12 +18,12 @@ let postRequestResetPasswordRequestSchema = S.object(s => {
 type postRequestResetPasswordResponse = unit
 
 /**
- * request-reset-password
- *
- * Request a users password to be reset.
- *
- * **Credential required**: *No*
- */
+request-reset-password
+
+Request a users password to be reset.
+
+**Credential required**: *No*
+*/
 let postRequestResetPassword = (~body: postRequestResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRequestResetPasswordResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRequestResetPasswordRequestSchema)
   fetch(
@@ -50,12 +50,12 @@ let postResetPasswordRequestSchema = S.object(s => {
 type postResetPasswordResponse = unit
 
 /**
- * reset-password
- *
- * Complete the password reset that was previously requested.
- *
- * **Credential required**: *No*
- */
+reset-password
+
+Complete the password reset that was previously requested.
+
+**Credential required**: *No*
+*/
 let postResetPassword = (~body: postResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetPasswordResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postResetPasswordRequestSchema)
   fetch(

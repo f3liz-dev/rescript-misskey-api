@@ -354,249 +354,284 @@ export interface PostUsersFeaturedNotesRequest {
 export type PostUsersFeaturedNotesResponse = ComponentSchemas.Note[];
 
 export interface NotesModule {
-/**
+  /**
    * channels/timeline
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChannelsTimeline(client: MisskeyClient, request: PostChannelsTimelineRequest): Promise<PostChannelsTimelineResponse>;
-/**
+  /**
    * notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotes(client: MisskeyClient, request: PostNotesRequest): Promise<PostNotesResponse>;
-/**
+  /**
    * notes/children
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesChildren(client: MisskeyClient, request: PostNotesChildrenRequest): Promise<PostNotesChildrenResponse>;
-/**
+  /**
    * notes/conversation
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesConversation(client: MisskeyClient, request: PostNotesConversationRequest): Promise<PostNotesConversationResponse>;
-/**
+  /**
    * notes/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notes*
    */
   postNotesCreate(client: MisskeyClient, request: PostNotesCreateRequest): Promise<PostNotesCreateResponse>;
-/**
+  /**
    * notes/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notes*
    */
   postNotesDelete(client: MisskeyClient, request: PostNotesDeleteRequest): Promise<PostNotesDeleteResponse>;
-/**
+  /**
    * notes/favorites/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:favorites*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:favorites*
    */
   postNotesFavoritesCreate(client: MisskeyClient, request: PostNotesFavoritesCreateRequest): Promise<PostNotesFavoritesCreateResponse>;
-/**
+  /**
    * notes/favorites/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:favorites*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:favorites*
    */
   postNotesFavoritesDelete(client: MisskeyClient, request: PostNotesFavoritesDeleteRequest): Promise<PostNotesFavoritesDeleteResponse>;
-/**
+  /**
    * notes/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getNotesFeatured(client: MisskeyClient, request: GetNotesFeaturedRequest): Promise<GetNotesFeaturedResponse>;
-/**
+  /**
    * notes/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesFeatured(client: MisskeyClient, request: PostNotesFeaturedRequest): Promise<PostNotesFeaturedResponse>;
-/**
+  /**
    * notes/global-timeline
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesGlobalTimeline(client: MisskeyClient, request: PostNotesGlobalTimelineRequest): Promise<PostNotesGlobalTimelineResponse>;
-/**
+  /**
    * notes/hybrid-timeline
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesHybridTimeline(client: MisskeyClient, request: PostNotesHybridTimelineRequest): Promise<PostNotesHybridTimelineResponse>;
-/**
+  /**
    * notes/local-timeline
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesLocalTimeline(client: MisskeyClient, request: PostNotesLocalTimelineRequest): Promise<PostNotesLocalTimelineResponse>;
-/**
+  /**
    * notes/mentions
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesMentions(client: MisskeyClient, request: PostNotesMentionsRequest): Promise<PostNotesMentionsResponse>;
-/**
+  /**
    * notes/polls/recommendation
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesPollsRecommendation(client: MisskeyClient, request: PostNotesPollsRecommendationRequest): Promise<PostNotesPollsRecommendationResponse>;
-/**
+  /**
    * notes/polls/vote
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:votes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:votes*
    */
   postNotesPollsVote(client: MisskeyClient, request: PostNotesPollsVoteRequest): Promise<PostNotesPollsVoteResponse>;
-/**
+  /**
    * notes/reactions
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getNotesReactions(client: MisskeyClient, request: GetNotesReactionsRequest): Promise<GetNotesReactionsResponse>;
-/**
+  /**
    * notes/reactions
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesReactions(client: MisskeyClient, request: PostNotesReactionsRequest): Promise<PostNotesReactionsResponse>;
-/**
+  /**
    * notes/renotes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesRenotes(client: MisskeyClient, request: PostNotesRenotesRequest): Promise<PostNotesRenotesResponse>;
-/**
+  /**
    * notes/replies
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesReplies(client: MisskeyClient, request: PostNotesRepliesRequest): Promise<PostNotesRepliesResponse>;
-/**
+  /**
    * notes/scheduled/cancel
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notes*
    */
   postNotesScheduledCancel(client: MisskeyClient, request: PostNotesScheduledCancelRequest): Promise<PostNotesScheduledCancelResponse>;
-/**
+  /**
    * notes/scheduled/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notes*
    */
   postNotesScheduledList(client: MisskeyClient, request: PostNotesScheduledListRequest): Promise<PostNotesScheduledListResponse>;
-/**
+  /**
    * notes/search
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesSearch(client: MisskeyClient, request: PostNotesSearchRequest): Promise<PostNotesSearchResponse>;
-/**
+  /**
    * notes/search-by-tag
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesSearchByTag(client: MisskeyClient, request: PostNotesSearchByTagRequest): Promise<PostNotesSearchByTagResponse>;
-/**
+  /**
    * notes/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesShow(client: MisskeyClient, request: PostNotesShowRequest): Promise<PostNotesShowResponse>;
-/**
+  /**
    * notes/state
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesState(client: MisskeyClient, request: PostNotesStateRequest): Promise<PostNotesStateResponse>;
-/**
+  /**
    * notes/thread-muting/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postNotesThreadMutingCreate(client: MisskeyClient, request: PostNotesThreadMutingCreateRequest): Promise<PostNotesThreadMutingCreateResponse>;
-/**
+  /**
    * notes/thread-muting/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postNotesThreadMutingDelete(client: MisskeyClient, request: PostNotesThreadMutingDeleteRequest): Promise<PostNotesThreadMutingDeleteResponse>;
-/**
+  /**
    * notes/timeline
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesTimeline(client: MisskeyClient, request: PostNotesTimelineRequest): Promise<PostNotesTimelineResponse>;
-/**
+  /**
    * notes/translate
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesTranslate(client: MisskeyClient, request: PostNotesTranslateRequest): Promise<PostNotesTranslateResponse>;
-/**
+  /**
    * notes/unrenote
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notes*
    */
   postNotesUnrenote(client: MisskeyClient, request: PostNotesUnrenoteRequest): Promise<PostNotesUnrenoteResponse>;
-/**
+  /**
    * notes/user-list-timeline
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postNotesUserListTimeline(client: MisskeyClient, request: PostNotesUserListTimelineRequest): Promise<PostNotesUserListTimelineResponse>;
-/**
+  /**
    * promo/read
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postPromoRead(client: MisskeyClient, request: PostPromoReadRequest): Promise<PostPromoReadResponse>;
-/**
+  /**
    * users/featured-notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getUsersFeaturedNotes(client: MisskeyClient, request: GetUsersFeaturedNotesRequest): Promise<GetUsersFeaturedNotesResponse>;
-/**
+  /**
    * users/featured-notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersFeaturedNotes(client: MisskeyClient, request: PostUsersFeaturedNotesRequest): Promise<PostUsersFeaturedNotesResponse>;
 }

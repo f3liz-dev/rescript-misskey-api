@@ -18,12 +18,12 @@ type postBlockingCreateResponse = KokonectLinkComponentSchemas.UserDetailedNotMe
 let postBlockingCreateResponseSchema = KokonectLinkComponentSchemas.UserDetailedNotMe.schema
 
 /**
- * blocking/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:blocks*
- */
+blocking/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:blocks*
+*/
 let postBlockingCreate = (~body: postBlockingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingCreateRequestSchema)
   fetch(
@@ -50,12 +50,12 @@ type postBlockingDeleteResponse = KokonectLinkComponentSchemas.UserDetailedNotMe
 let postBlockingDeleteResponseSchema = KokonectLinkComponentSchemas.UserDetailedNotMe.schema
 
 /**
- * blocking/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:blocks*
- */
+blocking/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:blocks*
+*/
 let postBlockingDelete = (~body: postBlockingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingDeleteRequestSchema)
   fetch(
@@ -90,12 +90,12 @@ type postBlockingListResponse = array<KokonectLinkComponentSchemas.Blocking.t>
 let postBlockingListResponseSchema = S.array(KokonectLinkComponentSchemas.Blocking.schema)
 
 /**
- * blocking/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:blocks*
- */
+blocking/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:blocks*
+*/
 let postBlockingList = (~body: postBlockingListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingListRequestSchema)
   fetch(
@@ -134,12 +134,12 @@ type postClipsNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postClipsNotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * clips/notes
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+clips/notes
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postClipsNotes = (~body: postClipsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsNotesRequestSchema)
   fetch(
@@ -174,12 +174,12 @@ type postFlashMyResponse = array<KokonectLinkComponentSchemas.Flash.t>
 let postFlashMyResponseSchema = S.array(KokonectLinkComponentSchemas.Flash.schema)
 
 /**
- * flash/my
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:flash*
- */
+flash/my
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:flash*
+*/
 let postFlashMy = (~body: postFlashMyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyRequestSchema)
   fetch(
@@ -226,12 +226,12 @@ let postFlashMyLikesResponse_1Schema = S.object(s => {
 let postFlashMyLikesResponseSchema = S.array(postFlashMyLikesResponse_1Schema)
 
 /**
- * flash/my-likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:flash-likes*
- */
+flash/my-likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:flash-likes*
+*/
 let postFlashMyLikes = (~body: postFlashMyLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyLikesRequestSchema)
   fetch(
@@ -250,12 +250,12 @@ type postIResponse = KokonectLinkComponentSchemas.MeDetailed.t
 let postIResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
 
 /**
- * i
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postI = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
 
   fetch(
@@ -280,12 +280,12 @@ let postIAutoDeleteSettingsResponseSchema = S.object(s => {
   })
 
 /**
- * i/auto-delete-settings
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/auto-delete-settings
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIAutoDeleteSettings = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAutoDeleteSettingsResponse> => {
 
   fetch(
@@ -320,12 +320,12 @@ type postIFavoritesResponse = array<KokonectLinkComponentSchemas.NoteFavorite.t>
 let postIFavoritesResponseSchema = S.array(KokonectLinkComponentSchemas.NoteFavorite.schema)
 
 /**
- * i/favorites
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:favorites*
- */
+i/favorites
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:favorites*
+*/
 let postIFavorites = (~body: postIFavoritesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFavoritesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIFavoritesRequestSchema)
   fetch(
@@ -360,12 +360,12 @@ let postIFollowersServersResponseSchema = S.object(s => {
   })
 
 /**
- * i/followers-servers
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:following*
- */
+i/followers-servers
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:following*
+*/
 let postIFollowersServers = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFollowersServersResponse> => {
 
   fetch(
@@ -410,12 +410,12 @@ let postIGalleryLikesResponse_1Schema = S.object(s => {
 let postIGalleryLikesResponseSchema = S.array(postIGalleryLikesResponse_1Schema)
 
 /**
- * i/gallery/likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:gallery-likes*
- */
+i/gallery/likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:gallery-likes*
+*/
 let postIGalleryLikes = (~body: postIGalleryLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryLikesRequestSchema)
   fetch(
@@ -450,12 +450,12 @@ type postIGalleryPostsResponse = array<KokonectLinkComponentSchemas.GalleryPost.
 let postIGalleryPostsResponseSchema = S.array(KokonectLinkComponentSchemas.GalleryPost.schema)
 
 /**
- * i/gallery/posts
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:gallery*
- */
+i/gallery/posts
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:gallery*
+*/
 let postIGalleryPosts = (~body: postIGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryPostsRequestSchema)
   fetch(
@@ -496,12 +496,12 @@ type postINotificationsResponse = array<KokonectLinkComponentSchemas.Notificatio
 let postINotificationsResponseSchema = S.array(KokonectLinkComponentSchemas.Notification.schema)
 
 /**
- * i/notifications
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:notifications*
- */
+i/notifications
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:notifications*
+*/
 let postINotifications = (~body: postINotificationsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsRequestSchema)
   fetch(
@@ -542,12 +542,12 @@ type postINotificationsGroupedResponse = array<KokonectLinkComponentSchemas.Noti
 let postINotificationsGroupedResponseSchema = S.array(KokonectLinkComponentSchemas.Notification.schema)
 
 /**
- * i/notifications-grouped
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:notifications*
- */
+i/notifications-grouped
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:notifications*
+*/
 let postINotificationsGrouped = (~body: postINotificationsGroupedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsGroupedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsGroupedRequestSchema)
   fetch(
@@ -592,12 +592,12 @@ let postIPageLikesResponse_1Schema = S.object(s => {
 let postIPageLikesResponseSchema = S.array(postIPageLikesResponse_1Schema)
 
 /**
- * i/page-likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:page-likes*
- */
+i/page-likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:page-likes*
+*/
 let postIPageLikes = (~body: postIPageLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPageLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPageLikesRequestSchema)
   fetch(
@@ -632,12 +632,12 @@ type postIPagesResponse = array<KokonectLinkComponentSchemas.Page.t>
 let postIPagesResponseSchema = S.array(KokonectLinkComponentSchemas.Page.schema)
 
 /**
- * i/pages
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:pages*
- */
+i/pages
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:pages*
+*/
 let postIPages = (~body: postIPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPagesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPagesRequestSchema)
   fetch(
@@ -664,12 +664,12 @@ type postIPinResponse = KokonectLinkComponentSchemas.MeDetailed.t
 let postIPinResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
 
 /**
- * i/pin
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/pin
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIPin = (~body: postIPinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPinResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPinRequestSchema)
   fetch(
@@ -696,12 +696,12 @@ type postIUnpinResponse = KokonectLinkComponentSchemas.MeDetailed.t
 let postIUnpinResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
 
 /**
- * i/unpin
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/unpin
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIUnpin = (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUnpinResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUnpinRequestSchema)
   fetch(
@@ -876,12 +876,12 @@ type postIUpdateResponse = KokonectLinkComponentSchemas.MeDetailed.t
 let postIUpdateResponseSchema = KokonectLinkComponentSchemas.MeDetailed.schema
 
 /**
- * i/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIUpdate = (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateRequestSchema)
   fetch(
@@ -908,12 +908,12 @@ let postIUpdateAutoDeleteSettingsRequestSchema = S.object(s => {
 type postIUpdateAutoDeleteSettingsResponse = unit
 
 /**
- * i/update-auto-delete-settings
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/update-auto-delete-settings
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIUpdateAutoDeleteSettings = (~body: postIUpdateAutoDeleteSettingsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateAutoDeleteSettingsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateAutoDeleteSettingsRequestSchema)
   fetch(
@@ -954,12 +954,12 @@ let postIUserGroupInvitesResponse_1Schema = S.object(s => {
 let postIUserGroupInvitesResponseSchema = S.array(postIUserGroupInvitesResponse_1Schema)
 
 /**
- * i/user-group-invites
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:user-groups*
- */
+i/user-group-invites
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:user-groups*
+*/
 let postIUserGroupInvites = (~body: postIUserGroupInvitesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUserGroupInvitesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUserGroupInvitesRequestSchema)
   fetch(
@@ -994,12 +994,12 @@ type postMuteListResponse = array<KokonectLinkComponentSchemas.Muting.t>
 let postMuteListResponseSchema = S.array(KokonectLinkComponentSchemas.Muting.schema)
 
 /**
- * mute/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:mutes*
- */
+mute/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:mutes*
+*/
 let postMuteList = (~body: postMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMuteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMuteListRequestSchema)
   fetch(
@@ -1034,12 +1034,12 @@ type postRenoteMuteListResponse = array<KokonectLinkComponentSchemas.RenoteMutin
 let postRenoteMuteListResponseSchema = S.array(KokonectLinkComponentSchemas.RenoteMuting.schema)
 
 /**
- * renote-mute/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:mutes*
- */
+renote-mute/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:mutes*
+*/
 let postRenoteMuteList = (~body: postRenoteMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRenoteMuteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRenoteMuteListRequestSchema)
   fetch(
@@ -1064,12 +1064,12 @@ let postVerifyEmailRequestSchema = S.object(s => {
 type postVerifyEmailResponse = unit
 
 /**
- * verify-email
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+verify-email
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postVerifyEmail = (~body: postVerifyEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postVerifyEmailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postVerifyEmailRequestSchema)
   fetch(

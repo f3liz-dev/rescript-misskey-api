@@ -20,12 +20,12 @@ type postFollowingCreateResponse = MisskeyIoComponentSchemas.UserLite.t
 let postFollowingCreateResponseSchema = MisskeyIoComponentSchemas.UserLite.schema
 
 /**
- * following/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingCreate = (~body: postFollowingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingCreateRequestSchema)
   fetch(
@@ -52,12 +52,12 @@ type postFollowingDeleteResponse = MisskeyIoComponentSchemas.UserLite.t
 let postFollowingDeleteResponseSchema = MisskeyIoComponentSchemas.UserLite.schema
 
 /**
- * following/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingDelete = (~body: postFollowingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingDeleteRequestSchema)
   fetch(
@@ -84,12 +84,12 @@ type postFollowingInvalidateResponse = MisskeyIoComponentSchemas.UserLite.t
 let postFollowingInvalidateResponseSchema = MisskeyIoComponentSchemas.UserLite.schema
 
 /**
- * following/invalidate
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/invalidate
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingInvalidate = (~body: postFollowingInvalidateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingInvalidateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingInvalidateRequestSchema)
   fetch(
@@ -114,12 +114,12 @@ let postFollowingRequestsAcceptRequestSchema = S.object(s => {
 type postFollowingRequestsAcceptResponse = unit
 
 /**
- * following/requests/accept
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/requests/accept
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingRequestsAccept = (~body: postFollowingRequestsAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsAcceptResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsAcceptRequestSchema)
   fetch(
@@ -146,12 +146,12 @@ type postFollowingRequestsCancelResponse = MisskeyIoComponentSchemas.UserLite.t
 let postFollowingRequestsCancelResponseSchema = MisskeyIoComponentSchemas.UserLite.schema
 
 /**
- * following/requests/cancel
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/requests/cancel
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingRequestsCancel = (~body: postFollowingRequestsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsCancelResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsCancelRequestSchema)
   fetch(
@@ -194,12 +194,12 @@ let postFollowingRequestsListResponse_1Schema = S.object(s => {
 let postFollowingRequestsListResponseSchema = S.array(postFollowingRequestsListResponse_1Schema)
 
 /**
- * following/requests/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:following*
- */
+following/requests/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:following*
+*/
 let postFollowingRequestsList = (~body: postFollowingRequestsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsListRequestSchema)
   fetch(
@@ -224,12 +224,12 @@ let postFollowingRequestsRejectRequestSchema = S.object(s => {
 type postFollowingRequestsRejectResponse = unit
 
 /**
- * following/requests/reject
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/requests/reject
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingRequestsReject = (~body: postFollowingRequestsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsRejectResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsRejectRequestSchema)
   fetch(
@@ -272,12 +272,12 @@ let postFollowingRequestsSentResponse_1Schema = S.object(s => {
 let postFollowingRequestsSentResponseSchema = S.array(postFollowingRequestsSentResponse_1Schema)
 
 /**
- * following/requests/sent
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:following*
- */
+following/requests/sent
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:following*
+*/
 let postFollowingRequestsSent = (~body: postFollowingRequestsSentRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsSentResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsSentRequestSchema)
   fetch(
@@ -308,12 +308,12 @@ type postFollowingUpdateResponse = MisskeyIoComponentSchemas.UserLite.t
 let postFollowingUpdateResponseSchema = MisskeyIoComponentSchemas.UserLite.schema
 
 /**
- * following/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingUpdate = (~body: postFollowingUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingUpdateRequestSchema)
   fetch(
@@ -340,12 +340,12 @@ let postFollowingUpdateAllRequestSchema = S.object(s => {
 type postFollowingUpdateAllResponse = unit
 
 /**
- * following/update-all
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:following*
- */
+following/update-all
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:following*
+*/
 let postFollowingUpdateAll = (~body: postFollowingUpdateAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingUpdateAllResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingUpdateAllRequestSchema)
   fetch(

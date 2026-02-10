@@ -258,214 +258,244 @@ export interface PostDriveStreamRequest {
 export type PostDriveStreamResponse = ComponentSchemas.DriveFile[];
 
 export interface DriveModule {
-/**
+  /**
    * drive
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDrive(client: MisskeyClient): Promise<PostDriveResponse>;
-/**
+  /**
    * drive/files
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFiles(client: MisskeyClient, request: PostDriveFilesRequest): Promise<PostDriveFilesResponse>;
-/**
+  /**
    * drive/files/attached-notes
+   *
    * Find the notes to which the given file is attached.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesAttachedNotes(client: MisskeyClient, request: PostDriveFilesAttachedNotesRequest): Promise<PostDriveFilesAttachedNotesResponse>;
-/**
+  /**
    * drive/files/check-existence
+   *
    * Check if a given file exists.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesCheckExistence(client: MisskeyClient, request: PostDriveFilesCheckExistenceRequest): Promise<PostDriveFilesCheckExistenceResponse>;
-/**
+  /**
    * drive/files/create
+   *
    * Upload a new drive file.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesCreate(client: MisskeyClient, request: PostDriveFilesCreateRequest): Promise<PostDriveFilesCreateResponse>;
-/**
+  /**
    * drive/files/delete
+   *
    * Delete an existing drive file.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesDelete(client: MisskeyClient, request: PostDriveFilesDeleteRequest): Promise<PostDriveFilesDeleteResponse>;
-/**
+  /**
    * drive/files/find
+   *
    * Search for a drive file by the given parameters.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesFind(client: MisskeyClient, request: PostDriveFilesFindRequest): Promise<PostDriveFilesFindResponse>;
-/**
+  /**
    * drive/files/find-by-hash
+   *
    * Search for a drive file by a hash of the contents.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesFindByHash(client: MisskeyClient, request: PostDriveFilesFindByHashRequest): Promise<PostDriveFilesFindByHashResponse>;
-/**
+  /**
    * drive/files/show
+   *
    * Show the properties of a drive file.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesShow(client: MisskeyClient, request: PostDriveFilesShowRequest): Promise<PostDriveFilesShowResponse>;
-/**
+  /**
    * drive/files/update
+   *
    * Update the properties of a drive file.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesUpdate(client: MisskeyClient, request: PostDriveFilesUpdateRequest): Promise<PostDriveFilesUpdateResponse>;
-/**
+  /**
    * drive/files/upload-from-url
+   *
    * Request the server to download a new drive file from the specified URL.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesUploadFromUrl(client: MisskeyClient, request: PostDriveFilesUploadFromUrlRequest): Promise<PostDriveFilesUploadFromUrlResponse>;
-/**
+  /**
    * drive/folders
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFolders(client: MisskeyClient, request: PostDriveFoldersRequest): Promise<PostDriveFoldersResponse>;
-/**
+  /**
    * drive/folders/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFoldersCreate(client: MisskeyClient, request: PostDriveFoldersCreateRequest): Promise<PostDriveFoldersCreateResponse>;
-/**
+  /**
    * drive/folders/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFoldersDelete(client: MisskeyClient, request: PostDriveFoldersDeleteRequest): Promise<PostDriveFoldersDeleteResponse>;
-/**
+  /**
    * drive/folders/find
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFoldersFind(client: MisskeyClient, request: PostDriveFoldersFindRequest): Promise<PostDriveFoldersFindResponse>;
-/**
+  /**
    * drive/folders/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFoldersShow(client: MisskeyClient, request: PostDriveFoldersShowRequest): Promise<PostDriveFoldersShowResponse>;
-/**
+  /**
    * drive/folders/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFoldersUpdate(client: MisskeyClient, request: PostDriveFoldersUpdateRequest): Promise<PostDriveFoldersUpdateResponse>;
-/**
+  /**
    * drive/stream
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveStream(client: MisskeyClient, request: PostDriveStreamRequest): Promise<PostDriveStreamResponse>;
-/**
+  /**
    * drive/files
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFiles(client: MisskeyClient, request: PostDriveFilesRequest): Promise<PostDriveFilesResponse>;
-/**
+  /**
    * drive/files/attached-chat-messages
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesAttachedChatMessages(client: MisskeyClient, request: PostDriveFilesAttachedChatMessagesRequest): Promise<PostDriveFilesAttachedChatMessagesResponse>;
-/**
+  /**
    * drive/files/attached-notes
+   *
    * Find the notes to which the given file is attached.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesAttachedNotes(client: MisskeyClient, request: PostDriveFilesAttachedNotesRequest): Promise<PostDriveFilesAttachedNotesResponse>;
-/**
+  /**
    * drive/files/create
+   *
    * Upload a new drive file.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesCreate(client: MisskeyClient, request: PostDriveFilesCreateRequest): Promise<PostDriveFilesCreateResponse>;
-/**
+  /**
    * drive/files/move-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesMoveBulk(client: MisskeyClient, request: PostDriveFilesMoveBulkRequest): Promise<PostDriveFilesMoveBulkResponse>;
-/**
+  /**
    * drive/files/show
+   *
    * Show the properties of a drive file.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFilesShow(client: MisskeyClient, request: PostDriveFilesShowRequest): Promise<PostDriveFilesShowResponse>;
-/**
+  /**
    * drive/files/update
+   *
    * Update the properties of a drive file.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFilesUpdate(client: MisskeyClient, request: PostDriveFilesUpdateRequest): Promise<PostDriveFilesUpdateResponse>;
-/**
+  /**
    * drive/folders
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFolders(client: MisskeyClient, request: PostDriveFoldersRequest): Promise<PostDriveFoldersResponse>;
-/**
+  /**
    * drive/folders/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFoldersCreate(client: MisskeyClient, request: PostDriveFoldersCreateRequest): Promise<PostDriveFoldersCreateResponse>;
-/**
+  /**
    * drive/folders/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveFoldersShow(client: MisskeyClient, request: PostDriveFoldersShowRequest): Promise<PostDriveFoldersShowResponse>;
-/**
+  /**
    * drive/folders/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:drive*
    */
   postDriveFoldersUpdate(client: MisskeyClient, request: PostDriveFoldersUpdateRequest): Promise<PostDriveFoldersUpdateResponse>;
-/**
+  /**
    * drive/stream
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:drive*
    */
   postDriveStream(client: MisskeyClient, request: PostDriveStreamRequest): Promise<PostDriveStreamResponse>;
 }

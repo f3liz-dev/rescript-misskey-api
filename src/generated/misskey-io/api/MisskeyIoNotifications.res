@@ -20,12 +20,12 @@ let postNotificationsCreateRequestSchema = S.object(s => {
 type postNotificationsCreateResponse = unit
 
 /**
- * notifications/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notifications*
- */
+notifications/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notifications*
+*/
 let postNotificationsCreate = (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotificationsCreateRequestSchema)
   fetch(
@@ -42,12 +42,12 @@ let postNotificationsCreate = (~body: postNotificationsCreateRequest, ~fetch: (~
 type postNotificationsFlushResponse = unit
 
 /**
- * notifications/flush
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notifications*
- */
+notifications/flush
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notifications*
+*/
 let postNotificationsFlush = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsFlushResponse> => {
 
   fetch(
@@ -64,12 +64,12 @@ let postNotificationsFlush = (~fetch: (~url: string, ~method_: string, ~body: op
 type postNotificationsMarkAllAsReadResponse = unit
 
 /**
- * notifications/mark-all-as-read
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notifications*
- */
+notifications/mark-all-as-read
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notifications*
+*/
 let postNotificationsMarkAllAsRead = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsMarkAllAsReadResponse> => {
 
   fetch(
@@ -86,12 +86,12 @@ let postNotificationsMarkAllAsRead = (~fetch: (~url: string, ~method_: string, ~
 type postNotificationsTestNotificationResponse = unit
 
 /**
- * notifications/test-notification
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notifications*
- */
+notifications/test-notification
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notifications*
+*/
 let postNotificationsTestNotification = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsTestNotificationResponse> => {
 
   fetch(

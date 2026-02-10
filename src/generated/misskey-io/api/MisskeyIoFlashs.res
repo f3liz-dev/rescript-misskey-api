@@ -16,12 +16,12 @@ let postFlashDeleteRequestSchema = S.object(s => {
 type postFlashDeleteResponse = unit
 
 /**
- * flash/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash*
- */
+flash/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash*
+*/
 let postFlashDelete = (~body: postFlashDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashDeleteRequestSchema)
   fetch(
@@ -48,12 +48,12 @@ type postFlashShowResponse = MisskeyIoComponentSchemas.Flash.t
 let postFlashShowResponseSchema = MisskeyIoComponentSchemas.Flash.schema
 
 /**
- * flash/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+flash/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFlashShow = (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashShowRequestSchema)
   fetch(

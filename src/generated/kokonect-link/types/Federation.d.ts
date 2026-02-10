@@ -189,123 +189,140 @@ export interface PostFederationUsersRequest {
 export type PostFederationUsersResponse = ComponentSchemas.UserDetailedNotMe[];
 
 export interface FederationModule {
-/**
+  /**
    * ap/get
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:federation*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:federation*
    */
   postApGet(client: MisskeyClient, request: PostApGetRequest): Promise<PostApGetResponse>;
-/**
+  /**
    * ap/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postApShow(client: MisskeyClient, request: PostApShowRequest): Promise<PostApShowResponse>;
-/**
+  /**
    * federation/followers
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationFollowers(client: MisskeyClient, request: PostFederationFollowersRequest): Promise<PostFederationFollowersResponse>;
-/**
+  /**
    * federation/following
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationFollowing(client: MisskeyClient, request: PostFederationFollowingRequest): Promise<PostFederationFollowingResponse>;
-/**
+  /**
    * federation/instances
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getFederationInstances(client: MisskeyClient, request: GetFederationInstancesRequest): Promise<GetFederationInstancesResponse>;
-/**
+  /**
    * federation/instances
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationInstances(client: MisskeyClient, request: PostFederationInstancesRequest): Promise<PostFederationInstancesResponse>;
-/**
+  /**
    * federation/show-instance
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationShowInstance(client: MisskeyClient, request: PostFederationShowInstanceRequest): Promise<PostFederationShowInstanceResponse>;
-/**
+  /**
    * federation/stats
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getFederationStats(client: MisskeyClient, request: GetFederationStatsRequest): Promise<GetFederationStatsResponse>;
-/**
+  /**
    * federation/stats
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationStats(client: MisskeyClient, request: PostFederationStatsRequest): Promise<PostFederationStatsResponse>;
-/**
+  /**
    * federation/update-remote-user
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationUpdateRemoteUser(client: MisskeyClient, request: PostFederationUpdateRemoteUserRequest): Promise<PostFederationUpdateRemoteUserResponse>;
-/**
+  /**
    * federation/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationUsers(client: MisskeyClient, request: PostFederationUsersRequest): Promise<PostFederationUsersResponse>;
-/**
+  /**
    * federation/followers
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationFollowers(client: MisskeyClient, request: PostFederationFollowersRequest): Promise<PostFederationFollowersResponse>;
-/**
+  /**
    * federation/following
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationFollowing(client: MisskeyClient, request: PostFederationFollowingRequest): Promise<PostFederationFollowingResponse>;
-/**
+  /**
    * federation/remote-software
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getFederationRemoteSoftware(client: MisskeyClient, request: GetFederationRemoteSoftwareRequest): Promise<GetFederationRemoteSoftwareResponse>;
-/**
+  /**
    * federation/remote-software
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationRemoteSoftware(client: MisskeyClient, request: PostFederationRemoteSoftwareRequest): Promise<PostFederationRemoteSoftwareResponse>;
-/**
+  /**
    * federation/show-instance
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationShowInstance(client: MisskeyClient, request: PostFederationShowInstanceRequest): Promise<PostFederationShowInstanceResponse>;
-/**
+  /**
    * federation/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFederationUsers(client: MisskeyClient, request: PostFederationUsersRequest): Promise<PostFederationUsersResponse>;
 }

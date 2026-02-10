@@ -18,12 +18,12 @@ type postUsersGroupsCreateResponse = KokonectLinkComponentSchemas.UserGroup.t
 let postUsersGroupsCreateResponseSchema = KokonectLinkComponentSchemas.UserGroup.schema
 
 /**
- * users/groups/create
- *
- * Create a new group.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/create
+
+Create a new group.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsCreate = (~body: postUsersGroupsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsCreateRequestSchema)
   fetch(
@@ -48,12 +48,12 @@ let postUsersGroupsDeleteRequestSchema = S.object(s => {
 type postUsersGroupsDeleteResponse = unit
 
 /**
- * users/groups/delete
- *
- * Delete an existing group.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/delete
+
+Delete an existing group.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsDelete = (~body: postUsersGroupsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsDeleteRequestSchema)
   fetch(
@@ -78,12 +78,12 @@ let postUsersGroupsInvitationsAcceptRequestSchema = S.object(s => {
 type postUsersGroupsInvitationsAcceptResponse = unit
 
 /**
- * users/groups/invitations/accept
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/invitations/accept
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsInvitationsAccept = (~body: postUsersGroupsInvitationsAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsInvitationsAcceptResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsInvitationsAcceptRequestSchema)
   fetch(
@@ -108,12 +108,12 @@ let postUsersGroupsInvitationsRejectRequestSchema = S.object(s => {
 type postUsersGroupsInvitationsRejectResponse = unit
 
 /**
- * users/groups/invitations/reject
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/invitations/reject
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsInvitationsReject = (~body: postUsersGroupsInvitationsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsInvitationsRejectResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsInvitationsRejectRequestSchema)
   fetch(
@@ -140,12 +140,12 @@ let postUsersGroupsInviteRequestSchema = S.object(s => {
 type postUsersGroupsInviteResponse = unit
 
 /**
- * users/groups/invite
- *
- * Invite a user to an existing group.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/invite
+
+Invite a user to an existing group.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsInvite = (~body: postUsersGroupsInviteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsInviteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsInviteRequestSchema)
   fetch(
@@ -164,12 +164,12 @@ type postUsersGroupsJoinedResponse = array<KokonectLinkComponentSchemas.UserGrou
 let postUsersGroupsJoinedResponseSchema = S.array(KokonectLinkComponentSchemas.UserGroup.schema)
 
 /**
- * users/groups/joined
- *
- * List the groups that the authenticated user is a member of.
- *
- * **Credential required**: *Yes* / **Permission**: *read:user-groups*
- */
+users/groups/joined
+
+List the groups that the authenticated user is a member of.
+
+**Credential required**: *Yes* / **Permission**: *read:user-groups*
+*/
 let postUsersGroupsJoined = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsJoinedResponse> => {
 
   fetch(
@@ -194,12 +194,12 @@ let postUsersGroupsLeaveRequestSchema = S.object(s => {
 type postUsersGroupsLeaveResponse = unit
 
 /**
- * users/groups/leave
- *
- * Leave a group. The owner of a group can not leave. They must transfer ownership or delete the group instead.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/leave
+
+Leave a group. The owner of a group can not leave. They must transfer ownership or delete the group instead.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsLeave = (~body: postUsersGroupsLeaveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsLeaveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsLeaveRequestSchema)
   fetch(
@@ -218,12 +218,12 @@ type postUsersGroupsOwnedResponse = array<KokonectLinkComponentSchemas.UserGroup
 let postUsersGroupsOwnedResponseSchema = S.array(KokonectLinkComponentSchemas.UserGroup.schema)
 
 /**
- * users/groups/owned
- *
- * List the groups that the authenticated user is the owner of.
- *
- * **Credential required**: *Yes* / **Permission**: *read:user-groups*
- */
+users/groups/owned
+
+List the groups that the authenticated user is the owner of.
+
+**Credential required**: *Yes* / **Permission**: *read:user-groups*
+*/
 let postUsersGroupsOwned = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsOwnedResponse> => {
 
   fetch(
@@ -250,12 +250,12 @@ let postUsersGroupsPullRequestSchema = S.object(s => {
 type postUsersGroupsPullResponse = unit
 
 /**
- * users/groups/pull
- *
- * Removes a specified user from a group. The owner can not be removed.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/pull
+
+Removes a specified user from a group. The owner can not be removed.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsPull = (~body: postUsersGroupsPullRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsPullResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsPullRequestSchema)
   fetch(
@@ -282,12 +282,12 @@ type postUsersGroupsShowResponse = KokonectLinkComponentSchemas.UserGroup.t
 let postUsersGroupsShowResponseSchema = KokonectLinkComponentSchemas.UserGroup.schema
 
 /**
- * users/groups/show
- *
- * Show the properties of a group.
- *
- * **Credential required**: *Yes* / **Permission**: *read:user-groups*
- */
+users/groups/show
+
+Show the properties of a group.
+
+**Credential required**: *Yes* / **Permission**: *read:user-groups*
+*/
 let postUsersGroupsShow = (~body: postUsersGroupsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsShowRequestSchema)
   fetch(
@@ -316,12 +316,12 @@ type postUsersGroupsTransferResponse = KokonectLinkComponentSchemas.UserGroup.t
 let postUsersGroupsTransferResponseSchema = KokonectLinkComponentSchemas.UserGroup.schema
 
 /**
- * users/groups/transfer
- *
- * Transfer ownership of a group from the authenticated user to another user.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/transfer
+
+Transfer ownership of a group from the authenticated user to another user.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsTransfer = (~body: postUsersGroupsTransferRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsTransferResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsTransferRequestSchema)
   fetch(
@@ -350,12 +350,12 @@ type postUsersGroupsUpdateResponse = KokonectLinkComponentSchemas.UserGroup.t
 let postUsersGroupsUpdateResponseSchema = KokonectLinkComponentSchemas.UserGroup.schema
 
 /**
- * users/groups/update
- *
- * Update the properties of a group.
- *
- * **Credential required**: *Yes* / **Permission**: *write:user-groups*
- */
+users/groups/update
+
+Update the properties of a group.
+
+**Credential required**: *Yes* / **Permission**: *write:user-groups*
+*/
 let postUsersGroupsUpdate = (~body: postUsersGroupsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGroupsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGroupsUpdateRequestSchema)
   fetch(

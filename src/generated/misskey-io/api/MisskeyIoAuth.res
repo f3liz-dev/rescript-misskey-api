@@ -16,13 +16,13 @@ let postAuthAcceptRequestSchema = S.object(s => {
 type postAuthAcceptResponse = unit
 
 /**
- * auth/accept
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+auth/accept
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postAuthAccept = (~body: postAuthAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthAcceptResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthAcceptRequestSchema)
   fetch(
@@ -55,12 +55,12 @@ let postAuthSessionGenerateResponseSchema = S.object(s => {
   })
 
 /**
- * auth/session/generate
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+auth/session/generate
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAuthSessionGenerate = (~body: postAuthSessionGenerateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionGenerateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionGenerateRequestSchema)
   fetch(
@@ -95,12 +95,12 @@ let postAuthSessionShowResponseSchema = S.object(s => {
   })
 
 /**
- * auth/session/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+auth/session/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAuthSessionShow = (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionShowRequestSchema)
   fetch(
@@ -135,12 +135,12 @@ let postAuthSessionUserkeyResponseSchema = S.object(s => {
   })
 
 /**
- * auth/session/userkey
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+auth/session/userkey
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAuthSessionUserkey = (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionUserkeyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionUserkeyRequestSchema)
   fetch(
@@ -179,13 +179,13 @@ let postMiauthGenTokenResponseSchema = S.object(s => {
   })
 
 /**
- * miauth/gen-token
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+miauth/gen-token
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postMiauthGenToken = (~body: postMiauthGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMiauthGenTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMiauthGenTokenRequestSchema)
   fetch(

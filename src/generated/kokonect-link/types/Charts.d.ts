@@ -580,186 +580,212 @@ export interface PostChartsFederationResponse {
 }
 
 export interface ChartsModule {
-/**
+  /**
    * charts/active-users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsActiveUsers(client: MisskeyClient, request: GetChartsActiveUsersRequest): Promise<GetChartsActiveUsersResponse>;
-/**
+  /**
    * charts/active-users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsActiveUsers(client: MisskeyClient, request: PostChartsActiveUsersRequest): Promise<PostChartsActiveUsersResponse>;
-/**
+  /**
    * charts/ap-request
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsApRequest(client: MisskeyClient, request: GetChartsApRequestRequest): Promise<GetChartsApRequestResponse>;
-/**
+  /**
    * charts/ap-request
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsApRequest(client: MisskeyClient, request: PostChartsApRequestRequest): Promise<PostChartsApRequestResponse>;
-/**
+  /**
    * charts/drive
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsDrive(client: MisskeyClient, request: GetChartsDriveRequest): Promise<GetChartsDriveResponse>;
-/**
+  /**
    * charts/drive
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsDrive(client: MisskeyClient, request: PostChartsDriveRequest): Promise<PostChartsDriveResponse>;
-/**
+  /**
    * charts/federation
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsFederation(client: MisskeyClient, request: GetChartsFederationRequest): Promise<GetChartsFederationResponse>;
-/**
+  /**
    * charts/federation
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsFederation(client: MisskeyClient, request: PostChartsFederationRequest): Promise<PostChartsFederationResponse>;
-/**
+  /**
    * charts/instance
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsInstance(client: MisskeyClient, request: GetChartsInstanceRequest): Promise<GetChartsInstanceResponse>;
-/**
+  /**
    * charts/instance
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsInstance(client: MisskeyClient, request: PostChartsInstanceRequest): Promise<PostChartsInstanceResponse>;
-/**
+  /**
    * charts/notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsNotes(client: MisskeyClient, request: GetChartsNotesRequest): Promise<GetChartsNotesResponse>;
-/**
+  /**
    * charts/notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsNotes(client: MisskeyClient, request: PostChartsNotesRequest): Promise<PostChartsNotesResponse>;
-/**
+  /**
    * charts/user/drive
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUserDrive(client: MisskeyClient, request: GetChartsUserDriveRequest): Promise<GetChartsUserDriveResponse>;
-/**
+  /**
    * charts/user/drive
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUserDrive(client: MisskeyClient, request: PostChartsUserDriveRequest): Promise<PostChartsUserDriveResponse>;
-/**
+  /**
    * charts/user/following
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUserFollowing(client: MisskeyClient, request: GetChartsUserFollowingRequest): Promise<GetChartsUserFollowingResponse>;
-/**
+  /**
    * charts/user/following
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUserFollowing(client: MisskeyClient, request: PostChartsUserFollowingRequest): Promise<PostChartsUserFollowingResponse>;
-/**
+  /**
    * charts/user/notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUserNotes(client: MisskeyClient, request: GetChartsUserNotesRequest): Promise<GetChartsUserNotesResponse>;
-/**
+  /**
    * charts/user/notes
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUserNotes(client: MisskeyClient, request: PostChartsUserNotesRequest): Promise<PostChartsUserNotesResponse>;
-/**
+  /**
    * charts/user/pv
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUserPv(client: MisskeyClient, request: GetChartsUserPvRequest): Promise<GetChartsUserPvResponse>;
-/**
+  /**
    * charts/user/pv
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUserPv(client: MisskeyClient, request: PostChartsUserPvRequest): Promise<PostChartsUserPvResponse>;
-/**
+  /**
    * charts/user/reactions
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUserReactions(client: MisskeyClient, request: GetChartsUserReactionsRequest): Promise<GetChartsUserReactionsResponse>;
-/**
+  /**
    * charts/user/reactions
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUserReactions(client: MisskeyClient, request: PostChartsUserReactionsRequest): Promise<PostChartsUserReactionsResponse>;
-/**
+  /**
    * charts/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsUsers(client: MisskeyClient, request: GetChartsUsersRequest): Promise<GetChartsUsersResponse>;
-/**
+  /**
    * charts/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsUsers(client: MisskeyClient, request: PostChartsUsersRequest): Promise<PostChartsUsersResponse>;
-/**
+  /**
    * charts/federation
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getChartsFederation(client: MisskeyClient, request: GetChartsFederationRequest): Promise<GetChartsFederationResponse>;
-/**
+  /**
    * charts/federation
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChartsFederation(client: MisskeyClient, request: PostChartsFederationRequest): Promise<PostChartsFederationResponse>;
 }

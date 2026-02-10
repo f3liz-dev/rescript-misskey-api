@@ -18,12 +18,12 @@ type postFlashShowResponse = KokonectLinkComponentSchemas.Flash.t
 let postFlashShowResponseSchema = KokonectLinkComponentSchemas.Flash.schema
 
 /**
- * flash/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+flash/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFlashShow = (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashShowRequestSchema)
   fetch(

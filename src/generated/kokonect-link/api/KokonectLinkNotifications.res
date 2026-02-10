@@ -20,12 +20,12 @@ let postNotificationsCreateRequestSchema = S.object(s => {
 type postNotificationsCreateResponse = unit
 
 /**
- * notifications/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notifications*
- */
+notifications/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notifications*
+*/
 let postNotificationsCreate = (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotificationsCreateRequestSchema)
   fetch(

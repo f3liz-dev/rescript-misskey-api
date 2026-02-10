@@ -619,413 +619,471 @@ export interface PostVerifyEmailRequest {
 export type PostVerifyEmailResponse = void;
 
 export interface AccountModule {
-/**
+  /**
    * blocking/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:blocks*
    */
   postBlockingCreate(client: MisskeyClient, request: PostBlockingCreateRequest): Promise<PostBlockingCreateResponse>;
-/**
+  /**
    * blocking/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:blocks*
    */
   postBlockingDelete(client: MisskeyClient, request: PostBlockingDeleteRequest): Promise<PostBlockingDeleteResponse>;
-/**
+  /**
    * blocking/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:blocks*
    */
   postBlockingList(client: MisskeyClient, request: PostBlockingListRequest): Promise<PostBlockingListResponse>;
-/**
+  /**
    * clips/add-note
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postClipsAddNote(client: MisskeyClient, request: PostClipsAddNoteRequest): Promise<PostClipsAddNoteResponse>;
-/**
+  /**
    * clips/my-favorites
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:clip-favorite*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:clip-favorite*
    */
   postClipsMyFavorites(client: MisskeyClient): Promise<PostClipsMyFavoritesResponse>;
-/**
+  /**
    * clips/notes
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postClipsNotes(client: MisskeyClient, request: PostClipsNotesRequest): Promise<PostClipsNotesResponse>;
-/**
+  /**
    * clips/remove-note
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postClipsRemoveNote(client: MisskeyClient, request: PostClipsRemoveNoteRequest): Promise<PostClipsRemoveNoteResponse>;
-/**
+  /**
    * flash/my
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:flash*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:flash*
    */
   postFlashMy(client: MisskeyClient, request: PostFlashMyRequest): Promise<PostFlashMyResponse>;
-/**
+  /**
    * flash/my-likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:flash-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:flash-likes*
    */
   postFlashMyLikes(client: MisskeyClient, request: PostFlashMyLikesRequest): Promise<PostFlashMyLikesResponse>;
-/**
+  /**
    * i
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postI(client: MisskeyClient): Promise<PostIResponse>;
-/**
+  /**
    * i/favorites
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:favorites*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:favorites*
    */
   postIFavorites(client: MisskeyClient, request: PostIfavoritesRequest): Promise<PostIfavoritesResponse>;
-/**
+  /**
    * i/gallery/likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:gallery-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:gallery-likes*
    */
   postIGalleryLikes(client: MisskeyClient, request: PostIgalleryLikesRequest): Promise<PostIgalleryLikesResponse>;
-/**
+  /**
    * i/gallery/posts
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:gallery*
    */
   postIGalleryPosts(client: MisskeyClient, request: PostIgalleryPostsRequest): Promise<PostIgalleryPostsResponse>;
-/**
+  /**
    * i/notifications
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:notifications*
    */
   postINotifications(client: MisskeyClient, request: PostInotificationsRequest): Promise<PostInotificationsResponse>;
-/**
+  /**
    * i/notifications-grouped
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:notifications*
    */
   postINotificationsGrouped(client: MisskeyClient, request: PostInotificationsGroupedRequest): Promise<PostInotificationsGroupedResponse>;
-/**
+  /**
    * i/page-likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:page-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:page-likes*
    */
   postIPageLikes(client: MisskeyClient, request: PostIpageLikesRequest): Promise<PostIpageLikesResponse>;
-/**
+  /**
    * i/pages
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:pages*
    */
   postIPages(client: MisskeyClient, request: PostIpagesRequest): Promise<PostIpagesResponse>;
-/**
+  /**
    * i/pin
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIPin(client: MisskeyClient, request: PostIpinRequest): Promise<PostIpinResponse>;
-/**
+  /**
    * i/purge-timeline-cache
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIPurgeTimelineCache(client: MisskeyClient, request: PostIpurgeTimelineCacheRequest): Promise<PostIpurgeTimelineCacheResponse>;
-/**
+  /**
    * i/read-announcement
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIReadAnnouncement(client: MisskeyClient, request: PostIreadAnnouncementRequest): Promise<PostIreadAnnouncementResponse>;
-/**
+  /**
    * i/unpin
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIUnpin(client: MisskeyClient, request: PostIunpinRequest): Promise<PostIunpinResponse>;
-/**
+  /**
    * i/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIUpdate(client: MisskeyClient, request: PostIupdateRequest): Promise<PostIupdateResponse>;
-/**
+  /**
    * mute/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:mutes*
    */
   postMuteCreate(client: MisskeyClient, request: PostMuteCreateRequest): Promise<PostMuteCreateResponse>;
-/**
+  /**
    * mute/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:mutes*
    */
   postMuteDelete(client: MisskeyClient, request: PostMuteDeleteRequest): Promise<PostMuteDeleteResponse>;
-/**
+  /**
    * mute/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:mutes*
    */
   postMuteList(client: MisskeyClient, request: PostMuteListRequest): Promise<PostMuteListResponse>;
-/**
+  /**
    * my/apps
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postMyApps(client: MisskeyClient, request: PostMyAppsRequest): Promise<PostMyAppsResponse>;
-/**
+  /**
    * renote-mute/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:mutes*
    */
   postRenoteMuteCreate(client: MisskeyClient, request: PostRenoteMuteCreateRequest): Promise<PostRenoteMuteCreateResponse>;
-/**
+  /**
    * renote-mute/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:mutes*
    */
   postRenoteMuteDelete(client: MisskeyClient, request: PostRenoteMuteDeleteRequest): Promise<PostRenoteMuteDeleteResponse>;
-/**
+  /**
    * renote-mute/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:mutes*
    */
   postRenoteMuteList(client: MisskeyClient, request: PostRenoteMuteListRequest): Promise<PostRenoteMuteListResponse>;
-/**
+  /**
    * sw/register
+   *
    * Register to receive push notifications.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postSwRegister(client: MisskeyClient, request: PostSwRegisterRequest): Promise<PostSwRegisterResponse>;
-/**
+  /**
    * sw/show-registration
+   *
    * Check push notification registration exists.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postSwShowRegistration(client: MisskeyClient, request: PostSwShowRegistrationRequest): Promise<PostSwShowRegistrationResponse>;
-/**
+  /**
    * sw/unregister
+   *
    * Unregister from receiving push notifications.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postSwUnregister(client: MisskeyClient, request: PostSwUnregisterRequest): Promise<PostSwUnregisterResponse>;
-/**
+  /**
    * sw/update-registration
+   *
    * Update push notification registration.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postSwUpdateRegistration(client: MisskeyClient, request: PostSwUpdateRegistrationRequest): Promise<PostSwUpdateRegistrationResponse>;
-/**
+  /**
    * users/update-memo
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersUpdateMemo(client: MisskeyClient, request: PostUsersUpdateMemoRequest): Promise<PostUsersUpdateMemoResponse>;
-/**
+  /**
    * blocking/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:blocks*
    */
   postBlockingCreate(client: MisskeyClient, request: PostBlockingCreateRequest): Promise<PostBlockingCreateResponse>;
-/**
+  /**
    * blocking/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:blocks*
    */
   postBlockingDelete(client: MisskeyClient, request: PostBlockingDeleteRequest): Promise<PostBlockingDeleteResponse>;
-/**
+  /**
    * blocking/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:blocks*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:blocks*
    */
   postBlockingList(client: MisskeyClient, request: PostBlockingListRequest): Promise<PostBlockingListResponse>;
-/**
+  /**
    * clips/notes
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postClipsNotes(client: MisskeyClient, request: PostClipsNotesRequest): Promise<PostClipsNotesResponse>;
-/**
+  /**
    * flash/my
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:flash*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:flash*
    */
   postFlashMy(client: MisskeyClient, request: PostFlashMyRequest): Promise<PostFlashMyResponse>;
-/**
+  /**
    * flash/my-likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:flash-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:flash-likes*
    */
   postFlashMyLikes(client: MisskeyClient, request: PostFlashMyLikesRequest): Promise<PostFlashMyLikesResponse>;
-/**
+  /**
    * i
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postI(client: MisskeyClient): Promise<PostIResponse>;
-/**
+  /**
    * i/auto-delete-settings
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIAutoDeleteSettings(client: MisskeyClient): Promise<PostIautoDeleteSettingsResponse>;
-/**
+  /**
    * i/favorites
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:favorites*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:favorites*
    */
   postIFavorites(client: MisskeyClient, request: PostIfavoritesRequest): Promise<PostIfavoritesResponse>;
-/**
+  /**
    * i/followers-servers
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:following*
    */
   postIFollowersServers(client: MisskeyClient): Promise<PostIfollowersServersResponse>;
-/**
+  /**
    * i/gallery/likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:gallery-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:gallery-likes*
    */
   postIGalleryLikes(client: MisskeyClient, request: PostIgalleryLikesRequest): Promise<PostIgalleryLikesResponse>;
-/**
+  /**
    * i/gallery/posts
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:gallery*
    */
   postIGalleryPosts(client: MisskeyClient, request: PostIgalleryPostsRequest): Promise<PostIgalleryPostsResponse>;
-/**
+  /**
    * i/notifications
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:notifications*
    */
   postINotifications(client: MisskeyClient, request: PostInotificationsRequest): Promise<PostInotificationsResponse>;
-/**
+  /**
    * i/notifications-grouped
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:notifications*
    */
   postINotificationsGrouped(client: MisskeyClient, request: PostInotificationsGroupedRequest): Promise<PostInotificationsGroupedResponse>;
-/**
+  /**
    * i/page-likes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:page-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:page-likes*
    */
   postIPageLikes(client: MisskeyClient, request: PostIpageLikesRequest): Promise<PostIpageLikesResponse>;
-/**
+  /**
    * i/pages
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:pages*
    */
   postIPages(client: MisskeyClient, request: PostIpagesRequest): Promise<PostIpagesResponse>;
-/**
+  /**
    * i/pin
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIPin(client: MisskeyClient, request: PostIpinRequest): Promise<PostIpinResponse>;
-/**
+  /**
    * i/unpin
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIUnpin(client: MisskeyClient, request: PostIunpinRequest): Promise<PostIunpinResponse>;
-/**
+  /**
    * i/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIUpdate(client: MisskeyClient, request: PostIupdateRequest): Promise<PostIupdateResponse>;
-/**
+  /**
    * i/update-auto-delete-settings
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIUpdateAutoDeleteSettings(client: MisskeyClient, request: PostIupdateAutoDeleteSettingsRequest): Promise<PostIupdateAutoDeleteSettingsResponse>;
-/**
+  /**
    * i/user-group-invites
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:user-groups*
    */
   postIUserGroupInvites(client: MisskeyClient, request: PostIuserGroupInvitesRequest): Promise<PostIuserGroupInvitesResponse>;
-/**
+  /**
    * mute/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:mutes*
    */
   postMuteList(client: MisskeyClient, request: PostMuteListRequest): Promise<PostMuteListResponse>;
-/**
+  /**
    * renote-mute/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:mutes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:mutes*
    */
   postRenoteMuteList(client: MisskeyClient, request: PostRenoteMuteListRequest): Promise<PostRenoteMuteListResponse>;
-/**
+  /**
    * verify-email
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postVerifyEmail(client: MisskeyClient, request: PostVerifyEmailRequest): Promise<PostVerifyEmailResponse>;
 }

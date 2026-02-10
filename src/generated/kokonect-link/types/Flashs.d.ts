@@ -23,25 +23,28 @@ export interface PostFlashShowRequest {
 export type PostFlashShowResponse = ComponentSchemas.Flash;
 
 export interface FlashsModule {
-/**
+  /**
    * flash/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:flash*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:flash*
    */
   postFlashDelete(client: MisskeyClient, request: PostFlashDeleteRequest): Promise<PostFlashDeleteResponse>;
-/**
+  /**
    * flash/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFlashShow(client: MisskeyClient, request: PostFlashShowRequest): Promise<PostFlashShowResponse>;
-/**
+  /**
    * flash/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postFlashShow(client: MisskeyClient, request: PostFlashShowRequest): Promise<PostFlashShowResponse>;
 }

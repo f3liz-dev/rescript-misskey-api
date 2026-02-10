@@ -26,12 +26,12 @@ type postFlashCreateResponse = MisskeyIoComponentSchemas.Flash.t
 let postFlashCreateResponseSchema = MisskeyIoComponentSchemas.Flash.schema
 
 /**
- * flash/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash*
- */
+flash/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash*
+*/
 let postFlashCreate = (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashCreateRequestSchema)
   fetch(
@@ -60,12 +60,12 @@ type postFlashFeaturedResponse = array<MisskeyIoComponentSchemas.Flash.t>
 let postFlashFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Flash.schema)
 
 /**
- * flash/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+flash/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFlashFeatured = (~body: postFlashFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashFeaturedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashFeaturedRequestSchema)
   fetch(
@@ -90,12 +90,12 @@ let postFlashLikeRequestSchema = S.object(s => {
 type postFlashLikeResponse = unit
 
 /**
- * flash/like
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash-likes*
- */
+flash/like
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash-likes*
+*/
 let postFlashLike = (~body: postFlashLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashLikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashLikeRequestSchema)
   fetch(
@@ -120,12 +120,12 @@ let postFlashUnlikeRequestSchema = S.object(s => {
 type postFlashUnlikeResponse = unit
 
 /**
- * flash/unlike
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash-likes*
- */
+flash/unlike
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash-likes*
+*/
 let postFlashUnlike = (~body: postFlashUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashUnlikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashUnlikeRequestSchema)
   fetch(
@@ -160,12 +160,12 @@ let postFlashUpdateRequestSchema = S.object(s => {
 type postFlashUpdateResponse = unit
 
 /**
- * flash/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash*
- */
+flash/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash*
+*/
 let postFlashUpdate = (~body: postFlashUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashUpdateRequestSchema)
   fetch(

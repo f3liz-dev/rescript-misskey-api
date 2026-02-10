@@ -103,74 +103,84 @@ export interface PostPagesUpdateRequest {
 export type PostPagesUpdateResponse = void;
 
 export interface PagesModule {
-/**
+  /**
    * pages/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:pages*
    */
   postPagesCreate(client: MisskeyClient, request: PostPagesCreateRequest): Promise<PostPagesCreateResponse>;
-/**
+  /**
    * pages/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:pages*
    */
   postPagesDelete(client: MisskeyClient, request: PostPagesDeleteRequest): Promise<PostPagesDeleteResponse>;
-/**
+  /**
    * pages/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postPagesFeatured(client: MisskeyClient): Promise<PostPagesFeaturedResponse>;
-/**
+  /**
    * pages/like
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:page-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:page-likes*
    */
   postPagesLike(client: MisskeyClient, request: PostPagesLikeRequest): Promise<PostPagesLikeResponse>;
-/**
+  /**
    * pages/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postPagesShow(client: MisskeyClient, request: PostPagesShowRequest): Promise<PostPagesShowResponse>;
-/**
+  /**
    * pages/unlike
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:page-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:page-likes*
    */
   postPagesUnlike(client: MisskeyClient, request: PostPagesUnlikeRequest): Promise<PostPagesUnlikeResponse>;
-/**
+  /**
    * pages/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:pages*
    */
   postPagesUpdate(client: MisskeyClient, request: PostPagesUpdateRequest): Promise<PostPagesUpdateResponse>;
-/**
+  /**
    * pages/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:pages*
    */
   postPagesCreate(client: MisskeyClient, request: PostPagesCreateRequest): Promise<PostPagesCreateResponse>;
-/**
+  /**
    * pages/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postPagesShow(client: MisskeyClient, request: PostPagesShowRequest): Promise<PostPagesShowResponse>;
-/**
+  /**
    * pages/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:pages*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:pages*
    */
   postPagesUpdate(client: MisskeyClient, request: PostPagesUpdateRequest): Promise<PostPagesUpdateResponse>;
 }

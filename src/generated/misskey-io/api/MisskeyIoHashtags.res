@@ -26,12 +26,12 @@ type postHashtagsListResponse = array<MisskeyIoComponentSchemas.Hashtag.t>
 let postHashtagsListResponseSchema = S.array(MisskeyIoComponentSchemas.Hashtag.schema)
 
 /**
- * hashtags/list
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/list
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsList = (~body: postHashtagsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsListRequestSchema)
   fetch(
@@ -62,12 +62,12 @@ type postHashtagsSearchResponse = array<string>
 let postHashtagsSearchResponseSchema = S.array(S.string)
 
 /**
- * hashtags/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsSearch = (~body: postHashtagsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsSearchRequestSchema)
   fetch(
@@ -94,12 +94,12 @@ type postHashtagsShowResponse = MisskeyIoComponentSchemas.Hashtag.t
 let postHashtagsShowResponseSchema = MisskeyIoComponentSchemas.Hashtag.schema
 
 /**
- * hashtags/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsShow = (~body: postHashtagsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsShowRequestSchema)
   fetch(
@@ -130,12 +130,12 @@ let getHashtagsTrendResponse_1Schema = S.object(s => {
 let getHashtagsTrendResponseSchema = S.array(getHashtagsTrendResponse_1Schema)
 
 /**
- * hashtags/trend
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/trend
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getHashtagsTrendResponse> => {
 
   fetch(
@@ -166,12 +166,12 @@ let postHashtagsTrendResponse_1Schema = S.object(s => {
 let postHashtagsTrendResponseSchema = S.array(postHashtagsTrendResponse_1Schema)
 
 /**
- * hashtags/trend
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/trend
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsTrendResponse> => {
 
   fetch(
@@ -210,12 +210,12 @@ type postHashtagsUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
 let postHashtagsUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * hashtags/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsUsers = (~body: postHashtagsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsUsersRequestSchema)
   fetch(

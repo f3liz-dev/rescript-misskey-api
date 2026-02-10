@@ -26,12 +26,12 @@ let postAuthSessionShowResponseSchema = S.object(s => {
   })
 
 /**
- * auth/session/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+auth/session/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAuthSessionShow = (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionShowRequestSchema)
   fetch(
@@ -66,12 +66,12 @@ let postAuthSessionUserkeyResponseSchema = S.object(s => {
   })
 
 /**
- * auth/session/userkey
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+auth/session/userkey
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAuthSessionUserkey = (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionUserkeyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionUserkeyRequestSchema)
   fetch(

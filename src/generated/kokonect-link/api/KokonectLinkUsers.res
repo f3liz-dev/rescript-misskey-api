@@ -28,12 +28,12 @@ type postUsersResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>
 let postUsersResponseSchema = S.array(KokonectLinkComponentSchemas.UserDetailed.schema)
 
 /**
- * users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsers = (~body: postUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersRequestSchema)
   fetch(
@@ -70,12 +70,12 @@ type postUsersClipsResponse = array<KokonectLinkComponentSchemas.Clip.t>
 let postUsersClipsResponseSchema = S.array(KokonectLinkComponentSchemas.Clip.schema)
 
 /**
- * users/clips
- *
- * Show all clips this user owns.
- *
- * **Credential required**: *No*
- */
+users/clips
+
+Show all clips this user owns.
+
+**Credential required**: *No*
+*/
 let postUsersClips = (~body: postUsersClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersClipsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersClipsRequestSchema)
   fetch(
@@ -112,12 +112,12 @@ type postUsersFlashsResponse = array<KokonectLinkComponentSchemas.Flash.t>
 let postUsersFlashsResponseSchema = S.array(KokonectLinkComponentSchemas.Flash.schema)
 
 /**
- * users/flashs
- *
- * Show all flashs this user created.
- *
- * **Credential required**: *No*
- */
+users/flashs
+
+Show all flashs this user created.
+
+**Credential required**: *No*
+*/
 let postUsersFlashs = (~body: postUsersFlashsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFlashsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFlashsRequestSchema)
   fetch(
@@ -152,12 +152,12 @@ type postUsersFollowersResponse = array<KokonectLinkComponentSchemas.Following.t
 let postUsersFollowersResponseSchema = S.array(KokonectLinkComponentSchemas.Following.schema)
 
 /**
- * users/followers
- *
- * Show everyone that follows this user.
- *
- * **Credential required**: *No*
- */
+users/followers
+
+Show everyone that follows this user.
+
+**Credential required**: *No*
+*/
 let postUsersFollowers = (~body: postUsersFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowersRequestSchema)
   fetch(
@@ -194,12 +194,12 @@ type postUsersFollowingResponse = array<KokonectLinkComponentSchemas.Following.t
 let postUsersFollowingResponseSchema = S.array(KokonectLinkComponentSchemas.Following.schema)
 
 /**
- * users/following
- *
- * Show everyone that this user is following.
- *
- * **Credential required**: *No*
- */
+users/following
+
+Show everyone that this user is following.
+
+**Credential required**: *No*
+*/
 let postUsersFollowing = (~body: postUsersFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowingRequestSchema)
   fetch(
@@ -236,12 +236,12 @@ type postUsersGalleryPostsResponse = array<KokonectLinkComponentSchemas.GalleryP
 let postUsersGalleryPostsResponseSchema = S.array(KokonectLinkComponentSchemas.GalleryPost.schema)
 
 /**
- * users/gallery/posts
- *
- * Show all gallery posts by the given user.
- *
- * **Credential required**: *No*
- */
+users/gallery/posts
+
+Show all gallery posts by the given user.
+
+**Credential required**: *No*
+*/
 let postUsersGalleryPosts = (~body: postUsersGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGalleryPostsRequestSchema)
   fetch(
@@ -290,12 +290,12 @@ type postUsersNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postUsersNotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * users/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersNotes = (~body: postUsersNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersNotesRequestSchema)
   fetch(
@@ -332,12 +332,12 @@ type postUsersPagesResponse = array<KokonectLinkComponentSchemas.Page.t>
 let postUsersPagesResponseSchema = S.array(KokonectLinkComponentSchemas.Page.schema)
 
 /**
- * users/pages
- *
- * Show all pages this user created.
- *
- * **Credential required**: *No*
- */
+users/pages
+
+Show all pages this user created.
+
+**Credential required**: *No*
+*/
 let postUsersPages = (~body: postUsersPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersPagesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersPagesRequestSchema)
   fetch(
@@ -364,12 +364,12 @@ let postUsersReportAbuseRequestSchema = S.object(s => {
 type postUsersReportAbuseResponse = unit
 
 /**
- * users/report-abuse
- *
- * File a report.
- *
- * **Credential required**: *Yes* / **Permission**: *write:report-abuse*
- */
+users/report-abuse
+
+File a report.
+
+**Credential required**: *Yes* / **Permission**: *write:report-abuse*
+*/
 let postUsersReportAbuse = (~body: postUsersReportAbuseRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersReportAbuseResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersReportAbuseRequestSchema)
   fetch(
@@ -398,12 +398,12 @@ type postUsersSearchByUsernameAndHostResponse = array<KokonectLinkComponentSchem
 let postUsersSearchByUsernameAndHostResponseSchema = S.array(KokonectLinkComponentSchemas.User.schema)
 
 /**
- * users/search-by-username-and-host
- *
- * Search for a user by username and/or host.
- *
- * **Credential required**: *No*
- */
+users/search-by-username-and-host
+
+Search for a user by username and/or host.
+
+**Credential required**: *No*
+*/
 let postUsersSearchByUsernameAndHost = (~body: postUsersSearchByUsernameAndHostRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersSearchByUsernameAndHostResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersSearchByUsernameAndHostRequestSchema)
   fetch(
@@ -430,12 +430,12 @@ type postUsersShowResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>
 let postUsersShowResponseSchema = S.array(KokonectLinkComponentSchemas.UserDetailed.schema)
 
 /**
- * users/show
- *
- * Show the properties of a user.
- *
- * **Credential required**: *No*
- */
+users/show
+
+Show the properties of a user.
+
+**Credential required**: *No*
+*/
 let postUsersShow = (~body: postUsersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersShowRequestSchema)
   fetch(
@@ -470,12 +470,12 @@ let postUsersTranslateResponseSchema = S.object(s => {
   })
 
 /**
- * users/translate
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+users/translate
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postUsersTranslate = (~body: postUsersTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersTranslateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersTranslateRequestSchema)
   fetch(

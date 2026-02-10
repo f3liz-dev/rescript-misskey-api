@@ -109,67 +109,76 @@ export interface PostAntennasUpdateRequest {
 export type PostAntennasUpdateResponse = ComponentSchemas.Antenna;
 
 export interface AntennasModule {
-/**
+  /**
    * antennas/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postAntennasCreate(client: MisskeyClient, request: PostAntennasCreateRequest): Promise<PostAntennasCreateResponse>;
-/**
+  /**
    * antennas/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postAntennasDelete(client: MisskeyClient, request: PostAntennasDeleteRequest): Promise<PostAntennasDeleteResponse>;
-/**
+  /**
    * antennas/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postAntennasList(client: MisskeyClient): Promise<PostAntennasListResponse>;
-/**
+  /**
    * antennas/notes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postAntennasNotes(client: MisskeyClient, request: PostAntennasNotesRequest): Promise<PostAntennasNotesResponse>;
-/**
+  /**
    * antennas/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postAntennasShow(client: MisskeyClient, request: PostAntennasShowRequest): Promise<PostAntennasShowResponse>;
-/**
+  /**
    * antennas/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postAntennasUpdate(client: MisskeyClient, request: PostAntennasUpdateRequest): Promise<PostAntennasUpdateResponse>;
-/**
+  /**
    * antennas/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postAntennasCreate(client: MisskeyClient, request: PostAntennasCreateRequest): Promise<PostAntennasCreateResponse>;
-/**
+  /**
    * antennas/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postAntennasShow(client: MisskeyClient, request: PostAntennasShowRequest): Promise<PostAntennasShowResponse>;
-/**
+  /**
    * antennas/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postAntennasUpdate(client: MisskeyClient, request: PostAntennasUpdateRequest): Promise<PostAntennasUpdateResponse>;
 }

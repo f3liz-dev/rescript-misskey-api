@@ -18,12 +18,12 @@ type postHashtagsShowResponse = KokonectLinkComponentSchemas.Hashtag.t
 let postHashtagsShowResponseSchema = KokonectLinkComponentSchemas.Hashtag.schema
 
 /**
- * hashtags/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsShow = (~body: postHashtagsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsShowRequestSchema)
   fetch(
@@ -58,12 +58,12 @@ type postHashtagsUsersResponse = array<KokonectLinkComponentSchemas.UserDetailed
 let postHashtagsUsersResponseSchema = S.array(KokonectLinkComponentSchemas.UserDetailed.schema)
 
 /**
- * hashtags/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+hashtags/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postHashtagsUsers = (~body: postHashtagsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsUsersRequestSchema)
   fetch(

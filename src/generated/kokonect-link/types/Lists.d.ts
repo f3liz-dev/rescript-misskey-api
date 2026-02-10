@@ -105,88 +105,100 @@ export interface PostUsersListsUpdateRequest {
 export type PostUsersListsUpdateResponse = ComponentSchemas.UserList;
 
 export interface ListsModule {
-/**
+  /**
    * users/lists/create
+   *
    * Create a new list of users.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsCreate(client: MisskeyClient, request: PostUsersListsCreateRequest): Promise<PostUsersListsCreateResponse>;
-/**
+  /**
    * users/lists/delete
+   *
    * Delete an existing list of users.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsDelete(client: MisskeyClient, request: PostUsersListsDeleteRequest): Promise<PostUsersListsDeleteResponse>;
-/**
+  /**
    * users/lists/get-memberships
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postUsersListsGetMemberships(client: MisskeyClient, request: PostUsersListsGetMembershipsRequest): Promise<PostUsersListsGetMembershipsResponse>;
-/**
+  /**
    * users/lists/list
+   *
    * Show all lists that the authenticated user has created.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postUsersListsList(client: MisskeyClient, request: PostUsersListsListRequest): Promise<PostUsersListsListResponse>;
-/**
+  /**
    * users/lists/pull
+   *
    * Remove a user from a list.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsPull(client: MisskeyClient, request: PostUsersListsPullRequest): Promise<PostUsersListsPullResponse>;
-/**
+  /**
    * users/lists/push
+   *
    * Add a user to an existing list.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsPush(client: MisskeyClient, request: PostUsersListsPushRequest): Promise<PostUsersListsPushResponse>;
-/**
+  /**
    * users/lists/show
+   *
    * Show the properties of a list.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postUsersListsShow(client: MisskeyClient, request: PostUsersListsShowRequest): Promise<PostUsersListsShowResponse>;
-/**
+  /**
    * users/lists/update
+   *
    * Update the properties of a list.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsUpdate(client: MisskeyClient, request: PostUsersListsUpdateRequest): Promise<PostUsersListsUpdateResponse>;
-/**
+  /**
    * users/lists/update-membership
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsUpdateMembership(client: MisskeyClient, request: PostUsersListsUpdateMembershipRequest): Promise<PostUsersListsUpdateMembershipResponse>;
-/**
+  /**
    * users/lists/create
+   *
    * Create a new list of users.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsCreate(client: MisskeyClient, request: PostUsersListsCreateRequest): Promise<PostUsersListsCreateResponse>;
-/**
+  /**
    * users/lists/get-memberships
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postUsersListsGetMemberships(client: MisskeyClient, request: PostUsersListsGetMembershipsRequest): Promise<PostUsersListsGetMembershipsResponse>;
-/**
+  /**
    * users/lists/update
+   *
    * Update the properties of a list.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsUpdate(client: MisskeyClient, request: PostUsersListsUpdateRequest): Promise<PostUsersListsUpdateResponse>;
 }

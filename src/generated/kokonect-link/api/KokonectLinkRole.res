@@ -28,12 +28,12 @@ type postRolesNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
 let postRolesNotesResponseSchema = S.array(KokonectLinkComponentSchemas.Note.schema)
 
 /**
- * roles/notes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+roles/notes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postRolesNotes = (~body: postRolesNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesNotesRequestSchema)
   fetch(
@@ -60,12 +60,12 @@ type postRolesShowResponse = KokonectLinkComponentSchemas.Role.t
 let postRolesShowResponseSchema = KokonectLinkComponentSchemas.Role.schema
 
 /**
- * roles/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+roles/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postRolesShow = (~body: postRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesShowRequestSchema)
   fetch(
@@ -112,12 +112,12 @@ let postRolesUsersResponse_1Schema = S.object(s => {
 let postRolesUsersResponseSchema = S.array(postRolesUsersResponse_1Schema)
 
 /**
- * roles/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+roles/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postRolesUsers = (~body: postRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesUsersRequestSchema)
   fetch(

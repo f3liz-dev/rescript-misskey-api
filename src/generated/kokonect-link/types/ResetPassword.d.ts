@@ -18,18 +18,20 @@ export interface PostResetPasswordRequest {
 export type PostResetPasswordResponse = void;
 
 export interface ResetPasswordModule {
-/**
+  /**
    * request-reset-password
+   *
    * Request a users password to be reset.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postRequestResetPassword(client: MisskeyClient, request: PostRequestResetPasswordRequest): Promise<PostRequestResetPasswordResponse>;
-/**
+  /**
    * reset-password
+   *
    * Complete the password reset that was previously requested.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postResetPassword(client: MisskeyClient, request: PostResetPasswordRequest): Promise<PostResetPasswordResponse>;
 }

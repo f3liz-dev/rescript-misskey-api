@@ -70,88 +70,100 @@ export interface PostUsersGroupsUpdateRequest {
 export type PostUsersGroupsUpdateResponse = ComponentSchemas.UserGroup;
 
 export interface GroupsModule {
-/**
+  /**
    * users/groups/create
+   *
    * Create a new group.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsCreate(client: MisskeyClient, request: PostUsersGroupsCreateRequest): Promise<PostUsersGroupsCreateResponse>;
-/**
+  /**
    * users/groups/delete
+   *
    * Delete an existing group.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsDelete(client: MisskeyClient, request: PostUsersGroupsDeleteRequest): Promise<PostUsersGroupsDeleteResponse>;
-/**
+  /**
    * users/groups/invitations/accept
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsInvitationsAccept(client: MisskeyClient, request: PostUsersGroupsInvitationsAcceptRequest): Promise<PostUsersGroupsInvitationsAcceptResponse>;
-/**
+  /**
    * users/groups/invitations/reject
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsInvitationsReject(client: MisskeyClient, request: PostUsersGroupsInvitationsRejectRequest): Promise<PostUsersGroupsInvitationsRejectResponse>;
-/**
+  /**
    * users/groups/invite
+   *
    * Invite a user to an existing group.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsInvite(client: MisskeyClient, request: PostUsersGroupsInviteRequest): Promise<PostUsersGroupsInviteResponse>;
-/**
+  /**
    * users/groups/joined
+   *
    * List the groups that the authenticated user is a member of.
-
-**Credential required**: *Yes* / **Permission**: *read:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:user-groups*
    */
   postUsersGroupsJoined(client: MisskeyClient): Promise<PostUsersGroupsJoinedResponse>;
-/**
+  /**
    * users/groups/leave
+   *
    * Leave a group. The owner of a group can not leave. They must transfer ownership or delete the group instead.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsLeave(client: MisskeyClient, request: PostUsersGroupsLeaveRequest): Promise<PostUsersGroupsLeaveResponse>;
-/**
+  /**
    * users/groups/owned
+   *
    * List the groups that the authenticated user is the owner of.
-
-**Credential required**: *Yes* / **Permission**: *read:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:user-groups*
    */
   postUsersGroupsOwned(client: MisskeyClient): Promise<PostUsersGroupsOwnedResponse>;
-/**
+  /**
    * users/groups/pull
+   *
    * Removes a specified user from a group. The owner can not be removed.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsPull(client: MisskeyClient, request: PostUsersGroupsPullRequest): Promise<PostUsersGroupsPullResponse>;
-/**
+  /**
    * users/groups/show
+   *
    * Show the properties of a group.
-
-**Credential required**: *Yes* / **Permission**: *read:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:user-groups*
    */
   postUsersGroupsShow(client: MisskeyClient, request: PostUsersGroupsShowRequest): Promise<PostUsersGroupsShowResponse>;
-/**
+  /**
    * users/groups/transfer
+   *
    * Transfer ownership of a group from the authenticated user to another user.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsTransfer(client: MisskeyClient, request: PostUsersGroupsTransferRequest): Promise<PostUsersGroupsTransferResponse>;
-/**
+  /**
    * users/groups/update
+   *
    * Update the properties of a group.
-
-**Credential required**: *Yes* / **Permission**: *write:user-groups*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:user-groups*
    */
   postUsersGroupsUpdate(client: MisskeyClient, request: PostUsersGroupsUpdateRequest): Promise<PostUsersGroupsUpdateResponse>;
 }

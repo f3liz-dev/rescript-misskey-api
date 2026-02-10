@@ -72,60 +72,68 @@ export interface PostHashtagsUsersRequest {
 export type PostHashtagsUsersResponse = ComponentSchemas.UserDetailed[];
 
 export interface HashtagsModule {
-/**
+  /**
    * hashtags/list
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsList(client: MisskeyClient, request: PostHashtagsListRequest): Promise<PostHashtagsListResponse>;
-/**
+  /**
    * hashtags/search
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsSearch(client: MisskeyClient, request: PostHashtagsSearchRequest): Promise<PostHashtagsSearchResponse>;
-/**
+  /**
    * hashtags/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsShow(client: MisskeyClient, request: PostHashtagsShowRequest): Promise<PostHashtagsShowResponse>;
-/**
+  /**
    * hashtags/trend
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getHashtagsTrend(client: MisskeyClient): Promise<GetHashtagsTrendResponse>;
-/**
+  /**
    * hashtags/trend
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsTrend(client: MisskeyClient): Promise<PostHashtagsTrendResponse>;
-/**
+  /**
    * hashtags/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsUsers(client: MisskeyClient, request: PostHashtagsUsersRequest): Promise<PostHashtagsUsersResponse>;
-/**
+  /**
    * hashtags/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsShow(client: MisskeyClient, request: PostHashtagsShowRequest): Promise<PostHashtagsShowResponse>;
-/**
+  /**
    * hashtags/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postHashtagsUsers(client: MisskeyClient, request: PostHashtagsUsersRequest): Promise<PostHashtagsUsersResponse>;
 }

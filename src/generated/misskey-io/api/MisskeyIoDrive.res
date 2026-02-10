@@ -16,12 +16,12 @@ let postDriveResponseSchema = S.object(s => {
   })
 
 /**
- * drive
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDrive = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveResponse> => {
 
   fetch(
@@ -58,12 +58,12 @@ type postDriveFilesResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
 let postDriveFilesResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFile.schema)
 
 /**
- * drive/files
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFiles = (~body: postDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesRequestSchema)
   fetch(
@@ -96,12 +96,12 @@ type postDriveFilesAttachedNotesResponse = array<MisskeyIoComponentSchemas.Note.
 let postDriveFilesAttachedNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * drive/files/attached-notes
- *
- * Find the notes to which the given file is attached.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/attached-notes
+
+Find the notes to which the given file is attached.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesAttachedNotes = (~body: postDriveFilesAttachedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesAttachedNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesAttachedNotesRequestSchema)
   fetch(
@@ -128,12 +128,12 @@ type postDriveFilesCheckExistenceResponse = bool
 let postDriveFilesCheckExistenceResponseSchema = S.bool
 
 /**
- * drive/files/check-existence
- *
- * Check if a given file exists.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/check-existence
+
+Check if a given file exists.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesCheckExistence = (~body: postDriveFilesCheckExistenceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesCheckExistenceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesCheckExistenceRequestSchema)
   fetch(
@@ -170,12 +170,12 @@ type postDriveFilesCreateResponse = MisskeyIoComponentSchemas.DriveFile.t
 let postDriveFilesCreateResponseSchema = MisskeyIoComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/create
- *
- * Upload a new drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/create
+
+Upload a new drive file.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesCreate = (~body: postDriveFilesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesCreateRequestSchema)
   fetch(
@@ -200,12 +200,12 @@ let postDriveFilesDeleteRequestSchema = S.object(s => {
 type postDriveFilesDeleteResponse = unit
 
 /**
- * drive/files/delete
- *
- * Delete an existing drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/delete
+
+Delete an existing drive file.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesDelete = (~body: postDriveFilesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesDeleteRequestSchema)
   fetch(
@@ -234,12 +234,12 @@ type postDriveFilesFindResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
 let postDriveFilesFindResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFile.schema)
 
 /**
- * drive/files/find
- *
- * Search for a drive file by the given parameters.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/find
+
+Search for a drive file by the given parameters.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesFind = (~body: postDriveFilesFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesFindResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesFindRequestSchema)
   fetch(
@@ -266,12 +266,12 @@ type postDriveFilesFindByHashResponse = array<MisskeyIoComponentSchemas.DriveFil
 let postDriveFilesFindByHashResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFile.schema)
 
 /**
- * drive/files/find-by-hash
- *
- * Search for a drive file by a hash of the contents.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/find-by-hash
+
+Search for a drive file by a hash of the contents.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesFindByHash = (~body: postDriveFilesFindByHashRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesFindByHashResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesFindByHashRequestSchema)
   fetch(
@@ -300,12 +300,12 @@ type postDriveFilesShowResponse = MisskeyIoComponentSchemas.DriveFile.t
 let postDriveFilesShowResponseSchema = MisskeyIoComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/show
- *
- * Show the properties of a drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/files/show
+
+Show the properties of a drive file.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFilesShow = (~body: postDriveFilesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesShowRequestSchema)
   fetch(
@@ -340,12 +340,12 @@ type postDriveFilesUpdateResponse = MisskeyIoComponentSchemas.DriveFile.t
 let postDriveFilesUpdateResponseSchema = MisskeyIoComponentSchemas.DriveFile.schema
 
 /**
- * drive/files/update
- *
- * Update the properties of a drive file.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/update
+
+Update the properties of a drive file.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesUpdate = (~body: postDriveFilesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesUpdateRequestSchema)
   fetch(
@@ -380,12 +380,12 @@ let postDriveFilesUploadFromUrlRequestSchema = S.object(s => {
 type postDriveFilesUploadFromUrlResponse = unit
 
 /**
- * drive/files/upload-from-url
- *
- * Request the server to download a new drive file from the specified URL.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/files/upload-from-url
+
+Request the server to download a new drive file from the specified URL.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFilesUploadFromUrl = (~body: postDriveFilesUploadFromUrlRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesUploadFromUrlResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesUploadFromUrlRequestSchema)
   fetch(
@@ -418,12 +418,12 @@ type postDriveFoldersResponse = array<MisskeyIoComponentSchemas.DriveFolder.t>
 let postDriveFoldersResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFolder.schema)
 
 /**
- * drive/folders
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/folders
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFolders = (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersRequestSchema)
   fetch(
@@ -452,12 +452,12 @@ type postDriveFoldersCreateResponse = MisskeyIoComponentSchemas.DriveFolder.t
 let postDriveFoldersCreateResponseSchema = MisskeyIoComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/folders/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFoldersCreate = (~body: postDriveFoldersCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersCreateRequestSchema)
   fetch(
@@ -482,12 +482,12 @@ let postDriveFoldersDeleteRequestSchema = S.object(s => {
 type postDriveFoldersDeleteResponse = unit
 
 /**
- * drive/folders/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/folders/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFoldersDelete = (~body: postDriveFoldersDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersDeleteRequestSchema)
   fetch(
@@ -516,12 +516,12 @@ type postDriveFoldersFindResponse = array<MisskeyIoComponentSchemas.DriveFolder.
 let postDriveFoldersFindResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFolder.schema)
 
 /**
- * drive/folders/find
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/folders/find
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFoldersFind = (~body: postDriveFoldersFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersFindResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersFindRequestSchema)
   fetch(
@@ -548,12 +548,12 @@ type postDriveFoldersShowResponse = MisskeyIoComponentSchemas.DriveFolder.t
 let postDriveFoldersShowResponseSchema = MisskeyIoComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/folders/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveFoldersShow = (~body: postDriveFoldersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersShowRequestSchema)
   fetch(
@@ -584,12 +584,12 @@ type postDriveFoldersUpdateResponse = MisskeyIoComponentSchemas.DriveFolder.t
 let postDriveFoldersUpdateResponseSchema = MisskeyIoComponentSchemas.DriveFolder.schema
 
 /**
- * drive/folders/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:drive*
- */
+drive/folders/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:drive*
+*/
 let postDriveFoldersUpdate = (~body: postDriveFoldersUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersUpdateRequestSchema)
   fetch(
@@ -622,12 +622,12 @@ type postDriveStreamResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
 let postDriveStreamResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFile.schema)
 
 /**
- * drive/stream
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:drive*
- */
+drive/stream
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:drive*
+*/
 let postDriveStream = (~body: postDriveStreamRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveStreamResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveStreamRequestSchema)
   fetch(

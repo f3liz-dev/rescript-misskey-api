@@ -89,55 +89,62 @@ export interface PostIwebhooksUpdateRequest {
 export type PostIwebhooksUpdateResponse = void;
 
 export interface WebhooksModule {
-/**
+  /**
    * admin/system-webhook/test
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
    */
   postAdminSystemWebhookTest(client: MisskeyClient, request: PostAdminSystemWebhookTestRequest): Promise<PostAdminSystemWebhookTestResponse>;
-/**
+  /**
    * i/webhooks/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIWebhooksCreate(client: MisskeyClient, request: PostIwebhooksCreateRequest): Promise<PostIwebhooksCreateResponse>;
-/**
+  /**
    * i/webhooks/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIWebhooksDelete(client: MisskeyClient, request: PostIwebhooksDeleteRequest): Promise<PostIwebhooksDeleteResponse>;
-/**
+  /**
    * i/webhooks/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIWebhooksList(client: MisskeyClient): Promise<PostIwebhooksListResponse>;
-/**
+  /**
    * i/webhooks/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIWebhooksShow(client: MisskeyClient, request: PostIwebhooksShowRequest): Promise<PostIwebhooksShowResponse>;
-/**
+  /**
    * i/webhooks/test
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIWebhooksTest(client: MisskeyClient, request: PostIwebhooksTestRequest): Promise<PostIwebhooksTestResponse>;
-/**
+  /**
    * i/webhooks/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIWebhooksUpdate(client: MisskeyClient, request: PostIwebhooksUpdateRequest): Promise<PostIwebhooksUpdateResponse>;
 }

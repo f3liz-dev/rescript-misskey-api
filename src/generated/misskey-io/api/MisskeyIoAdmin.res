@@ -42,12 +42,12 @@ let postAdminAbuseReportResolverCreateResponseSchema = S.object(s => {
   })
 
 /**
- * admin/abuse-report-resolver/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
- */
+admin/abuse-report-resolver/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+*/
 let postAdminAbuseReportResolverCreate = (~body: postAdminAbuseReportResolverCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportResolverCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportResolverCreateRequestSchema)
   fetch(
@@ -72,12 +72,12 @@ let postAdminAbuseReportResolverDeleteRequestSchema = S.object(s => {
 type postAdminAbuseReportResolverDeleteResponse = unit
 
 /**
- * admin/abuse-report-resolver/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
- */
+admin/abuse-report-resolver/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+*/
 let postAdminAbuseReportResolverDelete = (~body: postAdminAbuseReportResolverDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportResolverDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportResolverDeleteRequestSchema)
   fetch(
@@ -126,12 +126,12 @@ let postAdminAbuseReportResolverListResponse_1Schema = S.object(s => {
 let postAdminAbuseReportResolverListResponseSchema = S.array(postAdminAbuseReportResolverListResponse_1Schema)
 
 /**
- * admin/abuse-report-resolver/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report-resolvers*
- */
+admin/abuse-report-resolver/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report-resolvers*
+*/
 let postAdminAbuseReportResolverList = (~body: postAdminAbuseReportResolverListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportResolverListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportResolverListRequestSchema)
   fetch(
@@ -168,12 +168,12 @@ let postAdminAbuseReportResolverUpdateRequestSchema = S.object(s => {
 type postAdminAbuseReportResolverUpdateResponse = unit
 
 /**
- * admin/abuse-report-resolver/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
- */
+admin/abuse-report-resolver/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+*/
 let postAdminAbuseReportResolverUpdate = (~body: postAdminAbuseReportResolverUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportResolverUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportResolverUpdateRequestSchema)
   fetch(
@@ -208,13 +208,13 @@ type postAdminAbuseReportNotificationRecipientCreateResponse = MisskeyIoComponen
 let postAdminAbuseReportNotificationRecipientCreateResponseSchema = MisskeyIoComponentSchemas.AbuseReportNotificationRecipient.schema
 
 /**
- * admin/abuse-report/notification-recipient/create
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
- */
+admin/abuse-report/notification-recipient/create
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+*/
 let postAdminAbuseReportNotificationRecipientCreate = (~body: postAdminAbuseReportNotificationRecipientCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientCreateRequestSchema)
   fetch(
@@ -239,13 +239,13 @@ let postAdminAbuseReportNotificationRecipientDeleteRequestSchema = S.object(s =>
 type postAdminAbuseReportNotificationRecipientDeleteResponse = unit
 
 /**
- * admin/abuse-report/notification-recipient/delete
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
- */
+admin/abuse-report/notification-recipient/delete
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+*/
 let postAdminAbuseReportNotificationRecipientDelete = (~body: postAdminAbuseReportNotificationRecipientDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientDeleteRequestSchema)
   fetch(
@@ -272,13 +272,13 @@ type postAdminAbuseReportNotificationRecipientListResponse = array<MisskeyIoComp
 let postAdminAbuseReportNotificationRecipientListResponseSchema = S.array(MisskeyIoComponentSchemas.AbuseReportNotificationRecipient.schema)
 
 /**
- * admin/abuse-report/notification-recipient/list
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
- */
+admin/abuse-report/notification-recipient/list
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
+*/
 let postAdminAbuseReportNotificationRecipientList = (~body: postAdminAbuseReportNotificationRecipientListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientListRequestSchema)
   fetch(
@@ -305,13 +305,13 @@ type postAdminAbuseReportNotificationRecipientShowResponse = MisskeyIoComponentS
 let postAdminAbuseReportNotificationRecipientShowResponseSchema = MisskeyIoComponentSchemas.AbuseReportNotificationRecipient.schema
 
 /**
- * admin/abuse-report/notification-recipient/show
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
- */
+admin/abuse-report/notification-recipient/show
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
+*/
 let postAdminAbuseReportNotificationRecipientShow = (~body: postAdminAbuseReportNotificationRecipientShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientShowRequestSchema)
   fetch(
@@ -348,13 +348,13 @@ type postAdminAbuseReportNotificationRecipientUpdateResponse = MisskeyIoComponen
 let postAdminAbuseReportNotificationRecipientUpdateResponseSchema = MisskeyIoComponentSchemas.AbuseReportNotificationRecipient.schema
 
 /**
- * admin/abuse-report/notification-recipient/update
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
- */
+admin/abuse-report/notification-recipient/update
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+*/
 let postAdminAbuseReportNotificationRecipientUpdate = (~body: postAdminAbuseReportNotificationRecipientUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientUpdateRequestSchema)
   fetch(
@@ -429,12 +429,12 @@ let postAdminAbuseUserReportsResponse_1Schema = S.object(s => {
 let postAdminAbuseUserReportsResponseSchema = S.array(postAdminAbuseUserReportsResponse_1Schema)
 
 /**
- * admin/abuse-user-reports
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-user-reports*
- */
+admin/abuse-user-reports
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:abuse-user-reports*
+*/
 let postAdminAbuseUserReports = (~body: postAdminAbuseUserReportsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseUserReportsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseUserReportsRequestSchema)
   fetch(
@@ -465,12 +465,12 @@ type postAdminAccountsCreateResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postAdminAccountsCreateResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * admin/accounts/create
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+admin/accounts/create
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAdminAccountsCreate = (~body: postAdminAccountsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsCreateRequestSchema)
   fetch(
@@ -497,12 +497,12 @@ let postAdminAccountsDeleteRequestSchema = S.object(s => {
 type postAdminAccountsDeleteResponse = unit
 
 /**
- * admin/accounts/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:account*
- */
+admin/accounts/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:account*
+*/
 let postAdminAccountsDelete = (~body: postAdminAccountsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsDeleteRequestSchema)
   fetch(
@@ -529,12 +529,12 @@ type postAdminAccountsFindByEmailResponse = MisskeyIoComponentSchemas.UserDetail
 let postAdminAccountsFindByEmailResponseSchema = MisskeyIoComponentSchemas.UserDetailed.schema
 
 /**
- * admin/accounts/find-by-email
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:account*
- */
+admin/accounts/find-by-email
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:account*
+*/
 let postAdminAccountsFindByEmail = (~body: postAdminAccountsFindByEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsFindByEmailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsFindByEmailRequestSchema)
   fetch(
@@ -587,12 +587,12 @@ let postAdminAccountsPendingListResponse_1Schema = S.object(s => {
 let postAdminAccountsPendingListResponseSchema = S.array(postAdminAccountsPendingListResponse_1Schema)
 
 /**
- * admin/accounts/pending/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:account*
- */
+admin/accounts/pending/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:account*
+*/
 let postAdminAccountsPendingList = (~body: postAdminAccountsPendingListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsPendingListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsPendingListRequestSchema)
   fetch(
@@ -619,12 +619,12 @@ let postAdminAccountsPendingRevokeRequestSchema = S.object(s => {
 type postAdminAccountsPendingRevokeResponse = unit
 
 /**
- * admin/accounts/pending/revoke
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:account*
- */
+admin/accounts/pending/revoke
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:account*
+*/
 let postAdminAccountsPendingRevoke = (~body: postAdminAccountsPendingRevokeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsPendingRevokeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsPendingRevokeRequestSchema)
   fetch(
@@ -669,12 +669,12 @@ type postAdminAdCreateResponse = MisskeyIoComponentSchemas.Ad.t
 let postAdminAdCreateResponseSchema = MisskeyIoComponentSchemas.Ad.schema
 
 /**
- * admin/ad/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
- */
+admin/ad/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+*/
 let postAdminAdCreate = (~body: postAdminAdCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdCreateRequestSchema)
   fetch(
@@ -699,12 +699,12 @@ let postAdminAdDeleteRequestSchema = S.object(s => {
 type postAdminAdDeleteResponse = unit
 
 /**
- * admin/ad/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
- */
+admin/ad/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+*/
 let postAdminAdDelete = (~body: postAdminAdDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdDeleteRequestSchema)
   fetch(
@@ -737,12 +737,12 @@ type postAdminAdListResponse = array<MisskeyIoComponentSchemas.Ad.t>
 let postAdminAdListResponseSchema = S.array(MisskeyIoComponentSchemas.Ad.schema)
 
 /**
- * admin/ad/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:ad*
- */
+admin/ad/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:ad*
+*/
 let postAdminAdList = (~body: postAdminAdListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdListRequestSchema)
   fetch(
@@ -787,12 +787,12 @@ let postAdminAdUpdateRequestSchema = S.object(s => {
 type postAdminAdUpdateResponse = unit
 
 /**
- * admin/ad/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
- */
+admin/ad/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+*/
 let postAdminAdUpdate = (~body: postAdminAdUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdUpdateRequestSchema)
   fetch(
@@ -873,12 +873,12 @@ let postAdminAnnouncementsCreateResponseSchema = S.object(s => {
   })
 
 /**
- * admin/announcements/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
- */
+admin/announcements/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+*/
 let postAdminAnnouncementsCreate = (~body: postAdminAnnouncementsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsCreateRequestSchema)
   fetch(
@@ -903,12 +903,12 @@ let postAdminAnnouncementsDeleteRequestSchema = S.object(s => {
 type postAdminAnnouncementsDeleteResponse = unit
 
 /**
- * admin/announcements/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
- */
+admin/announcements/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+*/
 let postAdminAnnouncementsDelete = (~body: postAdminAnnouncementsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsDeleteRequestSchema)
   fetch(
@@ -985,12 +985,12 @@ let postAdminAnnouncementsListResponse_1Schema = S.object(s => {
 let postAdminAnnouncementsListResponseSchema = S.array(postAdminAnnouncementsListResponse_1Schema)
 
 /**
- * admin/announcements/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:announcements*
- */
+admin/announcements/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:announcements*
+*/
 let postAdminAnnouncementsList = (~body: postAdminAnnouncementsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsListRequestSchema)
   fetch(
@@ -1039,12 +1039,12 @@ let postAdminAnnouncementsUpdateRequestSchema = S.object(s => {
 type postAdminAnnouncementsUpdateResponse = unit
 
 /**
- * admin/announcements/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
- */
+admin/announcements/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+*/
 let postAdminAnnouncementsUpdate = (~body: postAdminAnnouncementsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsUpdateRequestSchema)
   fetch(
@@ -1093,12 +1093,12 @@ let postAdminAvatarDecorationsCreateResponseSchema = S.object(s => {
   })
 
 /**
- * admin/avatar-decorations/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
- */
+admin/avatar-decorations/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+*/
 let postAdminAvatarDecorationsCreate = (~body: postAdminAvatarDecorationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsCreateRequestSchema)
   fetch(
@@ -1123,12 +1123,12 @@ let postAdminAvatarDecorationsDeleteRequestSchema = S.object(s => {
 type postAdminAvatarDecorationsDeleteResponse = unit
 
 /**
- * admin/avatar-decorations/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
- */
+admin/avatar-decorations/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+*/
 let postAdminAvatarDecorationsDelete = (~body: postAdminAvatarDecorationsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsDeleteRequestSchema)
   fetch(
@@ -1181,12 +1181,12 @@ let postAdminAvatarDecorationsListResponse_1Schema = S.object(s => {
 let postAdminAvatarDecorationsListResponseSchema = S.array(postAdminAvatarDecorationsListResponse_1Schema)
 
 /**
- * admin/avatar-decorations/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
- */
+admin/avatar-decorations/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
+*/
 let postAdminAvatarDecorationsList = (~body: postAdminAvatarDecorationsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsListRequestSchema)
   fetch(
@@ -1219,12 +1219,12 @@ let postAdminAvatarDecorationsUpdateRequestSchema = S.object(s => {
 type postAdminAvatarDecorationsUpdateResponse = unit
 
 /**
- * admin/avatar-decorations/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
- */
+admin/avatar-decorations/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+*/
 let postAdminAvatarDecorationsUpdate = (~body: postAdminAvatarDecorationsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsUpdateRequestSchema)
   fetch(
@@ -1277,12 +1277,12 @@ let postAdminCaptchaCurrentResponseSchema = S.object(s => {
   })
 
 /**
- * admin/captcha/current
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
- */
+admin/captcha/current
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:meta*
+*/
 let postAdminCaptchaCurrent = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminCaptchaCurrentResponse> => {
 
   fetch(
@@ -1315,12 +1315,12 @@ let postAdminCaptchaSaveRequestSchema = S.object(s => {
 type postAdminCaptchaSaveResponse = unit
 
 /**
- * admin/captcha/save
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:meta*
- */
+admin/captcha/save
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:meta*
+*/
 let postAdminCaptchaSave = (~body: postAdminCaptchaSaveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminCaptchaSaveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminCaptchaSaveRequestSchema)
   fetch(
@@ -1337,12 +1337,12 @@ let postAdminCaptchaSave = (~body: postAdminCaptchaSaveRequest, ~fetch: (~url: s
 type postAdminDriveCleanRemoteFilesResponse = unit
 
 /**
- * admin/drive/clean-remote-files
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
- */
+admin/drive/clean-remote-files
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+*/
 let postAdminDriveCleanRemoteFiles = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanRemoteFilesResponse> => {
 
   fetch(
@@ -1359,12 +1359,12 @@ let postAdminDriveCleanRemoteFiles = (~fetch: (~url: string, ~method_: string, ~
 type postAdminDriveCleanupResponse = unit
 
 /**
- * admin/drive/cleanup
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
- */
+admin/drive/cleanup
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+*/
 let postAdminDriveCleanup = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveCleanupResponse> => {
 
   fetch(
@@ -1389,12 +1389,12 @@ let postAdminDriveDeleteAllFilesOfAUserRequestSchema = S.object(s => {
 type postAdminDriveDeleteAllFilesOfAUserResponse = unit
 
 /**
- * admin/drive/delete-all-files-of-a-user
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
- */
+admin/drive/delete-all-files-of-a-user
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+*/
 let postAdminDriveDeleteAllFilesOfAUser = (~body: postAdminDriveDeleteAllFilesOfAUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveDeleteAllFilesOfAUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDriveDeleteAllFilesOfAUserRequestSchema)
   fetch(
@@ -1433,12 +1433,12 @@ type postAdminDriveFilesResponse = array<MisskeyIoComponentSchemas.DriveFile.t>
 let postAdminDriveFilesResponseSchema = S.array(MisskeyIoComponentSchemas.DriveFile.schema)
 
 /**
- * admin/drive/files
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:drive*
- */
+admin/drive/files
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:drive*
+*/
 let postAdminDriveFiles = (~body: postAdminDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveFilesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDriveFilesRequestSchema)
   fetch(
@@ -1529,12 +1529,12 @@ let postAdminDriveShowFileResponseSchema = S.object(s => {
   })
 
 /**
- * admin/drive/show-file
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:drive*
- */
+admin/drive/show-file
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:drive*
+*/
 let postAdminDriveShowFile = (~body: postAdminDriveShowFileRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveShowFileResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDriveShowFileRequestSchema)
   fetch(
@@ -1581,12 +1581,12 @@ type postAdminEmojiAddResponse = MisskeyIoComponentSchemas.EmojiDetailed.t
 let postAdminEmojiAddResponseSchema = MisskeyIoComponentSchemas.EmojiDetailed.schema
 
 /**
- * admin/emoji/add
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/add
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiAdd = (~body: postAdminEmojiAddRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiAddResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiAddRequestSchema)
   fetch(
@@ -1613,12 +1613,12 @@ let postAdminEmojiAddAliasesBulkRequestSchema = S.object(s => {
 type postAdminEmojiAddAliasesBulkResponse = unit
 
 /**
- * admin/emoji/add-aliases-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/add-aliases-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiAddAliasesBulk = (~body: postAdminEmojiAddAliasesBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiAddAliasesBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiAddAliasesBulkRequestSchema)
   fetch(
@@ -1649,12 +1649,12 @@ let postAdminEmojiCopyResponseSchema = S.object(s => {
   })
 
 /**
- * admin/emoji/copy
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/copy
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiCopy = (~body: postAdminEmojiCopyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiCopyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiCopyRequestSchema)
   fetch(
@@ -1679,12 +1679,12 @@ let postAdminEmojiDeleteRequestSchema = S.object(s => {
 type postAdminEmojiDeleteResponse = unit
 
 /**
- * admin/emoji/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiDelete = (~body: postAdminEmojiDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiDeleteRequestSchema)
   fetch(
@@ -1709,12 +1709,12 @@ let postAdminEmojiDeleteBulkRequestSchema = S.object(s => {
 type postAdminEmojiDeleteBulkResponse = unit
 
 /**
- * admin/emoji/delete-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/delete-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiDeleteBulk = (~body: postAdminEmojiDeleteBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiDeleteBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiDeleteBulkRequestSchema)
   fetch(
@@ -1765,12 +1765,12 @@ let postAdminEmojiListResponse_1Schema = S.object(s => {
 let postAdminEmojiListResponseSchema = S.array(postAdminEmojiListResponse_1Schema)
 
 /**
- * admin/emoji/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
- */
+admin/emoji/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+*/
 let postAdminEmojiList = (~body: postAdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiListRequestSchema)
   fetch(
@@ -1823,12 +1823,12 @@ let postAdminEmojiListRemoteResponse_1Schema = S.object(s => {
 let postAdminEmojiListRemoteResponseSchema = S.array(postAdminEmojiListRemoteResponse_1Schema)
 
 /**
- * admin/emoji/list-remote
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
- */
+admin/emoji/list-remote
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+*/
 let postAdminEmojiListRemote = (~body: postAdminEmojiListRemoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiListRemoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiListRemoteRequestSchema)
   fetch(
@@ -1855,12 +1855,12 @@ let postAdminEmojiRemoveAliasesBulkRequestSchema = S.object(s => {
 type postAdminEmojiRemoveAliasesBulkResponse = unit
 
 /**
- * admin/emoji/remove-aliases-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/remove-aliases-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiRemoveAliasesBulk = (~body: postAdminEmojiRemoveAliasesBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiRemoveAliasesBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiRemoveAliasesBulkRequestSchema)
   fetch(
@@ -1887,12 +1887,12 @@ let postAdminEmojiSetAliasesBulkRequestSchema = S.object(s => {
 type postAdminEmojiSetAliasesBulkResponse = unit
 
 /**
- * admin/emoji/set-aliases-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/set-aliases-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiSetAliasesBulk = (~body: postAdminEmojiSetAliasesBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiSetAliasesBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiSetAliasesBulkRequestSchema)
   fetch(
@@ -1919,12 +1919,12 @@ let postAdminEmojiSetCategoryBulkRequestSchema = S.object(s => {
 type postAdminEmojiSetCategoryBulkResponse = unit
 
 /**
- * admin/emoji/set-category-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/set-category-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiSetCategoryBulk = (~body: postAdminEmojiSetCategoryBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiSetCategoryBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiSetCategoryBulkRequestSchema)
   fetch(
@@ -1951,12 +1951,12 @@ let postAdminEmojiSetLicenseBulkRequestSchema = S.object(s => {
 type postAdminEmojiSetLicenseBulkResponse = unit
 
 /**
- * admin/emoji/set-license-bulk
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/set-license-bulk
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiSetLicenseBulk = (~body: postAdminEmojiSetLicenseBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiSetLicenseBulkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiSetLicenseBulkRequestSchema)
   fetch(
@@ -2003,12 +2003,12 @@ let postAdminEmojiUpdateRequestSchema = S.object(s => {
 type postAdminEmojiUpdateResponse = unit
 
 /**
- * admin/emoji/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
- */
+admin/emoji/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+*/
 let postAdminEmojiUpdate = (~body: postAdminEmojiUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiUpdateRequestSchema)
   fetch(
@@ -2033,12 +2033,12 @@ let postAdminFederationDeleteAllFilesRequestSchema = S.object(s => {
 type postAdminFederationDeleteAllFilesResponse = unit
 
 /**
- * admin/federation/delete-all-files
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
- */
+admin/federation/delete-all-files
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+*/
 let postAdminFederationDeleteAllFiles = (~body: postAdminFederationDeleteAllFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminFederationDeleteAllFilesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminFederationDeleteAllFilesRequestSchema)
   fetch(
@@ -2063,12 +2063,12 @@ let postAdminFederationRefreshRemoteInstanceMetadataRequestSchema = S.object(s =
 type postAdminFederationRefreshRemoteInstanceMetadataResponse = unit
 
 /**
- * admin/federation/refresh-remote-instance-metadata
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
- */
+admin/federation/refresh-remote-instance-metadata
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+*/
 let postAdminFederationRefreshRemoteInstanceMetadata = (~body: postAdminFederationRefreshRemoteInstanceMetadataRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminFederationRefreshRemoteInstanceMetadataResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminFederationRefreshRemoteInstanceMetadataRequestSchema)
   fetch(
@@ -2093,12 +2093,12 @@ let postAdminFederationRemoveAllFollowingRequestSchema = S.object(s => {
 type postAdminFederationRemoveAllFollowingResponse = unit
 
 /**
- * admin/federation/remove-all-following
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
- */
+admin/federation/remove-all-following
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+*/
 let postAdminFederationRemoveAllFollowing = (~body: postAdminFederationRemoveAllFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminFederationRemoveAllFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminFederationRemoveAllFollowingRequestSchema)
   fetch(
@@ -2127,12 +2127,12 @@ let postAdminFederationUpdateInstanceRequestSchema = S.object(s => {
 type postAdminFederationUpdateInstanceResponse = unit
 
 /**
- * admin/federation/update-instance
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
- */
+admin/federation/update-instance
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+*/
 let postAdminFederationUpdateInstance = (~body: postAdminFederationUpdateInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminFederationUpdateInstanceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminFederationUpdateInstanceRequestSchema)
   fetch(
@@ -2157,12 +2157,12 @@ let postAdminForwardAbuseUserReportRequestSchema = S.object(s => {
 type postAdminForwardAbuseUserReportResponse = unit
 
 /**
- * admin/forward-abuse-user-report
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
- */
+admin/forward-abuse-user-report
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+*/
 let postAdminForwardAbuseUserReport = (~body: postAdminForwardAbuseUserReportRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminForwardAbuseUserReportResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminForwardAbuseUserReportRequestSchema)
   fetch(
@@ -2191,12 +2191,12 @@ let postAdminGetIndexStatsResponse_1Schema = S.object(s => {
 let postAdminGetIndexStatsResponseSchema = S.array(postAdminGetIndexStatsResponse_1Schema)
 
 /**
- * admin/get-index-stats
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:index-stats*
- */
+admin/get-index-stats
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:index-stats*
+*/
 let postAdminGetIndexStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetIndexStatsResponse> => {
 
   fetch(
@@ -2215,12 +2215,12 @@ type postAdminGetTableStatsResponse = dict<JSON.t>
 let postAdminGetTableStatsResponseSchema = S.dict(S.json)
 
 /**
- * admin/get-table-stats
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:table-stats*
- */
+admin/get-table-stats
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:table-stats*
+*/
 let postAdminGetTableStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetTableStatsResponse> => {
 
   fetch(
@@ -2257,12 +2257,12 @@ let postAdminGetUserIpsResponse_1Schema = S.object(s => {
 let postAdminGetUserIpsResponseSchema = S.array(postAdminGetUserIpsResponse_1Schema)
 
 /**
- * admin/get-user-ips
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:user-ips*
- */
+admin/get-user-ips
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:user-ips*
+*/
 let postAdminGetUserIps = (~body: postAdminGetUserIpsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminGetUserIpsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminGetUserIpsRequestSchema)
   fetch(
@@ -2303,12 +2303,12 @@ let postAdminIndieAuthCreateResponseSchema = S.object(s => {
   })
 
 /**
- * admin/indie-auth/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
- */
+admin/indie-auth/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+*/
 let postAdminIndieAuthCreate = (~body: postAdminIndieAuthCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminIndieAuthCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminIndieAuthCreateRequestSchema)
   fetch(
@@ -2333,12 +2333,12 @@ let postAdminIndieAuthDeleteRequestSchema = S.object(s => {
 type postAdminIndieAuthDeleteResponse = unit
 
 /**
- * admin/indie-auth/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
- */
+admin/indie-auth/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+*/
 let postAdminIndieAuthDelete = (~body: postAdminIndieAuthDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminIndieAuthDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminIndieAuthDeleteRequestSchema)
   fetch(
@@ -2381,12 +2381,12 @@ let postAdminIndieAuthListResponse_1Schema = S.object(s => {
 let postAdminIndieAuthListResponseSchema = S.array(postAdminIndieAuthListResponse_1Schema)
 
 /**
- * admin/indie-auth/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:indie-auth*
- */
+admin/indie-auth/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:indie-auth*
+*/
 let postAdminIndieAuthList = (~body: postAdminIndieAuthListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminIndieAuthListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminIndieAuthListRequestSchema)
   fetch(
@@ -2415,12 +2415,12 @@ let postAdminIndieAuthUpdateRequestSchema = S.object(s => {
 type postAdminIndieAuthUpdateResponse = unit
 
 /**
- * admin/indie-auth/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
- */
+admin/indie-auth/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+*/
 let postAdminIndieAuthUpdate = (~body: postAdminIndieAuthUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminIndieAuthUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminIndieAuthUpdateRequestSchema)
   fetch(
@@ -2449,12 +2449,12 @@ type postAdminInviteCreateResponse = array<MisskeyIoComponentSchemas.InviteCode.
 let postAdminInviteCreateResponseSchema = S.array(MisskeyIoComponentSchemas.InviteCode.schema)
 
 /**
- * admin/invite/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:invite-codes*
- */
+admin/invite/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:invite-codes*
+*/
 let postAdminInviteCreate = (~body: postAdminInviteCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminInviteCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminInviteCreateRequestSchema)
   fetch(
@@ -2487,12 +2487,12 @@ type postAdminInviteListResponse = array<MisskeyIoComponentSchemas.InviteCode.t>
 let postAdminInviteListResponseSchema = S.array(MisskeyIoComponentSchemas.InviteCode.schema)
 
 /**
- * admin/invite/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:invite-codes*
- */
+admin/invite/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:invite-codes*
+*/
 let postAdminInviteList = (~body: postAdminInviteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminInviteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminInviteListRequestSchema)
   fetch(
@@ -2519,12 +2519,12 @@ let postAdminPromoCreateRequestSchema = S.object(s => {
 type postAdminPromoCreateResponse = unit
 
 /**
- * admin/promo/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:promo*
- */
+admin/promo/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:promo*
+*/
 let postAdminPromoCreate = (~body: postAdminPromoCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminPromoCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminPromoCreateRequestSchema)
   fetch(
@@ -2551,12 +2551,12 @@ let postAdminQueueClearRequestSchema = S.object(s => {
 type postAdminQueueClearResponse = unit
 
 /**
- * admin/queue/clear
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:queue*
- */
+admin/queue/clear
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:queue*
+*/
 let postAdminQueueClear = (~body: postAdminQueueClearRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueClearResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueClearRequestSchema)
   fetch(
@@ -2575,12 +2575,12 @@ type postAdminQueueDeliverDelayedResponse = array<array<JSON.t>>
 let postAdminQueueDeliverDelayedResponseSchema = S.array(S.array(S.json))
 
 /**
- * admin/queue/deliver-delayed
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
- */
+admin/queue/deliver-delayed
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:queue*
+*/
 let postAdminQueueDeliverDelayed = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueDeliverDelayedResponse> => {
 
   fetch(
@@ -2599,12 +2599,12 @@ type postAdminQueueInboxDelayedResponse = array<array<JSON.t>>
 let postAdminQueueInboxDelayedResponseSchema = S.array(S.array(S.json))
 
 /**
- * admin/queue/inbox-delayed
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
- */
+admin/queue/inbox-delayed
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:queue*
+*/
 let postAdminQueueInboxDelayed = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueInboxDelayedResponse> => {
 
   fetch(
@@ -2629,12 +2629,12 @@ let postAdminQueuePromoteRequestSchema = S.object(s => {
 type postAdminQueuePromoteResponse = unit
 
 /**
- * admin/queue/promote
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:queue*
- */
+admin/queue/promote
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:queue*
+*/
 let postAdminQueuePromote = (~body: postAdminQueuePromoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueuePromoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueuePromoteRequestSchema)
   fetch(
@@ -2663,12 +2663,12 @@ let postAdminQueueStatsResponseSchema = S.object(s => {
   })
 
 /**
- * admin/queue/stats
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
- */
+admin/queue/stats
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+*/
 let postAdminQueueStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueStatsResponse> => {
 
   fetch(
@@ -2693,12 +2693,12 @@ let postAdminRegenerateUserTokenRequestSchema = S.object(s => {
 type postAdminRegenerateUserTokenResponse = unit
 
 /**
- * admin/regenerate-user-token
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:regenerate-user-token*
- */
+admin/regenerate-user-token
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:regenerate-user-token*
+*/
 let postAdminRegenerateUserToken = (~body: postAdminRegenerateUserTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRegenerateUserTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRegenerateUserTokenRequestSchema)
   fetch(
@@ -2733,12 +2733,12 @@ let postAdminRelaysAddResponseSchema = S.object(s => {
   })
 
 /**
- * admin/relays/add
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:relays*
- */
+admin/relays/add
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:relays*
+*/
 let postAdminRelaysAdd = (~body: postAdminRelaysAddRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRelaysAddResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRelaysAddRequestSchema)
   fetch(
@@ -2769,12 +2769,12 @@ let postAdminRelaysListResponse_1Schema = S.object(s => {
 let postAdminRelaysListResponseSchema = S.array(postAdminRelaysListResponse_1Schema)
 
 /**
- * admin/relays/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:relays*
- */
+admin/relays/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:relays*
+*/
 let postAdminRelaysList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRelaysListResponse> => {
 
   fetch(
@@ -2799,12 +2799,12 @@ let postAdminRelaysRemoveRequestSchema = S.object(s => {
 type postAdminRelaysRemoveResponse = unit
 
 /**
- * admin/relays/remove
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:relays*
- */
+admin/relays/remove
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:relays*
+*/
 let postAdminRelaysRemove = (~body: postAdminRelaysRemoveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRelaysRemoveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRelaysRemoveRequestSchema)
   fetch(
@@ -2835,12 +2835,12 @@ let postAdminResetPasswordResponseSchema = S.object(s => {
   })
 
 /**
- * admin/reset-password
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:reset-password*
- */
+admin/reset-password
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:reset-password*
+*/
 let postAdminResetPassword = (~body: postAdminResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminResetPasswordResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminResetPasswordRequestSchema)
   fetch(
@@ -2869,12 +2869,12 @@ let postAdminResolveAbuseUserReportRequestSchema = S.object(s => {
 type postAdminResolveAbuseUserReportResponse = unit
 
 /**
- * admin/resolve-abuse-user-report
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
- */
+admin/resolve-abuse-user-report
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+*/
 let postAdminResolveAbuseUserReport = (~body: postAdminResolveAbuseUserReportRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminResolveAbuseUserReportResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminResolveAbuseUserReportRequestSchema)
   fetch(
@@ -2905,12 +2905,12 @@ let postAdminRolesAssignRequestSchema = S.object(s => {
 type postAdminRolesAssignResponse = unit
 
 /**
- * admin/roles/assign
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/assign
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesAssign = (~body: postAdminRolesAssignRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesAssignResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesAssignRequestSchema)
   fetch(
@@ -2967,12 +2967,12 @@ type postAdminRolesCreateResponse = MisskeyIoComponentSchemas.Role.t
 let postAdminRolesCreateResponseSchema = MisskeyIoComponentSchemas.Role.schema
 
 /**
- * admin/roles/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesCreate = (~body: postAdminRolesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesCreateRequestSchema)
   fetch(
@@ -2997,12 +2997,12 @@ let postAdminRolesDeleteRequestSchema = S.object(s => {
 type postAdminRolesDeleteResponse = unit
 
 /**
- * admin/roles/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesDelete = (~body: postAdminRolesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesDeleteRequestSchema)
   fetch(
@@ -3021,12 +3021,12 @@ type postAdminRolesListResponse = array<MisskeyIoComponentSchemas.Role.t>
 let postAdminRolesListResponseSchema = S.array(MisskeyIoComponentSchemas.Role.schema)
 
 /**
- * admin/roles/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:roles*
- */
+admin/roles/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:roles*
+*/
 let postAdminRolesList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesListResponse> => {
 
   fetch(
@@ -3053,12 +3053,12 @@ type postAdminRolesShowResponse = MisskeyIoComponentSchemas.Role.t
 let postAdminRolesShowResponseSchema = MisskeyIoComponentSchemas.Role.schema
 
 /**
- * admin/roles/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:roles*
- */
+admin/roles/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:roles*
+*/
 let postAdminRolesShow = (~body: postAdminRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesShowRequestSchema)
   fetch(
@@ -3085,12 +3085,12 @@ let postAdminRolesUnassignRequestSchema = S.object(s => {
 type postAdminRolesUnassignResponse = unit
 
 /**
- * admin/roles/unassign
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/unassign
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesUnassign = (~body: postAdminRolesUnassignRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUnassignResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUnassignRequestSchema)
   fetch(
@@ -3147,12 +3147,12 @@ let postAdminRolesUpdateRequestSchema = S.object(s => {
 type postAdminRolesUpdateResponse = unit
 
 /**
- * admin/roles/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesUpdate = (~body: postAdminRolesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUpdateRequestSchema)
   fetch(
@@ -3177,12 +3177,12 @@ let postAdminRolesUpdateDefaultPoliciesRequestSchema = S.object(s => {
 type postAdminRolesUpdateDefaultPoliciesResponse = unit
 
 /**
- * admin/roles/update-default-policies
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/update-default-policies
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesUpdateDefaultPolicies = (~body: postAdminRolesUpdateDefaultPoliciesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUpdateDefaultPoliciesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUpdateDefaultPoliciesRequestSchema)
   fetch(
@@ -3229,12 +3229,12 @@ let postAdminRolesUpdateInlinePoliciesRequestSchema = S.object(s => {
 type postAdminRolesUpdateInlinePoliciesResponse = unit
 
 /**
- * admin/roles/update-inline-policies
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
- */
+admin/roles/update-inline-policies
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+*/
 let postAdminRolesUpdateInlinePolicies = (~body: postAdminRolesUpdateInlinePoliciesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUpdateInlinePoliciesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUpdateInlinePoliciesRequestSchema)
   fetch(
@@ -3283,12 +3283,12 @@ let postAdminRolesUsersResponse_1Schema = S.object(s => {
 let postAdminRolesUsersResponseSchema = S.array(postAdminRolesUsersResponse_1Schema)
 
 /**
- * admin/roles/users
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:admin:roles*
- */
+admin/roles/users
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:admin:roles*
+*/
 let postAdminRolesUsers = (~body: postAdminRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUsersRequestSchema)
   fetch(
@@ -3317,12 +3317,12 @@ let postAdminSendEmailRequestSchema = S.object(s => {
 type postAdminSendEmailResponse = unit
 
 /**
- * admin/send-email
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:send-email*
- */
+admin/send-email
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:send-email*
+*/
 let postAdminSendEmail = (~body: postAdminSendEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSendEmailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSendEmailRequestSchema)
   fetch(
@@ -3375,12 +3375,12 @@ let postAdminShowModerationLogsResponse_1Schema = S.object(s => {
 let postAdminShowModerationLogsResponseSchema = S.array(postAdminShowModerationLogsResponse_1Schema)
 
 /**
- * admin/show-moderation-logs
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:show-moderation-log*
- */
+admin/show-moderation-logs
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:show-moderation-log*
+*/
 let postAdminShowModerationLogs = (~body: postAdminShowModerationLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowModerationLogsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowModerationLogsRequestSchema)
   fetch(
@@ -3537,12 +3537,12 @@ let postAdminShowUserResponseSchema = S.object(s => {
   })
 
 /**
- * admin/show-user
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:show-user*
- */
+admin/show-user
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:show-user*
+*/
 let postAdminShowUser = (~body: postAdminShowUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowUserRequestSchema)
   fetch(
@@ -3599,12 +3599,12 @@ let postAdminShowUserAccountMoveLogsResponse_1Schema = S.object(s => {
 let postAdminShowUserAccountMoveLogsResponseSchema = S.array(postAdminShowUserAccountMoveLogsResponse_1Schema)
 
 /**
- * admin/show-user-account-move-logs
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:show-account-move-log*
- */
+admin/show-user-account-move-logs
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:show-account-move-log*
+*/
 let postAdminShowUserAccountMoveLogs = (~body: postAdminShowUserAccountMoveLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowUserAccountMoveLogsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowUserAccountMoveLogsRequestSchema)
   fetch(
@@ -3643,12 +3643,12 @@ type postAdminShowUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t
 let postAdminShowUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * admin/show-users
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:show-user*
- */
+admin/show-users
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:show-user*
+*/
 let postAdminShowUsers = (~body: postAdminShowUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowUsersRequestSchema)
   fetch(
@@ -3729,12 +3729,12 @@ let postAdminSsoCreateResponseSchema = S.object(s => {
   })
 
 /**
- * admin/sso/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
- */
+admin/sso/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+*/
 let postAdminSsoCreate = (~body: postAdminSsoCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSsoCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSsoCreateRequestSchema)
   fetch(
@@ -3759,12 +3759,12 @@ let postAdminSsoDeleteRequestSchema = S.object(s => {
 type postAdminSsoDeleteResponse = unit
 
 /**
- * admin/sso/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
- */
+admin/sso/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+*/
 let postAdminSsoDelete = (~body: postAdminSsoDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSsoDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSsoDeleteRequestSchema)
   fetch(
@@ -3829,12 +3829,12 @@ let postAdminSsoListResponse_1Schema = S.object(s => {
 let postAdminSsoListResponseSchema = S.array(postAdminSsoListResponse_1Schema)
 
 /**
- * admin/sso/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:sso*
- */
+admin/sso/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:sso*
+*/
 let postAdminSsoList = (~body: postAdminSsoListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSsoListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSsoListRequestSchema)
   fetch(
@@ -3883,12 +3883,12 @@ let postAdminSsoUpdateRequestSchema = S.object(s => {
 type postAdminSsoUpdateResponse = unit
 
 /**
- * admin/sso/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
- */
+admin/sso/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+*/
 let postAdminSsoUpdate = (~body: postAdminSsoUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSsoUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSsoUpdateRequestSchema)
   fetch(
@@ -3913,12 +3913,12 @@ let postAdminSuspendUserRequestSchema = S.object(s => {
 type postAdminSuspendUserResponse = unit
 
 /**
- * admin/suspend-user
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:suspend-user*
- */
+admin/suspend-user
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:suspend-user*
+*/
 let postAdminSuspendUser = (~body: postAdminSuspendUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSuspendUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSuspendUserRequestSchema)
   fetch(
@@ -3953,13 +3953,13 @@ type postAdminSystemWebhookCreateResponse = MisskeyIoComponentSchemas.SystemWebh
 let postAdminSystemWebhookCreateResponseSchema = MisskeyIoComponentSchemas.SystemWebhook.schema
 
 /**
- * admin/system-webhook/create
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
- */
+admin/system-webhook/create
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+*/
 let postAdminSystemWebhookCreate = (~body: postAdminSystemWebhookCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookCreateRequestSchema)
   fetch(
@@ -3984,13 +3984,13 @@ let postAdminSystemWebhookDeleteRequestSchema = S.object(s => {
 type postAdminSystemWebhookDeleteResponse = unit
 
 /**
- * admin/system-webhook/delete
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
- */
+admin/system-webhook/delete
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+*/
 let postAdminSystemWebhookDelete = (~body: postAdminSystemWebhookDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookDeleteRequestSchema)
   fetch(
@@ -4019,13 +4019,13 @@ type postAdminSystemWebhookListResponse = array<MisskeyIoComponentSchemas.System
 let postAdminSystemWebhookListResponseSchema = S.array(MisskeyIoComponentSchemas.SystemWebhook.schema)
 
 /**
- * admin/system-webhook/list
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
- */
+admin/system-webhook/list
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+*/
 let postAdminSystemWebhookList = (~body: postAdminSystemWebhookListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookListRequestSchema)
   fetch(
@@ -4052,13 +4052,13 @@ type postAdminSystemWebhookShowResponse = MisskeyIoComponentSchemas.SystemWebhoo
 let postAdminSystemWebhookShowResponseSchema = MisskeyIoComponentSchemas.SystemWebhook.schema
 
 /**
- * admin/system-webhook/show
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
- */
+admin/system-webhook/show
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+*/
 let postAdminSystemWebhookShow = (~body: postAdminSystemWebhookShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookShowRequestSchema)
   fetch(
@@ -4095,13 +4095,13 @@ type postAdminSystemWebhookUpdateResponse = MisskeyIoComponentSchemas.SystemWebh
 let postAdminSystemWebhookUpdateResponseSchema = MisskeyIoComponentSchemas.SystemWebhook.schema
 
 /**
- * admin/system-webhook/update
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
- */
+admin/system-webhook/update
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+*/
 let postAdminSystemWebhookUpdate = (~body: postAdminSystemWebhookUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookUpdateRequestSchema)
   fetch(
@@ -4126,12 +4126,12 @@ let postAdminUnsetUserAvatarRequestSchema = S.object(s => {
 type postAdminUnsetUserAvatarResponse = unit
 
 /**
- * admin/unset-user-avatar
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:user-avatar*
- */
+admin/unset-user-avatar
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:user-avatar*
+*/
 let postAdminUnsetUserAvatar = (~body: postAdminUnsetUserAvatarRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUnsetUserAvatarResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUnsetUserAvatarRequestSchema)
   fetch(
@@ -4156,12 +4156,12 @@ let postAdminUnsetUserBannerRequestSchema = S.object(s => {
 type postAdminUnsetUserBannerResponse = unit
 
 /**
- * admin/unset-user-banner
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:user-banner*
- */
+admin/unset-user-banner
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:user-banner*
+*/
 let postAdminUnsetUserBanner = (~body: postAdminUnsetUserBannerRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUnsetUserBannerResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUnsetUserBannerRequestSchema)
   fetch(
@@ -4188,12 +4188,12 @@ let postAdminUnsetUserMutualLinkRequestSchema = S.object(s => {
 type postAdminUnsetUserMutualLinkResponse = unit
 
 /**
- * admin/unset-user-mutual-link
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:user-mutual-link*
- */
+admin/unset-user-mutual-link
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:user-mutual-link*
+*/
 let postAdminUnsetUserMutualLink = (~body: postAdminUnsetUserMutualLinkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUnsetUserMutualLinkResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUnsetUserMutualLinkRequestSchema)
   fetch(
@@ -4218,12 +4218,12 @@ let postAdminUnsuspendUserRequestSchema = S.object(s => {
 type postAdminUnsuspendUserResponse = unit
 
 /**
- * admin/unsuspend-user
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:unsuspend-user*
- */
+admin/unsuspend-user
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:unsuspend-user*
+*/
 let postAdminUnsuspendUser = (~body: postAdminUnsuspendUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUnsuspendUserResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUnsuspendUserRequestSchema)
   fetch(
@@ -4250,12 +4250,12 @@ let postAdminUpdateAbuseUserReportRequestSchema = S.object(s => {
 type postAdminUpdateAbuseUserReportResponse = unit
 
 /**
- * admin/update-abuse-user-report
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
- */
+admin/update-abuse-user-report
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+*/
 let postAdminUpdateAbuseUserReport = (~body: postAdminUpdateAbuseUserReportRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateAbuseUserReportResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateAbuseUserReportRequestSchema)
   fetch(
@@ -4508,12 +4508,12 @@ let postAdminUpdateMetaRequestSchema = S.object(s => {
 type postAdminUpdateMetaResponse = unit
 
 /**
- * admin/update-meta
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:meta*
- */
+admin/update-meta
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:meta*
+*/
 let postAdminUpdateMeta = (~body: postAdminUpdateMetaRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateMetaResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateMetaRequestSchema)
   fetch(
@@ -4540,12 +4540,12 @@ type postAdminUpdateProxyAccountResponse = MisskeyIoComponentSchemas.UserDetaile
 let postAdminUpdateProxyAccountResponseSchema = MisskeyIoComponentSchemas.UserDetailed.schema
 
 /**
- * admin/update-proxy-account
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:account*
- */
+admin/update-proxy-account
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:account*
+*/
 let postAdminUpdateProxyAccount = (~body: postAdminUpdateProxyAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateProxyAccountResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateProxyAccountRequestSchema)
   fetch(
@@ -4572,12 +4572,12 @@ let postAdminUpdateUserNameRequestSchema = S.object(s => {
 type postAdminUpdateUserNameResponse = unit
 
 /**
- * admin/update-user-name
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:user-name*
- */
+admin/update-user-name
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:user-name*
+*/
 let postAdminUpdateUserName = (~body: postAdminUpdateUserNameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateUserNameResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateUserNameRequestSchema)
   fetch(
@@ -4604,12 +4604,12 @@ let postAdminUpdateUserNoteRequestSchema = S.object(s => {
 type postAdminUpdateUserNoteResponse = unit
 
 /**
- * admin/update-user-note
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:admin:user-note*
- */
+admin/update-user-note
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:admin:user-note*
+*/
 let postAdminUpdateUserNote = (~body: postAdminUpdateUserNoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateUserNoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateUserNoteRequestSchema)
   fetch(
@@ -4692,12 +4692,12 @@ let postV2AdminEmojiListResponseSchema = S.object(s => {
   })
 
 /**
- * v2/admin/emoji/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
- */
+v2/admin/emoji/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+*/
 let postV2AdminEmojiList = (~body: postV2AdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postV2AdminEmojiListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postV2AdminEmojiListRequestSchema)
   fetch(

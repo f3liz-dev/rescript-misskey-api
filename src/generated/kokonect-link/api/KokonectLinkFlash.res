@@ -26,12 +26,12 @@ type postFlashCreateResponse = KokonectLinkComponentSchemas.Flash.t
 let postFlashCreateResponseSchema = KokonectLinkComponentSchemas.Flash.schema
 
 /**
- * flash/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:flash*
- */
+flash/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:flash*
+*/
 let postFlashCreate = (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashCreateRequestSchema)
   fetch(
@@ -62,13 +62,13 @@ let postFlashGenTokenResponseSchema = S.object(s => {
   })
 
 /**
- * flash/gen-token
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+flash/gen-token
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postFlashGenToken = (~body: postFlashGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashGenTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashGenTokenRequestSchema)
   fetch(
@@ -105,12 +105,12 @@ type postFlashSearchResponse = array<KokonectLinkComponentSchemas.Flash.t>
 let postFlashSearchResponseSchema = S.array(KokonectLinkComponentSchemas.Flash.schema)
 
 /**
- * flash/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+flash/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFlashSearch = (~body: postFlashSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashSearchRequestSchema)
   fetch(

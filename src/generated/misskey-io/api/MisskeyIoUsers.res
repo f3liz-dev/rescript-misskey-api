@@ -24,12 +24,12 @@ let postEmailAddressAvailableResponseSchema = S.object(s => {
   })
 
 /**
- * email-address/available
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+email-address/available
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEmailAddressAvailable = (~body: postEmailAddressAvailableRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmailAddressAvailableResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postEmailAddressAvailableRequestSchema)
   fetch(
@@ -64,12 +64,12 @@ let postGetAvatarDecorationsResponse_1Schema = S.object(s => {
 let postGetAvatarDecorationsResponseSchema = S.array(postGetAvatarDecorationsResponse_1Schema)
 
 /**
- * get-avatar-decorations
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+get-avatar-decorations
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGetAvatarDecorations = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetAvatarDecorationsResponse> => {
 
   fetch(
@@ -96,13 +96,13 @@ type postIMoveResponse = dict<JSON.t>
 let postIMoveResponseSchema = S.dict(S.json)
 
 /**
- * i/move
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/move
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIMove = (~body: postIMoveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIMoveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIMoveRequestSchema)
   fetch(
@@ -121,12 +121,12 @@ type postPinnedUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
 let postPinnedUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * pinned-users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+pinned-users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postPinnedUsers = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPinnedUsersResponse> => {
 
   fetch(
@@ -157,12 +157,12 @@ let getRetentionResponse_1Schema = S.object(s => {
 let getRetentionResponseSchema = S.array(getRetentionResponse_1Schema)
 
 /**
- * retention
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+retention
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getRetention = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getRetentionResponse> => {
 
   fetch(
@@ -193,12 +193,12 @@ let postRetentionResponse_1Schema = S.object(s => {
 let postRetentionResponseSchema = S.array(postRetentionResponse_1Schema)
 
 /**
- * retention
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+retention
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postRetention = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRetentionResponse> => {
 
   fetch(
@@ -229,12 +229,12 @@ let postUsernameAvailableResponseSchema = S.object(s => {
   })
 
 /**
- * username/available
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+username/available
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsernameAvailable = (~body: postUsernameAvailableRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsernameAvailableResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsernameAvailableRequestSchema)
   fetch(
@@ -271,12 +271,12 @@ type postUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
 let postUsersResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsers = (~body: postUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersRequestSchema)
   fetch(
@@ -309,12 +309,12 @@ type postUsersClipsResponse = array<MisskeyIoComponentSchemas.Clip.t>
 let postUsersClipsResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.schema)
 
 /**
- * users/clips
- *
- * Show all clips this user owns.
- *
- * **Credential required**: *No*
- */
+users/clips
+
+Show all clips this user owns.
+
+**Credential required**: *No*
+*/
 let postUsersClips = (~body: postUsersClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersClipsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersClipsRequestSchema)
   fetch(
@@ -347,12 +347,12 @@ type postUsersFlashsResponse = array<MisskeyIoComponentSchemas.Flash.t>
 let postUsersFlashsResponseSchema = S.array(MisskeyIoComponentSchemas.Flash.schema)
 
 /**
- * users/flashs
- *
- * Show all flashs this user created.
- *
- * **Credential required**: *No*
- */
+users/flashs
+
+Show all flashs this user created.
+
+**Credential required**: *No*
+*/
 let postUsersFlashs = (~body: postUsersFlashsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFlashsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFlashsRequestSchema)
   fetch(
@@ -389,12 +389,12 @@ type postUsersFollowersResponse = array<MisskeyIoComponentSchemas.Following.t>
 let postUsersFollowersResponseSchema = S.array(MisskeyIoComponentSchemas.Following.schema)
 
 /**
- * users/followers
- *
- * Show everyone that follows this user.
- *
- * **Credential required**: *No*
- */
+users/followers
+
+Show everyone that follows this user.
+
+**Credential required**: *No*
+*/
 let postUsersFollowers = (~body: postUsersFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowersRequestSchema)
   fetch(
@@ -433,12 +433,12 @@ type postUsersFollowingResponse = array<MisskeyIoComponentSchemas.Following.t>
 let postUsersFollowingResponseSchema = S.array(MisskeyIoComponentSchemas.Following.schema)
 
 /**
- * users/following
- *
- * Show everyone that this user is following.
- *
- * **Credential required**: *No*
- */
+users/following
+
+Show everyone that this user is following.
+
+**Credential required**: *No*
+*/
 let postUsersFollowing = (~body: postUsersFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowingRequestSchema)
   fetch(
@@ -471,12 +471,12 @@ type postUsersGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost
 let postUsersGalleryPostsResponseSchema = S.array(MisskeyIoComponentSchemas.GalleryPost.schema)
 
 /**
- * users/gallery/posts
- *
- * Show all gallery posts by the given user.
- *
- * **Credential required**: *No*
- */
+users/gallery/posts
+
+Show all gallery posts by the given user.
+
+**Credential required**: *No*
+*/
 let postUsersGalleryPosts = (~body: postUsersGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGalleryPostsRequestSchema)
   fetch(
@@ -541,12 +541,12 @@ let postUsersGetFollowingBirthdayUsersResponse_1Schema = S.object(s => {
 let postUsersGetFollowingBirthdayUsersResponseSchema = S.array(postUsersGetFollowingBirthdayUsersResponse_1Schema)
 
 /**
- * users/get-following-birthday-users
- *
- * Find users who have a birthday on the specified range.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+users/get-following-birthday-users
+
+Find users who have a birthday on the specified range.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postUsersGetFollowingBirthdayUsers = (~body: postUsersGetFollowingBirthdayUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGetFollowingBirthdayUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGetFollowingBirthdayUsersRequestSchema)
   fetch(
@@ -585,12 +585,12 @@ let postUsersGetFrequentlyRepliedUsersResponse_1Schema = S.object(s => {
 let postUsersGetFrequentlyRepliedUsersResponseSchema = S.array(postUsersGetFrequentlyRepliedUsersResponse_1Schema)
 
 /**
- * users/get-frequently-replied-users
- *
- * Get a list of other users that the specified user frequently replies to.
- *
- * **Credential required**: *No*
- */
+users/get-frequently-replied-users
+
+Get a list of other users that the specified user frequently replies to.
+
+**Credential required**: *No*
+*/
 let postUsersGetFrequentlyRepliedUsers = (~body: postUsersGetFrequentlyRepliedUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGetFrequentlyRepliedUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGetFrequentlyRepliedUsersRequestSchema)
   fetch(
@@ -627,12 +627,12 @@ let postUsersGetSecurityInfoResponseSchema = S.object(s => {
   })
 
 /**
- * users/get-security-info
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/get-security-info
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersGetSecurityInfo = (~body: postUsersGetSecurityInfoRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGetSecurityInfoResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGetSecurityInfoRequestSchema)
   fetch(
@@ -683,12 +683,12 @@ let getUsersGetSkebStatusResponseSchema = S.object(s => {
   })
 
 /**
- * users/get-skeb-status
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/get-skeb-status
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getUsersGetSkebStatus = (~body: getUsersGetSkebStatusRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getUsersGetSkebStatusResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getUsersGetSkebStatusRequestSchema)
   fetch(
@@ -739,12 +739,12 @@ let postUsersGetSkebStatusResponseSchema = S.object(s => {
   })
 
 /**
- * users/get-skeb-status
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/get-skeb-status
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersGetSkebStatus = (~body: postUsersGetSkebStatusRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGetSkebStatusResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGetSkebStatusRequestSchema)
   fetch(
@@ -791,12 +791,12 @@ type postUsersNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postUsersNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * users/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersNotes = (~body: postUsersNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersNotesRequestSchema)
   fetch(
@@ -829,12 +829,12 @@ type postUsersPagesResponse = array<MisskeyIoComponentSchemas.Page.t>
 let postUsersPagesResponseSchema = S.array(MisskeyIoComponentSchemas.Page.schema)
 
 /**
- * users/pages
- *
- * Show all pages this user created.
- *
- * **Credential required**: *No*
- */
+users/pages
+
+Show all pages this user created.
+
+**Credential required**: *No*
+*/
 let postUsersPages = (~body: postUsersPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersPagesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersPagesRequestSchema)
   fetch(
@@ -871,12 +871,12 @@ type postUsersReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t
 let postUsersReactionsResponseSchema = S.array(MisskeyIoComponentSchemas.NoteReaction.schema)
 
 /**
- * users/reactions
- *
- * Show all reactions this user made.
- *
- * **Credential required**: *No*
- */
+users/reactions
+
+Show all reactions this user made.
+
+**Credential required**: *No*
+*/
 let postUsersReactions = (~body: postUsersReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersReactionsRequestSchema)
   fetch(
@@ -905,12 +905,12 @@ type postUsersRecommendationResponse = array<MisskeyIoComponentSchemas.UserDetai
 let postUsersRecommendationResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * users/recommendation
- *
- * Show users that the authenticated user might be interested to follow.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+users/recommendation
+
+Show users that the authenticated user might be interested to follow.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postUsersRecommendation = (~body: postUsersRecommendationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersRecommendationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersRecommendationRequestSchema)
   fetch(
@@ -961,12 +961,12 @@ let postUsersRelationResponse_1Schema = S.object(s => {
 let postUsersRelationResponseSchema = S.array(postUsersRelationResponse_1Schema)
 
 /**
- * users/relation
- *
- * Show the different kinds of relations between the authenticated user and the specified user(s).
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+users/relation
+
+Show the different kinds of relations between the authenticated user and the specified user(s).
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postUsersRelation = (~body: postUsersRelationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersRelationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersRelationRequestSchema)
   fetch(
@@ -995,12 +995,12 @@ let postUsersReportAbuseRequestSchema = S.object(s => {
 type postUsersReportAbuseResponse = unit
 
 /**
- * users/report-abuse
- *
- * File a report.
- *
- * **Credential required**: *Yes* / **Permission**: *write:report-abuse*
- */
+users/report-abuse
+
+File a report.
+
+**Credential required**: *Yes* / **Permission**: *write:report-abuse*
+*/
 let postUsersReportAbuse = (~body: postUsersReportAbuseRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersReportAbuseResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersReportAbuseRequestSchema)
   fetch(
@@ -1035,12 +1035,12 @@ type postUsersSearchResponse = array<MisskeyIoComponentSchemas.User.t>
 let postUsersSearchResponseSchema = S.array(MisskeyIoComponentSchemas.User.schema)
 
 /**
- * users/search
- *
- * Search for users.
- *
- * **Credential required**: *No*
- */
+users/search
+
+Search for users.
+
+**Credential required**: *No*
+*/
 let postUsersSearch = (~body: postUsersSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersSearchRequestSchema)
   fetch(
@@ -1073,12 +1073,12 @@ type postUsersSearchByUsernameAndHostResponse = array<MisskeyIoComponentSchemas.
 let postUsersSearchByUsernameAndHostResponseSchema = S.array(MisskeyIoComponentSchemas.User.schema)
 
 /**
- * users/search-by-username-and-host
- *
- * Search for a user by username and/or host.
- *
- * **Credential required**: *No*
- */
+users/search-by-username-and-host
+
+Search for a user by username and/or host.
+
+**Credential required**: *No*
+*/
 let postUsersSearchByUsernameAndHost = (~body: postUsersSearchByUsernameAndHostRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersSearchByUsernameAndHostResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersSearchByUsernameAndHostRequestSchema)
   fetch(
@@ -1113,12 +1113,12 @@ type postUsersShowResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
 let postUsersShowResponseSchema = S.array(MisskeyIoComponentSchemas.UserDetailed.schema)
 
 /**
- * users/show
- *
- * Show the properties of a user.
- *
- * **Credential required**: *No*
- */
+users/show
+
+Show the properties of a user.
+
+**Credential required**: *No*
+*/
 let postUsersShow = (~body: postUsersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersShowRequestSchema)
   fetch(
@@ -1187,12 +1187,12 @@ let postUsersStatsResponseSchema = S.object(s => {
   })
 
 /**
- * users/stats
- *
- * Show statistics about a user.
- *
- * **Credential required**: *No*
- */
+users/stats
+
+Show statistics about a user.
+
+**Credential required**: *No*
+*/
 let postUsersStats = (~body: postUsersStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersStatsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersStatsRequestSchema)
   fetch(

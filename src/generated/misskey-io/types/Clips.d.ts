@@ -43,46 +43,52 @@ export interface PostNotesClipsRequest {
 export type PostNotesClipsResponse = ComponentSchemas.Clip[];
 
 export interface ClipsModule {
-/**
+  /**
    * clips/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postClipsCreate(client: MisskeyClient, request: PostClipsCreateRequest): Promise<PostClipsCreateResponse>;
-/**
+  /**
    * clips/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postClipsDelete(client: MisskeyClient, request: PostClipsDeleteRequest): Promise<PostClipsDeleteResponse>;
-/**
+  /**
    * clips/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postClipsList(client: MisskeyClient): Promise<PostClipsListResponse>;
-/**
+  /**
    * clips/show
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:account*
+   *
+   * **Credential required**: *No* / **Permission**: *read:account*
    */
   postClipsShow(client: MisskeyClient, request: PostClipsShowRequest): Promise<PostClipsShowResponse>;
-/**
+  /**
    * clips/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postClipsUpdate(client: MisskeyClient, request: PostClipsUpdateRequest): Promise<PostClipsUpdateResponse>;
-/**
+  /**
    * notes/clips
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postNotesClips(client: MisskeyClient, request: PostNotesClipsRequest): Promise<PostNotesClipsResponse>;
 }

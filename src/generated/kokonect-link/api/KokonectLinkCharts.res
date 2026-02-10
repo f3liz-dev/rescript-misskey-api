@@ -42,12 +42,12 @@ let getChartsFederationResponseSchema = S.object(s => {
   })
 
 /**
- * charts/federation
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/federation
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsFederation = (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsFederationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsFederationRequestSchema)
   fetch(
@@ -98,12 +98,12 @@ let postChartsFederationResponseSchema = S.object(s => {
   })
 
 /**
- * charts/federation
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/federation
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsFederation = (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsFederationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsFederationRequestSchema)
   fetch(

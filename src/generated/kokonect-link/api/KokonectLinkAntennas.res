@@ -42,12 +42,12 @@ type postAntennasCreateResponse = KokonectLinkComponentSchemas.Antenna.t
 let postAntennasCreateResponseSchema = KokonectLinkComponentSchemas.Antenna.schema
 
 /**
- * antennas/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+antennas/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postAntennasCreate = (~body: postAntennasCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasCreateRequestSchema)
   fetch(
@@ -74,12 +74,12 @@ type postAntennasShowResponse = KokonectLinkComponentSchemas.Antenna.t
 let postAntennasShowResponseSchema = KokonectLinkComponentSchemas.Antenna.schema
 
 /**
- * antennas/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+antennas/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postAntennasShow = (~body: postAntennasShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasShowRequestSchema)
   fetch(
@@ -132,12 +132,12 @@ type postAntennasUpdateResponse = KokonectLinkComponentSchemas.Antenna.t
 let postAntennasUpdateResponseSchema = KokonectLinkComponentSchemas.Antenna.schema
 
 /**
- * antennas/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+antennas/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postAntennasUpdate = (~body: postAntennasUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasUpdateRequestSchema)
   fetch(

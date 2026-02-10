@@ -92,95 +92,108 @@ export interface PostChannelsUpdateRequest {
 export type PostChannelsUpdateResponse = ComponentSchemas.Channel;
 
 export interface ChannelsModule {
-/**
+  /**
    * channels/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsCreate(client: MisskeyClient, request: PostChannelsCreateRequest): Promise<PostChannelsCreateResponse>;
-/**
+  /**
    * channels/favorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsFavorite(client: MisskeyClient, request: PostChannelsFavoriteRequest): Promise<PostChannelsFavoriteResponse>;
-/**
+  /**
    * channels/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChannelsFeatured(client: MisskeyClient): Promise<PostChannelsFeaturedResponse>;
-/**
+  /**
    * channels/featured-games
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChannelsFeaturedGames(client: MisskeyClient): Promise<PostChannelsFeaturedGamesResponse>;
-/**
+  /**
    * channels/follow
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsFollow(client: MisskeyClient, request: PostChannelsFollowRequest): Promise<PostChannelsFollowResponse>;
-/**
+  /**
    * channels/followed
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:channels*
    */
   postChannelsFollowed(client: MisskeyClient, request: PostChannelsFollowedRequest): Promise<PostChannelsFollowedResponse>;
-/**
+  /**
    * channels/my-favorites
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:channels*
    */
   postChannelsMyFavorites(client: MisskeyClient): Promise<PostChannelsMyFavoritesResponse>;
-/**
+  /**
    * channels/owned
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:channels*
    */
   postChannelsOwned(client: MisskeyClient, request: PostChannelsOwnedRequest): Promise<PostChannelsOwnedResponse>;
-/**
+  /**
    * channels/search
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChannelsSearch(client: MisskeyClient, request: PostChannelsSearchRequest): Promise<PostChannelsSearchResponse>;
-/**
+  /**
    * channels/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postChannelsShow(client: MisskeyClient, request: PostChannelsShowRequest): Promise<PostChannelsShowResponse>;
-/**
+  /**
    * channels/unfavorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsUnfavorite(client: MisskeyClient, request: PostChannelsUnfavoriteRequest): Promise<PostChannelsUnfavoriteResponse>;
-/**
+  /**
    * channels/unfollow
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsUnfollow(client: MisskeyClient, request: PostChannelsUnfollowRequest): Promise<PostChannelsUnfollowResponse>;
-/**
+  /**
    * channels/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:channels*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:channels*
    */
   postChannelsUpdate(client: MisskeyClient, request: PostChannelsUpdateRequest): Promise<PostChannelsUpdateResponse>;
 }

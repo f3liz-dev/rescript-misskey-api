@@ -28,12 +28,12 @@ type postChannelsCreateResponse = MisskeyIoComponentSchemas.Channel.t
 let postChannelsCreateResponseSchema = MisskeyIoComponentSchemas.Channel.schema
 
 /**
- * channels/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsCreate = (~body: postChannelsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsCreateRequestSchema)
   fetch(
@@ -58,12 +58,12 @@ let postChannelsFavoriteRequestSchema = S.object(s => {
 type postChannelsFavoriteResponse = unit
 
 /**
- * channels/favorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/favorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsFavorite = (~body: postChannelsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFavoriteRequestSchema)
   fetch(
@@ -82,12 +82,12 @@ type postChannelsFeaturedResponse = array<MisskeyIoComponentSchemas.Channel.t>
 let postChannelsFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedResponse> => {
 
   fetch(
@@ -106,12 +106,12 @@ type postChannelsFeaturedGamesResponse = array<MisskeyIoComponentSchemas.Channel
 let postChannelsFeaturedGamesResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/featured-games
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/featured-games
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsFeaturedGames = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedGamesResponse> => {
 
   fetch(
@@ -136,12 +136,12 @@ let postChannelsFollowRequestSchema = S.object(s => {
 type postChannelsFollowResponse = unit
 
 /**
- * channels/follow
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/follow
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsFollow = (~body: postChannelsFollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFollowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFollowRequestSchema)
   fetch(
@@ -172,12 +172,12 @@ type postChannelsFollowedResponse = array<MisskeyIoComponentSchemas.Channel.t>
 let postChannelsFollowedResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/followed
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:channels*
- */
+channels/followed
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:channels*
+*/
 let postChannelsFollowed = (~body: postChannelsFollowedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFollowedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFollowedRequestSchema)
   fetch(
@@ -196,12 +196,12 @@ type postChannelsMyFavoritesResponse = array<MisskeyIoComponentSchemas.Channel.t
 let postChannelsMyFavoritesResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/my-favorites
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:channels*
- */
+channels/my-favorites
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:channels*
+*/
 let postChannelsMyFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsMyFavoritesResponse> => {
 
   fetch(
@@ -232,12 +232,12 @@ type postChannelsOwnedResponse = array<MisskeyIoComponentSchemas.Channel.t>
 let postChannelsOwnedResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/owned
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:channels*
- */
+channels/owned
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:channels*
+*/
 let postChannelsOwned = (~body: postChannelsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsOwnedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsOwnedRequestSchema)
   fetch(
@@ -272,12 +272,12 @@ type postChannelsSearchResponse = array<MisskeyIoComponentSchemas.Channel.t>
 let postChannelsSearchResponseSchema = S.array(MisskeyIoComponentSchemas.Channel.schema)
 
 /**
- * channels/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsSearch = (~body: postChannelsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsSearchRequestSchema)
   fetch(
@@ -304,12 +304,12 @@ type postChannelsShowResponse = MisskeyIoComponentSchemas.Channel.t
 let postChannelsShowResponseSchema = MisskeyIoComponentSchemas.Channel.schema
 
 /**
- * channels/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsShow = (~body: postChannelsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsShowRequestSchema)
   fetch(
@@ -334,12 +334,12 @@ let postChannelsUnfavoriteRequestSchema = S.object(s => {
 type postChannelsUnfavoriteResponse = unit
 
 /**
- * channels/unfavorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/unfavorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsUnfavorite = (~body: postChannelsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUnfavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUnfavoriteRequestSchema)
   fetch(
@@ -364,12 +364,12 @@ let postChannelsUnfollowRequestSchema = S.object(s => {
 type postChannelsUnfollowResponse = unit
 
 /**
- * channels/unfollow
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/unfollow
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsUnfollow = (~body: postChannelsUnfollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUnfollowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUnfollowRequestSchema)
   fetch(
@@ -412,12 +412,12 @@ type postChannelsUpdateResponse = MisskeyIoComponentSchemas.Channel.t
 let postChannelsUpdateResponseSchema = MisskeyIoComponentSchemas.Channel.schema
 
 /**
- * channels/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsUpdate = (~body: postChannelsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUpdateRequestSchema)
   fetch(

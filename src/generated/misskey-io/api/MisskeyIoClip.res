@@ -16,12 +16,12 @@ let postClipsFavoriteRequestSchema = S.object(s => {
 type postClipsFavoriteResponse = unit
 
 /**
- * clips/favorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
- */
+clips/favorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:clip-favorite*
+*/
 let postClipsFavorite = (~body: postClipsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsFavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsFavoriteRequestSchema)
   fetch(
@@ -46,12 +46,12 @@ let postClipsUnfavoriteRequestSchema = S.object(s => {
 type postClipsUnfavoriteResponse = unit
 
 /**
- * clips/unfavorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
- */
+clips/unfavorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:clip-favorite*
+*/
 let postClipsUnfavorite = (~body: postClipsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsUnfavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsUnfavoriteRequestSchema)
   fetch(

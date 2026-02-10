@@ -346,12 +346,12 @@ let postAdminMetaResponseSchema = S.object(s => {
   })
 
 /**
- * admin/meta
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
- */
+admin/meta
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:meta*
+*/
 let postAdminMeta = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminMetaResponse> => {
 
   fetch(
@@ -388,12 +388,12 @@ type postAnnouncementsResponse = array<KokonectLinkComponentSchemas.Announcement
 let postAnnouncementsResponseSchema = S.array(KokonectLinkComponentSchemas.Announcement.schema)
 
 /**
- * announcements
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+announcements
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAnnouncements = (~body: postAnnouncementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsRequestSchema)
   fetch(
@@ -420,12 +420,12 @@ type postAnnouncementsShowResponse = KokonectLinkComponentSchemas.Announcement.t
 let postAnnouncementsShowResponseSchema = KokonectLinkComponentSchemas.Announcement.schema
 
 /**
- * announcements/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+announcements/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAnnouncementsShow = (~body: postAnnouncementsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsShowRequestSchema)
   fetch(
@@ -452,12 +452,12 @@ type getEmojiResponse = KokonectLinkComponentSchemas.EmojiDetailed.t
 let getEmojiResponseSchema = KokonectLinkComponentSchemas.EmojiDetailed.schema
 
 /**
- * emoji
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emoji
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getEmoji = (~body: getEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojiResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getEmojiRequestSchema)
   fetch(
@@ -484,12 +484,12 @@ type postEmojiResponse = KokonectLinkComponentSchemas.EmojiDetailed.t
 let postEmojiResponseSchema = KokonectLinkComponentSchemas.EmojiDetailed.schema
 
 /**
- * emoji
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emoji
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEmoji = (~body: postEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojiResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postEmojiRequestSchema)
   fetch(
@@ -508,12 +508,12 @@ type postInviteCreateResponse = KokonectLinkComponentSchemas.InviteCode.t
 let postInviteCreateResponseSchema = KokonectLinkComponentSchemas.InviteCode.schema
 
 /**
- * invite/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
- */
+invite/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:invite-codes*
+*/
 let postInviteCreate = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteCreateResponse> => {
 
   fetch(
@@ -548,12 +548,12 @@ type postInviteListResponse = array<KokonectLinkComponentSchemas.InviteCode.t>
 let postInviteListResponseSchema = S.array(KokonectLinkComponentSchemas.InviteCode.schema)
 
 /**
- * invite/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
- */
+invite/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:invite-codes*
+*/
 let postInviteList = (~body: postInviteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postInviteListRequestSchema)
   fetch(
@@ -610,12 +610,12 @@ let getServerInfoResponseSchema = S.object(s => {
   })
 
 /**
- * server-info
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+server-info
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getServerInfo = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getServerInfoResponse> => {
 
   fetch(
@@ -672,12 +672,12 @@ let postServerInfoResponseSchema = S.object(s => {
   })
 
 /**
- * server-info
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+server-info
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postServerInfo = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postServerInfoResponse> => {
 
   fetch(

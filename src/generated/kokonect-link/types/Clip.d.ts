@@ -16,18 +16,20 @@ export interface PostClipsUnfavoriteRequest {
 export type PostClipsUnfavoriteResponse = void;
 
 export interface ClipModule {
-/**
+  /**
    * clips/favorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:clip-favorite*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
    */
   postClipsFavorite(client: MisskeyClient, request: PostClipsFavoriteRequest): Promise<PostClipsFavoriteResponse>;
-/**
+  /**
    * clips/unfavorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:clip-favorite*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
    */
   postClipsUnfavorite(client: MisskeyClient, request: PostClipsUnfavoriteRequest): Promise<PostClipsUnfavoriteResponse>;
 }

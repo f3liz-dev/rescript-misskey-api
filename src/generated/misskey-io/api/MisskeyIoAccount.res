@@ -18,12 +18,12 @@ type postBlockingCreateResponse = MisskeyIoComponentSchemas.UserDetailedNotMe.t
 let postBlockingCreateResponseSchema = MisskeyIoComponentSchemas.UserDetailedNotMe.schema
 
 /**
- * blocking/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:blocks*
- */
+blocking/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:blocks*
+*/
 let postBlockingCreate = (~body: postBlockingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingCreateRequestSchema)
   fetch(
@@ -50,12 +50,12 @@ type postBlockingDeleteResponse = MisskeyIoComponentSchemas.UserDetailedNotMe.t
 let postBlockingDeleteResponseSchema = MisskeyIoComponentSchemas.UserDetailedNotMe.schema
 
 /**
- * blocking/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:blocks*
- */
+blocking/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:blocks*
+*/
 let postBlockingDelete = (~body: postBlockingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingDeleteRequestSchema)
   fetch(
@@ -86,12 +86,12 @@ type postBlockingListResponse = array<MisskeyIoComponentSchemas.Blocking.t>
 let postBlockingListResponseSchema = S.array(MisskeyIoComponentSchemas.Blocking.schema)
 
 /**
- * blocking/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:blocks*
- */
+blocking/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:blocks*
+*/
 let postBlockingList = (~body: postBlockingListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingListRequestSchema)
   fetch(
@@ -118,12 +118,12 @@ let postClipsAddNoteRequestSchema = S.object(s => {
 type postClipsAddNoteResponse = unit
 
 /**
- * clips/add-note
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/add-note
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsAddNote = (~body: postClipsAddNoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsAddNoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsAddNoteRequestSchema)
   fetch(
@@ -142,12 +142,12 @@ type postClipsMyFavoritesResponse = array<MisskeyIoComponentSchemas.Clip.t>
 let postClipsMyFavoritesResponseSchema = S.array(MisskeyIoComponentSchemas.Clip.schema)
 
 /**
- * clips/my-favorites
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:clip-favorite*
- */
+clips/my-favorites
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:clip-favorite*
+*/
 let postClipsMyFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsMyFavoritesResponse> => {
 
   fetch(
@@ -180,12 +180,12 @@ type postClipsNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postClipsNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * clips/notes
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+clips/notes
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postClipsNotes = (~body: postClipsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsNotesRequestSchema)
   fetch(
@@ -212,12 +212,12 @@ let postClipsRemoveNoteRequestSchema = S.object(s => {
 type postClipsRemoveNoteResponse = unit
 
 /**
- * clips/remove-note
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/remove-note
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsRemoveNote = (~body: postClipsRemoveNoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsRemoveNoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsRemoveNoteRequestSchema)
   fetch(
@@ -248,12 +248,12 @@ type postFlashMyResponse = array<MisskeyIoComponentSchemas.Flash.t>
 let postFlashMyResponseSchema = S.array(MisskeyIoComponentSchemas.Flash.schema)
 
 /**
- * flash/my
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:flash*
- */
+flash/my
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:flash*
+*/
 let postFlashMy = (~body: postFlashMyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyRequestSchema)
   fetch(
@@ -294,12 +294,12 @@ let postFlashMyLikesResponse_1Schema = S.object(s => {
 let postFlashMyLikesResponseSchema = S.array(postFlashMyLikesResponse_1Schema)
 
 /**
- * flash/my-likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:flash-likes*
- */
+flash/my-likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:flash-likes*
+*/
 let postFlashMyLikes = (~body: postFlashMyLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyLikesRequestSchema)
   fetch(
@@ -318,12 +318,12 @@ type postIResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postIResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * i
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postI = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
 
   fetch(
@@ -354,12 +354,12 @@ type postIFavoritesResponse = array<MisskeyIoComponentSchemas.NoteFavorite.t>
 let postIFavoritesResponseSchema = S.array(MisskeyIoComponentSchemas.NoteFavorite.schema)
 
 /**
- * i/favorites
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:favorites*
- */
+i/favorites
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:favorites*
+*/
 let postIFavorites = (~body: postIFavoritesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFavoritesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIFavoritesRequestSchema)
   fetch(
@@ -400,12 +400,12 @@ let postIGalleryLikesResponse_1Schema = S.object(s => {
 let postIGalleryLikesResponseSchema = S.array(postIGalleryLikesResponse_1Schema)
 
 /**
- * i/gallery/likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:gallery-likes*
- */
+i/gallery/likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:gallery-likes*
+*/
 let postIGalleryLikes = (~body: postIGalleryLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryLikesRequestSchema)
   fetch(
@@ -436,12 +436,12 @@ type postIGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
 let postIGalleryPostsResponseSchema = S.array(MisskeyIoComponentSchemas.GalleryPost.schema)
 
 /**
- * i/gallery/posts
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:gallery*
- */
+i/gallery/posts
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:gallery*
+*/
 let postIGalleryPosts = (~body: postIGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryPostsRequestSchema)
   fetch(
@@ -478,12 +478,12 @@ type postINotificationsResponse = array<MisskeyIoComponentSchemas.Notification.t
 let postINotificationsResponseSchema = S.array(MisskeyIoComponentSchemas.Notification.schema)
 
 /**
- * i/notifications
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:notifications*
- */
+i/notifications
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:notifications*
+*/
 let postINotifications = (~body: postINotificationsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsRequestSchema)
   fetch(
@@ -520,12 +520,12 @@ type postINotificationsGroupedResponse = array<MisskeyIoComponentSchemas.Notific
 let postINotificationsGroupedResponseSchema = S.array(MisskeyIoComponentSchemas.Notification.schema)
 
 /**
- * i/notifications-grouped
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:notifications*
- */
+i/notifications-grouped
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:notifications*
+*/
 let postINotificationsGrouped = (~body: postINotificationsGroupedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsGroupedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsGroupedRequestSchema)
   fetch(
@@ -566,12 +566,12 @@ let postIPageLikesResponse_1Schema = S.object(s => {
 let postIPageLikesResponseSchema = S.array(postIPageLikesResponse_1Schema)
 
 /**
- * i/page-likes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:page-likes*
- */
+i/page-likes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:page-likes*
+*/
 let postIPageLikes = (~body: postIPageLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPageLikesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPageLikesRequestSchema)
   fetch(
@@ -602,12 +602,12 @@ type postIPagesResponse = array<MisskeyIoComponentSchemas.Page.t>
 let postIPagesResponseSchema = S.array(MisskeyIoComponentSchemas.Page.schema)
 
 /**
- * i/pages
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:pages*
- */
+i/pages
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:pages*
+*/
 let postIPages = (~body: postIPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPagesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPagesRequestSchema)
   fetch(
@@ -634,12 +634,12 @@ type postIPinResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postIPinResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * i/pin
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/pin
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIPin = (~body: postIPinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPinResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPinRequestSchema)
   fetch(
@@ -668,12 +668,12 @@ let postIPurgeTimelineCacheRequestSchema = S.object(s => {
 type postIPurgeTimelineCacheResponse = unit
 
 /**
- * i/purge-timeline-cache
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/purge-timeline-cache
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIPurgeTimelineCache = (~body: postIPurgeTimelineCacheRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPurgeTimelineCacheResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPurgeTimelineCacheRequestSchema)
   fetch(
@@ -698,12 +698,12 @@ let postIReadAnnouncementRequestSchema = S.object(s => {
 type postIReadAnnouncementResponse = unit
 
 /**
- * i/read-announcement
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/read-announcement
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIReadAnnouncement = (~body: postIReadAnnouncementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIReadAnnouncementResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIReadAnnouncementRequestSchema)
   fetch(
@@ -730,12 +730,12 @@ type postIUnpinResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postIUnpinResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * i/unpin
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/unpin
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIUnpin = (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUnpinResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUnpinRequestSchema)
   fetch(
@@ -926,12 +926,12 @@ type postIUpdateResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postIUpdateResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * i/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIUpdate = (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateRequestSchema)
   fetch(
@@ -958,12 +958,12 @@ let postMuteCreateRequestSchema = S.object(s => {
 type postMuteCreateResponse = unit
 
 /**
- * mute/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:mutes*
- */
+mute/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:mutes*
+*/
 let postMuteCreate = (~body: postMuteCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMuteCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMuteCreateRequestSchema)
   fetch(
@@ -988,12 +988,12 @@ let postMuteDeleteRequestSchema = S.object(s => {
 type postMuteDeleteResponse = unit
 
 /**
- * mute/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:mutes*
- */
+mute/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:mutes*
+*/
 let postMuteDelete = (~body: postMuteDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMuteDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMuteDeleteRequestSchema)
   fetch(
@@ -1024,12 +1024,12 @@ type postMuteListResponse = array<MisskeyIoComponentSchemas.Muting.t>
 let postMuteListResponseSchema = S.array(MisskeyIoComponentSchemas.Muting.schema)
 
 /**
- * mute/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:mutes*
- */
+mute/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:mutes*
+*/
 let postMuteList = (~body: postMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMuteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMuteListRequestSchema)
   fetch(
@@ -1058,12 +1058,12 @@ type postMyAppsResponse = array<MisskeyIoComponentSchemas.App.t>
 let postMyAppsResponseSchema = S.array(MisskeyIoComponentSchemas.App.schema)
 
 /**
- * my/apps
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+my/apps
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postMyApps = (~body: postMyAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMyAppsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMyAppsRequestSchema)
   fetch(
@@ -1088,12 +1088,12 @@ let postRenoteMuteCreateRequestSchema = S.object(s => {
 type postRenoteMuteCreateResponse = unit
 
 /**
- * renote-mute/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:mutes*
- */
+renote-mute/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:mutes*
+*/
 let postRenoteMuteCreate = (~body: postRenoteMuteCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRenoteMuteCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRenoteMuteCreateRequestSchema)
   fetch(
@@ -1118,12 +1118,12 @@ let postRenoteMuteDeleteRequestSchema = S.object(s => {
 type postRenoteMuteDeleteResponse = unit
 
 /**
- * renote-mute/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:mutes*
- */
+renote-mute/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:mutes*
+*/
 let postRenoteMuteDelete = (~body: postRenoteMuteDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRenoteMuteDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRenoteMuteDeleteRequestSchema)
   fetch(
@@ -1154,12 +1154,12 @@ type postRenoteMuteListResponse = array<MisskeyIoComponentSchemas.RenoteMuting.t
 let postRenoteMuteListResponseSchema = S.array(MisskeyIoComponentSchemas.RenoteMuting.schema)
 
 /**
- * renote-mute/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:mutes*
- */
+renote-mute/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:mutes*
+*/
 let postRenoteMuteList = (~body: postRenoteMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRenoteMuteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRenoteMuteListRequestSchema)
   fetch(
@@ -1204,13 +1204,13 @@ let postSwRegisterResponseSchema = S.object(s => {
   })
 
 /**
- * sw/register
- *
- * Register to receive push notifications.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+sw/register
+
+Register to receive push notifications.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postSwRegister = (~body: postSwRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postSwRegisterResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postSwRegisterRequestSchema)
   fetch(
@@ -1249,13 +1249,13 @@ let postSwShowRegistrationResponse_1Schema = S.object(s => {
 let postSwShowRegistrationResponseSchema = S.nullableAsOption(postSwShowRegistrationResponse_1Schema)
 
 /**
- * sw/show-registration
- *
- * Check push notification registration exists.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+sw/show-registration
+
+Check push notification registration exists.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postSwShowRegistration = (~body: postSwShowRegistrationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postSwShowRegistrationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postSwShowRegistrationRequestSchema)
   fetch(
@@ -1280,12 +1280,12 @@ let postSwUnregisterRequestSchema = S.object(s => {
 type postSwUnregisterResponse = unit
 
 /**
- * sw/unregister
- *
- * Unregister from receiving push notifications.
- *
- * **Credential required**: *No*
- */
+sw/unregister
+
+Unregister from receiving push notifications.
+
+**Credential required**: *No*
+*/
 let postSwUnregister = (~body: postSwUnregisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postSwUnregisterResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postSwUnregisterRequestSchema)
   fetch(
@@ -1322,13 +1322,13 @@ let postSwUpdateRegistrationResponseSchema = S.object(s => {
   })
 
 /**
- * sw/update-registration
- *
- * Update push notification registration.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+sw/update-registration
+
+Update push notification registration.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postSwUpdateRegistration = (~body: postSwUpdateRegistrationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postSwUpdateRegistrationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postSwUpdateRegistrationRequestSchema)
   fetch(
@@ -1355,12 +1355,12 @@ let postUsersUpdateMemoRequestSchema = S.object(s => {
 type postUsersUpdateMemoResponse = unit
 
 /**
- * users/update-memo
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/update-memo
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersUpdateMemo = (~body: postUsersUpdateMemoRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersUpdateMemoResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersUpdateMemoRequestSchema)
   fetch(

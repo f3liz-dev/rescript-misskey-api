@@ -39,32 +39,36 @@ export type PostRolesUsersResponse = {
 }[];
 
 export interface RoleModule {
-/**
+  /**
    * roles/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postRolesList(client: MisskeyClient): Promise<PostRolesListResponse>;
-/**
+  /**
    * roles/notes
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postRolesNotes(client: MisskeyClient, request: PostRolesNotesRequest): Promise<PostRolesNotesResponse>;
-/**
+  /**
    * roles/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postRolesShow(client: MisskeyClient, request: PostRolesShowRequest): Promise<PostRolesShowResponse>;
-/**
+  /**
    * roles/users
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postRolesUsers(client: MisskeyClient, request: PostRolesUsersRequest): Promise<PostRolesUsersResponse>;
 }

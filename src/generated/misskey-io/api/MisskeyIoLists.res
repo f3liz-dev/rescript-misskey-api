@@ -18,12 +18,12 @@ type postUsersListsCreateResponse = MisskeyIoComponentSchemas.UserList.t
 let postUsersListsCreateResponseSchema = MisskeyIoComponentSchemas.UserList.schema
 
 /**
- * users/lists/create
- *
- * Create a new list of users.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/create
+
+Create a new list of users.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsCreate = (~body: postUsersListsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateRequestSchema)
   fetch(
@@ -48,12 +48,12 @@ let postUsersListsDeleteRequestSchema = S.object(s => {
 type postUsersListsDeleteResponse = unit
 
 /**
- * users/lists/delete
- *
- * Delete an existing list of users.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/delete
+
+Delete an existing list of users.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsDelete = (~body: postUsersListsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsDeleteRequestSchema)
   fetch(
@@ -104,12 +104,12 @@ let postUsersListsGetMembershipsResponse_1Schema = S.object(s => {
 let postUsersListsGetMembershipsResponseSchema = S.array(postUsersListsGetMembershipsResponse_1Schema)
 
 /**
- * users/lists/get-memberships
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+users/lists/get-memberships
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postUsersListsGetMemberships = (~body: postUsersListsGetMembershipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsGetMembershipsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsGetMembershipsRequestSchema)
   fetch(
@@ -136,12 +136,12 @@ type postUsersListsListResponse = array<MisskeyIoComponentSchemas.UserList.t>
 let postUsersListsListResponseSchema = S.array(MisskeyIoComponentSchemas.UserList.schema)
 
 /**
- * users/lists/list
- *
- * Show all lists that the authenticated user has created.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+users/lists/list
+
+Show all lists that the authenticated user has created.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postUsersListsList = (~body: postUsersListsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsListRequestSchema)
   fetch(
@@ -168,12 +168,12 @@ let postUsersListsPullRequestSchema = S.object(s => {
 type postUsersListsPullResponse = unit
 
 /**
- * users/lists/pull
- *
- * Remove a user from a list.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/pull
+
+Remove a user from a list.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsPull = (~body: postUsersListsPullRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsPullResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsPullRequestSchema)
   fetch(
@@ -200,12 +200,12 @@ let postUsersListsPushRequestSchema = S.object(s => {
 type postUsersListsPushResponse = unit
 
 /**
- * users/lists/push
- *
- * Add a user to an existing list.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/push
+
+Add a user to an existing list.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsPush = (~body: postUsersListsPushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsPushResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsPushRequestSchema)
   fetch(
@@ -234,12 +234,12 @@ type postUsersListsShowResponse = MisskeyIoComponentSchemas.UserList.t
 let postUsersListsShowResponseSchema = MisskeyIoComponentSchemas.UserList.schema
 
 /**
- * users/lists/show
- *
- * Show the properties of a list.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+users/lists/show
+
+Show the properties of a list.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postUsersListsShow = (~body: postUsersListsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsShowRequestSchema)
   fetch(
@@ -270,12 +270,12 @@ type postUsersListsUpdateResponse = MisskeyIoComponentSchemas.UserList.t
 let postUsersListsUpdateResponseSchema = MisskeyIoComponentSchemas.UserList.schema
 
 /**
- * users/lists/update
- *
- * Update the properties of a list.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/update
+
+Update the properties of a list.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsUpdate = (~body: postUsersListsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUpdateRequestSchema)
   fetch(
@@ -304,12 +304,12 @@ let postUsersListsUpdateMembershipRequestSchema = S.object(s => {
 type postUsersListsUpdateMembershipResponse = unit
 
 /**
- * users/lists/update-membership
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/update-membership
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsUpdateMembership = (~body: postUsersListsUpdateMembershipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUpdateMembershipResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUpdateMembershipRequestSchema)
   fetch(

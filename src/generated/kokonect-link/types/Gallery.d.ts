@@ -99,95 +99,108 @@ export interface PostGalleryPostsUpdateRequest {
 export type PostGalleryPostsUpdateResponse = ComponentSchemas.GalleryPost;
 
 export interface GalleryModule {
-/**
+  /**
    * gallery/featured
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryFeatured(client: MisskeyClient, request: PostGalleryFeaturedRequest): Promise<PostGalleryFeaturedResponse>;
-/**
+  /**
    * gallery/popular
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryPopular(client: MisskeyClient): Promise<PostGalleryPopularResponse>;
-/**
+  /**
    * gallery/posts
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryPosts(client: MisskeyClient, request: PostGalleryPostsRequest): Promise<PostGalleryPostsResponse>;
-/**
+  /**
    * gallery/posts/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery*
    */
   postGalleryPostsCreate(client: MisskeyClient, request: PostGalleryPostsCreateRequest): Promise<PostGalleryPostsCreateResponse>;
-/**
+  /**
    * gallery/posts/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery*
    */
   postGalleryPostsDelete(client: MisskeyClient, request: PostGalleryPostsDeleteRequest): Promise<PostGalleryPostsDeleteResponse>;
-/**
+  /**
    * gallery/posts/like
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery-likes*
    */
   postGalleryPostsLike(client: MisskeyClient, request: PostGalleryPostsLikeRequest): Promise<PostGalleryPostsLikeResponse>;
-/**
+  /**
    * gallery/posts/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryPostsShow(client: MisskeyClient, request: PostGalleryPostsShowRequest): Promise<PostGalleryPostsShowResponse>;
-/**
+  /**
    * gallery/posts/unlike
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery-likes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery-likes*
    */
   postGalleryPostsUnlike(client: MisskeyClient, request: PostGalleryPostsUnlikeRequest): Promise<PostGalleryPostsUnlikeResponse>;
-/**
+  /**
    * gallery/posts/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery*
    */
   postGalleryPostsUpdate(client: MisskeyClient, request: PostGalleryPostsUpdateRequest): Promise<PostGalleryPostsUpdateResponse>;
-/**
+  /**
    * gallery/posts
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryPosts(client: MisskeyClient, request: PostGalleryPostsRequest): Promise<PostGalleryPostsResponse>;
-/**
+  /**
    * gallery/posts/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery*
    */
   postGalleryPostsCreate(client: MisskeyClient, request: PostGalleryPostsCreateRequest): Promise<PostGalleryPostsCreateResponse>;
-/**
+  /**
    * gallery/posts/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postGalleryPostsShow(client: MisskeyClient, request: PostGalleryPostsShowRequest): Promise<PostGalleryPostsShowResponse>;
-/**
+  /**
    * gallery/posts/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:gallery*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:gallery*
    */
   postGalleryPostsUpdate(client: MisskeyClient, request: PostGalleryPostsUpdateRequest): Promise<PostGalleryPostsUpdateResponse>;
 }

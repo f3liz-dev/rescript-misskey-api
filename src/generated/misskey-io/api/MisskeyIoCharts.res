@@ -42,12 +42,12 @@ let getChartsActiveUsersResponseSchema = S.object(s => {
   })
 
 /**
- * charts/active-users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/active-users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsActiveUsers = (~body: getChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsActiveUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsActiveUsersRequestSchema)
   fetch(
@@ -98,12 +98,12 @@ let postChartsActiveUsersResponseSchema = S.object(s => {
   })
 
 /**
- * charts/active-users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/active-users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsActiveUsers = (~body: postChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsActiveUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsActiveUsersRequestSchema)
   fetch(
@@ -142,12 +142,12 @@ let getChartsApRequestResponseSchema = S.object(s => {
   })
 
 /**
- * charts/ap-request
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/ap-request
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsApRequest = (~body: getChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsApRequestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsApRequestRequestSchema)
   fetch(
@@ -186,12 +186,12 @@ let postChartsApRequestResponseSchema = S.object(s => {
   })
 
 /**
- * charts/ap-request
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/ap-request
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsApRequest = (~body: postChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsApRequestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsApRequestRequestSchema)
   fetch(
@@ -242,12 +242,12 @@ let getChartsDriveResponseSchema = S.object(s => {
   })
 
 /**
- * charts/drive
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/drive
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsDrive = (~body: getChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsDriveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsDriveRequestSchema)
   fetch(
@@ -298,12 +298,12 @@ let postChartsDriveResponseSchema = S.object(s => {
   })
 
 /**
- * charts/drive
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/drive
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsDrive = (~body: postChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsDriveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsDriveRequestSchema)
   fetch(
@@ -352,12 +352,12 @@ let getChartsFederationResponseSchema = S.object(s => {
   })
 
 /**
- * charts/federation
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/federation
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsFederation = (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsFederationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsFederationRequestSchema)
   fetch(
@@ -406,12 +406,12 @@ let postChartsFederationResponseSchema = S.object(s => {
   })
 
 /**
- * charts/federation
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/federation
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsFederation = (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsFederationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsFederationRequestSchema)
   fetch(
@@ -526,12 +526,12 @@ let getChartsInstanceResponseSchema = S.object(s => {
   })
 
 /**
- * charts/instance
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/instance
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsInstance = (~body: getChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsInstanceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsInstanceRequestSchema)
   fetch(
@@ -646,12 +646,12 @@ let postChartsInstanceResponseSchema = S.object(s => {
   })
 
 /**
- * charts/instance
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/instance
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsInstance = (~body: postChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsInstanceResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsInstanceRequestSchema)
   fetch(
@@ -716,12 +716,12 @@ let getChartsNotesResponseSchema = S.object(s => {
   })
 
 /**
- * charts/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsNotes = (~body: getChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsNotesRequestSchema)
   fetch(
@@ -786,12 +786,12 @@ let postChartsNotesResponseSchema = S.object(s => {
   })
 
 /**
- * charts/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsNotes = (~body: postChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsNotesRequestSchema)
   fetch(
@@ -838,12 +838,12 @@ let getChartsUserDriveResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/drive
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/drive
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUserDrive = (~body: getChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserDriveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserDriveRequestSchema)
   fetch(
@@ -890,12 +890,12 @@ let postChartsUserDriveResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/drive
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/drive
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUserDrive = (~body: postChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserDriveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserDriveRequestSchema)
   fetch(
@@ -956,12 +956,12 @@ let getChartsUserFollowingResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/following
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/following
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUserFollowing = (~body: getChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserFollowingRequestSchema)
   fetch(
@@ -1022,12 +1022,12 @@ let postChartsUserFollowingResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/following
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/following
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUserFollowing = (~body: postChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserFollowingRequestSchema)
   fetch(
@@ -1084,12 +1084,12 @@ let getChartsUserNotesResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUserNotes = (~body: getChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserNotesRequestSchema)
   fetch(
@@ -1146,12 +1146,12 @@ let postChartsUserNotesResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUserNotes = (~body: postChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserNotesRequestSchema)
   fetch(
@@ -1200,12 +1200,12 @@ let getChartsUserPvResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/pv
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/pv
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUserPv = (~body: getChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserPvResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserPvRequestSchema)
   fetch(
@@ -1254,12 +1254,12 @@ let postChartsUserPvResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/pv
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/pv
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUserPv = (~body: postChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserPvResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserPvRequestSchema)
   fetch(
@@ -1306,12 +1306,12 @@ let getChartsUserReactionsResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUserReactions = (~body: getChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserReactionsRequestSchema)
   fetch(
@@ -1358,12 +1358,12 @@ let postChartsUserReactionsResponseSchema = S.object(s => {
   })
 
 /**
- * charts/user/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/user/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUserReactions = (~body: postChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserReactionsRequestSchema)
   fetch(
@@ -1412,12 +1412,12 @@ let getChartsUsersResponseSchema = S.object(s => {
   })
 
 /**
- * charts/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getChartsUsers = (~body: getChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUsersRequestSchema)
   fetch(
@@ -1466,12 +1466,12 @@ let postChartsUsersResponseSchema = S.object(s => {
   })
 
 /**
- * charts/users
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+charts/users
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChartsUsers = (~body: postChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUsersResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUsersRequestSchema)
   fetch(

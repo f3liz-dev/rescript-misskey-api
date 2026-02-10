@@ -30,13 +30,13 @@ let postAdminSystemWebhookTestRequestSchema = S.object(s => {
 type postAdminSystemWebhookTestResponse = unit
 
 /**
- * admin/system-webhook/test
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
- */
+admin/system-webhook/test
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
+*/
 let postAdminSystemWebhookTest = (~body: postAdminSystemWebhookTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookTestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookTestRequestSchema)
   fetch(
@@ -63,12 +63,12 @@ type postIWebhooksShowResponse = KokonectLinkComponentSchemas.UserWebhook.t
 let postIWebhooksShowResponseSchema = KokonectLinkComponentSchemas.UserWebhook.schema
 
 /**
- * i/webhooks/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/webhooks/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIWebhooksShow = (~body: postIWebhooksShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksShowRequestSchema)
   fetch(
@@ -107,13 +107,13 @@ let postIWebhooksTestRequestSchema = S.object(s => {
 type postIWebhooksTestResponse = unit
 
 /**
- * i/webhooks/test
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/webhooks/test
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIWebhooksTest = (~body: postIWebhooksTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksTestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksTestRequestSchema)
   fetch(

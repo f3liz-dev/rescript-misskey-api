@@ -36,32 +36,36 @@ export interface PostAppShowRequest {
 export type PostAppShowResponse = ComponentSchemas.App;
 
 export interface AppModule {
-/**
+  /**
    * app/create
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAppCreate(client: MisskeyClient, request: PostAppCreateRequest): Promise<PostAppCreateResponse>;
-/**
+  /**
    * app/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAppShow(client: MisskeyClient, request: PostAppShowRequest): Promise<PostAppShowResponse>;
-/**
+  /**
    * app/create
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAppCreate(client: MisskeyClient, request: PostAppCreateRequest): Promise<PostAppCreateResponse>;
-/**
+  /**
    * app/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAppShow(client: MisskeyClient, request: PostAppShowRequest): Promise<PostAppShowResponse>;
 }

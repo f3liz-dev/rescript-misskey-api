@@ -32,12 +32,12 @@ type postChannelsTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postChannelsTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * channels/timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsTimeline = (~body: postChannelsTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsTimelineRequestSchema)
   fetch(
@@ -78,12 +78,12 @@ type postNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotes = (~body: postNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRequestSchema)
   fetch(
@@ -116,12 +116,12 @@ type postNotesChildrenResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesChildrenResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/children
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/children
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesChildren = (~body: postNotesChildrenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesChildrenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesChildrenRequestSchema)
   fetch(
@@ -152,12 +152,12 @@ type postNotesConversationResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesConversationResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/conversation
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/conversation
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesConversation = (~body: postNotesConversationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesConversationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesConversationRequestSchema)
   fetch(
@@ -238,12 +238,12 @@ let postNotesCreateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesCreate = (~body: postNotesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesCreateRequestSchema)
   fetch(
@@ -268,12 +268,12 @@ let postNotesDeleteRequestSchema = S.object(s => {
 type postNotesDeleteResponse = unit
 
 /**
- * notes/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesDelete = (~body: postNotesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDeleteRequestSchema)
   fetch(
@@ -298,12 +298,12 @@ let postNotesFavoritesCreateRequestSchema = S.object(s => {
 type postNotesFavoritesCreateResponse = unit
 
 /**
- * notes/favorites/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:favorites*
- */
+notes/favorites/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:favorites*
+*/
 let postNotesFavoritesCreate = (~body: postNotesFavoritesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesFavoritesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesFavoritesCreateRequestSchema)
   fetch(
@@ -328,12 +328,12 @@ let postNotesFavoritesDeleteRequestSchema = S.object(s => {
 type postNotesFavoritesDeleteResponse = unit
 
 /**
- * notes/favorites/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:favorites*
- */
+notes/favorites/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:favorites*
+*/
 let postNotesFavoritesDelete = (~body: postNotesFavoritesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesFavoritesDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesFavoritesDeleteRequestSchema)
   fetch(
@@ -364,12 +364,12 @@ type getNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
 let getNotesFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getNotesFeatured = (~body: getNotesFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getNotesFeaturedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getNotesFeaturedRequestSchema)
   fetch(
@@ -400,12 +400,12 @@ type postNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesFeatured = (~body: postNotesFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesFeaturedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesFeaturedRequestSchema)
   fetch(
@@ -446,12 +446,12 @@ type postNotesGlobalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesGlobalTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/global-timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/global-timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesGlobalTimeline = (~body: postNotesGlobalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesGlobalTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesGlobalTimelineRequestSchema)
   fetch(
@@ -502,12 +502,12 @@ type postNotesHybridTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesHybridTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/hybrid-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/hybrid-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesHybridTimeline = (~body: postNotesHybridTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesHybridTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesHybridTimelineRequestSchema)
   fetch(
@@ -552,12 +552,12 @@ type postNotesLocalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesLocalTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/local-timeline
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/local-timeline
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesLocalTimeline = (~body: postNotesLocalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesLocalTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesLocalTimelineRequestSchema)
   fetch(
@@ -592,12 +592,12 @@ type postNotesMentionsResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesMentionsResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/mentions
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/mentions
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesMentions = (~body: postNotesMentionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesMentionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesMentionsRequestSchema)
   fetch(
@@ -628,12 +628,12 @@ type postNotesPollsRecommendationResponse = array<MisskeyIoComponentSchemas.Note
 let postNotesPollsRecommendationResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/polls/recommendation
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/polls/recommendation
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesPollsRecommendation = (~body: postNotesPollsRecommendationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesPollsRecommendationResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesPollsRecommendationRequestSchema)
   fetch(
@@ -660,12 +660,12 @@ let postNotesPollsVoteRequestSchema = S.object(s => {
 type postNotesPollsVoteResponse = unit
 
 /**
- * notes/polls/vote
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:votes*
- */
+notes/polls/vote
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:votes*
+*/
 let postNotesPollsVote = (~body: postNotesPollsVoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesPollsVoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesPollsVoteRequestSchema)
   fetch(
@@ -700,12 +700,12 @@ type getNotesReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t>
 let getNotesReactionsResponseSchema = S.array(MisskeyIoComponentSchemas.NoteReaction.schema)
 
 /**
- * notes/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getNotesReactions = (~body: getNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getNotesReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getNotesReactionsRequestSchema)
   fetch(
@@ -740,12 +740,12 @@ type postNotesReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t
 let postNotesReactionsResponseSchema = S.array(MisskeyIoComponentSchemas.NoteReaction.schema)
 
 /**
- * notes/reactions
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/reactions
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesReactions = (~body: postNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsRequestSchema)
   fetch(
@@ -778,12 +778,12 @@ type postNotesRenotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesRenotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/renotes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/renotes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesRenotes = (~body: postNotesRenotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRenotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRenotesRequestSchema)
   fetch(
@@ -816,12 +816,12 @@ type postNotesRepliesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesRepliesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/replies
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/replies
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesReplies = (~body: postNotesRepliesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRepliesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRepliesRequestSchema)
   fetch(
@@ -846,12 +846,12 @@ let postNotesScheduledCancelRequestSchema = S.object(s => {
 type postNotesScheduledCancelResponse = unit
 
 /**
- * notes/scheduled/cancel
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/scheduled/cancel
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesScheduledCancel = (~body: postNotesScheduledCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesScheduledCancelResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesScheduledCancelRequestSchema)
   fetch(
@@ -880,12 +880,12 @@ type postNotesScheduledListResponse = array<MisskeyIoComponentSchemas.NoteDraft.
 let postNotesScheduledListResponseSchema = S.array(MisskeyIoComponentSchemas.NoteDraft.schema)
 
 /**
- * notes/scheduled/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/scheduled/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesScheduledList = (~body: postNotesScheduledListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesScheduledListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesScheduledListRequestSchema)
   fetch(
@@ -926,12 +926,12 @@ type postNotesSearchResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesSearchResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesSearch = (~body: postNotesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchRequestSchema)
   fetch(
@@ -976,12 +976,12 @@ type postNotesSearchByTagResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesSearchByTagResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/search-by-tag
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/search-by-tag
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesSearchByTag = (~body: postNotesSearchByTagRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchByTagResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchByTagRequestSchema)
   fetch(
@@ -1008,12 +1008,12 @@ type postNotesShowResponse = MisskeyIoComponentSchemas.Note.t
 let postNotesShowResponseSchema = MisskeyIoComponentSchemas.Note.schema
 
 /**
- * notes/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+notes/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postNotesShow = (~body: postNotesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesShowRequestSchema)
   fetch(
@@ -1046,12 +1046,12 @@ let postNotesStateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/state
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/state
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesState = (~body: postNotesStateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesStateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesStateRequestSchema)
   fetch(
@@ -1076,12 +1076,12 @@ let postNotesThreadMutingCreateRequestSchema = S.object(s => {
 type postNotesThreadMutingCreateResponse = unit
 
 /**
- * notes/thread-muting/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+notes/thread-muting/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postNotesThreadMutingCreate = (~body: postNotesThreadMutingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesThreadMutingCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesThreadMutingCreateRequestSchema)
   fetch(
@@ -1106,12 +1106,12 @@ let postNotesThreadMutingDeleteRequestSchema = S.object(s => {
 type postNotesThreadMutingDeleteResponse = unit
 
 /**
- * notes/thread-muting/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+notes/thread-muting/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postNotesThreadMutingDelete = (~body: postNotesThreadMutingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesThreadMutingDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesThreadMutingDeleteRequestSchema)
   fetch(
@@ -1160,12 +1160,12 @@ type postNotesTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesTimeline = (~body: postNotesTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesTimelineRequestSchema)
   fetch(
@@ -1200,12 +1200,12 @@ let postNotesTranslateResponseSchema = S.object(s => {
   })
 
 /**
- * notes/translate
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/translate
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesTranslate = (~body: postNotesTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesTranslateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesTranslateRequestSchema)
   fetch(
@@ -1230,12 +1230,12 @@ let postNotesUnrenoteRequestSchema = S.object(s => {
 type postNotesUnrenoteResponse = unit
 
 /**
- * notes/unrenote
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:notes*
- */
+notes/unrenote
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:notes*
+*/
 let postNotesUnrenote = (~body: postNotesUnrenoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUnrenoteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUnrenoteRequestSchema)
   fetch(
@@ -1284,12 +1284,12 @@ type postNotesUserListTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postNotesUserListTimelineResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * notes/user-list-timeline
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+notes/user-list-timeline
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postNotesUserListTimeline = (~body: postNotesUserListTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUserListTimelineResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUserListTimelineRequestSchema)
   fetch(
@@ -1314,12 +1314,12 @@ let postPromoReadRequestSchema = S.object(s => {
 type postPromoReadResponse = unit
 
 /**
- * promo/read
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+promo/read
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postPromoRead = (~body: postPromoReadRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPromoReadResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPromoReadRequestSchema)
   fetch(
@@ -1350,12 +1350,12 @@ type getUsersFeaturedNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let getUsersFeaturedNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * users/featured-notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/featured-notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getUsersFeaturedNotes = (~body: getUsersFeaturedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getUsersFeaturedNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getUsersFeaturedNotesRequestSchema)
   fetch(
@@ -1386,12 +1386,12 @@ type postUsersFeaturedNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postUsersFeaturedNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * users/featured-notes
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/featured-notes
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersFeaturedNotes = (~body: postUsersFeaturedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFeaturedNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFeaturedNotesRequestSchema)
   fetch(

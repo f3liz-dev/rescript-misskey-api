@@ -390,422 +390,477 @@ export interface PostUsersListsUnfavoriteRequest {
 export type PostUsersListsUnfavoriteResponse = void;
 
 export interface DefaultModule {
-/**
+  /**
    * admin/emoji/import-zip
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postAdminEmojiImportZip(client: MisskeyClient, request: PostAdminEmojiImportZipRequest): Promise<PostAdminEmojiImportZipResponse>;
-/**
+  /**
    * bubble-game/ranking
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   getBubbleGameRanking(client: MisskeyClient, request: GetBubbleGameRankingRequest): Promise<GetBubbleGameRankingResponse>;
-/**
+  /**
    * bubble-game/ranking
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postBubbleGameRanking(client: MisskeyClient, request: PostBubbleGameRankingRequest): Promise<PostBubbleGameRankingResponse>;
-/**
+  /**
    * bubble-game/register
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postBubbleGameRegister(client: MisskeyClient, request: PostBubbleGameRegisterRequest): Promise<PostBubbleGameRegisterResponse>;
-/**
+  /**
    * export-custom-emojis
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postExportCustomEmojis(client: MisskeyClient): Promise<PostExportCustomEmojisResponse>;
-/**
+  /**
    * i/2fa/done
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faDone(client: MisskeyClient, request: PostI2faDoneRequest): Promise<PostI2faDoneResponse>;
-/**
+  /**
    * i/2fa/key-done
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faKeyDone(client: MisskeyClient, request: PostI2faKeyDoneRequest): Promise<PostI2faKeyDoneResponse>;
-/**
+  /**
    * i/2fa/password-less
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faPasswordLess(client: MisskeyClient, request: PostI2faPasswordLessRequest): Promise<PostI2faPasswordLessResponse>;
-/**
+  /**
    * i/2fa/register
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faRegister(client: MisskeyClient, request: PostI2faRegisterRequest): Promise<PostI2faRegisterResponse>;
-/**
+  /**
    * i/2fa/register-key
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faRegisterKey(client: MisskeyClient, request: PostI2faRegisterKeyRequest): Promise<PostI2faRegisterKeyResponse>;
-/**
+  /**
    * i/2fa/remove-key
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faRemoveKey(client: MisskeyClient, request: PostI2faRemoveKeyRequest): Promise<PostI2faRemoveKeyResponse>;
-/**
+  /**
    * i/2fa/unregister
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faUnregister(client: MisskeyClient, request: PostI2faUnregisterRequest): Promise<PostI2faUnregisterResponse>;
-/**
+  /**
    * i/2fa/update-key
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postI2faUpdateKey(client: MisskeyClient, request: PostI2faUpdateKeyRequest): Promise<PostI2faUpdateKeyResponse>;
-/**
+  /**
    * i/apps
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIApps(client: MisskeyClient, request: PostIappsRequest): Promise<PostIappsResponse>;
-/**
+  /**
    * i/authorized-apps
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIAuthorizedApps(client: MisskeyClient, request: PostIauthorizedAppsRequest): Promise<PostIauthorizedAppsResponse>;
-/**
+  /**
    * i/change-password
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIChangePassword(client: MisskeyClient, request: PostIchangePasswordRequest): Promise<PostIchangePasswordResponse>;
-/**
+  /**
    * i/claim-achievement
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIClaimAchievement(client: MisskeyClient, request: PostIclaimAchievementRequest): Promise<PostIclaimAchievementResponse>;
-/**
+  /**
    * i/delete-account
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIDeleteAccount(client: MisskeyClient, request: PostIdeleteAccountRequest): Promise<PostIdeleteAccountResponse>;
-/**
+  /**
    * i/export-antennas
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportAntennas(client: MisskeyClient): Promise<PostIexportAntennasResponse>;
-/**
+  /**
    * i/export-blocking
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportBlocking(client: MisskeyClient): Promise<PostIexportBlockingResponse>;
-/**
+  /**
    * i/export-clips
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportClips(client: MisskeyClient): Promise<PostIexportClipsResponse>;
-/**
+  /**
    * i/export-favorites
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportFavorites(client: MisskeyClient): Promise<PostIexportFavoritesResponse>;
-/**
+  /**
    * i/export-following
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportFollowing(client: MisskeyClient, request: PostIexportFollowingRequest): Promise<PostIexportFollowingResponse>;
-/**
+  /**
    * i/export-mute
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportMute(client: MisskeyClient): Promise<PostIexportMuteResponse>;
-/**
+  /**
    * i/export-notes
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportNotes(client: MisskeyClient): Promise<PostIexportNotesResponse>;
-/**
+  /**
    * i/export-user-lists
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIExportUserLists(client: MisskeyClient): Promise<PostIexportUserListsResponse>;
-/**
+  /**
    * i/import-antennas
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIImportAntennas(client: MisskeyClient, request: PostIimportAntennasRequest): Promise<PostIimportAntennasResponse>;
-/**
+  /**
    * i/import-blocking
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIImportBlocking(client: MisskeyClient, request: PostIimportBlockingRequest): Promise<PostIimportBlockingResponse>;
-/**
+  /**
    * i/import-following
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIImportFollowing(client: MisskeyClient, request: PostIimportFollowingRequest): Promise<PostIimportFollowingResponse>;
-/**
+  /**
    * i/import-muting
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIImportMuting(client: MisskeyClient, request: PostIimportMutingRequest): Promise<PostIimportMutingResponse>;
-/**
+  /**
    * i/import-user-lists
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIImportUserLists(client: MisskeyClient, request: PostIimportUserListsRequest): Promise<PostIimportUserListsResponse>;
-/**
+  /**
    * i/regenerate-token
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIRegenerateToken(client: MisskeyClient, request: PostIregenerateTokenRequest): Promise<PostIregenerateTokenResponse>;
-/**
+  /**
    * i/registry/get
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIRegistryGet(client: MisskeyClient, request: PostIregistryGetRequest): Promise<PostIregistryGetResponse>;
-/**
+  /**
    * i/registry/get-all
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIRegistryGetAll(client: MisskeyClient, request: PostIregistryGetAllRequest): Promise<PostIregistryGetAllResponse>;
-/**
+  /**
    * i/registry/get-detail
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIRegistryGetDetail(client: MisskeyClient, request: PostIregistryGetDetailRequest): Promise<PostIregistryGetDetailResponse>;
-/**
+  /**
    * i/registry/keys
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIRegistryKeys(client: MisskeyClient, request: PostIregistryKeysRequest): Promise<PostIregistryKeysResponse>;
-/**
+  /**
    * i/registry/keys-with-type
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postIRegistryKeysWithType(client: MisskeyClient, request: PostIregistryKeysWithTypeRequest): Promise<PostIregistryKeysWithTypeResponse>;
-/**
+  /**
    * i/registry/remove
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIRegistryRemove(client: MisskeyClient, request: PostIregistryRemoveRequest): Promise<PostIregistryRemoveResponse>;
-/**
+  /**
    * i/registry/scopes-with-domain
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIRegistryScopesWithDomain(client: MisskeyClient): Promise<PostIregistryScopesWithDomainResponse>;
-/**
+  /**
    * i/registry/set
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postIRegistrySet(client: MisskeyClient, request: PostIregistrySetRequest): Promise<PostIregistrySetResponse>;
-/**
+  /**
    * i/revoke-token
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIRevokeToken(client: MisskeyClient, request: PostIrevokeTokenRequest): Promise<PostIrevokeTokenResponse>;
-/**
+  /**
    * i/signin-history
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postISigninHistory(client: MisskeyClient, request: PostIsigninHistoryRequest): Promise<PostIsigninHistoryResponse>;
-/**
+  /**
    * i/update-email
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postIUpdateEmail(client: MisskeyClient, request: PostIupdateEmailRequest): Promise<PostIupdateEmailResponse>;
-/**
+  /**
    * page-push
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postPagePush(client: MisskeyClient, request: PostPagePushRequest): Promise<PostPagePushResponse>;
-/**
+  /**
    * reversi/cancel-match
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postReversiCancelMatch(client: MisskeyClient, request: PostReversiCancelMatchRequest): Promise<PostReversiCancelMatchResponse>;
-/**
+  /**
    * reversi/games
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postReversiGames(client: MisskeyClient, request: PostReversiGamesRequest): Promise<PostReversiGamesResponse>;
-/**
+  /**
    * reversi/invitations
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postReversiInvitations(client: MisskeyClient): Promise<PostReversiInvitationsResponse>;
-/**
+  /**
    * reversi/match
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postReversiMatch(client: MisskeyClient, request: PostReversiMatchRequest): Promise<PostReversiMatchResponse>;
-/**
+  /**
    * reversi/show-game
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postReversiShowGame(client: MisskeyClient, request: PostReversiShowGameRequest): Promise<PostReversiShowGameResponse>;
-/**
+  /**
    * reversi/surrender
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:account*
    */
   postReversiSurrender(client: MisskeyClient, request: PostReversiSurrenderRequest): Promise<PostReversiSurrenderResponse>;
-/**
+  /**
    * reversi/verify
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postReversiVerify(client: MisskeyClient, request: PostReversiVerifyRequest): Promise<PostReversiVerifyResponse>;
-/**
+  /**
    * users/achievements
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postUsersAchievements(client: MisskeyClient, request: PostUsersAchievementsRequest): Promise<PostUsersAchievementsResponse>;
-/**
+  /**
    * users/lists/create-from-public
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsCreateFromPublic(client: MisskeyClient, request: PostUsersListsCreateFromPublicRequest): Promise<PostUsersListsCreateFromPublicResponse>;
-/**
+  /**
    * users/lists/favorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsFavorite(client: MisskeyClient, request: PostUsersListsFavoriteRequest): Promise<PostUsersListsFavoriteResponse>;
-/**
+  /**
    * users/lists/unfavorite
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:account*
    */
   postUsersListsUnfavorite(client: MisskeyClient, request: PostUsersListsUnfavoriteRequest): Promise<PostUsersListsUnfavoriteResponse>;
 }

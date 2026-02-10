@@ -17,18 +17,20 @@ export interface PostNotesReactionsDeleteRequest {
 export type PostNotesReactionsDeleteResponse = void;
 
 export interface ReactionsModule {
-/**
+  /**
    * notes/reactions/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:reactions*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:reactions*
    */
   postNotesReactionsCreate(client: MisskeyClient, request: PostNotesReactionsCreateRequest): Promise<PostNotesReactionsCreateResponse>;
-/**
+  /**
    * notes/reactions/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:reactions*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:reactions*
    */
   postNotesReactionsDelete(client: MisskeyClient, request: PostNotesReactionsDeleteRequest): Promise<PostNotesReactionsDeleteResponse>;
 }

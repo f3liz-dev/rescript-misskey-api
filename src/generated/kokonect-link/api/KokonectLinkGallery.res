@@ -26,12 +26,12 @@ type postGalleryPostsResponse = array<KokonectLinkComponentSchemas.GalleryPost.t
 let postGalleryPostsResponseSchema = S.array(KokonectLinkComponentSchemas.GalleryPost.schema)
 
 /**
- * gallery/posts
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/posts
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryPosts = (~body: postGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsRequestSchema)
   fetch(
@@ -64,12 +64,12 @@ type postGalleryPostsCreateResponse = KokonectLinkComponentSchemas.GalleryPost.t
 let postGalleryPostsCreateResponseSchema = KokonectLinkComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery*
- */
+gallery/posts/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery*
+*/
 let postGalleryPostsCreate = (~body: postGalleryPostsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsCreateRequestSchema)
   fetch(
@@ -96,12 +96,12 @@ type postGalleryPostsShowResponse = KokonectLinkComponentSchemas.GalleryPost.t
 let postGalleryPostsShowResponseSchema = KokonectLinkComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/posts/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryPostsShow = (~body: postGalleryPostsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsShowRequestSchema)
   fetch(
@@ -136,12 +136,12 @@ type postGalleryPostsUpdateResponse = KokonectLinkComponentSchemas.GalleryPost.t
 let postGalleryPostsUpdateResponseSchema = KokonectLinkComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery*
- */
+gallery/posts/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery*
+*/
 let postGalleryPostsUpdate = (~body: postGalleryPostsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsUpdateRequestSchema)
   fetch(

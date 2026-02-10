@@ -36,12 +36,12 @@ type postPagesCreateResponse = KokonectLinkComponentSchemas.Page.t
 let postPagesCreateResponseSchema = KokonectLinkComponentSchemas.Page.schema
 
 /**
- * pages/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:pages*
- */
+pages/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:pages*
+*/
 let postPagesCreate = (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesCreateRequestSchema)
   fetch(
@@ -74,12 +74,12 @@ type postPagesShowResponse = KokonectLinkComponentSchemas.Page.t
 let postPagesShowResponseSchema = KokonectLinkComponentSchemas.Page.schema
 
 /**
- * pages/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+pages/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postPagesShow = (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesShowRequestSchema)
   fetch(
@@ -124,12 +124,12 @@ let postPagesUpdateRequestSchema = S.object(s => {
 type postPagesUpdateResponse = unit
 
 /**
- * pages/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:pages*
- */
+pages/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:pages*
+*/
 let postPagesUpdate = (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUpdateRequestSchema)
   fetch(

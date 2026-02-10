@@ -16,13 +16,13 @@ let postAdminEmojiImportZipRequestSchema = S.object(s => {
 type postAdminEmojiImportZipResponse = unit
 
 /**
- * admin/emoji/import-zip
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+admin/emoji/import-zip
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postAdminEmojiImportZip = (~body: postAdminEmojiImportZipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiImportZipResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiImportZipRequestSchema)
   fetch(
@@ -61,12 +61,12 @@ let getBubbleGameRankingResponse_1Schema = S.object(s => {
 let getBubbleGameRankingResponseSchema = S.array(getBubbleGameRankingResponse_1Schema)
 
 /**
- * bubble-game/ranking
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+bubble-game/ranking
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getBubbleGameRanking = (~body: getBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getBubbleGameRankingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getBubbleGameRankingRequestSchema)
   fetch(
@@ -105,12 +105,12 @@ let postBubbleGameRankingResponse_1Schema = S.object(s => {
 let postBubbleGameRankingResponseSchema = S.array(postBubbleGameRankingResponse_1Schema)
 
 /**
- * bubble-game/ranking
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+bubble-game/ranking
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postBubbleGameRanking = (~body: postBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBubbleGameRankingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBubbleGameRankingRequestSchema)
   fetch(
@@ -143,12 +143,12 @@ let postBubbleGameRegisterRequestSchema = S.object(s => {
 type postBubbleGameRegisterResponse = unit
 
 /**
- * bubble-game/register
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+bubble-game/register
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postBubbleGameRegister = (~body: postBubbleGameRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBubbleGameRegisterResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBubbleGameRegisterRequestSchema)
   fetch(
@@ -165,13 +165,13 @@ let postBubbleGameRegister = (~body: postBubbleGameRegisterRequest, ~fetch: (~ur
 type postExportCustomEmojisResponse = unit
 
 /**
- * export-custom-emojis
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+export-custom-emojis
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postExportCustomEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postExportCustomEmojisResponse> => {
 
   fetch(
@@ -202,13 +202,13 @@ let postI2faDoneResponseSchema = S.object(s => {
   })
 
 /**
- * i/2fa/done
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/done
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faDone = (~body: postI2faDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faDoneResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faDoneRequestSchema)
   fetch(
@@ -247,13 +247,13 @@ let postI2faKeyDoneResponseSchema = S.object(s => {
   })
 
 /**
- * i/2fa/key-done
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/key-done
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faKeyDone = (~body: postI2faKeyDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faKeyDoneResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faKeyDoneRequestSchema)
   fetch(
@@ -278,13 +278,13 @@ let postI2faPasswordLessRequestSchema = S.object(s => {
 type postI2faPasswordLessResponse = unit
 
 /**
- * i/2fa/password-less
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/password-less
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faPasswordLess = (~body: postI2faPasswordLessRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faPasswordLessResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faPasswordLessRequestSchema)
   fetch(
@@ -325,13 +325,13 @@ let postI2faRegisterResponseSchema = S.object(s => {
   })
 
 /**
- * i/2fa/register
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/register
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faRegister = (~body: postI2faRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRegisterResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRegisterRequestSchema)
   fetch(
@@ -434,13 +434,13 @@ let postI2faRegisterKeyResponseSchema = S.object(s => {
   })
 
 /**
- * i/2fa/register-key
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/register-key
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faRegisterKey = (~body: postI2faRegisterKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRegisterKeyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRegisterKeyRequestSchema)
   fetch(
@@ -469,13 +469,13 @@ let postI2faRemoveKeyRequestSchema = S.object(s => {
 type postI2faRemoveKeyResponse = unit
 
 /**
- * i/2fa/remove-key
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/remove-key
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faRemoveKey = (~body: postI2faRemoveKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRemoveKeyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRemoveKeyRequestSchema)
   fetch(
@@ -502,13 +502,13 @@ let postI2faUnregisterRequestSchema = S.object(s => {
 type postI2faUnregisterResponse = unit
 
 /**
- * i/2fa/unregister
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/unregister
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faUnregister = (~body: postI2faUnregisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faUnregisterResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faUnregisterRequestSchema)
   fetch(
@@ -535,13 +535,13 @@ let postI2faUpdateKeyRequestSchema = S.object(s => {
 type postI2faUpdateKeyResponse = unit
 
 /**
- * i/2fa/update-key
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/2fa/update-key
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postI2faUpdateKey = (~body: postI2faUpdateKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faUpdateKeyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faUpdateKeyRequestSchema)
   fetch(
@@ -584,13 +584,13 @@ let postIAppsResponse_1Schema = S.object(s => {
 let postIAppsResponseSchema = S.array(postIAppsResponse_1Schema)
 
 /**
- * i/apps
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/apps
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIApps = (~body: postIAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAppsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIAppsRequestSchema)
   fetch(
@@ -637,13 +637,13 @@ let postIAuthorizedAppsResponse_1Schema = S.object(s => {
 let postIAuthorizedAppsResponseSchema = S.array(postIAuthorizedAppsResponse_1Schema)
 
 /**
- * i/authorized-apps
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/authorized-apps
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIAuthorizedApps = (~body: postIAuthorizedAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAuthorizedAppsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIAuthorizedAppsRequestSchema)
   fetch(
@@ -672,13 +672,13 @@ let postIChangePasswordRequestSchema = S.object(s => {
 type postIChangePasswordResponse = unit
 
 /**
- * i/change-password
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/change-password
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIChangePassword = (~body: postIChangePasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIChangePasswordResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIChangePasswordRequestSchema)
   fetch(
@@ -703,12 +703,12 @@ let postIClaimAchievementRequestSchema = S.object(s => {
 type postIClaimAchievementResponse = unit
 
 /**
- * i/claim-achievement
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/claim-achievement
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIClaimAchievementResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIClaimAchievementRequestSchema)
   fetch(
@@ -735,13 +735,13 @@ let postIDeleteAccountRequestSchema = S.object(s => {
 type postIDeleteAccountResponse = unit
 
 /**
- * i/delete-account
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/delete-account
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIDeleteAccount = (~body: postIDeleteAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIDeleteAccountResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIDeleteAccountRequestSchema)
   fetch(
@@ -758,13 +758,13 @@ let postIDeleteAccount = (~body: postIDeleteAccountRequest, ~fetch: (~url: strin
 type postIExportAntennasResponse = unit
 
 /**
- * i/export-antennas
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-antennas
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportAntennas = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportAntennasResponse> => {
 
   fetch(
@@ -781,13 +781,13 @@ let postIExportAntennas = (~fetch: (~url: string, ~method_: string, ~body: optio
 type postIExportBlockingResponse = unit
 
 /**
- * i/export-blocking
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-blocking
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportBlocking = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportBlockingResponse> => {
 
   fetch(
@@ -804,13 +804,13 @@ let postIExportBlocking = (~fetch: (~url: string, ~method_: string, ~body: optio
 type postIExportClipsResponse = unit
 
 /**
- * i/export-clips
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-clips
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportClips = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportClipsResponse> => {
 
   fetch(
@@ -827,13 +827,13 @@ let postIExportClips = (~fetch: (~url: string, ~method_: string, ~body: option<J
 type postIExportFavoritesResponse = unit
 
 /**
- * i/export-favorites
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-favorites
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFavoritesResponse> => {
 
   fetch(
@@ -860,13 +860,13 @@ let postIExportFollowingRequestSchema = S.object(s => {
 type postIExportFollowingResponse = unit
 
 /**
- * i/export-following
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-following
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportFollowing = (~body: postIExportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIExportFollowingRequestSchema)
   fetch(
@@ -883,13 +883,13 @@ let postIExportFollowing = (~body: postIExportFollowingRequest, ~fetch: (~url: s
 type postIExportMuteResponse = unit
 
 /**
- * i/export-mute
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-mute
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportMute = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportMuteResponse> => {
 
   fetch(
@@ -906,13 +906,13 @@ let postIExportMute = (~fetch: (~url: string, ~method_: string, ~body: option<JS
 type postIExportNotesResponse = unit
 
 /**
- * i/export-notes
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-notes
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportNotes = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportNotesResponse> => {
 
   fetch(
@@ -929,13 +929,13 @@ let postIExportNotes = (~fetch: (~url: string, ~method_: string, ~body: option<J
 type postIExportUserListsResponse = unit
 
 /**
- * i/export-user-lists
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/export-user-lists
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIExportUserLists = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportUserListsResponse> => {
 
   fetch(
@@ -960,13 +960,13 @@ let postIImportAntennasRequestSchema = S.object(s => {
 type postIImportAntennasResponse = unit
 
 /**
- * i/import-antennas
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/import-antennas
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIImportAntennas = (~body: postIImportAntennasRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportAntennasResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportAntennasRequestSchema)
   fetch(
@@ -991,13 +991,13 @@ let postIImportBlockingRequestSchema = S.object(s => {
 type postIImportBlockingResponse = unit
 
 /**
- * i/import-blocking
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/import-blocking
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIImportBlocking = (~body: postIImportBlockingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportBlockingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportBlockingRequestSchema)
   fetch(
@@ -1024,13 +1024,13 @@ let postIImportFollowingRequestSchema = S.object(s => {
 type postIImportFollowingResponse = unit
 
 /**
- * i/import-following
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/import-following
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIImportFollowing = (~body: postIImportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportFollowingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportFollowingRequestSchema)
   fetch(
@@ -1055,13 +1055,13 @@ let postIImportMutingRequestSchema = S.object(s => {
 type postIImportMutingResponse = unit
 
 /**
- * i/import-muting
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/import-muting
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIImportMuting = (~body: postIImportMutingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportMutingResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportMutingRequestSchema)
   fetch(
@@ -1086,13 +1086,13 @@ let postIImportUserListsRequestSchema = S.object(s => {
 type postIImportUserListsResponse = unit
 
 /**
- * i/import-user-lists
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/import-user-lists
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIImportUserLists = (~body: postIImportUserListsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportUserListsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportUserListsRequestSchema)
   fetch(
@@ -1117,13 +1117,13 @@ let postIRegenerateTokenRequestSchema = S.object(s => {
 type postIRegenerateTokenResponse = unit
 
 /**
- * i/regenerate-token
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/regenerate-token
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIRegenerateToken = (~body: postIRegenerateTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegenerateTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegenerateTokenRequestSchema)
   fetch(
@@ -1154,12 +1154,12 @@ type postIRegistryGetResponse = dict<JSON.t>
 let postIRegistryGetResponseSchema = S.dict(S.json)
 
 /**
- * i/registry/get
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/registry/get
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIRegistryGet = (~body: postIRegistryGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetRequestSchema)
   fetch(
@@ -1188,12 +1188,12 @@ type postIRegistryGetAllResponse = dict<JSON.t>
 let postIRegistryGetAllResponseSchema = S.dict(S.json)
 
 /**
- * i/registry/get-all
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/registry/get-all
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIRegistryGetAll = (~body: postIRegistryGetAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetAllResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetAllRequestSchema)
   fetch(
@@ -1230,12 +1230,12 @@ let postIRegistryGetDetailResponseSchema = S.object(s => {
   })
 
 /**
- * i/registry/get-detail
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/registry/get-detail
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIRegistryGetDetail = (~body: postIRegistryGetDetailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetDetailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetDetailRequestSchema)
   fetch(
@@ -1264,12 +1264,12 @@ type postIRegistryKeysResponse = array<string>
 let postIRegistryKeysResponseSchema = S.array(S.string)
 
 /**
- * i/registry/keys
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/registry/keys
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIRegistryKeys = (~body: postIRegistryKeysRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryKeysResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryKeysRequestSchema)
   fetch(
@@ -1298,12 +1298,12 @@ type postIRegistryKeysWithTypeResponse = dict<JSON.t>
 let postIRegistryKeysWithTypeResponseSchema = S.dict(S.json)
 
 /**
- * i/registry/keys-with-type
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/registry/keys-with-type
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIRegistryKeysWithType = (~body: postIRegistryKeysWithTypeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryKeysWithTypeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryKeysWithTypeRequestSchema)
   fetch(
@@ -1332,12 +1332,12 @@ let postIRegistryRemoveRequestSchema = S.object(s => {
 type postIRegistryRemoveResponse = unit
 
 /**
- * i/registry/remove
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/registry/remove
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIRegistryRemove = (~body: postIRegistryRemoveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryRemoveResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryRemoveRequestSchema)
   fetch(
@@ -1366,13 +1366,13 @@ let postIRegistryScopesWithDomainResponse_1Schema = S.object(s => {
 let postIRegistryScopesWithDomainResponseSchema = S.array(postIRegistryScopesWithDomainResponse_1Schema)
 
 /**
- * i/registry/scopes-with-domain
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/registry/scopes-with-domain
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIRegistryScopesWithDomain = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryScopesWithDomainResponse> => {
 
   fetch(
@@ -1403,12 +1403,12 @@ let postIRegistrySetRequestSchema = S.object(s => {
 type postIRegistrySetResponse = unit
 
 /**
- * i/registry/set
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/registry/set
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIRegistrySet = (~body: postIRegistrySetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistrySetResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistrySetRequestSchema)
   fetch(
@@ -1435,13 +1435,13 @@ let postIRevokeTokenRequestSchema = S.object(s => {
 type postIRevokeTokenResponse = unit
 
 /**
- * i/revoke-token
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/revoke-token
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIRevokeToken = (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRevokeTokenResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRevokeTokenRequestSchema)
   fetch(
@@ -1472,13 +1472,13 @@ type postISigninHistoryResponse = array<MisskeyIoComponentSchemas.Signin.t>
 let postISigninHistoryResponseSchema = S.array(MisskeyIoComponentSchemas.Signin.schema)
 
 /**
- * i/signin-history
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/signin-history
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postISigninHistoryResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postISigninHistoryRequestSchema)
   fetch(
@@ -1509,13 +1509,13 @@ type postIUpdateEmailResponse = MisskeyIoComponentSchemas.MeDetailed.t
 let postIUpdateEmailResponseSchema = MisskeyIoComponentSchemas.MeDetailed.schema
 
 /**
- * i/update-email
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+i/update-email
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postIUpdateEmail = (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateEmailResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateEmailRequestSchema)
   fetch(
@@ -1544,13 +1544,13 @@ let postPagePushRequestSchema = S.object(s => {
 type postPagePushResponse = unit
 
 /**
- * page-push
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+page-push
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postPagePush = (~body: postPagePushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagePushResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagePushRequestSchema)
   fetch(
@@ -1575,12 +1575,12 @@ let postReversiCancelMatchRequestSchema = S.object(s => {
 type postReversiCancelMatchResponse = unit
 
 /**
- * reversi/cancel-match
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+reversi/cancel-match
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postReversiCancelMatch = (~body: postReversiCancelMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiCancelMatchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiCancelMatchRequestSchema)
   fetch(
@@ -1613,12 +1613,12 @@ type postReversiGamesResponse = array<MisskeyIoComponentSchemas.ReversiGameLite.
 let postReversiGamesResponseSchema = S.array(MisskeyIoComponentSchemas.ReversiGameLite.schema)
 
 /**
- * reversi/games
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/games
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiGames = (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiGamesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiGamesRequestSchema)
   fetch(
@@ -1637,12 +1637,12 @@ type postReversiInvitationsResponse = array<MisskeyIoComponentSchemas.UserLite.t
 let postReversiInvitationsResponseSchema = S.array(MisskeyIoComponentSchemas.UserLite.schema)
 
 /**
- * reversi/invitations
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+reversi/invitations
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postReversiInvitations = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiInvitationsResponse> => {
 
   fetch(
@@ -1673,12 +1673,12 @@ type postReversiMatchResponse = dict<JSON.t>
 let postReversiMatchResponseSchema = S.dict(S.json)
 
 /**
- * reversi/match
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+reversi/match
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postReversiMatch = (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiMatchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiMatchRequestSchema)
   fetch(
@@ -1705,12 +1705,12 @@ type postReversiShowGameResponse = MisskeyIoComponentSchemas.ReversiGameDetailed
 let postReversiShowGameResponseSchema = MisskeyIoComponentSchemas.ReversiGameDetailed.schema
 
 /**
- * reversi/show-game
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/show-game
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiShowGame = (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiShowGameResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiShowGameRequestSchema)
   fetch(
@@ -1735,12 +1735,12 @@ let postReversiSurrenderRequestSchema = S.object(s => {
 type postReversiSurrenderResponse = unit
 
 /**
- * reversi/surrender
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+reversi/surrender
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postReversiSurrender = (~body: postReversiSurrenderRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiSurrenderResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiSurrenderRequestSchema)
   fetch(
@@ -1775,12 +1775,12 @@ let postReversiVerifyResponseSchema = S.object(s => {
   })
 
 /**
- * reversi/verify
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+reversi/verify
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postReversiVerify = (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiVerifyResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiVerifyRequestSchema)
   fetch(
@@ -1817,12 +1817,12 @@ let postUsersAchievementsResponse_1Schema = S.object(s => {
 let postUsersAchievementsResponseSchema = S.array(postUsersAchievementsResponse_1Schema)
 
 /**
- * users/achievements
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+users/achievements
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postUsersAchievements = (~body: postUsersAchievementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersAchievementsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersAchievementsRequestSchema)
   fetch(
@@ -1851,12 +1851,12 @@ type postUsersListsCreateFromPublicResponse = MisskeyIoComponentSchemas.UserList
 let postUsersListsCreateFromPublicResponseSchema = MisskeyIoComponentSchemas.UserList.schema
 
 /**
- * users/lists/create-from-public
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/create-from-public
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsCreateFromPublic = (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateFromPublicResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateFromPublicRequestSchema)
   fetch(
@@ -1881,12 +1881,12 @@ let postUsersListsFavoriteRequestSchema = S.object(s => {
 type postUsersListsFavoriteResponse = unit
 
 /**
- * users/lists/favorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/favorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsFavorite = (~body: postUsersListsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsFavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsFavoriteRequestSchema)
   fetch(
@@ -1911,12 +1911,12 @@ let postUsersListsUnfavoriteRequestSchema = S.object(s => {
 type postUsersListsUnfavoriteResponse = unit
 
 /**
- * users/lists/unfavorite
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/unfavorite
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsUnfavorite = (~body: postUsersListsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUnfavoriteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUnfavoriteRequestSchema)
   fetch(

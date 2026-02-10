@@ -18,12 +18,12 @@ let postNotesReactionsCreateRequestSchema = S.object(s => {
 type postNotesReactionsCreateResponse = unit
 
 /**
- * notes/reactions/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:reactions*
- */
+notes/reactions/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:reactions*
+*/
 let postNotesReactionsCreate = (~body: postNotesReactionsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsCreateRequestSchema)
   fetch(
@@ -48,12 +48,12 @@ let postNotesReactionsDeleteRequestSchema = S.object(s => {
 type postNotesReactionsDeleteResponse = unit
 
 /**
- * notes/reactions/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:reactions*
- */
+notes/reactions/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:reactions*
+*/
 let postNotesReactionsDelete = (~body: postNotesReactionsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsDeleteRequestSchema)
   fetch(

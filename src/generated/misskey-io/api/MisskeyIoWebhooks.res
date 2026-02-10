@@ -30,13 +30,13 @@ let postAdminSystemWebhookTestRequestSchema = S.object(s => {
 type postAdminSystemWebhookTestResponse = unit
 
 /**
- * admin/system-webhook/test
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
- */
+admin/system-webhook/test
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:admin:system-webhook*
+*/
 let postAdminSystemWebhookTest = (~body: postAdminSystemWebhookTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookTestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookTestRequestSchema)
   fetch(
@@ -89,12 +89,12 @@ let postIWebhooksCreateResponseSchema = S.object(s => {
   })
 
 /**
- * i/webhooks/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/webhooks/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIWebhooksCreate = (~body: postIWebhooksCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksCreateRequestSchema)
   fetch(
@@ -119,12 +119,12 @@ let postIWebhooksDeleteRequestSchema = S.object(s => {
 type postIWebhooksDeleteResponse = unit
 
 /**
- * i/webhooks/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/webhooks/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIWebhooksDelete = (~body: postIWebhooksDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksDeleteRequestSchema)
   fetch(
@@ -167,12 +167,12 @@ let postIWebhooksListResponse_1Schema = S.object(s => {
 let postIWebhooksListResponseSchema = S.array(postIWebhooksListResponse_1Schema)
 
 /**
- * i/webhooks/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/webhooks/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIWebhooksList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksListResponse> => {
 
   fetch(
@@ -219,12 +219,12 @@ let postIWebhooksShowResponseSchema = S.object(s => {
   })
 
 /**
- * i/webhooks/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/webhooks/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIWebhooksShow = (~body: postIWebhooksShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksShowRequestSchema)
   fetch(
@@ -263,13 +263,13 @@ let postIWebhooksTestRequestSchema = S.object(s => {
 type postIWebhooksTestResponse = unit
 
 /**
- * i/webhooks/test
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+i/webhooks/test
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postIWebhooksTest = (~body: postIWebhooksTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksTestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksTestRequestSchema)
   fetch(
@@ -304,12 +304,12 @@ let postIWebhooksUpdateRequestSchema = S.object(s => {
 type postIWebhooksUpdateResponse = unit
 
 /**
- * i/webhooks/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+i/webhooks/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postIWebhooksUpdate = (~body: postIWebhooksUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIWebhooksUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIWebhooksUpdateRequestSchema)
   fetch(

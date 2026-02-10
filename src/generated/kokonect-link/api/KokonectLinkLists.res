@@ -18,12 +18,12 @@ type postUsersListsCreateResponse = KokonectLinkComponentSchemas.UserList.t
 let postUsersListsCreateResponseSchema = KokonectLinkComponentSchemas.UserList.schema
 
 /**
- * users/lists/create
- *
- * Create a new list of users.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/create
+
+Create a new list of users.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsCreate = (~body: postUsersListsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateRequestSchema)
   fetch(
@@ -78,12 +78,12 @@ let postUsersListsGetMembershipsResponse_1Schema = S.object(s => {
 let postUsersListsGetMembershipsResponseSchema = S.array(postUsersListsGetMembershipsResponse_1Schema)
 
 /**
- * users/lists/get-memberships
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+users/lists/get-memberships
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postUsersListsGetMemberships = (~body: postUsersListsGetMembershipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsGetMembershipsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsGetMembershipsRequestSchema)
   fetch(
@@ -114,12 +114,12 @@ type postUsersListsUpdateResponse = KokonectLinkComponentSchemas.UserList.t
 let postUsersListsUpdateResponseSchema = KokonectLinkComponentSchemas.UserList.schema
 
 /**
- * users/lists/update
- *
- * Update the properties of a list.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+users/lists/update
+
+Update the properties of a list.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postUsersListsUpdate = (~body: postUsersListsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUpdateRequestSchema)
   fetch(

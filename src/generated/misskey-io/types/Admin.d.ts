@@ -1250,763 +1250,870 @@ export interface PostV2adminEmojiListResponse {
 }
 
 export interface AdminModule {
-/**
+  /**
    * admin/abuse-report-resolver/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
    */
   postAdminAbuseReportResolverCreate(client: MisskeyClient, request: PostAdminAbuseReportResolverCreateRequest): Promise<PostAdminAbuseReportResolverCreateResponse>;
-/**
+  /**
    * admin/abuse-report-resolver/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
    */
   postAdminAbuseReportResolverDelete(client: MisskeyClient, request: PostAdminAbuseReportResolverDeleteRequest): Promise<PostAdminAbuseReportResolverDeleteResponse>;
-/**
+  /**
    * admin/abuse-report-resolver/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report-resolvers*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report-resolvers*
    */
   postAdminAbuseReportResolverList(client: MisskeyClient, request: PostAdminAbuseReportResolverListRequest): Promise<PostAdminAbuseReportResolverListResponse>;
-/**
+  /**
    * admin/abuse-report-resolver/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report-resolvers*
    */
   postAdminAbuseReportResolverUpdate(client: MisskeyClient, request: PostAdminAbuseReportResolverUpdateRequest): Promise<PostAdminAbuseReportResolverUpdateResponse>;
-/**
+  /**
    * admin/abuse-report/notification-recipient/create
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
    */
   postAdminAbuseReportNotificationRecipientCreate(client: MisskeyClient, request: PostAdminAbuseReportNotificationRecipientCreateRequest): Promise<PostAdminAbuseReportNotificationRecipientCreateResponse>;
-/**
+  /**
    * admin/abuse-report/notification-recipient/delete
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
    */
   postAdminAbuseReportNotificationRecipientDelete(client: MisskeyClient, request: PostAdminAbuseReportNotificationRecipientDeleteRequest): Promise<PostAdminAbuseReportNotificationRecipientDeleteResponse>;
-/**
+  /**
    * admin/abuse-report/notification-recipient/list
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
    */
   postAdminAbuseReportNotificationRecipientList(client: MisskeyClient, request: PostAdminAbuseReportNotificationRecipientListRequest): Promise<PostAdminAbuseReportNotificationRecipientListResponse>;
-/**
+  /**
    * admin/abuse-report/notification-recipient/show
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
    */
   postAdminAbuseReportNotificationRecipientShow(client: MisskeyClient, request: PostAdminAbuseReportNotificationRecipientShowRequest): Promise<PostAdminAbuseReportNotificationRecipientShowResponse>;
-/**
+  /**
    * admin/abuse-report/notification-recipient/update
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
    */
   postAdminAbuseReportNotificationRecipientUpdate(client: MisskeyClient, request: PostAdminAbuseReportNotificationRecipientUpdateRequest): Promise<PostAdminAbuseReportNotificationRecipientUpdateResponse>;
-/**
+  /**
    * admin/abuse-user-reports
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:abuse-user-reports*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:abuse-user-reports*
    */
   postAdminAbuseUserReports(client: MisskeyClient, request: PostAdminAbuseUserReportsRequest): Promise<PostAdminAbuseUserReportsResponse>;
-/**
+  /**
    * admin/accounts/create
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAdminAccountsCreate(client: MisskeyClient, request: PostAdminAccountsCreateRequest): Promise<PostAdminAccountsCreateResponse>;
-/**
+  /**
    * admin/accounts/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:account*
    */
   postAdminAccountsDelete(client: MisskeyClient, request: PostAdminAccountsDeleteRequest): Promise<PostAdminAccountsDeleteResponse>;
-/**
+  /**
    * admin/accounts/find-by-email
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:account*
    */
   postAdminAccountsFindByEmail(client: MisskeyClient, request: PostAdminAccountsFindByEmailRequest): Promise<PostAdminAccountsFindByEmailResponse>;
-/**
+  /**
    * admin/accounts/pending/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:account*
    */
   postAdminAccountsPendingList(client: MisskeyClient, request: PostAdminAccountsPendingListRequest): Promise<PostAdminAccountsPendingListResponse>;
-/**
+  /**
    * admin/accounts/pending/revoke
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:account*
    */
   postAdminAccountsPendingRevoke(client: MisskeyClient, request: PostAdminAccountsPendingRevokeRequest): Promise<PostAdminAccountsPendingRevokeResponse>;
-/**
+  /**
    * admin/ad/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
    */
   postAdminAdCreate(client: MisskeyClient, request: PostAdminAdCreateRequest): Promise<PostAdminAdCreateResponse>;
-/**
+  /**
    * admin/ad/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
    */
   postAdminAdDelete(client: MisskeyClient, request: PostAdminAdDeleteRequest): Promise<PostAdminAdDeleteResponse>;
-/**
+  /**
    * admin/ad/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:ad*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:ad*
    */
   postAdminAdList(client: MisskeyClient, request: PostAdminAdListRequest): Promise<PostAdminAdListResponse>;
-/**
+  /**
    * admin/ad/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:ad*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:ad*
    */
   postAdminAdUpdate(client: MisskeyClient, request: PostAdminAdUpdateRequest): Promise<PostAdminAdUpdateResponse>;
-/**
+  /**
    * admin/announcements/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
    */
   postAdminAnnouncementsCreate(client: MisskeyClient, request: PostAdminAnnouncementsCreateRequest): Promise<PostAdminAnnouncementsCreateResponse>;
-/**
+  /**
    * admin/announcements/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
    */
   postAdminAnnouncementsDelete(client: MisskeyClient, request: PostAdminAnnouncementsDeleteRequest): Promise<PostAdminAnnouncementsDeleteResponse>;
-/**
+  /**
    * admin/announcements/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:announcements*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:announcements*
    */
   postAdminAnnouncementsList(client: MisskeyClient, request: PostAdminAnnouncementsListRequest): Promise<PostAdminAnnouncementsListResponse>;
-/**
+  /**
    * admin/announcements/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:announcements*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
    */
   postAdminAnnouncementsUpdate(client: MisskeyClient, request: PostAdminAnnouncementsUpdateRequest): Promise<PostAdminAnnouncementsUpdateResponse>;
-/**
+  /**
    * admin/avatar-decorations/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
    */
   postAdminAvatarDecorationsCreate(client: MisskeyClient, request: PostAdminAvatarDecorationsCreateRequest): Promise<PostAdminAvatarDecorationsCreateResponse>;
-/**
+  /**
    * admin/avatar-decorations/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
    */
   postAdminAvatarDecorationsDelete(client: MisskeyClient, request: PostAdminAvatarDecorationsDeleteRequest): Promise<PostAdminAvatarDecorationsDeleteResponse>;
-/**
+  /**
    * admin/avatar-decorations/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
    */
   postAdminAvatarDecorationsList(client: MisskeyClient, request: PostAdminAvatarDecorationsListRequest): Promise<PostAdminAvatarDecorationsListResponse>;
-/**
+  /**
    * admin/avatar-decorations/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
    */
   postAdminAvatarDecorationsUpdate(client: MisskeyClient, request: PostAdminAvatarDecorationsUpdateRequest): Promise<PostAdminAvatarDecorationsUpdateResponse>;
-/**
+  /**
    * admin/captcha/current
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:meta*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
    */
   postAdminCaptchaCurrent(client: MisskeyClient): Promise<PostAdminCaptchaCurrentResponse>;
-/**
+  /**
    * admin/captcha/save
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:meta*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:meta*
    */
   postAdminCaptchaSave(client: MisskeyClient, request: PostAdminCaptchaSaveRequest): Promise<PostAdminCaptchaSaveResponse>;
-/**
+  /**
    * admin/drive/clean-remote-files
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
    */
   postAdminDriveCleanRemoteFiles(client: MisskeyClient): Promise<PostAdminDriveCleanRemoteFilesResponse>;
-/**
+  /**
    * admin/drive/cleanup
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
    */
   postAdminDriveCleanup(client: MisskeyClient): Promise<PostAdminDriveCleanupResponse>;
-/**
+  /**
    * admin/drive/delete-all-files-of-a-user
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:drive*
    */
   postAdminDriveDeleteAllFilesOfAUser(client: MisskeyClient, request: PostAdminDriveDeleteAllFilesOfAuserRequest): Promise<PostAdminDriveDeleteAllFilesOfAuserResponse>;
-/**
+  /**
    * admin/drive/files
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:drive*
    */
   postAdminDriveFiles(client: MisskeyClient, request: PostAdminDriveFilesRequest): Promise<PostAdminDriveFilesResponse>;
-/**
+  /**
    * admin/drive/show-file
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:drive*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:drive*
    */
   postAdminDriveShowFile(client: MisskeyClient, request: PostAdminDriveShowFileRequest): Promise<PostAdminDriveShowFileResponse>;
-/**
+  /**
    * admin/emoji/add
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiAdd(client: MisskeyClient, request: PostAdminEmojiAddRequest): Promise<PostAdminEmojiAddResponse>;
-/**
+  /**
    * admin/emoji/add-aliases-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiAddAliasesBulk(client: MisskeyClient, request: PostAdminEmojiAddAliasesBulkRequest): Promise<PostAdminEmojiAddAliasesBulkResponse>;
-/**
+  /**
    * admin/emoji/copy
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiCopy(client: MisskeyClient, request: PostAdminEmojiCopyRequest): Promise<PostAdminEmojiCopyResponse>;
-/**
+  /**
    * admin/emoji/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiDelete(client: MisskeyClient, request: PostAdminEmojiDeleteRequest): Promise<PostAdminEmojiDeleteResponse>;
-/**
+  /**
    * admin/emoji/delete-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiDeleteBulk(client: MisskeyClient, request: PostAdminEmojiDeleteBulkRequest): Promise<PostAdminEmojiDeleteBulkResponse>;
-/**
+  /**
    * admin/emoji/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
    */
   postAdminEmojiList(client: MisskeyClient, request: PostAdminEmojiListRequest): Promise<PostAdminEmojiListResponse>;
-/**
+  /**
    * admin/emoji/list-remote
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
    */
   postAdminEmojiListRemote(client: MisskeyClient, request: PostAdminEmojiListRemoteRequest): Promise<PostAdminEmojiListRemoteResponse>;
-/**
+  /**
    * admin/emoji/remove-aliases-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiRemoveAliasesBulk(client: MisskeyClient, request: PostAdminEmojiRemoveAliasesBulkRequest): Promise<PostAdminEmojiRemoveAliasesBulkResponse>;
-/**
+  /**
    * admin/emoji/set-aliases-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiSetAliasesBulk(client: MisskeyClient, request: PostAdminEmojiSetAliasesBulkRequest): Promise<PostAdminEmojiSetAliasesBulkResponse>;
-/**
+  /**
    * admin/emoji/set-category-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiSetCategoryBulk(client: MisskeyClient, request: PostAdminEmojiSetCategoryBulkRequest): Promise<PostAdminEmojiSetCategoryBulkResponse>;
-/**
+  /**
    * admin/emoji/set-license-bulk
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiSetLicenseBulk(client: MisskeyClient, request: PostAdminEmojiSetLicenseBulkRequest): Promise<PostAdminEmojiSetLicenseBulkResponse>;
-/**
+  /**
    * admin/emoji/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
    */
   postAdminEmojiUpdate(client: MisskeyClient, request: PostAdminEmojiUpdateRequest): Promise<PostAdminEmojiUpdateResponse>;
-/**
+  /**
    * admin/federation/delete-all-files
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
    */
   postAdminFederationDeleteAllFiles(client: MisskeyClient, request: PostAdminFederationDeleteAllFilesRequest): Promise<PostAdminFederationDeleteAllFilesResponse>;
-/**
+  /**
    * admin/federation/refresh-remote-instance-metadata
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
    */
   postAdminFederationRefreshRemoteInstanceMetadata(client: MisskeyClient, request: PostAdminFederationRefreshRemoteInstanceMetadataRequest): Promise<PostAdminFederationRefreshRemoteInstanceMetadataResponse>;
-/**
+  /**
    * admin/federation/remove-all-following
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
    */
   postAdminFederationRemoveAllFollowing(client: MisskeyClient, request: PostAdminFederationRemoveAllFollowingRequest): Promise<PostAdminFederationRemoveAllFollowingResponse>;
-/**
+  /**
    * admin/federation/update-instance
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:federation*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:federation*
    */
   postAdminFederationUpdateInstance(client: MisskeyClient, request: PostAdminFederationUpdateInstanceRequest): Promise<PostAdminFederationUpdateInstanceResponse>;
-/**
+  /**
    * admin/forward-abuse-user-report
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
    */
   postAdminForwardAbuseUserReport(client: MisskeyClient, request: PostAdminForwardAbuseUserReportRequest): Promise<PostAdminForwardAbuseUserReportResponse>;
-/**
+  /**
    * admin/get-index-stats
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:index-stats*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:index-stats*
    */
   postAdminGetIndexStats(client: MisskeyClient): Promise<PostAdminGetIndexStatsResponse>;
-/**
+  /**
    * admin/get-table-stats
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:table-stats*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:table-stats*
    */
   postAdminGetTableStats(client: MisskeyClient): Promise<PostAdminGetTableStatsResponse>;
-/**
+  /**
    * admin/get-user-ips
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:user-ips*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:user-ips*
    */
   postAdminGetUserIps(client: MisskeyClient, request: PostAdminGetUserIpsRequest): Promise<PostAdminGetUserIpsResponse>;
-/**
+  /**
    * admin/indie-auth/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
    */
   postAdminIndieAuthCreate(client: MisskeyClient, request: PostAdminIndieAuthCreateRequest): Promise<PostAdminIndieAuthCreateResponse>;
-/**
+  /**
    * admin/indie-auth/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
    */
   postAdminIndieAuthDelete(client: MisskeyClient, request: PostAdminIndieAuthDeleteRequest): Promise<PostAdminIndieAuthDeleteResponse>;
-/**
+  /**
    * admin/indie-auth/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:indie-auth*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:indie-auth*
    */
   postAdminIndieAuthList(client: MisskeyClient, request: PostAdminIndieAuthListRequest): Promise<PostAdminIndieAuthListResponse>;
-/**
+  /**
    * admin/indie-auth/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:indie-auth*
    */
   postAdminIndieAuthUpdate(client: MisskeyClient, request: PostAdminIndieAuthUpdateRequest): Promise<PostAdminIndieAuthUpdateResponse>;
-/**
+  /**
    * admin/invite/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:invite-codes*
    */
   postAdminInviteCreate(client: MisskeyClient, request: PostAdminInviteCreateRequest): Promise<PostAdminInviteCreateResponse>;
-/**
+  /**
    * admin/invite/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:invite-codes*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:invite-codes*
    */
   postAdminInviteList(client: MisskeyClient, request: PostAdminInviteListRequest): Promise<PostAdminInviteListResponse>;
-/**
+  /**
    * admin/promo/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:promo*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:promo*
    */
   postAdminPromoCreate(client: MisskeyClient, request: PostAdminPromoCreateRequest): Promise<PostAdminPromoCreateResponse>;
-/**
+  /**
    * admin/queue/clear
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:queue*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:queue*
    */
   postAdminQueueClear(client: MisskeyClient, request: PostAdminQueueClearRequest): Promise<PostAdminQueueClearResponse>;
-/**
+  /**
    * admin/queue/deliver-delayed
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:queue*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
    */
   postAdminQueueDeliverDelayed(client: MisskeyClient): Promise<PostAdminQueueDeliverDelayedResponse>;
-/**
+  /**
    * admin/queue/inbox-delayed
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:queue*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:queue*
    */
   postAdminQueueInboxDelayed(client: MisskeyClient): Promise<PostAdminQueueInboxDelayedResponse>;
-/**
+  /**
    * admin/queue/promote
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:queue*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:queue*
    */
   postAdminQueuePromote(client: MisskeyClient, request: PostAdminQueuePromoteRequest): Promise<PostAdminQueuePromoteResponse>;
-/**
+  /**
    * admin/queue/stats
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
    */
   postAdminQueueStats(client: MisskeyClient): Promise<PostAdminQueueStatsResponse>;
-/**
+  /**
    * admin/regenerate-user-token
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:regenerate-user-token*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:regenerate-user-token*
    */
   postAdminRegenerateUserToken(client: MisskeyClient, request: PostAdminRegenerateUserTokenRequest): Promise<PostAdminRegenerateUserTokenResponse>;
-/**
+  /**
    * admin/relays/add
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:relays*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:relays*
    */
   postAdminRelaysAdd(client: MisskeyClient, request: PostAdminRelaysAddRequest): Promise<PostAdminRelaysAddResponse>;
-/**
+  /**
    * admin/relays/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:relays*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:relays*
    */
   postAdminRelaysList(client: MisskeyClient): Promise<PostAdminRelaysListResponse>;
-/**
+  /**
    * admin/relays/remove
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:relays*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:relays*
    */
   postAdminRelaysRemove(client: MisskeyClient, request: PostAdminRelaysRemoveRequest): Promise<PostAdminRelaysRemoveResponse>;
-/**
+  /**
    * admin/reset-password
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:reset-password*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:reset-password*
    */
   postAdminResetPassword(client: MisskeyClient, request: PostAdminResetPasswordRequest): Promise<PostAdminResetPasswordResponse>;
-/**
+  /**
    * admin/resolve-abuse-user-report
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
    */
   postAdminResolveAbuseUserReport(client: MisskeyClient, request: PostAdminResolveAbuseUserReportRequest): Promise<PostAdminResolveAbuseUserReportResponse>;
-/**
+  /**
    * admin/roles/assign
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesAssign(client: MisskeyClient, request: PostAdminRolesAssignRequest): Promise<PostAdminRolesAssignResponse>;
-/**
+  /**
    * admin/roles/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesCreate(client: MisskeyClient, request: PostAdminRolesCreateRequest): Promise<PostAdminRolesCreateResponse>;
-/**
+  /**
    * admin/roles/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesDelete(client: MisskeyClient, request: PostAdminRolesDeleteRequest): Promise<PostAdminRolesDeleteResponse>;
-/**
+  /**
    * admin/roles/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:roles*
    */
   postAdminRolesList(client: MisskeyClient): Promise<PostAdminRolesListResponse>;
-/**
+  /**
    * admin/roles/show
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:roles*
    */
   postAdminRolesShow(client: MisskeyClient, request: PostAdminRolesShowRequest): Promise<PostAdminRolesShowResponse>;
-/**
+  /**
    * admin/roles/unassign
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesUnassign(client: MisskeyClient, request: PostAdminRolesUnassignRequest): Promise<PostAdminRolesUnassignResponse>;
-/**
+  /**
    * admin/roles/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesUpdate(client: MisskeyClient, request: PostAdminRolesUpdateRequest): Promise<PostAdminRolesUpdateResponse>;
-/**
+  /**
    * admin/roles/update-default-policies
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesUpdateDefaultPolicies(client: MisskeyClient, request: PostAdminRolesUpdateDefaultPoliciesRequest): Promise<PostAdminRolesUpdateDefaultPoliciesResponse>;
-/**
+  /**
    * admin/roles/update-inline-policies
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:roles*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:roles*
    */
   postAdminRolesUpdateInlinePolicies(client: MisskeyClient, request: PostAdminRolesUpdateInlinePoliciesRequest): Promise<PostAdminRolesUpdateInlinePoliciesResponse>;
-/**
+  /**
    * admin/roles/users
+   *
    * No description provided.
-
-**Credential required**: *No* / **Permission**: *read:admin:roles*
+   *
+   * **Credential required**: *No* / **Permission**: *read:admin:roles*
    */
   postAdminRolesUsers(client: MisskeyClient, request: PostAdminRolesUsersRequest): Promise<PostAdminRolesUsersResponse>;
-/**
+  /**
    * admin/send-email
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:send-email*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:send-email*
    */
   postAdminSendEmail(client: MisskeyClient, request: PostAdminSendEmailRequest): Promise<PostAdminSendEmailResponse>;
-/**
+  /**
    * admin/show-moderation-logs
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:show-moderation-log*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:show-moderation-log*
    */
   postAdminShowModerationLogs(client: MisskeyClient, request: PostAdminShowModerationLogsRequest): Promise<PostAdminShowModerationLogsResponse>;
-/**
+  /**
    * admin/show-user
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:show-user*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:show-user*
    */
   postAdminShowUser(client: MisskeyClient, request: PostAdminShowUserRequest): Promise<PostAdminShowUserResponse>;
-/**
+  /**
    * admin/show-user-account-move-logs
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:show-account-move-log*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:show-account-move-log*
    */
   postAdminShowUserAccountMoveLogs(client: MisskeyClient, request: PostAdminShowUserAccountMoveLogsRequest): Promise<PostAdminShowUserAccountMoveLogsResponse>;
-/**
+  /**
    * admin/show-users
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:show-user*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:show-user*
    */
   postAdminShowUsers(client: MisskeyClient, request: PostAdminShowUsersRequest): Promise<PostAdminShowUsersResponse>;
-/**
+  /**
    * admin/sso/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
    */
   postAdminSsoCreate(client: MisskeyClient, request: PostAdminSsoCreateRequest): Promise<PostAdminSsoCreateResponse>;
-/**
+  /**
    * admin/sso/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
    */
   postAdminSsoDelete(client: MisskeyClient, request: PostAdminSsoDeleteRequest): Promise<PostAdminSsoDeleteResponse>;
-/**
+  /**
    * admin/sso/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:sso*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:sso*
    */
   postAdminSsoList(client: MisskeyClient, request: PostAdminSsoListRequest): Promise<PostAdminSsoListResponse>;
-/**
+  /**
    * admin/sso/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:sso*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:sso*
    */
   postAdminSsoUpdate(client: MisskeyClient, request: PostAdminSsoUpdateRequest): Promise<PostAdminSsoUpdateResponse>;
-/**
+  /**
    * admin/suspend-user
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:suspend-user*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:suspend-user*
    */
   postAdminSuspendUser(client: MisskeyClient, request: PostAdminSuspendUserRequest): Promise<PostAdminSuspendUserResponse>;
-/**
+  /**
    * admin/system-webhook/create
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
    */
   postAdminSystemWebhookCreate(client: MisskeyClient, request: PostAdminSystemWebhookCreateRequest): Promise<PostAdminSystemWebhookCreateResponse>;
-/**
+  /**
    * admin/system-webhook/delete
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
    */
   postAdminSystemWebhookDelete(client: MisskeyClient, request: PostAdminSystemWebhookDeleteRequest): Promise<PostAdminSystemWebhookDeleteResponse>;
-/**
+  /**
    * admin/system-webhook/list
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
    */
   postAdminSystemWebhookList(client: MisskeyClient, request: PostAdminSystemWebhookListRequest): Promise<PostAdminSystemWebhookListResponse>;
-/**
+  /**
    * admin/system-webhook/show
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
    */
   postAdminSystemWebhookShow(client: MisskeyClient, request: PostAdminSystemWebhookShowRequest): Promise<PostAdminSystemWebhookShowResponse>;
-/**
+  /**
    * admin/system-webhook/update
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
    */
   postAdminSystemWebhookUpdate(client: MisskeyClient, request: PostAdminSystemWebhookUpdateRequest): Promise<PostAdminSystemWebhookUpdateResponse>;
-/**
+  /**
    * admin/unset-user-avatar
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:user-avatar*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:user-avatar*
    */
   postAdminUnsetUserAvatar(client: MisskeyClient, request: PostAdminUnsetUserAvatarRequest): Promise<PostAdminUnsetUserAvatarResponse>;
-/**
+  /**
    * admin/unset-user-banner
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:user-banner*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:user-banner*
    */
   postAdminUnsetUserBanner(client: MisskeyClient, request: PostAdminUnsetUserBannerRequest): Promise<PostAdminUnsetUserBannerResponse>;
-/**
+  /**
    * admin/unset-user-mutual-link
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:user-mutual-link*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:user-mutual-link*
    */
   postAdminUnsetUserMutualLink(client: MisskeyClient, request: PostAdminUnsetUserMutualLinkRequest): Promise<PostAdminUnsetUserMutualLinkResponse>;
-/**
+  /**
    * admin/unsuspend-user
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:unsuspend-user*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:unsuspend-user*
    */
   postAdminUnsuspendUser(client: MisskeyClient, request: PostAdminUnsuspendUserRequest): Promise<PostAdminUnsuspendUserResponse>;
-/**
+  /**
    * admin/update-abuse-user-report
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
    */
   postAdminUpdateAbuseUserReport(client: MisskeyClient, request: PostAdminUpdateAbuseUserReportRequest): Promise<PostAdminUpdateAbuseUserReportResponse>;
-/**
+  /**
    * admin/update-meta
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:meta*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:meta*
    */
   postAdminUpdateMeta(client: MisskeyClient, request: PostAdminUpdateMetaRequest): Promise<PostAdminUpdateMetaResponse>;
-/**
+  /**
    * admin/update-proxy-account
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:account*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:account*
    */
   postAdminUpdateProxyAccount(client: MisskeyClient, request: PostAdminUpdateProxyAccountRequest): Promise<PostAdminUpdateProxyAccountResponse>;
-/**
+  /**
    * admin/update-user-name
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:user-name*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:user-name*
    */
   postAdminUpdateUserName(client: MisskeyClient, request: PostAdminUpdateUserNameRequest): Promise<PostAdminUpdateUserNameResponse>;
-/**
+  /**
    * admin/update-user-note
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:admin:user-note*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:admin:user-note*
    */
   postAdminUpdateUserNote(client: MisskeyClient, request: PostAdminUpdateUserNoteRequest): Promise<PostAdminUpdateUserNoteResponse>;
-/**
+  /**
    * v2/admin/emoji/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:admin:emoji*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
    */
   postV2AdminEmojiList(client: MisskeyClient, request: PostV2adminEmojiListRequest): Promise<PostV2adminEmojiListResponse>;
 }

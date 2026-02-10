@@ -32,7 +32,6 @@ import { RoleModule } from './Role';
 import { ListsModule } from './Lists';
 import { ChatModule } from './Chat';
 import { GroupsModule } from './Groups';
-
 export class MisskeyClient {
   constructor(baseUrl: string, token?: string);
   readonly baseUrl: string;

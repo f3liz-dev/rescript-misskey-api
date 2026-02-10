@@ -52,41 +52,46 @@ export interface PostMiauthGenTokenResponse {
 }
 
 export interface AuthModule {
-/**
+  /**
    * auth/accept
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postAuthAccept(client: MisskeyClient, request: PostAuthAcceptRequest): Promise<PostAuthAcceptResponse>;
-/**
+  /**
    * auth/session/generate
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAuthSessionGenerate(client: MisskeyClient, request: PostAuthSessionGenerateRequest): Promise<PostAuthSessionGenerateResponse>;
-/**
+  /**
    * auth/session/show
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAuthSessionShow(client: MisskeyClient, request: PostAuthSessionShowRequest): Promise<PostAuthSessionShowResponse>;
-/**
+  /**
    * auth/session/userkey
+   *
    * No description provided.
-
-**Credential required**: *No*
+   *
+   * **Credential required**: *No*
    */
   postAuthSessionUserkey(client: MisskeyClient, request: PostAuthSessionUserkeyRequest): Promise<PostAuthSessionUserkeyResponse>;
-/**
+  /**
    * miauth/gen-token
+   *
    * No description provided.
-
-**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
-**Credential required**: *Yes*
+   *
+   * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+   * **Credential required**: *Yes*
    */
   postMiauthGenToken(client: MisskeyClient, request: PostMiauthGenTokenRequest): Promise<PostMiauthGenTokenResponse>;
 }

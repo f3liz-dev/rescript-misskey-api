@@ -40,12 +40,12 @@ type postAntennasCreateResponse = MisskeyIoComponentSchemas.Antenna.t
 let postAntennasCreateResponseSchema = MisskeyIoComponentSchemas.Antenna.schema
 
 /**
- * antennas/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+antennas/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postAntennasCreate = (~body: postAntennasCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasCreateRequestSchema)
   fetch(
@@ -70,12 +70,12 @@ let postAntennasDeleteRequestSchema = S.object(s => {
 type postAntennasDeleteResponse = unit
 
 /**
- * antennas/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+antennas/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postAntennasDelete = (~body: postAntennasDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasDeleteRequestSchema)
   fetch(
@@ -94,12 +94,12 @@ type postAntennasListResponse = array<MisskeyIoComponentSchemas.Antenna.t>
 let postAntennasListResponseSchema = S.array(MisskeyIoComponentSchemas.Antenna.schema)
 
 /**
- * antennas/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+antennas/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postAntennasList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasListResponse> => {
 
   fetch(
@@ -136,12 +136,12 @@ type postAntennasNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
 let postAntennasNotesResponseSchema = S.array(MisskeyIoComponentSchemas.Note.schema)
 
 /**
- * antennas/notes
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+antennas/notes
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postAntennasNotes = (~body: postAntennasNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasNotesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasNotesRequestSchema)
   fetch(
@@ -168,12 +168,12 @@ type postAntennasShowResponse = MisskeyIoComponentSchemas.Antenna.t
 let postAntennasShowResponseSchema = MisskeyIoComponentSchemas.Antenna.schema
 
 /**
- * antennas/show
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+antennas/show
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postAntennasShow = (~body: postAntennasShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasShowRequestSchema)
   fetch(
@@ -224,12 +224,12 @@ type postAntennasUpdateResponse = MisskeyIoComponentSchemas.Antenna.t
 let postAntennasUpdateResponseSchema = MisskeyIoComponentSchemas.Antenna.schema
 
 /**
- * antennas/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+antennas/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postAntennasUpdate = (~body: postAntennasUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasUpdateRequestSchema)
   fetch(

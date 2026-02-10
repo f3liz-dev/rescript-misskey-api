@@ -19,32 +19,36 @@ export type PostNotificationsMarkAllAsReadResponse = void;
 export type PostNotificationsTestNotificationResponse = void;
 
 export interface NotificationsModule {
-/**
+  /**
    * notifications/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notifications*
    */
   postNotificationsCreate(client: MisskeyClient, request: PostNotificationsCreateRequest): Promise<PostNotificationsCreateResponse>;
-/**
+  /**
    * notifications/flush
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notifications*
    */
   postNotificationsFlush(client: MisskeyClient): Promise<PostNotificationsFlushResponse>;
-/**
+  /**
    * notifications/mark-all-as-read
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notifications*
    */
   postNotificationsMarkAllAsRead(client: MisskeyClient): Promise<PostNotificationsMarkAllAsReadResponse>;
-/**
+  /**
    * notifications/test-notification
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:notifications*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:notifications*
    */
   postNotificationsTestNotification(client: MisskeyClient): Promise<PostNotificationsTestNotificationResponse>;
 }

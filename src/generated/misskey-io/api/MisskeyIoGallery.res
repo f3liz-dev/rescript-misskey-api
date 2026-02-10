@@ -20,12 +20,12 @@ type postGalleryFeaturedResponse = array<MisskeyIoComponentSchemas.GalleryPost.t
 let postGalleryFeaturedResponseSchema = S.array(MisskeyIoComponentSchemas.GalleryPost.schema)
 
 /**
- * gallery/featured
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/featured
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryFeatured = (~body: postGalleryFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryFeaturedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryFeaturedRequestSchema)
   fetch(
@@ -44,12 +44,12 @@ type postGalleryPopularResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
 let postGalleryPopularResponseSchema = S.array(MisskeyIoComponentSchemas.GalleryPost.schema)
 
 /**
- * gallery/popular
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/popular
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryPopular = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPopularResponse> => {
 
   fetch(
@@ -80,12 +80,12 @@ type postGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
 let postGalleryPostsResponseSchema = S.array(MisskeyIoComponentSchemas.GalleryPost.schema)
 
 /**
- * gallery/posts
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/posts
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryPosts = (~body: postGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsRequestSchema)
   fetch(
@@ -118,12 +118,12 @@ type postGalleryPostsCreateResponse = MisskeyIoComponentSchemas.GalleryPost.t
 let postGalleryPostsCreateResponseSchema = MisskeyIoComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery*
- */
+gallery/posts/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery*
+*/
 let postGalleryPostsCreate = (~body: postGalleryPostsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsCreateRequestSchema)
   fetch(
@@ -148,12 +148,12 @@ let postGalleryPostsDeleteRequestSchema = S.object(s => {
 type postGalleryPostsDeleteResponse = unit
 
 /**
- * gallery/posts/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery*
- */
+gallery/posts/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery*
+*/
 let postGalleryPostsDelete = (~body: postGalleryPostsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsDeleteRequestSchema)
   fetch(
@@ -178,12 +178,12 @@ let postGalleryPostsLikeRequestSchema = S.object(s => {
 type postGalleryPostsLikeResponse = unit
 
 /**
- * gallery/posts/like
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery-likes*
- */
+gallery/posts/like
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery-likes*
+*/
 let postGalleryPostsLike = (~body: postGalleryPostsLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsLikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsLikeRequestSchema)
   fetch(
@@ -210,12 +210,12 @@ type postGalleryPostsShowResponse = MisskeyIoComponentSchemas.GalleryPost.t
 let postGalleryPostsShowResponseSchema = MisskeyIoComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+gallery/posts/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGalleryPostsShow = (~body: postGalleryPostsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsShowRequestSchema)
   fetch(
@@ -240,12 +240,12 @@ let postGalleryPostsUnlikeRequestSchema = S.object(s => {
 type postGalleryPostsUnlikeResponse = unit
 
 /**
- * gallery/posts/unlike
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery-likes*
- */
+gallery/posts/unlike
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery-likes*
+*/
 let postGalleryPostsUnlike = (~body: postGalleryPostsUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsUnlikeResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsUnlikeRequestSchema)
   fetch(
@@ -280,12 +280,12 @@ type postGalleryPostsUpdateResponse = MisskeyIoComponentSchemas.GalleryPost.t
 let postGalleryPostsUpdateResponseSchema = MisskeyIoComponentSchemas.GalleryPost.schema
 
 /**
- * gallery/posts/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:gallery*
- */
+gallery/posts/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:gallery*
+*/
 let postGalleryPostsUpdate = (~body: postGalleryPostsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsUpdateRequestSchema)
   fetch(

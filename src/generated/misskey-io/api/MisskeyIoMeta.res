@@ -246,12 +246,12 @@ let postAdminMetaResponseSchema = S.object(s => {
   })
 
 /**
- * admin/meta
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:admin:meta*
- */
+admin/meta
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:admin:meta*
+*/
 let postAdminMeta = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminMetaResponse> => {
 
   fetch(
@@ -278,12 +278,12 @@ type postAnnouncementResponse = MisskeyIoComponentSchemas.Announcement.t
 let postAnnouncementResponseSchema = MisskeyIoComponentSchemas.Announcement.schema
 
 /**
- * announcement
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+announcement
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAnnouncement = (~body: postAnnouncementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementRequestSchema)
   fetch(
@@ -318,12 +318,12 @@ type postAnnouncementsResponse = array<MisskeyIoComponentSchemas.Announcement.t>
 let postAnnouncementsResponseSchema = S.array(MisskeyIoComponentSchemas.Announcement.schema)
 
 /**
- * announcements
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+announcements
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAnnouncements = (~body: postAnnouncementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsRequestSchema)
   fetch(
@@ -350,12 +350,12 @@ type postAnnouncementsShowResponse = MisskeyIoComponentSchemas.Announcement.t
 let postAnnouncementsShowResponseSchema = MisskeyIoComponentSchemas.Announcement.schema
 
 /**
- * announcements/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+announcements/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postAnnouncementsShow = (~body: postAnnouncementsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsShowRequestSchema)
   fetch(
@@ -382,12 +382,12 @@ type getEmojiResponse = MisskeyIoComponentSchemas.EmojiDetailed.t
 let getEmojiResponseSchema = MisskeyIoComponentSchemas.EmojiDetailed.schema
 
 /**
- * emoji
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emoji
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getEmoji = (~body: getEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojiResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getEmojiRequestSchema)
   fetch(
@@ -414,12 +414,12 @@ type postEmojiResponse = MisskeyIoComponentSchemas.EmojiDetailed.t
 let postEmojiResponseSchema = MisskeyIoComponentSchemas.EmojiDetailed.schema
 
 /**
- * emoji
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emoji
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEmoji = (~body: postEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojiResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postEmojiRequestSchema)
   fetch(
@@ -442,12 +442,12 @@ let getEmojisResponseSchema = S.object(s => {
   })
 
 /**
- * emojis
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emojis
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojisResponse> => {
 
   fetch(
@@ -470,12 +470,12 @@ let postEmojisResponseSchema = S.object(s => {
   })
 
 /**
- * emojis
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+emojis
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojisResponse> => {
 
   fetch(
@@ -520,12 +520,12 @@ let postEndpointResponse_1Schema = S.object(s => {
 let postEndpointResponseSchema = S.nullableAsOption(postEndpointResponse_1Schema)
 
 /**
- * endpoint
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+endpoint
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEndpoint = (~body: postEndpointRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEndpointResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postEndpointRequestSchema)
   fetch(
@@ -544,12 +544,12 @@ type postEndpointsResponse = array<string>
 let postEndpointsResponseSchema = S.array(S.string)
 
 /**
- * endpoints
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+endpoints
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postEndpoints = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEndpointsResponse> => {
 
   fetch(
@@ -584,13 +584,13 @@ let postFetchExternalResourcesResponseSchema = S.object(s => {
   })
 
 /**
- * fetch-external-resources
- *
- * No description provided.
- *
- * **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
- * **Credential required**: *Yes*
- */
+fetch-external-resources
+
+No description provided.
+
+**Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
+**Credential required**: *Yes*
+*/
 let postFetchExternalResources = (~body: postFetchExternalResourcesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFetchExternalResourcesResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFetchExternalResourcesRequestSchema)
   fetch(
@@ -733,12 +733,12 @@ let getFetchRssResponseSchema = S.object(s => {
   })
 
 /**
- * fetch-rss
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+fetch-rss
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getFetchRss = (~body: getFetchRssRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFetchRssResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFetchRssRequestSchema)
   fetch(
@@ -881,12 +881,12 @@ let postFetchRssResponseSchema = S.object(s => {
   })
 
 /**
- * fetch-rss
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+fetch-rss
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postFetchRss = (~body: postFetchRssRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFetchRssResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFetchRssRequestSchema)
   fetch(
@@ -909,12 +909,12 @@ let getGetOnlineUsersCountResponseSchema = S.object(s => {
   })
 
 /**
- * get-online-users-count
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+get-online-users-count
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getGetOnlineUsersCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getGetOnlineUsersCountResponse> => {
 
   fetch(
@@ -937,12 +937,12 @@ let postGetOnlineUsersCountResponseSchema = S.object(s => {
   })
 
 /**
- * get-online-users-count
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+get-online-users-count
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postGetOnlineUsersCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGetOnlineUsersCountResponse> => {
 
   fetch(
@@ -961,12 +961,12 @@ type postInviteCreateResponse = MisskeyIoComponentSchemas.InviteCode.t
 let postInviteCreateResponseSchema = MisskeyIoComponentSchemas.InviteCode.schema
 
 /**
- * invite/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
- */
+invite/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:invite-codes*
+*/
 let postInviteCreate = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteCreateResponse> => {
 
   fetch(
@@ -991,12 +991,12 @@ let postInviteDeleteRequestSchema = S.object(s => {
 type postInviteDeleteResponse = unit
 
 /**
- * invite/delete
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:invite-codes*
- */
+invite/delete
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:invite-codes*
+*/
 let postInviteDelete = (~body: postInviteDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteDeleteResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postInviteDeleteRequestSchema)
   fetch(
@@ -1019,12 +1019,12 @@ let postInviteLimitResponseSchema = S.object(s => {
   })
 
 /**
- * invite/limit
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
- */
+invite/limit
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:invite-codes*
+*/
 let postInviteLimit = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteLimitResponse> => {
 
   fetch(
@@ -1055,12 +1055,12 @@ type postInviteListResponse = array<MisskeyIoComponentSchemas.InviteCode.t>
 let postInviteListResponseSchema = S.array(MisskeyIoComponentSchemas.InviteCode.schema)
 
 /**
- * invite/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:invite-codes*
- */
+invite/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:invite-codes*
+*/
 let postInviteList = (~body: postInviteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postInviteListRequestSchema)
   fetch(
@@ -1087,12 +1087,12 @@ type getMetaResponse = dict<JSON.t>
 let getMetaResponseSchema = S.dict(S.json)
 
 /**
- * meta
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+meta
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getMeta = (~body: getMetaRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getMetaResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getMetaRequestSchema)
   fetch(
@@ -1119,12 +1119,12 @@ type postMetaResponse = dict<JSON.t>
 let postMetaResponseSchema = S.dict(S.json)
 
 /**
- * meta
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+meta
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postMeta = (~body: postMetaRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMetaResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMetaRequestSchema)
   fetch(
@@ -1147,12 +1147,12 @@ let postPingResponseSchema = S.object(s => {
   })
 
 /**
- * ping
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+ping
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postPing = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPingResponse> => {
 
   fetch(
@@ -1187,12 +1187,12 @@ let getStatsResponseSchema = S.object(s => {
   })
 
 /**
- * stats
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+stats
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let getStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getStatsResponse> => {
 
   fetch(
@@ -1227,12 +1227,12 @@ let postStatsResponseSchema = S.object(s => {
   })
 
 /**
- * stats
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+stats
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postStats = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postStatsResponse> => {
 
   fetch(

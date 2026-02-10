@@ -140,123 +140,140 @@ export interface PostFollowingUpdateRequest {
 export type PostFollowingUpdateResponse = ComponentSchemas.UserLite;
 
 export interface FollowingModule {
-/**
+  /**
    * following/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingCreate(client: MisskeyClient, request: PostFollowingCreateRequest): Promise<PostFollowingCreateResponse>;
-/**
+  /**
    * following/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingDelete(client: MisskeyClient, request: PostFollowingDeleteRequest): Promise<PostFollowingDeleteResponse>;
-/**
+  /**
    * following/invalidate
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingInvalidate(client: MisskeyClient, request: PostFollowingInvalidateRequest): Promise<PostFollowingInvalidateResponse>;
-/**
+  /**
    * following/requests/accept
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingRequestsAccept(client: MisskeyClient, request: PostFollowingRequestsAcceptRequest): Promise<PostFollowingRequestsAcceptResponse>;
-/**
+  /**
    * following/requests/cancel
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingRequestsCancel(client: MisskeyClient, request: PostFollowingRequestsCancelRequest): Promise<PostFollowingRequestsCancelResponse>;
-/**
+  /**
    * following/requests/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:following*
    */
   postFollowingRequestsList(client: MisskeyClient, request: PostFollowingRequestsListRequest): Promise<PostFollowingRequestsListResponse>;
-/**
+  /**
    * following/requests/reject
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingRequestsReject(client: MisskeyClient, request: PostFollowingRequestsRejectRequest): Promise<PostFollowingRequestsRejectResponse>;
-/**
+  /**
    * following/requests/sent
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:following*
    */
   postFollowingRequestsSent(client: MisskeyClient, request: PostFollowingRequestsSentRequest): Promise<PostFollowingRequestsSentResponse>;
-/**
+  /**
    * following/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingUpdate(client: MisskeyClient, request: PostFollowingUpdateRequest): Promise<PostFollowingUpdateResponse>;
-/**
+  /**
    * following/update-all
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingUpdateAll(client: MisskeyClient, request: PostFollowingUpdateAllRequest): Promise<PostFollowingUpdateAllResponse>;
-/**
+  /**
    * following/create
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingCreate(client: MisskeyClient, request: PostFollowingCreateRequest): Promise<PostFollowingCreateResponse>;
-/**
+  /**
    * following/delete
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingDelete(client: MisskeyClient, request: PostFollowingDeleteRequest): Promise<PostFollowingDeleteResponse>;
-/**
+  /**
    * following/invalidate
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingInvalidate(client: MisskeyClient, request: PostFollowingInvalidateRequest): Promise<PostFollowingInvalidateResponse>;
-/**
+  /**
    * following/requests/cancel
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingRequestsCancel(client: MisskeyClient, request: PostFollowingRequestsCancelRequest): Promise<PostFollowingRequestsCancelResponse>;
-/**
+  /**
    * following/requests/list
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:following*
    */
   postFollowingRequestsList(client: MisskeyClient, request: PostFollowingRequestsListRequest): Promise<PostFollowingRequestsListResponse>;
-/**
+  /**
    * following/requests/sent
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *read:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *read:following*
    */
   postFollowingRequestsSent(client: MisskeyClient, request: PostFollowingRequestsSentRequest): Promise<PostFollowingRequestsSentResponse>;
-/**
+  /**
    * following/update
+   *
    * No description provided.
-
-**Credential required**: *Yes* / **Permission**: *write:following*
+   *
+   * **Credential required**: *Yes* / **Permission**: *write:following*
    */
   postFollowingUpdate(client: MisskeyClient, request: PostFollowingUpdateRequest): Promise<PostFollowingUpdateResponse>;
 }

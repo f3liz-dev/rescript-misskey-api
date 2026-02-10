@@ -28,12 +28,12 @@ type postChannelsCreateResponse = KokonectLinkComponentSchemas.Channel.t
 let postChannelsCreateResponseSchema = KokonectLinkComponentSchemas.Channel.schema
 
 /**
- * channels/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsCreate = (~body: postChannelsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsCreateRequestSchema)
   fetch(
@@ -68,12 +68,12 @@ type postChannelsFollowedResponse = array<KokonectLinkComponentSchemas.Channel.t
 let postChannelsFollowedResponseSchema = S.array(KokonectLinkComponentSchemas.Channel.schema)
 
 /**
- * channels/followed
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:channels*
- */
+channels/followed
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:channels*
+*/
 let postChannelsFollowed = (~body: postChannelsFollowedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFollowedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFollowedRequestSchema)
   fetch(
@@ -108,12 +108,12 @@ type postChannelsOwnedResponse = array<KokonectLinkComponentSchemas.Channel.t>
 let postChannelsOwnedResponseSchema = S.array(KokonectLinkComponentSchemas.Channel.schema)
 
 /**
- * channels/owned
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:channels*
- */
+channels/owned
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:channels*
+*/
 let postChannelsOwned = (~body: postChannelsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsOwnedResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsOwnedRequestSchema)
   fetch(
@@ -152,12 +152,12 @@ type postChannelsSearchResponse = array<KokonectLinkComponentSchemas.Channel.t>
 let postChannelsSearchResponseSchema = S.array(KokonectLinkComponentSchemas.Channel.schema)
 
 /**
- * channels/search
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/search
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsSearch = (~body: postChannelsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsSearchResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsSearchRequestSchema)
   fetch(
@@ -184,12 +184,12 @@ type postChannelsShowResponse = KokonectLinkComponentSchemas.Channel.t
 let postChannelsShowResponseSchema = KokonectLinkComponentSchemas.Channel.schema
 
 /**
- * channels/show
- *
- * No description provided.
- *
- * **Credential required**: *No*
- */
+channels/show
+
+No description provided.
+
+**Credential required**: *No*
+*/
 let postChannelsShow = (~body: postChannelsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsShowRequestSchema)
   fetch(
@@ -232,12 +232,12 @@ type postChannelsUpdateResponse = KokonectLinkComponentSchemas.Channel.t
 let postChannelsUpdateResponseSchema = KokonectLinkComponentSchemas.Channel.schema
 
 /**
- * channels/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:channels*
- */
+channels/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:channels*
+*/
 let postChannelsUpdate = (~body: postChannelsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUpdateRequestSchema)
   fetch(

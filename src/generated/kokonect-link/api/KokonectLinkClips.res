@@ -22,12 +22,12 @@ type postClipsCreateResponse = KokonectLinkComponentSchemas.Clip.t
 let postClipsCreateResponseSchema = KokonectLinkComponentSchemas.Clip.schema
 
 /**
- * clips/create
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/create
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsCreate = (~body: postClipsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsCreateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsCreateRequestSchema)
   fetch(
@@ -62,12 +62,12 @@ type postClipsListResponse = array<KokonectLinkComponentSchemas.Clip.t>
 let postClipsListResponseSchema = S.array(KokonectLinkComponentSchemas.Clip.schema)
 
 /**
- * clips/list
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *read:account*
- */
+clips/list
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *read:account*
+*/
 let postClipsList = (~body: postClipsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsListResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsListRequestSchema)
   fetch(
@@ -94,12 +94,12 @@ type postClipsShowResponse = KokonectLinkComponentSchemas.Clip.t
 let postClipsShowResponseSchema = KokonectLinkComponentSchemas.Clip.schema
 
 /**
- * clips/show
- *
- * No description provided.
- *
- * **Credential required**: *No* / **Permission**: *read:account*
- */
+clips/show
+
+No description provided.
+
+**Credential required**: *No* / **Permission**: *read:account*
+*/
 let postClipsShow = (~body: postClipsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsShowResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsShowRequestSchema)
   fetch(
@@ -132,12 +132,12 @@ type postClipsUpdateResponse = KokonectLinkComponentSchemas.Clip.t
 let postClipsUpdateResponseSchema = KokonectLinkComponentSchemas.Clip.schema
 
 /**
- * clips/update
- *
- * No description provided.
- *
- * **Credential required**: *Yes* / **Permission**: *write:account*
- */
+clips/update
+
+No description provided.
+
+**Credential required**: *Yes* / **Permission**: *write:account*
+*/
 let postClipsUpdate = (~body: postClipsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsUpdateResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsUpdateRequestSchema)
   fetch(

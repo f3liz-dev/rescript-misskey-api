@@ -8,12 +8,12 @@ S.enableJson()
 type postResetDbResponse = unit
 
 /**
- * reset-db
- *
- * Only available when running with <code>NODE_ENV=testing</code>. Reset the database and flush Redis.
- *
- * **Credential required**: *No*
- */
+reset-db
+
+Only available when running with <code>NODE_ENV=testing</code>. Reset the database and flush Redis.
+
+**Credential required**: *No*
+*/
 let postResetDb = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetDbResponse> => {
 
   fetch(
@@ -60,12 +60,12 @@ let postTestResponseSchema = S.object(s => {
   })
 
 /**
- * test
- *
- * Endpoint for testing input validation.
- *
- * **Credential required**: *No*
- */
+test
+
+Endpoint for testing input validation.
+
+**Credential required**: *No*
+*/
 let postTest = (~body: postTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postTestResponse> => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postTestRequestSchema)
   fetch(
