@@ -1,6 +1,6 @@
 {
   "name": "@f3liz/rescript-misskey-api",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "ReScript bindings for Misskey API using OpenAPI code generation",
   "keywords": [
     "misskey",
@@ -22,16 +22,8 @@
       "import": "./lib/ts/Misskey.js",
       "default": "./lib/ts/Misskey.js"
     },
-    "./rescript": {
-      "default": "./lib/es6/src/Misskey.mjs"
-    },
-    "./rescript/cherrypick": {
-      "default": "./lib/es6/src/Cherrypick.mjs"
-    },
-    "./generated/*": {
-      "types": "./src/generated/*/wrapper/index.d.ts",
-      "import": "./src/generated/*/wrapper/index.mjs"
-    }
+    "./lib/*": "./lib/*",
+    "./src/*": "./src/*"
   },
   "repository": {
     "type": "git",
