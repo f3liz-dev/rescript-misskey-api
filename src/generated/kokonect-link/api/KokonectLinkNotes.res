@@ -251,7 +251,7 @@ let postNotesCreateRequest_2Schema = S.object(s => {
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
     start: s.fieldOr("start", S.nullableAsOption(S.int), None),
     end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
-    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+    metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesCreateRequest_1Schema = S.object(s => {
@@ -396,7 +396,7 @@ let postNotesDraftsCreateRequest_2Schema = S.object(s => {
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
     start: s.fieldOr("start", S.nullableAsOption(S.int), None),
     end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
-    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+    metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesDraftsCreateRequest_1Schema = S.object(s => {
@@ -587,7 +587,7 @@ let postNotesDraftsUpdateRequest_2Schema = S.object(s => {
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
     start: s.fieldOr("start", S.nullableAsOption(S.int), None),
     end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
-    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+    metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesDraftsUpdateRequest_1Schema = S.object(s => {
@@ -1453,7 +1453,7 @@ let postNotesUpdateRequest_2Schema = S.object(s => {
     title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
     start: s.fieldOr("start", S.nullableAsOption(S.int), None),
     end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
-    metadata: s.fieldOr("metadata", S.nullableAsOption(S.dict(S.json)), None),
+    metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesUpdateRequest_1Schema = S.object(s => {

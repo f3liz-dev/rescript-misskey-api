@@ -18,9 +18,9 @@ module ChatRoomMembership = {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     userId: s.field("userId", S.string),
-    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+    user: s.field("user", S.option(S.dict(S.json))),
     roomId: s.field("roomId", S.string),
-    room: s.fieldOr("room", S.nullableAsOption(S.dict(S.json)), None),
+    room: s.field("room", S.option(S.dict(S.json))),
   })
 }
 
@@ -308,7 +308,7 @@ module ChatMessageLite = {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     fromUserId: s.field("fromUserId", S.string),
-    fromUser: s.fieldOr("fromUser", S.nullableAsOption(S.dict(S.json)), None),
+    fromUser: s.field("fromUser", S.option(S.dict(S.json))),
     toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.string), None),
     toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.string), None),
     text: s.fieldOr("text", S.nullableAsOption(S.string), None),
@@ -378,9 +378,9 @@ module AbuseReportNotificationRecipient = {
     name: s.field("name", S.string),
     method_: s.field("method", S.string),
     userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+    user: s.field("user", S.option(S.dict(S.json))),
     systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
-    systemWebhook: s.fieldOr("systemWebhook", S.nullableAsOption(S.dict(S.json)), None),
+    systemWebhook: s.field("systemWebhook", S.option(S.dict(S.json))),
   })
 }
 
@@ -588,21 +588,21 @@ module MeDetailedOnly = {
   test: option<dict<JSON.t>>,
 }
   let meDetailedOnly_1Schema = S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+    note: s.field("note", S.option(S.dict(S.json))),
+    follow: s.field("follow", S.option(S.dict(S.json))),
+    mention: s.field("mention", S.option(S.dict(S.json))),
+    reply: s.field("reply", S.option(S.dict(S.json))),
+    renote: s.field("renote", S.option(S.dict(S.json))),
+    quote: s.field("quote", S.option(S.dict(S.json))),
+    reaction: s.field("reaction", S.option(S.dict(S.json))),
+    pollEnded: s.field("pollEnded", S.option(S.dict(S.json))),
+    receiveFollowRequest: s.field("receiveFollowRequest", S.option(S.dict(S.json))),
+    followRequestAccepted: s.field("followRequestAccepted", S.option(S.dict(S.json))),
+    roleAssigned: s.field("roleAssigned", S.option(S.dict(S.json))),
+    chatRoomInvitationReceived: s.field("chatRoomInvitationReceived", S.option(S.dict(S.json))),
+    achievementEarned: s.field("achievementEarned", S.option(S.dict(S.json))),
+    app: s.field("app", S.option(S.dict(S.json))),
+    test: s.field("test", S.option(S.dict(S.json))),
   })
   type t = {
   avatarId: option<string>,
@@ -867,7 +867,7 @@ module Note = {
     files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
     tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
     poll: s.fieldOr("poll", S.nullableAsOption(note_1Schema), None),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
     channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
     channel: s.fieldOr("channel", S.nullableAsOption(note_2Schema), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
@@ -1152,9 +1152,9 @@ module MetaLite = {
 }
   let metaLite_2Schema = S.object(s => {
     options: s.field("options", metaLite_3Schema),
-    vueIntegration: s.fieldOr("vueIntegration", S.nullableAsOption(S.dict(S.json)), None),
-    browserTracingIntegration: s.fieldOr("browserTracingIntegration", S.nullableAsOption(S.dict(S.json)), None),
-    replayIntegration: s.fieldOr("replayIntegration", S.nullableAsOption(S.dict(S.json)), None),
+    vueIntegration: s.field("vueIntegration", S.option(S.dict(S.json))),
+    browserTracingIntegration: s.field("browserTracingIntegration", S.option(S.dict(S.json))),
+    replayIntegration: s.field("replayIntegration", S.option(S.dict(S.json))),
   })
   type metaLite_1 = {
   id: string,
@@ -2052,8 +2052,8 @@ module Following = {
     createdAt: s.field("createdAt", S.string),
     followeeId: s.field("followeeId", S.string),
     followerId: s.field("followerId", S.string),
-    followee: s.fieldOr("followee", S.nullableAsOption(S.dict(S.json)), None),
-    follower: s.fieldOr("follower", S.nullableAsOption(S.dict(S.json)), None),
+    followee: s.field("followee", S.option(S.dict(S.json))),
+    follower: s.field("follower", S.option(S.dict(S.json))),
   })
 }
 

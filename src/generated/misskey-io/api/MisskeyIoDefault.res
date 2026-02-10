@@ -55,7 +55,7 @@ type getBubbleGameRankingResponse = array<getBubbleGameRankingResponse_1>
 let getBubbleGameRankingResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     score: s.field("score", S.int),
-    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+    user: s.field("user", S.option(S.dict(S.json))),
   })
 
 let getBubbleGameRankingResponseSchema = S.array(getBubbleGameRankingResponse_1Schema)
@@ -99,7 +99,7 @@ type postBubbleGameRankingResponse = array<postBubbleGameRankingResponse_1>
 let postBubbleGameRankingResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
     score: s.field("score", S.int),
-    user: s.fieldOr("user", S.nullableAsOption(S.dict(S.json)), None),
+    user: s.field("user", S.option(S.dict(S.json))),
   })
 
 let postBubbleGameRankingResponseSchema = S.array(postBubbleGameRankingResponse_1Schema)

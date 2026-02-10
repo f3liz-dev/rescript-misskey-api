@@ -223,7 +223,7 @@ module NoteHistory = {
     files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
     visibility: s.field("visibility", S.string),
     visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
   })
 }
 
@@ -319,7 +319,7 @@ module ChatMessageLiteForRoom = {
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
     reactions: s.field("reactions", S.array(chatMessageLiteForRoom_1Schema)),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
   })
 }
 
@@ -350,7 +350,7 @@ module ChatMessageLiteFor1on1 = {
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
     reactions: s.field("reactions", S.array(chatMessageLiteFor1on1_1Schema)),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
   })
 }
 
@@ -387,7 +387,7 @@ module ChatMessageLite = {
     fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
     file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
     reactions: s.field("reactions", S.array(chatMessageLite_1Schema)),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
   })
 }
 
@@ -430,7 +430,7 @@ module ChatMessage = {
     file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
     isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
     reactions: s.field("reactions", S.array(chatMessage_1Schema)),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
   })
 }
 
@@ -656,9 +656,9 @@ module MetaLite = {
 }
   let metaLite_2Schema = S.object(s => {
     options: s.field("options", metaLite_3Schema),
-    vueIntegration: s.fieldOr("vueIntegration", S.nullableAsOption(S.dict(S.json)), None),
-    browserTracingIntegration: s.fieldOr("browserTracingIntegration", S.nullableAsOption(S.dict(S.json)), None),
-    replayIntegration: s.fieldOr("replayIntegration", S.nullableAsOption(S.dict(S.json)), None),
+    vueIntegration: s.field("vueIntegration", S.option(S.dict(S.json))),
+    browserTracingIntegration: s.field("browserTracingIntegration", S.option(S.dict(S.json))),
+    replayIntegration: s.field("replayIntegration", S.option(S.dict(S.json))),
   })
   type metaLite_1 = {
   id: string,
@@ -1557,8 +1557,8 @@ module Note = {
     files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
     tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
     poll: s.fieldOr("poll", S.nullableAsOption(note_1Schema), None),
-    emojis: s.fieldOr("emojis", S.nullableAsOption(S.dict(S.json)), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.dict(S.json)), None),
+    emojis: s.field("emojis", S.option(S.dict(S.json))),
+    event: s.field("event", S.option(S.dict(S.json))),
     channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
     channel: s.fieldOr("channel", S.nullableAsOption(note_2Schema), None),
     localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
@@ -2028,7 +2028,7 @@ module NoteDraft = {
     files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
     hashtag: s.field("hashtag", S.nullableAsOption(S.string)),
     poll: s.field("poll", S.nullableAsOption(noteDraft_1Schema)),
-    event: s.fieldOr("event", S.nullableAsOption(S.dict(S.json)), None),
+    event: s.field("event", S.option(S.dict(S.json))),
     channelId: s.field("channelId", S.nullableAsOption(S.string)),
     channel: s.fieldOr("channel", S.nullableAsOption(noteDraft_2Schema), None),
     localOnly: s.field("localOnly", S.bool),
@@ -2201,24 +2201,24 @@ module MeDetailedOnly = {
   test: option<dict<JSON.t>>,
 }
   let meDetailedOnly_1Schema = S.object(s => {
-    note: s.fieldOr("note", S.nullableAsOption(S.dict(S.json)), None),
-    follow: s.fieldOr("follow", S.nullableAsOption(S.dict(S.json)), None),
-    mention: s.fieldOr("mention", S.nullableAsOption(S.dict(S.json)), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.dict(S.json)), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.dict(S.json)), None),
-    quote: s.fieldOr("quote", S.nullableAsOption(S.dict(S.json)), None),
-    reaction: s.fieldOr("reaction", S.nullableAsOption(S.dict(S.json)), None),
-    pollEnded: s.fieldOr("pollEnded", S.nullableAsOption(S.dict(S.json)), None),
-    scheduledNotePosted: s.fieldOr("scheduledNotePosted", S.nullableAsOption(S.dict(S.json)), None),
-    scheduledNotePostFailed: s.fieldOr("scheduledNotePostFailed", S.nullableAsOption(S.dict(S.json)), None),
-    receiveFollowRequest: s.fieldOr("receiveFollowRequest", S.nullableAsOption(S.dict(S.json)), None),
-    followRequestAccepted: s.fieldOr("followRequestAccepted", S.nullableAsOption(S.dict(S.json)), None),
-    groupInvited: s.fieldOr("groupInvited", S.nullableAsOption(S.dict(S.json)), None),
-    roleAssigned: s.fieldOr("roleAssigned", S.nullableAsOption(S.dict(S.json)), None),
-    chatRoomInvitationReceived: s.fieldOr("chatRoomInvitationReceived", S.nullableAsOption(S.dict(S.json)), None),
-    achievementEarned: s.fieldOr("achievementEarned", S.nullableAsOption(S.dict(S.json)), None),
-    app: s.fieldOr("app", S.nullableAsOption(S.dict(S.json)), None),
-    test: s.fieldOr("test", S.nullableAsOption(S.dict(S.json)), None),
+    note: s.field("note", S.option(S.dict(S.json))),
+    follow: s.field("follow", S.option(S.dict(S.json))),
+    mention: s.field("mention", S.option(S.dict(S.json))),
+    reply: s.field("reply", S.option(S.dict(S.json))),
+    renote: s.field("renote", S.option(S.dict(S.json))),
+    quote: s.field("quote", S.option(S.dict(S.json))),
+    reaction: s.field("reaction", S.option(S.dict(S.json))),
+    pollEnded: s.field("pollEnded", S.option(S.dict(S.json))),
+    scheduledNotePosted: s.field("scheduledNotePosted", S.option(S.dict(S.json))),
+    scheduledNotePostFailed: s.field("scheduledNotePostFailed", S.option(S.dict(S.json))),
+    receiveFollowRequest: s.field("receiveFollowRequest", S.option(S.dict(S.json))),
+    followRequestAccepted: s.field("followRequestAccepted", S.option(S.dict(S.json))),
+    groupInvited: s.field("groupInvited", S.option(S.dict(S.json))),
+    roleAssigned: s.field("roleAssigned", S.option(S.dict(S.json))),
+    chatRoomInvitationReceived: s.field("chatRoomInvitationReceived", S.option(S.dict(S.json))),
+    achievementEarned: s.field("achievementEarned", S.option(S.dict(S.json))),
+    app: s.field("app", S.option(S.dict(S.json))),
+    test: s.field("test", S.option(S.dict(S.json))),
   })
   type t = {
   avatarId: option<string>,
