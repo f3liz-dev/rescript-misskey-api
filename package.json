@@ -23,11 +23,9 @@
       "default": "./lib/ts/Misskey.js"
     },
     "./rescript": {
-      "rescript": "./src/Misskey.res",
       "default": "./lib/es6/src/Misskey.mjs"
     },
     "./rescript/cherrypick": {
-      "rescript": "./src/Cherrypick.res",
       "default": "./lib/es6/src/Cherrypick.mjs"
     },
     "./generated/*": {
