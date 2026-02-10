@@ -29,6 +29,7 @@ type t = {
   broadcastHandlers: Dict.t<JSON.t => unit>,
   mutable onConnectedCallback: option<unit => unit>,
   mutable onDisconnectedCallback: option<unit => unit>,
+  mutable pendingMessages: array<string>,
 }
 
 // Generate unique ID for connections
@@ -54,12 +55,18 @@ let make = (~origin: string, ~credential: option<string>=?, ()): t => {
     broadcastHandlers: Dict.make(),
     onConnectedCallback: None,
     onDisconnectedCallback: None,
+    pendingMessages: [],
   }
   
   // Set up WebSocket event handlers
   ws->WS.addEventListener((_event) => {
     let isReconnect = stream.state == #reconnecting
     stream.state = #connected
+    
+    // Flush any pending messages
+    let pending = stream.pendingMessages
+    stream.pendingMessages = []
+    pending->Array.forEach(msg => stream.ws->WS.send(msg))
     
     // Call user callback
     switch stream.onConnectedCallback {
@@ -148,10 +155,15 @@ let make = (~origin: string, ~credential: option<string>=?, ()): t => {
   stream
 }
 
-// Send a message
+// Send a message (queues if WebSocket not yet open)
 let send = (stream: t, msg: Protocol.outgoingMessage): unit => {
   let serialized = Protocol.serializeOutgoing(msg)
-  stream.ws->WS.send(serialized)
+  if WS.isOpen(stream.ws) && Array.length(stream.pendingMessages) == 0 {
+    stream.ws->WS.send(serialized)
+  } else {
+    // Queue for when connection opens or if there are already pending messages
+    stream.pendingMessages = stream.pendingMessages->Array.concat([serialized])
+  }
 }
 
 // Ping the server
