@@ -1,4 +1,4 @@
-// WebSocket.res - Browser WebSocket API bindings for ReScript
+// MisskeyWebSocket.res - Browser WebSocket API bindings for ReScript
 
 // WebSocket ready state constants
 module ReadyState = {

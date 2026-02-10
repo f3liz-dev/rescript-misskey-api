@@ -1,6 +1,6 @@
 {
   "name": "@f3liz/rescript-misskey-api",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "description": "ReScript bindings for Misskey API using OpenAPI code generation",
   "keywords": [
     "misskey",

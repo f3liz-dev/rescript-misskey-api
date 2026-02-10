@@ -40,11 +40,11 @@ let sendTyped = (stream: stream, type_: string, payload: JSON.t): unit => {
   let obj = Dict.make()
   obj->Dict.set("type", type_->JSON.Encode.string)
   obj->Dict.set("body", payload)
-  stream.ws->WebSocket.send(obj->JSON.Encode.object->JSON.stringify)
+  stream.ws->MisskeyWebSocket.send(obj->JSON.Encode.object->JSON.stringify)
 }
 
 let sendRaw = (stream: stream, payload: JSON.t): unit => {
-  stream.ws->WebSocket.send(payload->JSON.stringify)
+  stream.ws->MisskeyWebSocket.send(payload->JSON.stringify)
 }
 
 // Connection management

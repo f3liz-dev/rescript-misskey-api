@@ -1,7 +1,7 @@
 // StreamClient.res - Native ReScript WebSocket streaming client
 // Pure ReScript implementation replacing misskey-js Stream class
 
-module WS = WebSocket
+module WS = MisskeyWebSocket
 module Protocol = StreamProtocol
 module Connection = StreamConnection
 
