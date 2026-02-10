@@ -17,4 +17,4 @@ The shared base contains 439 endpoints and 71 schemas.
 kokonect-link adds 239 endpoints and 46 schemas.
 
 ---
-*Generated on 2026-02-10T06:21:44.392Z*
+*Generated on 2026-02-10T06:26:40.276Z*

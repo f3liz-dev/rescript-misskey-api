@@ -76,9 +76,9 @@ type postBlockingListRequest = {
 }
 
 let postBlockingListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postBlockingListResponse = array<MisskeyIoComponentSchemas.Blocking.t>
@@ -170,9 +170,9 @@ type postClipsNotesRequest = {
 
 let postClipsNotesRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postClipsNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -238,9 +238,9 @@ type postFlashMyRequest = {
 }
 
 let postFlashMyRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postFlashMyResponse = array<MisskeyIoComponentSchemas.Flash.t>
@@ -274,9 +274,9 @@ type postFlashMyLikesRequest = {
 }
 
 let postFlashMyLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postFlashMyLikesResponse_1 = {
@@ -344,9 +344,9 @@ type postIFavoritesRequest = {
 }
 
 let postIFavoritesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIFavoritesResponse = array<MisskeyIoComponentSchemas.NoteFavorite.t>
@@ -380,9 +380,9 @@ type postIGalleryLikesRequest = {
 }
 
 let postIGalleryLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIGalleryLikesResponse_1 = {
@@ -426,9 +426,9 @@ type postIGalleryPostsRequest = {
 }
 
 let postIGalleryPostsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
@@ -465,12 +465,12 @@ type postINotificationsRequest = {
 }
 
 let postINotificationsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    markAsRead: s.fieldOr("markAsRead", S.nullableAsOption(S.bool), None),
-    includeTypes: s.fieldOr("includeTypes", S.nullableAsOption(S.array(S.string)), None),
-    excludeTypes: s.fieldOr("excludeTypes", S.nullableAsOption(S.array(S.string)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    markAsRead: s.field("markAsRead", S.option(S.bool)),
+    includeTypes: s.field("includeTypes", S.option(S.array(S.string))),
+    excludeTypes: s.field("excludeTypes", S.option(S.array(S.string))),
   })
 
 type postINotificationsResponse = array<MisskeyIoComponentSchemas.Notification.t>
@@ -507,12 +507,12 @@ type postINotificationsGroupedRequest = {
 }
 
 let postINotificationsGroupedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    markAsRead: s.fieldOr("markAsRead", S.nullableAsOption(S.bool), None),
-    includeTypes: s.fieldOr("includeTypes", S.nullableAsOption(S.array(S.string)), None),
-    excludeTypes: s.fieldOr("excludeTypes", S.nullableAsOption(S.array(S.string)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    markAsRead: s.field("markAsRead", S.option(S.bool)),
+    includeTypes: s.field("includeTypes", S.option(S.array(S.string))),
+    excludeTypes: s.field("excludeTypes", S.option(S.array(S.string))),
   })
 
 type postINotificationsGroupedResponse = array<MisskeyIoComponentSchemas.Notification.t>
@@ -546,9 +546,9 @@ type postIPageLikesRequest = {
 }
 
 let postIPageLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIPageLikesResponse_1 = {
@@ -592,9 +592,9 @@ type postIPagesRequest = {
 }
 
 let postIPagesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIPagesResponse = array<MisskeyIoComponentSchemas.Page.t>
@@ -661,8 +661,8 @@ type postIPurgeTimelineCacheRequest = {
 
 let postIPurgeTimelineCacheRequestSchema = S.object(s => {
     type_: s.field("type", S.string),
-    listId: s.fieldOr("listId", S.nullableAsOption(S.string), None),
-    antennaId: s.fieldOr("antennaId", S.nullableAsOption(S.string), None),
+    listId: s.field("listId", S.option(S.string)),
+    antennaId: s.field("antennaId", S.option(S.string)),
   })
 
 type postIPurgeTimelineCacheResponse = unit
@@ -838,11 +838,11 @@ type postIUpdateRequest = {
 let postIUpdateRequest_5Schema = S.object(s => {
     url: s.field("url", S.string),
     fileId: s.field("fileId", S.string),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
+    description: s.field("description", S.option(S.string)),
   })
 
 let postIUpdateRequest_4Schema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
     mutualLinks: s.field("mutualLinks", S.array(postIUpdateRequest_5Schema)),
   })
 
@@ -871,54 +871,54 @@ let postIUpdateRequest_2Schema = S.object(s => {
 
 let postIUpdateRequest_1Schema = S.object(s => {
     id: s.field("id", S.string),
-    angle: s.fieldOr("angle", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
-    flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
-    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
-    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
+    angle: s.field("angle", S.option(S.float->S.min(0)->S.max(0))),
+    flipH: s.field("flipH", S.option(S.bool)),
+    offsetX: s.field("offsetX", S.option(S.float->S.min(0)->S.max(0))),
+    offsetY: s.field("offsetY", S.option(S.float->S.min(0)->S.max(0))),
   })
 
 let postIUpdateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string->S.min(1)->S.max(256)), None),
-    location: s.fieldOr("location", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
-    postingLang: s.fieldOr("postingLang", S.nullableAsOption(S.string), None),
-    viewingLangs: s.fieldOr("viewingLangs", S.nullableAsOption(S.array(S.string)), None),
-    showMediaInAllLanguages: s.fieldOr("showMediaInAllLanguages", S.nullableAsOption(S.bool), None),
-    showHashtagsInAllLanguages: s.fieldOr("showHashtagsInAllLanguages", S.nullableAsOption(S.bool), None),
-    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.string), None),
-    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(postIUpdateRequest_1Schema)), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
-    fields: s.fieldOr("fields", S.nullableAsOption(S.array(postIUpdateRequest_2Schema)), None),
-    isLocked: s.fieldOr("isLocked", S.nullableAsOption(S.bool), None),
-    isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
-    hideOnlineStatus: s.fieldOr("hideOnlineStatus", S.nullableAsOption(S.bool), None),
-    publicReactions: s.fieldOr("publicReactions", S.nullableAsOption(S.bool), None),
-    carefulBot: s.fieldOr("carefulBot", S.nullableAsOption(S.bool), None),
-    autoAcceptFollowed: s.fieldOr("autoAcceptFollowed", S.nullableAsOption(S.bool), None),
-    noCrawle: s.fieldOr("noCrawle", S.nullableAsOption(S.bool), None),
-    preventAiLearning: s.fieldOr("preventAiLearning", S.nullableAsOption(S.bool), None),
-    requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.int), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.int), None),
-    isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
-    isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
-    injectFeaturedNote: s.fieldOr("injectFeaturedNote", S.nullableAsOption(S.bool), None),
-    receiveAnnouncementEmail: s.fieldOr("receiveAnnouncementEmail", S.nullableAsOption(S.bool), None),
-    alwaysMarkNsfw: s.fieldOr("alwaysMarkNsfw", S.nullableAsOption(S.bool), None),
-    autoSensitive: s.fieldOr("autoSensitive", S.nullableAsOption(S.bool), None),
-    followingVisibility: s.fieldOr("followingVisibility", S.nullableAsOption(S.string), None),
-    followersVisibility: s.fieldOr("followersVisibility", S.nullableAsOption(S.string), None),
-    chatScope: s.fieldOr("chatScope", S.nullableAsOption(S.string), None),
-    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.string), None),
-    mutedWords: s.fieldOr("mutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
-    mutedInstances: s.fieldOr("mutedInstances", S.nullableAsOption(S.array(S.string)), None),
-    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(postIUpdateRequest_3Schema), None),
-    emailNotificationTypes: s.fieldOr("emailNotificationTypes", S.nullableAsOption(S.array(S.string)), None),
-    alsoKnownAs: s.fieldOr("alsoKnownAs", S.nullableAsOption(S.array(S.string)), None),
-    mutualLinkSections: s.fieldOr("mutualLinkSections", S.nullableAsOption(S.array(postIUpdateRequest_4Schema)), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(50))),
+    description: s.field("description", S.option(S.string->S.min(1)->S.max(1500))),
+    followedMessage: s.field("followedMessage", S.option(S.string->S.min(1)->S.max(256))),
+    location: s.field("location", S.option(S.string->S.min(1)->S.max(50))),
+    birthday: s.field("birthday", S.option(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/))),
+    lang: s.field("lang", S.option(S.string)),
+    postingLang: s.field("postingLang", S.option(S.string)),
+    viewingLangs: s.field("viewingLangs", S.option(S.array(S.string))),
+    showMediaInAllLanguages: s.field("showMediaInAllLanguages", S.option(S.bool)),
+    showHashtagsInAllLanguages: s.field("showHashtagsInAllLanguages", S.option(S.bool)),
+    avatarId: s.field("avatarId", S.option(S.string)),
+    avatarDecorations: s.field("avatarDecorations", S.option(S.array(postIUpdateRequest_1Schema))),
+    bannerId: s.field("bannerId", S.option(S.string)),
+    fields: s.field("fields", S.option(S.array(postIUpdateRequest_2Schema))),
+    isLocked: s.field("isLocked", S.option(S.bool)),
+    isExplorable: s.field("isExplorable", S.option(S.bool)),
+    hideOnlineStatus: s.field("hideOnlineStatus", S.option(S.bool)),
+    publicReactions: s.field("publicReactions", S.option(S.bool)),
+    carefulBot: s.field("carefulBot", S.option(S.bool)),
+    autoAcceptFollowed: s.field("autoAcceptFollowed", S.option(S.bool)),
+    noCrawle: s.field("noCrawle", S.option(S.bool)),
+    preventAiLearning: s.field("preventAiLearning", S.option(S.bool)),
+    requireSigninToViewContents: s.field("requireSigninToViewContents", S.option(S.bool)),
+    makeNotesFollowersOnlyBefore: s.field("makeNotesFollowersOnlyBefore", S.option(S.int)),
+    makeNotesHiddenBefore: s.field("makeNotesHiddenBefore", S.option(S.int)),
+    isBot: s.field("isBot", S.option(S.bool)),
+    isCat: s.field("isCat", S.option(S.bool)),
+    injectFeaturedNote: s.field("injectFeaturedNote", S.option(S.bool)),
+    receiveAnnouncementEmail: s.field("receiveAnnouncementEmail", S.option(S.bool)),
+    alwaysMarkNsfw: s.field("alwaysMarkNsfw", S.option(S.bool)),
+    autoSensitive: s.field("autoSensitive", S.option(S.bool)),
+    followingVisibility: s.field("followingVisibility", S.option(S.string)),
+    followersVisibility: s.field("followersVisibility", S.option(S.string)),
+    chatScope: s.field("chatScope", S.option(S.string)),
+    pinnedPageId: s.field("pinnedPageId", S.option(S.string)),
+    mutedWords: s.field("mutedWords", S.option(S.array(S.array(S.string)))),
+    mutedInstances: s.field("mutedInstances", S.option(S.array(S.string))),
+    notificationRecieveConfig: s.field("notificationRecieveConfig", S.option(postIUpdateRequest_3Schema)),
+    emailNotificationTypes: s.field("emailNotificationTypes", S.option(S.array(S.string))),
+    alsoKnownAs: s.field("alsoKnownAs", S.option(S.array(S.string))),
+    mutualLinkSections: s.field("mutualLinkSections", S.option(S.array(postIUpdateRequest_4Schema))),
   })
 
 type postIUpdateResponse = MisskeyIoComponentSchemas.MeDetailed.t
@@ -952,7 +952,7 @@ type postMuteCreateRequest = {
 
 let postMuteCreateRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
   })
 
 type postMuteCreateResponse = unit
@@ -1014,9 +1014,9 @@ type postMuteListRequest = {
 }
 
 let postMuteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postMuteListResponse = array<MisskeyIoComponentSchemas.Muting.t>
@@ -1049,8 +1049,8 @@ type postMyAppsRequest = {
 }
 
 let postMyAppsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postMyAppsResponse = array<MisskeyIoComponentSchemas.App.t>
@@ -1144,9 +1144,9 @@ type postRenoteMuteListRequest = {
 }
 
 let postRenoteMuteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postRenoteMuteListResponse = array<MisskeyIoComponentSchemas.RenoteMuting.t>
@@ -1184,7 +1184,7 @@ let postSwRegisterRequestSchema = S.object(s => {
     endpoint: s.field("endpoint", S.string),
     auth: s.field("auth", S.string),
     publickey: s.field("publickey", S.string),
-    sendReadMessage: s.fieldOr("sendReadMessage", S.nullableAsOption(S.bool), None),
+    sendReadMessage: s.field("sendReadMessage", S.option(S.bool)),
   })
 
 type postSwRegisterResponse = {
@@ -1196,7 +1196,7 @@ type postSwRegisterResponse = {
 }
 
 let postSwRegisterResponseSchema = S.object(s => {
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
+    state: s.field("state", S.option(S.string)),
     key: s.field("key", S.nullableAsOption(S.string)),
     userId: s.field("userId", S.string),
     endpoint: s.field("endpoint", S.string),
@@ -1306,7 +1306,7 @@ type postSwUpdateRegistrationRequest = {
 
 let postSwUpdateRegistrationRequestSchema = S.object(s => {
     endpoint: s.field("endpoint", S.string),
-    sendReadMessage: s.fieldOr("sendReadMessage", S.nullableAsOption(S.bool), None),
+    sendReadMessage: s.field("sendReadMessage", S.option(S.bool)),
   })
 
 type postSwUpdateRegistrationResponse = {

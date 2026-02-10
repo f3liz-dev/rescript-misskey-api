@@ -11,8 +11,8 @@ type postGalleryFeaturedRequest = {
 }
 
 let postGalleryFeaturedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postGalleryFeaturedResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
@@ -70,9 +70,9 @@ type postGalleryPostsRequest = {
 }
 
 let postGalleryPostsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
@@ -108,9 +108,9 @@ type postGalleryPostsCreateRequest = {
 
 let postGalleryPostsCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string->S.min(1)),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
+    description: s.field("description", S.option(S.string)),
     fileIds: s.field("fileIds", S.array(S.string)),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
   })
 
 type postGalleryPostsCreateResponse = MisskeyIoComponentSchemas.GalleryPost.t
@@ -269,10 +269,10 @@ type postGalleryPostsUpdateRequest = {
 
 let postGalleryPostsUpdateRequestSchema = S.object(s => {
     postId: s.field("postId", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    title: s.field("title", S.option(S.string->S.min(1))),
+    description: s.field("description", S.option(S.string)),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
   })
 
 type postGalleryPostsUpdateResponse = MisskeyIoComponentSchemas.GalleryPost.t

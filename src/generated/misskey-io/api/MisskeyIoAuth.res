@@ -164,9 +164,9 @@ type postMiauthGenTokenRequest = {
 
 let postMiauthGenTokenRequestSchema = S.object(s => {
     session: s.field("session", S.nullableAsOption(S.string)),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
+    description: s.field("description", S.option(S.string)),
+    iconUrl: s.field("iconUrl", S.option(S.string)),
     permission: s.field("permission", S.array(S.string)),
   })
 

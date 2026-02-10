@@ -11,8 +11,8 @@ type postChatHistoryRequest = {
 }
 
 let postChatHistoryRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    room: s.fieldOr("room", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    room: s.field("room", S.option(S.bool)),
   })
 
 type postChatHistoryResponse = array<KokonectLinkComponentSchemas.ChatMessage.t>
@@ -46,8 +46,8 @@ type postChatMessagesCreateToRoomRequest = {
 }
 
 let postChatMessagesCreateToRoomRequestSchema = S.object(s => {
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.max(2000)), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    text: s.field("text", S.option(S.string->S.max(2000))),
+    fileId: s.field("fileId", S.option(S.string)),
     toRoomId: s.field("toRoomId", S.string),
   })
 
@@ -82,8 +82,8 @@ type postChatMessagesCreateToUserRequest = {
 }
 
 let postChatMessagesCreateToUserRequestSchema = S.object(s => {
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.max(2000)), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
+    text: s.field("text", S.option(S.string->S.max(2000))),
+    fileId: s.field("fileId", S.option(S.string)),
     toUserId: s.field("toUserId", S.string),
   })
 
@@ -183,11 +183,11 @@ type postChatMessagesRoomTimelineRequest = {
 }
 
 let postChatMessagesRoomTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
     roomId: s.field("roomId", S.string),
   })
 
@@ -224,9 +224,9 @@ type postChatMessagesSearchRequest = {
 
 let postChatMessagesSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string->S.min(1)->S.max(256)),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    roomId: s.fieldOr("roomId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    userId: s.field("userId", S.option(S.string)),
+    roomId: s.field("roomId", S.option(S.string)),
   })
 
 type postChatMessagesSearchResponse = array<KokonectLinkComponentSchemas.ChatMessage.t>
@@ -327,11 +327,11 @@ type postChatMessagesUserTimelineRequest = {
 }
 
 let postChatMessagesUserTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -388,7 +388,7 @@ type postChatRoomsCreateRequest = {
 
 let postChatRoomsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.max(256)),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(1024)), None),
+    description: s.field("description", S.option(S.string->S.max(1024))),
   })
 
 type postChatRoomsCreateResponse = KokonectLinkComponentSchemas.ChatRoom.t
@@ -548,11 +548,11 @@ type postChatRoomsInvitationsInboxRequest = {
 }
 
 let postChatRoomsInvitationsInboxRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postChatRoomsInvitationsInboxResponse = array<KokonectLinkComponentSchemas.ChatRoomInvitation.t>
@@ -590,11 +590,11 @@ type postChatRoomsInvitationsOutboxRequest = {
 
 let postChatRoomsInvitationsOutboxRequestSchema = S.object(s => {
     roomId: s.field("roomId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postChatRoomsInvitationsOutboxResponse = array<KokonectLinkComponentSchemas.ChatRoomInvitation.t>
@@ -690,11 +690,11 @@ type postChatRoomsJoiningRequest = {
 }
 
 let postChatRoomsJoiningRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postChatRoomsJoiningResponse = array<KokonectLinkComponentSchemas.ChatRoomMembership.t>
@@ -762,11 +762,11 @@ type postChatRoomsMembersRequest = {
 
 let postChatRoomsMembersRequestSchema = S.object(s => {
     roomId: s.field("roomId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postChatRoomsMembersResponse = array<KokonectLinkComponentSchemas.ChatRoomMembership.t>
@@ -834,11 +834,11 @@ type postChatRoomsOwnedRequest = {
 }
 
 let postChatRoomsOwnedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postChatRoomsOwnedResponse = array<KokonectLinkComponentSchemas.ChatRoom.t>
@@ -905,8 +905,8 @@ type postChatRoomsUpdateRequest = {
 
 let postChatRoomsUpdateRequestSchema = S.object(s => {
     roomId: s.field("roomId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(256)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(1024)), None),
+    name: s.field("name", S.option(S.string->S.max(256))),
+    description: s.field("description", S.option(S.string->S.max(1024))),
   })
 
 type postChatRoomsUpdateResponse = KokonectLinkComponentSchemas.ChatRoom.t

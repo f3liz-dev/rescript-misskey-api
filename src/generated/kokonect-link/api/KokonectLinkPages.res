@@ -21,14 +21,14 @@ type postPagesCreateRequest = {
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
     name: s.field("name", S.string->S.min(1)->S.pattern(/^[^\s:\/?#\[\]@!$&'()*+,;=\\%\x00-\x20]{1,256}$/)),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    summary: s.field("summary", S.option(S.string)),
     content: s.field("content", S.array(S.dict(S.json))),
     variables: s.field("variables", S.array(S.dict(S.json))),
     script: s.field("script", S.string),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
-    font: s.fieldOr("font", S.nullableAsOption(S.string), None),
-    alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
-    hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
+    eyeCatchingImageId: s.field("eyeCatchingImageId", S.option(S.string)),
+    font: s.field("font", S.option(S.string)),
+    alignCenter: s.field("alignCenter", S.option(S.bool)),
+    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.option(S.bool)),
   })
 
 type postPagesCreateResponse = KokonectLinkComponentSchemas.Page.t
@@ -109,16 +109,16 @@ type postPagesUpdateRequest = {
 
 let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(/^[^\s:\/?#\[\]@!$&'()*+,;=\\%\x00-\x20]{1,256}$/)), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    title: s.field("title", S.option(S.string)),
+    name: s.field("name", S.option(S.string->S.min(1)->S.pattern(/^[^\s:\/?#\[\]@!$&'()*+,;=\\%\x00-\x20]{1,256}$/))),
+    summary: s.field("summary", S.option(S.string)),
     content: s.field("content", S.option(S.array(S.dict(S.json)))),
     variables: s.field("variables", S.option(S.array(S.dict(S.json)))),
-    script: s.fieldOr("script", S.nullableAsOption(S.string), None),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
-    font: s.fieldOr("font", S.nullableAsOption(S.string), None),
-    alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
-    hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
+    script: s.field("script", S.option(S.string)),
+    eyeCatchingImageId: s.field("eyeCatchingImageId", S.option(S.string)),
+    font: s.field("font", S.option(S.string)),
+    alignCenter: s.field("alignCenter", S.option(S.bool)),
+    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.option(S.bool)),
   })
 
 type postPagesUpdateResponse = unit

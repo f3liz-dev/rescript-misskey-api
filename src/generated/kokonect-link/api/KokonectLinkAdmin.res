@@ -17,8 +17,8 @@ let postAdminAbuseReportNotificationRecipientCreateRequestSchema = S.object(s =>
     isActive: s.field("isActive", S.bool),
     name: s.field("name", S.string->S.min(1)->S.max(255)),
     method_: s.field("method", S.string),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.option(S.string)),
+    systemWebhookId: s.field("systemWebhookId", S.option(S.string)),
   })
 
 type postAdminAbuseReportNotificationRecipientCreateResponse = KokonectLinkComponentSchemas.AbuseReportNotificationRecipient.t
@@ -93,8 +93,8 @@ let postAdminAbuseReportNotificationRecipientUpdateRequestSchema = S.object(s =>
     isActive: s.field("isActive", S.bool),
     name: s.field("name", S.string->S.min(1)->S.max(255)),
     method_: s.field("method", S.string),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.option(S.string)),
+    systemWebhookId: s.field("systemWebhookId", S.option(S.string)),
   })
 
 type postAdminAbuseReportNotificationRecipientUpdateResponse = KokonectLinkComponentSchemas.AbuseReportNotificationRecipient.t
@@ -134,14 +134,14 @@ type postAdminAbuseUserReportsRequest = {
 }
 
 let postAdminAbuseUserReportsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    reporterOrigin: s.fieldOr("reporterOrigin", S.nullableAsOption(S.string), None),
-    targetUserOrigin: s.fieldOr("targetUserOrigin", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    state: s.field("state", S.option(S.string)),
+    reporterOrigin: s.field("reporterOrigin", S.option(S.string)),
+    targetUserOrigin: s.field("targetUserOrigin", S.option(S.string)),
   })
 
 type postAdminAbuseUserReportsResponse_1 = {
@@ -209,7 +209,7 @@ type postAdminAccountsCreateRequest = {
 let postAdminAccountsCreateRequestSchema = S.object(s => {
     username: s.field("username", S.string->S.pattern(/^\w{1,20}$/)),
     password: s.field("password", S.string->S.min(1)),
-    setupPassword: s.fieldOr("setupPassword", S.nullableAsOption(S.string), None),
+    setupPassword: s.field("setupPassword", S.option(S.string)),
   })
 
 type postAdminAccountsCreateResponse = {
@@ -325,7 +325,7 @@ let postAdminAdCreateRequestSchema = S.object(s => {
     startsAt: s.field("startsAt", S.int),
     imageUrl: s.field("imageUrl", S.string->S.min(1)),
     dayOfWeek: s.field("dayOfWeek", S.int),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
   })
 
 type postAdminAdCreateResponse = KokonectLinkComponentSchemas.Ad.t
@@ -362,12 +362,12 @@ type postAdminAdListRequest = {
 }
 
 let postAdminAdListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    publishing: s.field("publishing", S.option(S.bool)),
   })
 
 type postAdminAdListResponse = array<KokonectLinkComponentSchemas.Ad.t>
@@ -410,12 +410,12 @@ let postAdminAnnouncementsCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string->S.min(1)),
     text: s.field("text", S.string->S.min(1)),
     imageUrl: s.field("imageUrl", S.nullableAsOption(S.string->S.min(0))),
-    icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
-    display: s.fieldOr("display", S.nullableAsOption(S.string), None),
-    forExistingUsers: s.fieldOr("forExistingUsers", S.nullableAsOption(S.bool), None),
-    silence: s.fieldOr("silence", S.nullableAsOption(S.bool), None),
-    needConfirmationToRead: s.fieldOr("needConfirmationToRead", S.nullableAsOption(S.bool), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    icon: s.field("icon", S.option(S.string)),
+    display: s.field("display", S.option(S.string)),
+    forExistingUsers: s.field("forExistingUsers", S.option(S.bool)),
+    silence: s.field("silence", S.option(S.bool)),
+    needConfirmationToRead: s.field("needConfirmationToRead", S.option(S.bool)),
+    userId: s.field("userId", S.option(S.string)),
   })
 
 type postAdminAnnouncementsCreateResponse = {
@@ -467,13 +467,13 @@ type postAdminAnnouncementsListRequest = {
 }
 
 let postAdminAnnouncementsListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    status: s.fieldOr("status", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    userId: s.field("userId", S.option(S.string)),
+    status: s.field("status", S.option(S.string)),
   })
 
 type postAdminAnnouncementsListResponse_1 = {
@@ -549,15 +549,15 @@ type postAdminAnnouncementsUpdateRequest = {
 
 let postAdminAnnouncementsUpdateRequestSchema = S.object(s => {
     id: s.field("id", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)), None),
-    imageUrl: s.fieldOr("imageUrl", S.nullableAsOption(S.string->S.min(0)), None),
-    icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
-    display: s.fieldOr("display", S.nullableAsOption(S.string), None),
-    forExistingUsers: s.fieldOr("forExistingUsers", S.nullableAsOption(S.bool), None),
-    silence: s.fieldOr("silence", S.nullableAsOption(S.bool), None),
-    needConfirmationToRead: s.fieldOr("needConfirmationToRead", S.nullableAsOption(S.bool), None),
-    isActive: s.fieldOr("isActive", S.nullableAsOption(S.bool), None),
+    title: s.field("title", S.option(S.string->S.min(1))),
+    text: s.field("text", S.option(S.string->S.min(1))),
+    imageUrl: s.field("imageUrl", S.option(S.string->S.min(0))),
+    icon: s.field("icon", S.option(S.string)),
+    display: s.field("display", S.option(S.string)),
+    forExistingUsers: s.field("forExistingUsers", S.option(S.bool)),
+    silence: s.field("silence", S.option(S.bool)),
+    needConfirmationToRead: s.field("needConfirmationToRead", S.option(S.bool)),
+    isActive: s.field("isActive", S.option(S.bool)),
   })
 
 type postAdminAnnouncementsUpdateResponse = unit
@@ -628,12 +628,12 @@ type postAdminAvatarDecorationsListRequest = {
 }
 
 let postAdminAvatarDecorationsListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    userId: s.field("userId", S.option(S.string)),
   })
 
 type postAdminAvatarDecorationsListResponse_1 = {
@@ -688,10 +688,10 @@ type postAdminAvatarDecorationsListRemoteRequest = {
 }
 
 let postAdminAvatarDecorationsListRemoteRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    userId: s.field("userId", S.option(S.string)),
   })
 
 type postAdminAvatarDecorationsListRemoteResponse_1 = {
@@ -811,15 +811,15 @@ type postAdminDriveFilesRequest = {
 }
 
 let postAdminDriveFilesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9\/\*-]+$/)), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    userId: s.field("userId", S.option(S.string)),
+    type_: s.field("type", S.option(S.string->S.pattern(/^[a-zA-Z0-9\/\*-]+$/))),
+    origin: s.field("origin", S.option(S.string)),
+    hostname: s.field("hostname", S.option(S.string)),
   })
 
 type postAdminDriveFilesResponse = array<KokonectLinkComponentSchemas.DriveFile.t>
@@ -896,10 +896,10 @@ type postAdminDriveShowFileResponse = {
 }
 
 let postAdminDriveShowFileResponse_1Schema = S.object(s => {
-    width: s.fieldOr("width", S.nullableAsOption(S.float), None),
-    height: s.fieldOr("height", S.nullableAsOption(S.float), None),
-    orientation: s.fieldOr("orientation", S.nullableAsOption(S.float), None),
-    avgColor: s.fieldOr("avgColor", S.nullableAsOption(S.string), None),
+    width: s.field("width", S.option(S.float)),
+    height: s.field("height", S.option(S.float)),
+    orientation: s.field("orientation", S.option(S.float)),
+    avgColor: s.field("avgColor", S.option(S.string)),
   })
 
 let postAdminDriveShowFileResponseSchema = S.object(s => {
@@ -966,12 +966,12 @@ type postAdminEmojiAddRequest = {
 let postAdminEmojiAddRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.pattern(/^[a-zA-Z0-9_]+$/)),
     fileId: s.field("fileId", S.string),
-    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
-    aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
-    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
+    category: s.field("category", S.option(S.string)),
+    aliases: s.field("aliases", S.option(S.array(S.string))),
+    license: s.field("license", S.option(S.string)),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
   })
 
 type postAdminEmojiAddResponse = KokonectLinkComponentSchemas.EmojiDetailed.t
@@ -1008,12 +1008,12 @@ type postAdminEmojiListRequest = {
 }
 
 let postAdminEmojiListRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    query: s.field("query", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postAdminEmojiListResponse_1 = {
@@ -1069,13 +1069,13 @@ type postAdminEmojiListRemoteRequest = {
 }
 
 let postAdminEmojiListRemoteRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    query: s.field("query", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postAdminEmojiListRemoteResponse_1 = {
@@ -1169,13 +1169,13 @@ type postAdminEmojiUpdateRequest = {
 }
 
 let postAdminEmojiUpdateRequestSchema = S.object(s => {
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
-    aliases: s.fieldOr("aliases", S.nullableAsOption(S.array(S.string)), None),
-    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
+    fileId: s.field("fileId", S.option(S.string)),
+    category: s.field("category", S.option(S.string)),
+    aliases: s.field("aliases", S.option(S.array(S.string))),
+    license: s.field("license", S.option(S.string)),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
   })
 
 type postAdminEmojiUpdateResponse = unit
@@ -1263,7 +1263,7 @@ type postAdminQueueJobsRequest = {
 let postAdminQueueJobsRequestSchema = S.object(s => {
     queue: s.field("queue", S.string),
     state: s.field("state", S.array(S.string)),
-    search: s.fieldOr("search", S.nullableAsOption(S.string), None),
+    search: s.field("search", S.option(S.string)),
   })
 
 type postAdminQueueJobsResponse = array<KokonectLinkComponentSchemas.QueueJob.t>
@@ -1611,7 +1611,7 @@ type postAdminResolveAbuseUserReportRequest = {
 
 let postAdminResolveAbuseUserReportRequestSchema = S.object(s => {
     reportId: s.field("reportId", S.string),
-    resolvedAs: s.fieldOr("resolvedAs", S.nullableAsOption(S.string), None),
+    resolvedAs: s.field("resolvedAs", S.option(S.string)),
   })
 
 type postAdminResolveAbuseUserReportResponse = unit
@@ -1645,7 +1645,7 @@ type postAdminRolesAssignRequest = {
 let postAdminRolesAssignRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
     userId: s.field("userId", S.string),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
   })
 
 type postAdminRolesAssignResponse = unit
@@ -1698,9 +1698,9 @@ let postAdminRolesCreateRequestSchema = S.object(s => {
     isPublic: s.field("isPublic", S.bool),
     isModerator: s.field("isModerator", S.bool),
     isAdministrator: s.field("isAdministrator", S.bool),
-    isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
+    isExplorable: s.field("isExplorable", S.option(S.bool)),
     asBadge: s.field("asBadge", S.bool),
-    preserveAssignmentOnMoveAccount: s.fieldOr("preserveAssignmentOnMoveAccount", S.nullableAsOption(S.bool), None),
+    preserveAssignmentOnMoveAccount: s.field("preserveAssignmentOnMoveAccount", S.option(S.bool)),
     canEditMembersByModerator: s.field("canEditMembersByModerator", S.bool),
     displayOrder: s.field("displayOrder", S.float),
     policies: s.field("policies", S.dict(S.json)),
@@ -1783,20 +1783,20 @@ type postAdminRolesUpdateRequest = {
 
 let postAdminRolesUpdateRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    color: s.fieldOr("color", S.nullableAsOption(S.string), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
-    target: s.fieldOr("target", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
+    description: s.field("description", S.option(S.string)),
+    color: s.field("color", S.option(S.string)),
+    iconUrl: s.field("iconUrl", S.option(S.string)),
+    target: s.field("target", S.option(S.string)),
     condFormula: s.field("condFormula", S.option(S.dict(S.json))),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    isModerator: s.fieldOr("isModerator", S.nullableAsOption(S.bool), None),
-    isAdministrator: s.fieldOr("isAdministrator", S.nullableAsOption(S.bool), None),
-    isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
-    asBadge: s.fieldOr("asBadge", S.nullableAsOption(S.bool), None),
-    preserveAssignmentOnMoveAccount: s.fieldOr("preserveAssignmentOnMoveAccount", S.nullableAsOption(S.bool), None),
-    canEditMembersByModerator: s.fieldOr("canEditMembersByModerator", S.nullableAsOption(S.bool), None),
-    displayOrder: s.fieldOr("displayOrder", S.nullableAsOption(S.float), None),
+    isPublic: s.field("isPublic", S.option(S.bool)),
+    isModerator: s.field("isModerator", S.option(S.bool)),
+    isAdministrator: s.field("isAdministrator", S.option(S.bool)),
+    isExplorable: s.field("isExplorable", S.option(S.bool)),
+    asBadge: s.field("asBadge", S.option(S.bool)),
+    preserveAssignmentOnMoveAccount: s.field("preserveAssignmentOnMoveAccount", S.option(S.bool)),
+    canEditMembersByModerator: s.field("canEditMembersByModerator", S.option(S.bool)),
+    displayOrder: s.field("displayOrder", S.option(S.float)),
     policies: s.field("policies", S.option(S.dict(S.json))),
   })
 
@@ -1833,11 +1833,11 @@ type postAdminRolesUsersRequest = {
 
 let postAdminRolesUsersRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postAdminRolesUsersResponse_1 = {
@@ -1968,14 +1968,14 @@ type postAdminShowModerationLogsRequest = {
 }
 
 let postAdminShowModerationLogsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    search: s.fieldOr("search", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    type_: s.field("type", S.option(S.string)),
+    userId: s.field("userId", S.option(S.string)),
+    search: s.field("search", S.option(S.string)),
   })
 
 type postAdminShowModerationLogsResponse_1 = {
@@ -2173,7 +2173,7 @@ let postAdminSystemWebhookCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(255)),
     on: s.field("on", S.array(S.string)),
     url: s.field("url", S.string->S.min(1)->S.max(1024)),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string->S.max(1024)), None),
+    secret: s.field("secret", S.option(S.string->S.max(1024))),
   })
 
 type postAdminSystemWebhookCreateResponse = KokonectLinkComponentSchemas.SystemWebhook.t
@@ -2249,7 +2249,7 @@ let postAdminSystemWebhookUpdateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(255)),
     on: s.field("on", S.array(S.string)),
     url: s.field("url", S.string->S.min(1)->S.max(1024)),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string->S.max(1024)), None),
+    secret: s.field("secret", S.option(S.string->S.max(1024))),
   })
 
 type postAdminSystemWebhookUpdateResponse = KokonectLinkComponentSchemas.SystemWebhook.t
@@ -2451,166 +2451,166 @@ let postAdminUpdateMetaRequest_1Schema = S.object(s => {
   })
 
 let postAdminUpdateMetaRequestSchema = S.object(s => {
-    disableRegistration: s.fieldOr("disableRegistration", S.nullableAsOption(S.bool), None),
-    pinnedUsers: s.fieldOr("pinnedUsers", S.nullableAsOption(S.json), None),
-    hiddenTags: s.fieldOr("hiddenTags", S.nullableAsOption(S.json), None),
-    blockedHosts: s.fieldOr("blockedHosts", S.nullableAsOption(S.json), None),
-    sensitiveWords: s.fieldOr("sensitiveWords", S.nullableAsOption(S.json), None),
-    prohibitedWords: s.fieldOr("prohibitedWords", S.nullableAsOption(S.json), None),
-    prohibitedWordsForNameOfUser: s.fieldOr("prohibitedWordsForNameOfUser", S.nullableAsOption(S.json), None),
-    themeColor: s.fieldOr("themeColor", S.nullableAsOption(S.string->S.pattern(/^#[0-9a-fA-F]{6}$/)), None),
-    mascotImageUrl: s.fieldOr("mascotImageUrl", S.nullableAsOption(S.string), None),
-    bannerUrl: s.fieldOr("bannerUrl", S.nullableAsOption(S.string), None),
-    serverErrorImageUrl: s.fieldOr("serverErrorImageUrl", S.nullableAsOption(S.string), None),
-    infoImageUrl: s.fieldOr("infoImageUrl", S.nullableAsOption(S.string), None),
-    notFoundImageUrl: s.fieldOr("notFoundImageUrl", S.nullableAsOption(S.string), None),
-    youBlockedImageUrl: s.fieldOr("youBlockedImageUrl", S.nullableAsOption(S.string), None),
-    iconUrl: s.fieldOr("iconUrl", S.nullableAsOption(S.string), None),
-    app192iconUrl: s.fieldOr("app192IconUrl", S.nullableAsOption(S.string), None),
-    app512iconUrl: s.fieldOr("app512IconUrl", S.nullableAsOption(S.string), None),
-    backgroundImageUrl: s.fieldOr("backgroundImageUrl", S.nullableAsOption(S.string), None),
-    logoImageUrl: s.fieldOr("logoImageUrl", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    shortName: s.fieldOr("shortName", S.nullableAsOption(S.string), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    defaultLightTheme: s.fieldOr("defaultLightTheme", S.nullableAsOption(S.string), None),
-    defaultDarkTheme: s.fieldOr("defaultDarkTheme", S.nullableAsOption(S.string), None),
+    disableRegistration: s.field("disableRegistration", S.option(S.bool)),
+    pinnedUsers: s.field("pinnedUsers", S.option(S.json)),
+    hiddenTags: s.field("hiddenTags", S.option(S.json)),
+    blockedHosts: s.field("blockedHosts", S.option(S.json)),
+    sensitiveWords: s.field("sensitiveWords", S.option(S.json)),
+    prohibitedWords: s.field("prohibitedWords", S.option(S.json)),
+    prohibitedWordsForNameOfUser: s.field("prohibitedWordsForNameOfUser", S.option(S.json)),
+    themeColor: s.field("themeColor", S.option(S.string->S.pattern(/^#[0-9a-fA-F]{6}$/))),
+    mascotImageUrl: s.field("mascotImageUrl", S.option(S.string)),
+    bannerUrl: s.field("bannerUrl", S.option(S.string)),
+    serverErrorImageUrl: s.field("serverErrorImageUrl", S.option(S.string)),
+    infoImageUrl: s.field("infoImageUrl", S.option(S.string)),
+    notFoundImageUrl: s.field("notFoundImageUrl", S.option(S.string)),
+    youBlockedImageUrl: s.field("youBlockedImageUrl", S.option(S.string)),
+    iconUrl: s.field("iconUrl", S.option(S.string)),
+    app192iconUrl: s.field("app192IconUrl", S.option(S.string)),
+    app512iconUrl: s.field("app512IconUrl", S.option(S.string)),
+    backgroundImageUrl: s.field("backgroundImageUrl", S.option(S.string)),
+    logoImageUrl: s.field("logoImageUrl", S.option(S.string)),
+    name: s.field("name", S.option(S.string)),
+    shortName: s.field("shortName", S.option(S.string)),
+    description: s.field("description", S.option(S.string)),
+    defaultLightTheme: s.field("defaultLightTheme", S.option(S.string)),
+    defaultDarkTheme: s.field("defaultDarkTheme", S.option(S.string)),
     clientOptions: s.field("clientOptions", S.option(S.dict(S.json))),
-    cacheRemoteFiles: s.fieldOr("cacheRemoteFiles", S.nullableAsOption(S.bool), None),
-    cacheRemoteSensitiveFiles: s.fieldOr("cacheRemoteSensitiveFiles", S.nullableAsOption(S.bool), None),
-    emailRequiredForSignup: s.fieldOr("emailRequiredForSignup", S.nullableAsOption(S.bool), None),
-    enableHcaptcha: s.fieldOr("enableHcaptcha", S.nullableAsOption(S.bool), None),
-    hcaptchaSiteKey: s.fieldOr("hcaptchaSiteKey", S.nullableAsOption(S.string), None),
-    hcaptchaSecretKey: s.fieldOr("hcaptchaSecretKey", S.nullableAsOption(S.string), None),
-    enableMcaptcha: s.fieldOr("enableMcaptcha", S.nullableAsOption(S.bool), None),
-    mcaptchaSiteKey: s.fieldOr("mcaptchaSiteKey", S.nullableAsOption(S.string), None),
-    mcaptchaInstanceUrl: s.fieldOr("mcaptchaInstanceUrl", S.nullableAsOption(S.string), None),
-    mcaptchaSecretKey: s.fieldOr("mcaptchaSecretKey", S.nullableAsOption(S.string), None),
-    enableRecaptcha: s.fieldOr("enableRecaptcha", S.nullableAsOption(S.bool), None),
-    recaptchaSiteKey: s.fieldOr("recaptchaSiteKey", S.nullableAsOption(S.string), None),
-    recaptchaSecretKey: s.fieldOr("recaptchaSecretKey", S.nullableAsOption(S.string), None),
-    enableTurnstile: s.fieldOr("enableTurnstile", S.nullableAsOption(S.bool), None),
-    turnstileSiteKey: s.fieldOr("turnstileSiteKey", S.nullableAsOption(S.string), None),
-    turnstileSecretKey: s.fieldOr("turnstileSecretKey", S.nullableAsOption(S.string), None),
-    enableTestcaptcha: s.fieldOr("enableTestcaptcha", S.nullableAsOption(S.bool), None),
-    googleAnalyticsMeasurementId: s.fieldOr("googleAnalyticsMeasurementId", S.nullableAsOption(S.string), None),
-    sensitiveMediaDetection: s.fieldOr("sensitiveMediaDetection", S.nullableAsOption(S.string), None),
-    sensitiveMediaDetectionSensitivity: s.fieldOr("sensitiveMediaDetectionSensitivity", S.nullableAsOption(S.string), None),
-    setSensitiveFlagAutomatically: s.fieldOr("setSensitiveFlagAutomatically", S.nullableAsOption(S.bool), None),
-    enableSensitiveMediaDetectionForVideos: s.fieldOr("enableSensitiveMediaDetectionForVideos", S.nullableAsOption(S.bool), None),
-    maintainerName: s.fieldOr("maintainerName", S.nullableAsOption(S.string), None),
-    maintainerEmail: s.fieldOr("maintainerEmail", S.nullableAsOption(S.string), None),
-    langs: s.fieldOr("langs", S.nullableAsOption(S.array(S.string)), None),
-    translatorType: s.fieldOr("translatorType", S.nullableAsOption(S.string), None),
-    deeplAuthKey: s.fieldOr("deeplAuthKey", S.nullableAsOption(S.string), None),
-    deeplIsPro: s.fieldOr("deeplIsPro", S.nullableAsOption(S.bool), None),
-    ctav3saKey: s.fieldOr("ctav3SaKey", S.nullableAsOption(S.string), None),
-    ctav3projectId: s.fieldOr("ctav3ProjectId", S.nullableAsOption(S.string), None),
-    ctav3location: s.fieldOr("ctav3Location", S.nullableAsOption(S.string), None),
-    ctav3model: s.fieldOr("ctav3Model", S.nullableAsOption(S.string), None),
-    ctav3glossary: s.fieldOr("ctav3Glossary", S.nullableAsOption(S.string), None),
-    libreTranslateEndPoint: s.fieldOr("libreTranslateEndPoint", S.nullableAsOption(S.string), None),
-    libreTranslateApiKey: s.fieldOr("libreTranslateApiKey", S.nullableAsOption(S.string), None),
-    enableEmail: s.fieldOr("enableEmail", S.nullableAsOption(S.bool), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-    smtpSecure: s.fieldOr("smtpSecure", S.nullableAsOption(S.bool), None),
-    smtpHost: s.fieldOr("smtpHost", S.nullableAsOption(S.string), None),
-    smtpPort: s.fieldOr("smtpPort", S.nullableAsOption(S.int), None),
-    smtpUser: s.fieldOr("smtpUser", S.nullableAsOption(S.string), None),
-    smtpPass: s.fieldOr("smtpPass", S.nullableAsOption(S.string), None),
-    enableServiceWorker: s.fieldOr("enableServiceWorker", S.nullableAsOption(S.bool), None),
-    swPublicKey: s.fieldOr("swPublicKey", S.nullableAsOption(S.string), None),
-    swPrivateKey: s.fieldOr("swPrivateKey", S.nullableAsOption(S.string), None),
-    tosUrl: s.fieldOr("tosUrl", S.nullableAsOption(S.string), None),
-    repositoryUrl: s.fieldOr("repositoryUrl", S.nullableAsOption(S.string), None),
-    feedbackUrl: s.fieldOr("feedbackUrl", S.nullableAsOption(S.string), None),
-    impressumUrl: s.fieldOr("impressumUrl", S.nullableAsOption(S.string), None),
-    privacyPolicyUrl: s.fieldOr("privacyPolicyUrl", S.nullableAsOption(S.string), None),
-    inquiryUrl: s.fieldOr("inquiryUrl", S.nullableAsOption(S.string), None),
-    useObjectStorage: s.fieldOr("useObjectStorage", S.nullableAsOption(S.bool), None),
-    objectStorageBaseUrl: s.fieldOr("objectStorageBaseUrl", S.nullableAsOption(S.string), None),
-    objectStorageBucket: s.fieldOr("objectStorageBucket", S.nullableAsOption(S.string), None),
-    objectStoragePrefix: s.fieldOr("objectStoragePrefix", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9._-]*$/)), None),
-    objectStorageEndpoint: s.fieldOr("objectStorageEndpoint", S.nullableAsOption(S.string), None),
-    objectStorageRegion: s.fieldOr("objectStorageRegion", S.nullableAsOption(S.string), None),
-    objectStoragePort: s.fieldOr("objectStoragePort", S.nullableAsOption(S.int), None),
-    objectStorageAccessKey: s.fieldOr("objectStorageAccessKey", S.nullableAsOption(S.string), None),
-    objectStorageSecretKey: s.fieldOr("objectStorageSecretKey", S.nullableAsOption(S.string), None),
-    objectStorageUseSsl: s.fieldOr("objectStorageUseSSL", S.nullableAsOption(S.bool), None),
-    objectStorageUseProxy: s.fieldOr("objectStorageUseProxy", S.nullableAsOption(S.bool), None),
-    objectStorageSetPublicRead: s.fieldOr("objectStorageSetPublicRead", S.nullableAsOption(S.bool), None),
-    objectStorageS3forcePathStyle: s.fieldOr("objectStorageS3ForcePathStyle", S.nullableAsOption(S.bool), None),
-    useRemoteObjectStorage: s.fieldOr("useRemoteObjectStorage", S.nullableAsOption(S.bool), None),
-    remoteObjectStorageBaseUrl: s.fieldOr("remoteObjectStorageBaseUrl", S.nullableAsOption(S.string), None),
-    remoteObjectStorageBucket: s.fieldOr("remoteObjectStorageBucket", S.nullableAsOption(S.string), None),
-    remoteObjectStoragePrefix: s.fieldOr("remoteObjectStoragePrefix", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z0-9._-]*$/)), None),
-    remoteObjectStorageEndpoint: s.fieldOr("remoteObjectStorageEndpoint", S.nullableAsOption(S.string), None),
-    remoteObjectStorageRegion: s.fieldOr("remoteObjectStorageRegion", S.nullableAsOption(S.string), None),
-    remoteObjectStoragePort: s.fieldOr("remoteObjectStoragePort", S.nullableAsOption(S.int), None),
-    remoteObjectStorageAccessKey: s.fieldOr("remoteObjectStorageAccessKey", S.nullableAsOption(S.string), None),
-    remoteObjectStorageSecretKey: s.fieldOr("remoteObjectStorageSecretKey", S.nullableAsOption(S.string), None),
-    remoteObjectStorageUseSsl: s.fieldOr("remoteObjectStorageUseSSL", S.nullableAsOption(S.bool), None),
-    remoteObjectStorageUseProxy: s.fieldOr("remoteObjectStorageUseProxy", S.nullableAsOption(S.bool), None),
-    remoteObjectStorageSetPublicRead: s.fieldOr("remoteObjectStorageSetPublicRead", S.nullableAsOption(S.bool), None),
-    remoteObjectStorageS3forcePathStyle: s.fieldOr("remoteObjectStorageS3ForcePathStyle", S.nullableAsOption(S.bool), None),
-    enableIpLogging: s.fieldOr("enableIpLogging", S.nullableAsOption(S.bool), None),
-    enableActiveEmailValidation: s.fieldOr("enableActiveEmailValidation", S.nullableAsOption(S.bool), None),
-    enableVerifymailApi: s.fieldOr("enableVerifymailApi", S.nullableAsOption(S.bool), None),
-    verifymailAuthKey: s.fieldOr("verifymailAuthKey", S.nullableAsOption(S.string), None),
-    enableTruemailApi: s.fieldOr("enableTruemailApi", S.nullableAsOption(S.bool), None),
-    truemailInstance: s.fieldOr("truemailInstance", S.nullableAsOption(S.string), None),
-    truemailAuthKey: s.fieldOr("truemailAuthKey", S.nullableAsOption(S.string), None),
-    enableChartsForRemoteUser: s.fieldOr("enableChartsForRemoteUser", S.nullableAsOption(S.bool), None),
-    enableChartsForFederatedInstances: s.fieldOr("enableChartsForFederatedInstances", S.nullableAsOption(S.bool), None),
-    enableStatsForFederatedInstances: s.fieldOr("enableStatsForFederatedInstances", S.nullableAsOption(S.bool), None),
-    enableServerMachineStats: s.fieldOr("enableServerMachineStats", S.nullableAsOption(S.bool), None),
-    enableIdenticonGeneration: s.fieldOr("enableIdenticonGeneration", S.nullableAsOption(S.bool), None),
-    serverRules: s.fieldOr("serverRules", S.nullableAsOption(S.array(S.string)), None),
-    bannedEmailDomains: s.fieldOr("bannedEmailDomains", S.nullableAsOption(S.array(S.string)), None),
-    preservedUsernames: s.fieldOr("preservedUsernames", S.nullableAsOption(S.array(S.string)), None),
-    manifestJsonOverride: s.fieldOr("manifestJsonOverride", S.nullableAsOption(S.string), None),
-    enableFanoutTimeline: s.fieldOr("enableFanoutTimeline", S.nullableAsOption(S.bool), None),
-    enableFanoutTimelineDbFallback: s.fieldOr("enableFanoutTimelineDbFallback", S.nullableAsOption(S.bool), None),
-    perLocalUserUserTimelineCacheMax: s.fieldOr("perLocalUserUserTimelineCacheMax", S.nullableAsOption(S.int), None),
-    perRemoteUserUserTimelineCacheMax: s.fieldOr("perRemoteUserUserTimelineCacheMax", S.nullableAsOption(S.int), None),
-    perUserHomeTimelineCacheMax: s.fieldOr("perUserHomeTimelineCacheMax", S.nullableAsOption(S.int), None),
-    perUserListTimelineCacheMax: s.fieldOr("perUserListTimelineCacheMax", S.nullableAsOption(S.int), None),
-    enableReactionsBuffering: s.fieldOr("enableReactionsBuffering", S.nullableAsOption(S.bool), None),
-    notesPerOneAd: s.fieldOr("notesPerOneAd", S.nullableAsOption(S.int), None),
-    silencedHosts: s.fieldOr("silencedHosts", S.nullableAsOption(S.json), None),
-    mediaSilencedHosts: s.fieldOr("mediaSilencedHosts", S.nullableAsOption(S.json), None),
-    summalyProxy: s.fieldOr("summalyProxy", S.nullableAsOption(S.string), None),
-    urlPreviewEnabled: s.fieldOr("urlPreviewEnabled", S.nullableAsOption(S.bool), None),
-    urlPreviewAllowRedirect: s.fieldOr("urlPreviewAllowRedirect", S.nullableAsOption(S.bool), None),
-    urlPreviewTimeout: s.fieldOr("urlPreviewTimeout", S.nullableAsOption(S.int), None),
-    urlPreviewMaximumContentLength: s.fieldOr("urlPreviewMaximumContentLength", S.nullableAsOption(S.int), None),
-    urlPreviewRequireContentLength: s.fieldOr("urlPreviewRequireContentLength", S.nullableAsOption(S.bool), None),
-    urlPreviewUserAgent: s.fieldOr("urlPreviewUserAgent", S.nullableAsOption(S.string), None),
-    urlPreviewSummaryProxyUrl: s.fieldOr("urlPreviewSummaryProxyUrl", S.nullableAsOption(S.string), None),
-    federation: s.fieldOr("federation", S.nullableAsOption(S.string), None),
-    federationHosts: s.fieldOr("federationHosts", S.nullableAsOption(S.array(S.string)), None),
-    deliverSuspendedSoftware: s.fieldOr("deliverSuspendedSoftware", S.nullableAsOption(S.array(postAdminUpdateMetaRequest_1Schema)), None),
-    singleUserMode: s.fieldOr("singleUserMode", S.nullableAsOption(S.bool), None),
-    ugcVisibilityForVisitor: s.fieldOr("ugcVisibilityForVisitor", S.nullableAsOption(S.string), None),
-    proxyRemoteFiles: s.fieldOr("proxyRemoteFiles", S.nullableAsOption(S.bool), None),
-    signToActivityPubGet: s.fieldOr("signToActivityPubGet", S.nullableAsOption(S.bool), None),
-    allowExternalApRedirect: s.fieldOr("allowExternalApRedirect", S.nullableAsOption(S.bool), None),
-    enableRemoteNotesCleaning: s.fieldOr("enableRemoteNotesCleaning", S.nullableAsOption(S.bool), None),
-    remoteNotesCleaningExpiryDaysForEachNotes: s.fieldOr("remoteNotesCleaningExpiryDaysForEachNotes", S.nullableAsOption(S.float), None),
-    remoteNotesCleaningMaxProcessingDurationInMinutes: s.fieldOr("remoteNotesCleaningMaxProcessingDurationInMinutes", S.nullableAsOption(S.float), None),
-    showRoleBadgesOfRemoteUsers: s.fieldOr("showRoleBadgesOfRemoteUsers", S.nullableAsOption(S.bool), None),
-    doNotSendNotificationEmailsForAbuseReport: s.fieldOr("doNotSendNotificationEmailsForAbuseReport", S.nullableAsOption(S.bool), None),
-    emailToReceiveAbuseReport: s.fieldOr("emailToReceiveAbuseReport", S.nullableAsOption(S.string), None),
-    enableReceivePrerelease: s.fieldOr("enableReceivePrerelease", S.nullableAsOption(S.bool), None),
-    skipVersion: s.fieldOr("skipVersion", S.nullableAsOption(S.bool), None),
-    skipCherryPickVersion: s.fieldOr("skipCherryPickVersion", S.nullableAsOption(S.string), None),
-    trustedLinkUrlPatterns: s.fieldOr("trustedLinkUrlPatterns", S.nullableAsOption(S.json), None),
-    customSplashText: s.fieldOr("customSplashText", S.nullableAsOption(S.json), None),
-    disableRegistrationWhenInactive: s.fieldOr("disableRegistrationWhenInactive", S.nullableAsOption(S.bool), None),
-    disablePublicNoteWhenInactive: s.fieldOr("disablePublicNoteWhenInactive", S.nullableAsOption(S.bool), None),
-    moderatorInactivityLimitDays: s.fieldOr("moderatorInactivityLimitDays", S.nullableAsOption(S.int), None),
-    bubbleInstances: s.fieldOr("bubbleInstances", S.nullableAsOption(S.array(S.string)), None),
-    customRobotsTxt: s.fieldOr("customRobotsTxt", S.nullableAsOption(S.string), None),
+    cacheRemoteFiles: s.field("cacheRemoteFiles", S.option(S.bool)),
+    cacheRemoteSensitiveFiles: s.field("cacheRemoteSensitiveFiles", S.option(S.bool)),
+    emailRequiredForSignup: s.field("emailRequiredForSignup", S.option(S.bool)),
+    enableHcaptcha: s.field("enableHcaptcha", S.option(S.bool)),
+    hcaptchaSiteKey: s.field("hcaptchaSiteKey", S.option(S.string)),
+    hcaptchaSecretKey: s.field("hcaptchaSecretKey", S.option(S.string)),
+    enableMcaptcha: s.field("enableMcaptcha", S.option(S.bool)),
+    mcaptchaSiteKey: s.field("mcaptchaSiteKey", S.option(S.string)),
+    mcaptchaInstanceUrl: s.field("mcaptchaInstanceUrl", S.option(S.string)),
+    mcaptchaSecretKey: s.field("mcaptchaSecretKey", S.option(S.string)),
+    enableRecaptcha: s.field("enableRecaptcha", S.option(S.bool)),
+    recaptchaSiteKey: s.field("recaptchaSiteKey", S.option(S.string)),
+    recaptchaSecretKey: s.field("recaptchaSecretKey", S.option(S.string)),
+    enableTurnstile: s.field("enableTurnstile", S.option(S.bool)),
+    turnstileSiteKey: s.field("turnstileSiteKey", S.option(S.string)),
+    turnstileSecretKey: s.field("turnstileSecretKey", S.option(S.string)),
+    enableTestcaptcha: s.field("enableTestcaptcha", S.option(S.bool)),
+    googleAnalyticsMeasurementId: s.field("googleAnalyticsMeasurementId", S.option(S.string)),
+    sensitiveMediaDetection: s.field("sensitiveMediaDetection", S.option(S.string)),
+    sensitiveMediaDetectionSensitivity: s.field("sensitiveMediaDetectionSensitivity", S.option(S.string)),
+    setSensitiveFlagAutomatically: s.field("setSensitiveFlagAutomatically", S.option(S.bool)),
+    enableSensitiveMediaDetectionForVideos: s.field("enableSensitiveMediaDetectionForVideos", S.option(S.bool)),
+    maintainerName: s.field("maintainerName", S.option(S.string)),
+    maintainerEmail: s.field("maintainerEmail", S.option(S.string)),
+    langs: s.field("langs", S.option(S.array(S.string))),
+    translatorType: s.field("translatorType", S.option(S.string)),
+    deeplAuthKey: s.field("deeplAuthKey", S.option(S.string)),
+    deeplIsPro: s.field("deeplIsPro", S.option(S.bool)),
+    ctav3saKey: s.field("ctav3SaKey", S.option(S.string)),
+    ctav3projectId: s.field("ctav3ProjectId", S.option(S.string)),
+    ctav3location: s.field("ctav3Location", S.option(S.string)),
+    ctav3model: s.field("ctav3Model", S.option(S.string)),
+    ctav3glossary: s.field("ctav3Glossary", S.option(S.string)),
+    libreTranslateEndPoint: s.field("libreTranslateEndPoint", S.option(S.string)),
+    libreTranslateApiKey: s.field("libreTranslateApiKey", S.option(S.string)),
+    enableEmail: s.field("enableEmail", S.option(S.bool)),
+    email: s.field("email", S.option(S.string)),
+    smtpSecure: s.field("smtpSecure", S.option(S.bool)),
+    smtpHost: s.field("smtpHost", S.option(S.string)),
+    smtpPort: s.field("smtpPort", S.option(S.int)),
+    smtpUser: s.field("smtpUser", S.option(S.string)),
+    smtpPass: s.field("smtpPass", S.option(S.string)),
+    enableServiceWorker: s.field("enableServiceWorker", S.option(S.bool)),
+    swPublicKey: s.field("swPublicKey", S.option(S.string)),
+    swPrivateKey: s.field("swPrivateKey", S.option(S.string)),
+    tosUrl: s.field("tosUrl", S.option(S.string)),
+    repositoryUrl: s.field("repositoryUrl", S.option(S.string)),
+    feedbackUrl: s.field("feedbackUrl", S.option(S.string)),
+    impressumUrl: s.field("impressumUrl", S.option(S.string)),
+    privacyPolicyUrl: s.field("privacyPolicyUrl", S.option(S.string)),
+    inquiryUrl: s.field("inquiryUrl", S.option(S.string)),
+    useObjectStorage: s.field("useObjectStorage", S.option(S.bool)),
+    objectStorageBaseUrl: s.field("objectStorageBaseUrl", S.option(S.string)),
+    objectStorageBucket: s.field("objectStorageBucket", S.option(S.string)),
+    objectStoragePrefix: s.field("objectStoragePrefix", S.option(S.string->S.pattern(/^[a-zA-Z0-9._-]*$/))),
+    objectStorageEndpoint: s.field("objectStorageEndpoint", S.option(S.string)),
+    objectStorageRegion: s.field("objectStorageRegion", S.option(S.string)),
+    objectStoragePort: s.field("objectStoragePort", S.option(S.int)),
+    objectStorageAccessKey: s.field("objectStorageAccessKey", S.option(S.string)),
+    objectStorageSecretKey: s.field("objectStorageSecretKey", S.option(S.string)),
+    objectStorageUseSsl: s.field("objectStorageUseSSL", S.option(S.bool)),
+    objectStorageUseProxy: s.field("objectStorageUseProxy", S.option(S.bool)),
+    objectStorageSetPublicRead: s.field("objectStorageSetPublicRead", S.option(S.bool)),
+    objectStorageS3forcePathStyle: s.field("objectStorageS3ForcePathStyle", S.option(S.bool)),
+    useRemoteObjectStorage: s.field("useRemoteObjectStorage", S.option(S.bool)),
+    remoteObjectStorageBaseUrl: s.field("remoteObjectStorageBaseUrl", S.option(S.string)),
+    remoteObjectStorageBucket: s.field("remoteObjectStorageBucket", S.option(S.string)),
+    remoteObjectStoragePrefix: s.field("remoteObjectStoragePrefix", S.option(S.string->S.pattern(/^[a-zA-Z0-9._-]*$/))),
+    remoteObjectStorageEndpoint: s.field("remoteObjectStorageEndpoint", S.option(S.string)),
+    remoteObjectStorageRegion: s.field("remoteObjectStorageRegion", S.option(S.string)),
+    remoteObjectStoragePort: s.field("remoteObjectStoragePort", S.option(S.int)),
+    remoteObjectStorageAccessKey: s.field("remoteObjectStorageAccessKey", S.option(S.string)),
+    remoteObjectStorageSecretKey: s.field("remoteObjectStorageSecretKey", S.option(S.string)),
+    remoteObjectStorageUseSsl: s.field("remoteObjectStorageUseSSL", S.option(S.bool)),
+    remoteObjectStorageUseProxy: s.field("remoteObjectStorageUseProxy", S.option(S.bool)),
+    remoteObjectStorageSetPublicRead: s.field("remoteObjectStorageSetPublicRead", S.option(S.bool)),
+    remoteObjectStorageS3forcePathStyle: s.field("remoteObjectStorageS3ForcePathStyle", S.option(S.bool)),
+    enableIpLogging: s.field("enableIpLogging", S.option(S.bool)),
+    enableActiveEmailValidation: s.field("enableActiveEmailValidation", S.option(S.bool)),
+    enableVerifymailApi: s.field("enableVerifymailApi", S.option(S.bool)),
+    verifymailAuthKey: s.field("verifymailAuthKey", S.option(S.string)),
+    enableTruemailApi: s.field("enableTruemailApi", S.option(S.bool)),
+    truemailInstance: s.field("truemailInstance", S.option(S.string)),
+    truemailAuthKey: s.field("truemailAuthKey", S.option(S.string)),
+    enableChartsForRemoteUser: s.field("enableChartsForRemoteUser", S.option(S.bool)),
+    enableChartsForFederatedInstances: s.field("enableChartsForFederatedInstances", S.option(S.bool)),
+    enableStatsForFederatedInstances: s.field("enableStatsForFederatedInstances", S.option(S.bool)),
+    enableServerMachineStats: s.field("enableServerMachineStats", S.option(S.bool)),
+    enableIdenticonGeneration: s.field("enableIdenticonGeneration", S.option(S.bool)),
+    serverRules: s.field("serverRules", S.option(S.array(S.string))),
+    bannedEmailDomains: s.field("bannedEmailDomains", S.option(S.array(S.string))),
+    preservedUsernames: s.field("preservedUsernames", S.option(S.array(S.string))),
+    manifestJsonOverride: s.field("manifestJsonOverride", S.option(S.string)),
+    enableFanoutTimeline: s.field("enableFanoutTimeline", S.option(S.bool)),
+    enableFanoutTimelineDbFallback: s.field("enableFanoutTimelineDbFallback", S.option(S.bool)),
+    perLocalUserUserTimelineCacheMax: s.field("perLocalUserUserTimelineCacheMax", S.option(S.int)),
+    perRemoteUserUserTimelineCacheMax: s.field("perRemoteUserUserTimelineCacheMax", S.option(S.int)),
+    perUserHomeTimelineCacheMax: s.field("perUserHomeTimelineCacheMax", S.option(S.int)),
+    perUserListTimelineCacheMax: s.field("perUserListTimelineCacheMax", S.option(S.int)),
+    enableReactionsBuffering: s.field("enableReactionsBuffering", S.option(S.bool)),
+    notesPerOneAd: s.field("notesPerOneAd", S.option(S.int)),
+    silencedHosts: s.field("silencedHosts", S.option(S.json)),
+    mediaSilencedHosts: s.field("mediaSilencedHosts", S.option(S.json)),
+    summalyProxy: s.field("summalyProxy", S.option(S.string)),
+    urlPreviewEnabled: s.field("urlPreviewEnabled", S.option(S.bool)),
+    urlPreviewAllowRedirect: s.field("urlPreviewAllowRedirect", S.option(S.bool)),
+    urlPreviewTimeout: s.field("urlPreviewTimeout", S.option(S.int)),
+    urlPreviewMaximumContentLength: s.field("urlPreviewMaximumContentLength", S.option(S.int)),
+    urlPreviewRequireContentLength: s.field("urlPreviewRequireContentLength", S.option(S.bool)),
+    urlPreviewUserAgent: s.field("urlPreviewUserAgent", S.option(S.string)),
+    urlPreviewSummaryProxyUrl: s.field("urlPreviewSummaryProxyUrl", S.option(S.string)),
+    federation: s.field("federation", S.option(S.string)),
+    federationHosts: s.field("federationHosts", S.option(S.array(S.string))),
+    deliverSuspendedSoftware: s.field("deliverSuspendedSoftware", S.option(S.array(postAdminUpdateMetaRequest_1Schema))),
+    singleUserMode: s.field("singleUserMode", S.option(S.bool)),
+    ugcVisibilityForVisitor: s.field("ugcVisibilityForVisitor", S.option(S.string)),
+    proxyRemoteFiles: s.field("proxyRemoteFiles", S.option(S.bool)),
+    signToActivityPubGet: s.field("signToActivityPubGet", S.option(S.bool)),
+    allowExternalApRedirect: s.field("allowExternalApRedirect", S.option(S.bool)),
+    enableRemoteNotesCleaning: s.field("enableRemoteNotesCleaning", S.option(S.bool)),
+    remoteNotesCleaningExpiryDaysForEachNotes: s.field("remoteNotesCleaningExpiryDaysForEachNotes", S.option(S.float)),
+    remoteNotesCleaningMaxProcessingDurationInMinutes: s.field("remoteNotesCleaningMaxProcessingDurationInMinutes", S.option(S.float)),
+    showRoleBadgesOfRemoteUsers: s.field("showRoleBadgesOfRemoteUsers", S.option(S.bool)),
+    doNotSendNotificationEmailsForAbuseReport: s.field("doNotSendNotificationEmailsForAbuseReport", S.option(S.bool)),
+    emailToReceiveAbuseReport: s.field("emailToReceiveAbuseReport", S.option(S.string)),
+    enableReceivePrerelease: s.field("enableReceivePrerelease", S.option(S.bool)),
+    skipVersion: s.field("skipVersion", S.option(S.bool)),
+    skipCherryPickVersion: s.field("skipCherryPickVersion", S.option(S.string)),
+    trustedLinkUrlPatterns: s.field("trustedLinkUrlPatterns", S.option(S.json)),
+    customSplashText: s.field("customSplashText", S.option(S.json)),
+    disableRegistrationWhenInactive: s.field("disableRegistrationWhenInactive", S.option(S.bool)),
+    disablePublicNoteWhenInactive: s.field("disablePublicNoteWhenInactive", S.option(S.bool)),
+    moderatorInactivityLimitDays: s.field("moderatorInactivityLimitDays", S.option(S.int)),
+    bubbleInstances: s.field("bubbleInstances", S.option(S.array(S.string))),
+    customRobotsTxt: s.field("customRobotsTxt", S.option(S.string)),
   })
 
 type postAdminUpdateMetaResponse = unit
@@ -2640,7 +2640,7 @@ type postAdminUpdateProxyAccountRequest = {
 }
 
 let postAdminUpdateProxyAccountRequestSchema = S.object(s => {
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
+    description: s.field("description", S.option(S.string->S.min(1)->S.max(1500))),
   })
 
 type postAdminUpdateProxyAccountResponse = KokonectLinkComponentSchemas.UserDetailed.t
@@ -2697,32 +2697,32 @@ type postV2AdminEmojiListRequest = {
 }
 
 let postV2AdminEmojiListRequest_1Schema = S.object(s => {
-    updatedAtFrom: s.fieldOr("updatedAtFrom", S.nullableAsOption(S.string), None),
-    updatedAtTo: s.fieldOr("updatedAtTo", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    uri: s.fieldOr("uri", S.nullableAsOption(S.string), None),
-    publicUrl: s.fieldOr("publicUrl", S.nullableAsOption(S.string), None),
-    originalUrl: s.fieldOr("originalUrl", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    aliases: s.fieldOr("aliases", S.nullableAsOption(S.string), None),
-    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
-    license: s.fieldOr("license", S.nullableAsOption(S.string), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    hostType: s.fieldOr("hostType", S.nullableAsOption(S.string), None),
-    roleIds: s.fieldOr("roleIds", S.nullableAsOption(S.array(S.string)), None),
+    updatedAtFrom: s.field("updatedAtFrom", S.option(S.string)),
+    updatedAtTo: s.field("updatedAtTo", S.option(S.string)),
+    name: s.field("name", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
+    uri: s.field("uri", S.option(S.string)),
+    publicUrl: s.field("publicUrl", S.option(S.string)),
+    originalUrl: s.field("originalUrl", S.option(S.string)),
+    type_: s.field("type", S.option(S.string)),
+    aliases: s.field("aliases", S.option(S.string)),
+    category: s.field("category", S.option(S.string)),
+    license: s.field("license", S.option(S.string)),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    hostType: s.field("hostType", S.option(S.string)),
+    roleIds: s.field("roleIds", S.option(S.array(S.string))),
   })
 
 let postV2AdminEmojiListRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(postV2AdminEmojiListRequest_1Schema), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    page: s.fieldOr("page", S.nullableAsOption(S.int), None),
-    sortKeys: s.fieldOr("sortKeys", S.nullableAsOption(S.array(S.string)), None),
+    query: s.field("query", S.option(postV2AdminEmojiListRequest_1Schema)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    page: s.field("page", S.option(S.int)),
+    sortKeys: s.field("sortKeys", S.option(S.array(S.string))),
   })
 
 type postV2AdminEmojiListResponse = {

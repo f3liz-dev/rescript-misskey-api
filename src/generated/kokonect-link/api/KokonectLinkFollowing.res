@@ -12,7 +12,7 @@ type postFollowingCreateRequest = {
 
 let postFollowingCreateRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    withReplies: s.field("withReplies", S.option(S.bool)),
   })
 
 type postFollowingCreateResponse = KokonectLinkComponentSchemas.UserLite.t
@@ -144,11 +144,11 @@ type postFollowingRequestsListRequest = {
 }
 
 let postFollowingRequestsListRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFollowingRequestsListResponse_1 = {
@@ -196,11 +196,11 @@ type postFollowingRequestsSentRequest = {
 }
 
 let postFollowingRequestsSentRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFollowingRequestsSentResponse_1 = {
@@ -247,8 +247,8 @@ type postFollowingUpdateRequest = {
 
 let postFollowingUpdateRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    notify: s.fieldOr("notify", S.nullableAsOption(S.string), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    notify: s.field("notify", S.option(S.string)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
   })
 
 type postFollowingUpdateResponse = KokonectLinkComponentSchemas.UserLite.t

@@ -79,11 +79,11 @@ type postISigninHistoryRequest = {
 }
 
 let postISigninHistoryRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postISigninHistoryResponse = array<KokonectLinkComponentSchemas.Signin.t>
@@ -118,7 +118,7 @@ type postITruncateAccountRequest = {
 
 let postITruncateAccountRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postITruncateAccountResponse = unit
@@ -152,8 +152,8 @@ type postIUpdateEmailRequest = {
 
 let postIUpdateEmailRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    email: s.field("email", S.option(S.string)),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postIUpdateEmailResponse = KokonectLinkComponentSchemas.MeDetailed.t
@@ -191,12 +191,12 @@ type postReversiGamesRequest = {
 }
 
 let postReversiGamesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    my: s.fieldOr("my", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    my: s.field("my", S.option(S.bool)),
   })
 
 type postReversiGamesResponse = array<KokonectLinkComponentSchemas.ReversiGameLite.t>
@@ -230,9 +230,9 @@ type postReversiMatchRequest = {
 }
 
 let postReversiMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    noIrregularRules: s.fieldOr("noIrregularRules", S.nullableAsOption(S.bool), None),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    userId: s.field("userId", S.option(S.string)),
+    noIrregularRules: s.field("noIrregularRules", S.option(S.bool)),
+    multiple: s.field("multiple", S.option(S.bool)),
   })
 
 type postReversiMatchResponse = KokonectLinkComponentSchemas.ReversiGameDetailed.t
@@ -308,7 +308,7 @@ type postReversiVerifyResponse = {
 
 let postReversiVerifyResponseSchema = S.object(s => {
     desynced: s.field("desynced", S.bool),
-    game: s.fieldOr("game", S.nullableAsOption(KokonectLinkComponentSchemas.ReversiGameDetailed.schema), None),
+    game: s.field("game", S.option(KokonectLinkComponentSchemas.ReversiGameDetailed.schema)),
   })
 
 /**

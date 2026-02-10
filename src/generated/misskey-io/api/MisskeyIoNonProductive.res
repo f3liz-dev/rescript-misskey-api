@@ -37,10 +37,10 @@ type postTestRequest = {
 
 let postTestRequestSchema = S.object(s => {
     required: s.field("required", S.bool),
-    string: s.fieldOr("string", S.nullableAsOption(S.string), None),
-    default: s.fieldOr("default", S.nullableAsOption(S.string), None),
-    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.string), None),
-    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
+    string: s.field("string", S.option(S.string)),
+    default: s.field("default", S.option(S.string)),
+    nullableDefault: s.field("nullableDefault", S.option(S.string)),
+    id: s.field("id", S.option(S.string)),
   })
 
 type postTestResponse = {
@@ -52,11 +52,11 @@ type postTestResponse = {
 }
 
 let postTestResponseSchema = S.object(s => {
-    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
+    id: s.field("id", S.option(S.string)),
     required: s.field("required", S.bool),
-    string: s.fieldOr("string", S.nullableAsOption(S.string), None),
-    default: s.fieldOr("default", S.nullableAsOption(S.string), None),
-    nullableDefault: s.fieldOr("nullableDefault", S.nullableAsOption(S.string), None),
+    string: s.field("string", S.option(S.string)),
+    default: s.field("default", S.option(S.string)),
+    nullableDefault: s.field("nullableDefault", S.option(S.string)),
   })
 
 /**

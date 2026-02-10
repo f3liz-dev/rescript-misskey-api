@@ -41,12 +41,12 @@ type postRolesNotesRequest = {
 
 let postRolesNotesRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postRolesNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -114,9 +114,9 @@ type postRolesUsersRequest = {
 
 let postRolesUsersRequestSchema = S.object(s => {
     roleId: s.field("roleId", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postRolesUsersResponse_1 = {

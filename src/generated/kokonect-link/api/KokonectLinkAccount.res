@@ -78,11 +78,11 @@ type postBlockingListRequest = {
 }
 
 let postBlockingListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postBlockingListResponse = array<KokonectLinkComponentSchemas.Blocking.t>
@@ -121,12 +121,12 @@ type postClipsNotesRequest = {
 
 let postClipsNotesRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    search: s.fieldOr("search", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    search: s.field("search", S.option(S.string->S.min(1)->S.max(100))),
   })
 
 type postClipsNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -162,11 +162,11 @@ type postFlashMyRequest = {
 }
 
 let postFlashMyRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postFlashMyResponse = array<KokonectLinkComponentSchemas.Flash.t>
@@ -203,12 +203,12 @@ type postFlashMyLikesRequest = {
 }
 
 let postFlashMyLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    search: s.fieldOr("search", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    search: s.field("search", S.option(S.string->S.min(1)->S.max(100))),
   })
 
 type postFlashMyLikesResponse_1 = {
@@ -308,11 +308,11 @@ type postIFavoritesRequest = {
 }
 
 let postIFavoritesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postIFavoritesResponse = array<KokonectLinkComponentSchemas.NoteFavorite.t>
@@ -388,11 +388,11 @@ type postIGalleryLikesRequest = {
 }
 
 let postIGalleryLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postIGalleryLikesResponse_1 = {
@@ -438,11 +438,11 @@ type postIGalleryPostsRequest = {
 }
 
 let postIGalleryPostsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postIGalleryPostsResponse = array<KokonectLinkComponentSchemas.GalleryPost.t>
@@ -481,14 +481,14 @@ type postINotificationsRequest = {
 }
 
 let postINotificationsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    markAsRead: s.fieldOr("markAsRead", S.nullableAsOption(S.bool), None),
-    includeTypes: s.fieldOr("includeTypes", S.nullableAsOption(S.array(S.string)), None),
-    excludeTypes: s.fieldOr("excludeTypes", S.nullableAsOption(S.array(S.string)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    markAsRead: s.field("markAsRead", S.option(S.bool)),
+    includeTypes: s.field("includeTypes", S.option(S.array(S.string))),
+    excludeTypes: s.field("excludeTypes", S.option(S.array(S.string))),
   })
 
 type postINotificationsResponse = array<KokonectLinkComponentSchemas.Notification.t>
@@ -527,14 +527,14 @@ type postINotificationsGroupedRequest = {
 }
 
 let postINotificationsGroupedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    markAsRead: s.fieldOr("markAsRead", S.nullableAsOption(S.bool), None),
-    includeTypes: s.fieldOr("includeTypes", S.nullableAsOption(S.array(S.string)), None),
-    excludeTypes: s.fieldOr("excludeTypes", S.nullableAsOption(S.array(S.string)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    markAsRead: s.field("markAsRead", S.option(S.bool)),
+    includeTypes: s.field("includeTypes", S.option(S.array(S.string))),
+    excludeTypes: s.field("excludeTypes", S.option(S.array(S.string))),
   })
 
 type postINotificationsGroupedResponse = array<KokonectLinkComponentSchemas.Notification.t>
@@ -570,11 +570,11 @@ type postIPageLikesRequest = {
 }
 
 let postIPageLikesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postIPageLikesResponse_1 = {
@@ -620,11 +620,11 @@ type postIPagesRequest = {
 }
 
 let postIPagesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postIPagesResponse = array<KokonectLinkComponentSchemas.Page.t>
@@ -821,54 +821,54 @@ let postIUpdateRequest_2Schema = S.object(s => {
 
 let postIUpdateRequest_1Schema = S.object(s => {
     id: s.field("id", S.string),
-    angle: s.fieldOr("angle", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
-    flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
-    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
-    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.float->S.min(0)->S.max(0)), None),
-    scale: s.fieldOr("scale", S.nullableAsOption(S.float->S.min(0)->S.max(1)), None),
-    opacity: s.fieldOr("opacity", S.nullableAsOption(S.float->S.min(0)->S.max(1)), None),
+    angle: s.field("angle", S.option(S.float->S.min(0)->S.max(0))),
+    flipH: s.field("flipH", S.option(S.bool)),
+    offsetX: s.field("offsetX", S.option(S.float->S.min(0)->S.max(0))),
+    offsetY: s.field("offsetY", S.option(S.float->S.min(0)->S.max(0))),
+    scale: s.field("scale", S.option(S.float->S.min(0)->S.max(1))),
+    opacity: s.field("opacity", S.option(S.float->S.min(0)->S.max(1))),
   })
 
 let postIUpdateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(1500)), None),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string->S.min(1)->S.max(256)), None),
-    location: s.fieldOr("location", S.nullableAsOption(S.string->S.min(1)->S.max(50)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
-    avatarId: s.fieldOr("avatarId", S.nullableAsOption(S.string), None),
-    avatarDecorations: s.fieldOr("avatarDecorations", S.nullableAsOption(S.array(postIUpdateRequest_1Schema)), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
-    fields: s.fieldOr("fields", S.nullableAsOption(S.array(postIUpdateRequest_2Schema)), None),
-    isLocked: s.fieldOr("isLocked", S.nullableAsOption(S.bool), None),
-    isExplorable: s.fieldOr("isExplorable", S.nullableAsOption(S.bool), None),
-    hideOnlineStatus: s.fieldOr("hideOnlineStatus", S.nullableAsOption(S.bool), None),
-    publicReactions: s.fieldOr("publicReactions", S.nullableAsOption(S.bool), None),
-    carefulBot: s.fieldOr("carefulBot", S.nullableAsOption(S.bool), None),
-    autoAcceptFollowed: s.fieldOr("autoAcceptFollowed", S.nullableAsOption(S.bool), None),
-    noCrawle: s.fieldOr("noCrawle", S.nullableAsOption(S.bool), None),
-    preventAiLearning: s.fieldOr("preventAiLearning", S.nullableAsOption(S.bool), None),
-    requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.int), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.int), None),
-    isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
-    isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
-    injectFeaturedNote: s.fieldOr("injectFeaturedNote", S.nullableAsOption(S.bool), None),
-    receiveAnnouncementEmail: s.fieldOr("receiveAnnouncementEmail", S.nullableAsOption(S.bool), None),
-    alwaysMarkNsfw: s.fieldOr("alwaysMarkNsfw", S.nullableAsOption(S.bool), None),
-    autoSensitive: s.fieldOr("autoSensitive", S.nullableAsOption(S.bool), None),
-    followingVisibility: s.fieldOr("followingVisibility", S.nullableAsOption(S.string), None),
-    followersVisibility: s.fieldOr("followersVisibility", S.nullableAsOption(S.string), None),
-    chatScope: s.fieldOr("chatScope", S.nullableAsOption(S.string), None),
-    pinnedPageId: s.fieldOr("pinnedPageId", S.nullableAsOption(S.string), None),
-    mutedWords: s.fieldOr("mutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
-    hardMutedWords: s.fieldOr("hardMutedWords", S.nullableAsOption(S.array(S.array(S.string))), None),
-    mutedInstances: s.fieldOr("mutedInstances", S.nullableAsOption(S.array(S.string)), None),
-    notificationRecieveConfig: s.fieldOr("notificationRecieveConfig", S.nullableAsOption(postIUpdateRequest_3Schema), None),
-    emailNotificationTypes: s.fieldOr("emailNotificationTypes", S.nullableAsOption(S.array(S.string)), None),
-    alsoKnownAs: s.fieldOr("alsoKnownAs", S.nullableAsOption(S.array(S.string)), None),
-    setFederationAvatarShape: s.fieldOr("setFederationAvatarShape", S.nullableAsOption(S.bool), None),
-    isSquareAvatars: s.fieldOr("isSquareAvatars", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(50))),
+    description: s.field("description", S.option(S.string->S.min(1)->S.max(1500))),
+    followedMessage: s.field("followedMessage", S.option(S.string->S.min(1)->S.max(256))),
+    location: s.field("location", S.option(S.string->S.min(1)->S.max(50))),
+    birthday: s.field("birthday", S.option(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/))),
+    lang: s.field("lang", S.option(S.string)),
+    avatarId: s.field("avatarId", S.option(S.string)),
+    avatarDecorations: s.field("avatarDecorations", S.option(S.array(postIUpdateRequest_1Schema))),
+    bannerId: s.field("bannerId", S.option(S.string)),
+    fields: s.field("fields", S.option(S.array(postIUpdateRequest_2Schema))),
+    isLocked: s.field("isLocked", S.option(S.bool)),
+    isExplorable: s.field("isExplorable", S.option(S.bool)),
+    hideOnlineStatus: s.field("hideOnlineStatus", S.option(S.bool)),
+    publicReactions: s.field("publicReactions", S.option(S.bool)),
+    carefulBot: s.field("carefulBot", S.option(S.bool)),
+    autoAcceptFollowed: s.field("autoAcceptFollowed", S.option(S.bool)),
+    noCrawle: s.field("noCrawle", S.option(S.bool)),
+    preventAiLearning: s.field("preventAiLearning", S.option(S.bool)),
+    requireSigninToViewContents: s.field("requireSigninToViewContents", S.option(S.bool)),
+    makeNotesFollowersOnlyBefore: s.field("makeNotesFollowersOnlyBefore", S.option(S.int)),
+    makeNotesHiddenBefore: s.field("makeNotesHiddenBefore", S.option(S.int)),
+    isBot: s.field("isBot", S.option(S.bool)),
+    isCat: s.field("isCat", S.option(S.bool)),
+    injectFeaturedNote: s.field("injectFeaturedNote", S.option(S.bool)),
+    receiveAnnouncementEmail: s.field("receiveAnnouncementEmail", S.option(S.bool)),
+    alwaysMarkNsfw: s.field("alwaysMarkNsfw", S.option(S.bool)),
+    autoSensitive: s.field("autoSensitive", S.option(S.bool)),
+    followingVisibility: s.field("followingVisibility", S.option(S.string)),
+    followersVisibility: s.field("followersVisibility", S.option(S.string)),
+    chatScope: s.field("chatScope", S.option(S.string)),
+    pinnedPageId: s.field("pinnedPageId", S.option(S.string)),
+    mutedWords: s.field("mutedWords", S.option(S.array(S.array(S.string)))),
+    hardMutedWords: s.field("hardMutedWords", S.option(S.array(S.array(S.string)))),
+    mutedInstances: s.field("mutedInstances", S.option(S.array(S.string))),
+    notificationRecieveConfig: s.field("notificationRecieveConfig", S.option(postIUpdateRequest_3Schema)),
+    emailNotificationTypes: s.field("emailNotificationTypes", S.option(S.array(S.string))),
+    alsoKnownAs: s.field("alsoKnownAs", S.option(S.array(S.string))),
+    setFederationAvatarShape: s.field("setFederationAvatarShape", S.option(S.bool)),
+    isSquareAvatars: s.field("isSquareAvatars", S.option(S.bool)),
   })
 
 type postIUpdateResponse = KokonectLinkComponentSchemas.MeDetailed.t
@@ -901,8 +901,8 @@ type postIUpdateAutoDeleteSettingsRequest = {
 }
 
 let postIUpdateAutoDeleteSettingsRequestSchema = S.object(s => {
-    autoDeleteNotesAfterDays: s.fieldOr("autoDeleteNotesAfterDays", S.nullableAsOption(S.float->S.min(1)->S.max(3650)), None),
-    autoDeleteKeepFavorites: s.fieldOr("autoDeleteKeepFavorites", S.nullableAsOption(S.bool), None),
+    autoDeleteNotesAfterDays: s.field("autoDeleteNotesAfterDays", S.option(S.float->S.min(1)->S.max(3650))),
+    autoDeleteKeepFavorites: s.field("autoDeleteKeepFavorites", S.option(S.bool)),
   })
 
 type postIUpdateAutoDeleteSettingsResponse = unit
@@ -934,9 +934,9 @@ type postIUserGroupInvitesRequest = {
 }
 
 let postIUserGroupInvitesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postIUserGroupInvitesResponse_1 = {
@@ -982,11 +982,11 @@ type postMuteListRequest = {
 }
 
 let postMuteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postMuteListResponse = array<KokonectLinkComponentSchemas.Muting.t>
@@ -1022,11 +1022,11 @@ type postRenoteMuteListRequest = {
 }
 
 let postRenoteMuteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postRenoteMuteListResponse = array<KokonectLinkComponentSchemas.RenoteMuting.t>

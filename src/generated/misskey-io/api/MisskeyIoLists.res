@@ -77,10 +77,10 @@ type postUsersListsGetMembershipsRequest = {
 
 let postUsersListsGetMembershipsRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    forPublic: s.fieldOr("forPublic", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    forPublic: s.field("forPublic", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postUsersListsGetMembershipsResponse_1 = {
@@ -128,7 +128,7 @@ type postUsersListsListRequest = {
 }
 
 let postUsersListsListRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.option(S.string)),
   })
 
 type postUsersListsListResponse = array<MisskeyIoComponentSchemas.UserList.t>
@@ -226,7 +226,7 @@ type postUsersListsShowRequest = {
 
 let postUsersListsShowRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    forPublic: s.fieldOr("forPublic", S.nullableAsOption(S.bool), None),
+    forPublic: s.field("forPublic", S.option(S.bool)),
   })
 
 type postUsersListsShowResponse = MisskeyIoComponentSchemas.UserList.t
@@ -261,8 +261,8 @@ type postUsersListsUpdateRequest = {
 
 let postUsersListsUpdateRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    isPublic: s.field("isPublic", S.option(S.bool)),
   })
 
 type postUsersListsUpdateResponse = MisskeyIoComponentSchemas.UserList.t
@@ -298,7 +298,7 @@ type postUsersListsUpdateMembershipRequest = {
 let postUsersListsUpdateMembershipRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
     userId: s.field("userId", S.string),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    withReplies: s.field("withReplies", S.option(S.bool)),
   })
 
 type postUsersListsUpdateMembershipResponse = unit

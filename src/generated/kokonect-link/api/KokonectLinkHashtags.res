@@ -47,10 +47,10 @@ type postHashtagsUsersRequest = {
 
 let postHashtagsUsersRequestSchema = S.object(s => {
     tag: s.field("tag", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
     sort: s.field("sort", S.string),
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
+    state: s.field("state", S.option(S.string)),
+    origin: s.field("origin", S.option(S.string)),
   })
 
 type postHashtagsUsersResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>

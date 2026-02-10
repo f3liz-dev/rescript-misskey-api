@@ -24,17 +24,17 @@ type postAntennasCreateRequest = {
 let postAntennasCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
     src: s.field("src", S.string),
-    userListId: s.fieldOr("userListId", S.nullableAsOption(S.string), None),
-    userGroupId: s.fieldOr("userGroupId", S.nullableAsOption(S.string), None),
+    userListId: s.field("userListId", S.option(S.string)),
+    userGroupId: s.field("userGroupId", S.option(S.string)),
     keywords: s.field("keywords", S.array(S.array(S.string))),
     excludeKeywords: s.field("excludeKeywords", S.array(S.array(S.string))),
     users: s.field("users", S.array(S.string)),
     caseSensitive: s.field("caseSensitive", S.bool),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    excludeBots: s.fieldOr("excludeBots", S.nullableAsOption(S.bool), None),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    excludeBots: s.field("excludeBots", S.option(S.bool)),
     withReplies: s.field("withReplies", S.bool),
     withFile: s.field("withFile", S.bool),
-    excludeNotesInSensitiveChannel: s.fieldOr("excludeNotesInSensitiveChannel", S.nullableAsOption(S.bool), None),
+    excludeNotesInSensitiveChannel: s.field("excludeNotesInSensitiveChannel", S.option(S.bool)),
   })
 
 type postAntennasCreateResponse = KokonectLinkComponentSchemas.Antenna.t
@@ -112,19 +112,19 @@ type postAntennasUpdateRequest = {
 
 let postAntennasUpdateRequestSchema = S.object(s => {
     antennaId: s.field("antennaId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    src: s.fieldOr("src", S.nullableAsOption(S.string), None),
-    userListId: s.fieldOr("userListId", S.nullableAsOption(S.string), None),
-    userGroupId: s.fieldOr("userGroupId", S.nullableAsOption(S.string), None),
-    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.array(S.string))), None),
-    excludeKeywords: s.fieldOr("excludeKeywords", S.nullableAsOption(S.array(S.array(S.string))), None),
-    users: s.fieldOr("users", S.nullableAsOption(S.array(S.string)), None),
-    caseSensitive: s.fieldOr("caseSensitive", S.nullableAsOption(S.bool), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    excludeBots: s.fieldOr("excludeBots", S.nullableAsOption(S.bool), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    withFile: s.fieldOr("withFile", S.nullableAsOption(S.bool), None),
-    excludeNotesInSensitiveChannel: s.fieldOr("excludeNotesInSensitiveChannel", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    src: s.field("src", S.option(S.string)),
+    userListId: s.field("userListId", S.option(S.string)),
+    userGroupId: s.field("userGroupId", S.option(S.string)),
+    keywords: s.field("keywords", S.option(S.array(S.array(S.string)))),
+    excludeKeywords: s.field("excludeKeywords", S.option(S.array(S.array(S.string)))),
+    users: s.field("users", S.option(S.array(S.string))),
+    caseSensitive: s.field("caseSensitive", S.option(S.bool)),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    excludeBots: s.field("excludeBots", S.option(S.bool)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    withFile: s.field("withFile", S.option(S.bool)),
+    excludeNotesInSensitiveChannel: s.field("excludeNotesInSensitiveChannel", S.option(S.bool)),
   })
 
 type postAntennasUpdateResponse = KokonectLinkComponentSchemas.Antenna.t

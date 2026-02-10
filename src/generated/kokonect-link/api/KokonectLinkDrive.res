@@ -17,14 +17,14 @@ type postDriveFilesRequest = {
 }
 
 let postDriveFilesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    folderId: s.field("folderId", S.option(S.string)),
+    type_: s.field("type", S.option(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/))),
+    sort: s.field("sort", S.option(S.string)),
   })
 
 type postDriveFilesResponse = array<KokonectLinkComponentSchemas.DriveFile.t>
@@ -61,11 +61,11 @@ type postDriveFilesAttachedChatMessagesRequest = {
 }
 
 let postDriveFilesAttachedChatMessagesRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
     fileId: s.field("fileId", S.string),
   })
 
@@ -103,11 +103,11 @@ type postDriveFilesAttachedNotesRequest = {
 }
 
 let postDriveFilesAttachedNotesRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
     fileId: s.field("fileId", S.string),
   })
 
@@ -145,11 +145,11 @@ type postDriveFilesCreateRequest = {
 }
 
 let postDriveFilesCreateRequestSchema = S.object(s => {
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    force: s.fieldOr("force", S.nullableAsOption(S.bool), None),
+    folderId: s.field("folderId", S.option(S.string)),
+    name: s.field("name", S.option(S.string)),
+    comment: s.field("comment", S.option(S.string->S.max(512))),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    force: s.field("force", S.option(S.bool)),
     file: s.field("file", S.string),
   })
 
@@ -184,7 +184,7 @@ type postDriveFilesMoveBulkRequest = {
 
 let postDriveFilesMoveBulkRequestSchema = S.object(s => {
     fileIds: s.field("fileIds", S.array(S.string)),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    folderId: s.field("folderId", S.option(S.string)),
   })
 
 type postDriveFilesMoveBulkResponse = unit
@@ -255,10 +255,10 @@ type postDriveFilesUpdateRequest = {
 
 let postDriveFilesUpdateRequestSchema = S.object(s => {
     fileId: s.field("fileId", S.string),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    comment: s.fieldOr("comment", S.nullableAsOption(S.string->S.max(512)), None),
+    folderId: s.field("folderId", S.option(S.string)),
+    name: s.field("name", S.option(S.string)),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    comment: s.field("comment", S.option(S.string->S.max(512))),
   })
 
 type postDriveFilesUpdateResponse = KokonectLinkComponentSchemas.DriveFile.t
@@ -295,12 +295,12 @@ type postDriveFoldersRequest = {
 }
 
 let postDriveFoldersRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    folderId: s.fieldOr("folderId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    folderId: s.field("folderId", S.option(S.string)),
   })
 
 type postDriveFoldersResponse = array<KokonectLinkComponentSchemas.DriveFolder.t>
@@ -333,8 +333,8 @@ type postDriveFoldersCreateRequest = {
 }
 
 let postDriveFoldersCreateRequestSchema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string->S.max(200))),
+    parentId: s.field("parentId", S.option(S.string)),
   })
 
 type postDriveFoldersCreateResponse = KokonectLinkComponentSchemas.DriveFolder.t
@@ -401,8 +401,8 @@ type postDriveFoldersUpdateRequest = {
 
 let postDriveFoldersUpdateRequestSchema = S.object(s => {
     folderId: s.field("folderId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.max(200)), None),
-    parentId: s.fieldOr("parentId", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string->S.max(200))),
+    parentId: s.field("parentId", S.option(S.string)),
   })
 
 type postDriveFoldersUpdateResponse = KokonectLinkComponentSchemas.DriveFolder.t
@@ -439,12 +439,12 @@ type postDriveStreamRequest = {
 }
 
 let postDriveStreamRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    type_: s.field("type", S.option(S.string->S.pattern(/^[a-zA-Z\/\*-]+$/))),
   })
 
 type postDriveStreamResponse = array<KokonectLinkComponentSchemas.DriveFile.t>

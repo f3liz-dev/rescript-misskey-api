@@ -49,12 +49,12 @@ type postUsersListsGetMembershipsRequest = {
 
 let postUsersListsGetMembershipsRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    forPublic: s.fieldOr("forPublic", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    forPublic: s.field("forPublic", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersListsGetMembershipsResponse_1 = {
@@ -105,8 +105,8 @@ type postUsersListsUpdateRequest = {
 
 let postUsersListsUpdateRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    isPublic: s.field("isPublic", S.option(S.bool)),
   })
 
 type postUsersListsUpdateResponse = KokonectLinkComponentSchemas.UserList.t

@@ -17,14 +17,14 @@ type postAdminSystemWebhookTestRequest = {
 }
 
 let postAdminSystemWebhookTestRequest_1Schema = S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+    url: s.field("url", S.option(S.string)),
+    secret: s.field("secret", S.option(S.string)),
   })
 
 let postAdminSystemWebhookTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(postAdminSystemWebhookTestRequest_1Schema), None),
+    override: s.field("override", S.option(postAdminSystemWebhookTestRequest_1Schema)),
   })
 
 type postAdminSystemWebhookTestResponse = unit
@@ -60,7 +60,7 @@ type postIWebhooksCreateRequest = {
 let postIWebhooksCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
     url: s.field("url", S.string->S.min(1)->S.max(1024)),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string->S.max(1024)), None),
+    secret: s.field("secret", S.option(S.string->S.max(1024))),
     on: s.field("on", S.array(S.string)),
   })
 
@@ -250,14 +250,14 @@ type postIWebhooksTestRequest = {
 }
 
 let postIWebhooksTestRequest_1Schema = S.object(s => {
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
+    url: s.field("url", S.option(S.string)),
+    secret: s.field("secret", S.option(S.string)),
   })
 
 let postIWebhooksTestRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
     type_: s.field("type", S.string),
-    override: s.fieldOr("override", S.nullableAsOption(postIWebhooksTestRequest_1Schema), None),
+    override: s.field("override", S.option(postIWebhooksTestRequest_1Schema)),
   })
 
 type postIWebhooksTestResponse = unit
@@ -294,11 +294,11 @@ type postIWebhooksUpdateRequest = {
 
 let postIWebhooksUpdateRequestSchema = S.object(s => {
     webhookId: s.field("webhookId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    url: s.fieldOr("url", S.nullableAsOption(S.string->S.min(1)->S.max(1024)), None),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string->S.max(1024)), None),
-    on: s.fieldOr("on", S.nullableAsOption(S.array(S.string)), None),
-    active: s.fieldOr("active", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    url: s.field("url", S.option(S.string->S.min(1)->S.max(1024))),
+    secret: s.field("secret", S.option(S.string->S.max(1024))),
+    on: s.field("on", S.option(S.array(S.string))),
+    active: s.field("active", S.option(S.bool)),
   })
 
 type postIWebhooksUpdateResponse = unit

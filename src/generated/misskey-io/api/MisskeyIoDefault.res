@@ -231,7 +231,7 @@ type postI2faKeyDoneRequest = {
 
 let postI2faKeyDoneRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
     name: s.field("name", S.string->S.min(1)->S.max(30)),
     credential: s.field("credential", S.dict(S.json)),
   })
@@ -305,7 +305,7 @@ type postI2faRegisterRequest = {
 
 let postI2faRegisterRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postI2faRegisterResponse = {
@@ -352,7 +352,7 @@ type postI2faRegisterKeyRequest = {
 
 let postI2faRegisterKeyRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postI2faRegisterKeyResponse_5 = {
@@ -418,7 +418,7 @@ let postI2faRegisterKeyResponse_2Schema = S.object(s => {
   })
 
 let postI2faRegisterKeyResponse_1Schema = S.object(s => {
-    id: s.fieldOr("id", S.nullableAsOption(S.string), None),
+    id: s.field("id", S.option(S.string)),
   })
 
 let postI2faRegisterKeyResponseSchema = S.object(s => {
@@ -462,7 +462,7 @@ type postI2faRemoveKeyRequest = {
 
 let postI2faRemoveKeyRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
     credentialId: s.field("credentialId", S.string),
   })
 
@@ -496,7 +496,7 @@ type postI2faUnregisterRequest = {
 
 let postI2faUnregisterRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postI2faUnregisterResponse = unit
@@ -560,7 +560,7 @@ type postIAppsRequest = {
 }
 
 let postIAppsRequestSchema = S.object(s => {
-    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
+    sort: s.field("sort", S.option(S.string)),
   })
 
 type postIAppsResponse_1 = {
@@ -575,9 +575,9 @@ type postIAppsResponse = array<postIAppsResponse_1>
 
 let postIAppsResponse_1Schema = S.object(s => {
     id: s.field("id", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
     createdAt: s.field("createdAt", S.string),
-    lastUsedAt: s.fieldOr("lastUsedAt", S.nullableAsOption(S.string), None),
+    lastUsedAt: s.field("lastUsedAt", S.option(S.string)),
     permission: s.field("permission", S.array(S.string)),
   })
 
@@ -611,9 +611,9 @@ type postIAuthorizedAppsRequest = {
 }
 
 let postIAuthorizedAppsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    sort: s.field("sort", S.option(S.string)),
   })
 
 type postIAuthorizedAppsResponse_1 = {
@@ -631,7 +631,7 @@ let postIAuthorizedAppsResponse_1Schema = S.object(s => {
     name: s.field("name", S.string),
     callbackUrl: s.field("callbackUrl", S.nullableAsOption(S.string)),
     permission: s.field("permission", S.array(S.string)),
-    isAuthorized: s.fieldOr("isAuthorized", S.nullableAsOption(S.bool), None),
+    isAuthorized: s.field("isAuthorized", S.option(S.bool)),
   })
 
 let postIAuthorizedAppsResponseSchema = S.array(postIAuthorizedAppsResponse_1Schema)
@@ -666,7 +666,7 @@ type postIChangePasswordRequest = {
 let postIChangePasswordRequestSchema = S.object(s => {
     currentPassword: s.field("currentPassword", S.string),
     newPassword: s.field("newPassword", S.string->S.min(1)),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postIChangePasswordResponse = unit
@@ -729,7 +729,7 @@ type postIDeleteAccountRequest = {
 
 let postIDeleteAccountRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postIDeleteAccountResponse = unit
@@ -853,8 +853,8 @@ type postIExportFollowingRequest = {
 }
 
 let postIExportFollowingRequestSchema = S.object(s => {
-    excludeMuting: s.fieldOr("excludeMuting", S.nullableAsOption(S.bool), None),
-    excludeInactive: s.fieldOr("excludeInactive", S.nullableAsOption(S.bool), None),
+    excludeMuting: s.field("excludeMuting", S.option(S.bool)),
+    excludeInactive: s.field("excludeInactive", S.option(S.bool)),
   })
 
 type postIExportFollowingResponse = unit
@@ -1018,7 +1018,7 @@ type postIImportFollowingRequest = {
 
 let postIImportFollowingRequestSchema = S.object(s => {
     fileId: s.field("fileId", S.string),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    withReplies: s.field("withReplies", S.option(S.bool)),
   })
 
 type postIImportFollowingResponse = unit
@@ -1146,7 +1146,7 @@ type postIRegistryGetRequest = {
 let postIRegistryGetRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryGetResponse = dict<JSON.t>
@@ -1180,7 +1180,7 @@ type postIRegistryGetAllRequest = {
 
 let postIRegistryGetAllRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryGetAllResponse = dict<JSON.t>
@@ -1216,7 +1216,7 @@ type postIRegistryGetDetailRequest = {
 let postIRegistryGetDetailRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryGetDetailResponse = {
@@ -1256,7 +1256,7 @@ type postIRegistryKeysRequest = {
 
 let postIRegistryKeysRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryKeysResponse = array<string>
@@ -1290,7 +1290,7 @@ type postIRegistryKeysWithTypeRequest = {
 
 let postIRegistryKeysWithTypeRequestSchema = S.object(s => {
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryKeysWithTypeResponse = dict<JSON.t>
@@ -1326,7 +1326,7 @@ type postIRegistryRemoveRequest = {
 let postIRegistryRemoveRequestSchema = S.object(s => {
     key: s.field("key", S.string),
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistryRemoveResponse = unit
@@ -1397,7 +1397,7 @@ let postIRegistrySetRequestSchema = S.object(s => {
     key: s.field("key", S.string->S.min(1)),
     value: s.field("value", S.json),
     scope: s.field("scope", S.array(S.string->S.pattern(/^[a-zA-Z0-9_]+$/))),
-    domain: s.fieldOr("domain", S.nullableAsOption(S.string), None),
+    domain: s.field("domain", S.option(S.string)),
   })
 
 type postIRegistrySetResponse = unit
@@ -1428,8 +1428,8 @@ type postIRevokeTokenRequest = {
 }
 
 let postIRevokeTokenRequestSchema = S.object(s => {
-    tokenId: s.fieldOr("tokenId", S.nullableAsOption(S.string), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    tokenId: s.field("tokenId", S.option(S.string)),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postIRevokeTokenResponse = unit
@@ -1462,9 +1462,9 @@ type postISigninHistoryRequest = {
 }
 
 let postISigninHistoryRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postISigninHistoryResponse = array<MisskeyIoComponentSchemas.Signin.t>
@@ -1500,8 +1500,8 @@ type postIUpdateEmailRequest = {
 
 let postIUpdateEmailRequestSchema = S.object(s => {
     password: s.field("password", S.string),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-    token: s.fieldOr("token", S.nullableAsOption(S.string), None),
+    email: s.field("email", S.option(S.string)),
+    token: s.field("token", S.option(S.string)),
   })
 
 type postIUpdateEmailResponse = MisskeyIoComponentSchemas.MeDetailed.t
@@ -1538,7 +1538,7 @@ type postPagePushRequest = {
 let postPagePushRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
     event: s.field("event", S.string),
-    var: s.fieldOr("var", S.nullableAsOption(S.json), None),
+    var: s.field("var", S.option(S.json)),
   })
 
 type postPagePushResponse = unit
@@ -1569,7 +1569,7 @@ type postReversiCancelMatchRequest = {
 }
 
 let postReversiCancelMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.option(S.string)),
   })
 
 type postReversiCancelMatchResponse = unit
@@ -1602,10 +1602,10 @@ type postReversiGamesRequest = {
 }
 
 let postReversiGamesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    my: s.fieldOr("my", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    my: s.field("my", S.option(S.bool)),
   })
 
 type postReversiGamesResponse = array<MisskeyIoComponentSchemas.ReversiGameLite.t>
@@ -1663,9 +1663,9 @@ type postReversiMatchRequest = {
 }
 
 let postReversiMatchRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    noIrregularRules: s.fieldOr("noIrregularRules", S.nullableAsOption(S.bool), None),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
+    userId: s.field("userId", S.option(S.string)),
+    noIrregularRules: s.field("noIrregularRules", S.option(S.bool)),
+    multiple: s.field("multiple", S.option(S.bool)),
   })
 
 type postReversiMatchResponse = dict<JSON.t>
@@ -1771,7 +1771,7 @@ type postReversiVerifyResponse = {
 
 let postReversiVerifyResponseSchema = S.object(s => {
     desynced: s.field("desynced", S.bool),
-    game: s.fieldOr("game", S.nullableAsOption(MisskeyIoComponentSchemas.ReversiGameDetailed.schema), None),
+    game: s.field("game", S.option(MisskeyIoComponentSchemas.ReversiGameDetailed.schema)),
   })
 
 /**

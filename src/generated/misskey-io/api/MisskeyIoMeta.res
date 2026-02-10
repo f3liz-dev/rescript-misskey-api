@@ -151,15 +151,15 @@ let postAdminMetaResponseSchema = S.object(s => {
     enableEmail: s.field("enableEmail", S.bool),
     enableServiceWorker: s.field("enableServiceWorker", S.bool),
     translatorAvailable: s.field("translatorAvailable", S.bool),
-    silencedHosts: s.fieldOr("silencedHosts", S.nullableAsOption(S.array(S.string)), None),
-    sensitiveMediaHosts: s.fieldOr("sensitiveMediaHosts", S.nullableAsOption(S.array(S.string)), None),
+    silencedHosts: s.field("silencedHosts", S.option(S.array(S.string))),
+    sensitiveMediaHosts: s.field("sensitiveMediaHosts", S.option(S.array(S.string))),
     pinnedUsers: s.field("pinnedUsers", S.array(S.string)),
     hiddenTags: s.field("hiddenTags", S.array(S.string)),
     blockedHosts: s.field("blockedHosts", S.array(S.string)),
     blockedRemoteCustomEmojis: s.field("blockedRemoteCustomEmojis", S.array(S.string)),
     sensitiveWords: s.field("sensitiveWords", S.array(S.string)),
     prohibitedWords: s.field("prohibitedWords", S.array(S.string)),
-    bannedEmailDomains: s.fieldOr("bannedEmailDomains", S.nullableAsOption(S.array(S.string)), None),
+    bannedEmailDomains: s.field("bannedEmailDomains", S.option(S.array(S.string))),
     preservedUsernames: s.field("preservedUsernames", S.array(S.string)),
     hcaptchaSecretKey: s.field("hcaptchaSecretKey", S.nullableAsOption(S.string)),
     mcaptchaSecretKey: s.field("mcaptchaSecretKey", S.nullableAsOption(S.string)),
@@ -306,11 +306,11 @@ type postAnnouncementsRequest = {
 }
 
 let postAnnouncementsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    isActive: s.fieldOr("isActive", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    offset: s.field("offset", S.option(S.int)),
+    isActive: s.field("isActive", S.option(S.bool)),
   })
 
 type postAnnouncementsResponse = array<MisskeyIoComponentSchemas.Announcement.t>
@@ -673,63 +673,63 @@ type getFetchRssResponse = {
 }
 
 let getFetchRssResponse_6Schema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
+    email: s.field("email", S.option(S.string)),
   })
 
 let getFetchRssResponse_5Schema = S.object(s => {
     url: s.field("url", S.string),
-    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+    length: s.field("length", S.option(S.float)),
+    type_: s.field("type", S.option(S.string)),
   })
 
 let getFetchRssResponse_4Schema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
-    owner: s.fieldOr("owner", S.nullableAsOption(getFetchRssResponse_6Schema), None),
-    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
+    image: s.field("image", S.option(S.string)),
+    owner: s.field("owner", S.option(getFetchRssResponse_6Schema)),
+    author: s.field("author", S.option(S.string)),
+    summary: s.field("summary", S.option(S.string)),
+    explicit: s.field("explicit", S.option(S.string)),
+    categories: s.field("categories", S.option(S.array(S.string))),
+    keywords: s.field("keywords", S.option(S.array(S.string))),
   })
 
 let getFetchRssResponse_3Schema = S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    guid: s.fieldOr("guid", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    pubDate: s.fieldOr("pubDate", S.nullableAsOption(S.string), None),
-    creator: s.fieldOr("creator", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    content: s.fieldOr("content", S.nullableAsOption(S.string), None),
-    isoDate: s.fieldOr("isoDate", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    contentSnippet: s.fieldOr("contentSnippet", S.nullableAsOption(S.string), None),
-    enclosure: s.fieldOr("enclosure", S.nullableAsOption(getFetchRssResponse_5Schema), None),
+    link: s.field("link", S.option(S.string)),
+    guid: s.field("guid", S.option(S.string)),
+    title: s.field("title", S.option(S.string)),
+    pubDate: s.field("pubDate", S.option(S.string)),
+    creator: s.field("creator", S.option(S.string)),
+    summary: s.field("summary", S.option(S.string)),
+    content: s.field("content", S.option(S.string)),
+    isoDate: s.field("isoDate", S.option(S.string)),
+    categories: s.field("categories", S.option(S.array(S.string))),
+    contentSnippet: s.field("contentSnippet", S.option(S.string)),
+    enclosure: s.field("enclosure", S.option(getFetchRssResponse_5Schema)),
   })
 
 let getFetchRssResponse_2Schema = S.object(s => {
-    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
-    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
-    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
-    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
-    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
+    self: s.field("self", S.option(S.string)),
+    first: s.field("first", S.option(S.string)),
+    next: s.field("next", S.option(S.string)),
+    last: s.field("last", S.option(S.string)),
+    prev: s.field("prev", S.option(S.string)),
   })
 
 let getFetchRssResponse_1Schema = S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+    link: s.field("link", S.option(S.string)),
     url: s.field("url", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    title: s.field("title", S.option(S.string)),
   })
 
 let getFetchRssResponseSchema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(getFetchRssResponse_1Schema), None),
-    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(getFetchRssResponse_2Schema), None),
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    image: s.field("image", S.option(getFetchRssResponse_1Schema)),
+    paginationLinks: s.field("paginationLinks", S.option(getFetchRssResponse_2Schema)),
+    link: s.field("link", S.option(S.string)),
+    title: s.field("title", S.option(S.string)),
     items: s.field("items", S.array(getFetchRssResponse_3Schema)),
-    feedUrl: s.fieldOr("feedUrl", S.nullableAsOption(S.string), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    itunes: s.fieldOr("itunes", S.nullableAsOption(getFetchRssResponse_4Schema), None),
+    feedUrl: s.field("feedUrl", S.option(S.string)),
+    description: s.field("description", S.option(S.string)),
+    itunes: s.field("itunes", S.option(getFetchRssResponse_4Schema)),
   })
 
 /**
@@ -821,63 +821,63 @@ type postFetchRssResponse = {
 }
 
 let postFetchRssResponse_6Schema = S.object(s => {
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
+    name: s.field("name", S.option(S.string)),
+    email: s.field("email", S.option(S.string)),
   })
 
 let postFetchRssResponse_5Schema = S.object(s => {
     url: s.field("url", S.string),
-    length: s.fieldOr("length", S.nullableAsOption(S.float), None),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
+    length: s.field("length", S.option(S.float)),
+    type_: s.field("type", S.option(S.string)),
   })
 
 let postFetchRssResponse_4Schema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(S.string), None),
-    owner: s.fieldOr("owner", S.nullableAsOption(postFetchRssResponse_6Schema), None),
-    author: s.fieldOr("author", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    explicit: s.fieldOr("explicit", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    keywords: s.fieldOr("keywords", S.nullableAsOption(S.array(S.string)), None),
+    image: s.field("image", S.option(S.string)),
+    owner: s.field("owner", S.option(postFetchRssResponse_6Schema)),
+    author: s.field("author", S.option(S.string)),
+    summary: s.field("summary", S.option(S.string)),
+    explicit: s.field("explicit", S.option(S.string)),
+    categories: s.field("categories", S.option(S.array(S.string))),
+    keywords: s.field("keywords", S.option(S.array(S.string))),
   })
 
 let postFetchRssResponse_3Schema = S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    guid: s.fieldOr("guid", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    pubDate: s.fieldOr("pubDate", S.nullableAsOption(S.string), None),
-    creator: s.fieldOr("creator", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    content: s.fieldOr("content", S.nullableAsOption(S.string), None),
-    isoDate: s.fieldOr("isoDate", S.nullableAsOption(S.string), None),
-    categories: s.fieldOr("categories", S.nullableAsOption(S.array(S.string)), None),
-    contentSnippet: s.fieldOr("contentSnippet", S.nullableAsOption(S.string), None),
-    enclosure: s.fieldOr("enclosure", S.nullableAsOption(postFetchRssResponse_5Schema), None),
+    link: s.field("link", S.option(S.string)),
+    guid: s.field("guid", S.option(S.string)),
+    title: s.field("title", S.option(S.string)),
+    pubDate: s.field("pubDate", S.option(S.string)),
+    creator: s.field("creator", S.option(S.string)),
+    summary: s.field("summary", S.option(S.string)),
+    content: s.field("content", S.option(S.string)),
+    isoDate: s.field("isoDate", S.option(S.string)),
+    categories: s.field("categories", S.option(S.array(S.string))),
+    contentSnippet: s.field("contentSnippet", S.option(S.string)),
+    enclosure: s.field("enclosure", S.option(postFetchRssResponse_5Schema)),
   })
 
 let postFetchRssResponse_2Schema = S.object(s => {
-    self: s.fieldOr("self", S.nullableAsOption(S.string), None),
-    first: s.fieldOr("first", S.nullableAsOption(S.string), None),
-    next: s.fieldOr("next", S.nullableAsOption(S.string), None),
-    last: s.fieldOr("last", S.nullableAsOption(S.string), None),
-    prev: s.fieldOr("prev", S.nullableAsOption(S.string), None),
+    self: s.field("self", S.option(S.string)),
+    first: s.field("first", S.option(S.string)),
+    next: s.field("next", S.option(S.string)),
+    last: s.field("last", S.option(S.string)),
+    prev: s.field("prev", S.option(S.string)),
   })
 
 let postFetchRssResponse_1Schema = S.object(s => {
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
+    link: s.field("link", S.option(S.string)),
     url: s.field("url", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    title: s.field("title", S.option(S.string)),
   })
 
 let postFetchRssResponseSchema = S.object(s => {
-    image: s.fieldOr("image", S.nullableAsOption(postFetchRssResponse_1Schema), None),
-    paginationLinks: s.fieldOr("paginationLinks", S.nullableAsOption(postFetchRssResponse_2Schema), None),
-    link: s.fieldOr("link", S.nullableAsOption(S.string), None),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
+    image: s.field("image", S.option(postFetchRssResponse_1Schema)),
+    paginationLinks: s.field("paginationLinks", S.option(postFetchRssResponse_2Schema)),
+    link: s.field("link", S.option(S.string)),
+    title: s.field("title", S.option(S.string)),
     items: s.field("items", S.array(postFetchRssResponse_3Schema)),
-    feedUrl: s.fieldOr("feedUrl", S.nullableAsOption(S.string), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string), None),
-    itunes: s.fieldOr("itunes", S.nullableAsOption(postFetchRssResponse_4Schema), None),
+    feedUrl: s.field("feedUrl", S.option(S.string)),
+    description: s.field("description", S.option(S.string)),
+    itunes: s.field("itunes", S.option(postFetchRssResponse_4Schema)),
   })
 
 /**
@@ -1045,9 +1045,9 @@ type postInviteListRequest = {
 }
 
 let postInviteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postInviteListResponse = array<MisskeyIoComponentSchemas.InviteCode.t>
@@ -1079,7 +1079,7 @@ type getMetaRequest = {
 }
 
 let getMetaRequestSchema = S.object(s => {
-    detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
+    detail: s.field("detail", S.option(S.bool)),
   })
 
 type getMetaResponse = dict<JSON.t>
@@ -1111,7 +1111,7 @@ type postMetaRequest = {
 }
 
 let postMetaRequestSchema = S.object(s => {
-    detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
+    detail: s.field("detail", S.option(S.bool)),
   })
 
 type postMetaResponse = dict<JSON.t>

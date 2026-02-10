@@ -13,8 +13,8 @@ type postNotificationsCreateRequest = {
 
 let postNotificationsCreateRequestSchema = S.object(s => {
     body: s.field("body", S.string),
-    header: s.fieldOr("header", S.nullableAsOption(S.string), None),
-    icon: s.fieldOr("icon", S.nullableAsOption(S.string), None),
+    header: s.field("header", S.option(S.string)),
+    icon: s.field("icon", S.option(S.string)),
   })
 
 type postNotificationsCreateResponse = unit

@@ -13,8 +13,8 @@ type getChartsActiveUsersRequest = {
 
 let getChartsActiveUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsActiveUsersResponse = {
@@ -69,8 +69,8 @@ type postChartsActiveUsersRequest = {
 
 let postChartsActiveUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsActiveUsersResponse = {
@@ -125,8 +125,8 @@ type getChartsApRequestRequest = {
 
 let getChartsApRequestRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsApRequestResponse = {
@@ -169,8 +169,8 @@ type postChartsApRequestRequest = {
 
 let postChartsApRequestRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsApRequestResponse = {
@@ -213,8 +213,8 @@ type getChartsDriveRequest = {
 
 let getChartsDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsDriveResponse_1 = {
@@ -269,8 +269,8 @@ type postChartsDriveRequest = {
 
 let postChartsDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsDriveResponse_1 = {
@@ -325,8 +325,8 @@ type getChartsFederationRequest = {
 
 let getChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsFederationResponse = {
@@ -379,8 +379,8 @@ type postChartsFederationRequest = {
 
 let postChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsFederationResponse = {
@@ -434,8 +434,8 @@ type getChartsInstanceRequest = {
 
 let getChartsInstanceRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     host: s.field("host", S.string),
   })
 
@@ -554,8 +554,8 @@ type postChartsInstanceRequest = {
 
 let postChartsInstanceRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     host: s.field("host", S.string),
   })
 
@@ -673,8 +673,8 @@ type getChartsNotesRequest = {
 
 let getChartsNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsNotesResponse_2 = {
@@ -743,8 +743,8 @@ type postChartsNotesRequest = {
 
 let postChartsNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsNotesResponse_2 = {
@@ -814,8 +814,8 @@ type getChartsUserDriveRequest = {
 
 let getChartsUserDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -866,8 +866,8 @@ type postChartsUserDriveRequest = {
 
 let postChartsUserDriveRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -918,8 +918,8 @@ type getChartsUserFollowingRequest = {
 
 let getChartsUserFollowingRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -984,8 +984,8 @@ type postChartsUserFollowingRequest = {
 
 let postChartsUserFollowingRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1050,8 +1050,8 @@ type getChartsUserNotesRequest = {
 
 let getChartsUserNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1112,8 +1112,8 @@ type postChartsUserNotesRequest = {
 
 let postChartsUserNotesRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1174,8 +1174,8 @@ type getChartsUserPvRequest = {
 
 let getChartsUserPvRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1228,8 +1228,8 @@ type postChartsUserPvRequest = {
 
 let postChartsUserPvRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1282,8 +1282,8 @@ type getChartsUserReactionsRequest = {
 
 let getChartsUserReactionsRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1334,8 +1334,8 @@ type postChartsUserReactionsRequest = {
 
 let postChartsUserReactionsRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
     userId: s.field("userId", S.string),
   })
 
@@ -1385,8 +1385,8 @@ type getChartsUsersRequest = {
 
 let getChartsUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsUsersResponse_1 = {
@@ -1439,8 +1439,8 @@ type postChartsUsersRequest = {
 
 let postChartsUsersRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsUsersResponse_1 = {

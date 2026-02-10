@@ -258,12 +258,12 @@ type postUsersRequest = {
 }
 
 let postUsersRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    sort: s.field("sort", S.option(S.string)),
+    state: s.field("state", S.option(S.string)),
+    origin: s.field("origin", S.option(S.string)),
+    hostname: s.field("hostname", S.option(S.string)),
   })
 
 type postUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
@@ -299,9 +299,9 @@ type postUsersClipsRequest = {
 
 let postUsersClipsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postUsersClipsResponse = array<MisskeyIoComponentSchemas.Clip.t>
@@ -337,9 +337,9 @@ type postUsersFlashsRequest = {
 
 let postUsersFlashsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postUsersFlashsResponse = array<MisskeyIoComponentSchemas.Flash.t>
@@ -376,12 +376,12 @@ type postUsersFollowersRequest = {
 }
 
 let postUsersFollowersRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    userId: s.field("userId", S.option(S.string)),
+    username: s.field("username", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
   })
 
 type postUsersFollowersResponse = array<MisskeyIoComponentSchemas.Following.t>
@@ -419,13 +419,13 @@ type postUsersFollowingRequest = {
 }
 
 let postUsersFollowingRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    userId: s.field("userId", S.option(S.string)),
+    username: s.field("username", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
+    birthday: s.field("birthday", S.option(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/))),
   })
 
 type postUsersFollowingResponse = array<MisskeyIoComponentSchemas.Following.t>
@@ -461,9 +461,9 @@ type postUsersGalleryPostsRequest = {
 
 let postUsersGalleryPostsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postUsersGalleryPostsResponse = array<MisskeyIoComponentSchemas.GalleryPost.t>
@@ -514,15 +514,15 @@ let postUsersGetFollowingBirthdayUsersRequest_2Schema = S.object(s => {
   })
 
 let postUsersGetFollowingBirthdayUsersRequest_1Schema = S.object(s => {
-    month: s.fieldOr("month", S.nullableAsOption(S.int->S.min(1)->S.max(12)), None),
-    day: s.fieldOr("day", S.nullableAsOption(S.int->S.min(1)->S.max(31)), None),
-    begin: s.fieldOr("begin", S.nullableAsOption(postUsersGetFollowingBirthdayUsersRequest_2Schema), None),
-    end_: s.fieldOr("end", S.nullableAsOption(postUsersGetFollowingBirthdayUsersRequest_2Schema), None),
+    month: s.field("month", S.option(S.int->S.min(1)->S.max(12))),
+    day: s.field("day", S.option(S.int->S.min(1)->S.max(31))),
+    begin: s.field("begin", S.option(postUsersGetFollowingBirthdayUsersRequest_2Schema)),
+    end_: s.field("end", S.option(postUsersGetFollowingBirthdayUsersRequest_2Schema)),
   })
 
 let postUsersGetFollowingBirthdayUsersRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
     birthday: s.field("birthday", postUsersGetFollowingBirthdayUsersRequest_1Schema),
   })
 
@@ -567,7 +567,7 @@ type postUsersGetFrequentlyRepliedUsersRequest = {
 
 let postUsersGetFrequentlyRepliedUsersRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postUsersGetFrequentlyRepliedUsersResponse_1 = {
@@ -774,16 +774,16 @@ type postUsersNotesRequest = {
 
 let postUsersNotesRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withChannelNotes: s.fieldOr("withChannelNotes", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withChannelNotes: s.field("withChannelNotes", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
   })
 
 type postUsersNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -819,9 +819,9 @@ type postUsersPagesRequest = {
 
 let postUsersPagesRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postUsersPagesResponse = array<MisskeyIoComponentSchemas.Page.t>
@@ -859,11 +859,11 @@ type postUsersReactionsRequest = {
 
 let postUsersReactionsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t>
@@ -896,8 +896,8 @@ type postUsersRecommendationRequest = {
 }
 
 let postUsersRecommendationRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postUsersRecommendationResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>
@@ -989,7 +989,7 @@ type postUsersReportAbuseRequest = {
 let postUsersReportAbuseRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
     comment: s.field("comment", S.string->S.min(1)->S.max(2048)),
-    category: s.fieldOr("category", S.nullableAsOption(S.string), None),
+    category: s.field("category", S.option(S.string)),
   })
 
 type postUsersReportAbuseResponse = unit
@@ -1024,10 +1024,10 @@ type postUsersSearchRequest = {
 
 let postUsersSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
+    offset: s.field("offset", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    origin: s.field("origin", S.option(S.string)),
+    detail: s.field("detail", S.option(S.bool)),
   })
 
 type postUsersSearchResponse = array<MisskeyIoComponentSchemas.User.t>
@@ -1062,10 +1062,10 @@ type postUsersSearchByUsernameAndHostRequest = {
 }
 
 let postUsersSearchByUsernameAndHostRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    detail: s.field("detail", S.option(S.bool)),
+    username: s.field("username", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
   })
 
 type postUsersSearchByUsernameAndHostResponse = array<MisskeyIoComponentSchemas.User.t>
@@ -1101,11 +1101,11 @@ type postUsersShowRequest = {
 }
 
 let postUsersShowRequestSchema = S.object(s => {
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    detailed: s.fieldOr("detailed", S.nullableAsOption(S.bool), None),
+    userId: s.field("userId", S.option(S.string)),
+    userIds: s.field("userIds", S.option(S.array(S.string))),
+    username: s.field("username", S.option(S.string)),
+    host: s.field("host", S.option(S.string)),
+    detailed: s.field("detailed", S.option(S.bool)),
   })
 
 type postUsersShowResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>

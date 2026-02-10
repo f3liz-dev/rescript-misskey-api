@@ -22,15 +22,15 @@ type postPagesCreateRequest = {
 let postPagesCreateRequestSchema = S.object(s => {
     title: s.field("title", S.string),
     name: s.field("name", S.string->S.min(1)->S.pattern(/^[a-zA-Z0-9_-]+$/)),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    summary: s.field("summary", S.option(S.string)),
     content: s.field("content", S.array(S.dict(S.json))),
     variables: s.field("variables", S.array(S.dict(S.json))),
     script: s.field("script", S.string),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
-    font: s.fieldOr("font", S.nullableAsOption(S.string), None),
-    alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
-    hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    eyeCatchingImageId: s.field("eyeCatchingImageId", S.option(S.string)),
+    font: s.field("font", S.option(S.string)),
+    alignCenter: s.field("alignCenter", S.option(S.bool)),
+    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.option(S.bool)),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postPagesCreateResponse = MisskeyIoComponentSchemas.Page.t
@@ -148,9 +148,9 @@ type postPagesShowRequest = {
 }
 
 let postPagesShowRequestSchema = S.object(s => {
-    pageId: s.fieldOr("pageId", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string), None),
-    username: s.fieldOr("username", S.nullableAsOption(S.string), None),
+    pageId: s.field("pageId", S.option(S.string)),
+    name: s.field("name", S.option(S.string)),
+    username: s.field("username", S.option(S.string)),
   })
 
 type postPagesShowResponse = MisskeyIoComponentSchemas.Page.t
@@ -224,17 +224,17 @@ type postPagesUpdateRequest = {
 
 let postPagesUpdateRequestSchema = S.object(s => {
     pageId: s.field("pageId", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.pattern(/^[a-zA-Z0-9_-]+$/)), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
+    title: s.field("title", S.option(S.string)),
+    name: s.field("name", S.option(S.string->S.min(1)->S.pattern(/^[a-zA-Z0-9_-]+$/))),
+    summary: s.field("summary", S.option(S.string)),
     content: s.field("content", S.option(S.array(S.dict(S.json)))),
     variables: s.field("variables", S.option(S.array(S.dict(S.json)))),
-    script: s.fieldOr("script", S.nullableAsOption(S.string), None),
-    eyeCatchingImageId: s.fieldOr("eyeCatchingImageId", S.nullableAsOption(S.string), None),
-    font: s.fieldOr("font", S.nullableAsOption(S.string), None),
-    alignCenter: s.fieldOr("alignCenter", S.nullableAsOption(S.bool), None),
-    hideTitleWhenPinned: s.fieldOr("hideTitleWhenPinned", S.nullableAsOption(S.bool), None),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    script: s.field("script", S.option(S.string)),
+    eyeCatchingImageId: s.field("eyeCatchingImageId", S.option(S.string)),
+    font: s.field("font", S.option(S.string)),
+    alignCenter: s.field("alignCenter", S.option(S.bool)),
+    hideTitleWhenPinned: s.field("hideTitleWhenPinned", S.option(S.bool)),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postPagesUpdateResponse = unit

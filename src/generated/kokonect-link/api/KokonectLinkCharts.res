@@ -13,8 +13,8 @@ type getChartsFederationRequest = {
 
 let getChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type getChartsFederationResponse = {
@@ -69,8 +69,8 @@ type postChartsFederationRequest = {
 
 let postChartsFederationRequestSchema = S.object(s => {
     span: s.field("span", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(500)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(500))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postChartsFederationResponse = {

@@ -18,13 +18,13 @@ type postChannelsTimelineRequest = {
 
 let postChannelsTimelineRequestSchema = S.object(s => {
     channelId: s.field("channelId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postChannelsTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -63,14 +63,14 @@ type postNotesRequest = {
 }
 
 let postNotesRequestSchema = S.object(s => {
-    local: s.fieldOr("local", S.nullableAsOption(S.bool), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    local: s.field("local", S.option(S.bool)),
+    reply: s.field("reply", S.option(S.bool)),
+    renote: s.field("renote", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    poll: s.field("poll", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postNotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -106,9 +106,9 @@ type postNotesChildrenRequest = {
 
 let postNotesChildrenRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postNotesChildrenResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -143,8 +143,8 @@ type postNotesConversationRequest = {
 
 let postNotesConversationRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postNotesConversationResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -202,31 +202,31 @@ type postNotesCreateRequest = {
 
 let postNotesCreateRequest_1Schema = S.object(s => {
     choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
-    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    multiple: s.field("multiple", S.option(S.bool)),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
+    expiredAfter: s.field("expiredAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesCreateRequestSchema = S.object(s => {
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
-    noExtractMentions: s.fieldOr("noExtractMentions", S.nullableAsOption(S.bool), None),
-    noExtractHashtags: s.fieldOr("noExtractHashtags", S.nullableAsOption(S.bool), None),
-    noExtractEmojis: s.fieldOr("noExtractEmojis", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)->S.max(3000)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(postNotesCreateRequest_1Schema), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
-    noCreatedNote: s.fieldOr("noCreatedNote", S.nullableAsOption(S.bool), None),
+    visibility: s.field("visibility", S.option(S.string)),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
+    cw: s.field("cw", S.option(S.string->S.min(1)->S.max(100))),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
+    reactionAcceptance: s.field("reactionAcceptance", S.option(S.string)),
+    noExtractMentions: s.field("noExtractMentions", S.option(S.bool)),
+    noExtractHashtags: s.field("noExtractHashtags", S.option(S.bool)),
+    noExtractEmojis: s.field("noExtractEmojis", S.option(S.bool)),
+    replyId: s.field("replyId", S.option(S.string)),
+    renoteId: s.field("renoteId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
+    lang: s.field("lang", S.option(S.string)),
+    text: s.field("text", S.option(S.string->S.min(1)->S.max(3000))),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    mediaIds: s.field("mediaIds", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(postNotesCreateRequest_1Schema)),
+    scheduledAt: s.field("scheduledAt", S.option(S.int)),
+    noCreatedNote: s.field("noCreatedNote", S.option(S.bool)),
   })
 
 type postNotesCreateResponse = {
@@ -354,9 +354,9 @@ type getNotesFeaturedRequest = {
 }
 
 let getNotesFeaturedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    untilId: s.field("untilId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
   })
 
 type getNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -390,9 +390,9 @@ type postNotesFeaturedRequest = {
 }
 
 let postNotesFeaturedRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    untilId: s.field("untilId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
   })
 
 type postNotesFeaturedResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -431,14 +431,14 @@ type postNotesGlobalTimelineRequest = {
 }
 
 let postNotesGlobalTimelineRequestSchema = S.object(s => {
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postNotesGlobalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -482,19 +482,19 @@ type postNotesHybridTimelineRequest = {
 }
 
 let postNotesHybridTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postNotesHybridTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -535,16 +535,16 @@ type postNotesLocalTimelineRequest = {
 }
 
 let postNotesLocalTimelineRequestSchema = S.object(s => {
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postNotesLocalTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -580,11 +580,11 @@ type postNotesMentionsRequest = {
 }
 
 let postNotesMentionsRequestSchema = S.object(s => {
-    following: s.fieldOr("following", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    following: s.field("following", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postNotesMentionsResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -618,9 +618,9 @@ type postNotesPollsRecommendationRequest = {
 }
 
 let postNotesPollsRecommendationRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    excludeChannels: s.fieldOr("excludeChannels", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    excludeChannels: s.field("excludeChannels", S.option(S.bool)),
   })
 
 type postNotesPollsRecommendationResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -689,10 +689,10 @@ type getNotesReactionsRequest = {
 
 let getNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    type_: s.field("type", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type getNotesReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t>
@@ -729,10 +729,10 @@ type postNotesReactionsRequest = {
 
 let postNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    type_: s.field("type", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postNotesReactionsResponse = array<MisskeyIoComponentSchemas.NoteReaction.t>
@@ -768,9 +768,9 @@ type postNotesRenotesRequest = {
 
 let postNotesRenotesRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postNotesRenotesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -806,9 +806,9 @@ type postNotesRepliesRequest = {
 
 let postNotesRepliesRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postNotesRepliesResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -871,8 +871,8 @@ type postNotesScheduledListRequest = {
 }
 
 let postNotesScheduledListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postNotesScheduledListResponse = array<MisskeyIoComponentSchemas.NoteDraft.t>
@@ -912,13 +912,13 @@ type postNotesSearchRequest = {
 
 let postNotesSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    host: s.field("host", S.option(S.string)),
+    userId: s.field("userId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
   })
 
 type postNotesSearchResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -959,16 +959,16 @@ type postNotesSearchByTagRequest = {
 }
 
 let postNotesSearchByTagRequestSchema = S.object(s => {
-    local: s.fieldOr("local", S.nullableAsOption(S.bool), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    tag: s.fieldOr("tag", S.nullableAsOption(S.string->S.min(1)), None),
-    query: s.fieldOr("query", S.nullableAsOption(S.array(S.array(S.string->S.min(1)))), None),
+    local: s.field("local", S.option(S.bool)),
+    reply: s.field("reply", S.option(S.bool)),
+    renote: s.field("renote", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    poll: s.field("poll", S.option(S.bool)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    tag: s.field("tag", S.option(S.string->S.min(1))),
+    query: s.field("query", S.option(S.array(S.array(S.string->S.min(1))))),
   })
 
 type postNotesSearchByTagResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -1141,18 +1141,18 @@ type postNotesTimelineRequest = {
 }
 
 let postNotesTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int->S.min(0)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    dimension: s.field("dimension", S.option(S.int->S.min(0))),
   })
 
 type postNotesTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -1266,17 +1266,17 @@ type postNotesUserListTimelineRequest = {
 
 let postNotesUserListTimelineRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
   })
 
 type postNotesUserListTimelineResponse = array<MisskeyIoComponentSchemas.Note.t>
@@ -1340,8 +1340,8 @@ type getUsersFeaturedNotesRequest = {
 }
 
 let getUsersFeaturedNotesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    untilId: s.field("untilId", S.option(S.string)),
     userId: s.field("userId", S.string),
   })
 
@@ -1376,8 +1376,8 @@ type postUsersFeaturedNotesRequest = {
 }
 
 let postUsersFeaturedNotesRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    untilId: s.field("untilId", S.option(S.string)),
     userId: s.field("userId", S.string),
   })
 

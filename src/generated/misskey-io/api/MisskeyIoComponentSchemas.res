@@ -35,7 +35,7 @@ module UserLite = {
     name: s.field("name", S.string),
     iconUrl: s.field("iconUrl", S.nullableAsOption(S.string)),
     displayOrder: s.field("displayOrder", S.float),
-    behavior: s.fieldOr("behavior", S.nullableAsOption(S.string), None),
+    behavior: s.field("behavior", S.option(S.string)),
   })
   type userLite_2 = {
   name: option<string>,
@@ -63,11 +63,11 @@ module UserLite = {
 }
   let userLite_1Schema = S.object(s => {
     id: s.field("id", S.string),
-    angle: s.fieldOr("angle", S.nullableAsOption(S.float), None),
-    flipH: s.fieldOr("flipH", S.nullableAsOption(S.bool), None),
+    angle: s.field("angle", S.option(S.float)),
+    flipH: s.field("flipH", S.option(S.bool)),
     url: s.field("url", S.string),
-    offsetX: s.fieldOr("offsetX", S.nullableAsOption(S.float), None),
-    offsetY: s.fieldOr("offsetY", S.nullableAsOption(S.float), None),
+    offsetX: s.field("offsetX", S.option(S.float)),
+    offsetY: s.field("offsetY", S.option(S.float)),
   })
   type t = {
   id: string,
@@ -95,15 +95,15 @@ module UserLite = {
     avatarUrl: s.field("avatarUrl", S.nullableAsOption(S.string)),
     avatarBlurhash: s.field("avatarBlurhash", S.nullableAsOption(S.string)),
     avatarDecorations: s.field("avatarDecorations", S.array(userLite_1Schema)),
-    isBot: s.fieldOr("isBot", S.nullableAsOption(S.bool), None),
-    isCat: s.fieldOr("isCat", S.nullableAsOption(S.bool), None),
-    requireSigninToViewContents: s.fieldOr("requireSigninToViewContents", S.nullableAsOption(S.bool), None),
-    makeNotesFollowersOnlyBefore: s.fieldOr("makeNotesFollowersOnlyBefore", S.nullableAsOption(S.float), None),
-    makeNotesHiddenBefore: s.fieldOr("makeNotesHiddenBefore", S.nullableAsOption(S.float), None),
-    instance: s.fieldOr("instance", S.nullableAsOption(userLite_2Schema), None),
+    isBot: s.field("isBot", S.option(S.bool)),
+    isCat: s.field("isCat", S.option(S.bool)),
+    requireSigninToViewContents: s.field("requireSigninToViewContents", S.option(S.bool)),
+    makeNotesFollowersOnlyBefore: s.field("makeNotesFollowersOnlyBefore", S.option(S.float)),
+    makeNotesHiddenBefore: s.field("makeNotesHiddenBefore", S.option(S.float)),
+    instance: s.field("instance", S.option(userLite_2Schema)),
     emojis: s.field("emojis", S.dict(S.json)),
     onlineStatus: s.field("onlineStatus", S.string),
-    badgeRoles: s.fieldOr("badgeRoles", S.nullableAsOption(S.array(userLite_3Schema)), None),
+    badgeRoles: s.field("badgeRoles", S.option(S.array(userLite_3Schema))),
   })
 }
 
@@ -124,7 +124,7 @@ module ChatRoom = {
     owner: s.field("owner", UserLite.schema),
     name: s.field("name", S.string),
     description: s.field("description", S.string),
-    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
+    isMuted: s.field("isMuted", S.option(S.bool)),
   })
 }
 
@@ -162,9 +162,9 @@ module DriveFolder = {
     createdAt: s.field("createdAt", S.string),
     name: s.field("name", S.string),
     parentId: s.field("parentId", S.nullableAsOption(S.string)),
-    foldersCount: s.fieldOr("foldersCount", S.nullableAsOption(S.float), None),
-    filesCount: s.fieldOr("filesCount", S.nullableAsOption(S.float), None),
-    parent: s.fieldOr("parent", S.nullableAsOption(schema), None),
+    foldersCount: s.field("foldersCount", S.option(S.float)),
+    filesCount: s.field("filesCount", S.option(S.float)),
+    parent: s.field("parent", S.option(schema)),
   }))
 }
 
@@ -176,10 +176,10 @@ module DriveFile = {
   avgColor: option<string>,
 }
   let driveFile_1Schema = S.object(s => {
-    width: s.fieldOr("width", S.nullableAsOption(S.float), None),
-    height: s.fieldOr("height", S.nullableAsOption(S.float), None),
-    orientation: s.fieldOr("orientation", S.nullableAsOption(S.float), None),
-    avgColor: s.fieldOr("avgColor", S.nullableAsOption(S.string), None),
+    width: s.field("width", S.option(S.float)),
+    height: s.field("height", S.option(S.float)),
+    orientation: s.field("orientation", S.option(S.float)),
+    avgColor: s.field("avgColor", S.option(S.string)),
   })
   type t = {
   id: string,
@@ -208,16 +208,16 @@ module DriveFile = {
     md5: s.field("md5", S.string),
     size: s.field("size", S.float),
     isSensitive: s.field("isSensitive", S.bool),
-    isSensitiveByModerator: s.fieldOr("isSensitiveByModerator", S.nullableAsOption(S.bool), None),
+    isSensitiveByModerator: s.field("isSensitiveByModerator", S.option(S.bool)),
     blurhash: s.field("blurhash", S.nullableAsOption(S.string)),
     properties: s.field("properties", driveFile_1Schema),
     url: s.field("url", S.string),
     thumbnailUrl: s.field("thumbnailUrl", S.nullableAsOption(S.string)),
     comment: s.field("comment", S.nullableAsOption(S.string)),
     folderId: s.field("folderId", S.nullableAsOption(S.string)),
-    folder: s.fieldOr("folder", S.nullableAsOption(DriveFolder.schema), None),
+    folder: s.field("folder", S.option(DriveFolder.schema)),
     userId: s.field("userId", S.nullableAsOption(S.string)),
-    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
+    user: s.field("user", S.option(UserLite.schema)),
   })
 }
 
@@ -247,9 +247,9 @@ module ChatMessageLiteForRoom = {
     fromUserId: s.field("fromUserId", S.string),
     fromUser: s.field("fromUser", UserLite.schema),
     toRoomId: s.field("toRoomId", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    text: s.field("text", S.option(S.string)),
+    fileId: s.field("fileId", S.option(S.string)),
+    file: s.field("file", S.option(DriveFile.schema)),
     reactions: s.field("reactions", S.array(chatMessageLiteForRoom_1Schema)),
   })
 }
@@ -276,9 +276,9 @@ module ChatMessageLiteFor1on1 = {
     createdAt: s.field("createdAt", S.string),
     fromUserId: s.field("fromUserId", S.string),
     toUserId: s.field("toUserId", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    text: s.field("text", S.option(S.string)),
+    fileId: s.field("fileId", S.option(S.string)),
+    file: s.field("file", S.option(DriveFile.schema)),
     reactions: s.field("reactions", S.array(chatMessageLiteFor1on1_1Schema)),
   })
 }
@@ -290,7 +290,7 @@ module ChatMessageLite = {
 }
   let chatMessageLite_1Schema = S.object(s => {
     reaction: s.field("reaction", S.string),
-    user: s.fieldOr("user", S.nullableAsOption(UserLite.schema), None),
+    user: s.field("user", S.option(UserLite.schema)),
   })
   type t = {
   id: string,
@@ -309,11 +309,11 @@ module ChatMessageLite = {
     createdAt: s.field("createdAt", S.string),
     fromUserId: s.field("fromUserId", S.string),
     fromUser: s.field("fromUser", S.option(S.dict(S.json))),
-    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.string), None),
-    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.string), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
+    toUserId: s.field("toUserId", S.option(S.string)),
+    toRoomId: s.field("toRoomId", S.option(S.string)),
+    text: s.field("text", S.option(S.string)),
+    fileId: s.field("fileId", S.option(S.string)),
+    file: s.field("file", S.option(DriveFile.schema)),
     reactions: s.field("reactions", S.array(chatMessageLite_1Schema)),
   })
 }
@@ -347,14 +347,14 @@ module ChatMessage = {
     createdAt: s.field("createdAt", S.string),
     fromUserId: s.field("fromUserId", S.string),
     fromUser: s.field("fromUser", UserLite.schema),
-    toUserId: s.fieldOr("toUserId", S.nullableAsOption(S.string), None),
-    toUser: s.fieldOr("toUser", S.nullableAsOption(UserLite.schema), None),
-    toRoomId: s.fieldOr("toRoomId", S.nullableAsOption(S.string), None),
-    toRoom: s.fieldOr("toRoom", S.nullableAsOption(ChatRoom.schema), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string), None),
-    fileId: s.fieldOr("fileId", S.nullableAsOption(S.string), None),
-    file: s.fieldOr("file", S.nullableAsOption(DriveFile.schema), None),
-    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
+    toUserId: s.field("toUserId", S.option(S.string)),
+    toUser: s.field("toUser", S.option(UserLite.schema)),
+    toRoomId: s.field("toRoomId", S.option(S.string)),
+    toRoom: s.field("toRoom", S.option(ChatRoom.schema)),
+    text: s.field("text", S.option(S.string)),
+    fileId: s.field("fileId", S.option(S.string)),
+    file: s.field("file", S.option(DriveFile.schema)),
+    isRead: s.field("isRead", S.option(S.bool)),
     reactions: s.field("reactions", S.array(chatMessage_1Schema)),
   })
 }
@@ -377,9 +377,9 @@ module AbuseReportNotificationRecipient = {
     updatedAt: s.field("updatedAt", S.string),
     name: s.field("name", S.string),
     method_: s.field("method", S.string),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
+    userId: s.field("userId", S.option(S.string)),
     user: s.field("user", S.option(S.dict(S.json))),
-    systemWebhookId: s.fieldOr("systemWebhookId", S.nullableAsOption(S.string), None),
+    systemWebhookId: s.field("systemWebhookId", S.option(S.string)),
     systemWebhook: s.field("systemWebhook", S.option(S.dict(S.json))),
   })
 }
@@ -547,7 +547,7 @@ module Announcement = {
     closeDuration: s.field("closeDuration", S.float),
     displayOrder: s.field("displayOrder", S.float),
     silence: s.field("silence", S.bool),
-    isRead: s.fieldOr("isRead", S.nullableAsOption(S.bool), None),
+    isRead: s.field("isRead", S.option(S.bool)),
   })
 }
 
@@ -692,9 +692,9 @@ module MeDetailedOnly = {
     twoFactorEnabled: s.field("twoFactorEnabled", S.bool),
     usePasswordLessLogin: s.field("usePasswordLessLogin", S.bool),
     securityKeys: s.field("securityKeys", S.bool),
-    email: s.fieldOr("email", S.nullableAsOption(S.string), None),
-    emailVerified: s.fieldOr("emailVerified", S.nullableAsOption(S.bool), None),
-    securityKeysList: s.fieldOr("securityKeysList", S.nullableAsOption(S.array(meDetailedOnly_3Schema)), None),
+    email: s.field("email", S.option(S.string)),
+    emailVerified: s.field("emailVerified", S.option(S.bool)),
+    securityKeysList: s.field("securityKeysList", S.option(S.array(meDetailedOnly_3Schema))),
   })
 }
 
@@ -768,7 +768,7 @@ module Page = {
     eyeCatchingImage: s.field("eyeCatchingImage", S.nullableAsOption(DriveFile.schema)),
     attachedFiles: s.field("attachedFiles", S.array(DriveFile.schema)),
     likedCount: s.field("likedCount", S.float),
-    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
+    isLiked: s.field("isLiked", S.option(S.bool)),
     visibility: s.field("visibility", S.string),
   })
 }
@@ -806,7 +806,7 @@ module Note = {
   choices: array<note_3>,
 }
   let note_1Schema = S.object(s => {
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.string), None),
+    expiresAt: s.field("expiresAt", S.option(S.string)),
     multiple: s.field("multiple", S.bool),
     choices: s.field("choices", S.array(note_3Schema)),
   })
@@ -850,39 +850,39 @@ module Note = {
   let schema = S.recursive("Note", schema => S.object(s => {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
-    deletedAt: s.fieldOr("deletedAt", S.nullableAsOption(S.string), None),
+    deletedAt: s.field("deletedAt", S.option(S.string)),
     text: s.field("text", S.nullableAsOption(S.string)),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.string), None),
+    cw: s.field("cw", S.option(S.string)),
     userId: s.field("userId", S.string),
     user: s.field("user", UserLite.schema),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(schema), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(schema), None),
-    isHidden: s.fieldOr("isHidden", S.nullableAsOption(S.bool), None),
+    replyId: s.field("replyId", S.option(S.string)),
+    renoteId: s.field("renoteId", S.option(S.string)),
+    reply: s.field("reply", S.option(schema)),
+    renote: s.field("renote", S.option(schema)),
+    isHidden: s.field("isHidden", S.option(S.bool)),
     visibility: s.field("visibility", S.string),
-    mentions: s.fieldOr("mentions", S.nullableAsOption(S.array(S.string)), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(note_1Schema), None),
+    mentions: s.field("mentions", S.option(S.array(S.string))),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    files: s.field("files", S.option(S.array(DriveFile.schema))),
+    tags: s.field("tags", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(note_1Schema)),
     emojis: s.field("emojis", S.option(S.dict(S.json))),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
-    channel: s.fieldOr("channel", S.nullableAsOption(note_2Schema), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int), None),
+    channelId: s.field("channelId", S.option(S.string)),
+    channel: s.field("channel", S.option(note_2Schema)),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    dimension: s.field("dimension", S.option(S.int)),
     reactionAcceptance: s.field("reactionAcceptance", S.nullableAsOption(S.string)),
     reactionEmojis: s.field("reactionEmojis", S.dict(S.json)),
     reactions: s.field("reactions", S.dict(S.json)),
     reactionCount: s.field("reactionCount", S.float),
     renoteCount: s.field("renoteCount", S.float),
     repliesCount: s.field("repliesCount", S.float),
-    uri: s.fieldOr("uri", S.nullableAsOption(S.string), None),
-    url: s.fieldOr("url", S.nullableAsOption(S.string), None),
-    reactionAndUserPairCache: s.fieldOr("reactionAndUserPairCache", S.nullableAsOption(S.array(S.string)), None),
-    clippedCount: s.fieldOr("clippedCount", S.nullableAsOption(S.float), None),
-    myReaction: s.fieldOr("myReaction", S.nullableAsOption(S.string), None),
+    uri: s.field("uri", S.option(S.string)),
+    url: s.field("url", S.option(S.string)),
+    reactionAndUserPairCache: s.field("reactionAndUserPairCache", S.option(S.array(S.string))),
+    clippedCount: s.field("clippedCount", S.option(S.float)),
+    myReaction: s.field("myReaction", S.option(S.string)),
   }))
 }
 
@@ -1001,23 +1001,23 @@ module UserDetailedNotMeOnly = {
     chatScope: s.field("chatScope", S.string),
     canChat: s.field("canChat", S.bool),
     roles: s.field("roles", S.array(RoleLite.schema)),
-    followedMessage: s.fieldOr("followedMessage", S.nullableAsOption(S.string), None),
+    followedMessage: s.field("followedMessage", S.option(S.string)),
     memo: s.field("memo", S.nullableAsOption(S.string)),
-    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.string), None),
-    twoFactorEnabled: s.fieldOr("twoFactorEnabled", S.nullableAsOption(S.bool), None),
-    usePasswordLessLogin: s.fieldOr("usePasswordLessLogin", S.nullableAsOption(S.bool), None),
-    securityKeys: s.fieldOr("securityKeys", S.nullableAsOption(S.bool), None),
+    moderationNote: s.field("moderationNote", S.option(S.string)),
+    twoFactorEnabled: s.field("twoFactorEnabled", S.option(S.bool)),
+    usePasswordLessLogin: s.field("usePasswordLessLogin", S.option(S.bool)),
+    securityKeys: s.field("securityKeys", S.option(S.bool)),
     mutualLinkSections: s.field("mutualLinkSections", S.array(userDetailedNotMeOnly_2Schema)),
-    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
-    isFollowed: s.fieldOr("isFollowed", S.nullableAsOption(S.bool), None),
-    hasPendingFollowRequestFromYou: s.fieldOr("hasPendingFollowRequestFromYou", S.nullableAsOption(S.bool), None),
-    hasPendingFollowRequestToYou: s.fieldOr("hasPendingFollowRequestToYou", S.nullableAsOption(S.bool), None),
-    isBlocking: s.fieldOr("isBlocking", S.nullableAsOption(S.bool), None),
-    isBlocked: s.fieldOr("isBlocked", S.nullableAsOption(S.bool), None),
-    isMuted: s.fieldOr("isMuted", S.nullableAsOption(S.bool), None),
-    isRenoteMuted: s.fieldOr("isRenoteMuted", S.nullableAsOption(S.bool), None),
-    notify: s.fieldOr("notify", S.nullableAsOption(S.string), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
+    isFollowing: s.field("isFollowing", S.option(S.bool)),
+    isFollowed: s.field("isFollowed", S.option(S.bool)),
+    hasPendingFollowRequestFromYou: s.field("hasPendingFollowRequestFromYou", S.option(S.bool)),
+    hasPendingFollowRequestToYou: s.field("hasPendingFollowRequestToYou", S.option(S.bool)),
+    isBlocking: s.field("isBlocking", S.option(S.bool)),
+    isBlocked: s.field("isBlocked", S.option(S.bool)),
+    isMuted: s.field("isMuted", S.option(S.bool)),
+    isRenoteMuted: s.field("isRenoteMuted", S.option(S.bool)),
+    notify: s.field("notify", S.option(S.string)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
   })
 }
 
@@ -1082,7 +1082,7 @@ module AbuseUserReport = {
     targetUserId: s.field("targetUserId", S.string),
     targetUser: s.field("targetUser", UserDetailed.schema),
     assigneeId: s.field("assigneeId", S.nullableAsOption(S.string)),
-    assignee: s.fieldOr("assignee", S.nullableAsOption(UserDetailed.schema), None),
+    assignee: s.field("assignee", S.option(UserDetailed.schema)),
     forwarded: s.field("forwarded", S.bool),
     moderationNote: s.field("moderationNote", S.string),
   })
@@ -1119,7 +1119,7 @@ module MetaDetailedOnly = {
     turnstile: s.field("turnstile", S.bool),
     objectStorage: s.field("objectStorage", S.bool),
     serviceWorker: s.field("serviceWorker", S.bool),
-    miauth: s.fieldOr("miauth", S.nullableAsOption(S.bool), None),
+    miauth: s.field("miauth", S.option(S.bool)),
   })
   type t = {
   features: option<metaDetailedOnly_1>,
@@ -1129,7 +1129,7 @@ module MetaDetailedOnly = {
   cacheRemoteSensitiveFiles: bool,
 }
   let schema = S.object(s => {
-    features: s.fieldOr("features", S.nullableAsOption(metaDetailedOnly_1Schema), None),
+    features: s.field("features", S.option(metaDetailedOnly_1Schema)),
     proxyAccountName: s.field("proxyAccountName", S.nullableAsOption(S.string)),
     requireSetup: s.field("requireSetup", S.bool),
     cacheRemoteFiles: s.field("cacheRemoteFiles", S.bool),
@@ -1574,7 +1574,7 @@ module Flash = {
     script: s.field("script", S.string),
     visibility: s.field("visibility", S.string),
     likedCount: s.field("likedCount", S.nullableAsOption(S.float)),
-    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
+    isLiked: s.field("isLiked", S.option(S.bool)),
   })
 }
 
@@ -1652,8 +1652,8 @@ module EmojiDetailed = {
 }
   let schema = S.object(s => {
     id: s.field("id", S.string),
-    createdAt: s.fieldOr("createdAt", S.nullableAsOption(S.string), None),
-    updatedAt: s.fieldOr("updatedAt", S.nullableAsOption(S.string), None),
+    createdAt: s.field("createdAt", S.option(S.string)),
+    updatedAt: s.field("updatedAt", S.option(S.string)),
     aliases: s.field("aliases", S.array(S.string)),
     name: s.field("name", S.string),
     category: s.field("category", S.nullableAsOption(S.string)),
@@ -1662,10 +1662,10 @@ module EmojiDetailed = {
     license: s.field("license", S.nullableAsOption(S.string)),
     isSensitive: s.field("isSensitive", S.bool),
     localOnly: s.field("localOnly", S.bool),
-    requestedBy: s.fieldOr("requestedBy", S.nullableAsOption(S.string), None),
-    memo: s.fieldOr("memo", S.nullableAsOption(S.string), None),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
-    roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
+    requestedBy: s.field("requestedBy", S.option(S.string)),
+    memo: s.field("memo", S.option(S.string)),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
+    roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
   })
 }
 
@@ -1685,10 +1685,10 @@ module EmojiSimple = {
     name: s.field("name", S.string),
     category: s.field("category", S.nullableAsOption(S.string)),
     url: s.field("url", S.string),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    roleIdsThatCanBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
-    roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.fieldOr("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.nullableAsOption(S.array(S.string)), None),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    roleIdsThatCanBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
+    roleIdsThatCanNotBeUsedThisEmojiAsReaction: s.field("roleIdsThatCanNotBeUsedThisEmojiAsReaction", S.option(S.array(S.string))),
   })
 }
 
@@ -1716,12 +1716,12 @@ module GalleryPost = {
     user: s.field("user", UserLite.schema),
     title: s.field("title", S.string),
     description: s.field("description", S.nullableAsOption(S.string)),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    files: s.fieldOr("files", S.nullableAsOption(S.array(DriveFile.schema)), None),
-    tags: s.fieldOr("tags", S.nullableAsOption(S.array(S.string)), None),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    files: s.field("files", S.option(S.array(DriveFile.schema))),
+    tags: s.field("tags", S.option(S.array(S.string))),
     isSensitive: s.field("isSensitive", S.bool),
     likedCount: s.field("likedCount", S.float),
-    isLiked: s.fieldOr("isLiked", S.nullableAsOption(S.bool), None),
+    isLiked: s.field("isLiked", S.option(S.bool)),
   })
 }
 
@@ -1791,7 +1791,7 @@ module FederationInstance = {
     themeColor: s.field("themeColor", S.nullableAsOption(S.string)),
     infoUpdatedAt: s.field("infoUpdatedAt", S.nullableAsOption(S.string)),
     latestRequestReceivedAt: s.field("latestRequestReceivedAt", S.nullableAsOption(S.string)),
-    moderationNote: s.fieldOr("moderationNote", S.nullableAsOption(S.string), None),
+    moderationNote: s.field("moderationNote", S.option(S.string)),
   })
 }
 
@@ -1819,8 +1819,8 @@ module Clip = {
     description: s.field("description", S.nullableAsOption(S.string)),
     isPublic: s.field("isPublic", S.bool),
     favoritedCount: s.field("favoritedCount", S.float),
-    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
-    notesCount: s.fieldOr("notesCount", S.nullableAsOption(S.int), None),
+    isFavorited: s.field("isFavorited", S.option(S.bool)),
+    notesCount: s.field("notesCount", S.option(S.int)),
   })
 }
 
@@ -1917,9 +1917,9 @@ module Channel = {
     notesCount: s.field("notesCount", S.float),
     isSensitive: s.field("isSensitive", S.bool),
     allowRenoteToExternal: s.field("allowRenoteToExternal", S.bool),
-    isFollowing: s.fieldOr("isFollowing", S.nullableAsOption(S.bool), None),
-    isFavorited: s.fieldOr("isFavorited", S.nullableAsOption(S.bool), None),
-    pinnedNotes: s.fieldOr("pinnedNotes", S.nullableAsOption(S.array(Note.schema)), None),
+    isFollowing: s.field("isFollowing", S.option(S.bool)),
+    isFavorited: s.field("isFavorited", S.option(S.bool)),
+    pinnedNotes: s.field("pinnedNotes", S.option(S.array(Note.schema))),
   })
 }
 
@@ -2133,11 +2133,11 @@ module NoteDraft = {
     cw: s.field("cw", S.nullableAsOption(S.string)),
     visibility: s.field("visibility", S.string),
     localOnly: s.field("localOnly", S.bool),
-    lang: s.fieldOr("lang", S.nullableAsOption(S.string), None),
-    dimension: s.fieldOr("dimension", S.nullableAsOption(S.int), None),
+    lang: s.field("lang", S.option(S.string)),
+    dimension: s.field("dimension", S.option(S.int)),
     files: s.field("files", S.array(DriveFile.schema)),
     poll: s.field("poll", S.nullableAsOption(noteDraft_5Schema)),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
   })
   type noteDraft_2 = {
   id: string,
@@ -2171,10 +2171,10 @@ module NoteDraft = {
     id: s.field("id", S.string),
     updatedAt: s.field("updatedAt", S.string),
     scheduledAt: s.field("scheduledAt", S.nullableAsOption(S.string)),
-    reason: s.fieldOr("reason", S.nullableAsOption(S.string), None),
-    channel: s.fieldOr("channel", S.nullableAsOption(noteDraft_1Schema), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(noteDraft_2Schema), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(noteDraft_2Schema), None),
+    reason: s.field("reason", S.option(S.string)),
+    channel: s.field("channel", S.option(noteDraft_1Schema)),
+    renote: s.field("renote", S.option(noteDraft_2Schema)),
+    reply: s.field("reply", S.option(noteDraft_2Schema)),
     data: s.field("data", noteDraft_3Schema),
   })
 }
@@ -2193,8 +2193,8 @@ module App = {
     name: s.field("name", S.string),
     callbackUrl: s.field("callbackUrl", S.nullableAsOption(S.string)),
     permission: s.field("permission", S.array(S.string)),
-    secret: s.fieldOr("secret", S.nullableAsOption(S.string), None),
-    isAuthorized: s.fieldOr("isAuthorized", S.nullableAsOption(S.bool), None),
+    secret: s.field("secret", S.option(S.string)),
+    isAuthorized: s.field("isAuthorized", S.option(S.bool)),
   })
 }
 
@@ -2277,7 +2277,7 @@ module UserList = {
     id: s.field("id", S.string),
     createdAt: s.field("createdAt", S.string),
     name: s.field("name", S.string),
-    userIds: s.fieldOr("userIds", S.nullableAsOption(S.array(S.string)), None),
+    userIds: s.field("userIds", S.option(S.array(S.string))),
     isPublic: s.field("isPublic", S.bool),
   })
 }

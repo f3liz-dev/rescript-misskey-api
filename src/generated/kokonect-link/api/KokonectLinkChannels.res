@@ -16,11 +16,11 @@ type postChannelsCreateRequest = {
 
 let postChannelsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(128)),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(2048)), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
-    color: s.fieldOr("color", S.nullableAsOption(S.string->S.min(1)->S.max(16)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.bool), None),
+    description: s.field("description", S.option(S.string->S.min(1)->S.max(2048))),
+    bannerId: s.field("bannerId", S.option(S.string)),
+    color: s.field("color", S.option(S.string->S.min(1)->S.max(16))),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    allowRenoteToExternal: s.field("allowRenoteToExternal", S.option(S.bool)),
   })
 
 type postChannelsCreateResponse = KokonectLinkComponentSchemas.Channel.t
@@ -56,11 +56,11 @@ type postChannelsFollowedRequest = {
 }
 
 let postChannelsFollowedRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postChannelsFollowedResponse = array<KokonectLinkComponentSchemas.Channel.t>
@@ -96,11 +96,11 @@ type postChannelsOwnedRequest = {
 }
 
 let postChannelsOwnedRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postChannelsOwnedResponse = array<KokonectLinkComponentSchemas.Channel.t>
@@ -139,12 +139,12 @@ type postChannelsSearchRequest = {
 
 let postChannelsSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    type_: s.field("type", S.option(S.string)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postChannelsSearchResponse = array<KokonectLinkComponentSchemas.Channel.t>
@@ -217,14 +217,14 @@ type postChannelsUpdateRequest = {
 
 let postChannelsUpdateRequestSchema = S.object(s => {
     channelId: s.field("channelId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.min(1)->S.max(2048)), None),
-    bannerId: s.fieldOr("bannerId", S.nullableAsOption(S.string), None),
-    isArchived: s.fieldOr("isArchived", S.nullableAsOption(S.bool), None),
-    pinnedNoteIds: s.fieldOr("pinnedNoteIds", S.nullableAsOption(S.array(S.string)), None),
-    color: s.fieldOr("color", S.nullableAsOption(S.string->S.min(1)->S.max(16)), None),
-    isSensitive: s.fieldOr("isSensitive", S.nullableAsOption(S.bool), None),
-    allowRenoteToExternal: s.fieldOr("allowRenoteToExternal", S.nullableAsOption(S.bool), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(128))),
+    description: s.field("description", S.option(S.string->S.min(1)->S.max(2048))),
+    bannerId: s.field("bannerId", S.option(S.string)),
+    isArchived: s.field("isArchived", S.option(S.bool)),
+    pinnedNoteIds: s.field("pinnedNoteIds", S.option(S.array(S.string))),
+    color: s.field("color", S.option(S.string->S.min(1)->S.max(16))),
+    isSensitive: s.field("isSensitive", S.option(S.bool)),
+    allowRenoteToExternal: s.field("allowRenoteToExternal", S.option(S.bool)),
   })
 
 type postChannelsUpdateResponse = KokonectLinkComponentSchemas.Channel.t

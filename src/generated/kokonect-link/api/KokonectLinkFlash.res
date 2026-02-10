@@ -18,7 +18,7 @@ let postFlashCreateRequestSchema = S.object(s => {
     summary: s.field("summary", S.string),
     script: s.field("script", S.string),
     permissions: s.field("permissions", S.array(S.string)),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postFlashCreateResponse = KokonectLinkComponentSchemas.Flash.t
@@ -93,11 +93,11 @@ type postFlashSearchRequest = {
 
 let postFlashSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string->S.min(1)->S.max(100)),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFlashSearchResponse = array<KokonectLinkComponentSchemas.Flash.t>

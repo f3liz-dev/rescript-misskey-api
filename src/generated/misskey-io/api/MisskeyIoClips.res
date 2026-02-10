@@ -13,8 +13,8 @@ type postClipsCreateRequest = {
 
 let postClipsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
+    isPublic: s.field("isPublic", S.option(S.bool)),
+    description: s.field("description", S.option(S.string->S.max(2048))),
   })
 
 type postClipsCreateResponse = MisskeyIoComponentSchemas.Clip.t
@@ -136,9 +136,9 @@ type postClipsUpdateRequest = {
 
 let postClipsUpdateRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    isPublic: s.field("isPublic", S.option(S.bool)),
+    description: s.field("description", S.option(S.string->S.max(2048))),
   })
 
 type postClipsUpdateResponse = MisskeyIoComponentSchemas.Clip.t

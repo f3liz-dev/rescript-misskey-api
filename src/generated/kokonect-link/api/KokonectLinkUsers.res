@@ -15,12 +15,12 @@ type postUsersRequest = {
 }
 
 let postUsersRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    sort: s.fieldOr("sort", S.nullableAsOption(S.string), None),
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    hostname: s.fieldOr("hostname", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    sort: s.field("sort", S.option(S.string)),
+    state: s.field("state", S.option(S.string)),
+    origin: s.field("origin", S.option(S.string)),
+    hostname: s.field("hostname", S.option(S.string)),
   })
 
 type postUsersResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>
@@ -58,11 +58,11 @@ type postUsersClipsRequest = {
 
 let postUsersClipsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersClipsResponse = array<KokonectLinkComponentSchemas.Clip.t>
@@ -100,11 +100,11 @@ type postUsersFlashsRequest = {
 
 let postUsersFlashsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersFlashsResponse = array<KokonectLinkComponentSchemas.Flash.t>
@@ -140,11 +140,11 @@ type postUsersFollowersRequest = {
 }
 
 let postUsersFollowersRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postUsersFollowersResponse = array<KokonectLinkComponentSchemas.Following.t>
@@ -181,12 +181,12 @@ type postUsersFollowingRequest = {
 }
 
 let postUsersFollowingRequestSchema = S.object(s => {
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    birthday: s.fieldOr("birthday", S.nullableAsOption(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    birthday: s.field("birthday", S.option(S.string->S.pattern(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/))),
   })
 
 type postUsersFollowingResponse = array<KokonectLinkComponentSchemas.Following.t>
@@ -224,11 +224,11 @@ type postUsersGalleryPostsRequest = {
 
 let postUsersGalleryPostsRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersGalleryPostsResponse = array<KokonectLinkComponentSchemas.GalleryPost.t>
@@ -272,17 +272,17 @@ type postUsersNotesRequest = {
 
 let postUsersNotesRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withChannelNotes: s.fieldOr("withChannelNotes", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withChannelNotes: s.field("withChannelNotes", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
   })
 
 type postUsersNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -320,11 +320,11 @@ type postUsersPagesRequest = {
 
 let postUsersPagesRequestSchema = S.object(s => {
     userId: s.field("userId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postUsersPagesResponse = array<KokonectLinkComponentSchemas.Page.t>
@@ -389,8 +389,8 @@ type postUsersSearchByUsernameAndHostRequest = {
 }
 
 let postUsersSearchByUsernameAndHostRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    detail: s.fieldOr("detail", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    detail: s.field("detail", S.option(S.bool)),
   })
 
 type postUsersSearchByUsernameAndHostResponse = array<KokonectLinkComponentSchemas.User.t>
@@ -422,7 +422,7 @@ type postUsersShowRequest = {
 }
 
 let postUsersShowRequestSchema = S.object(s => {
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
+    host: s.field("host", S.option(S.string)),
   })
 
 type postUsersShowResponse = array<KokonectLinkComponentSchemas.UserDetailed.t>

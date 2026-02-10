@@ -17,12 +17,12 @@ type postChannelsTimelineRequest = {
 
 let postChannelsTimelineRequestSchema = S.object(s => {
     channelId: s.field("channelId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
   })
 
 type postChannelsTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -64,17 +64,17 @@ type postNotesRequest = {
 }
 
 let postNotesRequestSchema = S.object(s => {
-    local: s.fieldOr("local", S.nullableAsOption(S.bool), None),
-    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
-    event: s.fieldOr("event", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    local: s.field("local", S.option(S.bool)),
+    reply: s.field("reply", S.option(S.bool)),
+    renote: s.field("renote", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    poll: s.field("poll", S.option(S.bool)),
+    event: s.field("event", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -114,15 +114,15 @@ type postNotesBubbleTimelineRequest = {
 }
 
 let postNotesBubbleTimelineRequestSchema = S.object(s => {
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
-    withBots: s.fieldOr("withBots", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
+    withBots: s.field("withBots", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesBubbleTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -160,11 +160,11 @@ type postNotesChildrenRequest = {
 
 let postNotesChildrenRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesChildrenResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -243,44 +243,44 @@ let postNotesCreateRequest_4Schema = S.object(s => {
   })
 
 let postNotesCreateRequest_3Schema = S.object(s => {
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
-    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    deleteAt: s.field("deleteAt", S.option(S.int)),
+    deleteAfter: s.field("deleteAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesCreateRequest_2Schema = S.object(s => {
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
-    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    title: s.field("title", S.option(S.string->S.min(1)->S.max(128))),
+    start: s.field("start", S.option(S.int)),
+    end_: s.field("end", S.option(S.int)),
     metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesCreateRequest_1Schema = S.object(s => {
     choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
-    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    multiple: s.field("multiple", S.option(S.bool)),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
+    expiredAfter: s.field("expiredAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesCreateRequestSchema = S.object(s => {
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    noExtractMentions: s.fieldOr("noExtractMentions", S.nullableAsOption(S.bool), None),
-    noExtractHashtags: s.fieldOr("noExtractHashtags", S.nullableAsOption(S.bool), None),
-    noExtractEmojis: s.fieldOr("noExtractEmojis", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(1)->S.max(3000)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(postNotesCreateRequest_1Schema), None),
-    event: s.fieldOr("event", S.nullableAsOption(postNotesCreateRequest_2Schema), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesCreateRequest_3Schema), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesCreateRequest_4Schema), None),
+    visibility: s.field("visibility", S.option(S.string)),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
+    cw: s.field("cw", S.option(S.string->S.min(1)->S.max(100))),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    reactionAcceptance: s.field("reactionAcceptance", S.option(S.string)),
+    disableRightClick: s.field("disableRightClick", S.option(S.bool)),
+    noExtractMentions: s.field("noExtractMentions", S.option(S.bool)),
+    noExtractHashtags: s.field("noExtractHashtags", S.option(S.bool)),
+    noExtractEmojis: s.field("noExtractEmojis", S.option(S.bool)),
+    replyId: s.field("replyId", S.option(S.string)),
+    renoteId: s.field("renoteId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
+    text: s.field("text", S.option(S.string->S.min(1)->S.max(3000))),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    mediaIds: s.field("mediaIds", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(postNotesCreateRequest_1Schema)),
+    event: s.field("event", S.option(postNotesCreateRequest_2Schema)),
+    scheduledDelete: s.field("scheduledDelete", S.option(postNotesCreateRequest_3Schema)),
+    deliveryTargets: s.field("deliveryTargets", S.option(postNotesCreateRequest_4Schema)),
   })
 
 type postNotesCreateResponse = {
@@ -388,43 +388,43 @@ let postNotesDraftsCreateRequest_4Schema = S.object(s => {
   })
 
 let postNotesDraftsCreateRequest_3Schema = S.object(s => {
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
-    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    deleteAt: s.field("deleteAt", S.option(S.int)),
+    deleteAfter: s.field("deleteAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesDraftsCreateRequest_2Schema = S.object(s => {
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
-    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    title: s.field("title", S.option(S.string->S.min(1)->S.max(128))),
+    start: s.field("start", S.option(S.int)),
+    end_: s.field("end", S.option(S.int)),
     metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesDraftsCreateRequest_1Schema = S.object(s => {
     choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
-    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    multiple: s.field("multiple", S.option(S.bool)),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
+    expiredAfter: s.field("expiredAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesDraftsCreateRequestSchema = S.object(s => {
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.string->S.max(200)), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(0)->S.max(3000)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(postNotesDraftsCreateRequest_1Schema), None),
-    event: s.fieldOr("event", S.nullableAsOption(postNotesDraftsCreateRequest_2Schema), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
-    isActuallyScheduled: s.fieldOr("isActuallyScheduled", S.nullableAsOption(S.bool), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesDraftsCreateRequest_3Schema), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesDraftsCreateRequest_4Schema), None),
+    visibility: s.field("visibility", S.option(S.string)),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
+    cw: s.field("cw", S.option(S.string->S.min(1)->S.max(100))),
+    hashtag: s.field("hashtag", S.option(S.string->S.max(200))),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    reactionAcceptance: s.field("reactionAcceptance", S.option(S.string)),
+    disableRightClick: s.field("disableRightClick", S.option(S.bool)),
+    replyId: s.field("replyId", S.option(S.string)),
+    renoteId: s.field("renoteId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
+    text: s.field("text", S.option(S.string->S.min(0)->S.max(3000))),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(postNotesDraftsCreateRequest_1Schema)),
+    event: s.field("event", S.option(postNotesDraftsCreateRequest_2Schema)),
+    scheduledAt: s.field("scheduledAt", S.option(S.int)),
+    isActuallyScheduled: s.field("isActuallyScheduled", S.option(S.bool)),
+    scheduledDelete: s.field("scheduledDelete", S.option(postNotesDraftsCreateRequest_3Schema)),
+    deliveryTargets: s.field("deliveryTargets", S.option(postNotesDraftsCreateRequest_4Schema)),
   })
 
 type postNotesDraftsCreateResponse = {
@@ -495,12 +495,12 @@ type postNotesDraftsListRequest = {
 }
 
 let postNotesDraftsListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    scheduled: s.fieldOr("scheduled", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    scheduled: s.field("scheduled", S.option(S.bool)),
   })
 
 type postNotesDraftsListResponse = array<KokonectLinkComponentSchemas.NoteDraft.t>
@@ -579,44 +579,44 @@ let postNotesDraftsUpdateRequest_4Schema = S.object(s => {
   })
 
 let postNotesDraftsUpdateRequest_3Schema = S.object(s => {
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
-    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    deleteAt: s.field("deleteAt", S.option(S.int)),
+    deleteAfter: s.field("deleteAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesDraftsUpdateRequest_2Schema = S.object(s => {
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
-    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    title: s.field("title", S.option(S.string->S.min(1)->S.max(128))),
+    start: s.field("start", S.option(S.int)),
+    end_: s.field("end", S.option(S.int)),
     metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesDraftsUpdateRequest_1Schema = S.object(s => {
     choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
-    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    multiple: s.field("multiple", S.option(S.bool)),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
+    expiredAfter: s.field("expiredAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesDraftsUpdateRequestSchema = S.object(s => {
     draftId: s.field("draftId", S.string),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
-    visibleUserIds: s.fieldOr("visibleUserIds", S.nullableAsOption(S.array(S.string)), None),
-    cw: s.fieldOr("cw", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    hashtag: s.fieldOr("hashtag", S.nullableAsOption(S.string->S.max(200)), None),
-    localOnly: s.fieldOr("localOnly", S.nullableAsOption(S.bool), None),
-    reactionAcceptance: s.fieldOr("reactionAcceptance", S.nullableAsOption(S.string), None),
-    replyId: s.fieldOr("replyId", S.nullableAsOption(S.string), None),
-    renoteId: s.fieldOr("renoteId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
-    text: s.fieldOr("text", S.nullableAsOption(S.string->S.min(0)->S.max(3000)), None),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(postNotesDraftsUpdateRequest_1Schema), None),
-    scheduledAt: s.fieldOr("scheduledAt", S.nullableAsOption(S.int), None),
-    isActuallyScheduled: s.fieldOr("isActuallyScheduled", S.nullableAsOption(S.bool), None),
-    event: s.fieldOr("event", S.nullableAsOption(postNotesDraftsUpdateRequest_2Schema), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesDraftsUpdateRequest_3Schema), None),
-    deliveryTargets: s.fieldOr("deliveryTargets", S.nullableAsOption(postNotesDraftsUpdateRequest_4Schema), None),
+    visibility: s.field("visibility", S.option(S.string)),
+    visibleUserIds: s.field("visibleUserIds", S.option(S.array(S.string))),
+    cw: s.field("cw", S.option(S.string->S.min(1)->S.max(100))),
+    disableRightClick: s.field("disableRightClick", S.option(S.bool)),
+    hashtag: s.field("hashtag", S.option(S.string->S.max(200))),
+    localOnly: s.field("localOnly", S.option(S.bool)),
+    reactionAcceptance: s.field("reactionAcceptance", S.option(S.string)),
+    replyId: s.field("replyId", S.option(S.string)),
+    renoteId: s.field("renoteId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
+    text: s.field("text", S.option(S.string->S.min(0)->S.max(3000))),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(postNotesDraftsUpdateRequest_1Schema)),
+    scheduledAt: s.field("scheduledAt", S.option(S.int)),
+    isActuallyScheduled: s.field("isActuallyScheduled", S.option(S.bool)),
+    event: s.field("event", S.option(postNotesDraftsUpdateRequest_2Schema)),
+    scheduledDelete: s.field("scheduledDelete", S.option(postNotesDraftsUpdateRequest_3Schema)),
+    deliveryTargets: s.field("deliveryTargets", S.option(postNotesDraftsUpdateRequest_4Schema)),
   })
 
 type postNotesDraftsUpdateResponse = {
@@ -662,17 +662,17 @@ type postNotesEventsSearchRequest = {
 }
 
 let postNotesEventsSearchRequestSchema = S.object(s => {
-    query: s.fieldOr("query", S.nullableAsOption(S.string), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    users: s.fieldOr("users", S.nullableAsOption(S.json), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    filters: s.fieldOr("filters", S.nullableAsOption(S.json), None),
-    sortBy: s.fieldOr("sortBy", S.nullableAsOption(S.string), None),
+    query: s.field("query", S.option(S.string)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    origin: s.field("origin", S.option(S.string)),
+    offset: s.field("offset", S.option(S.int)),
+    users: s.field("users", S.option(S.json)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    filters: s.field("filters", S.option(S.json)),
+    sortBy: s.field("sortBy", S.option(S.string)),
   })
 
 type postNotesEventsSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -711,14 +711,14 @@ type postNotesGlobalTimelineRequest = {
 }
 
 let postNotesGlobalTimelineRequestSchema = S.object(s => {
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesGlobalTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -754,9 +754,9 @@ type postNotesHistoryRequest = {
 
 let postNotesHistoryRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postNotesHistoryResponse = array<KokonectLinkComponentSchemas.NoteHistory.t>
@@ -800,19 +800,19 @@ type postNotesHybridTimelineRequest = {
 }
 
 let postNotesHybridTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
   })
 
 type postNotesHybridTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -853,16 +853,16 @@ type postNotesLocalTimelineRequest = {
 }
 
 let postNotesLocalTimelineRequestSchema = S.object(s => {
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withReplies: s.fieldOr("withReplies", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withReplies: s.field("withReplies", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesLocalTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -900,13 +900,13 @@ type postNotesMentionsRequest = {
 }
 
 let postNotesMentionsRequestSchema = S.object(s => {
-    following: s.fieldOr("following", S.nullableAsOption(S.bool), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    following: s.field("following", S.option(S.bool)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postNotesMentionsResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -950,7 +950,7 @@ type postNotesPollsTranslateResponse = {
 
 let postNotesPollsTranslateResponseSchema = S.object(s => {
     sourceLang: s.field("sourceLang", S.string),
-    text: s.fieldOr("text", S.nullableAsOption(S.array(S.nullableAsOption(S.string))), None),
+    text: s.field("text", S.option(S.array(S.nullableAsOption(S.string)))),
   })
 
 /**
@@ -985,12 +985,12 @@ type getNotesReactionsRequest = {
 
 let getNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    type_: s.field("type", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type getNotesReactionsResponse = array<KokonectLinkComponentSchemas.NoteReaction.t>
@@ -1029,12 +1029,12 @@ type postNotesReactionsRequest = {
 
 let postNotesReactionsRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    type_: s.fieldOr("type", S.nullableAsOption(S.string), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    type_: s.field("type", S.option(S.string)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesReactionsResponse = array<KokonectLinkComponentSchemas.NoteReaction.t>
@@ -1072,11 +1072,11 @@ type postNotesRenotesRequest = {
 
 let postNotesRenotesRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postNotesRenotesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1114,11 +1114,11 @@ type postNotesRepliesRequest = {
 
 let postNotesRepliesRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postNotesRepliesResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1160,15 +1160,15 @@ type postNotesSearchRequest = {
 
 let postNotesSearchRequestSchema = S.object(s => {
     query: s.field("query", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
-    host: s.fieldOr("host", S.nullableAsOption(S.string), None),
-    userId: s.fieldOr("userId", S.nullableAsOption(S.string), None),
-    channelId: s.fieldOr("channelId", S.nullableAsOption(S.string), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    offset: s.field("offset", S.option(S.int)),
+    host: s.field("host", S.option(S.string)),
+    userId: s.field("userId", S.option(S.string)),
+    channelId: s.field("channelId", S.option(S.string)),
   })
 
 type postNotesSearchResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1208,15 +1208,15 @@ type postNotesSearchByTagRequest = {
 }
 
 let postNotesSearchByTagRequestSchema = S.object(s => {
-    reply: s.fieldOr("reply", S.nullableAsOption(S.bool), None),
-    renote: s.fieldOr("renote", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(S.bool), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    reply: s.field("reply", S.option(S.bool)),
+    renote: s.field("renote", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    poll: s.field("poll", S.option(S.bool)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postNotesSearchByTagResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1375,18 +1375,18 @@ type postNotesTimelineRequest = {
 }
 
 let postNotesTimelineRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
   })
 
 type postNotesTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>
@@ -1445,34 +1445,34 @@ type postNotesUpdateRequest = {
 }
 
 let postNotesUpdateRequest_3Schema = S.object(s => {
-    deleteAt: s.fieldOr("deleteAt", S.nullableAsOption(S.int), None),
-    deleteAfter: s.fieldOr("deleteAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    deleteAt: s.field("deleteAt", S.option(S.int)),
+    deleteAfter: s.field("deleteAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesUpdateRequest_2Schema = S.object(s => {
-    title: s.fieldOr("title", S.nullableAsOption(S.string->S.min(1)->S.max(128)), None),
-    start: s.fieldOr("start", S.nullableAsOption(S.int), None),
-    end_: s.fieldOr("end", S.nullableAsOption(S.int), None),
+    title: s.field("title", S.option(S.string->S.min(1)->S.max(128))),
+    start: s.field("start", S.option(S.int)),
+    end_: s.field("end", S.option(S.int)),
     metadata: s.field("metadata", S.option(S.dict(S.json))),
   })
 
 let postNotesUpdateRequest_1Schema = S.object(s => {
     choices: s.field("choices", S.array(S.string->S.min(1)->S.max(50))),
-    multiple: s.fieldOr("multiple", S.nullableAsOption(S.bool), None),
-    expiresAt: s.fieldOr("expiresAt", S.nullableAsOption(S.int), None),
-    expiredAfter: s.fieldOr("expiredAfter", S.nullableAsOption(S.int->S.min(1)), None),
+    multiple: s.field("multiple", S.option(S.bool)),
+    expiresAt: s.field("expiresAt", S.option(S.int)),
+    expiredAfter: s.field("expiredAfter", S.option(S.int->S.min(1))),
   })
 
 let postNotesUpdateRequestSchema = S.object(s => {
     noteId: s.field("noteId", S.string),
     text: s.field("text", S.string->S.min(1)->S.max(3000)),
-    fileIds: s.fieldOr("fileIds", S.nullableAsOption(S.array(S.string)), None),
-    mediaIds: s.fieldOr("mediaIds", S.nullableAsOption(S.array(S.string)), None),
-    poll: s.fieldOr("poll", S.nullableAsOption(postNotesUpdateRequest_1Schema), None),
-    event: s.fieldOr("event", S.nullableAsOption(postNotesUpdateRequest_2Schema), None),
+    fileIds: s.field("fileIds", S.option(S.array(S.string))),
+    mediaIds: s.field("mediaIds", S.option(S.array(S.string))),
+    poll: s.field("poll", S.option(postNotesUpdateRequest_1Schema)),
+    event: s.field("event", S.option(postNotesUpdateRequest_2Schema)),
     cw: s.field("cw", S.nullableAsOption(S.string->S.max(100))),
-    disableRightClick: s.fieldOr("disableRightClick", S.nullableAsOption(S.bool), None),
-    scheduledDelete: s.fieldOr("scheduledDelete", S.nullableAsOption(postNotesUpdateRequest_3Schema), None),
+    disableRightClick: s.field("disableRightClick", S.option(S.bool)),
+    scheduledDelete: s.field("scheduledDelete", S.option(postNotesUpdateRequest_3Schema)),
   })
 
 type postNotesUpdateResponse = unit
@@ -1515,18 +1515,18 @@ type postNotesUserListTimelineRequest = {
 
 let postNotesUserListTimelineRequestSchema = S.object(s => {
     listId: s.field("listId", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    allowPartial: s.fieldOr("allowPartial", S.nullableAsOption(S.bool), None),
-    includeMyRenotes: s.fieldOr("includeMyRenotes", S.nullableAsOption(S.bool), None),
-    includeRenotedMyNotes: s.fieldOr("includeRenotedMyNotes", S.nullableAsOption(S.bool), None),
-    includeLocalRenotes: s.fieldOr("includeLocalRenotes", S.nullableAsOption(S.bool), None),
-    withRenotes: s.fieldOr("withRenotes", S.nullableAsOption(S.bool), None),
-    withFiles: s.fieldOr("withFiles", S.nullableAsOption(S.bool), None),
-    withCats: s.fieldOr("withCats", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    allowPartial: s.field("allowPartial", S.option(S.bool)),
+    includeMyRenotes: s.field("includeMyRenotes", S.option(S.bool)),
+    includeRenotedMyNotes: s.field("includeRenotedMyNotes", S.option(S.bool)),
+    includeLocalRenotes: s.field("includeLocalRenotes", S.option(S.bool)),
+    withRenotes: s.field("withRenotes", S.option(S.bool)),
+    withFiles: s.field("withFiles", S.option(S.bool)),
+    withCats: s.field("withCats", S.option(S.bool)),
   })
 
 type postNotesUserListTimelineResponse = array<KokonectLinkComponentSchemas.Note.t>

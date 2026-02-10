@@ -13,8 +13,8 @@ type postClipsCreateRequest = {
 
 let postClipsCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string->S.min(1)->S.max(100)),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
+    isPublic: s.field("isPublic", S.option(S.bool)),
+    description: s.field("description", S.option(S.string->S.max(2048))),
   })
 
 type postClipsCreateResponse = KokonectLinkComponentSchemas.Clip.t
@@ -50,11 +50,11 @@ type postClipsListRequest = {
 }
 
 let postClipsListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postClipsListResponse = array<KokonectLinkComponentSchemas.Clip.t>
@@ -122,9 +122,9 @@ type postClipsUpdateRequest = {
 
 let postClipsUpdateRequestSchema = S.object(s => {
     clipId: s.field("clipId", S.string),
-    name: s.fieldOr("name", S.nullableAsOption(S.string->S.min(1)->S.max(100)), None),
-    isPublic: s.fieldOr("isPublic", S.nullableAsOption(S.bool), None),
-    description: s.fieldOr("description", S.nullableAsOption(S.string->S.max(2048)), None),
+    name: s.field("name", S.option(S.string->S.min(1)->S.max(100))),
+    isPublic: s.field("isPublic", S.option(S.bool)),
+    description: s.field("description", S.option(S.string->S.max(2048))),
   })
 
 type postClipsUpdateResponse = KokonectLinkComponentSchemas.Clip.t

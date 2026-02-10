@@ -18,7 +18,7 @@ let postFlashCreateRequestSchema = S.object(s => {
     summary: s.field("summary", S.string),
     script: s.field("script", S.string),
     permissions: s.field("permissions", S.array(S.string)),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postFlashCreateResponse = MisskeyIoComponentSchemas.Flash.t
@@ -51,8 +51,8 @@ type postFlashFeaturedRequest = {
 }
 
 let postFlashFeaturedRequestSchema = S.object(s => {
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int->S.min(0)), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    offset: s.field("offset", S.option(S.int->S.min(0))),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFlashFeaturedResponse = array<MisskeyIoComponentSchemas.Flash.t>
@@ -150,11 +150,11 @@ type postFlashUpdateRequest = {
 
 let postFlashUpdateRequestSchema = S.object(s => {
     flashId: s.field("flashId", S.string),
-    title: s.fieldOr("title", S.nullableAsOption(S.string), None),
-    summary: s.fieldOr("summary", S.nullableAsOption(S.string), None),
-    script: s.fieldOr("script", S.nullableAsOption(S.string), None),
-    permissions: s.fieldOr("permissions", S.nullableAsOption(S.array(S.string)), None),
-    visibility: s.fieldOr("visibility", S.nullableAsOption(S.string), None),
+    title: s.field("title", S.option(S.string)),
+    summary: s.field("summary", S.option(S.string)),
+    script: s.field("script", S.option(S.string)),
+    permissions: s.field("permissions", S.option(S.array(S.string))),
+    visibility: s.field("visibility", S.option(S.string)),
   })
 
 type postFlashUpdateResponse = unit

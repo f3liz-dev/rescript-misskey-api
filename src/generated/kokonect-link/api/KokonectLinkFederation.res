@@ -16,11 +16,11 @@ type postFederationFollowersRequest = {
 
 let postFederationFollowersRequestSchema = S.object(s => {
     host: s.field("host", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFederationFollowersResponse = array<KokonectLinkComponentSchemas.Following.t>
@@ -58,11 +58,11 @@ type postFederationFollowingRequest = {
 
 let postFederationFollowingRequestSchema = S.object(s => {
     host: s.field("host", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFederationFollowingResponse = array<KokonectLinkComponentSchemas.Following.t>
@@ -101,14 +101,14 @@ type getFederationRemoteSoftwareRequest = {
 }
 
 let getFederationRemoteSoftwareRequestSchema = S.object(s => {
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
-    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.bool), None),
+    blocked: s.field("blocked", S.option(S.bool)),
+    notResponding: s.field("notResponding", S.option(S.bool)),
+    suspended: s.field("suspended", S.option(S.bool)),
+    silenced: s.field("silenced", S.option(S.bool)),
+    federating: s.field("federating", S.option(S.bool)),
+    subscribing: s.field("subscribing", S.option(S.bool)),
+    publishing: s.field("publishing", S.option(S.bool)),
+    quarantined: s.field("quarantined", S.option(S.bool)),
   })
 
 type getFederationRemoteSoftwareResponse_1 = {
@@ -159,14 +159,14 @@ type postFederationRemoteSoftwareRequest = {
 }
 
 let postFederationRemoteSoftwareRequestSchema = S.object(s => {
-    blocked: s.fieldOr("blocked", S.nullableAsOption(S.bool), None),
-    notResponding: s.fieldOr("notResponding", S.nullableAsOption(S.bool), None),
-    suspended: s.fieldOr("suspended", S.nullableAsOption(S.bool), None),
-    silenced: s.fieldOr("silenced", S.nullableAsOption(S.bool), None),
-    federating: s.fieldOr("federating", S.nullableAsOption(S.bool), None),
-    subscribing: s.fieldOr("subscribing", S.nullableAsOption(S.bool), None),
-    publishing: s.fieldOr("publishing", S.nullableAsOption(S.bool), None),
-    quarantined: s.fieldOr("quarantined", S.nullableAsOption(S.bool), None),
+    blocked: s.field("blocked", S.option(S.bool)),
+    notResponding: s.field("notResponding", S.option(S.bool)),
+    suspended: s.field("suspended", S.option(S.bool)),
+    silenced: s.field("silenced", S.option(S.bool)),
+    federating: s.field("federating", S.option(S.bool)),
+    subscribing: s.field("subscribing", S.option(S.bool)),
+    publishing: s.field("publishing", S.option(S.bool)),
+    quarantined: s.field("quarantined", S.option(S.bool)),
   })
 
 type postFederationRemoteSoftwareResponse_1 = {
@@ -248,11 +248,11 @@ type postFederationUsersRequest = {
 
 let postFederationUsersRequestSchema = S.object(s => {
     host: s.field("host", S.string),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
   })
 
 type postFederationUsersResponse = array<KokonectLinkComponentSchemas.UserDetailedNotMe.t>

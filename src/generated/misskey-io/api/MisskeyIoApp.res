@@ -16,7 +16,7 @@ let postAppCreateRequestSchema = S.object(s => {
     name: s.field("name", S.string),
     description: s.field("description", S.string),
     permission: s.field("permission", S.array(S.string)),
-    callbackUrl: s.fieldOr("callbackUrl", S.nullableAsOption(S.string), None),
+    callbackUrl: s.field("callbackUrl", S.option(S.string)),
   })
 
 type postAppCreateResponse = MisskeyIoComponentSchemas.App.t

@@ -14,10 +14,10 @@ type postHashtagsListRequest = {
 }
 
 let postHashtagsListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    attachedToUserOnly: s.fieldOr("attachedToUserOnly", S.nullableAsOption(S.bool), None),
-    attachedToLocalUserOnly: s.fieldOr("attachedToLocalUserOnly", S.nullableAsOption(S.bool), None),
-    attachedToRemoteUserOnly: s.fieldOr("attachedToRemoteUserOnly", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    attachedToUserOnly: s.field("attachedToUserOnly", S.option(S.bool)),
+    attachedToLocalUserOnly: s.field("attachedToLocalUserOnly", S.option(S.bool)),
+    attachedToRemoteUserOnly: s.field("attachedToRemoteUserOnly", S.option(S.bool)),
     sort: s.field("sort", S.string),
   })
 
@@ -52,9 +52,9 @@ type postHashtagsSearchRequest = {
 }
 
 let postHashtagsSearchRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
     query: s.field("query", S.string),
-    offset: s.fieldOr("offset", S.nullableAsOption(S.int), None),
+    offset: s.field("offset", S.option(S.int)),
   })
 
 type postHashtagsSearchResponse = array<string>
@@ -197,12 +197,12 @@ type postHashtagsUsersRequest = {
 
 let postHashtagsUsersRequestSchema = S.object(s => {
     tag: s.field("tag", S.string),
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
     sort: s.field("sort", S.string),
-    state: s.fieldOr("state", S.nullableAsOption(S.string), None),
-    origin: s.fieldOr("origin", S.nullableAsOption(S.string), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
+    state: s.field("state", S.option(S.string)),
+    origin: s.field("origin", S.option(S.string)),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
   })
 
 type postHashtagsUsersResponse = array<MisskeyIoComponentSchemas.UserDetailed.t>

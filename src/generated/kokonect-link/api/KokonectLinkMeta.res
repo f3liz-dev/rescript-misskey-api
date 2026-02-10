@@ -209,7 +209,7 @@ let postAdminMetaResponseSchema = S.object(s => {
     enableServiceWorker: s.field("enableServiceWorker", S.bool),
     translatorAvailable: s.field("translatorAvailable", S.bool),
     translatorType: s.field("translatorType", S.nullableAsOption(S.string)),
-    silencedHosts: s.fieldOr("silencedHosts", S.nullableAsOption(S.array(S.string)), None),
+    silencedHosts: s.field("silencedHosts", S.option(S.array(S.string))),
     mediaSilencedHosts: s.field("mediaSilencedHosts", S.array(S.string)),
     pinnedUsers: s.field("pinnedUsers", S.array(S.string)),
     hiddenTags: s.field("hiddenTags", S.array(S.string)),
@@ -217,7 +217,7 @@ let postAdminMetaResponseSchema = S.object(s => {
     sensitiveWords: s.field("sensitiveWords", S.array(S.string)),
     prohibitedWords: s.field("prohibitedWords", S.array(S.string)),
     prohibitedWordsForNameOfUser: s.field("prohibitedWordsForNameOfUser", S.array(S.string)),
-    bannedEmailDomains: s.fieldOr("bannedEmailDomains", S.nullableAsOption(S.array(S.string)), None),
+    bannedEmailDomains: s.field("bannedEmailDomains", S.option(S.array(S.string))),
     preservedUsernames: s.field("preservedUsernames", S.array(S.string)),
     hcaptchaSecretKey: s.field("hcaptchaSecretKey", S.nullableAsOption(S.string)),
     mcaptchaSecretKey: s.field("mcaptchaSecretKey", S.nullableAsOption(S.string)),
@@ -334,7 +334,7 @@ let postAdminMetaResponseSchema = S.object(s => {
     emailToReceiveAbuseReport: s.field("emailToReceiveAbuseReport", S.nullableAsOption(S.string)),
     enableReceivePrerelease: s.field("enableReceivePrerelease", S.bool),
     skipVersion: s.field("skipVersion", S.bool),
-    skipCherryPickVersion: s.fieldOr("skipCherryPickVersion", S.nullableAsOption(S.string), None),
+    skipCherryPickVersion: s.field("skipCherryPickVersion", S.option(S.string)),
     trustedLinkUrlPatterns: s.field("trustedLinkUrlPatterns", S.array(S.string)),
     customSplashText: s.field("customSplashText", S.array(S.string)),
     disableRegistrationWhenInactive: s.field("disableRegistrationWhenInactive", S.bool),
@@ -375,12 +375,12 @@ type postAnnouncementsRequest = {
 }
 
 let postAnnouncementsRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
-    isActive: s.fieldOr("isActive", S.nullableAsOption(S.bool), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
+    isActive: s.field("isActive", S.option(S.bool)),
   })
 
 type postAnnouncementsResponse = array<KokonectLinkComponentSchemas.Announcement.t>
@@ -536,11 +536,11 @@ type postInviteListRequest = {
 }
 
 let postInviteListRequestSchema = S.object(s => {
-    limit: s.fieldOr("limit", S.nullableAsOption(S.int->S.min(1)->S.max(100)), None),
-    sinceId: s.fieldOr("sinceId", S.nullableAsOption(S.string), None),
-    untilId: s.fieldOr("untilId", S.nullableAsOption(S.string), None),
-    sinceDate: s.fieldOr("sinceDate", S.nullableAsOption(S.int), None),
-    untilDate: s.fieldOr("untilDate", S.nullableAsOption(S.int), None),
+    limit: s.field("limit", S.option(S.int->S.min(1)->S.max(100))),
+    sinceId: s.field("sinceId", S.option(S.string)),
+    untilId: s.field("untilId", S.option(S.string)),
+    sinceDate: s.field("sinceDate", S.option(S.int)),
+    untilDate: s.field("untilDate", S.option(S.int)),
   })
 
 type postInviteListResponse = array<KokonectLinkComponentSchemas.InviteCode.t>
