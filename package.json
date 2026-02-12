@@ -1,6 +1,6 @@
 {
   "name": "@f3liz/rescript-misskey-api",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "description": "ReScript bindings for Misskey API using OpenAPI code generation",
   "keywords": [
     "misskey",
@@ -39,10 +39,11 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "ofetch": "^1.5.1",
     "sury": "11.0.0-alpha.4"
   },
   "devDependencies": {
-    "@f3liz/rescript-autogen-openapi": "^0.6.0",
+    "@f3liz/rescript-autogen-openapi": "^0.7.0",
     "rescript": "^12.1.0",
     "typescript": "^5.9.3"
   },

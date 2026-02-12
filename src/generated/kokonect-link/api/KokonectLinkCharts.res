@@ -48,17 +48,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsFederation = (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsFederationResponse> => {
+let getChartsFederation = async (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsFederationResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsFederationRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/federation",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsFederationResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsFederationResponseSchema)
 }
 
 type postChartsFederationRequest = {
@@ -104,15 +101,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsFederation = (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsFederationResponse> => {
+let postChartsFederation = async (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsFederationResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsFederationRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/federation",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsFederationResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsFederationResponseSchema)
 }

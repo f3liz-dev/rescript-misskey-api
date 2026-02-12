@@ -32,17 +32,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash*
 */
-let postFlashCreate = (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashCreateResponse> => {
+let postFlashCreate = async (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashCreateResponseSchema)
 }
 
 type postFlashGenTokenRequest = {
@@ -69,17 +66,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postFlashGenToken = (~body: postFlashGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashGenTokenResponse> => {
+let postFlashGenToken = async (~body: postFlashGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashGenTokenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashGenTokenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/gen-token",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashGenTokenResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashGenTokenResponseSchema)
 }
 
 type postFlashSearchRequest = {
@@ -111,15 +105,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFlashSearch = (~body: postFlashSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashSearchResponse> => {
+let postFlashSearch = async (~body: postFlashSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashSearchResponseSchema)
 }

@@ -34,17 +34,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsCreate = (~body: postChannelsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsCreateResponse> => {
+let postChannelsCreate = async (~body: postChannelsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsCreateResponseSchema)
 }
 
 type postChannelsFavoriteRequest = {
@@ -64,17 +61,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsFavorite = (~body: postChannelsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFavoriteResponse> => {
+let postChannelsFavorite = async (~body: postChannelsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsFavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/favorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChannelsFeaturedResponse = array<MisskeyIoComponentSchemas.Channel.t>
@@ -88,17 +82,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChannelsFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedResponse> => {
+let postChannelsFeatured = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsFeaturedResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/channels/featured",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsFeaturedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsFeaturedResponseSchema)
 }
 
 type postChannelsFeaturedGamesResponse = array<MisskeyIoComponentSchemas.Channel.t>
@@ -112,17 +103,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChannelsFeaturedGames = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFeaturedGamesResponse> => {
+let postChannelsFeaturedGames = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsFeaturedGamesResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/channels/featured-games",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsFeaturedGamesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsFeaturedGamesResponseSchema)
 }
 
 type postChannelsFollowRequest = {
@@ -142,17 +130,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsFollow = (~body: postChannelsFollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFollowResponse> => {
+let postChannelsFollow = async (~body: postChannelsFollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsFollowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFollowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/follow",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChannelsFollowedRequest = {
@@ -178,17 +163,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:channels*
 */
-let postChannelsFollowed = (~body: postChannelsFollowedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsFollowedResponse> => {
+let postChannelsFollowed = async (~body: postChannelsFollowedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsFollowedResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsFollowedRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/followed",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsFollowedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsFollowedResponseSchema)
 }
 
 type postChannelsMyFavoritesResponse = array<MisskeyIoComponentSchemas.Channel.t>
@@ -202,17 +184,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:channels*
 */
-let postChannelsMyFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsMyFavoritesResponse> => {
+let postChannelsMyFavorites = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsMyFavoritesResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/channels/my-favorites",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsMyFavoritesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsMyFavoritesResponseSchema)
 }
 
 type postChannelsOwnedRequest = {
@@ -238,17 +217,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:channels*
 */
-let postChannelsOwned = (~body: postChannelsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsOwnedResponse> => {
+let postChannelsOwned = async (~body: postChannelsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsOwnedResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsOwnedRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/owned",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsOwnedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsOwnedResponseSchema)
 }
 
 type postChannelsSearchRequest = {
@@ -278,17 +254,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChannelsSearch = (~body: postChannelsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsSearchResponse> => {
+let postChannelsSearch = async (~body: postChannelsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsSearchResponseSchema)
 }
 
 type postChannelsShowRequest = {
@@ -310,17 +283,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChannelsShow = (~body: postChannelsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsShowResponse> => {
+let postChannelsShow = async (~body: postChannelsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsShowResponseSchema)
 }
 
 type postChannelsUnfavoriteRequest = {
@@ -340,17 +310,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsUnfavorite = (~body: postChannelsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUnfavoriteResponse> => {
+let postChannelsUnfavorite = async (~body: postChannelsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsUnfavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUnfavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/unfavorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChannelsUnfollowRequest = {
@@ -370,17 +337,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsUnfollow = (~body: postChannelsUnfollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUnfollowResponse> => {
+let postChannelsUnfollow = async (~body: postChannelsUnfollowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsUnfollowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUnfollowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/unfollow",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChannelsUpdateRequest = {
@@ -418,15 +382,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:channels*
 */
-let postChannelsUpdate = (~body: postChannelsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsUpdateResponse> => {
+let postChannelsUpdate = async (~body: postChannelsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsUpdateResponseSchema)
 }

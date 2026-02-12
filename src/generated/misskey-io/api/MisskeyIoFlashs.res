@@ -22,17 +22,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash*
 */
-let postFlashDelete = (~body: postFlashDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashDeleteResponse> => {
+let postFlashDelete = async (~body: postFlashDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFlashShowRequest = {
@@ -54,15 +51,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFlashShow = (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashShowResponse> => {
+let postFlashShow = async (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashShowResponseSchema)
 }

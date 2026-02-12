@@ -28,17 +28,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postClipsCreate = (~body: postClipsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsCreateResponse> => {
+let postClipsCreate = async (~body: postClipsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postClipsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postClipsCreateResponseSchema)
 }
 
 type postClipsDeleteRequest = {
@@ -58,17 +55,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postClipsDelete = (~body: postClipsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsDeleteResponse> => {
+let postClipsDelete = async (~body: postClipsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postClipsListResponse = array<MisskeyIoComponentSchemas.Clip.t>
@@ -82,17 +76,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postClipsList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsListResponse> => {
+let postClipsList = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsListResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/clips/list",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postClipsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postClipsListResponseSchema)
 }
 
 type postClipsShowRequest = {
@@ -114,17 +105,14 @@ No description provided.
 
 **Credential required**: *No* / **Permission**: *read:account*
 */
-let postClipsShow = (~body: postClipsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsShowResponse> => {
+let postClipsShow = async (~body: postClipsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postClipsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postClipsShowResponseSchema)
 }
 
 type postClipsUpdateRequest = {
@@ -152,17 +140,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postClipsUpdate = (~body: postClipsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsUpdateResponse> => {
+let postClipsUpdate = async (~body: postClipsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postClipsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postClipsUpdateResponseSchema)
 }
 
 type postNotesClipsRequest = {
@@ -184,15 +169,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesClips = (~body: postNotesClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesClipsResponse> => {
+let postNotesClips = async (~body: postNotesClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesClipsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesClipsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/clips",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesClipsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesClipsResponseSchema)
 }

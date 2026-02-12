@@ -24,17 +24,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:blocks*
 */
-let postBlockingCreate = (~body: postBlockingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingCreateResponse> => {
+let postBlockingCreate = async (~body: postBlockingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postBlockingCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/blocking/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postBlockingCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postBlockingCreateResponseSchema)
 }
 
 type postBlockingDeleteRequest = {
@@ -56,17 +53,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:blocks*
 */
-let postBlockingDelete = (~body: postBlockingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingDeleteResponse> => {
+let postBlockingDelete = async (~body: postBlockingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postBlockingDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/blocking/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postBlockingDeleteResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postBlockingDeleteResponseSchema)
 }
 
 type postBlockingListRequest = {
@@ -96,17 +90,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:blocks*
 */
-let postBlockingList = (~body: postBlockingListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBlockingListResponse> => {
+let postBlockingList = async (~body: postBlockingListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postBlockingListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBlockingListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/blocking/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postBlockingListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postBlockingListResponseSchema)
 }
 
 type postClipsNotesRequest = {
@@ -140,17 +131,14 @@ No description provided.
 
 **Credential required**: *No* / **Permission**: *read:account*
 */
-let postClipsNotes = (~body: postClipsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsNotesResponse> => {
+let postClipsNotes = async (~body: postClipsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postClipsNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postClipsNotesResponseSchema)
 }
 
 type postFlashMyRequest = {
@@ -180,17 +168,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:flash*
 */
-let postFlashMy = (~body: postFlashMyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyResponse> => {
+let postFlashMy = async (~body: postFlashMyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashMyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/my",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashMyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashMyResponseSchema)
 }
 
 type postFlashMyLikesRequest = {
@@ -232,17 +217,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:flash-likes*
 */
-let postFlashMyLikes = (~body: postFlashMyLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashMyLikesResponse> => {
+let postFlashMyLikes = async (~body: postFlashMyLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashMyLikesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashMyLikesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/my-likes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashMyLikesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashMyLikesResponseSchema)
 }
 
 type postIResponse = KokonectLinkComponentSchemas.MeDetailed.t
@@ -256,17 +238,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postI = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIResponse> => {
+let postI = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIResponseSchema)
 }
 
 type postIAutoDeleteSettingsResponse = {
@@ -286,17 +265,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIAutoDeleteSettings = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAutoDeleteSettingsResponse> => {
+let postIAutoDeleteSettings = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIAutoDeleteSettingsResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/auto-delete-settings",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIAutoDeleteSettingsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIAutoDeleteSettingsResponseSchema)
 }
 
 type postIFavoritesRequest = {
@@ -326,17 +302,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:favorites*
 */
-let postIFavorites = (~body: postIFavoritesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFavoritesResponse> => {
+let postIFavorites = async (~body: postIFavoritesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIFavoritesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIFavoritesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/favorites",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIFavoritesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIFavoritesResponseSchema)
 }
 
 type postIFollowersServersResponse_1 = {
@@ -366,17 +339,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:following*
 */
-let postIFollowersServers = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIFollowersServersResponse> => {
+let postIFollowersServers = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIFollowersServersResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/followers-servers",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIFollowersServersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIFollowersServersResponseSchema)
 }
 
 type postIGalleryLikesRequest = {
@@ -416,17 +386,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:gallery-likes*
 */
-let postIGalleryLikes = (~body: postIGalleryLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryLikesResponse> => {
+let postIGalleryLikes = async (~body: postIGalleryLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIGalleryLikesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryLikesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/gallery/likes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIGalleryLikesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIGalleryLikesResponseSchema)
 }
 
 type postIGalleryPostsRequest = {
@@ -456,17 +423,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:gallery*
 */
-let postIGalleryPosts = (~body: postIGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIGalleryPostsResponse> => {
+let postIGalleryPosts = async (~body: postIGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIGalleryPostsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIGalleryPostsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/gallery/posts",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIGalleryPostsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIGalleryPostsResponseSchema)
 }
 
 type postINotificationsRequest = {
@@ -502,17 +466,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:notifications*
 */
-let postINotifications = (~body: postINotificationsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsResponse> => {
+let postINotifications = async (~body: postINotificationsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postINotificationsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/notifications",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postINotificationsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postINotificationsResponseSchema)
 }
 
 type postINotificationsGroupedRequest = {
@@ -548,17 +509,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:notifications*
 */
-let postINotificationsGrouped = (~body: postINotificationsGroupedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postINotificationsGroupedResponse> => {
+let postINotificationsGrouped = async (~body: postINotificationsGroupedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postINotificationsGroupedResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postINotificationsGroupedRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/notifications-grouped",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postINotificationsGroupedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postINotificationsGroupedResponseSchema)
 }
 
 type postIPageLikesRequest = {
@@ -598,17 +556,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:page-likes*
 */
-let postIPageLikes = (~body: postIPageLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPageLikesResponse> => {
+let postIPageLikes = async (~body: postIPageLikesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIPageLikesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPageLikesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/page-likes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIPageLikesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIPageLikesResponseSchema)
 }
 
 type postIPagesRequest = {
@@ -638,17 +593,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:pages*
 */
-let postIPages = (~body: postIPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPagesResponse> => {
+let postIPages = async (~body: postIPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIPagesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPagesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/pages",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIPagesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIPagesResponseSchema)
 }
 
 type postIPinRequest = {
@@ -670,17 +622,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIPin = (~body: postIPinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIPinResponse> => {
+let postIPin = async (~body: postIPinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIPinResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIPinRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/pin",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIPinResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIPinResponseSchema)
 }
 
 type postIUnpinRequest = {
@@ -702,17 +651,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIUnpin = (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUnpinResponse> => {
+let postIUnpin = async (~body: postIUnpinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUnpinResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUnpinRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/unpin",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIUnpinResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIUnpinResponseSchema)
 }
 
 type postIUpdateRequest_3 = {
@@ -882,17 +828,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIUpdate = (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateResponse> => {
+let postIUpdate = async (~body: postIUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIUpdateResponseSchema)
 }
 
 type postIUpdateAutoDeleteSettingsRequest = {
@@ -914,17 +857,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIUpdateAutoDeleteSettings = (~body: postIUpdateAutoDeleteSettingsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateAutoDeleteSettingsResponse> => {
+let postIUpdateAutoDeleteSettings = async (~body: postIUpdateAutoDeleteSettingsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUpdateAutoDeleteSettingsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateAutoDeleteSettingsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/update-auto-delete-settings",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIUserGroupInvitesRequest = {
@@ -960,17 +900,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:user-groups*
 */
-let postIUserGroupInvites = (~body: postIUserGroupInvitesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUserGroupInvitesResponse> => {
+let postIUserGroupInvites = async (~body: postIUserGroupInvitesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUserGroupInvitesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUserGroupInvitesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/user-group-invites",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIUserGroupInvitesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIUserGroupInvitesResponseSchema)
 }
 
 type postMuteListRequest = {
@@ -1000,17 +937,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:mutes*
 */
-let postMuteList = (~body: postMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMuteListResponse> => {
+let postMuteList = async (~body: postMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postMuteListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMuteListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/mute/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postMuteListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postMuteListResponseSchema)
 }
 
 type postRenoteMuteListRequest = {
@@ -1040,17 +974,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:mutes*
 */
-let postRenoteMuteList = (~body: postRenoteMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRenoteMuteListResponse> => {
+let postRenoteMuteList = async (~body: postRenoteMuteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRenoteMuteListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRenoteMuteListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/renote-mute/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postRenoteMuteListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postRenoteMuteListResponseSchema)
 }
 
 type postVerifyEmailRequest = {
@@ -1070,15 +1001,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postVerifyEmail = (~body: postVerifyEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postVerifyEmailResponse> => {
+let postVerifyEmail = async (~body: postVerifyEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postVerifyEmailResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postVerifyEmailRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/verify-email",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

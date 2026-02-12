@@ -36,17 +36,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChannelsTimeline = (~body: postChannelsTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChannelsTimelineResponse> => {
+let postChannelsTimeline = async (~body: postChannelsTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChannelsTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChannelsTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/channels/timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChannelsTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChannelsTimelineResponseSchema)
 }
 
 type postNotesRequest = {
@@ -88,17 +85,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotes = (~body: postNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesResponse> => {
+let postNotes = async (~body: postNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesResponseSchema)
 }
 
 type postNotesBubbleTimelineRequest = {
@@ -136,17 +130,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesBubbleTimeline = (~body: postNotesBubbleTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesBubbleTimelineResponse> => {
+let postNotesBubbleTimeline = async (~body: postNotesBubbleTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesBubbleTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesBubbleTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/bubble-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesBubbleTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesBubbleTimelineResponseSchema)
 }
 
 type postNotesChildrenRequest = {
@@ -178,17 +169,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesChildren = (~body: postNotesChildrenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesChildrenResponse> => {
+let postNotesChildren = async (~body: postNotesChildrenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesChildrenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesChildrenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/children",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesChildrenResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesChildrenResponseSchema)
 }
 
 type postNotesCreateRequest_4 = {
@@ -298,17 +286,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notes*
 */
-let postNotesCreate = (~body: postNotesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesCreateResponse> => {
+let postNotesCreate = async (~body: postNotesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesCreateResponseSchema)
 }
 
 /** The number of drafts */
@@ -324,17 +309,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesDraftsCount = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCountResponse> => {
+let postNotesDraftsCount = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesDraftsCountResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/notes/drafts/count",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesDraftsCountResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesDraftsCountResponseSchema)
 }
 
 type postNotesDraftsCreateRequest_4 = {
@@ -442,17 +424,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postNotesDraftsCreate = (~body: postNotesDraftsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsCreateResponse> => {
+let postNotesDraftsCreate = async (~body: postNotesDraftsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesDraftsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/drafts/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesDraftsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesDraftsCreateResponseSchema)
 }
 
 type postNotesDraftsDeleteRequest = {
@@ -472,17 +451,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postNotesDraftsDelete = (~body: postNotesDraftsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsDeleteResponse> => {
+let postNotesDraftsDelete = async (~body: postNotesDraftsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesDraftsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/drafts/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotesDraftsListRequest = {
@@ -514,17 +490,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesDraftsList = (~body: postNotesDraftsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsListResponse> => {
+let postNotesDraftsList = async (~body: postNotesDraftsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesDraftsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/drafts/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesDraftsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesDraftsListResponseSchema)
 }
 
 type postNotesDraftsUpdateRequest_4 = {
@@ -634,17 +607,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postNotesDraftsUpdate = (~body: postNotesDraftsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesDraftsUpdateResponse> => {
+let postNotesDraftsUpdate = async (~body: postNotesDraftsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesDraftsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesDraftsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/drafts/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesDraftsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesDraftsUpdateResponseSchema)
 }
 
 type postNotesEventsSearchRequest = {
@@ -686,17 +656,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesEventsSearch = (~body: postNotesEventsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesEventsSearchResponse> => {
+let postNotesEventsSearch = async (~body: postNotesEventsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesEventsSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesEventsSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/events/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesEventsSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesEventsSearchResponseSchema)
 }
 
 type postNotesGlobalTimelineRequest = {
@@ -732,17 +699,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesGlobalTimeline = (~body: postNotesGlobalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesGlobalTimelineResponse> => {
+let postNotesGlobalTimeline = async (~body: postNotesGlobalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesGlobalTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesGlobalTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/global-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesGlobalTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesGlobalTimelineResponseSchema)
 }
 
 type postNotesHistoryRequest = {
@@ -770,17 +734,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesHistory = (~body: postNotesHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesHistoryResponse> => {
+let postNotesHistory = async (~body: postNotesHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesHistoryResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesHistoryRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/history",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesHistoryResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesHistoryResponseSchema)
 }
 
 type postNotesHybridTimelineRequest = {
@@ -826,17 +787,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesHybridTimeline = (~body: postNotesHybridTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesHybridTimelineResponse> => {
+let postNotesHybridTimeline = async (~body: postNotesHybridTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesHybridTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesHybridTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/hybrid-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesHybridTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesHybridTimelineResponseSchema)
 }
 
 type postNotesLocalTimelineRequest = {
@@ -876,17 +834,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesLocalTimeline = (~body: postNotesLocalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesLocalTimelineResponse> => {
+let postNotesLocalTimeline = async (~body: postNotesLocalTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesLocalTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesLocalTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/local-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesLocalTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesLocalTimelineResponseSchema)
 }
 
 type postNotesMentionsRequest = {
@@ -920,17 +875,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesMentions = (~body: postNotesMentionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesMentionsResponse> => {
+let postNotesMentions = async (~body: postNotesMentionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesMentionsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesMentionsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/mentions",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesMentionsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesMentionsResponseSchema)
 }
 
 type postNotesPollsTranslateRequest = {
@@ -960,17 +912,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesPollsTranslate = (~body: postNotesPollsTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesPollsTranslateResponse> => {
+let postNotesPollsTranslate = async (~body: postNotesPollsTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesPollsTranslateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesPollsTranslateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/polls/translate",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesPollsTranslateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesPollsTranslateResponseSchema)
 }
 
 type getNotesReactionsRequest = {
@@ -1004,17 +953,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getNotesReactions = (~body: getNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getNotesReactionsResponse> => {
+let getNotesReactions = async (~body: getNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getNotesReactionsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getNotesReactionsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/reactions",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getNotesReactionsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getNotesReactionsResponseSchema)
 }
 
 type postNotesReactionsRequest = {
@@ -1048,17 +994,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesReactions = (~body: postNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsResponse> => {
+let postNotesReactions = async (~body: postNotesReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesReactionsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/reactions",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesReactionsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesReactionsResponseSchema)
 }
 
 type postNotesRenotesRequest = {
@@ -1090,17 +1033,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesRenotes = (~body: postNotesRenotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRenotesResponse> => {
+let postNotesRenotes = async (~body: postNotesRenotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesRenotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRenotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/renotes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesRenotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesRenotesResponseSchema)
 }
 
 type postNotesRepliesRequest = {
@@ -1132,17 +1072,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesReplies = (~body: postNotesRepliesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesRepliesResponse> => {
+let postNotesReplies = async (~body: postNotesRepliesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesRepliesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesRepliesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/replies",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesRepliesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesRepliesResponseSchema)
 }
 
 type postNotesSearchRequest = {
@@ -1182,17 +1119,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesSearch = (~body: postNotesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchResponse> => {
+let postNotesSearch = async (~body: postNotesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesSearchResponseSchema)
 }
 
 type postNotesSearchByTagRequest = {
@@ -1230,17 +1164,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesSearchByTag = (~body: postNotesSearchByTagRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesSearchByTagResponse> => {
+let postNotesSearchByTag = async (~body: postNotesSearchByTagRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesSearchByTagResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesSearchByTagRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/search-by-tag",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesSearchByTagResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesSearchByTagResponseSchema)
 }
 
 type postNotesShowRequest = {
@@ -1262,17 +1193,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesShow = (~body: postNotesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesShowResponse> => {
+let postNotesShow = async (~body: postNotesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesShowResponseSchema)
 }
 
 type postNotesShowPartialBulkRequest = {
@@ -1306,17 +1234,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postNotesShowPartialBulk = (~body: postNotesShowPartialBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesShowPartialBulkResponse> => {
+let postNotesShowPartialBulk = async (~body: postNotesShowPartialBulkRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesShowPartialBulkResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesShowPartialBulkRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/show-partial-bulk",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesShowPartialBulkResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesShowPartialBulkResponseSchema)
 }
 
 type postNotesStateRequest = {
@@ -1346,17 +1271,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesState = (~body: postNotesStateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesStateResponse> => {
+let postNotesState = async (~body: postNotesStateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesStateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesStateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/state",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesStateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesStateResponseSchema)
 }
 
 type postNotesTimelineRequest = {
@@ -1400,17 +1322,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesTimeline = (~body: postNotesTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesTimelineResponse> => {
+let postNotesTimeline = async (~body: postNotesTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesTimelineResponseSchema)
 }
 
 type postNotesUpdateRequest_3 = {
@@ -1484,17 +1403,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notes*
 */
-let postNotesUpdate = (~body: postNotesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUpdateResponse> => {
+let postNotesUpdate = async (~body: postNotesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotesUserListTimelineRequest = {
@@ -1540,15 +1456,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postNotesUserListTimeline = (~body: postNotesUserListTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesUserListTimelineResponse> => {
+let postNotesUserListTimeline = async (~body: postNotesUserListTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesUserListTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesUserListTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/user-list-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postNotesUserListTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postNotesUserListTimelineResponseSchema)
 }

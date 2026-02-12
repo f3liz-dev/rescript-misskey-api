@@ -42,17 +42,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:pages*
 */
-let postPagesCreate = (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesCreateResponse> => {
+let postPagesCreate = async (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postPagesCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postPagesCreateResponseSchema)
 }
 
 type postPagesShowRequest_1 = {
@@ -80,17 +77,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postPagesShow = (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesShowResponse> => {
+let postPagesShow = async (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postPagesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postPagesShowResponseSchema)
 }
 
 type postPagesUpdateRequest = {
@@ -130,15 +124,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:pages*
 */
-let postPagesUpdate = (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUpdateResponse> => {
+let postPagesUpdate = async (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

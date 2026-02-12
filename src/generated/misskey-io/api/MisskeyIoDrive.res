@@ -22,17 +22,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDrive = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveResponse> => {
+let postDrive = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/drive",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveResponseSchema)
 }
 
 type postDriveFilesRequest = {
@@ -64,17 +61,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFiles = (~body: postDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesResponse> => {
+let postDriveFiles = async (~body: postDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesResponseSchema)
 }
 
 type postDriveFilesAttachedNotesRequest = {
@@ -102,17 +96,14 @@ Find the notes to which the given file is attached.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFilesAttachedNotes = (~body: postDriveFilesAttachedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesAttachedNotesResponse> => {
+let postDriveFilesAttachedNotes = async (~body: postDriveFilesAttachedNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesAttachedNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesAttachedNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/attached-notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesAttachedNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesAttachedNotesResponseSchema)
 }
 
 type postDriveFilesCheckExistenceRequest = {
@@ -134,17 +125,14 @@ Check if a given file exists.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFilesCheckExistence = (~body: postDriveFilesCheckExistenceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesCheckExistenceResponse> => {
+let postDriveFilesCheckExistence = async (~body: postDriveFilesCheckExistenceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesCheckExistenceResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesCheckExistenceRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/check-existence",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesCheckExistenceResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesCheckExistenceResponseSchema)
 }
 
 type postDriveFilesCreateRequest = {
@@ -176,17 +164,14 @@ Upload a new drive file.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFilesCreate = (~body: postDriveFilesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesCreateResponse> => {
+let postDriveFilesCreate = async (~body: postDriveFilesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesCreateResponseSchema)
 }
 
 type postDriveFilesDeleteRequest = {
@@ -206,17 +191,14 @@ Delete an existing drive file.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFilesDelete = (~body: postDriveFilesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesDeleteResponse> => {
+let postDriveFilesDelete = async (~body: postDriveFilesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postDriveFilesFindRequest = {
@@ -240,17 +222,14 @@ Search for a drive file by the given parameters.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFilesFind = (~body: postDriveFilesFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesFindResponse> => {
+let postDriveFilesFind = async (~body: postDriveFilesFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesFindResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesFindRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/find",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesFindResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesFindResponseSchema)
 }
 
 type postDriveFilesFindByHashRequest = {
@@ -272,17 +251,14 @@ Search for a drive file by a hash of the contents.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFilesFindByHash = (~body: postDriveFilesFindByHashRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesFindByHashResponse> => {
+let postDriveFilesFindByHash = async (~body: postDriveFilesFindByHashRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesFindByHashResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesFindByHashRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/find-by-hash",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesFindByHashResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesFindByHashResponseSchema)
 }
 
 type postDriveFilesShowRequest = {
@@ -306,17 +282,14 @@ Show the properties of a drive file.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFilesShow = (~body: postDriveFilesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesShowResponse> => {
+let postDriveFilesShow = async (~body: postDriveFilesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesShowResponseSchema)
 }
 
 type postDriveFilesUpdateRequest = {
@@ -346,17 +319,14 @@ Update the properties of a drive file.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFilesUpdate = (~body: postDriveFilesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesUpdateResponse> => {
+let postDriveFilesUpdate = async (~body: postDriveFilesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFilesUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFilesUpdateResponseSchema)
 }
 
 type postDriveFilesUploadFromUrlRequest = {
@@ -386,17 +356,14 @@ Request the server to download a new drive file from the specified URL.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFilesUploadFromUrl = (~body: postDriveFilesUploadFromUrlRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFilesUploadFromUrlResponse> => {
+let postDriveFilesUploadFromUrl = async (~body: postDriveFilesUploadFromUrlRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFilesUploadFromUrlResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFilesUploadFromUrlRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/files/upload-from-url",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postDriveFoldersRequest = {
@@ -424,17 +391,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFolders = (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersResponse> => {
+let postDriveFolders = async (~body: postDriveFoldersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFoldersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFoldersResponseSchema)
 }
 
 type postDriveFoldersCreateRequest = {
@@ -458,17 +422,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFoldersCreate = (~body: postDriveFoldersCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersCreateResponse> => {
+let postDriveFoldersCreate = async (~body: postDriveFoldersCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFoldersCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFoldersCreateResponseSchema)
 }
 
 type postDriveFoldersDeleteRequest = {
@@ -488,17 +449,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFoldersDelete = (~body: postDriveFoldersDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersDeleteResponse> => {
+let postDriveFoldersDelete = async (~body: postDriveFoldersDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postDriveFoldersFindRequest = {
@@ -522,17 +480,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFoldersFind = (~body: postDriveFoldersFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersFindResponse> => {
+let postDriveFoldersFind = async (~body: postDriveFoldersFindRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersFindResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersFindRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders/find",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFoldersFindResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFoldersFindResponseSchema)
 }
 
 type postDriveFoldersShowRequest = {
@@ -554,17 +509,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveFoldersShow = (~body: postDriveFoldersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersShowResponse> => {
+let postDriveFoldersShow = async (~body: postDriveFoldersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFoldersShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFoldersShowResponseSchema)
 }
 
 type postDriveFoldersUpdateRequest = {
@@ -590,17 +542,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:drive*
 */
-let postDriveFoldersUpdate = (~body: postDriveFoldersUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveFoldersUpdateResponse> => {
+let postDriveFoldersUpdate = async (~body: postDriveFoldersUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveFoldersUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveFoldersUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/folders/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveFoldersUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveFoldersUpdateResponseSchema)
 }
 
 type postDriveStreamRequest = {
@@ -628,15 +577,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:drive*
 */
-let postDriveStream = (~body: postDriveStreamRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postDriveStreamResponse> => {
+let postDriveStream = async (~body: postDriveStreamRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postDriveStreamResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postDriveStreamRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/drive/stream",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postDriveStreamResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postDriveStreamResponseSchema)
 }

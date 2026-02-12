@@ -22,17 +22,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIClaimAchievementResponse> => {
+let postIClaimAchievement = async (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIClaimAchievementResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIClaimAchievementRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/claim-achievement",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIRevokeTokenRequest_1 = {
@@ -57,17 +54,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIRevokeToken = (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRevokeTokenResponse> => {
+let postIRevokeToken = async (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRevokeTokenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRevokeTokenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/revoke-token",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postISigninHistoryRequest = {
@@ -98,17 +92,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postISigninHistoryResponse> => {
+let postISigninHistory = async (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postISigninHistoryResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postISigninHistoryRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/signin-history",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postISigninHistoryResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postISigninHistoryResponseSchema)
 }
 
 type postITruncateAccountRequest = {
@@ -131,17 +122,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postITruncateAccount = (~body: postITruncateAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postITruncateAccountResponse> => {
+let postITruncateAccount = async (~body: postITruncateAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postITruncateAccountResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postITruncateAccountRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/truncate-account",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIUpdateEmailRequest = {
@@ -168,17 +156,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIUpdateEmail = (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateEmailResponse> => {
+let postIUpdateEmail = async (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUpdateEmailResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateEmailRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/update-email",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIUpdateEmailResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIUpdateEmailResponseSchema)
 }
 
 type postReversiGamesRequest = {
@@ -210,17 +195,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiGames = (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiGamesResponse> => {
+let postReversiGames = async (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiGamesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiGamesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/games",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiGamesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiGamesResponseSchema)
 }
 
 type postReversiMatchRequest = {
@@ -246,17 +228,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postReversiMatch = (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiMatchResponse> => {
+let postReversiMatch = async (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiMatchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiMatchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/match",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiMatchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiMatchResponseSchema)
 }
 
 type postReversiShowGameRequest = {
@@ -278,17 +257,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiShowGame = (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiShowGameResponse> => {
+let postReversiShowGame = async (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiShowGameResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiShowGameRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/show-game",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiShowGameResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiShowGameResponseSchema)
 }
 
 type postReversiVerifyRequest = {
@@ -318,17 +294,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiVerify = (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiVerifyResponse> => {
+let postReversiVerify = async (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiVerifyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiVerifyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/verify",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiVerifyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiVerifyResponseSchema)
 }
 
 type postUsersListsCreateFromPublicRequest = {
@@ -352,15 +325,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsCreateFromPublic = (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateFromPublicResponse> => {
+let postUsersListsCreateFromPublic = async (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsCreateFromPublicResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateFromPublicRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/create-from-public",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsCreateFromPublicResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsCreateFromPublicResponseSchema)
 }

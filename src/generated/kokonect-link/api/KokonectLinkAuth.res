@@ -32,17 +32,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAuthSessionShow = (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionShowResponse> => {
+let postAuthSessionShow = async (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthSessionShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/session/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAuthSessionShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAuthSessionShowResponseSchema)
 }
 
 type postAuthSessionUserkeyRequest = {
@@ -72,15 +69,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAuthSessionUserkey = (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionUserkeyResponse> => {
+let postAuthSessionUserkey = async (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthSessionUserkeyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionUserkeyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/session/userkey",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAuthSessionUserkeyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAuthSessionUserkeyResponseSchema)
 }

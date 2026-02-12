@@ -34,17 +34,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postUsers = (~body: postUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersResponse> => {
+let postUsers = async (~body: postUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersResponseSchema)
 }
 
 type postUsersClipsRequest = {
@@ -76,17 +73,14 @@ Show all clips this user owns.
 
 **Credential required**: *No*
 */
-let postUsersClips = (~body: postUsersClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersClipsResponse> => {
+let postUsersClips = async (~body: postUsersClipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersClipsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersClipsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/clips",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersClipsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersClipsResponseSchema)
 }
 
 type postUsersFlashsRequest = {
@@ -118,17 +112,14 @@ Show all flashs this user created.
 
 **Credential required**: *No*
 */
-let postUsersFlashs = (~body: postUsersFlashsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFlashsResponse> => {
+let postUsersFlashs = async (~body: postUsersFlashsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersFlashsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFlashsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/flashs",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersFlashsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersFlashsResponseSchema)
 }
 
 type postUsersFollowersRequest = {
@@ -158,17 +149,14 @@ Show everyone that follows this user.
 
 **Credential required**: *No*
 */
-let postUsersFollowers = (~body: postUsersFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowersResponse> => {
+let postUsersFollowers = async (~body: postUsersFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersFollowersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/followers",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersFollowersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersFollowersResponseSchema)
 }
 
 type postUsersFollowingRequest = {
@@ -200,17 +188,14 @@ Show everyone that this user is following.
 
 **Credential required**: *No*
 */
-let postUsersFollowing = (~body: postUsersFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersFollowingResponse> => {
+let postUsersFollowing = async (~body: postUsersFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/following",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersFollowingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersFollowingResponseSchema)
 }
 
 type postUsersGalleryPostsRequest = {
@@ -242,17 +227,14 @@ Show all gallery posts by the given user.
 
 **Credential required**: *No*
 */
-let postUsersGalleryPosts = (~body: postUsersGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersGalleryPostsResponse> => {
+let postUsersGalleryPosts = async (~body: postUsersGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersGalleryPostsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersGalleryPostsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/gallery/posts",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersGalleryPostsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersGalleryPostsResponseSchema)
 }
 
 type postUsersNotesRequest = {
@@ -296,17 +278,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postUsersNotes = (~body: postUsersNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersNotesResponse> => {
+let postUsersNotes = async (~body: postUsersNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersNotesResponseSchema)
 }
 
 type postUsersPagesRequest = {
@@ -338,17 +317,14 @@ Show all pages this user created.
 
 **Credential required**: *No*
 */
-let postUsersPages = (~body: postUsersPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersPagesResponse> => {
+let postUsersPages = async (~body: postUsersPagesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersPagesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersPagesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/pages",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersPagesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersPagesResponseSchema)
 }
 
 type postUsersReportAbuseRequest = {
@@ -370,17 +346,14 @@ File a report.
 
 **Credential required**: *Yes* / **Permission**: *write:report-abuse*
 */
-let postUsersReportAbuse = (~body: postUsersReportAbuseRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersReportAbuseResponse> => {
+let postUsersReportAbuse = async (~body: postUsersReportAbuseRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersReportAbuseResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersReportAbuseRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/report-abuse",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postUsersSearchByUsernameAndHostRequest = {
@@ -404,17 +377,14 @@ Search for a user by username and/or host.
 
 **Credential required**: *No*
 */
-let postUsersSearchByUsernameAndHost = (~body: postUsersSearchByUsernameAndHostRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersSearchByUsernameAndHostResponse> => {
+let postUsersSearchByUsernameAndHost = async (~body: postUsersSearchByUsernameAndHostRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersSearchByUsernameAndHostResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersSearchByUsernameAndHostRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/search-by-username-and-host",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersSearchByUsernameAndHostResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersSearchByUsernameAndHostResponseSchema)
 }
 
 type postUsersShowRequest = {
@@ -436,17 +406,14 @@ Show the properties of a user.
 
 **Credential required**: *No*
 */
-let postUsersShow = (~body: postUsersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersShowResponse> => {
+let postUsersShow = async (~body: postUsersShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersShowResponseSchema)
 }
 
 type postUsersTranslateRequest = {
@@ -476,15 +443,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postUsersTranslate = (~body: postUsersTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersTranslateResponse> => {
+let postUsersTranslate = async (~body: postUsersTranslateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersTranslateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersTranslateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/translate",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersTranslateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersTranslateResponseSchema)
 }

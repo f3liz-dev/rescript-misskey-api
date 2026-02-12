@@ -26,17 +26,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatHistory = (~body: postChatHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatHistoryResponse> => {
+let postChatHistory = async (~body: postChatHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatHistoryResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatHistoryRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/history",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatHistoryResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatHistoryResponseSchema)
 }
 
 type postChatMessagesCreateToRoomRequest = {
@@ -62,17 +59,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatMessagesCreateToRoom = (~body: postChatMessagesCreateToRoomRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesCreateToRoomResponse> => {
+let postChatMessagesCreateToRoom = async (~body: postChatMessagesCreateToRoomRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesCreateToRoomResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesCreateToRoomRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/create-to-room",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesCreateToRoomResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesCreateToRoomResponseSchema)
 }
 
 type postChatMessagesCreateToUserRequest = {
@@ -98,17 +92,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatMessagesCreateToUser = (~body: postChatMessagesCreateToUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesCreateToUserResponse> => {
+let postChatMessagesCreateToUser = async (~body: postChatMessagesCreateToUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesCreateToUserResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesCreateToUserRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/create-to-user",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesCreateToUserResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesCreateToUserResponseSchema)
 }
 
 type postChatMessagesDeleteRequest = {
@@ -128,17 +119,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatMessagesDelete = (~body: postChatMessagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesDeleteResponse> => {
+let postChatMessagesDelete = async (~body: postChatMessagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatMessagesReactRequest = {
@@ -160,17 +148,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatMessagesReact = (~body: postChatMessagesReactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesReactResponse> => {
+let postChatMessagesReact = async (~body: postChatMessagesReactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesReactResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesReactRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/react",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatMessagesRoomTimelineRequest = {
@@ -202,17 +187,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatMessagesRoomTimeline = (~body: postChatMessagesRoomTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesRoomTimelineResponse> => {
+let postChatMessagesRoomTimeline = async (~body: postChatMessagesRoomTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesRoomTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesRoomTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/room-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesRoomTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesRoomTimelineResponseSchema)
 }
 
 type postChatMessagesSearchRequest = {
@@ -240,17 +222,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatMessagesSearch = (~body: postChatMessagesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesSearchResponse> => {
+let postChatMessagesSearch = async (~body: postChatMessagesSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesSearchResponseSchema)
 }
 
 type postChatMessagesShowRequest = {
@@ -272,17 +251,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatMessagesShow = (~body: postChatMessagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesShowResponse> => {
+let postChatMessagesShow = async (~body: postChatMessagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesShowResponseSchema)
 }
 
 type postChatMessagesUnreactRequest = {
@@ -304,17 +280,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatMessagesUnreact = (~body: postChatMessagesUnreactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesUnreactResponse> => {
+let postChatMessagesUnreact = async (~body: postChatMessagesUnreactRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesUnreactResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesUnreactRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/unreact",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatMessagesUserTimelineRequest = {
@@ -346,17 +319,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatMessagesUserTimeline = (~body: postChatMessagesUserTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatMessagesUserTimelineResponse> => {
+let postChatMessagesUserTimeline = async (~body: postChatMessagesUserTimelineRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatMessagesUserTimelineResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatMessagesUserTimelineRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/messages/user-timeline",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatMessagesUserTimelineResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatMessagesUserTimelineResponseSchema)
 }
 
 type postChatReadAllResponse = unit
@@ -368,17 +338,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatReadAll = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatReadAllResponse> => {
+let postChatReadAll = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatReadAllResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/chat/read-all",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsCreateRequest = {
@@ -402,17 +369,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsCreate = (~body: postChatRoomsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsCreateResponse> => {
+let postChatRoomsCreate = async (~body: postChatRoomsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsCreateResponseSchema)
 }
 
 type postChatRoomsDeleteRequest = {
@@ -432,17 +396,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsDelete = (~body: postChatRoomsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsDeleteResponse> => {
+let postChatRoomsDelete = async (~body: postChatRoomsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsInvitationsCancelRequest = {
@@ -462,17 +423,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsInvitationsCancel = (~body: postChatRoomsInvitationsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsCancelResponse> => {
+let postChatRoomsInvitationsCancel = async (~body: postChatRoomsInvitationsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsCancelResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsCancelRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/cancel",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsInvitationsCreateRequest = {
@@ -496,17 +454,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsInvitationsCreate = (~body: postChatRoomsInvitationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsCreateResponse> => {
+let postChatRoomsInvitationsCreate = async (~body: postChatRoomsInvitationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsInvitationsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsInvitationsCreateResponseSchema)
 }
 
 type postChatRoomsInvitationsIgnoreRequest = {
@@ -526,17 +481,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsInvitationsIgnore = (~body: postChatRoomsInvitationsIgnoreRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsIgnoreResponse> => {
+let postChatRoomsInvitationsIgnore = async (~body: postChatRoomsInvitationsIgnoreRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsIgnoreResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsIgnoreRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/ignore",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsInvitationsInboxRequest = {
@@ -566,17 +518,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatRoomsInvitationsInbox = (~body: postChatRoomsInvitationsInboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsInboxResponse> => {
+let postChatRoomsInvitationsInbox = async (~body: postChatRoomsInvitationsInboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsInboxResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsInboxRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/inbox",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsInvitationsInboxResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsInvitationsInboxResponseSchema)
 }
 
 type postChatRoomsInvitationsOutboxRequest = {
@@ -608,17 +557,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatRoomsInvitationsOutbox = (~body: postChatRoomsInvitationsOutboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsOutboxResponse> => {
+let postChatRoomsInvitationsOutbox = async (~body: postChatRoomsInvitationsOutboxRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsOutboxResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsOutboxRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/outbox",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsInvitationsOutboxResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsInvitationsOutboxResponseSchema)
 }
 
 type postChatRoomsInvitationsRejectRequest = {
@@ -638,17 +584,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsInvitationsReject = (~body: postChatRoomsInvitationsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsInvitationsRejectResponse> => {
+let postChatRoomsInvitationsReject = async (~body: postChatRoomsInvitationsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsInvitationsRejectResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsInvitationsRejectRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/invitations/reject",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsJoinRequest = {
@@ -668,17 +611,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsJoin = (~body: postChatRoomsJoinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsJoinResponse> => {
+let postChatRoomsJoin = async (~body: postChatRoomsJoinRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsJoinResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsJoinRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/join",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsJoiningRequest = {
@@ -708,17 +648,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatRoomsJoining = (~body: postChatRoomsJoiningRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsJoiningResponse> => {
+let postChatRoomsJoining = async (~body: postChatRoomsJoiningRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsJoiningResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsJoiningRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/joining",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsJoiningResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsJoiningResponseSchema)
 }
 
 type postChatRoomsLeaveRequest = {
@@ -738,17 +675,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsLeave = (~body: postChatRoomsLeaveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsLeaveResponse> => {
+let postChatRoomsLeave = async (~body: postChatRoomsLeaveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsLeaveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsLeaveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/leave",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsMembersRequest = {
@@ -780,17 +714,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsMembers = (~body: postChatRoomsMembersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsMembersResponse> => {
+let postChatRoomsMembers = async (~body: postChatRoomsMembersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsMembersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsMembersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/members",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsMembersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsMembersResponseSchema)
 }
 
 type postChatRoomsMuteRequest = {
@@ -812,17 +743,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsMute = (~body: postChatRoomsMuteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsMuteResponse> => {
+let postChatRoomsMute = async (~body: postChatRoomsMuteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsMuteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsMuteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/mute",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postChatRoomsOwnedRequest = {
@@ -852,17 +780,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatRoomsOwned = (~body: postChatRoomsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsOwnedResponse> => {
+let postChatRoomsOwned = async (~body: postChatRoomsOwnedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsOwnedResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsOwnedRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/owned",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsOwnedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsOwnedResponseSchema)
 }
 
 type postChatRoomsShowRequest = {
@@ -884,17 +809,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:chat*
 */
-let postChatRoomsShow = (~body: postChatRoomsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsShowResponse> => {
+let postChatRoomsShow = async (~body: postChatRoomsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsShowResponseSchema)
 }
 
 type postChatRoomsUpdateRequest = {
@@ -920,15 +842,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:chat*
 */
-let postChatRoomsUpdate = (~body: postChatRoomsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChatRoomsUpdateResponse> => {
+let postChatRoomsUpdate = async (~body: postChatRoomsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChatRoomsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChatRoomsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/chat/rooms/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChatRoomsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChatRoomsUpdateResponseSchema)
 }

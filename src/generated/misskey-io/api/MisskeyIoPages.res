@@ -44,17 +44,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:pages*
 */
-let postPagesCreate = (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesCreateResponse> => {
+let postPagesCreate = async (~body: postPagesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postPagesCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postPagesCreateResponseSchema)
 }
 
 type postPagesDeleteRequest = {
@@ -74,17 +71,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:pages*
 */
-let postPagesDelete = (~body: postPagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesDeleteResponse> => {
+let postPagesDelete = async (~body: postPagesDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postPagesFeaturedResponse = array<MisskeyIoComponentSchemas.Page.t>
@@ -98,17 +92,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postPagesFeatured = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesFeaturedResponse> => {
+let postPagesFeatured = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesFeaturedResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/pages/featured",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postPagesFeaturedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postPagesFeaturedResponseSchema)
 }
 
 type postPagesLikeRequest = {
@@ -128,17 +119,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:page-likes*
 */
-let postPagesLike = (~body: postPagesLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesLikeResponse> => {
+let postPagesLike = async (~body: postPagesLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesLikeResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesLikeRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/like",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postPagesShowRequest = {
@@ -164,17 +152,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postPagesShow = (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesShowResponse> => {
+let postPagesShow = async (~body: postPagesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postPagesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postPagesShowResponseSchema)
 }
 
 type postPagesUnlikeRequest = {
@@ -194,17 +179,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:page-likes*
 */
-let postPagesUnlike = (~body: postPagesUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUnlikeResponse> => {
+let postPagesUnlike = async (~body: postPagesUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesUnlikeResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUnlikeRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/unlike",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postPagesUpdateRequest = {
@@ -246,15 +228,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:pages*
 */
-let postPagesUpdate = (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagesUpdateResponse> => {
+let postPagesUpdate = async (~body: postPagesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagesUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagesUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/pages/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

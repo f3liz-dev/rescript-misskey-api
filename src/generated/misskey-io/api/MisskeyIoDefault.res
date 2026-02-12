@@ -23,17 +23,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postAdminEmojiImportZip = (~body: postAdminEmojiImportZipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiImportZipResponse> => {
+let postAdminEmojiImportZip = async (~body: postAdminEmojiImportZipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiImportZipResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiImportZipRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/import-zip",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type getBubbleGameRankingRequest = {
@@ -67,17 +64,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getBubbleGameRanking = (~body: getBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getBubbleGameRankingResponse> => {
+let getBubbleGameRanking = async (~body: getBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getBubbleGameRankingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getBubbleGameRankingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/bubble-game/ranking",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getBubbleGameRankingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getBubbleGameRankingResponseSchema)
 }
 
 type postBubbleGameRankingRequest = {
@@ -111,17 +105,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postBubbleGameRanking = (~body: postBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBubbleGameRankingResponse> => {
+let postBubbleGameRanking = async (~body: postBubbleGameRankingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postBubbleGameRankingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBubbleGameRankingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/bubble-game/ranking",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postBubbleGameRankingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postBubbleGameRankingResponseSchema)
 }
 
 type postBubbleGameRegisterRequest = {
@@ -149,17 +140,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postBubbleGameRegister = (~body: postBubbleGameRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postBubbleGameRegisterResponse> => {
+let postBubbleGameRegister = async (~body: postBubbleGameRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postBubbleGameRegisterResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postBubbleGameRegisterRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/bubble-game/register",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postExportCustomEmojisResponse = unit
@@ -172,17 +160,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postExportCustomEmojis = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postExportCustomEmojisResponse> => {
+let postExportCustomEmojis = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postExportCustomEmojisResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/export-custom-emojis",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postI2faDoneRequest = {
@@ -209,17 +194,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faDone = (~body: postI2faDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faDoneResponse> => {
+let postI2faDone = async (~body: postI2faDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faDoneResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faDoneRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/done",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postI2faDoneResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postI2faDoneResponseSchema)
 }
 
 type postI2faKeyDoneRequest = {
@@ -254,17 +236,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faKeyDone = (~body: postI2faKeyDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faKeyDoneResponse> => {
+let postI2faKeyDone = async (~body: postI2faKeyDoneRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faKeyDoneResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faKeyDoneRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/key-done",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postI2faKeyDoneResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postI2faKeyDoneResponseSchema)
 }
 
 type postI2faPasswordLessRequest = {
@@ -285,17 +264,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faPasswordLess = (~body: postI2faPasswordLessRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faPasswordLessResponse> => {
+let postI2faPasswordLess = async (~body: postI2faPasswordLessRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faPasswordLessResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faPasswordLessRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/password-less",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postI2faRegisterRequest = {
@@ -332,17 +308,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faRegister = (~body: postI2faRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRegisterResponse> => {
+let postI2faRegister = async (~body: postI2faRegisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faRegisterResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRegisterRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/register",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postI2faRegisterResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postI2faRegisterResponseSchema)
 }
 
 type postI2faRegisterKeyRequest = {
@@ -441,17 +414,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faRegisterKey = (~body: postI2faRegisterKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRegisterKeyResponse> => {
+let postI2faRegisterKey = async (~body: postI2faRegisterKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faRegisterKeyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRegisterKeyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/register-key",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postI2faRegisterKeyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postI2faRegisterKeyResponseSchema)
 }
 
 type postI2faRemoveKeyRequest = {
@@ -476,17 +446,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faRemoveKey = (~body: postI2faRemoveKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faRemoveKeyResponse> => {
+let postI2faRemoveKey = async (~body: postI2faRemoveKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faRemoveKeyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faRemoveKeyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/remove-key",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postI2faUnregisterRequest = {
@@ -509,17 +476,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faUnregister = (~body: postI2faUnregisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faUnregisterResponse> => {
+let postI2faUnregister = async (~body: postI2faUnregisterRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faUnregisterResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faUnregisterRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/unregister",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postI2faUpdateKeyRequest = {
@@ -542,17 +506,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postI2faUpdateKey = (~body: postI2faUpdateKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postI2faUpdateKeyResponse> => {
+let postI2faUpdateKey = async (~body: postI2faUpdateKeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postI2faUpdateKeyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postI2faUpdateKeyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/2fa/update-key",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIAppsRequest = {
@@ -591,17 +552,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIApps = (~body: postIAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAppsResponse> => {
+let postIApps = async (~body: postIAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIAppsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIAppsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/apps",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIAppsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIAppsResponseSchema)
 }
 
 type postIAuthorizedAppsRequest = {
@@ -644,17 +602,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIAuthorizedApps = (~body: postIAuthorizedAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIAuthorizedAppsResponse> => {
+let postIAuthorizedApps = async (~body: postIAuthorizedAppsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIAuthorizedAppsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIAuthorizedAppsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/authorized-apps",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIAuthorizedAppsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIAuthorizedAppsResponseSchema)
 }
 
 type postIChangePasswordRequest = {
@@ -679,17 +634,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIChangePassword = (~body: postIChangePasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIChangePasswordResponse> => {
+let postIChangePassword = async (~body: postIChangePasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIChangePasswordResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIChangePasswordRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/change-password",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIClaimAchievementRequest = {
@@ -709,17 +661,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIClaimAchievement = (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIClaimAchievementResponse> => {
+let postIClaimAchievement = async (~body: postIClaimAchievementRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIClaimAchievementResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIClaimAchievementRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/claim-achievement",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIDeleteAccountRequest = {
@@ -742,17 +691,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIDeleteAccount = (~body: postIDeleteAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIDeleteAccountResponse> => {
+let postIDeleteAccount = async (~body: postIDeleteAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIDeleteAccountResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIDeleteAccountRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/delete-account",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportAntennasResponse = unit
@@ -765,17 +711,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportAntennas = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportAntennasResponse> => {
+let postIExportAntennas = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportAntennasResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-antennas",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportBlockingResponse = unit
@@ -788,17 +731,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportBlocking = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportBlockingResponse> => {
+let postIExportBlocking = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportBlockingResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-blocking",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportClipsResponse = unit
@@ -811,17 +751,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportClips = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportClipsResponse> => {
+let postIExportClips = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportClipsResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-clips",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportFavoritesResponse = unit
@@ -834,17 +771,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportFavorites = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFavoritesResponse> => {
+let postIExportFavorites = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportFavoritesResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-favorites",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportFollowingRequest = {
@@ -867,17 +801,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportFollowing = (~body: postIExportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportFollowingResponse> => {
+let postIExportFollowing = async (~body: postIExportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIExportFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/export-following",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportMuteResponse = unit
@@ -890,17 +821,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportMute = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportMuteResponse> => {
+let postIExportMute = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportMuteResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-mute",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportNotesResponse = unit
@@ -913,17 +841,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportNotes = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportNotesResponse> => {
+let postIExportNotes = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportNotesResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-notes",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIExportUserListsResponse = unit
@@ -936,17 +861,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIExportUserLists = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIExportUserListsResponse> => {
+let postIExportUserLists = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIExportUserListsResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/export-user-lists",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIImportAntennasRequest = {
@@ -967,17 +889,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIImportAntennas = (~body: postIImportAntennasRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportAntennasResponse> => {
+let postIImportAntennas = async (~body: postIImportAntennasRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIImportAntennasResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportAntennasRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/import-antennas",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIImportBlockingRequest = {
@@ -998,17 +917,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIImportBlocking = (~body: postIImportBlockingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportBlockingResponse> => {
+let postIImportBlocking = async (~body: postIImportBlockingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIImportBlockingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportBlockingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/import-blocking",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIImportFollowingRequest = {
@@ -1031,17 +947,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIImportFollowing = (~body: postIImportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportFollowingResponse> => {
+let postIImportFollowing = async (~body: postIImportFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIImportFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/import-following",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIImportMutingRequest = {
@@ -1062,17 +975,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIImportMuting = (~body: postIImportMutingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportMutingResponse> => {
+let postIImportMuting = async (~body: postIImportMutingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIImportMutingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportMutingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/import-muting",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIImportUserListsRequest = {
@@ -1093,17 +1003,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIImportUserLists = (~body: postIImportUserListsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIImportUserListsResponse> => {
+let postIImportUserLists = async (~body: postIImportUserListsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIImportUserListsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIImportUserListsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/import-user-lists",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIRegenerateTokenRequest = {
@@ -1124,17 +1031,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIRegenerateToken = (~body: postIRegenerateTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegenerateTokenResponse> => {
+let postIRegenerateToken = async (~body: postIRegenerateTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegenerateTokenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegenerateTokenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/regenerate-token",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIRegistryGetRequest = {
@@ -1160,17 +1064,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIRegistryGet = (~body: postIRegistryGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetResponse> => {
+let postIRegistryGet = async (~body: postIRegistryGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryGetResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/get",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryGetResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryGetResponseSchema)
 }
 
 type postIRegistryGetAllRequest = {
@@ -1194,17 +1095,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIRegistryGetAll = (~body: postIRegistryGetAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetAllResponse> => {
+let postIRegistryGetAll = async (~body: postIRegistryGetAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryGetAllResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetAllRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/get-all",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryGetAllResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryGetAllResponseSchema)
 }
 
 type postIRegistryGetDetailRequest = {
@@ -1236,17 +1134,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIRegistryGetDetail = (~body: postIRegistryGetDetailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryGetDetailResponse> => {
+let postIRegistryGetDetail = async (~body: postIRegistryGetDetailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryGetDetailResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryGetDetailRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/get-detail",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryGetDetailResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryGetDetailResponseSchema)
 }
 
 type postIRegistryKeysRequest = {
@@ -1270,17 +1165,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIRegistryKeys = (~body: postIRegistryKeysRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryKeysResponse> => {
+let postIRegistryKeys = async (~body: postIRegistryKeysRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryKeysResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryKeysRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/keys",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryKeysResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryKeysResponseSchema)
 }
 
 type postIRegistryKeysWithTypeRequest = {
@@ -1304,17 +1196,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postIRegistryKeysWithType = (~body: postIRegistryKeysWithTypeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryKeysWithTypeResponse> => {
+let postIRegistryKeysWithType = async (~body: postIRegistryKeysWithTypeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryKeysWithTypeResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryKeysWithTypeRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/keys-with-type",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryKeysWithTypeResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryKeysWithTypeResponseSchema)
 }
 
 type postIRegistryRemoveRequest = {
@@ -1338,17 +1227,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIRegistryRemove = (~body: postIRegistryRemoveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryRemoveResponse> => {
+let postIRegistryRemove = async (~body: postIRegistryRemoveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryRemoveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistryRemoveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/remove",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIRegistryScopesWithDomainResponse_1 = {
@@ -1373,17 +1259,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIRegistryScopesWithDomain = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistryScopesWithDomainResponse> => {
+let postIRegistryScopesWithDomain = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistryScopesWithDomainResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/scopes-with-domain",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIRegistryScopesWithDomainResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIRegistryScopesWithDomainResponseSchema)
 }
 
 type postIRegistrySetRequest = {
@@ -1409,17 +1292,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postIRegistrySet = (~body: postIRegistrySetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRegistrySetResponse> => {
+let postIRegistrySet = async (~body: postIRegistrySetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRegistrySetResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRegistrySetRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/registry/set",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postIRevokeTokenRequest = {
@@ -1442,17 +1322,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIRevokeToken = (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIRevokeTokenResponse> => {
+let postIRevokeToken = async (~body: postIRevokeTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIRevokeTokenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIRevokeTokenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/revoke-token",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postISigninHistoryRequest = {
@@ -1479,17 +1356,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postISigninHistory = (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postISigninHistoryResponse> => {
+let postISigninHistory = async (~body: postISigninHistoryRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postISigninHistoryResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postISigninHistoryRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/signin-history",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postISigninHistoryResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postISigninHistoryResponseSchema)
 }
 
 type postIUpdateEmailRequest = {
@@ -1516,17 +1390,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postIUpdateEmail = (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postIUpdateEmailResponse> => {
+let postIUpdateEmail = async (~body: postIUpdateEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postIUpdateEmailResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postIUpdateEmailRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/i/update-email",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postIUpdateEmailResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postIUpdateEmailResponseSchema)
 }
 
 type postPagePushRequest = {
@@ -1551,17 +1422,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postPagePush = (~body: postPagePushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postPagePushResponse> => {
+let postPagePush = async (~body: postPagePushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postPagePushResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postPagePushRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/page-push",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postReversiCancelMatchRequest = {
@@ -1581,17 +1449,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postReversiCancelMatch = (~body: postReversiCancelMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiCancelMatchResponse> => {
+let postReversiCancelMatch = async (~body: postReversiCancelMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiCancelMatchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiCancelMatchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/cancel-match",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postReversiGamesRequest = {
@@ -1619,17 +1484,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiGames = (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiGamesResponse> => {
+let postReversiGames = async (~body: postReversiGamesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiGamesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiGamesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/games",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiGamesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiGamesResponseSchema)
 }
 
 type postReversiInvitationsResponse = array<MisskeyIoComponentSchemas.UserLite.t>
@@ -1643,17 +1505,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postReversiInvitations = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiInvitationsResponse> => {
+let postReversiInvitations = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiInvitationsResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/reversi/invitations",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiInvitationsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiInvitationsResponseSchema)
 }
 
 type postReversiMatchRequest = {
@@ -1679,17 +1538,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postReversiMatch = (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiMatchResponse> => {
+let postReversiMatch = async (~body: postReversiMatchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiMatchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiMatchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/match",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiMatchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiMatchResponseSchema)
 }
 
 type postReversiShowGameRequest = {
@@ -1711,17 +1567,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiShowGame = (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiShowGameResponse> => {
+let postReversiShowGame = async (~body: postReversiShowGameRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiShowGameResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiShowGameRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/show-game",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiShowGameResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiShowGameResponseSchema)
 }
 
 type postReversiSurrenderRequest = {
@@ -1741,17 +1594,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postReversiSurrender = (~body: postReversiSurrenderRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiSurrenderResponse> => {
+let postReversiSurrender = async (~body: postReversiSurrenderRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiSurrenderResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiSurrenderRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/surrender",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postReversiVerifyRequest = {
@@ -1781,17 +1631,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postReversiVerify = (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postReversiVerifyResponse> => {
+let postReversiVerify = async (~body: postReversiVerifyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postReversiVerifyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postReversiVerifyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reversi/verify",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postReversiVerifyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postReversiVerifyResponseSchema)
 }
 
 type postUsersAchievementsRequest = {
@@ -1823,17 +1670,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postUsersAchievements = (~body: postUsersAchievementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersAchievementsResponse> => {
+let postUsersAchievements = async (~body: postUsersAchievementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersAchievementsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersAchievementsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/achievements",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersAchievementsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersAchievementsResponseSchema)
 }
 
 type postUsersListsCreateFromPublicRequest = {
@@ -1857,17 +1701,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsCreateFromPublic = (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateFromPublicResponse> => {
+let postUsersListsCreateFromPublic = async (~body: postUsersListsCreateFromPublicRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsCreateFromPublicResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateFromPublicRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/create-from-public",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsCreateFromPublicResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsCreateFromPublicResponseSchema)
 }
 
 type postUsersListsFavoriteRequest = {
@@ -1887,17 +1728,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsFavorite = (~body: postUsersListsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsFavoriteResponse> => {
+let postUsersListsFavorite = async (~body: postUsersListsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsFavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsFavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/favorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postUsersListsUnfavoriteRequest = {
@@ -1917,15 +1755,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsUnfavorite = (~body: postUsersListsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUnfavoriteResponse> => {
+let postUsersListsUnfavorite = async (~body: postUsersListsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsUnfavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUnfavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/unfavorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

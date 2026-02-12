@@ -24,17 +24,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:federation*
 */
-let postApGet = (~body: postApGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postApGetResponse> => {
+let postApGet = async (~body: postApGetRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postApGetResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postApGetRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/ap/get",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postApGetResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postApGetResponseSchema)
 }
 
 type postApShowRequest = {
@@ -66,17 +63,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postApShow = (~body: postApShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postApShowResponse> => {
+let postApShow = async (~body: postApShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postApShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postApShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/ap/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postApShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postApShowResponseSchema)
 }
 
 type postFederationFollowersRequest = {
@@ -104,17 +98,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationFollowers = (~body: postFederationFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowersResponse> => {
+let postFederationFollowers = async (~body: postFederationFollowersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationFollowersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/followers",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationFollowersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationFollowersResponseSchema)
 }
 
 type postFederationFollowingRequest = {
@@ -142,17 +133,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationFollowing = (~body: postFederationFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationFollowingResponse> => {
+let postFederationFollowing = async (~body: postFederationFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/following",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationFollowingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationFollowingResponseSchema)
 }
 
 type getFederationInstancesRequest = {
@@ -194,17 +182,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getFederationInstances = (~body: getFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFederationInstancesResponse> => {
+let getFederationInstances = async (~body: getFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getFederationInstancesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFederationInstancesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/instances",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getFederationInstancesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getFederationInstancesResponseSchema)
 }
 
 type postFederationInstancesRequest = {
@@ -246,17 +231,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationInstances = (~body: postFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationInstancesResponse> => {
+let postFederationInstances = async (~body: postFederationInstancesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationInstancesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationInstancesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/instances",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationInstancesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationInstancesResponseSchema)
 }
 
 type postFederationShowInstanceRequest = {
@@ -278,17 +260,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationShowInstance = (~body: postFederationShowInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationShowInstanceResponse> => {
+let postFederationShowInstance = async (~body: postFederationShowInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationShowInstanceResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationShowInstanceRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/show-instance",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationShowInstanceResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationShowInstanceResponseSchema)
 }
 
 type getFederationStatsRequest = {
@@ -320,17 +299,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getFederationStats = (~body: getFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getFederationStatsResponse> => {
+let getFederationStats = async (~body: getFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getFederationStatsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getFederationStatsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/stats",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getFederationStatsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getFederationStatsResponseSchema)
 }
 
 type postFederationStatsRequest = {
@@ -362,17 +338,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationStats = (~body: postFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationStatsResponse> => {
+let postFederationStats = async (~body: postFederationStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationStatsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationStatsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/stats",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationStatsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationStatsResponseSchema)
 }
 
 type postFederationUpdateRemoteUserRequest = {
@@ -392,17 +365,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationUpdateRemoteUser = (~body: postFederationUpdateRemoteUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationUpdateRemoteUserResponse> => {
+let postFederationUpdateRemoteUser = async (~body: postFederationUpdateRemoteUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationUpdateRemoteUserResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationUpdateRemoteUserRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/update-remote-user",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFederationUsersRequest = {
@@ -430,15 +400,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFederationUsers = (~body: postFederationUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFederationUsersResponse> => {
+let postFederationUsers = async (~body: postFederationUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFederationUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFederationUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/federation/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFederationUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFederationUsersResponseSchema)
 }

@@ -32,17 +32,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postHashtagsList = (~body: postHashtagsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsListResponse> => {
+let postHashtagsList = async (~body: postHashtagsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postHashtagsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postHashtagsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postHashtagsListResponseSchema)
 }
 
 type postHashtagsSearchRequest = {
@@ -68,17 +65,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postHashtagsSearch = (~body: postHashtagsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsSearchResponse> => {
+let postHashtagsSearch = async (~body: postHashtagsSearchRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postHashtagsSearchResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsSearchRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/search",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postHashtagsSearchResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postHashtagsSearchResponseSchema)
 }
 
 type postHashtagsShowRequest = {
@@ -100,17 +94,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postHashtagsShow = (~body: postHashtagsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsShowResponse> => {
+let postHashtagsShow = async (~body: postHashtagsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postHashtagsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postHashtagsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postHashtagsShowResponseSchema)
 }
 
 type getHashtagsTrendResponse_1 = {
@@ -136,17 +127,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getHashtagsTrendResponse> => {
+let getHashtagsTrend = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getHashtagsTrendResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/trend",
     ~method_="GET",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getHashtagsTrendResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getHashtagsTrendResponseSchema)
 }
 
 type postHashtagsTrendResponse_1 = {
@@ -172,17 +160,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postHashtagsTrend = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsTrendResponse> => {
+let postHashtagsTrend = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postHashtagsTrendResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/trend",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postHashtagsTrendResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postHashtagsTrendResponseSchema)
 }
 
 type postHashtagsUsersRequest = {
@@ -216,15 +201,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postHashtagsUsers = (~body: postHashtagsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postHashtagsUsersResponse> => {
+let postHashtagsUsers = async (~body: postHashtagsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postHashtagsUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postHashtagsUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/hashtags/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postHashtagsUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postHashtagsUsersResponseSchema)
 }

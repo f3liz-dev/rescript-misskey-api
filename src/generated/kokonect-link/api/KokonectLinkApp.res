@@ -30,17 +30,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAppCreate = (~body: postAppCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAppCreateResponse> => {
+let postAppCreate = async (~body: postAppCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAppCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAppCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/app/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAppCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAppCreateResponseSchema)
 }
 
 type postAppShowRequest = {
@@ -62,15 +59,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAppShow = (~body: postAppShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAppShowResponse> => {
+let postAppShow = async (~body: postAppShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAppShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAppShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/app/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAppShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAppShowResponseSchema)
 }

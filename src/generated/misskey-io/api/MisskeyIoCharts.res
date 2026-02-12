@@ -48,17 +48,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsActiveUsers = (~body: getChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsActiveUsersResponse> => {
+let getChartsActiveUsers = async (~body: getChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsActiveUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsActiveUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/active-users",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsActiveUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsActiveUsersResponseSchema)
 }
 
 type postChartsActiveUsersRequest = {
@@ -104,17 +101,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsActiveUsers = (~body: postChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsActiveUsersResponse> => {
+let postChartsActiveUsers = async (~body: postChartsActiveUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsActiveUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsActiveUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/active-users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsActiveUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsActiveUsersResponseSchema)
 }
 
 type getChartsApRequestRequest = {
@@ -148,17 +142,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsApRequest = (~body: getChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsApRequestResponse> => {
+let getChartsApRequest = async (~body: getChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsApRequestResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsApRequestRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/ap-request",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsApRequestResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsApRequestResponseSchema)
 }
 
 type postChartsApRequestRequest = {
@@ -192,17 +183,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsApRequest = (~body: postChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsApRequestResponse> => {
+let postChartsApRequest = async (~body: postChartsApRequestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsApRequestResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsApRequestRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/ap-request",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsApRequestResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsApRequestResponseSchema)
 }
 
 type getChartsDriveRequest = {
@@ -248,17 +236,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsDrive = (~body: getChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsDriveResponse> => {
+let getChartsDrive = async (~body: getChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsDriveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsDriveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/drive",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsDriveResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsDriveResponseSchema)
 }
 
 type postChartsDriveRequest = {
@@ -304,17 +289,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsDrive = (~body: postChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsDriveResponse> => {
+let postChartsDrive = async (~body: postChartsDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsDriveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsDriveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/drive",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsDriveResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsDriveResponseSchema)
 }
 
 type getChartsFederationRequest = {
@@ -358,17 +340,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsFederation = (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsFederationResponse> => {
+let getChartsFederation = async (~body: getChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsFederationResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsFederationRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/federation",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsFederationResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsFederationResponseSchema)
 }
 
 type postChartsFederationRequest = {
@@ -412,17 +391,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsFederation = (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsFederationResponse> => {
+let postChartsFederation = async (~body: postChartsFederationRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsFederationResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsFederationRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/federation",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsFederationResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsFederationResponseSchema)
 }
 
 type getChartsInstanceRequest = {
@@ -532,17 +508,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsInstance = (~body: getChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsInstanceResponse> => {
+let getChartsInstance = async (~body: getChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsInstanceResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsInstanceRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/instance",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsInstanceResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsInstanceResponseSchema)
 }
 
 type postChartsInstanceRequest = {
@@ -652,17 +625,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsInstance = (~body: postChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsInstanceResponse> => {
+let postChartsInstance = async (~body: postChartsInstanceRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsInstanceResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsInstanceRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/instance",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsInstanceResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsInstanceResponseSchema)
 }
 
 type getChartsNotesRequest = {
@@ -722,17 +692,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsNotes = (~body: getChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsNotesResponse> => {
+let getChartsNotes = async (~body: getChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/notes",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsNotesResponseSchema)
 }
 
 type postChartsNotesRequest = {
@@ -792,17 +759,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsNotes = (~body: postChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsNotesResponse> => {
+let postChartsNotes = async (~body: postChartsNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsNotesResponseSchema)
 }
 
 type getChartsUserDriveRequest = {
@@ -844,17 +808,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUserDrive = (~body: getChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserDriveResponse> => {
+let getChartsUserDrive = async (~body: getChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUserDriveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserDriveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/drive",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUserDriveResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUserDriveResponseSchema)
 }
 
 type postChartsUserDriveRequest = {
@@ -896,17 +857,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUserDrive = (~body: postChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserDriveResponse> => {
+let postChartsUserDrive = async (~body: postChartsUserDriveRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUserDriveResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserDriveRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/drive",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUserDriveResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUserDriveResponseSchema)
 }
 
 type getChartsUserFollowingRequest = {
@@ -962,17 +920,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUserFollowing = (~body: getChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserFollowingResponse> => {
+let getChartsUserFollowing = async (~body: getChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUserFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/following",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUserFollowingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUserFollowingResponseSchema)
 }
 
 type postChartsUserFollowingRequest = {
@@ -1028,17 +983,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUserFollowing = (~body: postChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserFollowingResponse> => {
+let postChartsUserFollowing = async (~body: postChartsUserFollowingRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUserFollowingResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserFollowingRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/following",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUserFollowingResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUserFollowingResponseSchema)
 }
 
 type getChartsUserNotesRequest = {
@@ -1090,17 +1042,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUserNotes = (~body: getChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserNotesResponse> => {
+let getChartsUserNotes = async (~body: getChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUserNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/notes",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUserNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUserNotesResponseSchema)
 }
 
 type postChartsUserNotesRequest = {
@@ -1152,17 +1101,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUserNotes = (~body: postChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserNotesResponse> => {
+let postChartsUserNotes = async (~body: postChartsUserNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUserNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUserNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUserNotesResponseSchema)
 }
 
 type getChartsUserPvRequest = {
@@ -1206,17 +1152,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUserPv = (~body: getChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserPvResponse> => {
+let getChartsUserPv = async (~body: getChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUserPvResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserPvRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/pv",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUserPvResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUserPvResponseSchema)
 }
 
 type postChartsUserPvRequest = {
@@ -1260,17 +1203,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUserPv = (~body: postChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserPvResponse> => {
+let postChartsUserPv = async (~body: postChartsUserPvRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUserPvResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserPvRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/pv",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUserPvResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUserPvResponseSchema)
 }
 
 type getChartsUserReactionsRequest = {
@@ -1312,17 +1252,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUserReactions = (~body: getChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUserReactionsResponse> => {
+let getChartsUserReactions = async (~body: getChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUserReactionsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUserReactionsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/reactions",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUserReactionsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUserReactionsResponseSchema)
 }
 
 type postChartsUserReactionsRequest = {
@@ -1364,17 +1301,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUserReactions = (~body: postChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUserReactionsResponse> => {
+let postChartsUserReactions = async (~body: postChartsUserReactionsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUserReactionsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUserReactionsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/user/reactions",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUserReactionsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUserReactionsResponseSchema)
 }
 
 type getChartsUsersRequest = {
@@ -1418,17 +1352,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getChartsUsers = (~body: getChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getChartsUsersResponse> => {
+let getChartsUsers = async (~body: getChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getChartsUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getChartsUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/users",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getChartsUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getChartsUsersResponseSchema)
 }
 
 type postChartsUsersRequest = {
@@ -1472,15 +1403,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postChartsUsers = (~body: postChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postChartsUsersResponse> => {
+let postChartsUsers = async (~body: postChartsUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postChartsUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postChartsUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/charts/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postChartsUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postChartsUsersResponseSchema)
 }

@@ -46,17 +46,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postAntennasCreate = (~body: postAntennasCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasCreateResponse> => {
+let postAntennasCreate = async (~body: postAntennasCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/antennas/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAntennasCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAntennasCreateResponseSchema)
 }
 
 type postAntennasDeleteRequest = {
@@ -76,17 +73,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postAntennasDelete = (~body: postAntennasDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasDeleteResponse> => {
+let postAntennasDelete = async (~body: postAntennasDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/antennas/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAntennasListResponse = array<MisskeyIoComponentSchemas.Antenna.t>
@@ -100,17 +94,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postAntennasList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasListResponse> => {
+let postAntennasList = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasListResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/antennas/list",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAntennasListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAntennasListResponseSchema)
 }
 
 type postAntennasNotesRequest = {
@@ -142,17 +133,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postAntennasNotes = (~body: postAntennasNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasNotesResponse> => {
+let postAntennasNotes = async (~body: postAntennasNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/antennas/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAntennasNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAntennasNotesResponseSchema)
 }
 
 type postAntennasShowRequest = {
@@ -174,17 +162,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postAntennasShow = (~body: postAntennasShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasShowResponse> => {
+let postAntennasShow = async (~body: postAntennasShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/antennas/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAntennasShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAntennasShowResponseSchema)
 }
 
 type postAntennasUpdateRequest = {
@@ -230,15 +215,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postAntennasUpdate = (~body: postAntennasUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAntennasUpdateResponse> => {
+let postAntennasUpdate = async (~body: postAntennasUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAntennasUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAntennasUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/antennas/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAntennasUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAntennasUpdateResponseSchema)
 }

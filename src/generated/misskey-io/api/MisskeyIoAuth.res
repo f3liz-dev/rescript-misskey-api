@@ -23,17 +23,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postAuthAccept = (~body: postAuthAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthAcceptResponse> => {
+let postAuthAccept = async (~body: postAuthAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthAcceptResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthAcceptRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/accept",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAuthSessionGenerateRequest = {
@@ -61,17 +58,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAuthSessionGenerate = (~body: postAuthSessionGenerateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionGenerateResponse> => {
+let postAuthSessionGenerate = async (~body: postAuthSessionGenerateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthSessionGenerateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionGenerateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/session/generate",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAuthSessionGenerateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAuthSessionGenerateResponseSchema)
 }
 
 type postAuthSessionShowRequest = {
@@ -101,17 +95,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAuthSessionShow = (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionShowResponse> => {
+let postAuthSessionShow = async (~body: postAuthSessionShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthSessionShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/session/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAuthSessionShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAuthSessionShowResponseSchema)
 }
 
 type postAuthSessionUserkeyRequest = {
@@ -141,17 +132,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAuthSessionUserkey = (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAuthSessionUserkeyResponse> => {
+let postAuthSessionUserkey = async (~body: postAuthSessionUserkeyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAuthSessionUserkeyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAuthSessionUserkeyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/auth/session/userkey",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAuthSessionUserkeyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAuthSessionUserkeyResponseSchema)
 }
 
 type postMiauthGenTokenRequest = {
@@ -186,15 +174,12 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the misskey mainframe and is not intended for use by third parties.
 **Credential required**: *Yes*
 */
-let postMiauthGenToken = (~body: postMiauthGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postMiauthGenTokenResponse> => {
+let postMiauthGenToken = async (~body: postMiauthGenTokenRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postMiauthGenTokenResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postMiauthGenTokenRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/miauth/gen-token",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postMiauthGenTokenResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postMiauthGenTokenResponseSchema)
 }

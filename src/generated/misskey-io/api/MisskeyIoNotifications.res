@@ -26,17 +26,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notifications*
 */
-let postNotificationsCreate = (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsCreateResponse> => {
+let postNotificationsCreate = async (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotificationsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotificationsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notifications/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotificationsFlushResponse = unit
@@ -48,17 +45,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notifications*
 */
-let postNotificationsFlush = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsFlushResponse> => {
+let postNotificationsFlush = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotificationsFlushResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/notifications/flush",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotificationsMarkAllAsReadResponse = unit
@@ -70,17 +64,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notifications*
 */
-let postNotificationsMarkAllAsRead = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsMarkAllAsReadResponse> => {
+let postNotificationsMarkAllAsRead = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotificationsMarkAllAsReadResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/notifications/mark-all-as-read",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotificationsTestNotificationResponse = unit
@@ -92,15 +83,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notifications*
 */
-let postNotificationsTestNotification = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsTestNotificationResponse> => {
+let postNotificationsTestNotification = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotificationsTestNotificationResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/notifications/test-notification",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

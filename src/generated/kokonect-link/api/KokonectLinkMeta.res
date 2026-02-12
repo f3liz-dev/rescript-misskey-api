@@ -352,17 +352,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:meta*
 */
-let postAdminMeta = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminMetaResponse> => {
+let postAdminMeta = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminMetaResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/admin/meta",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminMetaResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminMetaResponseSchema)
 }
 
 type postAnnouncementsRequest = {
@@ -394,17 +391,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAnnouncements = (~body: postAnnouncementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsResponse> => {
+let postAnnouncements = async (~body: postAnnouncementsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAnnouncementsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/announcements",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAnnouncementsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAnnouncementsResponseSchema)
 }
 
 type postAnnouncementsShowRequest = {
@@ -426,17 +420,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAnnouncementsShow = (~body: postAnnouncementsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAnnouncementsShowResponse> => {
+let postAnnouncementsShow = async (~body: postAnnouncementsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAnnouncementsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAnnouncementsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/announcements/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAnnouncementsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAnnouncementsShowResponseSchema)
 }
 
 type getEmojiRequest = {
@@ -458,17 +449,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getEmoji = (~body: getEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getEmojiResponse> => {
+let getEmoji = async (~body: getEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getEmojiResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(getEmojiRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/emoji",
     ~method_="GET",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getEmojiResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getEmojiResponseSchema)
 }
 
 type postEmojiRequest = {
@@ -490,17 +478,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postEmoji = (~body: postEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postEmojiResponse> => {
+let postEmoji = async (~body: postEmojiRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postEmojiResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postEmojiRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/emoji",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postEmojiResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postEmojiResponseSchema)
 }
 
 type postInviteCreateResponse = KokonectLinkComponentSchemas.InviteCode.t
@@ -514,17 +499,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:invite-codes*
 */
-let postInviteCreate = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteCreateResponse> => {
+let postInviteCreate = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postInviteCreateResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/invite/create",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postInviteCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postInviteCreateResponseSchema)
 }
 
 type postInviteListRequest = {
@@ -554,17 +536,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:invite-codes*
 */
-let postInviteList = (~body: postInviteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postInviteListResponse> => {
+let postInviteList = async (~body: postInviteListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postInviteListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postInviteListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/invite/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postInviteListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postInviteListResponseSchema)
 }
 
 type getServerInfoResponse_3 = {
@@ -616,17 +595,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let getServerInfo = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<getServerInfoResponse> => {
+let getServerInfo = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): getServerInfoResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/server-info",
     ~method_="GET",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(getServerInfoResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(getServerInfoResponseSchema)
 }
 
 type postServerInfoResponse_3 = {
@@ -678,15 +654,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postServerInfo = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postServerInfoResponse> => {
+let postServerInfo = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postServerInfoResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/server-info",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postServerInfoResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postServerInfoResponseSchema)
 }

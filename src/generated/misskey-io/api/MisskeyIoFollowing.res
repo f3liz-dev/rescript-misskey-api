@@ -26,17 +26,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingCreate = (~body: postFollowingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingCreateResponse> => {
+let postFollowingCreate = async (~body: postFollowingCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingCreateResponseSchema)
 }
 
 type postFollowingDeleteRequest = {
@@ -58,17 +55,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingDelete = (~body: postFollowingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingDeleteResponse> => {
+let postFollowingDelete = async (~body: postFollowingDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingDeleteResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingDeleteResponseSchema)
 }
 
 type postFollowingInvalidateRequest = {
@@ -90,17 +84,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingInvalidate = (~body: postFollowingInvalidateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingInvalidateResponse> => {
+let postFollowingInvalidate = async (~body: postFollowingInvalidateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingInvalidateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingInvalidateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/invalidate",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingInvalidateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingInvalidateResponseSchema)
 }
 
 type postFollowingRequestsAcceptRequest = {
@@ -120,17 +111,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingRequestsAccept = (~body: postFollowingRequestsAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsAcceptResponse> => {
+let postFollowingRequestsAccept = async (~body: postFollowingRequestsAcceptRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingRequestsAcceptResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsAcceptRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/requests/accept",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFollowingRequestsCancelRequest = {
@@ -152,17 +140,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingRequestsCancel = (~body: postFollowingRequestsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsCancelResponse> => {
+let postFollowingRequestsCancel = async (~body: postFollowingRequestsCancelRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingRequestsCancelResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsCancelRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/requests/cancel",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingRequestsCancelResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingRequestsCancelResponseSchema)
 }
 
 type postFollowingRequestsListRequest = {
@@ -200,17 +185,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:following*
 */
-let postFollowingRequestsList = (~body: postFollowingRequestsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsListResponse> => {
+let postFollowingRequestsList = async (~body: postFollowingRequestsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingRequestsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/requests/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingRequestsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingRequestsListResponseSchema)
 }
 
 type postFollowingRequestsRejectRequest = {
@@ -230,17 +212,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingRequestsReject = (~body: postFollowingRequestsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsRejectResponse> => {
+let postFollowingRequestsReject = async (~body: postFollowingRequestsRejectRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingRequestsRejectResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsRejectRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/requests/reject",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFollowingRequestsSentRequest = {
@@ -278,17 +257,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:following*
 */
-let postFollowingRequestsSent = (~body: postFollowingRequestsSentRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingRequestsSentResponse> => {
+let postFollowingRequestsSent = async (~body: postFollowingRequestsSentRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingRequestsSentResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingRequestsSentRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/requests/sent",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingRequestsSentResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingRequestsSentResponseSchema)
 }
 
 type postFollowingUpdateRequest = {
@@ -314,17 +290,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingUpdate = (~body: postFollowingUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingUpdateResponse> => {
+let postFollowingUpdate = async (~body: postFollowingUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFollowingUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFollowingUpdateResponseSchema)
 }
 
 type postFollowingUpdateAllRequest = {
@@ -346,15 +319,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:following*
 */
-let postFollowingUpdateAll = (~body: postFollowingUpdateAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFollowingUpdateAllResponse> => {
+let postFollowingUpdateAll = async (~body: postFollowingUpdateAllRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFollowingUpdateAllResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFollowingUpdateAllRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/following/update-all",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

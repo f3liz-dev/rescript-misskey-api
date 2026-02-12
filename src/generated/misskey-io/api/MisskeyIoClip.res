@@ -22,17 +22,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
 */
-let postClipsFavorite = (~body: postClipsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsFavoriteResponse> => {
+let postClipsFavorite = async (~body: postClipsFavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsFavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsFavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/favorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postClipsUnfavoriteRequest = {
@@ -52,15 +49,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:clip-favorite*
 */
-let postClipsUnfavorite = (~body: postClipsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postClipsUnfavoriteResponse> => {
+let postClipsUnfavorite = async (~body: postClipsUnfavoriteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postClipsUnfavoriteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postClipsUnfavoriteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/clips/unfavorite",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

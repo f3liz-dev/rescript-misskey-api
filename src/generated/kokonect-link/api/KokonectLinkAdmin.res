@@ -33,17 +33,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
 */
-let postAdminAbuseReportNotificationRecipientCreate = (~body: postAdminAbuseReportNotificationRecipientCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientCreateResponse> => {
+let postAdminAbuseReportNotificationRecipientCreate = async (~body: postAdminAbuseReportNotificationRecipientCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAbuseReportNotificationRecipientCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/abuse-report/notification-recipient/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientCreateResponseSchema)
 }
 
 type postAdminAbuseReportNotificationRecipientShowRequest = {
@@ -66,17 +63,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *read:admin:abuse-report:notification-recipient*
 */
-let postAdminAbuseReportNotificationRecipientShow = (~body: postAdminAbuseReportNotificationRecipientShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientShowResponse> => {
+let postAdminAbuseReportNotificationRecipientShow = async (~body: postAdminAbuseReportNotificationRecipientShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAbuseReportNotificationRecipientShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/abuse-report/notification-recipient/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientShowResponseSchema)
 }
 
 type postAdminAbuseReportNotificationRecipientUpdateRequest = {
@@ -109,17 +103,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *write:admin:abuse-report:notification-recipient*
 */
-let postAdminAbuseReportNotificationRecipientUpdate = (~body: postAdminAbuseReportNotificationRecipientUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseReportNotificationRecipientUpdateResponse> => {
+let postAdminAbuseReportNotificationRecipientUpdate = async (~body: postAdminAbuseReportNotificationRecipientUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAbuseReportNotificationRecipientUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseReportNotificationRecipientUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/abuse-report/notification-recipient/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAbuseReportNotificationRecipientUpdateResponseSchema)
 }
 
 type postAdminAbuseUserReportsRequest = {
@@ -187,17 +178,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:abuse-user-reports*
 */
-let postAdminAbuseUserReports = (~body: postAdminAbuseUserReportsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAbuseUserReportsResponse> => {
+let postAdminAbuseUserReports = async (~body: postAdminAbuseUserReportsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAbuseUserReportsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAbuseUserReportsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/abuse-user-reports",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAbuseUserReportsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAbuseUserReportsResponseSchema)
 }
 
 type postAdminAccountsCreateRequest = {
@@ -227,17 +215,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postAdminAccountsCreate = (~body: postAdminAccountsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsCreateResponse> => {
+let postAdminAccountsCreate = async (~body: postAdminAccountsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAccountsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/accounts/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAccountsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAccountsCreateResponseSchema)
 }
 
 type postAdminAccountsDeleteRequest = {
@@ -257,17 +242,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:account*
 */
-let postAdminAccountsDelete = (~body: postAdminAccountsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsDeleteResponse> => {
+let postAdminAccountsDelete = async (~body: postAdminAccountsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAccountsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/accounts/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminAccountsFindByEmailRequest = {
@@ -289,17 +271,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:account*
 */
-let postAdminAccountsFindByEmail = (~body: postAdminAccountsFindByEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAccountsFindByEmailResponse> => {
+let postAdminAccountsFindByEmail = async (~body: postAdminAccountsFindByEmailRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAccountsFindByEmailResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAccountsFindByEmailRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/accounts/find-by-email",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAccountsFindByEmailResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAccountsFindByEmailResponseSchema)
 }
 
 type postAdminAdCreateRequest = {
@@ -339,17 +318,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:ad*
 */
-let postAdminAdCreate = (~body: postAdminAdCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdCreateResponse> => {
+let postAdminAdCreate = async (~body: postAdminAdCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAdCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/ad/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAdCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAdCreateResponseSchema)
 }
 
 type postAdminAdListRequest = {
@@ -381,17 +357,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:ad*
 */
-let postAdminAdList = (~body: postAdminAdListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAdListResponse> => {
+let postAdminAdList = async (~body: postAdminAdListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAdListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAdListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/ad/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAdListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAdListResponseSchema)
 }
 
 type postAdminAnnouncementsCreateRequest = {
@@ -443,17 +416,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
 */
-let postAdminAnnouncementsCreate = (~body: postAdminAnnouncementsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsCreateResponse> => {
+let postAdminAnnouncementsCreate = async (~body: postAdminAnnouncementsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAnnouncementsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/announcements/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAnnouncementsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAnnouncementsCreateResponseSchema)
 }
 
 type postAdminAnnouncementsListRequest = {
@@ -521,17 +491,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:announcements*
 */
-let postAdminAnnouncementsList = (~body: postAdminAnnouncementsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsListResponse> => {
+let postAdminAnnouncementsList = async (~body: postAdminAnnouncementsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAnnouncementsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/announcements/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAnnouncementsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAnnouncementsListResponseSchema)
 }
 
 type postAdminAnnouncementsUpdateRequest = {
@@ -569,17 +536,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:announcements*
 */
-let postAdminAnnouncementsUpdate = (~body: postAdminAnnouncementsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAnnouncementsUpdateResponse> => {
+let postAdminAnnouncementsUpdate = async (~body: postAdminAnnouncementsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAnnouncementsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAnnouncementsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/announcements/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminAvatarDecorationsCopyRequest = {
@@ -605,17 +569,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:avatar-decorations*
 */
-let postAdminAvatarDecorationsCopy = (~body: postAdminAvatarDecorationsCopyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsCopyResponse> => {
+let postAdminAvatarDecorationsCopy = async (~body: postAdminAvatarDecorationsCopyRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAvatarDecorationsCopyResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsCopyRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/avatar-decorations/copy",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAvatarDecorationsCopyResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAvatarDecorationsCopyResponseSchema)
 }
 
 type postAdminAvatarDecorationsListRequest = {
@@ -667,17 +628,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
 */
-let postAdminAvatarDecorationsList = (~body: postAdminAvatarDecorationsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsListResponse> => {
+let postAdminAvatarDecorationsList = async (~body: postAdminAvatarDecorationsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAvatarDecorationsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/avatar-decorations/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAvatarDecorationsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAvatarDecorationsListResponseSchema)
 }
 
 type postAdminAvatarDecorationsListRemoteRequest = {
@@ -725,17 +683,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:avatar-decorations*
 */
-let postAdminAvatarDecorationsListRemote = (~body: postAdminAvatarDecorationsListRemoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminAvatarDecorationsListRemoteResponse> => {
+let postAdminAvatarDecorationsListRemote = async (~body: postAdminAvatarDecorationsListRemoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminAvatarDecorationsListRemoteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminAvatarDecorationsListRemoteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/avatar-decorations/list-remote",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminAvatarDecorationsListRemoteResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminAvatarDecorationsListRemoteResponseSchema)
 }
 
 type postAdminDeleteAccountRequest = {
@@ -755,17 +710,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:delete-account*
 */
-let postAdminDeleteAccount = (~body: postAdminDeleteAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDeleteAccountResponse> => {
+let postAdminDeleteAccount = async (~body: postAdminDeleteAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminDeleteAccountResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDeleteAccountRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/delete-account",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminDeleteAllFilesOfAUserRequest = {
@@ -785,17 +737,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:delete-all-files-of-a-user*
 */
-let postAdminDeleteAllFilesOfAUser = (~body: postAdminDeleteAllFilesOfAUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDeleteAllFilesOfAUserResponse> => {
+let postAdminDeleteAllFilesOfAUser = async (~body: postAdminDeleteAllFilesOfAUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminDeleteAllFilesOfAUserResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDeleteAllFilesOfAUserRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/delete-all-files-of-a-user",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminDriveFilesRequest = {
@@ -833,17 +782,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:drive*
 */
-let postAdminDriveFiles = (~body: postAdminDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveFilesResponse> => {
+let postAdminDriveFiles = async (~body: postAdminDriveFilesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminDriveFilesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDriveFilesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/drive/files",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminDriveFilesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminDriveFilesResponseSchema)
 }
 
 type postAdminDriveShowFileRequest_1 = {
@@ -939,17 +885,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:drive*
 */
-let postAdminDriveShowFile = (~body: postAdminDriveShowFileRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminDriveShowFileResponse> => {
+let postAdminDriveShowFile = async (~body: postAdminDriveShowFileRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminDriveShowFileResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminDriveShowFileRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/drive/show-file",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminDriveShowFileResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminDriveShowFileResponseSchema)
 }
 
 type postAdminEmojiAddRequest = {
@@ -985,17 +928,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
 */
-let postAdminEmojiAdd = (~body: postAdminEmojiAddRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiAddResponse> => {
+let postAdminEmojiAdd = async (~body: postAdminEmojiAddRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiAddResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiAddRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/add",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminEmojiAddResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminEmojiAddResponseSchema)
 }
 
 type postAdminEmojiListRequest = {
@@ -1045,17 +985,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
 */
-let postAdminEmojiList = (~body: postAdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiListResponse> => {
+let postAdminEmojiList = async (~body: postAdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminEmojiListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminEmojiListResponseSchema)
 }
 
 type postAdminEmojiListRemoteRequest = {
@@ -1107,17 +1044,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
 */
-let postAdminEmojiListRemote = (~body: postAdminEmojiListRemoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiListRemoteResponse> => {
+let postAdminEmojiListRemote = async (~body: postAdminEmojiListRemoteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiListRemoteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiListRemoteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/list-remote",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminEmojiListRemoteResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminEmojiListRemoteResponseSchema)
 }
 
 type postAdminEmojiStealRequest = {
@@ -1145,17 +1079,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
 */
-let postAdminEmojiSteal = (~body: postAdminEmojiStealRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiStealResponse> => {
+let postAdminEmojiSteal = async (~body: postAdminEmojiStealRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiStealResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiStealRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/steal",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminEmojiStealResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminEmojiStealResponseSchema)
 }
 
 type postAdminEmojiUpdateRequest = {
@@ -1187,17 +1118,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:emoji*
 */
-let postAdminEmojiUpdate = (~body: postAdminEmojiUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminEmojiUpdateResponse> => {
+let postAdminEmojiUpdate = async (~body: postAdminEmojiUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminEmojiUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminEmojiUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/emoji/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminInviteRevokeResponse = unit
@@ -1209,17 +1137,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:invite-codes*
 */
-let postAdminInviteRevoke = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminInviteRevokeResponse> => {
+let postAdminInviteRevoke = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminInviteRevokeResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/admin/invite/revoke",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminQueueClearRequest = {
@@ -1241,17 +1166,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:queue*
 */
-let postAdminQueueClear = (~body: postAdminQueueClearRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueClearResponse> => {
+let postAdminQueueClear = async (~body: postAdminQueueClearRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueClearResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueClearRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/clear",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminQueueJobsRequest = {
@@ -1277,17 +1199,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:queue*
 */
-let postAdminQueueJobs = (~body: postAdminQueueJobsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueJobsResponse> => {
+let postAdminQueueJobs = async (~body: postAdminQueueJobsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueJobsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueJobsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/jobs",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminQueueJobsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminQueueJobsResponseSchema)
 }
 
 type postAdminQueuePromoteJobsRequest = {
@@ -1307,17 +1226,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:queue*
 */
-let postAdminQueuePromoteJobs = (~body: postAdminQueuePromoteJobsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueuePromoteJobsResponse> => {
+let postAdminQueuePromoteJobs = async (~body: postAdminQueuePromoteJobsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueuePromoteJobsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueuePromoteJobsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/promote-jobs",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminQueueQueueStatsRequest = {
@@ -1411,17 +1327,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:queue*
 */
-let postAdminQueueQueueStats = (~body: postAdminQueueQueueStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueQueueStatsResponse> => {
+let postAdminQueueQueueStats = async (~body: postAdminQueueQueueStatsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueQueueStatsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueQueueStatsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/queue-stats",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminQueueQueueStatsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminQueueQueueStatsResponseSchema)
 }
 
 type postAdminQueueQueuesResponse_2 = {
@@ -1459,17 +1372,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:queue*
 */
-let postAdminQueueQueues = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueQueuesResponse> => {
+let postAdminQueueQueues = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueQueuesResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/queues",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminQueueQueuesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminQueueQueuesResponseSchema)
 }
 
 type postAdminQueueRemoveJobRequest = {
@@ -1491,17 +1401,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:queue*
 */
-let postAdminQueueRemoveJob = (~body: postAdminQueueRemoveJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueRemoveJobResponse> => {
+let postAdminQueueRemoveJob = async (~body: postAdminQueueRemoveJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueRemoveJobResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueRemoveJobRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/remove-job",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminQueueRetryJobRequest = {
@@ -1523,17 +1430,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:queue*
 */
-let postAdminQueueRetryJob = (~body: postAdminQueueRetryJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueRetryJobResponse> => {
+let postAdminQueueRetryJob = async (~body: postAdminQueueRetryJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueRetryJobResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueRetryJobRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/retry-job",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminQueueShowJobRequest = {
@@ -1557,17 +1461,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:queue*
 */
-let postAdminQueueShowJob = (~body: postAdminQueueShowJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueShowJobResponse> => {
+let postAdminQueueShowJob = async (~body: postAdminQueueShowJobRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueShowJobResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueShowJobRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/show-job",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminQueueShowJobResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminQueueShowJobResponseSchema)
 }
 
 type postAdminQueueShowJobLogsRequest = {
@@ -1591,17 +1492,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:queue*
 */
-let postAdminQueueShowJobLogs = (~body: postAdminQueueShowJobLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminQueueShowJobLogsResponse> => {
+let postAdminQueueShowJobLogs = async (~body: postAdminQueueShowJobLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminQueueShowJobLogsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminQueueShowJobLogsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/queue/show-job-logs",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminQueueShowJobLogsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminQueueShowJobLogsResponseSchema)
 }
 
 type postAdminResolveAbuseUserReportRequest = {
@@ -1623,17 +1521,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:resolve-abuse-user-report*
 */
-let postAdminResolveAbuseUserReport = (~body: postAdminResolveAbuseUserReportRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminResolveAbuseUserReportResponse> => {
+let postAdminResolveAbuseUserReport = async (~body: postAdminResolveAbuseUserReportRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminResolveAbuseUserReportResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminResolveAbuseUserReportRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/resolve-abuse-user-report",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminRolesAssignRequest = {
@@ -1657,17 +1552,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:roles*
 */
-let postAdminRolesAssign = (~body: postAdminRolesAssignRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesAssignResponse> => {
+let postAdminRolesAssign = async (~body: postAdminRolesAssignRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminRolesAssignResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesAssignRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/roles/assign",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminRolesCreateRequest = {
@@ -1717,17 +1609,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:roles*
 */
-let postAdminRolesCreate = (~body: postAdminRolesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesCreateResponse> => {
+let postAdminRolesCreate = async (~body: postAdminRolesCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminRolesCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/roles/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminRolesCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminRolesCreateResponseSchema)
 }
 
 type postAdminRolesShowRequest = {
@@ -1749,17 +1638,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:roles*
 */
-let postAdminRolesShow = (~body: postAdminRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesShowResponse> => {
+let postAdminRolesShow = async (~body: postAdminRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminRolesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/roles/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminRolesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminRolesShowResponseSchema)
 }
 
 type postAdminRolesUpdateRequest = {
@@ -1809,17 +1695,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:roles*
 */
-let postAdminRolesUpdate = (~body: postAdminRolesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUpdateResponse> => {
+let postAdminRolesUpdate = async (~body: postAdminRolesUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminRolesUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/roles/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminRolesUsersRequest = {
@@ -1865,17 +1748,14 @@ No description provided.
 
 **Credential required**: *No* / **Permission**: *read:admin:roles*
 */
-let postAdminRolesUsers = (~body: postAdminRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminRolesUsersResponse> => {
+let postAdminRolesUsers = async (~body: postAdminRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminRolesUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminRolesUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/roles/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminRolesUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminRolesUsersResponseSchema)
 }
 
 type postAdminServerInfoResponse_4 = {
@@ -1943,17 +1823,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:server-info*
 */
-let postAdminServerInfo = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminServerInfoResponse> => {
+let postAdminServerInfo = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminServerInfoResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/admin/server-info",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminServerInfoResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminServerInfoResponseSchema)
 }
 
 type postAdminShowModerationLogsRequest = {
@@ -2007,17 +1884,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:show-moderation-log*
 */
-let postAdminShowModerationLogs = (~body: postAdminShowModerationLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowModerationLogsResponse> => {
+let postAdminShowModerationLogs = async (~body: postAdminShowModerationLogsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminShowModerationLogsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowModerationLogsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/show-moderation-logs",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminShowModerationLogsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminShowModerationLogsResponseSchema)
 }
 
 type postAdminShowUserRequest = {
@@ -2147,17 +2021,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:show-user*
 */
-let postAdminShowUser = (~body: postAdminShowUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminShowUserResponse> => {
+let postAdminShowUser = async (~body: postAdminShowUserRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminShowUserResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminShowUserRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/show-user",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminShowUserResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminShowUserResponseSchema)
 }
 
 type postAdminSystemWebhookCreateRequest = {
@@ -2188,17 +2059,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
 */
-let postAdminSystemWebhookCreate = (~body: postAdminSystemWebhookCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookCreateResponse> => {
+let postAdminSystemWebhookCreate = async (~body: postAdminSystemWebhookCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminSystemWebhookCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/system-webhook/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminSystemWebhookCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminSystemWebhookCreateResponseSchema)
 }
 
 type postAdminSystemWebhookShowRequest = {
@@ -2221,17 +2089,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
 */
-let postAdminSystemWebhookShow = (~body: postAdminSystemWebhookShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookShowResponse> => {
+let postAdminSystemWebhookShow = async (~body: postAdminSystemWebhookShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminSystemWebhookShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/system-webhook/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminSystemWebhookShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminSystemWebhookShowResponseSchema)
 }
 
 type postAdminSystemWebhookUpdateRequest = {
@@ -2264,17 +2129,14 @@ No description provided.
 **Internal Endpoint**: This endpoint is an API for the cherrypick mainframe and is not intended for use by third parties.
 **Credential required**: *Yes* / **Permission**: *write:admin:system-webhook*
 */
-let postAdminSystemWebhookUpdate = (~body: postAdminSystemWebhookUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminSystemWebhookUpdateResponse> => {
+let postAdminSystemWebhookUpdate = async (~body: postAdminSystemWebhookUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminSystemWebhookUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminSystemWebhookUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/system-webhook/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminSystemWebhookUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminSystemWebhookUpdateResponseSchema)
 }
 
 type postAdminUpdateMetaRequest_1 = {
@@ -2622,17 +2484,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:meta*
 */
-let postAdminUpdateMeta = (~body: postAdminUpdateMetaRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateMetaResponse> => {
+let postAdminUpdateMeta = async (~body: postAdminUpdateMetaRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminUpdateMetaResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateMetaRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/update-meta",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postAdminUpdateProxyAccountRequest = {
@@ -2654,17 +2513,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:admin:account*
 */
-let postAdminUpdateProxyAccount = (~body: postAdminUpdateProxyAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postAdminUpdateProxyAccountResponse> => {
+let postAdminUpdateProxyAccount = async (~body: postAdminUpdateProxyAccountRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postAdminUpdateProxyAccountResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postAdminUpdateProxyAccountRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/admin/update-proxy-account",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postAdminUpdateProxyAccountResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postAdminUpdateProxyAccountResponseSchema)
 }
 
 type postV2AdminEmojiListRequest_1 = {
@@ -2746,15 +2602,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:admin:emoji*
 */
-let postV2AdminEmojiList = (~body: postV2AdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postV2AdminEmojiListResponse> => {
+let postV2AdminEmojiList = async (~body: postV2AdminEmojiListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postV2AdminEmojiListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postV2AdminEmojiListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/v2/admin/emoji/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postV2AdminEmojiListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postV2AdminEmojiListResponseSchema)
 }

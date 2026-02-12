@@ -24,15 +24,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFlashShow = (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashShowResponse> => {
+let postFlashShow = async (~body: postFlashShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashShowResponseSchema)
 }

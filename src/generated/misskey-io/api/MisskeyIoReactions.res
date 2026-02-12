@@ -24,17 +24,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:reactions*
 */
-let postNotesReactionsCreate = (~body: postNotesReactionsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsCreateResponse> => {
+let postNotesReactionsCreate = async (~body: postNotesReactionsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesReactionsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/reactions/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postNotesReactionsDeleteRequest = {
@@ -54,15 +51,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:reactions*
 */
-let postNotesReactionsDelete = (~body: postNotesReactionsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotesReactionsDeleteResponse> => {
+let postNotesReactionsDelete = async (~body: postNotesReactionsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotesReactionsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotesReactionsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notes/reactions/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

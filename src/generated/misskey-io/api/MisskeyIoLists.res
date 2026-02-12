@@ -24,17 +24,14 @@ Create a new list of users.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsCreate = (~body: postUsersListsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsCreateResponse> => {
+let postUsersListsCreate = async (~body: postUsersListsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsCreateResponseSchema)
 }
 
 type postUsersListsDeleteRequest = {
@@ -54,17 +51,14 @@ Delete an existing list of users.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsDelete = (~body: postUsersListsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsDeleteResponse> => {
+let postUsersListsDelete = async (~body: postUsersListsDeleteRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsDeleteResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsDeleteRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/delete",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postUsersListsGetMembershipsRequest = {
@@ -110,17 +104,14 @@ No description provided.
 
 **Credential required**: *No* / **Permission**: *read:account*
 */
-let postUsersListsGetMemberships = (~body: postUsersListsGetMembershipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsGetMembershipsResponse> => {
+let postUsersListsGetMemberships = async (~body: postUsersListsGetMembershipsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsGetMembershipsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsGetMembershipsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/get-memberships",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsGetMembershipsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsGetMembershipsResponseSchema)
 }
 
 type postUsersListsListRequest = {
@@ -142,17 +133,14 @@ Show all lists that the authenticated user has created.
 
 **Credential required**: *No* / **Permission**: *read:account*
 */
-let postUsersListsList = (~body: postUsersListsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsListResponse> => {
+let postUsersListsList = async (~body: postUsersListsListRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsListResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsListRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/list",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsListResponseSchema)
 }
 
 type postUsersListsPullRequest = {
@@ -174,17 +162,14 @@ Remove a user from a list.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsPull = (~body: postUsersListsPullRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsPullResponse> => {
+let postUsersListsPull = async (~body: postUsersListsPullRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsPullResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsPullRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/pull",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postUsersListsPushRequest = {
@@ -206,17 +191,14 @@ Add a user to an existing list.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsPush = (~body: postUsersListsPushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsPushResponse> => {
+let postUsersListsPush = async (~body: postUsersListsPushRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsPushResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsPushRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/push",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postUsersListsShowRequest = {
@@ -240,17 +222,14 @@ Show the properties of a list.
 
 **Credential required**: *No* / **Permission**: *read:account*
 */
-let postUsersListsShow = (~body: postUsersListsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsShowResponse> => {
+let postUsersListsShow = async (~body: postUsersListsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsShowResponseSchema)
 }
 
 type postUsersListsUpdateRequest = {
@@ -276,17 +255,14 @@ Update the properties of a list.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsUpdate = (~body: postUsersListsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUpdateResponse> => {
+let postUsersListsUpdate = async (~body: postUsersListsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postUsersListsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postUsersListsUpdateResponseSchema)
 }
 
 type postUsersListsUpdateMembershipRequest = {
@@ -310,15 +286,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:account*
 */
-let postUsersListsUpdateMembership = (~body: postUsersListsUpdateMembershipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postUsersListsUpdateMembershipResponse> => {
+let postUsersListsUpdateMembership = async (~body: postUsersListsUpdateMembershipRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postUsersListsUpdateMembershipResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postUsersListsUpdateMembershipRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/users/lists/update-membership",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

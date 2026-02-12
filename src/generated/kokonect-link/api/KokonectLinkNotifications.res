@@ -26,15 +26,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:notifications*
 */
-let postNotificationsCreate = (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postNotificationsCreateResponse> => {
+let postNotificationsCreate = async (~body: postNotificationsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postNotificationsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postNotificationsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/notifications/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

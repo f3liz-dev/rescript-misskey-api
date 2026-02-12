@@ -18,29 +18,8 @@
 // You can override it by passing ~fetch to connect() for custom behavior
 // (e.g., adding performance metrics, retries, logging, etc.).
 
-// ============================================================================
-// Fetch Bindings
-// ============================================================================
-
 // Enable JSON schema for Sury
 S.enableJson()
-
-module FetchBindings = {
-  type response
-
-  type requestInit = {
-    method: string,
-    headers: dict<string>,
-    body: option<string>,
-  }
-
-  @val external fetch: (string, requestInit) => promise<response> = "fetch"
-
-  @send external json: response => promise<JSON.t> = "json"
-  @get external ok: response => bool = "ok"
-  @get external status: response => int = "status"
-  @get external statusText: response => string = "statusText"
-}
 
 // ============================================================================
 // Client & Configuration
@@ -56,50 +35,34 @@ type t = {
   mutable streamClient: option<StreamClient.t>,
 }
 
-// Default fetch implementation using the browser's Fetch API.
-// Constructs full URL from origin + endpoint path, sets JSON headers,
-// and injects the auth token into the request body (Misskey API convention).
-let defaultFetch = (~origin: string, ~token: option<string>) => {
-  (~url: string, ~method_: string, ~body: option<JSON.t>): Promise.t<JSON.t> => {
-    let fullUrl = `${origin}/api/${url}`
-
-    // Misskey injects the token into the request body
-    let bodyWithToken = switch (body, token) {
-    | (Some(jsonBody), Some(t)) =>
-      switch jsonBody->JSON.Decode.object {
-      | Some(obj) =>
-        obj->Dict.set("i", t->JSON.Encode.string)
-        Some(obj->JSON.Encode.object)
-      | None => body
-      }
-    | (None, Some(t)) =>
-      let obj = Dict.make()
+// Inject auth token into request body (Misskey API convention)
+let injectToken = (body: option<JSON.t>, token: option<string>): option<JSON.t> => {
+  switch (body, token) {
+  | (Some(jsonBody), Some(t)) =>
+    switch jsonBody->JSON.Decode.object {
+    | Some(obj) =>
       obj->Dict.set("i", t->JSON.Encode.string)
       Some(obj->JSON.Encode.object)
-    | _ => body
+    | None => body
     }
+  | (None, Some(t)) =>
+    let obj = Dict.make()
+    obj->Dict.set("i", t->JSON.Encode.string)
+    Some(obj->JSON.Encode.object)
+  | _ => body
+  }
+}
 
-    let bodyStr = bodyWithToken->Option.map(json => JSON.stringify(json))
-
-    let headers = Dict.make()
-    headers->Dict.set("Content-Type", "application/json")
-
-    FetchBindings.fetch(
-      fullUrl,
-      {
-        method: method_,
-        headers,
-        body: bodyStr,
-      },
-    )->Promise.then(response => {
-      if FetchBindings.ok(response) {
-        response->FetchBindings.json
-      } else {
-        let msg = `API error: ${FetchBindings.status(
-            response,
-          )->Int.toString} ${FetchBindings.statusText(response)}`
-        Promise.reject(JsExn(JsError.make(msg)->Obj.magic))
-      }
+// Default fetch implementation using ofetch.
+// Uses baseURL for origin, auto JSON parsing, and token injection.
+let defaultFetch = (~origin: string, ~token: option<string>) => {
+  (~url: string, ~method_: string, ~body: option<JSON.t>): Promise.t<JSON.t> => {
+    let bodyWithToken = injectToken(body, token)
+    Ofetch.ofetch(url, {
+      baseURL: `${origin}/api`,
+      method: method_,
+      body: ?bodyWithToken,
+      retry: 0,
     })
   }
 }
@@ -143,21 +106,23 @@ let wrapperConnect = (client: t): MisskeyIoWrapper.client => {
 ///
 /// Example:
 ///   let user = await client->Misskey.request("i", ())
-let request = (
+let request = async (
   client: t,
   endpoint: string,
   ~params: JSON.t=JSON.Encode.object(Dict.make()),
   (),
-): promise<result<JSON.t, string>> => {
-  client.fetchFn(~url=endpoint, ~method_="POST", ~body=Some(params))
-  ->Promise.then(json => Ok(json)->Promise.resolve)
-  ->Promise.catch(err => {
+): result<JSON.t, string> => {
+  try {
+    let json = await client.fetchFn(~url=endpoint, ~method_="POST", ~body=Some(params))
+    Ok(json)
+  } catch {
+  | err =>
     let msg = switch err->JsExn.fromException {
     | Some(jsExn) => JsExn.message(jsExn)->Option.getOr("Unknown error")
     | None => "Unknown error"
     }
-    Error(msg)->Promise.resolve
-  })
+    Error(msg)
+  }
 }
 
 /// Get current user info.
@@ -413,21 +378,20 @@ module Emojis = {
   }
 
   /// Get list of custom emojis from instance.
-  let list = (client: t): promise<result<array<customEmoji>, string>> => {
-    request(client, "emojis", ())->Promise.then(result => {
-      switch result {
-      | Ok(json) =>
-        switch json->JSON.Decode.object {
-        | Some(obj) =>
-          switch obj->Dict.get("emojis")->Option.flatMap(JSON.Decode.array) {
-          | Some(emojisArray) => Ok(emojisArray->Array.filterMap(decodeCustomEmoji))
-          | None => Ok([])
-          }
+  let list = async (client: t): result<array<customEmoji>, string> => {
+    let result = await request(client, "emojis", ())
+    switch result {
+    | Ok(json) =>
+      switch json->JSON.Decode.object {
+      | Some(obj) =>
+        switch obj->Dict.get("emojis")->Option.flatMap(JSON.Decode.array) {
+        | Some(emojisArray) => Ok(emojisArray->Array.filterMap(decodeCustomEmoji))
         | None => Ok([])
         }
-      | Error(e) => Error(e)
-      }->Promise.resolve
-    })
+      | None => Ok([])
+      }
+    | Error(e) => Error(e)
+    }
   }
 }
 
@@ -437,45 +401,42 @@ module Emojis = {
 
 module CustomTimelines = {
   /// Fetch user's antennas.
-  let antennas = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "antennas/list", ())->Promise.then(result => {
-      switch result {
-      | Ok(json) =>
-        switch json->JSON.Decode.array {
-        | Some(arr) => Ok(arr)
-        | None => Ok([])
-        }
-      | Error(e) => Error(e)
-      }->Promise.resolve
-    })
+  let antennas = async (client: t): result<array<JSON.t>, string> => {
+    let result = await request(client, "antennas/list", ())
+    switch result {
+    | Ok(json) =>
+      switch json->JSON.Decode.array {
+      | Some(arr) => Ok(arr)
+      | None => Ok([])
+      }
+    | Error(e) => Error(e)
+    }
   }
 
   /// Fetch user's lists.
-  let lists = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "users/lists/list", ())->Promise.then(result => {
-      switch result {
-      | Ok(json) =>
-        switch json->JSON.Decode.array {
-        | Some(arr) => Ok(arr)
-        | None => Ok([])
-        }
-      | Error(e) => Error(e)
-      }->Promise.resolve
-    })
+  let lists = async (client: t): result<array<JSON.t>, string> => {
+    let result = await request(client, "users/lists/list", ())
+    switch result {
+    | Ok(json) =>
+      switch json->JSON.Decode.array {
+      | Some(arr) => Ok(arr)
+      | None => Ok([])
+      }
+    | Error(e) => Error(e)
+    }
   }
 
   /// Fetch user's followed channels.
-  let channels = (client: t): promise<result<array<JSON.t>, string>> => {
-    request(client, "channels/followed", ())->Promise.then(result => {
-      switch result {
-      | Ok(json) =>
-        switch json->JSON.Decode.array {
-        | Some(arr) => Ok(arr)
-        | None => Ok([])
-        }
-      | Error(e) => Error(e)
-      }->Promise.resolve
-    })
+  let channels = async (client: t): result<array<JSON.t>, string> => {
+    let result = await request(client, "channels/followed", ())
+    switch result {
+    | Ok(json) =>
+      switch json->JSON.Decode.array {
+      | Some(arr) => Ok(arr)
+      | None => Ok([])
+      }
+    | Error(e) => Error(e)
+    }
   }
 
   /// Extract ID and name from a timeline item JSON.
@@ -589,15 +550,10 @@ module MiAuth = {
   }
 
   @val external encodeURIComponent: string => string = "encodeURIComponent"
+  @val @scope("crypto") external randomUUID: unit => string = "randomUUID"
 
   let generateSessionId = (): string => {
-    %raw(`
-      function() {
-        var a = new Uint8Array(16);
-        crypto.getRandomValues(a);
-        return Array.from(a, function(b) { return b.toString(16).padStart(2, '0'); }).join('');
-      }()
-    `)
+    randomUUID()->String.replaceAll("-", "")
   }
 
   /// Generate MiAuth URL for user authorization.
@@ -637,35 +593,22 @@ module MiAuth = {
   /// authorization is complete, and `{ok: false}` when still pending.
   let check = async (~origin: string, ~sessionId: string): result<checkResult, string> => {
     try {
-      let url = `${origin}/api/miauth/${sessionId}/check`
-
-      let headers = Dict.make()
-      headers->Dict.set("Content-Type", "application/json")
-
-      let response = await FetchBindings.fetch(url, {method: "POST", headers, body: Some("{}")})
-
-      if !FetchBindings.ok(response) {
-        Error(
-          `HTTP error: ${FetchBindings.status(response)->Int.toString} ${FetchBindings.statusText(
-              response,
-            )}`,
-        )
-      } else {
-        let json = await response->FetchBindings.json
-        switch json->JSON.Decode.object {
-        | Some(obj) =>
-          // Check the "ok" field in the response body
-          let isOk = obj->Dict.get("ok")->Option.flatMap(JSON.Decode.bool)->Option.getOr(false)
-          if isOk {
-            let token = obj->Dict.get("token")->Option.flatMap(JSON.Decode.string)
-            let user = obj->Dict.get("user")
-            Ok({token, user})
-          } else {
-            // Server explicitly says not authorized yet
-            Ok({token: None, user: None})
-          }
-        | None => Error("Unexpected response format")
+      let json = await Ofetch.ofetch(`${origin}/api/miauth/${sessionId}/check`, {
+        method: "POST",
+        body: JSON.Encode.object(Dict.make()),
+        retry: 0,
+      })
+      switch json->JSON.Decode.object {
+      | Some(obj) =>
+        let isOk = obj->Dict.get("ok")->Option.flatMap(JSON.Decode.bool)->Option.getOr(false)
+        if isOk {
+          let token = obj->Dict.get("token")->Option.flatMap(JSON.Decode.string)
+          let user = obj->Dict.get("user")
+          Ok({token, user})
+        } else {
+          Ok({token: None, user: None})
         }
+      | None => Error("Unexpected response format")
       }
     } catch {
     | err =>

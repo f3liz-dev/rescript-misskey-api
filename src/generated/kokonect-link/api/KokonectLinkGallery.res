@@ -32,17 +32,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postGalleryPosts = (~body: postGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsResponse> => {
+let postGalleryPosts = async (~body: postGalleryPostsRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postGalleryPostsResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/gallery/posts",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postGalleryPostsResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postGalleryPostsResponseSchema)
 }
 
 type postGalleryPostsCreateRequest = {
@@ -70,17 +67,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:gallery*
 */
-let postGalleryPostsCreate = (~body: postGalleryPostsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsCreateResponse> => {
+let postGalleryPostsCreate = async (~body: postGalleryPostsCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postGalleryPostsCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/gallery/posts/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postGalleryPostsCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postGalleryPostsCreateResponseSchema)
 }
 
 type postGalleryPostsShowRequest = {
@@ -102,17 +96,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postGalleryPostsShow = (~body: postGalleryPostsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsShowResponse> => {
+let postGalleryPostsShow = async (~body: postGalleryPostsShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postGalleryPostsShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/gallery/posts/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postGalleryPostsShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postGalleryPostsShowResponseSchema)
 }
 
 type postGalleryPostsUpdateRequest = {
@@ -142,15 +133,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:gallery*
 */
-let postGalleryPostsUpdate = (~body: postGalleryPostsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postGalleryPostsUpdateResponse> => {
+let postGalleryPostsUpdate = async (~body: postGalleryPostsUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postGalleryPostsUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postGalleryPostsUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/gallery/posts/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postGalleryPostsUpdateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postGalleryPostsUpdateResponseSchema)
 }

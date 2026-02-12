@@ -32,17 +32,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash*
 */
-let postFlashCreate = (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashCreateResponse> => {
+let postFlashCreate = async (~body: postFlashCreateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashCreateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashCreateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/create",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashCreateResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashCreateResponseSchema)
 }
 
 type postFlashFeaturedRequest = {
@@ -66,17 +63,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postFlashFeatured = (~body: postFlashFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashFeaturedResponse> => {
+let postFlashFeatured = async (~body: postFlashFeaturedRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashFeaturedResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashFeaturedRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/featured",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postFlashFeaturedResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postFlashFeaturedResponseSchema)
 }
 
 type postFlashLikeRequest = {
@@ -96,17 +90,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash-likes*
 */
-let postFlashLike = (~body: postFlashLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashLikeResponse> => {
+let postFlashLike = async (~body: postFlashLikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashLikeResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashLikeRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/like",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFlashUnlikeRequest = {
@@ -126,17 +117,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash-likes*
 */
-let postFlashUnlike = (~body: postFlashUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashUnlikeResponse> => {
+let postFlashUnlike = async (~body: postFlashUnlikeRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashUnlikeResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashUnlikeRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/unlike",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postFlashUpdateRequest = {
@@ -166,15 +154,12 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *write:flash*
 */
-let postFlashUpdate = (~body: postFlashUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postFlashUpdateResponse> => {
+let postFlashUpdate = async (~body: postFlashUpdateRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postFlashUpdateResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postFlashUpdateRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/flash/update",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

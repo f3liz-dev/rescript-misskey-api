@@ -24,17 +24,14 @@ Request a users password to be reset.
 
 **Credential required**: *No*
 */
-let postRequestResetPassword = (~body: postRequestResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRequestResetPasswordResponse> => {
+let postRequestResetPassword = async (~body: postRequestResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRequestResetPasswordResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRequestResetPasswordRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/request-reset-password",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postResetPasswordRequest = {
@@ -56,15 +53,12 @@ Complete the password reset that was previously requested.
 
 **Credential required**: *No*
 */
-let postResetPassword = (~body: postResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetPasswordResponse> => {
+let postResetPassword = async (~body: postResetPasswordRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postResetPasswordResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postResetPasswordRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/reset-password",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }

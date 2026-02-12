@@ -16,17 +16,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postRolesList = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesListResponse> => {
+let postRolesList = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRolesListResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/roles/list",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postRolesListResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postRolesListResponseSchema)
 }
 
 type postRolesNotesRequest = {
@@ -60,17 +57,14 @@ No description provided.
 
 **Credential required**: *Yes* / **Permission**: *read:account*
 */
-let postRolesNotes = (~body: postRolesNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesNotesResponse> => {
+let postRolesNotes = async (~body: postRolesNotesRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRolesNotesResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesNotesRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/roles/notes",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postRolesNotesResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postRolesNotesResponseSchema)
 }
 
 type postRolesShowRequest = {
@@ -92,17 +86,14 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postRolesShow = (~body: postRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesShowResponse> => {
+let postRolesShow = async (~body: postRolesShowRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRolesShowResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesShowRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/roles/show",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postRolesShowResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postRolesShowResponseSchema)
 }
 
 type postRolesUsersRequest = {
@@ -140,15 +131,12 @@ No description provided.
 
 **Credential required**: *No*
 */
-let postRolesUsers = (~body: postRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postRolesUsersResponse> => {
+let postRolesUsers = async (~body: postRolesUsersRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postRolesUsersResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postRolesUsersRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/roles/users",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postRolesUsersResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postRolesUsersResponseSchema)
 }

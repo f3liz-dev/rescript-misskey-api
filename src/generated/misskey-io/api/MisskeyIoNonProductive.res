@@ -14,17 +14,14 @@ Only available when running with <code>NODE_ENV=testing</code>. Reset the databa
 
 **Credential required**: *No*
 */
-let postResetDb = (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postResetDbResponse> => {
+let postResetDb = async (~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postResetDbResponse => {
 
-  fetch(
+  let response = await fetch(
     ~url="/reset-db",
     ~method_="POST",
     ~body=None,
-  )->Promise.then(response => {
+  )
   let _ = response
-  ()
-    ->Promise.resolve
-  })
 }
 
 type postTestRequest = {
@@ -66,15 +63,12 @@ Endpoint for testing input validation.
 
 **Credential required**: *No*
 */
-let postTest = (~body: postTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): promise<postTestResponse> => {
+let postTest = async (~body: postTestRequest, ~fetch: (~url: string, ~method_: string, ~body: option<JSON.t>) => Promise.t<JSON.t>): postTestResponse => {
   let jsonBody = body->S.reverseConvertToJsonOrThrow(postTestRequestSchema)
-  fetch(
+  let response = await fetch(
     ~url="/test",
     ~method_="POST",
     ~body=Some(jsonBody),
-  )->Promise.then(response => {
-  let value = response->S.parseOrThrow(postTestResponseSchema)
-  value
-    ->Promise.resolve
-  })
+  )
+  response->S.parseOrThrow(postTestResponseSchema)
 }
