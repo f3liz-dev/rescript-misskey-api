@@ -117,9 +117,28 @@ let request = async (
     Ok(json)
   } catch {
   | err =>
-    let msg = switch err->JsExn.fromException {
+    // ofetch attaches response data to error.data for non-2xx responses
+    let errorData: option<JSON.t> = (err->Obj.magic)["data"]
+    let baseMsg = switch err->JsExn.fromException {
     | Some(jsExn) => JsExn.message(jsExn)->Option.getOr("Unknown error")
     | None => "Unknown error"
+    }
+    let msg = switch errorData {
+    | Some(data) =>
+      switch data->JSON.Decode.object {
+      | Some(obj) =>
+        switch obj->Dict.get("error")->Option.flatMap(JSON.Decode.object) {
+        | Some(errObj) =>
+          let code =
+            errObj->Dict.get("code")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+          let message =
+            errObj->Dict.get("message")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+          `${baseMsg} [${code}] ${message}`
+        | None => baseMsg
+        }
+      | None => baseMsg
+      }
+    | None => baseMsg
     }
     Error(msg)
   }
@@ -132,6 +151,9 @@ let currentUser = (client: t): promise<result<JSON.t, string>> => {
 
 /// Get client origin (instance URL).
 let origin = (client: t): string => client.origin
+
+/// Get client authentication token.
+let token = (client: t): option<string> => client.token
 
 /// Close client and cleanup (close streaming connections).
 let close = (client: t): unit => {
@@ -165,6 +187,7 @@ module Notes = {
     ~localOnly: bool=false,
     ~replyId: option<string>=?,
     ~renoteId: option<string>=?,
+    ~fileIds: option<array<string>>=?,
     (),
   ): promise<result<JSON.t, string>> => {
     let params = Dict.make()
@@ -182,6 +205,9 @@ module Notes = {
     cw->Option.forEach(v => params->Dict.set("cw", v->JSON.Encode.string))
     replyId->Option.forEach(v => params->Dict.set("replyId", v->JSON.Encode.string))
     renoteId->Option.forEach(v => params->Dict.set("renoteId", v->JSON.Encode.string))
+    fileIds->Option.forEach(ids =>
+      params->Dict.set("fileIds", ids->Array.map(JSON.Encode.string)->JSON.Encode.array)
+    )
 
     request(client, "notes/create", ~params=params->JSON.Encode.object, ())
   }
@@ -257,11 +283,88 @@ module Notes = {
     params->Dict.set("noteId", noteId->JSON.Encode.string)
     request(client, "notes/reactions/delete", ~params=params->JSON.Encode.object, ())
   }
+
+  /// Get a single note by ID.
+  let show = (client: t, noteId: string): promise<result<JSON.t, string>> => {
+    let params = Dict.make()
+    params->Dict.set("noteId", noteId->JSON.Encode.string)
+    request(client, "notes/show", ~params=params->JSON.Encode.object, ())
+  }
+
+  /// Get replies/children of a note.
+  let children = (
+    client: t,
+    noteId: string,
+    ~limit: int=30,
+    ~sinceId: option<string>=?,
+    ~untilId: option<string>=?,
+    (),
+  ): promise<result<JSON.t, string>> => {
+    let params = Dict.make()
+    params->Dict.set("noteId", noteId->JSON.Encode.string)
+    params->Dict.set("limit", limit->JSON.Encode.int)
+    sinceId->Option.forEach(v => params->Dict.set("sinceId", v->JSON.Encode.string))
+    untilId->Option.forEach(v => params->Dict.set("untilId", v->JSON.Encode.string))
+    request(client, "notes/children", ~params=params->JSON.Encode.object, ())
+  }
+
+  /// Get the conversation thread (parent notes) for a note.
+  let conversation = (
+    client: t,
+    noteId: string,
+    ~limit: int=30,
+    (),
+  ): promise<result<JSON.t, string>> => {
+    let params = Dict.make()
+    params->Dict.set("noteId", noteId->JSON.Encode.string)
+    params->Dict.set("limit", limit->JSON.Encode.int)
+    request(client, "notes/conversation", ~params=params->JSON.Encode.object, ())
+  }
 }
 
 // ============================================================================
-// Stream API - Real-time updates via WebSocket
+// Users API
 // ============================================================================
+
+module Users = {
+  /// Get user profile by username (and optional host for remote users).
+  let show = (
+    client: t,
+    ~userId: option<string>=?,
+    ~username: option<string>=?,
+    ~host: option<string>=?,
+    (),
+  ): promise<result<JSON.t, string>> => {
+    let params = Dict.make()
+    userId->Option.forEach(v => params->Dict.set("userId", v->JSON.Encode.string))
+    username->Option.forEach(v => params->Dict.set("username", v->JSON.Encode.string))
+    host->Option.forEach(v => params->Dict.set("host", v->JSON.Encode.string))
+    request(client, "users/show", ~params=params->JSON.Encode.object, ())
+  }
+
+  /// Get notes posted by a user.
+  let notes = (
+    client: t,
+    userId: string,
+    ~limit: int=20,
+    ~withReplies: bool=false,
+    ~withRenotes: bool=true,
+    ~withFiles: bool=false,
+    ~sinceId: option<string>=?,
+    ~untilId: option<string>=?,
+    (),
+  ): promise<result<JSON.t, string>> => {
+    let params = Dict.make()
+    params->Dict.set("userId", userId->JSON.Encode.string)
+    params->Dict.set("limit", limit->JSON.Encode.int)
+    params->Dict.set("withReplies", withReplies->JSON.Encode.bool)
+    params->Dict.set("withRenotes", withRenotes->JSON.Encode.bool)
+    params->Dict.set("withFiles", withFiles->JSON.Encode.bool)
+    sinceId->Option.forEach(v => params->Dict.set("sinceId", v->JSON.Encode.string))
+    untilId->Option.forEach(v => params->Dict.set("untilId", v->JSON.Encode.string))
+    request(client, "users/notes", ~params=params->JSON.Encode.object, ())
+  }
+}
 
 module Stream = {
   type subscription = {dispose: unit => unit}
@@ -660,6 +763,166 @@ let isPermissionDenied = (error: JSON.t): bool => {
 }
 
 /// Check if error is an API error and extract error info.
+// ============================================================================
+// Instance Meta API
+// ============================================================================
+
+module Meta = {
+  type meta = {
+    swPublickey: option<string>,
+  }
+
+  /// Get instance metadata (includes VAPID public key for push notifications).
+  let get = async (client: t): result<meta, string> => {
+    switch await request(client, "meta", ()) {
+    | Ok(json) =>
+      switch json->JSON.Decode.object {
+      | Some(obj) =>
+        Ok({
+          swPublickey: obj
+          ->Dict.get("swPublickey")
+          ->Option.flatMap(JSON.Decode.string),
+        })
+      | None => Error("Invalid meta response")
+      }
+    | Error(e) => Error(e)
+    }
+  }
+}
+
+// ============================================================================
+// Service Worker (Push Notification) API
+// ============================================================================
+
+module Sw = {
+  type registration = {
+    state: option<string>,
+    key: option<string>,
+    userId: string,
+    endpoint: string,
+    sendReadMessage: bool,
+  }
+
+  /// Register a push notification endpoint with the Misskey instance.
+  let register = async (
+    client: t,
+    ~endpoint: string,
+    ~auth: string,
+    ~publickey: string,
+    ~sendReadMessage: bool=false,
+    (),
+  ): result<registration, string> => {
+    let params = Dict.make()
+    params->Dict.set("endpoint", endpoint->JSON.Encode.string)
+    params->Dict.set("auth", auth->JSON.Encode.string)
+    params->Dict.set("publickey", publickey->JSON.Encode.string)
+    params->Dict.set("sendReadMessage", sendReadMessage->JSON.Encode.bool)
+    switch await request(client, "sw/register", ~params=params->JSON.Encode.object, ()) {
+    | Ok(json) =>
+      switch json->JSON.Decode.object {
+      | Some(obj) =>
+        Ok({
+          state: obj->Dict.get("state")->Option.flatMap(JSON.Decode.string),
+          key: obj->Dict.get("key")->Option.flatMap(JSON.Decode.string),
+          userId: obj->Dict.get("userId")->Option.flatMap(JSON.Decode.string)->Option.getOr(""),
+          endpoint: obj->Dict.get("endpoint")->Option.flatMap(JSON.Decode.string)->Option.getOr(""),
+          sendReadMessage: obj
+          ->Dict.get("sendReadMessage")
+          ->Option.flatMap(JSON.Decode.bool)
+          ->Option.getOr(false),
+        })
+      | None => Error("Invalid sw/register response")
+      }
+    | Error(e) => Error(e)
+    }
+  }
+
+  /// Unregister a push notification endpoint.
+  let unregister = async (client: t, ~endpoint: string): result<unit, string> => {
+    let params = Dict.make()
+    params->Dict.set("endpoint", endpoint->JSON.Encode.string)
+    switch await request(client, "sw/unregister", ~params=params->JSON.Encode.object, ()) {
+    | Ok(_) => Ok()
+    | Error(e) => Error(e)
+    }
+  }
+}
+
+// ============================================================================
+// Webhooks API
+// ============================================================================
+
+module Webhooks = {
+  type webhook = {
+    id: string,
+    name: string,
+    url: string,
+    active: bool,
+  }
+
+  /// Create a webhook on the Misskey instance.
+  let create = async (
+    client: t,
+    ~name: string,
+    ~url: string,
+    ~secret: string,
+    ~on: array<string>,
+    (),
+  ): result<webhook, string> => {
+    let params = Dict.make()
+    params->Dict.set("name", name->JSON.Encode.string)
+    params->Dict.set("url", url->JSON.Encode.string)
+    params->Dict.set("secret", secret->JSON.Encode.string)
+    params->Dict.set("on", on->Array.map(JSON.Encode.string)->JSON.Encode.array)
+    switch await request(client, "i/webhooks/create", ~params=params->JSON.Encode.object, ()) {
+    | Ok(json) =>
+      switch json->JSON.Decode.object {
+      | Some(obj) =>
+        let id = obj->Dict.get("id")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+        let name = obj->Dict.get("name")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+        let url = obj->Dict.get("url")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+        let active = obj->Dict.get("active")->Option.flatMap(JSON.Decode.bool)->Option.getOr(false)
+        Ok({id, name, url, active})
+      | None => Error("Invalid webhook response")
+      }
+    | Error(e) => Error(e)
+    }
+  }
+
+  /// Delete a webhook by ID.
+  let delete = async (client: t, ~webhookId: string): result<unit, string> => {
+    let params = Dict.make()
+    params->Dict.set("webhookId", webhookId->JSON.Encode.string)
+    switch await request(client, "i/webhooks/delete", ~params=params->JSON.Encode.object, ()) {
+    | Ok(_) => Ok()
+    | Error(e) => Error(e)
+    }
+  }
+
+  /// List webhooks for the current user.
+  let list = async (client: t): result<array<webhook>, string> => {
+    switch await request(client, "i/webhooks/list", ()) {
+    | Ok(json) =>
+      switch json->JSON.Decode.array {
+      | Some(arr) =>
+        Ok(arr->Array.filterMap(item => {
+          switch item->JSON.Decode.object {
+          | Some(obj) =>
+            let id = obj->Dict.get("id")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+            let name = obj->Dict.get("name")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+            let url = obj->Dict.get("url")->Option.flatMap(JSON.Decode.string)->Option.getOr("")
+            let active = obj->Dict.get("active")->Option.flatMap(JSON.Decode.bool)->Option.getOr(false)
+            Some({id, name, url, active})
+          | None => None
+          }
+        }))
+      | None => Ok([])
+      }
+    | Error(e) => Error(e)
+    }
+  }
+}
+
 let isAPIError = (error: JSON.t): option<apiError> => {
   switch error->JSON.Decode.object {
   | Some(obj) =>
@@ -672,6 +935,72 @@ let isAPIError = (error: JSON.t): option<apiError> => {
     | _ => None
     }
   | None => None
+  }
+}
+
+// ============================================================================
+// Drive API
+// ============================================================================
+// NOTE: All HTTP calls in this module (and throughout Misskey.res) should use
+// `Ofetch.ofetch` rather than raw `fetch`.  ofetch handles JSON parsing,
+// non-2xx error throwing, and runtime FormData detection automatically, which
+// avoids the pitfall of calling `response.json()` on non-standard objects.
+
+module Drive = {
+  /// Upload a File object to the Misskey drive.
+  /// Returns the drive file ID on success.
+  let upload = async (client: t, ~file: {..}, ~sensitive: bool=false, ()): result<string, string> => {
+    try {
+      let fd: {..} = %raw(`new FormData()`)
+      fd["append"]("file", file)
+      client.token->Option.forEach(tok => fd["append"]("i", tok))
+      if sensitive { fd["append"]("isSensitive", "true") }
+
+      let endpoint = client.origin ++ "/api/drive/files/create"
+      // Cast FormData to JSON.t so ofetch can accept it;
+      // ofetch detects FormData at runtime and sends multipart/form-data correctly.
+      let json = await Ofetch.ofetch(endpoint, {
+        method: "POST",
+        body: fd->Obj.magic,
+      })
+
+      switch json->JSON.Decode.object->Option.flatMap(obj => obj->Dict.get("id")) {
+      | Some(idJson) =>
+        switch idJson->JSON.Decode.string {
+        | Some(id) => Ok(id)
+        | None => Error("Drive upload: id is not a string")
+        }
+      | None =>
+        let errDetail =
+          json
+          ->JSON.Decode.object
+          ->Option.flatMap(obj => obj->Dict.get("error"))
+          ->Option.flatMap(JSON.Decode.object)
+          ->Option.flatMap(obj => obj->Dict.get("message"))
+          ->Option.flatMap(JSON.Decode.string)
+        let statusCode =
+          json
+          ->JSON.Decode.object
+          ->Option.flatMap(obj => obj->Dict.get("error"))
+          ->Option.flatMap(JSON.Decode.object)
+          ->Option.flatMap(obj => obj->Dict.get("code"))
+          ->Option.flatMap(JSON.Decode.string)
+        let msg = switch (statusCode, errDetail) {
+        | (Some(code), Some(detail)) => code ++ ": " ++ detail
+        | (None, Some(detail)) => detail
+        | (Some(code), None) => "Upload error: " ++ code
+        | (None, None) => "Unknown upload error"
+        }
+        Error(msg)
+      }
+    } catch {
+    | err =>
+      let msg = switch err->JsExn.fromException {
+      | Some(jsExn) => JsExn.message(jsExn)->Option.getOr("Drive upload failed")
+      | None => "Drive upload failed"
+      }
+      Error(msg)
+    }
   }
 }
 
