@@ -1,8 +1,8 @@
 # @f3liz/rescript-misskey-api
 
-Type-safe Misskey API bindings for ReScript and TypeScript, generated from OpenAPI specs.
+Type-safe Misskey API bindings for ReScript, generated from OpenAPI specs.
 
-Supports Misskey and Cherrypick instances. All endpoints are fully typed.
+Supports Misskey instances. All endpoints are fully typed.
 
 ## Usage
 
@@ -16,17 +16,6 @@ await client->Misskey.Notes.create("Hello, Misskey!", ())
 
 // Read timeline
 let notes = await client->Misskey.Notes.timeline(#home, ~limit=20, ())
-```
-
-### TypeScript
-
-```typescript
-import Misskey from '@f3liz/rescript-misskey-api';
-
-const client = new Misskey('https://misskey.io', 'your-token');
-
-await client.notes.create("Hello from TypeScript!");
-const notes = await client.notes.timeline('home', { limit: 20 });
 ```
 
 ## Installation
@@ -69,15 +58,6 @@ let result = await Admin.postAdminShowUser({userId: "..."}, ~client=wrapperClien
 ```rescript
 let client = Cherrypick.connect("https://kokonect.link", ~token="...")
 await client->Cherrypick.Notes.create("Hello Cherrypick!", ())
-```
-
-### Full Generated API (TypeScript)
-
-```typescript
-import { MisskeyClient, Notes } from '@f3liz/rescript-misskey-api';
-
-const client = new MisskeyClient('https://misskey.io', 'your-token');
-await Notes.postNotesCreate(client, { text: 'Hello', visibility: 'public' });
 ```
 
 ## Regenerating Bindings
