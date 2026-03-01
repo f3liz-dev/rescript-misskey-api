@@ -1,6 +1,6 @@
 {
   "name": "@f3liz/rescript-misskey-api",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "ReScript bindings for Misskey API using OpenAPI code generation",
   "keywords": [
     "misskey",
@@ -12,16 +12,8 @@
   ],
   "author": "NyanRus",
   "license": "MIT",
-  "main": "lib/ts/Misskey.js",
-  "module": "lib/ts/Misskey.js",
-  "types": "lib/ts/Misskey.d.ts",
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./lib/ts/Misskey.d.ts",
-      "import": "./lib/ts/Misskey.js",
-      "default": "./lib/ts/Misskey.js"
-    },
     "./lib/*": "./lib/*",
     "./src/*": "./src/*"
   },
