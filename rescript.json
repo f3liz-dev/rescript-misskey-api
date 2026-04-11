@@ -14,7 +14,8 @@
       "subdirs": true
     },
     "src/bindings",
-    "src/stream"
+    "src/stream",
+    "src/views"
   ],
   "package-specs": [
     {

@@ -947,23 +947,15 @@ let isAPIError = (error: JSON.t): option<apiError> => {
 // avoids the pitfall of calling `response.json()` on non-standard objects.
 
 module Drive = {
-  /// Upload a File object to the Misskey drive.
-  /// Returns the drive file ID on success.
-  let upload = async (client: t, ~file: {..}, ~sensitive: bool=false, ()): result<string, string> => {
-    try {
-      let fd: {..} = %raw(`new FormData()`)
-      fd["append"]("file", file)
-      client.token->Option.forEach(tok => fd["append"]("i", tok))
-      if sensitive { fd["append"]("isSensitive", "true") }
+  type uploadProgress = {
+    loaded: float,
+    total: float,
+  }
 
-      let endpoint = client.origin ++ "/api/drive/files/create"
-      // Cast FormData to JSON.t so ofetch can accept it;
-      // ofetch detects FormData at runtime and sends multipart/form-data correctly.
-      let json = await Ofetch.ofetch(endpoint, {
-        method: "POST",
-        body: fd->Obj.magic,
-      })
-
+  let parseResponse = (responseText: string): result<string, string> => {
+    switch responseText->JSON.parseOrThrow {
+    | exception _ => Error("Drive upload: invalid JSON response")
+    | json =>
       switch json->JSON.Decode.object->Option.flatMap(obj => obj->Dict.get("id")) {
       | Some(idJson) =>
         switch idJson->JSON.Decode.string {
@@ -971,20 +963,13 @@ module Drive = {
         | None => Error("Drive upload: id is not a string")
         }
       | None =>
-        let errDetail =
+        let errObj =
           json
           ->JSON.Decode.object
           ->Option.flatMap(obj => obj->Dict.get("error"))
           ->Option.flatMap(JSON.Decode.object)
-          ->Option.flatMap(obj => obj->Dict.get("message"))
-          ->Option.flatMap(JSON.Decode.string)
-        let statusCode =
-          json
-          ->JSON.Decode.object
-          ->Option.flatMap(obj => obj->Dict.get("error"))
-          ->Option.flatMap(JSON.Decode.object)
-          ->Option.flatMap(obj => obj->Dict.get("code"))
-          ->Option.flatMap(JSON.Decode.string)
+        let errDetail = errObj->Option.flatMap(obj => obj->Dict.get("message"))->Option.flatMap(JSON.Decode.string)
+        let statusCode = errObj->Option.flatMap(obj => obj->Dict.get("code"))->Option.flatMap(JSON.Decode.string)
         let msg = switch (statusCode, errDetail) {
         | (Some(code), Some(detail)) => code ++ ": " ++ detail
         | (None, Some(detail)) => detail
@@ -993,14 +978,51 @@ module Drive = {
         }
         Error(msg)
       }
-    } catch {
-    | err =>
-      let msg = switch err->JsExn.fromException {
-      | Some(jsExn) => JsExn.message(jsExn)->Option.getOr("Drive upload failed")
-      | None => "Drive upload failed"
-      }
-      Error(msg)
     }
+  }
+
+  /// Upload a File object to the Misskey drive.
+  /// Returns the drive file ID on success.
+  /// Optionally accepts ~onProgress for tracking upload progress.
+  let upload = (
+    client: t,
+    ~file: {..},
+    ~sensitive: bool=false,
+    ~onProgress: option<uploadProgress => unit>=?,
+    (),
+  ): promise<result<string, string>> => {
+    let fd: {..} = %raw(`new FormData()`)
+    ignore(fd["append"]("file", file))
+    client.token->Option.forEach(tok => ignore(fd["append"]("i", tok)))
+    if sensitive { ignore(fd["append"]("isSensitive", "true")) }
+
+    let endpoint = client.origin ++ "/api/drive/files/create"
+
+    Promise.make((resolve, _reject) => {
+      let xhr: {..} = %raw(`new XMLHttpRequest()`)
+      ignore(xhr["open"]("POST", endpoint))
+
+      onProgress->Option.forEach(callback => {
+        xhr["upload"]["onprogress"] = (e: {..}) => {
+          callback({loaded: e["loaded"], total: e["total"]})
+        }
+      })
+
+      xhr["onload"] = () => {
+        let status: int = xhr["status"]
+        if status >= 200 && status < 300 {
+          resolve(parseResponse(xhr["responseText"]))
+        } else {
+          resolve(Error("Drive upload failed with status " ++ Int.toString(status)))
+        }
+      }
+
+      xhr["onerror"] = () => {
+        resolve(Error("Drive upload: network error"))
+      }
+
+      ignore(xhr["send"](fd))
+    })
   }
 }
 
