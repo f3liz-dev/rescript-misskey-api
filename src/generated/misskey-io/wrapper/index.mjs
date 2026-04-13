@@ -1,32 +1,32 @@
 // Generated wrapper
-import * as Admin from '../../generated/misskey-io/Admin.mjs';
-import * as Default from '../../generated/misskey-io/Default.mjs';
-import * as Meta from '../../generated/misskey-io/Meta.mjs';
-import * as Webhooks from '../../generated/misskey-io/Webhooks.mjs';
-import * as Antennas from '../../generated/misskey-io/Antennas.mjs';
-import * as Federation from '../../generated/misskey-io/Federation.mjs';
-import * as App from '../../generated/misskey-io/App.mjs';
-import * as Auth from '../../generated/misskey-io/Auth.mjs';
-import * as Account from '../../generated/misskey-io/Account.mjs';
-import * as Channels from '../../generated/misskey-io/Channels.mjs';
-import * as Notes from '../../generated/misskey-io/Notes.mjs';
-import * as Charts from '../../generated/misskey-io/Charts.mjs';
-import * as Clips from '../../generated/misskey-io/Clips.mjs';
-import * as Clip from '../../generated/misskey-io/Clip.mjs';
-import * as Drive from '../../generated/misskey-io/Drive.mjs';
-import * as Users from '../../generated/misskey-io/Users.mjs';
-import * as Flash from '../../generated/misskey-io/Flash.mjs';
-import * as Flashs from '../../generated/misskey-io/Flashs.mjs';
-import * as Following from '../../generated/misskey-io/Following.mjs';
-import * as Gallery from '../../generated/misskey-io/Gallery.mjs';
-import * as Hashtags from '../../generated/misskey-io/Hashtags.mjs';
-import * as Reactions from '../../generated/misskey-io/Reactions.mjs';
-import * as Notifications from '../../generated/misskey-io/Notifications.mjs';
-import * as Pages from '../../generated/misskey-io/Pages.mjs';
-import * as ResetPassword from '../../generated/misskey-io/ResetPassword.mjs';
-import * as NonProductive from '../../generated/misskey-io/NonProductive.mjs';
-import * as Role from '../../generated/misskey-io/Role.mjs';
-import * as Lists from '../../generated/misskey-io/Lists.mjs';
+import * as AdminApi from '../api/MisskeyIoAdmin.res.mjs';
+import * as DefaultApi from '../api/MisskeyIoDefault.res.mjs';
+import * as MetaApi from '../api/MisskeyIoMeta.res.mjs';
+import * as WebhooksApi from '../api/MisskeyIoWebhooks.res.mjs';
+import * as AntennasApi from '../api/MisskeyIoAntennas.res.mjs';
+import * as FederationApi from '../api/MisskeyIoFederation.res.mjs';
+import * as AppApi from '../api/MisskeyIoApp.res.mjs';
+import * as AuthApi from '../api/MisskeyIoAuth.res.mjs';
+import * as AccountApi from '../api/MisskeyIoAccount.res.mjs';
+import * as ChannelsApi from '../api/MisskeyIoChannels.res.mjs';
+import * as NotesApi from '../api/MisskeyIoNotes.res.mjs';
+import * as ChartsApi from '../api/MisskeyIoCharts.res.mjs';
+import * as ClipsApi from '../api/MisskeyIoClips.res.mjs';
+import * as ClipApi from '../api/MisskeyIoClip.res.mjs';
+import * as DriveApi from '../api/MisskeyIoDrive.res.mjs';
+import * as UsersApi from '../api/MisskeyIoUsers.res.mjs';
+import * as FlashApi from '../api/MisskeyIoFlash.res.mjs';
+import * as FlashsApi from '../api/MisskeyIoFlashs.res.mjs';
+import * as FollowingApi from '../api/MisskeyIoFollowing.res.mjs';
+import * as GalleryApi from '../api/MisskeyIoGallery.res.mjs';
+import * as HashtagsApi from '../api/MisskeyIoHashtags.res.mjs';
+import * as ReactionsApi from '../api/MisskeyIoReactions.res.mjs';
+import * as NotificationsApi from '../api/MisskeyIoNotifications.res.mjs';
+import * as PagesApi from '../api/MisskeyIoPages.res.mjs';
+import * as ResetPasswordApi from '../api/MisskeyIoResetPassword.res.mjs';
+import * as NonProductiveApi from '../api/MisskeyIoNonProductive.res.mjs';
+import * as RoleApi from '../api/MisskeyIoRole.res.mjs';
+import * as ListsApi from '../api/MisskeyIoLists.res.mjs';
 export class MisskeyClient {
   constructor(baseUrl, token) {
     this.baseUrl = baseUrl;
@@ -49,537 +49,537 @@ export class MisskeyClient {
 
 export const Admin = {
   async postAdminAbuseReportResolverCreate(client, request) {
-    return Admin.postAdminAbuseReportResolverCreate({
+    return AdminApi.postAdminAbuseReportResolverCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportResolverDelete(client, request) {
-    return Admin.postAdminAbuseReportResolverDelete({
+    return AdminApi.postAdminAbuseReportResolverDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportResolverList(client, request) {
-    return Admin.postAdminAbuseReportResolverList({
+    return AdminApi.postAdminAbuseReportResolverList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportResolverUpdate(client, request) {
-    return Admin.postAdminAbuseReportResolverUpdate({
+    return AdminApi.postAdminAbuseReportResolverUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportNotificationRecipientCreate(client, request) {
-    return Admin.postAdminAbuseReportNotificationRecipientCreate({
+    return AdminApi.postAdminAbuseReportNotificationRecipientCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportNotificationRecipientDelete(client, request) {
-    return Admin.postAdminAbuseReportNotificationRecipientDelete({
+    return AdminApi.postAdminAbuseReportNotificationRecipientDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportNotificationRecipientList(client, request) {
-    return Admin.postAdminAbuseReportNotificationRecipientList({
+    return AdminApi.postAdminAbuseReportNotificationRecipientList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportNotificationRecipientShow(client, request) {
-    return Admin.postAdminAbuseReportNotificationRecipientShow({
+    return AdminApi.postAdminAbuseReportNotificationRecipientShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseReportNotificationRecipientUpdate(client, request) {
-    return Admin.postAdminAbuseReportNotificationRecipientUpdate({
+    return AdminApi.postAdminAbuseReportNotificationRecipientUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAbuseUserReports(client, request) {
-    return Admin.postAdminAbuseUserReports({
+    return AdminApi.postAdminAbuseUserReports({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAccountsCreate(client, request) {
-    return Admin.postAdminAccountsCreate({
+    return AdminApi.postAdminAccountsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAccountsDelete(client, request) {
-    return Admin.postAdminAccountsDelete({
+    return AdminApi.postAdminAccountsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAccountsFindByEmail(client, request) {
-    return Admin.postAdminAccountsFindByEmail({
+    return AdminApi.postAdminAccountsFindByEmail({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAccountsPendingList(client, request) {
-    return Admin.postAdminAccountsPendingList({
+    return AdminApi.postAdminAccountsPendingList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAccountsPendingRevoke(client, request) {
-    return Admin.postAdminAccountsPendingRevoke({
+    return AdminApi.postAdminAccountsPendingRevoke({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAdCreate(client, request) {
-    return Admin.postAdminAdCreate({
+    return AdminApi.postAdminAdCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAdDelete(client, request) {
-    return Admin.postAdminAdDelete({
+    return AdminApi.postAdminAdDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAdList(client, request) {
-    return Admin.postAdminAdList({
+    return AdminApi.postAdminAdList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAdUpdate(client, request) {
-    return Admin.postAdminAdUpdate({
+    return AdminApi.postAdminAdUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAnnouncementsCreate(client, request) {
-    return Admin.postAdminAnnouncementsCreate({
+    return AdminApi.postAdminAnnouncementsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAnnouncementsDelete(client, request) {
-    return Admin.postAdminAnnouncementsDelete({
+    return AdminApi.postAdminAnnouncementsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAnnouncementsList(client, request) {
-    return Admin.postAdminAnnouncementsList({
+    return AdminApi.postAdminAnnouncementsList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAnnouncementsUpdate(client, request) {
-    return Admin.postAdminAnnouncementsUpdate({
+    return AdminApi.postAdminAnnouncementsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAvatarDecorationsCreate(client, request) {
-    return Admin.postAdminAvatarDecorationsCreate({
+    return AdminApi.postAdminAvatarDecorationsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAvatarDecorationsDelete(client, request) {
-    return Admin.postAdminAvatarDecorationsDelete({
+    return AdminApi.postAdminAvatarDecorationsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAvatarDecorationsList(client, request) {
-    return Admin.postAdminAvatarDecorationsList({
+    return AdminApi.postAdminAvatarDecorationsList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminAvatarDecorationsUpdate(client, request) {
-    return Admin.postAdminAvatarDecorationsUpdate({
+    return AdminApi.postAdminAvatarDecorationsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminCaptchaCurrent(client) {
-    return Admin.postAdminCaptchaCurrent({
+    return AdminApi.postAdminCaptchaCurrent({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminCaptchaSave(client, request) {
-    return Admin.postAdminCaptchaSave({
+    return AdminApi.postAdminCaptchaSave({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminDriveCleanRemoteFiles(client) {
-    return Admin.postAdminDriveCleanRemoteFiles({
+    return AdminApi.postAdminDriveCleanRemoteFiles({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminDriveCleanup(client) {
-    return Admin.postAdminDriveCleanup({
+    return AdminApi.postAdminDriveCleanup({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminDriveDeleteAllFilesOfAUser(client, request) {
-    return Admin.postAdminDriveDeleteAllFilesOfAUser({
+    return AdminApi.postAdminDriveDeleteAllFilesOfAUser({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminDriveFiles(client, request) {
-    return Admin.postAdminDriveFiles({
+    return AdminApi.postAdminDriveFiles({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminDriveShowFile(client, request) {
-    return Admin.postAdminDriveShowFile({
+    return AdminApi.postAdminDriveShowFile({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiAdd(client, request) {
-    return Admin.postAdminEmojiAdd({
+    return AdminApi.postAdminEmojiAdd({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiAddAliasesBulk(client, request) {
-    return Admin.postAdminEmojiAddAliasesBulk({
+    return AdminApi.postAdminEmojiAddAliasesBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiCopy(client, request) {
-    return Admin.postAdminEmojiCopy({
+    return AdminApi.postAdminEmojiCopy({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiDelete(client, request) {
-    return Admin.postAdminEmojiDelete({
+    return AdminApi.postAdminEmojiDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiDeleteBulk(client, request) {
-    return Admin.postAdminEmojiDeleteBulk({
+    return AdminApi.postAdminEmojiDeleteBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiList(client, request) {
-    return Admin.postAdminEmojiList({
+    return AdminApi.postAdminEmojiList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiListRemote(client, request) {
-    return Admin.postAdminEmojiListRemote({
+    return AdminApi.postAdminEmojiListRemote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiRemoveAliasesBulk(client, request) {
-    return Admin.postAdminEmojiRemoveAliasesBulk({
+    return AdminApi.postAdminEmojiRemoveAliasesBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiSetAliasesBulk(client, request) {
-    return Admin.postAdminEmojiSetAliasesBulk({
+    return AdminApi.postAdminEmojiSetAliasesBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiSetCategoryBulk(client, request) {
-    return Admin.postAdminEmojiSetCategoryBulk({
+    return AdminApi.postAdminEmojiSetCategoryBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiSetLicenseBulk(client, request) {
-    return Admin.postAdminEmojiSetLicenseBulk({
+    return AdminApi.postAdminEmojiSetLicenseBulk({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminEmojiUpdate(client, request) {
-    return Admin.postAdminEmojiUpdate({
+    return AdminApi.postAdminEmojiUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminFederationDeleteAllFiles(client, request) {
-    return Admin.postAdminFederationDeleteAllFiles({
+    return AdminApi.postAdminFederationDeleteAllFiles({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminFederationRefreshRemoteInstanceMetadata(client, request) {
-    return Admin.postAdminFederationRefreshRemoteInstanceMetadata({
+    return AdminApi.postAdminFederationRefreshRemoteInstanceMetadata({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminFederationRemoveAllFollowing(client, request) {
-    return Admin.postAdminFederationRemoveAllFollowing({
+    return AdminApi.postAdminFederationRemoveAllFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminFederationUpdateInstance(client, request) {
-    return Admin.postAdminFederationUpdateInstance({
+    return AdminApi.postAdminFederationUpdateInstance({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminForwardAbuseUserReport(client, request) {
-    return Admin.postAdminForwardAbuseUserReport({
+    return AdminApi.postAdminForwardAbuseUserReport({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminGetIndexStats(client) {
-    return Admin.postAdminGetIndexStats({
+    return AdminApi.postAdminGetIndexStats({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminGetTableStats(client) {
-    return Admin.postAdminGetTableStats({
+    return AdminApi.postAdminGetTableStats({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminGetUserIps(client, request) {
-    return Admin.postAdminGetUserIps({
+    return AdminApi.postAdminGetUserIps({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminIndieAuthCreate(client, request) {
-    return Admin.postAdminIndieAuthCreate({
+    return AdminApi.postAdminIndieAuthCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminIndieAuthDelete(client, request) {
-    return Admin.postAdminIndieAuthDelete({
+    return AdminApi.postAdminIndieAuthDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminIndieAuthList(client, request) {
-    return Admin.postAdminIndieAuthList({
+    return AdminApi.postAdminIndieAuthList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminIndieAuthUpdate(client, request) {
-    return Admin.postAdminIndieAuthUpdate({
+    return AdminApi.postAdminIndieAuthUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminInviteCreate(client, request) {
-    return Admin.postAdminInviteCreate({
+    return AdminApi.postAdminInviteCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminInviteList(client, request) {
-    return Admin.postAdminInviteList({
+    return AdminApi.postAdminInviteList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminPromoCreate(client, request) {
-    return Admin.postAdminPromoCreate({
+    return AdminApi.postAdminPromoCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminQueueClear(client, request) {
-    return Admin.postAdminQueueClear({
+    return AdminApi.postAdminQueueClear({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminQueueDeliverDelayed(client) {
-    return Admin.postAdminQueueDeliverDelayed({
+    return AdminApi.postAdminQueueDeliverDelayed({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminQueueInboxDelayed(client) {
-    return Admin.postAdminQueueInboxDelayed({
+    return AdminApi.postAdminQueueInboxDelayed({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminQueuePromote(client, request) {
-    return Admin.postAdminQueuePromote({
+    return AdminApi.postAdminQueuePromote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminQueueStats(client) {
-    return Admin.postAdminQueueStats({
+    return AdminApi.postAdminQueueStats({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRegenerateUserToken(client, request) {
-    return Admin.postAdminRegenerateUserToken({
+    return AdminApi.postAdminRegenerateUserToken({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRelaysAdd(client, request) {
-    return Admin.postAdminRelaysAdd({
+    return AdminApi.postAdminRelaysAdd({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRelaysList(client) {
-    return Admin.postAdminRelaysList({
+    return AdminApi.postAdminRelaysList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRelaysRemove(client, request) {
-    return Admin.postAdminRelaysRemove({
+    return AdminApi.postAdminRelaysRemove({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminResetPassword(client, request) {
-    return Admin.postAdminResetPassword({
+    return AdminApi.postAdminResetPassword({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminResolveAbuseUserReport(client, request) {
-    return Admin.postAdminResolveAbuseUserReport({
+    return AdminApi.postAdminResolveAbuseUserReport({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesAssign(client, request) {
-    return Admin.postAdminRolesAssign({
+    return AdminApi.postAdminRolesAssign({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesCreate(client, request) {
-    return Admin.postAdminRolesCreate({
+    return AdminApi.postAdminRolesCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesDelete(client, request) {
-    return Admin.postAdminRolesDelete({
+    return AdminApi.postAdminRolesDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesList(client) {
-    return Admin.postAdminRolesList({
+    return AdminApi.postAdminRolesList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesShow(client, request) {
-    return Admin.postAdminRolesShow({
+    return AdminApi.postAdminRolesShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesUnassign(client, request) {
-    return Admin.postAdminRolesUnassign({
+    return AdminApi.postAdminRolesUnassign({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesUpdate(client, request) {
-    return Admin.postAdminRolesUpdate({
+    return AdminApi.postAdminRolesUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesUpdateDefaultPolicies(client, request) {
-    return Admin.postAdminRolesUpdateDefaultPolicies({
+    return AdminApi.postAdminRolesUpdateDefaultPolicies({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesUpdateInlinePolicies(client, request) {
-    return Admin.postAdminRolesUpdateInlinePolicies({
+    return AdminApi.postAdminRolesUpdateInlinePolicies({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminRolesUsers(client, request) {
-    return Admin.postAdminRolesUsers({
+    return AdminApi.postAdminRolesUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSendEmail(client, request) {
-    return Admin.postAdminSendEmail({
+    return AdminApi.postAdminSendEmail({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminShowModerationLogs(client, request) {
-    return Admin.postAdminShowModerationLogs({
+    return AdminApi.postAdminShowModerationLogs({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminShowUser(client, request) {
-    return Admin.postAdminShowUser({
+    return AdminApi.postAdminShowUser({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminShowUserAccountMoveLogs(client, request) {
-    return Admin.postAdminShowUserAccountMoveLogs({
+    return AdminApi.postAdminShowUserAccountMoveLogs({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminShowUsers(client, request) {
-    return Admin.postAdminShowUsers({
+    return AdminApi.postAdminShowUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSsoCreate(client, request) {
-    return Admin.postAdminSsoCreate({
+    return AdminApi.postAdminSsoCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSsoDelete(client, request) {
-    return Admin.postAdminSsoDelete({
+    return AdminApi.postAdminSsoDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSsoList(client, request) {
-    return Admin.postAdminSsoList({
+    return AdminApi.postAdminSsoList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSsoUpdate(client, request) {
-    return Admin.postAdminSsoUpdate({
+    return AdminApi.postAdminSsoUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSuspendUser(client, request) {
-    return Admin.postAdminSuspendUser({
+    return AdminApi.postAdminSuspendUser({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSystemWebhookCreate(client, request) {
-    return Admin.postAdminSystemWebhookCreate({
+    return AdminApi.postAdminSystemWebhookCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSystemWebhookDelete(client, request) {
-    return Admin.postAdminSystemWebhookDelete({
+    return AdminApi.postAdminSystemWebhookDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSystemWebhookList(client, request) {
-    return Admin.postAdminSystemWebhookList({
+    return AdminApi.postAdminSystemWebhookList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSystemWebhookShow(client, request) {
-    return Admin.postAdminSystemWebhookShow({
+    return AdminApi.postAdminSystemWebhookShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminSystemWebhookUpdate(client, request) {
-    return Admin.postAdminSystemWebhookUpdate({
+    return AdminApi.postAdminSystemWebhookUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUnsetUserAvatar(client, request) {
-    return Admin.postAdminUnsetUserAvatar({
+    return AdminApi.postAdminUnsetUserAvatar({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUnsetUserBanner(client, request) {
-    return Admin.postAdminUnsetUserBanner({
+    return AdminApi.postAdminUnsetUserBanner({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUnsetUserMutualLink(client, request) {
-    return Admin.postAdminUnsetUserMutualLink({
+    return AdminApi.postAdminUnsetUserMutualLink({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUnsuspendUser(client, request) {
-    return Admin.postAdminUnsuspendUser({
+    return AdminApi.postAdminUnsuspendUser({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUpdateAbuseUserReport(client, request) {
-    return Admin.postAdminUpdateAbuseUserReport({
+    return AdminApi.postAdminUpdateAbuseUserReport({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUpdateMeta(client, request) {
-    return Admin.postAdminUpdateMeta({
+    return AdminApi.postAdminUpdateMeta({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUpdateProxyAccount(client, request) {
-    return Admin.postAdminUpdateProxyAccount({
+    return AdminApi.postAdminUpdateProxyAccount({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUpdateUserName(client, request) {
-    return Admin.postAdminUpdateUserName({
+    return AdminApi.postAdminUpdateUserName({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAdminUpdateUserNote(client, request) {
-    return Admin.postAdminUpdateUserNote({
+    return AdminApi.postAdminUpdateUserNote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postV2AdminEmojiList(client, request) {
-    return Admin.postV2AdminEmojiList({
+    return AdminApi.postV2AdminEmojiList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -587,277 +587,277 @@ export const Admin = {
 
 export const Default = {
   async postAdminEmojiImportZip(client, request) {
-    return Default.postAdminEmojiImportZip({
+    return DefaultApi.postAdminEmojiImportZip({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getBubbleGameRanking(client, request) {
-    return Default.getBubbleGameRanking({
+    return DefaultApi.getBubbleGameRanking({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postBubbleGameRanking(client, request) {
-    return Default.postBubbleGameRanking({
+    return DefaultApi.postBubbleGameRanking({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postBubbleGameRegister(client, request) {
-    return Default.postBubbleGameRegister({
+    return DefaultApi.postBubbleGameRegister({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postExportCustomEmojis(client) {
-    return Default.postExportCustomEmojis({
+    return DefaultApi.postExportCustomEmojis({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faDone(client, request) {
-    return Default.postI2faDone({
+    return DefaultApi.postI2faDone({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faKeyDone(client, request) {
-    return Default.postI2faKeyDone({
+    return DefaultApi.postI2faKeyDone({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faPasswordLess(client, request) {
-    return Default.postI2faPasswordLess({
+    return DefaultApi.postI2faPasswordLess({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faRegister(client, request) {
-    return Default.postI2faRegister({
+    return DefaultApi.postI2faRegister({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faRegisterKey(client, request) {
-    return Default.postI2faRegisterKey({
+    return DefaultApi.postI2faRegisterKey({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faRemoveKey(client, request) {
-    return Default.postI2faRemoveKey({
+    return DefaultApi.postI2faRemoveKey({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faUnregister(client, request) {
-    return Default.postI2faUnregister({
+    return DefaultApi.postI2faUnregister({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI2faUpdateKey(client, request) {
-    return Default.postI2faUpdateKey({
+    return DefaultApi.postI2faUpdateKey({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIApps(client, request) {
-    return Default.postIApps({
+    return DefaultApi.postIApps({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIAuthorizedApps(client, request) {
-    return Default.postIAuthorizedApps({
+    return DefaultApi.postIAuthorizedApps({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIChangePassword(client, request) {
-    return Default.postIChangePassword({
+    return DefaultApi.postIChangePassword({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIClaimAchievement(client, request) {
-    return Default.postIClaimAchievement({
+    return DefaultApi.postIClaimAchievement({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIDeleteAccount(client, request) {
-    return Default.postIDeleteAccount({
+    return DefaultApi.postIDeleteAccount({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportAntennas(client) {
-    return Default.postIExportAntennas({
+    return DefaultApi.postIExportAntennas({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportBlocking(client) {
-    return Default.postIExportBlocking({
+    return DefaultApi.postIExportBlocking({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportClips(client) {
-    return Default.postIExportClips({
+    return DefaultApi.postIExportClips({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportFavorites(client) {
-    return Default.postIExportFavorites({
+    return DefaultApi.postIExportFavorites({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportFollowing(client, request) {
-    return Default.postIExportFollowing({
+    return DefaultApi.postIExportFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportMute(client) {
-    return Default.postIExportMute({
+    return DefaultApi.postIExportMute({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportNotes(client) {
-    return Default.postIExportNotes({
+    return DefaultApi.postIExportNotes({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIExportUserLists(client) {
-    return Default.postIExportUserLists({
+    return DefaultApi.postIExportUserLists({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIImportAntennas(client, request) {
-    return Default.postIImportAntennas({
+    return DefaultApi.postIImportAntennas({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIImportBlocking(client, request) {
-    return Default.postIImportBlocking({
+    return DefaultApi.postIImportBlocking({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIImportFollowing(client, request) {
-    return Default.postIImportFollowing({
+    return DefaultApi.postIImportFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIImportMuting(client, request) {
-    return Default.postIImportMuting({
+    return DefaultApi.postIImportMuting({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIImportUserLists(client, request) {
-    return Default.postIImportUserLists({
+    return DefaultApi.postIImportUserLists({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegenerateToken(client, request) {
-    return Default.postIRegenerateToken({
+    return DefaultApi.postIRegenerateToken({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryGet(client, request) {
-    return Default.postIRegistryGet({
+    return DefaultApi.postIRegistryGet({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryGetAll(client, request) {
-    return Default.postIRegistryGetAll({
+    return DefaultApi.postIRegistryGetAll({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryGetDetail(client, request) {
-    return Default.postIRegistryGetDetail({
+    return DefaultApi.postIRegistryGetDetail({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryKeys(client, request) {
-    return Default.postIRegistryKeys({
+    return DefaultApi.postIRegistryKeys({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryKeysWithType(client, request) {
-    return Default.postIRegistryKeysWithType({
+    return DefaultApi.postIRegistryKeysWithType({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryRemove(client, request) {
-    return Default.postIRegistryRemove({
+    return DefaultApi.postIRegistryRemove({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistryScopesWithDomain(client) {
-    return Default.postIRegistryScopesWithDomain({
+    return DefaultApi.postIRegistryScopesWithDomain({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRegistrySet(client, request) {
-    return Default.postIRegistrySet({
+    return DefaultApi.postIRegistrySet({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIRevokeToken(client, request) {
-    return Default.postIRevokeToken({
+    return DefaultApi.postIRevokeToken({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postISigninHistory(client, request) {
-    return Default.postISigninHistory({
+    return DefaultApi.postISigninHistory({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIUpdateEmail(client, request) {
-    return Default.postIUpdateEmail({
+    return DefaultApi.postIUpdateEmail({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagePush(client, request) {
-    return Default.postPagePush({
+    return DefaultApi.postPagePush({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiCancelMatch(client, request) {
-    return Default.postReversiCancelMatch({
+    return DefaultApi.postReversiCancelMatch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiGames(client, request) {
-    return Default.postReversiGames({
+    return DefaultApi.postReversiGames({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiInvitations(client) {
-    return Default.postReversiInvitations({
+    return DefaultApi.postReversiInvitations({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiMatch(client, request) {
-    return Default.postReversiMatch({
+    return DefaultApi.postReversiMatch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiShowGame(client, request) {
-    return Default.postReversiShowGame({
+    return DefaultApi.postReversiShowGame({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiSurrender(client, request) {
-    return Default.postReversiSurrender({
+    return DefaultApi.postReversiSurrender({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postReversiVerify(client, request) {
-    return Default.postReversiVerify({
+    return DefaultApi.postReversiVerify({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersAchievements(client, request) {
-    return Default.postUsersAchievements({
+    return DefaultApi.postUsersAchievements({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsCreateFromPublic(client, request) {
-    return Default.postUsersListsCreateFromPublic({
+    return DefaultApi.postUsersListsCreateFromPublic({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsFavorite(client, request) {
-    return Default.postUsersListsFavorite({
+    return DefaultApi.postUsersListsFavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsUnfavorite(client, request) {
-    return Default.postUsersListsUnfavorite({
+    return DefaultApi.postUsersListsUnfavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -865,122 +865,122 @@ export const Default = {
 
 export const Meta = {
   async postAdminMeta(client) {
-    return Meta.postAdminMeta({
+    return MetaApi.postAdminMeta({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAnnouncement(client, request) {
-    return Meta.postAnnouncement({
+    return MetaApi.postAnnouncement({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAnnouncements(client, request) {
-    return Meta.postAnnouncements({
+    return MetaApi.postAnnouncements({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAnnouncementsShow(client, request) {
-    return Meta.postAnnouncementsShow({
+    return MetaApi.postAnnouncementsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getEmoji(client, request) {
-    return Meta.getEmoji({
+    return MetaApi.getEmoji({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postEmoji(client, request) {
-    return Meta.postEmoji({
+    return MetaApi.postEmoji({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getEmojis(client) {
-    return Meta.getEmojis({
+    return MetaApi.getEmojis({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postEmojis(client) {
-    return Meta.postEmojis({
+    return MetaApi.postEmojis({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postEndpoint(client, request) {
-    return Meta.postEndpoint({
+    return MetaApi.postEndpoint({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postEndpoints(client) {
-    return Meta.postEndpoints({
+    return MetaApi.postEndpoints({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFetchExternalResources(client, request) {
-    return Meta.postFetchExternalResources({
+    return MetaApi.postFetchExternalResources({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getFetchRss(client, request) {
-    return Meta.getFetchRss({
+    return MetaApi.getFetchRss({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFetchRss(client, request) {
-    return Meta.postFetchRss({
+    return MetaApi.postFetchRss({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getGetOnlineUsersCount(client) {
-    return Meta.getGetOnlineUsersCount({
+    return MetaApi.getGetOnlineUsersCount({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGetOnlineUsersCount(client) {
-    return Meta.postGetOnlineUsersCount({
+    return MetaApi.postGetOnlineUsersCount({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postInviteCreate(client) {
-    return Meta.postInviteCreate({
+    return MetaApi.postInviteCreate({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postInviteDelete(client, request) {
-    return Meta.postInviteDelete({
+    return MetaApi.postInviteDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postInviteLimit(client) {
-    return Meta.postInviteLimit({
+    return MetaApi.postInviteLimit({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postInviteList(client, request) {
-    return Meta.postInviteList({
+    return MetaApi.postInviteList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getMeta(client, request) {
-    return Meta.getMeta({
+    return MetaApi.getMeta({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMeta(client, request) {
-    return Meta.postMeta({
+    return MetaApi.postMeta({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPing(client) {
-    return Meta.postPing({
+    return MetaApi.postPing({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getStats(client) {
-    return Meta.getStats({
+    return MetaApi.getStats({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postStats(client) {
-    return Meta.postStats({
+    return MetaApi.postStats({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -988,37 +988,37 @@ export const Meta = {
 
 export const Webhooks = {
   async postAdminSystemWebhookTest(client, request) {
-    return Webhooks.postAdminSystemWebhookTest({
+    return WebhooksApi.postAdminSystemWebhookTest({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksCreate(client, request) {
-    return Webhooks.postIWebhooksCreate({
+    return WebhooksApi.postIWebhooksCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksDelete(client, request) {
-    return Webhooks.postIWebhooksDelete({
+    return WebhooksApi.postIWebhooksDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksList(client) {
-    return Webhooks.postIWebhooksList({
+    return WebhooksApi.postIWebhooksList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksShow(client, request) {
-    return Webhooks.postIWebhooksShow({
+    return WebhooksApi.postIWebhooksShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksTest(client, request) {
-    return Webhooks.postIWebhooksTest({
+    return WebhooksApi.postIWebhooksTest({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIWebhooksUpdate(client, request) {
-    return Webhooks.postIWebhooksUpdate({
+    return WebhooksApi.postIWebhooksUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1026,32 +1026,32 @@ export const Webhooks = {
 
 export const Antennas = {
   async postAntennasCreate(client, request) {
-    return Antennas.postAntennasCreate({
+    return AntennasApi.postAntennasCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAntennasDelete(client, request) {
-    return Antennas.postAntennasDelete({
+    return AntennasApi.postAntennasDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAntennasList(client) {
-    return Antennas.postAntennasList({
+    return AntennasApi.postAntennasList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAntennasNotes(client, request) {
-    return Antennas.postAntennasNotes({
+    return AntennasApi.postAntennasNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAntennasShow(client, request) {
-    return Antennas.postAntennasShow({
+    return AntennasApi.postAntennasShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAntennasUpdate(client, request) {
-    return Antennas.postAntennasUpdate({
+    return AntennasApi.postAntennasUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1059,57 +1059,57 @@ export const Antennas = {
 
 export const Federation = {
   async postApGet(client, request) {
-    return Federation.postApGet({
+    return FederationApi.postApGet({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postApShow(client, request) {
-    return Federation.postApShow({
+    return FederationApi.postApShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationFollowers(client, request) {
-    return Federation.postFederationFollowers({
+    return FederationApi.postFederationFollowers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationFollowing(client, request) {
-    return Federation.postFederationFollowing({
+    return FederationApi.postFederationFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getFederationInstances(client, request) {
-    return Federation.getFederationInstances({
+    return FederationApi.getFederationInstances({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationInstances(client, request) {
-    return Federation.postFederationInstances({
+    return FederationApi.postFederationInstances({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationShowInstance(client, request) {
-    return Federation.postFederationShowInstance({
+    return FederationApi.postFederationShowInstance({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getFederationStats(client, request) {
-    return Federation.getFederationStats({
+    return FederationApi.getFederationStats({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationStats(client, request) {
-    return Federation.postFederationStats({
+    return FederationApi.postFederationStats({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationUpdateRemoteUser(client, request) {
-    return Federation.postFederationUpdateRemoteUser({
+    return FederationApi.postFederationUpdateRemoteUser({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFederationUsers(client, request) {
-    return Federation.postFederationUsers({
+    return FederationApi.postFederationUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1117,12 +1117,12 @@ export const Federation = {
 
 export const App = {
   async postAppCreate(client, request) {
-    return App.postAppCreate({
+    return AppApi.postAppCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAppShow(client, request) {
-    return App.postAppShow({
+    return AppApi.postAppShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1130,27 +1130,27 @@ export const App = {
 
 export const Auth = {
   async postAuthAccept(client, request) {
-    return Auth.postAuthAccept({
+    return AuthApi.postAuthAccept({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAuthSessionGenerate(client, request) {
-    return Auth.postAuthSessionGenerate({
+    return AuthApi.postAuthSessionGenerate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAuthSessionShow(client, request) {
-    return Auth.postAuthSessionShow({
+    return AuthApi.postAuthSessionShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postAuthSessionUserkey(client, request) {
-    return Auth.postAuthSessionUserkey({
+    return AuthApi.postAuthSessionUserkey({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMiauthGenToken(client, request) {
-    return Auth.postMiauthGenToken({
+    return AuthApi.postMiauthGenToken({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1158,172 +1158,172 @@ export const Auth = {
 
 export const Account = {
   async postBlockingCreate(client, request) {
-    return Account.postBlockingCreate({
+    return AccountApi.postBlockingCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postBlockingDelete(client, request) {
-    return Account.postBlockingDelete({
+    return AccountApi.postBlockingDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postBlockingList(client, request) {
-    return Account.postBlockingList({
+    return AccountApi.postBlockingList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsAddNote(client, request) {
-    return Account.postClipsAddNote({
+    return AccountApi.postClipsAddNote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsMyFavorites(client) {
-    return Account.postClipsMyFavorites({
+    return AccountApi.postClipsMyFavorites({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsNotes(client, request) {
-    return Account.postClipsNotes({
+    return AccountApi.postClipsNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsRemoveNote(client, request) {
-    return Account.postClipsRemoveNote({
+    return AccountApi.postClipsRemoveNote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashMy(client, request) {
-    return Account.postFlashMy({
+    return AccountApi.postFlashMy({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashMyLikes(client, request) {
-    return Account.postFlashMyLikes({
+    return AccountApi.postFlashMyLikes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postI(client) {
-    return Account.postI({
+    return AccountApi.postI({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIFavorites(client, request) {
-    return Account.postIFavorites({
+    return AccountApi.postIFavorites({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIGalleryLikes(client, request) {
-    return Account.postIGalleryLikes({
+    return AccountApi.postIGalleryLikes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIGalleryPosts(client, request) {
-    return Account.postIGalleryPosts({
+    return AccountApi.postIGalleryPosts({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postINotifications(client, request) {
-    return Account.postINotifications({
+    return AccountApi.postINotifications({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postINotificationsGrouped(client, request) {
-    return Account.postINotificationsGrouped({
+    return AccountApi.postINotificationsGrouped({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIPageLikes(client, request) {
-    return Account.postIPageLikes({
+    return AccountApi.postIPageLikes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIPages(client, request) {
-    return Account.postIPages({
+    return AccountApi.postIPages({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIPin(client, request) {
-    return Account.postIPin({
+    return AccountApi.postIPin({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIPurgeTimelineCache(client, request) {
-    return Account.postIPurgeTimelineCache({
+    return AccountApi.postIPurgeTimelineCache({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIReadAnnouncement(client, request) {
-    return Account.postIReadAnnouncement({
+    return AccountApi.postIReadAnnouncement({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIUnpin(client, request) {
-    return Account.postIUnpin({
+    return AccountApi.postIUnpin({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIUpdate(client, request) {
-    return Account.postIUpdate({
+    return AccountApi.postIUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMuteCreate(client, request) {
-    return Account.postMuteCreate({
+    return AccountApi.postMuteCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMuteDelete(client, request) {
-    return Account.postMuteDelete({
+    return AccountApi.postMuteDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMuteList(client, request) {
-    return Account.postMuteList({
+    return AccountApi.postMuteList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postMyApps(client, request) {
-    return Account.postMyApps({
+    return AccountApi.postMyApps({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRenoteMuteCreate(client, request) {
-    return Account.postRenoteMuteCreate({
+    return AccountApi.postRenoteMuteCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRenoteMuteDelete(client, request) {
-    return Account.postRenoteMuteDelete({
+    return AccountApi.postRenoteMuteDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRenoteMuteList(client, request) {
-    return Account.postRenoteMuteList({
+    return AccountApi.postRenoteMuteList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postSwRegister(client, request) {
-    return Account.postSwRegister({
+    return AccountApi.postSwRegister({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postSwShowRegistration(client, request) {
-    return Account.postSwShowRegistration({
+    return AccountApi.postSwShowRegistration({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postSwUnregister(client, request) {
-    return Account.postSwUnregister({
+    return AccountApi.postSwUnregister({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postSwUpdateRegistration(client, request) {
-    return Account.postSwUpdateRegistration({
+    return AccountApi.postSwUpdateRegistration({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersUpdateMemo(client, request) {
-    return Account.postUsersUpdateMemo({
+    return AccountApi.postUsersUpdateMemo({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1331,67 +1331,67 @@ export const Account = {
 
 export const Channels = {
   async postChannelsCreate(client, request) {
-    return Channels.postChannelsCreate({
+    return ChannelsApi.postChannelsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsFavorite(client, request) {
-    return Channels.postChannelsFavorite({
+    return ChannelsApi.postChannelsFavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsFeatured(client) {
-    return Channels.postChannelsFeatured({
+    return ChannelsApi.postChannelsFeatured({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsFeaturedGames(client) {
-    return Channels.postChannelsFeaturedGames({
+    return ChannelsApi.postChannelsFeaturedGames({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsFollow(client, request) {
-    return Channels.postChannelsFollow({
+    return ChannelsApi.postChannelsFollow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsFollowed(client, request) {
-    return Channels.postChannelsFollowed({
+    return ChannelsApi.postChannelsFollowed({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsMyFavorites(client) {
-    return Channels.postChannelsMyFavorites({
+    return ChannelsApi.postChannelsMyFavorites({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsOwned(client, request) {
-    return Channels.postChannelsOwned({
+    return ChannelsApi.postChannelsOwned({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsSearch(client, request) {
-    return Channels.postChannelsSearch({
+    return ChannelsApi.postChannelsSearch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsShow(client, request) {
-    return Channels.postChannelsShow({
+    return ChannelsApi.postChannelsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsUnfavorite(client, request) {
-    return Channels.postChannelsUnfavorite({
+    return ChannelsApi.postChannelsUnfavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsUnfollow(client, request) {
-    return Channels.postChannelsUnfollow({
+    return ChannelsApi.postChannelsUnfollow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChannelsUpdate(client, request) {
-    return Channels.postChannelsUpdate({
+    return ChannelsApi.postChannelsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1399,177 +1399,177 @@ export const Channels = {
 
 export const Notes = {
   async postChannelsTimeline(client, request) {
-    return Notes.postChannelsTimeline({
+    return NotesApi.postChannelsTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotes(client, request) {
-    return Notes.postNotes({
+    return NotesApi.postNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesChildren(client, request) {
-    return Notes.postNotesChildren({
+    return NotesApi.postNotesChildren({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesConversation(client, request) {
-    return Notes.postNotesConversation({
+    return NotesApi.postNotesConversation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesCreate(client, request) {
-    return Notes.postNotesCreate({
+    return NotesApi.postNotesCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesDelete(client, request) {
-    return Notes.postNotesDelete({
+    return NotesApi.postNotesDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesFavoritesCreate(client, request) {
-    return Notes.postNotesFavoritesCreate({
+    return NotesApi.postNotesFavoritesCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesFavoritesDelete(client, request) {
-    return Notes.postNotesFavoritesDelete({
+    return NotesApi.postNotesFavoritesDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getNotesFeatured(client, request) {
-    return Notes.getNotesFeatured({
+    return NotesApi.getNotesFeatured({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesFeatured(client, request) {
-    return Notes.postNotesFeatured({
+    return NotesApi.postNotesFeatured({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesGlobalTimeline(client, request) {
-    return Notes.postNotesGlobalTimeline({
+    return NotesApi.postNotesGlobalTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesHybridTimeline(client, request) {
-    return Notes.postNotesHybridTimeline({
+    return NotesApi.postNotesHybridTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesLocalTimeline(client, request) {
-    return Notes.postNotesLocalTimeline({
+    return NotesApi.postNotesLocalTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesMentions(client, request) {
-    return Notes.postNotesMentions({
+    return NotesApi.postNotesMentions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesPollsRecommendation(client, request) {
-    return Notes.postNotesPollsRecommendation({
+    return NotesApi.postNotesPollsRecommendation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesPollsVote(client, request) {
-    return Notes.postNotesPollsVote({
+    return NotesApi.postNotesPollsVote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getNotesReactions(client, request) {
-    return Notes.getNotesReactions({
+    return NotesApi.getNotesReactions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesReactions(client, request) {
-    return Notes.postNotesReactions({
+    return NotesApi.postNotesReactions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesRenotes(client, request) {
-    return Notes.postNotesRenotes({
+    return NotesApi.postNotesRenotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesReplies(client, request) {
-    return Notes.postNotesReplies({
+    return NotesApi.postNotesReplies({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesScheduledCancel(client, request) {
-    return Notes.postNotesScheduledCancel({
+    return NotesApi.postNotesScheduledCancel({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesScheduledList(client, request) {
-    return Notes.postNotesScheduledList({
+    return NotesApi.postNotesScheduledList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesSearch(client, request) {
-    return Notes.postNotesSearch({
+    return NotesApi.postNotesSearch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesSearchByTag(client, request) {
-    return Notes.postNotesSearchByTag({
+    return NotesApi.postNotesSearchByTag({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesShow(client, request) {
-    return Notes.postNotesShow({
+    return NotesApi.postNotesShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesState(client, request) {
-    return Notes.postNotesState({
+    return NotesApi.postNotesState({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesThreadMutingCreate(client, request) {
-    return Notes.postNotesThreadMutingCreate({
+    return NotesApi.postNotesThreadMutingCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesThreadMutingDelete(client, request) {
-    return Notes.postNotesThreadMutingDelete({
+    return NotesApi.postNotesThreadMutingDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesTimeline(client, request) {
-    return Notes.postNotesTimeline({
+    return NotesApi.postNotesTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesTranslate(client, request) {
-    return Notes.postNotesTranslate({
+    return NotesApi.postNotesTranslate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesUnrenote(client, request) {
-    return Notes.postNotesUnrenote({
+    return NotesApi.postNotesUnrenote({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesUserListTimeline(client, request) {
-    return Notes.postNotesUserListTimeline({
+    return NotesApi.postNotesUserListTimeline({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPromoRead(client, request) {
-    return Notes.postPromoRead({
+    return NotesApi.postPromoRead({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getUsersFeaturedNotes(client, request) {
-    return Notes.getUsersFeaturedNotes({
+    return NotesApi.getUsersFeaturedNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersFeaturedNotes(client, request) {
-    return Notes.postUsersFeaturedNotes({
+    return NotesApi.postUsersFeaturedNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1577,122 +1577,122 @@ export const Notes = {
 
 export const Charts = {
   async getChartsActiveUsers(client, request) {
-    return Charts.getChartsActiveUsers({
+    return ChartsApi.getChartsActiveUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsActiveUsers(client, request) {
-    return Charts.postChartsActiveUsers({
+    return ChartsApi.postChartsActiveUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsApRequest(client, request) {
-    return Charts.getChartsApRequest({
+    return ChartsApi.getChartsApRequest({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsApRequest(client, request) {
-    return Charts.postChartsApRequest({
+    return ChartsApi.postChartsApRequest({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsDrive(client, request) {
-    return Charts.getChartsDrive({
+    return ChartsApi.getChartsDrive({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsDrive(client, request) {
-    return Charts.postChartsDrive({
+    return ChartsApi.postChartsDrive({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsFederation(client, request) {
-    return Charts.getChartsFederation({
+    return ChartsApi.getChartsFederation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsFederation(client, request) {
-    return Charts.postChartsFederation({
+    return ChartsApi.postChartsFederation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsInstance(client, request) {
-    return Charts.getChartsInstance({
+    return ChartsApi.getChartsInstance({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsInstance(client, request) {
-    return Charts.postChartsInstance({
+    return ChartsApi.postChartsInstance({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsNotes(client, request) {
-    return Charts.getChartsNotes({
+    return ChartsApi.getChartsNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsNotes(client, request) {
-    return Charts.postChartsNotes({
+    return ChartsApi.postChartsNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUserDrive(client, request) {
-    return Charts.getChartsUserDrive({
+    return ChartsApi.getChartsUserDrive({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUserDrive(client, request) {
-    return Charts.postChartsUserDrive({
+    return ChartsApi.postChartsUserDrive({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUserFollowing(client, request) {
-    return Charts.getChartsUserFollowing({
+    return ChartsApi.getChartsUserFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUserFollowing(client, request) {
-    return Charts.postChartsUserFollowing({
+    return ChartsApi.postChartsUserFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUserNotes(client, request) {
-    return Charts.getChartsUserNotes({
+    return ChartsApi.getChartsUserNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUserNotes(client, request) {
-    return Charts.postChartsUserNotes({
+    return ChartsApi.postChartsUserNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUserPv(client, request) {
-    return Charts.getChartsUserPv({
+    return ChartsApi.getChartsUserPv({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUserPv(client, request) {
-    return Charts.postChartsUserPv({
+    return ChartsApi.postChartsUserPv({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUserReactions(client, request) {
-    return Charts.getChartsUserReactions({
+    return ChartsApi.getChartsUserReactions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUserReactions(client, request) {
-    return Charts.postChartsUserReactions({
+    return ChartsApi.postChartsUserReactions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getChartsUsers(client, request) {
-    return Charts.getChartsUsers({
+    return ChartsApi.getChartsUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postChartsUsers(client, request) {
-    return Charts.postChartsUsers({
+    return ChartsApi.postChartsUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1700,32 +1700,32 @@ export const Charts = {
 
 export const Clips = {
   async postClipsCreate(client, request) {
-    return Clips.postClipsCreate({
+    return ClipsApi.postClipsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsDelete(client, request) {
-    return Clips.postClipsDelete({
+    return ClipsApi.postClipsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsList(client) {
-    return Clips.postClipsList({
+    return ClipsApi.postClipsList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsShow(client, request) {
-    return Clips.postClipsShow({
+    return ClipsApi.postClipsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsUpdate(client, request) {
-    return Clips.postClipsUpdate({
+    return ClipsApi.postClipsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesClips(client, request) {
-    return Clips.postNotesClips({
+    return ClipsApi.postNotesClips({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1733,12 +1733,12 @@ export const Clips = {
 
 export const Clip = {
   async postClipsFavorite(client, request) {
-    return Clip.postClipsFavorite({
+    return ClipApi.postClipsFavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postClipsUnfavorite(client, request) {
-    return Clip.postClipsUnfavorite({
+    return ClipApi.postClipsUnfavorite({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1746,92 +1746,92 @@ export const Clip = {
 
 export const Drive = {
   async postDrive(client) {
-    return Drive.postDrive({
+    return DriveApi.postDrive({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFiles(client, request) {
-    return Drive.postDriveFiles({
+    return DriveApi.postDriveFiles({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesAttachedNotes(client, request) {
-    return Drive.postDriveFilesAttachedNotes({
+    return DriveApi.postDriveFilesAttachedNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesCheckExistence(client, request) {
-    return Drive.postDriveFilesCheckExistence({
+    return DriveApi.postDriveFilesCheckExistence({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesCreate(client, request) {
-    return Drive.postDriveFilesCreate({
+    return DriveApi.postDriveFilesCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesDelete(client, request) {
-    return Drive.postDriveFilesDelete({
+    return DriveApi.postDriveFilesDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesFind(client, request) {
-    return Drive.postDriveFilesFind({
+    return DriveApi.postDriveFilesFind({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesFindByHash(client, request) {
-    return Drive.postDriveFilesFindByHash({
+    return DriveApi.postDriveFilesFindByHash({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesShow(client, request) {
-    return Drive.postDriveFilesShow({
+    return DriveApi.postDriveFilesShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesUpdate(client, request) {
-    return Drive.postDriveFilesUpdate({
+    return DriveApi.postDriveFilesUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFilesUploadFromUrl(client, request) {
-    return Drive.postDriveFilesUploadFromUrl({
+    return DriveApi.postDriveFilesUploadFromUrl({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFolders(client, request) {
-    return Drive.postDriveFolders({
+    return DriveApi.postDriveFolders({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFoldersCreate(client, request) {
-    return Drive.postDriveFoldersCreate({
+    return DriveApi.postDriveFoldersCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFoldersDelete(client, request) {
-    return Drive.postDriveFoldersDelete({
+    return DriveApi.postDriveFoldersDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFoldersFind(client, request) {
-    return Drive.postDriveFoldersFind({
+    return DriveApi.postDriveFoldersFind({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFoldersShow(client, request) {
-    return Drive.postDriveFoldersShow({
+    return DriveApi.postDriveFoldersShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveFoldersUpdate(client, request) {
-    return Drive.postDriveFoldersUpdate({
+    return DriveApi.postDriveFoldersUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postDriveStream(client, request) {
-    return Drive.postDriveStream({
+    return DriveApi.postDriveStream({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1839,142 +1839,142 @@ export const Drive = {
 
 export const Users = {
   async postEmailAddressAvailable(client, request) {
-    return Users.postEmailAddressAvailable({
+    return UsersApi.postEmailAddressAvailable({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGetAvatarDecorations(client) {
-    return Users.postGetAvatarDecorations({
+    return UsersApi.postGetAvatarDecorations({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postIMove(client, request) {
-    return Users.postIMove({
+    return UsersApi.postIMove({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPinnedUsers(client) {
-    return Users.postPinnedUsers({
+    return UsersApi.postPinnedUsers({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getRetention(client) {
-    return Users.getRetention({
+    return UsersApi.getRetention({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRetention(client) {
-    return Users.postRetention({
+    return UsersApi.postRetention({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsernameAvailable(client, request) {
-    return Users.postUsernameAvailable({
+    return UsersApi.postUsernameAvailable({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsers(client, request) {
-    return Users.postUsers({
+    return UsersApi.postUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersClips(client, request) {
-    return Users.postUsersClips({
+    return UsersApi.postUsersClips({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersFlashs(client, request) {
-    return Users.postUsersFlashs({
+    return UsersApi.postUsersFlashs({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersFollowers(client, request) {
-    return Users.postUsersFollowers({
+    return UsersApi.postUsersFollowers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersFollowing(client, request) {
-    return Users.postUsersFollowing({
+    return UsersApi.postUsersFollowing({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersGalleryPosts(client, request) {
-    return Users.postUsersGalleryPosts({
+    return UsersApi.postUsersGalleryPosts({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersGetFollowingBirthdayUsers(client, request) {
-    return Users.postUsersGetFollowingBirthdayUsers({
+    return UsersApi.postUsersGetFollowingBirthdayUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersGetFrequentlyRepliedUsers(client, request) {
-    return Users.postUsersGetFrequentlyRepliedUsers({
+    return UsersApi.postUsersGetFrequentlyRepliedUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersGetSecurityInfo(client, request) {
-    return Users.postUsersGetSecurityInfo({
+    return UsersApi.postUsersGetSecurityInfo({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getUsersGetSkebStatus(client, request) {
-    return Users.getUsersGetSkebStatus({
+    return UsersApi.getUsersGetSkebStatus({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersGetSkebStatus(client, request) {
-    return Users.postUsersGetSkebStatus({
+    return UsersApi.postUsersGetSkebStatus({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersNotes(client, request) {
-    return Users.postUsersNotes({
+    return UsersApi.postUsersNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersPages(client, request) {
-    return Users.postUsersPages({
+    return UsersApi.postUsersPages({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersReactions(client, request) {
-    return Users.postUsersReactions({
+    return UsersApi.postUsersReactions({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersRecommendation(client, request) {
-    return Users.postUsersRecommendation({
+    return UsersApi.postUsersRecommendation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersRelation(client, request) {
-    return Users.postUsersRelation({
+    return UsersApi.postUsersRelation({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersReportAbuse(client, request) {
-    return Users.postUsersReportAbuse({
+    return UsersApi.postUsersReportAbuse({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersSearch(client, request) {
-    return Users.postUsersSearch({
+    return UsersApi.postUsersSearch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersSearchByUsernameAndHost(client, request) {
-    return Users.postUsersSearchByUsernameAndHost({
+    return UsersApi.postUsersSearchByUsernameAndHost({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersShow(client, request) {
-    return Users.postUsersShow({
+    return UsersApi.postUsersShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersStats(client, request) {
-    return Users.postUsersStats({
+    return UsersApi.postUsersStats({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -1982,27 +1982,27 @@ export const Users = {
 
 export const Flash = {
   async postFlashCreate(client, request) {
-    return Flash.postFlashCreate({
+    return FlashApi.postFlashCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashFeatured(client, request) {
-    return Flash.postFlashFeatured({
+    return FlashApi.postFlashFeatured({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashLike(client, request) {
-    return Flash.postFlashLike({
+    return FlashApi.postFlashLike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashUnlike(client, request) {
-    return Flash.postFlashUnlike({
+    return FlashApi.postFlashUnlike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashUpdate(client, request) {
-    return Flash.postFlashUpdate({
+    return FlashApi.postFlashUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2010,12 +2010,12 @@ export const Flash = {
 
 export const Flashs = {
   async postFlashDelete(client, request) {
-    return Flashs.postFlashDelete({
+    return FlashsApi.postFlashDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFlashShow(client, request) {
-    return Flashs.postFlashShow({
+    return FlashsApi.postFlashShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2023,52 +2023,52 @@ export const Flashs = {
 
 export const Following = {
   async postFollowingCreate(client, request) {
-    return Following.postFollowingCreate({
+    return FollowingApi.postFollowingCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingDelete(client, request) {
-    return Following.postFollowingDelete({
+    return FollowingApi.postFollowingDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingInvalidate(client, request) {
-    return Following.postFollowingInvalidate({
+    return FollowingApi.postFollowingInvalidate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingRequestsAccept(client, request) {
-    return Following.postFollowingRequestsAccept({
+    return FollowingApi.postFollowingRequestsAccept({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingRequestsCancel(client, request) {
-    return Following.postFollowingRequestsCancel({
+    return FollowingApi.postFollowingRequestsCancel({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingRequestsList(client, request) {
-    return Following.postFollowingRequestsList({
+    return FollowingApi.postFollowingRequestsList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingRequestsReject(client, request) {
-    return Following.postFollowingRequestsReject({
+    return FollowingApi.postFollowingRequestsReject({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingRequestsSent(client, request) {
-    return Following.postFollowingRequestsSent({
+    return FollowingApi.postFollowingRequestsSent({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingUpdate(client, request) {
-    return Following.postFollowingUpdate({
+    return FollowingApi.postFollowingUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postFollowingUpdateAll(client, request) {
-    return Following.postFollowingUpdateAll({
+    return FollowingApi.postFollowingUpdateAll({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2076,47 +2076,47 @@ export const Following = {
 
 export const Gallery = {
   async postGalleryFeatured(client, request) {
-    return Gallery.postGalleryFeatured({
+    return GalleryApi.postGalleryFeatured({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPopular(client) {
-    return Gallery.postGalleryPopular({
+    return GalleryApi.postGalleryPopular({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPosts(client, request) {
-    return Gallery.postGalleryPosts({
+    return GalleryApi.postGalleryPosts({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsCreate(client, request) {
-    return Gallery.postGalleryPostsCreate({
+    return GalleryApi.postGalleryPostsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsDelete(client, request) {
-    return Gallery.postGalleryPostsDelete({
+    return GalleryApi.postGalleryPostsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsLike(client, request) {
-    return Gallery.postGalleryPostsLike({
+    return GalleryApi.postGalleryPostsLike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsShow(client, request) {
-    return Gallery.postGalleryPostsShow({
+    return GalleryApi.postGalleryPostsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsUnlike(client, request) {
-    return Gallery.postGalleryPostsUnlike({
+    return GalleryApi.postGalleryPostsUnlike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postGalleryPostsUpdate(client, request) {
-    return Gallery.postGalleryPostsUpdate({
+    return GalleryApi.postGalleryPostsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2124,32 +2124,32 @@ export const Gallery = {
 
 export const Hashtags = {
   async postHashtagsList(client, request) {
-    return Hashtags.postHashtagsList({
+    return HashtagsApi.postHashtagsList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postHashtagsSearch(client, request) {
-    return Hashtags.postHashtagsSearch({
+    return HashtagsApi.postHashtagsSearch({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postHashtagsShow(client, request) {
-    return Hashtags.postHashtagsShow({
+    return HashtagsApi.postHashtagsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async getHashtagsTrend(client) {
-    return Hashtags.getHashtagsTrend({
+    return HashtagsApi.getHashtagsTrend({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postHashtagsTrend(client) {
-    return Hashtags.postHashtagsTrend({
+    return HashtagsApi.postHashtagsTrend({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postHashtagsUsers(client, request) {
-    return Hashtags.postHashtagsUsers({
+    return HashtagsApi.postHashtagsUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2157,12 +2157,12 @@ export const Hashtags = {
 
 export const Reactions = {
   async postNotesReactionsCreate(client, request) {
-    return Reactions.postNotesReactionsCreate({
+    return ReactionsApi.postNotesReactionsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotesReactionsDelete(client, request) {
-    return Reactions.postNotesReactionsDelete({
+    return ReactionsApi.postNotesReactionsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2170,22 +2170,22 @@ export const Reactions = {
 
 export const Notifications = {
   async postNotificationsCreate(client, request) {
-    return Notifications.postNotificationsCreate({
+    return NotificationsApi.postNotificationsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotificationsFlush(client) {
-    return Notifications.postNotificationsFlush({
+    return NotificationsApi.postNotificationsFlush({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotificationsMarkAllAsRead(client) {
-    return Notifications.postNotificationsMarkAllAsRead({
+    return NotificationsApi.postNotificationsMarkAllAsRead({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postNotificationsTestNotification(client) {
-    return Notifications.postNotificationsTestNotification({
+    return NotificationsApi.postNotificationsTestNotification({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2193,37 +2193,37 @@ export const Notifications = {
 
 export const Pages = {
   async postPagesCreate(client, request) {
-    return Pages.postPagesCreate({
+    return PagesApi.postPagesCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesDelete(client, request) {
-    return Pages.postPagesDelete({
+    return PagesApi.postPagesDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesFeatured(client) {
-    return Pages.postPagesFeatured({
+    return PagesApi.postPagesFeatured({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesLike(client, request) {
-    return Pages.postPagesLike({
+    return PagesApi.postPagesLike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesShow(client, request) {
-    return Pages.postPagesShow({
+    return PagesApi.postPagesShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesUnlike(client, request) {
-    return Pages.postPagesUnlike({
+    return PagesApi.postPagesUnlike({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postPagesUpdate(client, request) {
-    return Pages.postPagesUpdate({
+    return PagesApi.postPagesUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2231,12 +2231,12 @@ export const Pages = {
 
 export const ResetPassword = {
   async postRequestResetPassword(client, request) {
-    return ResetPassword.postRequestResetPassword({
+    return ResetPasswordApi.postRequestResetPassword({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postResetPassword(client, request) {
-    return ResetPassword.postResetPassword({
+    return ResetPasswordApi.postResetPassword({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2244,12 +2244,12 @@ export const ResetPassword = {
 
 export const NonProductive = {
   async postResetDb(client) {
-    return NonProductive.postResetDb({
+    return NonProductiveApi.postResetDb({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postTest(client, request) {
-    return NonProductive.postTest({
+    return NonProductiveApi.postTest({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2257,22 +2257,22 @@ export const NonProductive = {
 
 export const Role = {
   async postRolesList(client) {
-    return Role.postRolesList({
+    return RoleApi.postRolesList({
       fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRolesNotes(client, request) {
-    return Role.postRolesNotes({
+    return RoleApi.postRolesNotes({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRolesShow(client, request) {
-    return Role.postRolesShow({
+    return RoleApi.postRolesShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postRolesUsers(client, request) {
-    return Role.postRolesUsers({
+    return RoleApi.postRolesUsers({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
@@ -2280,47 +2280,47 @@ export const Role = {
 
 export const Lists = {
   async postUsersListsCreate(client, request) {
-    return Lists.postUsersListsCreate({
+    return ListsApi.postUsersListsCreate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsDelete(client, request) {
-    return Lists.postUsersListsDelete({
+    return ListsApi.postUsersListsDelete({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsGetMemberships(client, request) {
-    return Lists.postUsersListsGetMemberships({
+    return ListsApi.postUsersListsGetMemberships({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsList(client, request) {
-    return Lists.postUsersListsList({
+    return ListsApi.postUsersListsList({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsPull(client, request) {
-    return Lists.postUsersListsPull({
+    return ListsApi.postUsersListsPull({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsPush(client, request) {
-    return Lists.postUsersListsPush({
+    return ListsApi.postUsersListsPush({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsShow(client, request) {
-    return Lists.postUsersListsShow({
+    return ListsApi.postUsersListsShow({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsUpdate(client, request) {
-    return Lists.postUsersListsUpdate({
+    return ListsApi.postUsersListsUpdate({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },
   async postUsersListsUpdateMembership(client, request) {
-    return Lists.postUsersListsUpdateMembership({
+    return ListsApi.postUsersListsUpdateMembership({
       body: request, fetch: (url, method, body) => client._fetch(url, method, body)
     });
   },

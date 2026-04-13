@@ -1,10 +1,39 @@
 # @f3liz/rescript-misskey-api
 
-Type-safe Misskey API bindings for ReScript, generated from OpenAPI specs.
+Type-safe Misskey API bindings for ReScript and TypeScript, generated from OpenAPI specs.
 
 Supports Misskey instances. All endpoints are fully typed.
 
 ## Usage
+
+### TypeScript
+
+```typescript
+import { connect, Notes, Stream, MiAuth } from '@f3liz/rescript-misskey-api'
+
+const client = connect("https://misskey.io", "your-token")
+
+// Post a note
+await Notes.create(client, "Hello, Misskey!")
+
+// Read timeline
+const result = await Notes.fetch(client, "home", 20)
+if (result.TAG === "Ok") console.log(result._0)
+
+// Stream timeline
+const sub = Stream.timeline(client, "home", note => {
+  console.log("New note!", note)
+})
+// sub.dispose() to unsubscribe
+
+// MiAuth authentication
+const session = MiAuth.generateUrl("https://misskey.io", "MyApp", ["write:notes"])
+MiAuth.openUrl(session.authUrl)
+
+// Antenna / list / channel timelines use polymorphic variant objects:
+const antennaNotes = await Notes.fetch(client, { NAME: "antenna", VAL: "antenna-id" })
+const streamSub = Stream.timeline(client, { NAME: "list", VAL: "list-id" }, onNote)
+```
 
 ### ReScript
 

@@ -204,7 +204,7 @@ import type {
   PostAdminUpdateUserNoteResponse,
   PostV2adminEmojiListRequest,
   PostV2adminEmojiListResponse,
-} from '../types/Admin.d.ts';
+} from '../types/Admin';
 import type {
   PostAdminEmojiImportZipRequest,
   PostAdminEmojiImportZipResponse,
@@ -306,7 +306,7 @@ import type {
   PostUsersListsFavoriteResponse,
   PostUsersListsUnfavoriteRequest,
   PostUsersListsUnfavoriteResponse,
-} from '../types/Default.d.ts';
+} from '../types/Default';
 import type {
   PostAdminMetaResponse,
   PostAnnouncementRequest,
@@ -345,7 +345,7 @@ import type {
   PostPingResponse,
   GetStatsResponse,
   PostStatsResponse,
-} from '../types/Meta.d.ts';
+} from '../types/Meta';
 import type {
   PostAdminSystemWebhookTestRequest,
   PostAdminSystemWebhookTestResponse,
@@ -360,7 +360,7 @@ import type {
   PostIwebhooksTestResponse,
   PostIwebhooksUpdateRequest,
   PostIwebhooksUpdateResponse,
-} from '../types/Webhooks.d.ts';
+} from '../types/Webhooks';
 import type {
   PostAntennasCreateRequest,
   PostAntennasCreateResponse,
@@ -373,7 +373,7 @@ import type {
   PostAntennasShowResponse,
   PostAntennasUpdateRequest,
   PostAntennasUpdateResponse,
-} from '../types/Antennas.d.ts';
+} from '../types/Antennas';
 import type {
   PostApGetRequest,
   PostApGetResponse,
@@ -397,13 +397,13 @@ import type {
   PostFederationUpdateRemoteUserResponse,
   PostFederationUsersRequest,
   PostFederationUsersResponse,
-} from '../types/Federation.d.ts';
+} from '../types/Federation';
 import type {
   PostAppCreateRequest,
   PostAppCreateResponse,
   PostAppShowRequest,
   PostAppShowResponse,
-} from '../types/App.d.ts';
+} from '../types/App';
 import type {
   PostAuthAcceptRequest,
   PostAuthAcceptResponse,
@@ -415,7 +415,7 @@ import type {
   PostAuthSessionUserkeyResponse,
   PostMiauthGenTokenRequest,
   PostMiauthGenTokenResponse,
-} from '../types/Auth.d.ts';
+} from '../types/Auth';
 import type {
   PostBlockingCreateRequest,
   PostBlockingCreateResponse,
@@ -483,7 +483,7 @@ import type {
   PostSwUpdateRegistrationResponse,
   PostUsersUpdateMemoRequest,
   PostUsersUpdateMemoResponse,
-} from '../types/Account.d.ts';
+} from '../types/Account';
 import type {
   PostChannelsCreateRequest,
   PostChannelsCreateResponse,
@@ -508,7 +508,7 @@ import type {
   PostChannelsUnfollowResponse,
   PostChannelsUpdateRequest,
   PostChannelsUpdateResponse,
-} from '../types/Channels.d.ts';
+} from '../types/Channels';
 import type {
   PostChannelsTimelineRequest,
   PostChannelsTimelineResponse,
@@ -580,7 +580,7 @@ import type {
   GetUsersFeaturedNotesResponse,
   PostUsersFeaturedNotesRequest,
   PostUsersFeaturedNotesResponse,
-} from '../types/Notes.d.ts';
+} from '../types/Notes';
 import type {
   GetChartsActiveUsersRequest,
   GetChartsActiveUsersResponse,
@@ -630,7 +630,7 @@ import type {
   GetChartsUsersResponse,
   PostChartsUsersRequest,
   PostChartsUsersResponse,
-} from '../types/Charts.d.ts';
+} from '../types/Charts';
 import type {
   PostClipsCreateRequest,
   PostClipsCreateResponse,
@@ -643,13 +643,13 @@ import type {
   PostClipsUpdateResponse,
   PostNotesClipsRequest,
   PostNotesClipsResponse,
-} from '../types/Clips.d.ts';
+} from '../types/Clips';
 import type {
   PostClipsFavoriteRequest,
   PostClipsFavoriteResponse,
   PostClipsUnfavoriteRequest,
   PostClipsUnfavoriteResponse,
-} from '../types/Clip.d.ts';
+} from '../types/Clip';
 import type {
   PostDriveResponse,
   PostDriveFilesRequest,
@@ -686,7 +686,7 @@ import type {
   PostDriveFoldersUpdateResponse,
   PostDriveStreamRequest,
   PostDriveStreamResponse,
-} from '../types/Drive.d.ts';
+} from '../types/Drive';
 import type {
   PostEmailAddressAvailableRequest,
   PostEmailAddressAvailableResponse,
@@ -740,7 +740,7 @@ import type {
   PostUsersShowResponse,
   PostUsersStatsRequest,
   PostUsersStatsResponse,
-} from '../types/Users.d.ts';
+} from '../types/Users';
 import type {
   PostFlashCreateRequest,
   PostFlashCreateResponse,
@@ -752,13 +752,13 @@ import type {
   PostFlashUnlikeResponse,
   PostFlashUpdateRequest,
   PostFlashUpdateResponse,
-} from '../types/Flash.d.ts';
+} from '../types/Flash';
 import type {
   PostFlashDeleteRequest,
   PostFlashDeleteResponse,
   PostFlashShowRequest,
   PostFlashShowResponse,
-} from '../types/Flashs.d.ts';
+} from '../types/Flashs';
 import type {
   PostFollowingCreateRequest,
   PostFollowingCreateResponse,
@@ -780,7 +780,7 @@ import type {
   PostFollowingUpdateResponse,
   PostFollowingUpdateAllRequest,
   PostFollowingUpdateAllResponse,
-} from '../types/Following.d.ts';
+} from '../types/Following';
 import type {
   PostGalleryFeaturedRequest,
   PostGalleryFeaturedResponse,
@@ -799,7 +799,7 @@ import type {
   PostGalleryPostsUnlikeResponse,
   PostGalleryPostsUpdateRequest,
   PostGalleryPostsUpdateResponse,
-} from '../types/Gallery.d.ts';
+} from '../types/Gallery';
 import type {
   PostHashtagsListRequest,
   PostHashtagsListResponse,
@@ -811,20 +811,20 @@ import type {
   PostHashtagsTrendResponse,
   PostHashtagsUsersRequest,
   PostHashtagsUsersResponse,
-} from '../types/Hashtags.d.ts';
+} from '../types/Hashtags';
 import type {
   PostNotesReactionsCreateRequest,
   PostNotesReactionsCreateResponse,
   PostNotesReactionsDeleteRequest,
   PostNotesReactionsDeleteResponse,
-} from '../types/Reactions.d.ts';
+} from '../types/Reactions';
 import type {
   PostNotificationsCreateRequest,
   PostNotificationsCreateResponse,
   PostNotificationsFlushResponse,
   PostNotificationsMarkAllAsReadResponse,
   PostNotificationsTestNotificationResponse,
-} from '../types/Notifications.d.ts';
+} from '../types/Notifications';
 import type {
   PostPagesCreateRequest,
   PostPagesCreateResponse,
@@ -839,18 +839,18 @@ import type {
   PostPagesUnlikeResponse,
   PostPagesUpdateRequest,
   PostPagesUpdateResponse,
-} from '../types/Pages.d.ts';
+} from '../types/Pages';
 import type {
   PostRequestResetPasswordRequest,
   PostRequestResetPasswordResponse,
   PostResetPasswordRequest,
   PostResetPasswordResponse,
-} from '../types/ResetPassword.d.ts';
+} from '../types/ResetPassword';
 import type {
   PostResetDbResponse,
   PostTestRequest,
   PostTestResponse,
-} from '../types/NonProductive.d.ts';
+} from '../types/NonProductive';
 import type {
   PostRolesListResponse,
   PostRolesNotesRequest,
@@ -859,7 +859,7 @@ import type {
   PostRolesShowResponse,
   PostRolesUsersRequest,
   PostRolesUsersResponse,
-} from '../types/Role.d.ts';
+} from '../types/Role';
 import type {
   PostUsersListsCreateRequest,
   PostUsersListsCreateResponse,
@@ -879,7 +879,7 @@ import type {
   PostUsersListsUpdateResponse,
   PostUsersListsUpdateMembershipRequest,
   PostUsersListsUpdateMembershipResponse,
-} from '../types/Lists.d.ts';
+} from '../types/Lists';
 export class MisskeyClient {
   constructor(baseUrl: string, token?: string);
   readonly baseUrl: string;

@@ -299,7 +299,7 @@ import type {
   PostAdminUpdateProxyAccountResponse,
   PostV2adminEmojiListRequest,
   PostV2adminEmojiListResponse,
-} from '../types/Admin.d.ts';
+} from '../types/Admin';
 import type {
   PostAdminEmojiImportZipRequest,
   PostAdminEmojiImportZipResponse,
@@ -421,7 +421,7 @@ import type {
   PostReversiVerifyResponse,
   PostUsersListsCreateFromPublicRequest,
   PostUsersListsCreateFromPublicResponse,
-} from '../types/Default.d.ts';
+} from '../types/Default';
 import type {
   PostAdminMetaResponse,
   PostAnnouncementRequest,
@@ -474,7 +474,7 @@ import type {
   PostInviteListResponse,
   GetServerInfoResponse,
   PostServerInfoResponse,
-} from '../types/Meta.d.ts';
+} from '../types/Meta';
 import type {
   PostAdminSystemWebhookTestRequest,
   PostAdminSystemWebhookTestResponse,
@@ -495,7 +495,7 @@ import type {
   PostIwebhooksShowResponse,
   PostIwebhooksTestRequest,
   PostIwebhooksTestResponse,
-} from '../types/Webhooks.d.ts';
+} from '../types/Webhooks';
 import type {
   PostAntennasCreateRequest,
   PostAntennasCreateResponse,
@@ -514,7 +514,7 @@ import type {
   PostAntennasShowResponse,
   PostAntennasUpdateRequest,
   PostAntennasUpdateResponse,
-} from '../types/Antennas.d.ts';
+} from '../types/Antennas';
 import type {
   PostApGetRequest,
   PostApGetResponse,
@@ -550,7 +550,7 @@ import type {
   PostFederationShowInstanceResponse,
   PostFederationUsersRequest,
   PostFederationUsersResponse,
-} from '../types/Federation.d.ts';
+} from '../types/Federation';
 import type {
   PostAppCreateRequest,
   PostAppCreateResponse,
@@ -560,7 +560,7 @@ import type {
   PostAppCreateResponse,
   PostAppShowRequest,
   PostAppShowResponse,
-} from '../types/App.d.ts';
+} from '../types/App';
 import type {
   PostAuthAcceptRequest,
   PostAuthAcceptResponse,
@@ -576,7 +576,7 @@ import type {
   PostAuthSessionShowResponse,
   PostAuthSessionUserkeyRequest,
   PostAuthSessionUserkeyResponse,
-} from '../types/Auth.d.ts';
+} from '../types/Auth';
 import type {
   PostBlockingCreateRequest,
   PostBlockingCreateResponse,
@@ -689,7 +689,7 @@ import type {
   PostRenoteMuteListResponse,
   PostVerifyEmailRequest,
   PostVerifyEmailResponse,
-} from '../types/Account.d.ts';
+} from '../types/Account';
 import type {
   PostChannelsCreateRequest,
   PostChannelsCreateResponse,
@@ -726,7 +726,7 @@ import type {
   PostChannelsShowResponse,
   PostChannelsUpdateRequest,
   PostChannelsUpdateResponse,
-} from '../types/Channels.d.ts';
+} from '../types/Channels';
 import type {
   PostChannelsTimelineRequest,
   PostChannelsTimelineResponse,
@@ -855,7 +855,7 @@ import type {
   PostNotesUpdateResponse,
   PostNotesUserListTimelineRequest,
   PostNotesUserListTimelineResponse,
-} from '../types/Notes.d.ts';
+} from '../types/Notes';
 import type {
   GetChartsActiveUsersRequest,
   GetChartsActiveUsersResponse,
@@ -909,7 +909,7 @@ import type {
   GetChartsFederationResponse,
   PostChartsFederationRequest,
   PostChartsFederationResponse,
-} from '../types/Charts.d.ts';
+} from '../types/Charts';
 import type {
   PostClipsCreateRequest,
   PostClipsCreateResponse,
@@ -930,13 +930,13 @@ import type {
   PostClipsShowResponse,
   PostClipsUpdateRequest,
   PostClipsUpdateResponse,
-} from '../types/Clips.d.ts';
+} from '../types/Clips';
 import type {
   PostClipsFavoriteRequest,
   PostClipsFavoriteResponse,
   PostClipsUnfavoriteRequest,
   PostClipsUnfavoriteResponse,
-} from '../types/Clip.d.ts';
+} from '../types/Clip';
 import type {
   PostDriveResponse,
   PostDriveFilesRequest,
@@ -997,7 +997,7 @@ import type {
   PostDriveFoldersUpdateResponse,
   PostDriveStreamRequest,
   PostDriveStreamResponse,
-} from '../types/Drive.d.ts';
+} from '../types/Drive';
 import type {
   PostEmailAddressAvailableRequest,
   PostEmailAddressAvailableResponse,
@@ -1075,7 +1075,7 @@ import type {
   PostUsersShowResponse,
   PostUsersTranslateRequest,
   PostUsersTranslateResponse,
-} from '../types/Users.d.ts';
+} from '../types/Users';
 import type {
   PostFlashCreateRequest,
   PostFlashCreateResponse,
@@ -1093,7 +1093,7 @@ import type {
   PostFlashGenTokenResponse,
   PostFlashSearchRequest,
   PostFlashSearchResponse,
-} from '../types/Flash.d.ts';
+} from '../types/Flash';
 import type {
   PostFlashDeleteRequest,
   PostFlashDeleteResponse,
@@ -1101,7 +1101,7 @@ import type {
   PostFlashShowResponse,
   PostFlashShowRequest,
   PostFlashShowResponse,
-} from '../types/Flashs.d.ts';
+} from '../types/Flashs';
 import type {
   PostFollowingCreateRequest,
   PostFollowingCreateResponse,
@@ -1137,7 +1137,7 @@ import type {
   PostFollowingRequestsSentResponse,
   PostFollowingUpdateRequest,
   PostFollowingUpdateResponse,
-} from '../types/Following.d.ts';
+} from '../types/Following';
 import type {
   PostGalleryFeaturedRequest,
   PostGalleryFeaturedResponse,
@@ -1164,7 +1164,7 @@ import type {
   PostGalleryPostsShowResponse,
   PostGalleryPostsUpdateRequest,
   PostGalleryPostsUpdateResponse,
-} from '../types/Gallery.d.ts';
+} from '../types/Gallery';
 import type {
   PostHashtagsListRequest,
   PostHashtagsListResponse,
@@ -1180,13 +1180,13 @@ import type {
   PostHashtagsShowResponse,
   PostHashtagsUsersRequest,
   PostHashtagsUsersResponse,
-} from '../types/Hashtags.d.ts';
+} from '../types/Hashtags';
 import type {
   PostNotesReactionsCreateRequest,
   PostNotesReactionsCreateResponse,
   PostNotesReactionsDeleteRequest,
   PostNotesReactionsDeleteResponse,
-} from '../types/Reactions.d.ts';
+} from '../types/Reactions';
 import type {
   PostNotificationsCreateRequest,
   PostNotificationsCreateResponse,
@@ -1195,7 +1195,7 @@ import type {
   PostNotificationsTestNotificationResponse,
   PostNotificationsCreateRequest,
   PostNotificationsCreateResponse,
-} from '../types/Notifications.d.ts';
+} from '../types/Notifications';
 import type {
   PostPagesCreateRequest,
   PostPagesCreateResponse,
@@ -1216,18 +1216,18 @@ import type {
   PostPagesShowResponse,
   PostPagesUpdateRequest,
   PostPagesUpdateResponse,
-} from '../types/Pages.d.ts';
+} from '../types/Pages';
 import type {
   PostRequestResetPasswordRequest,
   PostRequestResetPasswordResponse,
   PostResetPasswordRequest,
   PostResetPasswordResponse,
-} from '../types/ResetPassword.d.ts';
+} from '../types/ResetPassword';
 import type {
   PostResetDbResponse,
   PostTestRequest,
   PostTestResponse,
-} from '../types/NonProductive.d.ts';
+} from '../types/NonProductive';
 import type {
   PostRolesListResponse,
   PostRolesNotesRequest,
@@ -1242,7 +1242,7 @@ import type {
   PostRolesShowResponse,
   PostRolesUsersRequest,
   PostRolesUsersResponse,
-} from '../types/Role.d.ts';
+} from '../types/Role';
 import type {
   PostUsersListsCreateRequest,
   PostUsersListsCreateResponse,
@@ -1268,7 +1268,7 @@ import type {
   PostUsersListsGetMembershipsResponse,
   PostUsersListsUpdateRequest,
   PostUsersListsUpdateResponse,
-} from '../types/Lists.d.ts';
+} from '../types/Lists';
 import type {
   PostChatHistoryRequest,
   PostChatHistoryResponse,
@@ -1323,7 +1323,7 @@ import type {
   PostChatRoomsShowResponse,
   PostChatRoomsUpdateRequest,
   PostChatRoomsUpdateResponse,
-} from '../types/Chat.d.ts';
+} from '../types/Chat';
 import type {
   PostUsersGroupsCreateRequest,
   PostUsersGroupsCreateResponse,
@@ -1347,7 +1347,7 @@ import type {
   PostUsersGroupsTransferResponse,
   PostUsersGroupsUpdateRequest,
   PostUsersGroupsUpdateResponse,
-} from '../types/Groups.d.ts';
+} from '../types/Groups';
 export class MisskeyClient {
   constructor(baseUrl: string, token?: string);
   readonly baseUrl: string;

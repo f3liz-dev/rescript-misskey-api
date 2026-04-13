@@ -13,18 +13,24 @@
   "author": "NyanRus",
   "license": "MIT",
   "type": "module",
+  "main": "./src/Misskey.js",
+  "module": "./src/Misskey.res.mjs",
+  "types": "./src/Misskey.d.ts",
   "exports": {
-    "./lib/*": "./lib/*",
+    ".": {
+      "import": "./src/Misskey.res.mjs",
+      "require": "./src/Misskey.js",
+      "types": "./src/Misskey.d.ts"
+    },
     "./src/*": "./src/*"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/f3liz-dev/rescript-misskey-api.git"
+    "url": "https://github.com/f3liz-casa/rescript-misskey-api.git"
   },
   "scripts": {
-    "build": "rescript && npm run build:ts",
-    "build:ts": "tsc",
-    "clean": "rescript clean && rm -rf lib/ts",
+    "build": "rescript",
+    "clean": "rescript clean",
     "watch": "rescript build -w",
     "generate": "node scripts/generate-api.mjs",
     "test": "rescript",
@@ -35,20 +41,17 @@
     "sury": "11.0.0-alpha.4"
   },
   "devDependencies": {
-    "@f3liz/rescript-autogen-openapi": "^0.7.0",
+    "@f3liz/rescript-autogen-openapi": "^0.8.2",
     "rescript": "^12.1.0",
     "typescript": "^5.9.3"
   },
   "files": [
     "src/**/*.res",
     "src/**/*.resi",
+    "src/**/*.res.mjs",
     "src/**/*.d.ts",
     "src/**/*.mjs",
-    "src/index.ts",
-    "lib/es6/src/**/*.res.js",
-    "lib/es6/src/**/*.mjs",
-    "lib/ts/**/*",
-    "scripts/*.mjs",
+    "src/Misskey.js",
     "rescript.json",
     "README.md",
     "LICENSE"
